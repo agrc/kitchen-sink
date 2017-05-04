@@ -1,3 +1,42 @@
+define([
+    'dojo/query',
+    'dojo/_base/declare',
+    'dojo/dom-construct'
+], function (
+    query,
+    declare,
+    domConstruct
+) {
+    return declare(null, {
+        constructor(mapView) {
+            // summary:
+            //      ??
+            // mapView: esri/views/MapView
+            console.log('map-tools/MapView:constructor', arguments);
+
+            mapView.extent = {
+                xmax: -11762120.612131765,
+                xmin: -13074391.513731329,
+                ymax: 5225035.106177688,
+                ymin: 4373832.359194187,
+                spatialReference: 3857
+            }
+
+            // wait until dom has been built
+            mapView.then(() => {
+                var poweredByDiv = query('.esri-attribution__powered-by', mapView.container)[0]
+                domConstruct.empty(poweredByDiv);
+                poweredByDiv.innerHTML = 'Powered by ';
+                domConstruct.create('a', {
+                    href: 'https://gis.utah.gov',
+                    innerHTML: 'AGRC',
+                    target: '_blank',
+                    'class': 'esri-attribution__link'
+                }, poweredByDiv);
+            });
+        }
+    });
+});
 // define([
 //     'dijit/Destroyable',
 //
