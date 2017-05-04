@@ -1,3 +1,65 @@
 <html>
+    <head>
+        <link rel="stylesheet" href="../bower_components/esri/css/main.css">
+        <style>
+            .esri-view {
+                height: 500px;
+                width: 500px;
+            }
+        </style>
 
+        <script type='text/javascript' src='../bower_components/dojo/dojo.js'></script>
+        <script type='text/javascript'>
+            var projectUrl = location.pathname.replace(/\/[^\/]+$/, '') + '/';
+
+            require({
+                packages: [{
+                    name: 'map-tools',
+                    location: projectUrl + '..'
+                },{
+                    name: 'esri',
+                    location: projectUrl + '../bower_components/esri'
+                }]
+            },[
+                'esri/Map',
+                'esri/views/MapView',
+                'map-tools/MapView',
+                'dojo/domReady!'
+            ], function (
+                Map,
+                MapView,
+                AGRCMapView
+            ) {
+                var map = new Map({basemap: 'streets'});
+
+                // default extent
+                var defaultExtentView = new MapView({
+                    map,
+                    container: 'defaultExtentDiv'
+                });
+                new AGRCMapView(defaultExtentView);
+
+                // custom extent
+                var customExtentView = new MapView({
+                    map,
+                    container: 'customExtentDiv'
+                });
+                new AGRCMapView(customExtentView);
+                customExtentView.extent = {
+                    xmin: -9177882.740387835,
+                    ymin: 4246761.27629837,
+                    xmax: -9176720.658692285,
+                    ymax: 4247967.548150893,
+                    spatialReference: 102100
+                };
+            });
+        </script>
+    </head>
+    <body>
+        <h4>Default Extent</h4>
+        <div id="defaultExtentDiv"></div>
+
+        <h4>Custom Extent</h4>
+        <div id="customExtentDiv"></div>
+    </body>
 </html>

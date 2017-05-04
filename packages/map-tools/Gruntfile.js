@@ -71,15 +71,15 @@ module.exports = function (grunt) {
         watch: {
             files: [
                 'Gruntfile.js',
-                '_src/**/*.*',
+                '_src/*.*',
                 'resources/**/*.*',
                 'tests/**/*.*',
                 '!tests/spec/**/*.*'
             ],
             tasks: [
                 'jasmine:main:build',
-                'eslint',
-                'babel'
+                'babel',
+                'eslint'
             ],
             options: {
                 livereload: true

@@ -22,13 +22,17 @@
   "devDependencies": {
     "stubmodule": "~0.6",
     "bootstrap": "~3.3.6",
-    "layer-selector": "agrc-layer-selector#~1.1"
-  },
-  "dependencies": {
-    "esri": "arcgis-js-api#~4.3",
-    "spinjs": "~2.3",
+    "layer-selector": "agrc-layer-selector#~1.1",
     "jasmine-jsreporter": "~0.1",
     "jasmine-favicon-reporter": "*"
+  },
+  "ignore": [
+    "_src",
+    "tests",
+    "Gruntfile.js"
+  ],
+  "dependencies": {
+    "esri": "arcgis-js-api#^4.3"
   },
   "resolutions": {
     "dojo": "v1.10.4/esri-3.14.0",
