@@ -1,6 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="../bower_components/esri/css/main.css">
+        <link rel="stylesheet" href="../resources/MapView.css">
         <style>
             .esri-view {
                 height: 500px;
@@ -10,7 +11,7 @@
 
         <script type='text/javascript' src='../bower_components/dojo/dojo.js'></script>
         <script type='text/javascript'>
-            var projectUrl = location.pathname.replace(/\/[^\/]+$/, '') + '/';
+            const projectUrl = location.pathname.replace(/\/[^\/]+$/, '') + '/';
 
             require({
                 packages: [{
@@ -23,24 +24,27 @@
             },[
                 'esri/Map',
                 'esri/views/MapView',
+
                 'map-tools/MapView',
+
                 'dojo/domReady!'
             ], function (
                 Map,
                 MapView,
+
                 AGRCMapView
             ) {
-                var map = new Map({basemap: 'streets'});
+                let map = new Map({basemap: 'streets'});
 
                 // default extent
-                var defaultExtentView = new MapView({
+                let defaultExtentView = new MapView({
                     map,
                     container: 'defaultExtentDiv'
                 });
                 new AGRCMapView(defaultExtentView);
 
                 // custom extent
-                var customExtentView = new MapView({
+                let customExtentView = new MapView({
                     map,
                     container: 'customExtentDiv'
                 });
@@ -52,14 +56,27 @@
                     ymax: 4247967.548150893,
                     spatialReference: 102100
                 };
+
+                // loader
+                let loaderView = new MapView({
+                    map,
+                    container: 'loaderDiv'
+                });
+                let agrcView = new AGRCMapView(loaderView);
+                loaderView.then(() => {
+                    agrcView.toggleLoader(true);
+                });
             });
         </script>
     </head>
     <body>
-        <h4>Default Extent</h4>
+        <h2>Default Extent</h2>
         <div id="defaultExtentDiv"></div>
 
-        <h4>Custom Extent</h4>
+        <h2>Custom Extent</h2>
         <div id="customExtentDiv"></div>
+
+        <h2>Loader</h2>
+        <div id="loaderDiv"></div>
     </body>
 </html>

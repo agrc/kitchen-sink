@@ -1,41 +1,35 @@
 {
-  "name": "agrc.widgets",
-  "version": "6.0.0",
-  "homepage": "https://github.com/agrc/agrc.widgets",
+  "name": "map-tools",
+  "version": "1.0.0",
+  "description": "AGRC tools for working with ESRI JS API maps",
+  "homepage": "https://github.com/agrc-widgets/map-tools",
   "authors": [
     "Scott Davis <stdavis@utah.gov>",
     "Steve Gourley <sgourley@utah.gov>"
   ],
-  "description": "AGRC Widget Library",
-  "main": "?",
   "keywords": [
-    "agrc"
+    "agrc",
+    "widgets",
+    "esri",
+    "javascript",
+    "map"
   ],
   "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
-  "devDependencies": {
-    "stubmodule": "~0.6",
-    "bootstrap": "~3.3.6",
-    "layer-selector": "agrc-layer-selector#~1.1",
-    "jasmine-jsreporter": "~0.1",
-    "jasmine-favicon-reporter": "*"
-  },
   "ignore": [
     "_src",
     "tests",
     "Gruntfile.js"
   ],
+  "devDependencies": {
+    "jasmine-jsreporter": "~0.1",
+    "jasmine-favicon-reporter": "*"
+  },
   "dependencies": {
-    "esri": "arcgis-js-api#^4.3"
+    "esri": "arcgis-js-api#^4.3",
+    "SpinKit": "^1.2"
   },
   "resolutions": {
-    "dojo": "v1.10.4/esri-3.14.0",
+    "dojo": "v1.12.1/esri-3.20.0",
     "esri": "~4.3",
     "dijit": "v1.12.1/esri-3.20.0",
     "dojox": "v1.12.1/esri-3.20.0",

@@ -68,16 +68,29 @@ module.exports = function (grunt) {
             }
         },
         pkg: grunt.file.readJSON('package.json'),
+        sass: {
+            options: {sourceMap: true},
+            main: {
+                files: [{
+                    expand: true,
+                    cwd: 'resources',
+                    src: ['*.scss'],
+                    dest: 'resources',
+                    ext: '.css'
+                }]
+            }
+        },
         watch: {
             files: [
                 'Gruntfile.js',
-                '_src/*.*',
+                '_src/**/*.*',
                 'resources/**/*.*',
                 'tests/**/*.*',
                 '!tests/spec/**/*.*'
             ],
             tasks: [
                 'jasmine:main:build',
+                'sass',
                 'babel',
                 'eslint'
             ],
@@ -89,17 +102,20 @@ module.exports = function (grunt) {
 
     // Default task.
     grunt.registerTask('default', [
-        'eslint',
+        'sass',
         'babel',
         'connect',
         'jasmine:main:build',
+        'eslint',
         'watch'
     ]);
 
     grunt.registerTask('travis', [
         'eslint',
+        'sass',
         'babel',
-        'connect',
-        'jasmine'
+        'connect'
+        // TODO: run jasmine tests via headless chrome
+        // esri 4.x doesn't support PhantomJS
     ]);
 };
