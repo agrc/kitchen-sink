@@ -111,10 +111,8 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('travis', [
-        'eslint',
-        'sass',
-        'babel',
-        'connect'
+        'eslint'
+        // 'connect'
         // TODO: run jasmine tests via headless chrome
         // esri 4.x doesn't support PhantomJS
     ]);
