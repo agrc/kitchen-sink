@@ -23,7 +23,7 @@ var profile = (function () {
                 return copyOnly(filename, mid);
             },
             amd: function (filename, mid) {
-                return (/\.js$/).test(filename) && !(mid in nonAMDs);
+                return (/\.js$/).test(filename);
             },
             ignore: function (filename, mid) {
                 return mid in ignores || /.*\/[node_modules|bower_components]\//.test(mid);
