@@ -26,7 +26,7 @@ var profile = (function () {
                 return (/\.js$/).test(filename);
             },
             ignore: function (filename, mid) {
-                return mid in ignores || /.*\/[node_modules|bower_components]\//.test(mid);
+                return mid in ignores || /.*\/[node_modules|_src]\//.test(mid);
             }
         }
     };

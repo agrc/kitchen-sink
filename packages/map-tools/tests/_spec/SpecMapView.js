@@ -44,7 +44,7 @@ require([
             });
 
             it('switches out ESRI for AGRC attribution', function (done) {
-                esriView.then(() => {
+                esriView.when(() => {
                     let link = query('.esri-attribution__link', esriView.container)[0];
                     expect(link.innerHTML).toBe('AGRC');
                     done();
@@ -52,7 +52,7 @@ require([
             });
 
             it('adds the loader to the ui', function (done) {
-                esriView.then(() => {
+                esriView.when(() => {
                     expect(mapView.loader).toBeDefined();
                     let loaderNode = query('.sk-double-bounce', mapView.container)[0];
                     expect(loaderNode).toBeDefined();
@@ -63,7 +63,7 @@ require([
 
         describe('toggleLoader', function () {
             it('toggles the hidden class', function (done) {
-                esriView.then(() => {
+                esriView.when(() => {
                     expect(domClass.contains(mapView.loader.domNode, 'hidden')).toBe(true);
 
                     mapView.toggleLoader(true);

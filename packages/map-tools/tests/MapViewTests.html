@@ -1,6 +1,8 @@
+<!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="../bower_components/esri/css/main.css">
+        <title>MapView Tests</title>
+        <link rel="stylesheet" href="../node_modules/arcgis-js-api/css/main.css">
         <link rel="stylesheet" href="../resources/MapView.css">
         <style>
             .esri-view {
@@ -9,17 +11,29 @@
             }
         </style>
 
-        <script type='text/javascript' src='../bower_components/dojo/dojo.js'></script>
-        <script type='text/javascript'>
+        <script type="text/javascript" src="../node_modules/dojo/dojo.js"></script>
+        <script type="text/javascript">
             const projectUrl = location.pathname.replace(/\/[^\/]+$/, '') + '/';
 
             require({
                 packages: [{
                     name: 'map-tools',
                     location: projectUrl + '..'
-                },{
+                }, {
+                    name: 'maquette',
+                    location: projectUrl + '../node_modules/maquette',
+                    main: 'dist/maquette.umd'
+                }, {
+                    name: 'maquette-jsx',
+                    location: projectUrl + '../node_modules/maquette-jsx',
+                    main: 'dist/maquette-jsx.umd'
+                }, {
+                    name: 'maquette-css-transitions',
+                    location: projectUrl + '../node_modules/maquette-css-transitions',
+                    main: 'dist/maquette-css-transitions.umd'
+                }, {
                     name: 'esri',
-                    location: projectUrl + '../bower_components/esri'
+                    location: projectUrl + '../node_modules/arcgis-js-api'
                 }]
             },[
                 'esri/Map',
@@ -63,7 +77,7 @@
                     container: 'loaderDiv'
                 });
                 let agrcView = new AGRCMapView(loaderView);
-                loaderView.then(() => {
+                loaderView.when(() => {
                     agrcView.toggleLoader(true);
                 });
             });

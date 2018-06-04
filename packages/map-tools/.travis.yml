@@ -1,12 +1,15 @@
 language: node_js
 node_js:
-  - "node"
+    - "lts/*"
 before_install:
-  - yarn global add grunt-cli
-  - yarn global add bower
-  - bower install
+    - npm install -g grunt-cli
 notifications:
-  email:
-    on_success: change
-    on_failure: change
-cache: yarn
+    email:
+        on_success: change
+        on_failure: change
+sudo: required
+cache:
+    directories:
+        - node_modules
+addons:
+    chrome: stable
