@@ -1,0 +1,7 @@
+_src/
+tests/
+_SpecRunner.html
+Gruntfile.js
+.travis.yml
+.eslintrc
+.gitattributes

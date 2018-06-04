@@ -21,10 +21,9 @@ define(['dijit/_TemplatedMixin', 'dijit/_WidgetBase', 'dojo/dom-class', 'dojo/do
                 ymax: 5225035.106177688,
                 ymin: 4373832.359194187,
                 spatialReference: 3857
-            };
 
-            // wait until dom has been built
-            mapView.then(function () {
+                // wait until dom has been built
+            };mapView.when(function () {
                 // AGRC attribution
                 var poweredByDiv = query('.esri-attribution__powered-by', mapView.container)[0];
                 domConstruct.empty(poweredByDiv);

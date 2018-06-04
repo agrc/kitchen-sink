@@ -3,7 +3,7 @@ module.exports = function (grunt) {
 
     var bumpFiles = [
         'package.json',
-        'bower.json'
+        'package-lock.json'
     ];
     grunt.initConfig({
         babel: {
@@ -54,12 +54,10 @@ module.exports = function (grunt) {
                 options: {
                     specs: ['tests/spec/*.js'],
                     vendor: [
-                        'bower_components/jasmine-favicon-reporter/vendor/favico.js',
-                        'bower_components/jasmine-favicon-reporter/jasmine-favicon-reporter.js',
-                        'bower_components/jasmine-jsreporter/jasmine-jsreporter.js',
+                        'node_modules/jasmine-favicon-reporter/vendor/favico.js',
+                        'node_modules/jasmine-favicon-reporter/jasmine-favicon-reporter.js',
                         'tests/SetUpTests.js',
-                        'bower_components/dojo/dojo.js',
-                        'tests/jsReporterSanitizer.js',
+                        'node_modules/dojo/dojo.js',
                         'tests/jasmineAMDErrorChecking.js'
                     ],
                     host: 'http://localhost:8000',
@@ -68,6 +66,18 @@ module.exports = function (grunt) {
             }
         },
         pkg: grunt.file.readJSON('package.json'),
+        sass: {
+            options: {sourceMap: true},
+            main: {
+                files: [{
+                    expand: true,
+                    cwd: 'resources',
+                    src: ['*.scss'],
+                    dest: 'resources',
+                    ext: '.css'
+                }]
+            }
+        },
         watch: {
             files: [
                 'Gruntfile.js',
@@ -78,6 +88,7 @@ module.exports = function (grunt) {
             ],
             tasks: [
                 'jasmine:main:build',
+                'sass',
                 'babel',
                 'eslint'
             ],
@@ -89,6 +100,7 @@ module.exports = function (grunt) {
 
     // Default task.
     grunt.registerTask('default', [
+        'sass',
         'babel',
         'connect',
         'jasmine:main:build',
@@ -97,9 +109,9 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('travis', [
-        'eslint'
-        // 'connect'
-        // TODO: run jasmine tests via headless chrome
-        // esri 4.x doesn't support PhantomJS
+        'eslint',
+        'connect',
+        'babel',
+        'jasmine'
     ]);
 };

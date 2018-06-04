@@ -40,7 +40,7 @@ define([
             }
 
             // wait until dom has been built
-            mapView.then(() => {
+            mapView.when(() => {
                 // AGRC attribution
                 let poweredByDiv = query('.esri-attribution__powered-by', mapView.container)[0]
                 domConstruct.empty(poweredByDiv);
