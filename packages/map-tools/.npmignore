@@ -5,3 +5,4 @@ Gruntfile.js
 .travis.yml
 .eslintrc
 .gitattributes
+.grunt
