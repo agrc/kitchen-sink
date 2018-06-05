@@ -1,6 +1,6 @@
 {
   "name": "@agrc/map-tools",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "AGRC tools for working with ESRI JS API maps",
   "repository": {
     "type": "git",
