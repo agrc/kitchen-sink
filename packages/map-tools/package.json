@@ -26,12 +26,11 @@
     "grunt-eslint": "20.1.0",
     "grunt-if-missing": "^1",
     "grunt-sass": "2.1.0",
-    "load-grunt-tasks": "4.0.0",
-    "napa": "3.0.0"
+    "jasmine-favicon-reporter": "1.0.0",
+    "load-grunt-tasks": "4.0.0"
   },
   "dojoBuild": "map-tools.profile.js",
   "scripts": {
-    "prepare": "napa simsalabim/jasmine-favicon-reporter",
     "test": "grunt travis --verbose"
   },
   "dependencies": {
