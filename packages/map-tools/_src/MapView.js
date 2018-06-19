@@ -7,7 +7,7 @@ define([
     'dojo/query',
     'dojo/text!./resources/templates/loader.html',
     'dojo/_base/declare'
-], function (
+], (
     _TemplatedMixin,
     _WidgetBase,
 
@@ -16,7 +16,7 @@ define([
     query,
     loaderTemplate,
     declare
-) {
+) => {
     return declare(null, {
         // loader: DomNode
         //      the widget containing the loader animation
