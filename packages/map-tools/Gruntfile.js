@@ -49,6 +49,14 @@ module.exports = function (grunt) {
                 ]
             }
         },
+        exec: {
+            main: {
+                cmd: 'node node_modules/jasmine/bin/jasmine.js --config=tests/e2e/jasmine.json'
+            },
+            debug: {
+                cmd: 'DEBUG=true node node_modules/jasmine/bin/jasmine.js --config=tests/e2e/jasmine.json'
+            }
+        },
         jasmine: {
             main: {
                 options: {
@@ -112,6 +120,17 @@ module.exports = function (grunt) {
         'eslint',
         'connect',
         'babel',
-        'jasmine'
+        'jasmine',
+        'exec:main'
+    ]);
+
+    grunt.registerTask('e2e', [
+        'connect',
+        'exec:main'
+    ]);
+
+    grunt.registerTask('e2edebug', [
+        'connect',
+        'exec:debug'
     ]);
 };

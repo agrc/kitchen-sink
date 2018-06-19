@@ -1,3 +1,88 @@
+<!DOCTYPE html>
 <html>
+<head>
+    <title>ExtentRouter Tests</title>
+    <link rel="stylesheet" href="../node_modules/arcgis-js-api/css/main.css">
+    <link rel="stylesheet" href="../resources/MapView.css">
+    <style>
+        .esri-view {
+            height: 500px;
+            width: 500px;
+        }
+    </style>
 
+    <script type="text/javascript" src="../node_modules/dojo/dojo.js"></script>
+    <script type="text/javascript">
+        const projectUrl = location.pathname.replace(/\/[^\/]+$/, '') + '/';
+
+        require({
+            packages: [{
+                name: 'map-tools',
+                location: projectUrl + '..'
+            }, {
+                name: 'maquette',
+                location: projectUrl + '../node_modules/maquette',
+                main: 'dist/maquette.umd'
+            }, {
+                name: 'maquette-jsx',
+                location: projectUrl + '../node_modules/maquette-jsx',
+                main: 'dist/maquette-jsx.umd'
+            }, {
+                name: 'maquette-css-transitions',
+                location: projectUrl + '../node_modules/maquette-css-transitions',
+                main: 'dist/maquette-css-transitions.umd'
+            }, {
+                name: 'esri',
+                location: projectUrl + '../node_modules/arcgis-js-api'
+            }]
+        },[
+            'esri/geometry/Point',
+            'esri/Map',
+            'esri/views/MapView',
+
+            'map-tools/extentRouter',
+            'map-tools/MapView',
+
+            'dojo/domReady!'
+        ], function (
+            Point,
+            Map,
+            MapView,
+
+            extentRouter,
+            AGRCMapView
+        ) {
+            let map = new Map({basemap: 'streets'});
+
+            mapView = new MapView({
+                map,
+                container: 'mapDiv'
+            });
+            new AGRCMapView(mapView);
+            extentRouter(mapView);
+
+            mapView.when(() => {
+                document.body.className = 'loaded';
+            });
+
+            window.getMapViewProps = function () {
+                return {
+                    center: mapView.center.toJSON(),
+                    zoom: mapView.zoom,
+                    scale: mapView.scale
+                };
+            };
+
+            window.zoomTo = function (target, zoom) {
+                return mapView.goTo({
+                    target: new Point(target),
+                    zoom
+                }, { animate: false });
+            };
+        });
+    </script>
+</head>
+<body>
+    <div id="mapDiv"></div>
+</body>
 </html>
