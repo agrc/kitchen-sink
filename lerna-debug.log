@@ -1,0 +1,26 @@
+0 silly input [ '/Users/sgourley/Projects/map-tools' ]
+1 silly flags { _: [ 'import' ],
+1 silly flags   'reject-cycles': false,
+1 silly flags   rejectCycles: false,
+1 silly flags   pathToRepo: '/Users/sgourley/Projects/map-tools' }
+2 verbose rootPath /Users/sgourley/Projects/agrc-widgets
+3 info version 2.11.0
+4 silly isInitialized
+5 silly isInitialized true
+6 silly existsSync /Users/sgourley/Projects/agrc-widgets/VERSION
+7 info versioning independent
+8 silly initialize attempt
+9 silly statSync /Users/sgourley/Projects/map-tools
+10 silly getWorkspaceRoot
+11 verbose getWorkspaceRoot /Users/sgourley/Projects/agrc-widgets
+12 silly existsSync /Users/sgourley/Projects/agrc-widgets/packages/map-tools
+13 silly getCurrentSHA
+14 error initialize caught error
+15 error Error: fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.
+15 error Use '--' to separate paths from revisions, like this:
+15 error 'git <command> [<revision>...] -- [<file>...]'
+15 error
+15 error     at Function.module.exports.sync (/usr/local/lib/node_modules/lerna/node_modules/execa/index.js:303:26)
+15 error     at Function.execSync (/usr/local/lib/node_modules/lerna/lib/ChildProcessUtilities.js:59:30)
+15 error     at Function.getCurrentSHA (/usr/local/lib/node_modules/lerna/lib/GitUtilities.js:212:49)
+15 error     at ImportCommand.initialize (/usr/local/lib/node_modules/lerna/lib/commands/ImportCommand.js:155:51)
