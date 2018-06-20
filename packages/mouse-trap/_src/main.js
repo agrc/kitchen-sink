@@ -1,0 +1,5 @@
+define([
+    './MouseTrap'
+], (
+    mouseTrap
+) => mouseTrap);
