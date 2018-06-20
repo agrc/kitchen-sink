@@ -37,19 +37,19 @@ define([
                 ymax: 5225035.106177688,
                 ymin: 4373832.359194187,
                 spatialReference: 3857
-            }
+            };
 
             // wait until dom has been built
             mapView.when(() => {
                 // AGRC attribution
-                let poweredByDiv = query('.esri-attribution__powered-by', mapView.container)[0]
+                let poweredByDiv = query('.esri-attribution__powered-by', mapView.container)[0];
                 domConstruct.empty(poweredByDiv);
                 poweredByDiv.innerHTML = 'Built by ';
                 domConstruct.create('a', {
                     href: 'https://gis.utah.gov',
                     innerHTML: 'AGRC',
                     target: '_blank',
-                    'class': 'esri-attribution__link'
+                    class: 'esri-attribution__link'
                 }, poweredByDiv);
 
                 // loader - required to be a widget so as to retain a reference to the dom node for use in toggleLoader

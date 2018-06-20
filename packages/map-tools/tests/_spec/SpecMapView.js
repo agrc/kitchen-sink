@@ -22,7 +22,7 @@ require([
         let esriView;
 
         beforeEach(function () {
-            let map = new Map({basemap: 'streets'});
+            let map = new Map({ basemap: 'streets' });
             esriView = new MapView({
                 map,
                 container: domConstruct.create('div', null, document.body)

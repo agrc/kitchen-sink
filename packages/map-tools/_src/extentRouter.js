@@ -49,7 +49,7 @@ define([
             center: new Point({
                 x: parseInt(urlObj.x, 10),
                 y: parseInt(urlObj.y, 10),
-                spatialReference: {wkid: 3857}
+                spatialReference: { wkid: 3857 }
             }),
             zoom: parseInt(urlObj.zoom, 10)
         };

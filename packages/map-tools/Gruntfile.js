@@ -34,7 +34,7 @@ module.exports = function (grunt) {
             }
         },
         connect: {
-            uses_defaults: {}
+            uses_defaults: {} // eslint-disable-line camelcase
         },
         eslint: {
             options: {
@@ -75,7 +75,7 @@ module.exports = function (grunt) {
         },
         pkg: grunt.file.readJSON('package.json'),
         sass: {
-            options: {sourceMap: true},
+            options: { sourceMap: true },
             main: {
                 files: [{
                     expand: true,

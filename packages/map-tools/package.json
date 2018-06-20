@@ -6,6 +6,7 @@
     "type": "git",
     "url": "https://github.com/agrc-widgets/map-tools.git"
   },
+  "license": "MIT",
   "keywords": [
     "agrc",
     "widgets",
