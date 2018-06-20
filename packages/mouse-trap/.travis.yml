@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+- lts/*
+before_install:
+- npm install -g grunt-cli
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+sudo: required
+cache:
+  directories:
+  - node_modules
+addons:
+  chrome: stable
