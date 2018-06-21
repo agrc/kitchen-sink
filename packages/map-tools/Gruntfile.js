@@ -34,11 +34,15 @@ module.exports = function (grunt) {
             }
         },
         connect: {
-            uses_defaults: {}
+            main: {
+                options: {
+                    base: '../../'
+                }
+            }
         },
         eslint: {
             options: {
-                configFile: '.eslintrc'
+                configFile: '../../.eslintrc'
             },
             main: {
                 src: [
@@ -65,8 +69,8 @@ module.exports = function (grunt) {
                         'node_modules/jasmine-favicon-reporter/vendor/favico.js',
                         'node_modules/jasmine-favicon-reporter/jasmine-favicon-reporter.js',
                         'tests/SetUpTests.js',
-                        'node_modules/dojo/dojo.js',
-                        'tests/jasmineAMDErrorChecking.js'
+                        '../../node_modules/dojo/dojo.js',
+                        '../../common/testing/jasmineAMDErrorChecking.js'
                     ],
                     host: 'http://localhost:8000',
                     keepRunner: true
@@ -75,7 +79,7 @@ module.exports = function (grunt) {
         },
         pkg: grunt.file.readJSON('package.json'),
         sass: {
-            options: {sourceMap: true},
+            options: { sourceMap: true },
             main: {
                 files: [{
                     expand: true,
@@ -108,20 +112,22 @@ module.exports = function (grunt) {
 
     // Default task.
     grunt.registerTask('default', [
-        'sass',
-        'babel',
+        'build',
         'connect',
         'jasmine:main:build',
         'eslint',
         'watch'
     ]);
 
-    grunt.registerTask('travis', [
-        'eslint',
+    grunt.registerTask('build', [
+        'sass',
+        'babel'
+    ]);
+
+    grunt.registerTask('test', [
+        'build',
         'connect',
-        'babel',
-        'jasmine',
-        'exec:main'
+        'jasmine'
     ]);
 
     grunt.registerTask('e2e', [

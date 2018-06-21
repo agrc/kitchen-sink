@@ -1,6 +1,0 @@
-.DS_Store
-.grunt/
-node_modules/
-tests/spec/
-main.*
-MouseTrap.*

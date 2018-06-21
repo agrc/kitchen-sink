@@ -34,11 +34,15 @@ module.exports = function (grunt) {
             }
         },
         connect: {
-            uses_defaults: {} // eslint-disable-line camelcase
+            main: {
+                options: {
+                    base: '../../'
+                }
+            } // eslint-disable-line camelcase
         },
         eslint: {
             options: {
-                configFile: '.eslintrc'
+                configFile: '../../.eslintrc'
             },
             main: {
                 src: [
@@ -57,8 +61,8 @@ module.exports = function (grunt) {
                         'node_modules/jasmine-favicon-reporter/vendor/favico.js',
                         'node_modules/jasmine-favicon-reporter/jasmine-favicon-reporter.js',
                         'tests/SetUpTests.js',
-                        'node_modules/dojo/dojo.js',
-                        'tests/jasmineAMDErrorChecking.js'
+                        '../../node_modules/dojo/dojo.js',
+                        '../../common/testing/jasmineAMDErrorChecking.js'
                     ],
                     host: 'http://localhost:8000',
                     keepRunner: true
@@ -86,27 +90,20 @@ module.exports = function (grunt) {
 
     // Default task.
     grunt.registerTask('default', [
-        'babel',
-        'connect',
+        'build',
         'jasmine:main:build',
-        'eslint',
+        'connect',
         'watch'
     ]);
 
-    grunt.registerTask('travis', [
-        'eslint',
+    grunt.registerTask('test', [
+        'build',
         'connect',
-        'babel',
         'jasmine'
     ]);
 
-    grunt.registerTask('e2e', [
-        'connect',
-        'exec:main'
-    ]);
-
-    grunt.registerTask('e2edebug', [
-        'connect',
-        'exec:debug'
+    grunt.registerTask('build', [
+        'eslint',
+        'babel'
     ]);
 };
