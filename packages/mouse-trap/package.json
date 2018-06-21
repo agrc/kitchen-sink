@@ -1,6 +1,6 @@
 {
-  "name": "mouse-trap",
-  "version": "1.1.0",
+  "name": "steveoh-testing-mono-mouse-trap",
+  "version": "2.0.0",
   "description": "Widget to display cursor coordinates while hovering over a map",
   "scripts": {
     "test": "grunt test",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/steveoh/mouse-trap.git"
+    "url": "git+https://github.com/steveoh/steveoh-testing-mono-mouse-trap.git"
   },
   "keywords": [
     "agrc",
