@@ -1,6 +1,6 @@
 {
   "name": "steveoh-testing-mono-mouse-trap",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Widget to display cursor coordinates while hovering over a map",
   "scripts": {
     "test": "grunt test",
