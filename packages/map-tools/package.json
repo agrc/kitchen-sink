@@ -1,10 +1,10 @@
 {
-  "name": "@agrc/map-tools",
-  "version": "2.1.0",
+  "name": "map-tools",
+  "version": "2.2.0",
   "description": "AGRC tools for working with ESRI JS API maps",
   "repository": {
     "type": "git",
-    "url": "https://github.com/agrc-widgets/map-tools.git"
+    "url": "https://github.com/steveoh/map-tools.git"
   },
   "keywords": [
     "agrc",
@@ -34,8 +34,8 @@
   },
   "dojoBuild": "map-tools.profile.js",
   "scripts": {
-    "test": "grunt travis --verbose",
-    "prepublish": "grunt sass && grunt babel"
+    "test": "grunt test",
+    "build": "grunt build"
   },
   "dependencies": {
     "arcgis-js-api": "^4.7.x",
