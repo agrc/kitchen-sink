@@ -23,18 +23,25 @@ module.exports = (grunt) => {
             }
         },
         jasmine: {
-            main: {
+            options: {
+                vendor: [
+                    'node_modules/jasmine-favicon-reporter/vendor/favico.js',
+                    'node_modules/jasmine-favicon-reporter/jasmine-favicon-reporter.js',
+                    'common/testing/SetUpTests.js',
+                    'node_modules/dojo/dojo.js',
+                    'common/testing/jasmineAMDErrorChecking.js'
+                ],
+                host: 'http://localhost:8000',
+                keepRunner: false
+            },
+            maptools: {
                 options: {
-                    specs: ['packages/*/tests/spec/*.js'],
-                    vendor: [
-                        'node_modules/jasmine-favicon-reporter/vendor/favico.js',
-                        'node_modules/jasmine-favicon-reporter/jasmine-favicon-reporter.js',
-                        'common/testing/SetUpTests.js',
-                        'node_modules/dojo/dojo.js',
-                        'common/testing/jasmineAMDErrorChecking.js'
-                    ],
-                    host: 'http://localhost:8000',
-                    keepRunner: false
+                    specs: ['packages/map-tools/tests/spec/*.js']
+                }
+            },
+            mousetrap: {
+                options: {
+                    specs: ['packages/mouse-trap/tests/spec/*.js']
                 }
             }
         },
