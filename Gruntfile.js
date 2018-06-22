@@ -104,4 +104,9 @@ module.exports = (grunt) => {
         'connect',
         'jasmine'
     ]);
+
+    grunt.registerTask('travis', [
+        'test'
+        // TODO: run dojo build to test that all packages can be built
+    ]);
 };
