@@ -2,6 +2,30 @@ module.exports = (grunt) => {
     require('load-grunt-tasks')(grunt);
 
     grunt.initConfig({
+        babel: {
+            options: {
+                sourceMap: true,
+                presets: ['env'],
+                plugins: ['transform-remove-strict-mode']
+            },
+            src: {
+                files: [{
+                    expand: true,
+                    cwd: 'packages',
+                    src: ['*/_src/*.js'],
+                    rename: (dest, src) => {
+                        return `packages/${src.replace('_src/', '')}`;
+                    }
+                }, {
+                    expand: true,
+                    cwd: 'packages',
+                    src: ['*/tests/_spec/*.js'],
+                    rename: (dest, src) => {
+                        return `packages/${src.replace('_spec', 'spec')}`;
+                    }
+                }]
+            }
+        },
         connect: {
             main: {
                 options: {

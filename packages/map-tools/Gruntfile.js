@@ -1,38 +1,7 @@
 module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
 
-    var bumpFiles = [
-        'package.json',
-        'package-lock.json'
-    ];
     grunt.initConfig({
-        babel: {
-            options: {
-                sourceMap: true,
-                presets: ['env'],
-                plugins: ['transform-remove-strict-mode']
-            },
-            src: {
-                files: [{
-                    expand: true,
-                    cwd: '_src',
-                    src: ['*.js'],
-                    dest: './'
-                }, {
-                    expand: true,
-                    cwd: 'tests/_spec',
-                    src: ['*.js'],
-                    dest: 'tests/spec'
-                }]
-            }
-        },
-        bump: {
-            options: {
-                files: bumpFiles,
-                commitFiles: bumpFiles,
-                push: false
-            }
-        },
         connect: {
             uses_defaults: {} // eslint-disable-line camelcase
         },
