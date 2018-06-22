@@ -41,7 +41,7 @@ module.exports = (grunt) => {
                 src: [
                     'packages/*/_src/*.js',
                     'packages/*/Gruntfile.js',
-                    'packages/*/agrc.profile.js',
+                    'packages/*/*.profile.js',
                     'packages/*/tests/_spec/*.js'
                 ]
             }

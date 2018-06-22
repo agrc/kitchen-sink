@@ -1,4 +1,4 @@
-/*eslint-disable no-unused-vars, no-undef */
+/* eslint-disable no-unused-vars, no-undef */
 var profile = (function () {
     var testResourceRe = /.*\/tests\//;
     var copyOnly = function (filename, mid) {
@@ -6,6 +6,7 @@ var profile = (function () {
             'map-tools/map-tools.profile': true,
             'map-tools/package.json': true
         };
+
         return (mid in list) ||
             (/^resources\//.test(mid) && !/\.css$/.test(filename)) ||
             /(png|jpg|jpeg|gif|tiff)$/.test(filename);
