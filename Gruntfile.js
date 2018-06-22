@@ -60,7 +60,7 @@ module.exports = (grunt) => {
             main: {
                 src: [
                     'packages/*/_src/*.js',
-                    'packages/*/Gruntfile.js',
+                    'Gruntfile.js',
                     'packages/*/*.profile.js',
                     'packages/*/tests/_spec/*.js'
                 ]
