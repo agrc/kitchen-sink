@@ -66,6 +66,14 @@ module.exports = (grunt) => {
                 ]
             }
         },
+        exec: {
+            main: {
+                cmd: 'node node_modules/jasmine/bin/jasmine.js --config=common/testing/jasmine.json'
+            },
+            debug: {
+                cmd: 'DEBUG=true node node_modules/jasmine/bin/jasmine.js --config=common/testing/jasmine.json'
+            }
+        },
         jasmine: {
             maptools: getJasmineTaskConfig('map-tools'),
             mousetrap: getJasmineTaskConfig('mouse-trap')
@@ -102,11 +110,23 @@ module.exports = (grunt) => {
     grunt.registerTask('test', [
         'eslint',
         'connect',
-        'jasmine'
+        'jasmine',
+        'exec:main'
     ]);
 
     grunt.registerTask('travis', [
-        'test'
+        'babel',
+        'exec:main'
         // TODO: run dojo build to test that all packages can be built
+    ]);
+
+    grunt.registerTask('e2e', [
+        'connect',
+        'exec:main'
+    ]);
+
+    grunt.registerTask('e2edebug', [
+        'connect',
+        'exec:debug'
     ]);
 };

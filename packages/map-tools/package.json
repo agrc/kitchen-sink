@@ -15,10 +15,7 @@
     "map"
   ],
   "devDependencies": {
-    "grunt-exec": "3.0.0",
-    "grunt-if-missing": "^1",
-    "grunt-sass": "2.1.0",
-    "puppeteer": "1.5.0"
+    "grunt-sass": "2.1.0"
   },
   "dojoBuild": "map-tools.profile.js",
   "dependencies": {
