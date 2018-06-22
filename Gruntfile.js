@@ -28,7 +28,7 @@ module.exports = (grunt) => {
                 presets: ['env'],
                 plugins: ['transform-remove-strict-mode']
             },
-            src: {
+            main: {
                 files: [{
                     expand: true,
                     cwd: 'packages',
@@ -79,6 +79,17 @@ module.exports = (grunt) => {
             mousetrap: getJasmineTaskConfig('mouse-trap')
         },
         pkg: grunt.file.readJSON('package.json'),
+        sass: {
+            options: { sourceMap: true },
+            main: {
+                files: [{
+                    expand: true,
+                    cwd: './',
+                    src: 'packages/*/resources/**/*.scss',
+                    ext: '.css'
+                }]
+            }
+        },
         watch: {
             files: [
                 'packages/*/_src/**/*.*',
@@ -87,10 +98,11 @@ module.exports = (grunt) => {
                 '!packages/*/tests/spec/**/*.*'
             ],
             tasks: [
-                'eslint',
-                'newer:babel',
+                'newer:babel:main',
+                'newer:sass:main',
                 'jasmine:maptools:build',
-                'jasmine:mousetrap:build'
+                'jasmine:mousetrap:build',
+                'eslint'
             ],
             options: {
                 livereload: true
@@ -99,7 +111,8 @@ module.exports = (grunt) => {
     });
 
     grunt.registerTask('default', [
-        'babel',
+        'babel:main',
+        'sass:main',
         'connect',
         'jasmine:maptools:build',
         'jasmine:mousetrap:build',
@@ -115,8 +128,9 @@ module.exports = (grunt) => {
     ]);
 
     grunt.registerTask('travis', [
-        'babel',
-        'exec:main'
+        'babel:main',
+        'sass:main',
+        'test'
         // TODO: run dojo build to test that all packages can be built
     ]);
 
