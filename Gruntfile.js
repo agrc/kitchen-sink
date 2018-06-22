@@ -1,6 +1,26 @@
 module.exports = (grunt) => {
     require('load-grunt-tasks')(grunt);
 
+    const getJasmineTaskConfig = (packageName) => {
+        return {
+            options: {
+                host: 'http://localhost:8000',
+                summary: true,
+                vendor: [
+                    'node_modules/jasmine-favicon-reporter/vendor/favico.js',
+                    'node_modules/jasmine-favicon-reporter/jasmine-favicon-reporter.js',
+                    'common/testing/SetUpTests.js',
+                    `packages/${packageName}/node_modules/dojo/dojo.js`
+                ],
+                specs: [
+                    `packages/${packageName}/tests/spec/*.js`,
+                    'common/testing/jasmineAMDErrorChecking.js'
+                ],
+                outfile: `packages/${packageName}/_SpecRunner.html`
+            }
+        };
+    };
+
     grunt.initConfig({
         babel: {
             options: {
@@ -47,30 +67,37 @@ module.exports = (grunt) => {
             }
         },
         jasmine: {
-            options: {
-                vendor: [
-                    'node_modules/jasmine-favicon-reporter/vendor/favico.js',
-                    'node_modules/jasmine-favicon-reporter/jasmine-favicon-reporter.js',
-                    'common/testing/SetUpTests.js',
-                    'node_modules/dojo/dojo.js',
-                    'common/testing/jasmineAMDErrorChecking.js'
-                ],
-                host: 'http://localhost:8000',
-                keepRunner: false
-            },
-            maptools: {
-                options: {
-                    specs: ['packages/map-tools/tests/spec/*.js']
-                }
-            },
-            mousetrap: {
-                options: {
-                    specs: ['packages/mouse-trap/tests/spec/*.js']
-                }
-            }
+            maptools: getJasmineTaskConfig('map-tools'),
+            mousetrap: getJasmineTaskConfig('mouse-trap')
         },
-        pkg: grunt.file.readJSON('package.json')
+        pkg: grunt.file.readJSON('package.json'),
+        watch: {
+            files: [
+                'packages/*/_src/**/*.*',
+                'packages/*/resources/**/*.*',
+                'packages/*/tests/**/*.*',
+                '!packages/*/tests/spec/**/*.*'
+            ],
+            tasks: [
+                'eslint',
+                'newer:babel',
+                'jasmine:maptools:build',
+                'jasmine:mousetrap:build'
+            ],
+            options: {
+                livereload: true
+            }
+        }
     });
+
+    grunt.registerTask('default', [
+        'babel',
+        'connect',
+        'jasmine:maptools:build',
+        'jasmine:mousetrap:build',
+        'eslint',
+        'watch'
+    ]);
 
     grunt.registerTask('test', [
         'eslint',

@@ -26,22 +26,6 @@ module.exports = function (grunt) {
                 cmd: 'DEBUG=true node node_modules/jasmine/bin/jasmine.js --config=tests/e2e/jasmine.json'
             }
         },
-        jasmine: {
-            main: {
-                options: {
-                    specs: ['tests/spec/*.js'],
-                    vendor: [
-                        'node_modules/jasmine-favicon-reporter/vendor/favico.js',
-                        'node_modules/jasmine-favicon-reporter/jasmine-favicon-reporter.js',
-                        'tests/SetUpTests.js',
-                        'node_modules/dojo/dojo.js',
-                        'tests/jasmineAMDErrorChecking.js'
-                    ],
-                    host: 'http://localhost:8000',
-                    keepRunner: true
-                }
-            }
-        },
         pkg: grunt.file.readJSON('package.json'),
         sass: {
             options: { sourceMap: true },
