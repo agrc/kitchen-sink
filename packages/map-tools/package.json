@@ -1,11 +1,12 @@
 {
-  "name": "steveoh-testing-mono-map-tools",
+  "name": "@agrc/map-tools",
   "version": "2.1.0",
   "description": "AGRC tools for working with ESRI JS API maps",
   "repository": {
     "type": "git",
-    "url": "https://github.com/steveoh/steveoh-testing-mono-repo.git"
+    "url": "https://github.com/agrc-widgets/map-tools.git"
   },
+  "license": "MIT",
   "keywords": [
     "agrc",
     "widgets",
@@ -13,30 +14,7 @@
     "javascript",
     "map"
   ],
-  "devDependencies": {
-    "babel-plugin-transform-remove-strict-mode": "^0.0.2",
-    "babel-preset-env": "^1.7.0",
-    "eslint-plugin-html": "4.0.3",
-    "grunt": "1.0.3",
-    "grunt-babel": "^6.0.0",
-    "grunt-bump": "^0.8.0",
-    "grunt-contrib-connect": "^1.0.2",
-    "grunt-contrib-jasmine": "2.0.1",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-eslint": "20.1.0",
-    "grunt-exec": "3.0.0",
-    "grunt-if-missing": "^1",
-    "grunt-sass": "2.1.0",
-    "jasmine": "3.1.0",
-    "jasmine-favicon-reporter": "1.0.0",
-    "load-grunt-tasks": "4.0.0",
-    "puppeteer": "1.5.0"
-  },
   "dojoBuild": "map-tools.profile.js",
-  "scripts": {
-    "test": "grunt test",
-    "build": "grunt build"
-  },
   "dependencies": {
     "arcgis-js-api": "^4.7.x",
     "spinkit": "1.2.5"

@@ -4,7 +4,7 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = 100000;
 describe('map-tools/ExtentRouter', function () {
     let browser;
     let page;
-    const testPage = 'http://localhost:8000/tests/ExtentRouterTests.html';
+    const testPage = 'http://localhost:8000/packages/map-tools/tests/ExtentRouterTests.html';
 
     beforeAll(async () => {
         browser = await puppeteer.launch({

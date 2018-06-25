@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>MapView Tests</title>
-        <link rel="stylesheet" href="../node_modules/arcgis-js-api/css/main.css">
+        <link rel="stylesheet" href="../../../node_modules/arcgis-js-api/css/main.css">
         <link rel="stylesheet" href="../resources/MapView.css">
         <style>
             .esri-view {
@@ -11,7 +11,7 @@
             }
         </style>
 
-        <script type="text/javascript" src="../node_modules/dojo/dojo.js"></script>
+        <script type="text/javascript" src="../../../node_modules/dojo/dojo.js"></script>
         <script type="text/javascript">
             const projectUrl = location.pathname.replace(/\/[^\/]+$/, '') + '/';
 
@@ -33,7 +33,7 @@
                     main: 'dist/maquette-css-transitions.umd'
                 }, {
                     name: 'esri',
-                    location: projectUrl + '../node_modules/arcgis-js-api'
+                    location: projectUrl + '../../node_modules/arcgis-js-api'
                 }]
             },[
                 'esri/Map',
