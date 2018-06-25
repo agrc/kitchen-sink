@@ -10,7 +10,7 @@ module.exports = (grunt) => {
                     'node_modules/jasmine-favicon-reporter/vendor/favico.js',
                     'node_modules/jasmine-favicon-reporter/jasmine-favicon-reporter.js',
                     'common/testing/SetUpTests.js',
-                    `packages/${packageName}/node_modules/dojo/dojo.js`
+                    'node_modules/dojo/dojo.js'
                 ],
                 specs: [
                     `packages/${packageName}/tests/spec/*.js`,
@@ -49,7 +49,7 @@ module.exports = (grunt) => {
         connect: {
             main: {
                 options: {
-                    base: '.'
+                    base: './'
                 }
             }
         },
@@ -92,6 +92,7 @@ module.exports = (grunt) => {
         },
         watch: {
             files: [
+                'common/**/*.js',
                 'packages/*/_src/**/*.*',
                 'packages/*/resources/**/*.*',
                 'packages/*/tests/**/*.*',

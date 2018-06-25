@@ -1,13 +1,13 @@
 /* global JasmineFaviconReporter */
 window.dojoConfig = {
-    baseUrl: './node_modules',
+    baseUrl: '../../../node_modules',
     packages: ['dojo', 'dijit', 'moment', 'dojox',
         {
             name: 'map-tools',
-            location: '../'
+            location: '../packages/map-tools'
         }, {
             name: 'mouse-trap',
-            location: '../'
+            location: '../packages/mouse-trap'
         }, {
             name: 'esri',
             location: 'arcgis-js-api'
