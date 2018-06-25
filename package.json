@@ -4,7 +4,8 @@
     "dev": "lerna run build --parallel -- --watch",
     "lint": "eslint .",
     "prepublish": "grunt sass && grunt babel",
-    "test": "grunt travis --verbose"
+    "test": "grunt travis --verbose",
+    "install" : "lerna bootstrap"
   },
   "devDependencies": {
     "babel-plugin-transform-remove-strict-mode": "0.0.2",
