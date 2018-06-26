@@ -5,7 +5,7 @@
     "lint": "eslint .",
     "prepublish": "grunt sass && grunt babel",
     "test": "grunt travis --verbose",
-    "install" : "lerna bootstrap"
+    "install": "lerna bootstrap"
   },
   "devDependencies": {
     "babel-plugin-transform-remove-strict-mode": "0.0.2",
