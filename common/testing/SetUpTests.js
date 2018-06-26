@@ -4,10 +4,10 @@ window.dojoConfig = {
     packages: ['dojo', 'dijit', 'moment', 'dojox',
         {
             name: 'map-tools',
-            location: '../packages/map-tools'
+            location: '../'
         }, {
             name: 'mouse-trap',
-            location: '../packages/mouse-trap'
+            location: '../'
         }, {
             name: 'esri',
             location: 'arcgis-js-api'

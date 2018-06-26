@@ -3,6 +3,7 @@ node_modules/
 
 # task runner files
 .grunt/
+_SpecRunner.html
 
 # built source files
 src/
