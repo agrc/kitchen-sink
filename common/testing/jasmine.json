@@ -1,8 +1,0 @@
-{
-  "spec_dir": "packages",
-  "spec_files": [
-    "*/tests/e2e/Spec*.js"
-  ],
-  "stopSpecOnExpectationFailure": false,
-  "random": false
-}

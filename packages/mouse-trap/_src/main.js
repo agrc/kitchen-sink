@@ -1,5 +1,0 @@
-define([
-    './MouseTrap'
-], (
-    mouseTrap
-) => mouseTrap);
