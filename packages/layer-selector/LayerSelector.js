@@ -401,7 +401,7 @@ class LayerSelector extends Component {
     console.log('LayerSelector:forceMapUpdate');
 
     // make sure that the map is loaded before we try and update layers
-    this.props.view.map.when(() => {
+    this.props.view.when(() => {
       this.updateMap(this.state.baseLayers.concat(this.state.overlays));
     });
   }
