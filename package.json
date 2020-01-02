@@ -14,6 +14,7 @@
     "@storybook/react": "5.2.8",
     "babel-loader": "8.0.6",
     "babel-plugin-require-context-hook": "1.0.0",
+    "chokidar-cli": "2.1.0",
     "copyfiles": "2.1.1",
     "core-js": "3.6.0",
     "jest": "24.9.0",
@@ -26,7 +27,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "build": "lerna exec 'babel ./ --out-dir dist --root-mode upward --delete-dir-on-start --source-maps && copyfiles *.svg dist'",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "start": "chokidar \"packages/**/*.*\" \"!packages/**/dist/**/*.*\" -c \"npm run build\""
   },
   "jest": {
     "setupFiles": [
