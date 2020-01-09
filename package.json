@@ -22,7 +22,9 @@
     "react-test-renderer": "16.12.0",
     "regenerator-runtime": "0.13.3"
   },
-  "dependencies": {},
+  "dependencies": {
+    "classnames": "^2.2.6"
+  },
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
