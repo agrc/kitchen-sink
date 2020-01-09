@@ -29,7 +29,7 @@
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build": "lerna exec 'babel ./ --out-dir dist --root-mode upward --delete-dir-on-start --source-maps && copyfiles *.svg *.css dist'",
+    "build": "lerna exec 'babel ./ --out-dir dist --root-mode upward --delete-dir-on-start --source-maps --ignore \"**/*.stories.js\",\"**/*.tests.js\" && copyfiles *.svg *.css dist'",
     "test": "jest --watch",
     "start": "chokidar \"packages/**/*.*\" \"!packages/**/dist/**/*.*\" -c \"npm run build\""
   },
