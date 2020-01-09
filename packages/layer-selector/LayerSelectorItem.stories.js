@@ -1,5 +1,5 @@
 import React from 'react';
-import { LayerSelectorItem } from '../packages/layer-selector/LayerSelector.js'
+import { LayerSelectorItem } from './LayerSelector';
 
 
 export default {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {LayerSelectorContainer} from '../packages/layer-selector/LayerSelector.js'
+import { LayerSelectorContainer } from './LayerSelector';
 
 
 export default {
