@@ -7,6 +7,4 @@ export default {
   title: 'TestButton',
 };
 
-export const testOne = () => (
-  <TestButton />
-);
+export const basic = () => <TestButton />;
