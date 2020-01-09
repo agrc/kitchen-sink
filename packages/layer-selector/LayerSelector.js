@@ -1,25 +1,24 @@
-import React, { Component, PureComponent } from 'react'
+import React, { Component, PureComponent, useState } from 'react';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import './LayerSelector.css'
 import icon from './layers.svg';
 
-class LayerSelectorItem extends PureComponent {
-  render() {
-    const inputOptions = {
-      type: this.props.layerType === 'baselayer' ? 'radio' : 'checkbox',
-      name: this.props.layerType,
-      value: this.props.id
-    };
+const LayerSelectorItem = (props) => {
+  const inputOptions = {
+    type: props.layerType === 'baselayer' ? 'radio' : 'checkbox',
+    name: props.layerType,
+    value: props.id
+  };
 
-    return (
-      <div className="layer-selector-item radio checkbox">
-        <label className="layer-selector--item">
-          <input className="layer-selector-item-input" {...inputOptions} checked={this.props.selected} onChange={(event) => this.props.onChange(event, this.props)} />
-          {inputOptions.value}
-        </label>
-      </div>
-    )
-  }
+  return (
+    <div className="layer-selector-item radio checkbox">
+      <label className="layer-selector--item">
+        <input className="layer-selector-item-input" {...inputOptions} checked={props.selected} onChange={(event) => props.onChange(event, props)} />
+        {inputOptions.value}
+      </label>
+    </div>
+  )
 }
 LayerSelectorItem.propTypes = {
   onChange: PropTypes.func.isRequired,
@@ -461,31 +460,30 @@ class LayerSelector extends Component {
       } else {
         layerList.remove(managedLayers[layerItem.id].layer);
       }
-    });
+    }, this);
   }
 }
 
-class LayerSelectorContainer extends Component {
-  state = {
-    expanded: false
-  }
+const LayerSelectorContainer = (props) => {
+  const [expanded, setExpanded] = useState(props.expanded);
 
-  expand(expand) {
-    this.setState({
-      expanded: expand
-    });
-  }
+  const imageClasses = classNames(
+    'layer-selector__toggle',
+    { 'layer-selector--hidden': expanded }
+  );
 
-  render() {
-    return (
-      <div className="layer-selector" onMouseOver={() => this.expand(true)} onMouseOut={() => this.expand(false)} area-haspopup="true">
-        <input type="image" className={'layer-selector__toggle ' + (this.state.expanded ? 'layer-selector--hidden' : '')} src={icon} alt="layers" />
-        <form className={this.state.expanded ? '' : 'layer-selector--hidden'}>
-          {this.props.children}
-        </form>
-      </div>
-    )
-  }
-}
+  const fromClasses = classNames(
+    { 'layer-selector--hidden': !expanded }
+  )
 
-export { LayerSelectorContainer, LayerSelector }
+  return (
+    <div className="layer-selector" onMouseOver={() => setExpanded(true)} onMouseOut={() => setExpanded(false)} area-haspopup="true">
+      <input type="image" className={imageClasses} src={icon} alt="layers" />
+      <form className={fromClasses}>
+        {props.children}
+      </form>
+    </div>
+  )
+};
+
+export { LayerSelectorContainer, LayerSelector, LayerSelectorItem }
