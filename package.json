@@ -36,6 +36,9 @@
   "jest": {
     "setupFiles": [
       "<rootDir>/.jest/register-context.js"
+    ],
+    "transformIgnorePatterns": [
+      "\\.css"
     ]
   }
 }
