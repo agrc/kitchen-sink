@@ -1,7 +1,149 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots TestButton Test One 1`] = `
-<div>
-  test button
+exports[`Storyshots LayerSelector Basic 1`] = `null`;
+
+exports[`Storyshots LayerSelector In Container 1`] = `null`;
+
+exports[`Storyshots LayerSelector With Map 1`] = `null`;
+
+exports[`Storyshots LayerSelector.Container Closed 1`] = `
+<div
+  area-haspopup="true"
+  className="layer-selector"
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <input
+    alt="layers"
+    className="layer-selector__toggle"
+    src="test-file-stub"
+    type="image"
+  />
+  <form
+    className="layer-selector--hidden"
+  >
+    <div
+      style={
+        Object {
+          "border": "1px solid black",
+          "height": "200px",
+          "width": "200px",
+        }
+      }
+    >
+      peek-a-boo
+    </div>
+  </form>
+</div>
+`;
+
+exports[`Storyshots LayerSelector.Container Open 1`] = `
+<div
+  area-haspopup="true"
+  className="layer-selector"
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <input
+    alt="layers"
+    className="layer-selector__toggle layer-selector--hidden"
+    src="test-file-stub"
+    type="image"
+  />
+  <form
+    className=""
+  >
+    <div
+      style={
+        Object {
+          "border": "1px solid black",
+          "height": "200px",
+          "width": "200px",
+        }
+      }
+    >
+      peek-a-boo
+    </div>
+  </form>
+</div>
+`;
+
+exports[`Storyshots LayerSelector.Item Checked Base Layer 1`] = `
+<div
+  className="layer-selector-item radio checkbox"
+>
+  <label
+    className="layer-selector--item"
+  >
+    <input
+      checked={true}
+      className="layer-selector-item-input"
+      name="baselayer"
+      onChange={[Function]}
+      type="radio"
+      value="Base Layer"
+    />
+    Base Layer
+  </label>
+</div>
+`;
+
+exports[`Storyshots LayerSelector.Item Checked Overlay 1`] = `
+<div
+  className="layer-selector-item radio checkbox"
+>
+  <label
+    className="layer-selector--item"
+  >
+    <input
+      checked={true}
+      className="layer-selector-item-input"
+      name="overlay"
+      onChange={[Function]}
+      type="checkbox"
+      value="Overlay Layer"
+    />
+    Overlay Layer
+  </label>
+</div>
+`;
+
+exports[`Storyshots LayerSelector.Item Default Base Layer 1`] = `
+<div
+  className="layer-selector-item radio checkbox"
+>
+  <label
+    className="layer-selector--item"
+  >
+    <input
+      checked={false}
+      className="layer-selector-item-input"
+      name="baselayer"
+      onChange={[Function]}
+      type="radio"
+      value="Base Layer"
+    />
+    Base Layer
+  </label>
+</div>
+`;
+
+exports[`Storyshots LayerSelector.Item Default Overlay 1`] = `
+<div
+  className="layer-selector-item radio checkbox"
+>
+  <label
+    className="layer-selector--item"
+  >
+    <input
+      checked={false}
+      className="layer-selector-item-input"
+      name="overlay"
+      onChange={[Function]}
+      type="checkbox"
+      value="Overlay Layer"
+    />
+    Overlay Layer
+  </label>
 </div>
 `;
