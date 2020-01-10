@@ -1,11 +1,11 @@
 import React, {useRef, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import { LayerSelector, LayerSelectorContainer } from './LayerSelector';
-import getModules from '../../test-helpers/storyHelpers';
+import { ModulesHelper } from '../../test-helpers/storyHelpers';
 
 export default {
   title: 'LayerSelector',
-  decorators: [getModules]
+  decorators: [ModulesHelper]
 };
 
 export const basic = (modules) => (

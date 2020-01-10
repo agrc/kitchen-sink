@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import getModules from './esriModules';
 
 
-const Helper = ({ story }) => {
+const ModulesHelperComponent = ({ story }) => {
   const [modules, setModules] = useState();
 
   useEffect(() => {
@@ -14,4 +14,4 @@ const Helper = ({ story }) => {
   return (<>{modules && story(modules)}</>);
 };
 
-export default (story) => <Helper story={story} />;
+export const ModulesHelper = (story) => <ModulesHelperComponent story={story} />;
