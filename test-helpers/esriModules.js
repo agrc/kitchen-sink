@@ -3,6 +3,8 @@ import { loadModules } from 'esri-loader';
 
 export default async () => {
   const requires = [
+    'esri/Map',
+    'esri/views/MapView',
     'esri/Basemap',
     'esri/layers/support/LOD',
     'esri/layers/support/TileInfo',
@@ -10,6 +12,8 @@ export default async () => {
   ];
 
   const [
+    Map,
+    MapView,
     Basemap,
     LOD,
     TileInfo,
@@ -20,6 +24,8 @@ export default async () => {
   });
 
   return {
+    Map,
+    MapView,
     Basemap,
     LOD,
     TileInfo,
