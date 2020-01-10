@@ -1,5 +1,5 @@
 {
-  "name": "layer-selector",
+  "name": "@agrc/layer-selector",
   "version": "0.1.0",
   "private": true,
   "main": "./dist/LayerSelector.js",
