@@ -17,6 +17,7 @@
     "chokidar-cli": "2.1.0",
     "copyfiles": "2.1.1",
     "core-js": "3.6.2",
+    "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-agrc": "^1.3.0",
     "esri-loader": "^2.13.0",
@@ -37,7 +38,9 @@
     "build-storybook": "build-storybook",
     "build": "lerna exec 'babel ./ --out-dir dist --root-mode upward --delete-dir-on-start --source-maps --ignore \"**/*.stories.js\",\"**/*.test.js\" && copyfiles *.svg *.css dist'",
     "test": "jest --watch",
-    "start": "chokidar \"packages/**/*.*\" \"!packages/**/dist/**/*.*\" -c \"npm run build\""
+    "start": "chokidar \"packages/**/*.*\" \"!packages/**/dist/**/*.*\" -c \"npm run build\"",
+    "link": "lerna exec -- npm link",
+    "unlink": "lerna exec -- npm unlink"
   },
   "jest": {
     "setupFiles": [
