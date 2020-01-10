@@ -20,6 +20,6 @@ Runs tests via jest.
 
 Starts the storybook server.
 
-### `npx lerna link`
+### `npm run link` && `npm run unlink`
 
-Runs npm link for all packages making them npm-link-able in other projects on your local machine.
+Runs npm (un)link for all packages making them npm-link-able in other projects on your local machine.
