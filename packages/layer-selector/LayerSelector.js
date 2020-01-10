@@ -1,7 +1,7 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import './LayerSelector.css'
+import './LayerSelector.css';
 import icon from './layers.svg';
 
 const LayerSelectorContainer = (props) => {
@@ -14,7 +14,7 @@ const LayerSelectorContainer = (props) => {
 
   const fromClasses = classNames(
     { 'layer-selector--hidden': !expanded }
-  )
+  );
 
   return (
     <div className="layer-selector" onMouseOver={() => setExpanded(true)} onMouseOut={() => setExpanded(false)} area-haspopup="true">
@@ -23,7 +23,7 @@ const LayerSelectorContainer = (props) => {
         {props.children}
       </form>
     </div>
-  )
+  );
 };
 
 const LayerSelectorItem = (props) => {
@@ -40,21 +40,21 @@ const LayerSelectorItem = (props) => {
         {inputOptions.value}
       </label>
     </div>
-  )
+  );
 };
 
 const imageryAttributionJsonUrl = 'https://mapserv.utah.gov/cdn/attribution/imagery.json';
 
 /**
- * Creates the default TileInfo constructor object for applicance layers.
+ * Creates the default TileInfo constructor object for appliance layers.
  * @private
- * @returns {object} The least common denominator contructor object for appliance layers.
+ * @returns {object} The least common denominator constructor object for appliance layers.
  */
 const createDefaultTileInfo = (LOD) => {
-  const tilesize = 256;
+  const tileSize = 256;
   const earthCircumference = 40075016.685568;
   const inchesPerMeter = 39.37;
-  const initialResolution = earthCircumference / tilesize;
+  const initialResolution = earthCircumference / tileSize;
 
   const dpi = 96;
   const maxLevel = 20;
@@ -74,7 +74,7 @@ const createDefaultTileInfo = (LOD) => {
 
   return {
     dpi: dpi,
-    size: tilesize,
+    size: tileSize,
     origin: {
       x: -20037508.342787,
       y: 20037508.342787
@@ -89,7 +89,7 @@ const createDefaultTileInfo = (LOD) => {
 
 /** Sets the TileInfo for each of Discover layers since they all use different levels.
 * @private
-* @param {applianceLayer} layers - The applicance layers object `{ 'id': { urlPattern: ''}}`
+* @param {applianceLayer} layers - The appliance layers object `{ 'id': { urlPattern: ''}}`
 * @returns {applianceLayer} - returns Discover layers object with a new `tileInfo` property.
 */
 const setTileInfosForApplianceLayers = (layers, defaultTileInfo, TileInfo) => {
@@ -181,7 +181,7 @@ const createLayerFactories = (layerType, layerFactories, WebTiledLayer, quadWord
         // attributionDataUrl: layer.attributionDataUrl,
       });
     } else {
-      if (!li.hasOwnProperty('layerType')) {
+      if (!Object.prototype.hasOwnProperty.call(li, 'layerType')) {
         li.layerType = layerType;
       }
 
@@ -198,7 +198,6 @@ const createLayerFactories = (layerType, layerFactories, WebTiledLayer, quadWord
 
 
 const LayerSelector = (props) => {
-  const [applianceLayers, setApplianceLayers] = useState({});
   const [layers, setLayers] = useState({
     baseLayers: [],
     overlays: []
@@ -217,7 +216,7 @@ const LayerSelector = (props) => {
       switch (layerItem.layerType) {
         case 'baselayer':
           if (props.view.map.basemap && props.view.map.basemap.baseLayers) {
-            layerList = props.view.map.basemap.baseLayers
+            layerList = props.view.map.basemap.baseLayers;
           }
           break;
         case 'overlay':
@@ -265,6 +264,7 @@ const LayerSelector = (props) => {
 
       setManagedLayers(managedLayersDraft);
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [layers]);
 
   useEffect(() => {
@@ -371,6 +371,7 @@ const LayerSelector = (props) => {
       baseLayers,
       overlays
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.modules]);
 
   const onItemChanged = (event, props) => {

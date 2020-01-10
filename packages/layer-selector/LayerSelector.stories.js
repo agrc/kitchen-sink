@@ -51,7 +51,7 @@ const WithMap = ({ modules }) => {
   );
 };
 
-export const withMap = (modules) => <WithMap modules={modules} />
+export const withMap = (modules) => <WithMap modules={modules} />;
 
 export const inContainer = (modules) => (
   <LayerSelector
@@ -65,4 +65,4 @@ export const inContainer = (modules) => (
 
 inContainer.story = {
   decorators: [(story) => (<LayerSelectorContainer>{story()}</LayerSelectorContainer>)]
-}
+};
