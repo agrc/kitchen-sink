@@ -176,9 +176,9 @@ const createLayerFactories = (layerType, layerFactories, WebTiledLayer, quadWord
         selected: !!li.selected,
         copyright: layer.copyright,
         layerType
-        // TODO: not supported in 4.x WebTiledLayer
+        // TODO: not supported in 4.x WebTileLayer copyright
         // hasAttributionData: layer.hasAttributionData,
-        // attributionDataUrl: layer.attributionDataUrl,
+        // attributionDataUrl: layer.attributionDataUrl
       });
     } else {
       if (!Object.prototype.hasOwnProperty.call(li, 'layerType')) {
@@ -244,8 +244,6 @@ const LayerSelector = (props) => {
           layerType: layerItem.layerType
         };
       }
-
-      // the set was here before
 
       if (!managedLayersDraft[layerItem.id].layer) {
         if (typeof layerItem.Factory === 'string') {
