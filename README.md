@@ -10,7 +10,7 @@ Using `lerna exec` runs babel on each package as well as copyfiles for copying n
 
 ### `npm start`
 
-Using starts a watch process that automatically runs new builds when any file changes within a package folder.
+Starts a watch process that automatically runs new builds when any file changes within a package folder.
 
 ### `npm test`
 
