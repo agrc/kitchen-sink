@@ -302,6 +302,7 @@ const LayerSelector = (props) => {
       Hybrid: {
         urlPattern: `https://discover.agrc.utah.gov/login/path/${props.quadWord}/tiles/utah/{level}/{col}/{row}`,
         linked: ['Overlay'],
+        copyright: 'Google, AGRC',
         hasAttributionData: true,
         attributionDataUrl: imageryAttributionJsonUrl
       },
