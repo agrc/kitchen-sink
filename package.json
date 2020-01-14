@@ -39,7 +39,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "build": "lerna exec 'babel ./ --out-dir dist --root-mode upward --delete-dir-on-start --source-maps --ignore \"**/*.stories.js\",\"**/*.test.js\" && copyfiles *.svg *.css dist'",
-    "test": "jest --watch",
+    "test": "jest",
     "start": "chokidar \"packages/**/*.*\" \"!packages/**/dist/**/*.*\" -c \"npm run build\"",
     "link": "lerna exec -- npm link",
     "unlink": "lerna exec -- npm unlink",
