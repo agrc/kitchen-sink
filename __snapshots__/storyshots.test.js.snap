@@ -6,7 +6,7 @@ exports[`Storyshots LayerSelector In Container 1`] = `null`;
 
 exports[`Storyshots LayerSelector With Map 1`] = `null`;
 
-exports[`Storyshots LayerSelector.Container Closed 1`] = `
+exports[`Storyshots LayerSelector/Container Closed 1`] = `
 <div
   area-haspopup="true"
   className="layer-selector"
@@ -37,7 +37,7 @@ exports[`Storyshots LayerSelector.Container Closed 1`] = `
 </div>
 `;
 
-exports[`Storyshots LayerSelector.Container Open 1`] = `
+exports[`Storyshots LayerSelector/Container Open 1`] = `
 <div
   area-haspopup="true"
   className="layer-selector"
@@ -68,7 +68,7 @@ exports[`Storyshots LayerSelector.Container Open 1`] = `
 </div>
 `;
 
-exports[`Storyshots LayerSelector.Item Checked Base Layer 1`] = `
+exports[`Storyshots LayerSelector/Item Checked Base Layer 1`] = `
 <div
   className="layer-selector-item radio checkbox"
 >
@@ -88,7 +88,7 @@ exports[`Storyshots LayerSelector.Item Checked Base Layer 1`] = `
 </div>
 `;
 
-exports[`Storyshots LayerSelector.Item Checked Overlay 1`] = `
+exports[`Storyshots LayerSelector/Item Checked Overlay 1`] = `
 <div
   className="layer-selector-item radio checkbox"
 >
@@ -108,7 +108,7 @@ exports[`Storyshots LayerSelector.Item Checked Overlay 1`] = `
 </div>
 `;
 
-exports[`Storyshots LayerSelector.Item Default Base Layer 1`] = `
+exports[`Storyshots LayerSelector/Item Default Base Layer 1`] = `
 <div
   className="layer-selector-item radio checkbox"
 >
@@ -128,7 +128,7 @@ exports[`Storyshots LayerSelector.Item Default Base Layer 1`] = `
 </div>
 `;
 
-exports[`Storyshots LayerSelector.Item Default Overlay 1`] = `
+exports[`Storyshots LayerSelector/Item Default Overlay 1`] = `
 <div
   className="layer-selector-item radio checkbox"
 >
