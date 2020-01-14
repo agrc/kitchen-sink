@@ -3,7 +3,7 @@ import { LayerSelectorItem } from './LayerSelector';
 
 
 export default {
-  title: 'LayerSelector.Item'
+  title: 'LayerSelector/Item'
 };
 
 export const defaultBaseLayer = () => <LayerSelectorItem layerType="baselayer" selected={false} onChange={() => {}} id="Base Layer"/>;

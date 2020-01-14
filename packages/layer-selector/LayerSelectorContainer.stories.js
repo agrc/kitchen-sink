@@ -3,7 +3,7 @@ import { LayerSelectorContainer } from './LayerSelector';
 
 
 export default {
-  title: 'LayerSelector.Container'
+  title: 'LayerSelector/Container'
 };
 
 export const closed = () => (
