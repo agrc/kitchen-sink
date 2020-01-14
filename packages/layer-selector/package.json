@@ -3,6 +3,10 @@
   "version": "3.0.0",
   "private": false,
   "main": "./dist/LayerSelector.js",
+  "files": [
+    "/dist",
+    "/package.json"
+  ],
   "peerDependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
