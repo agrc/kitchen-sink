@@ -1,7 +1,7 @@
 {
   "name": "@agrc/layer-selector",
-  "version": "0.1.0",
-  "private": true,
+  "version": "3.0.0",
+  "private": false,
   "main": "./dist/LayerSelector.js",
   "peerDependencies": {
     "react": "^16.12.0",
