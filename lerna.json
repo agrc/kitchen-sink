@@ -2,5 +2,14 @@
   "packages": [
     "packages/*"
   ],
+  "command": {
+    "publish": {
+      "ignoreChanges": [
+        "*.stories.js",
+        "*.test.js",
+        "*.md"
+      ]
+    }
+  },
   "version": "independent"
 }
