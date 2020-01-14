@@ -11,6 +11,7 @@
     "@storybook/addon-links": "5.3.3",
     "@storybook/addon-storyshots": "5.3.3",
     "@storybook/addons": "5.3.3",
+    "@storybook/preset-create-react-app": "^1.5.1",
     "@storybook/react": "5.3.3",
     "babel-loader": "8.0.6",
     "babel-plugin-require-context-hook": "1.0.0",
