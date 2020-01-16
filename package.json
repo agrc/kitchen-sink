@@ -43,7 +43,8 @@
     "start": "chokidar \"packages/**/*.*\" \"!packages/**/dist/**/*.*\" -c \"npm run build\"",
     "link": "lerna exec -- npm link",
     "unlink": "lerna exec -- npm unlink",
-    "lint": "eslint ./"
+    "lint": "eslint ./",
+    "prepublish": "npm run build"
   },
   "jest": {
     "setupFiles": [
