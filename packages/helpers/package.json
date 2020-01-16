@@ -1,0 +1,9 @@
+{
+  "name": "@agrc/helpers",
+  "version": "1.0.0",
+  "private": false,
+  "main": "./dist/index.js",
+  "files": ["/dist", "/package.json"],
+  "peerDependencies": {
+  }
+}
