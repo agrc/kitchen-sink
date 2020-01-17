@@ -51,7 +51,10 @@
     "link": "lerna exec -- npm link",
     "unlink": "lerna exec -- npm unlink",
     "lint": "eslint ./",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "release": "lerna publish --conventional-commits",
+    "pre-release": "lerna publish --conventional-commits --conventional-prerelease",
+    "graduate": "lerna publish --conventional-commits --conventional-graduate"
   },
   "jest": {
     "setupFiles": [
