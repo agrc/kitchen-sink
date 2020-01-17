@@ -10,6 +10,11 @@
         "*.test.js",
         "*.md"
       ]
+    },
+    "version": {
+      "allowBranch": [
+        "master"
+      ],
     }
   },
   "version": "independent"
