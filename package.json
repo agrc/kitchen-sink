@@ -53,7 +53,7 @@
     "lint": "eslint ./",
     "prepare": "npm run build",
     "release": "lerna publish --conventional-commits",
-    "pre-release": "lerna publish --conventional-commits --conventional-prerelease",
+    "pre-release": "lerna publish --conventional-commits --conventional-prerelease --canary",
     "graduate": "lerna publish --conventional-commits --conventional-graduate"
   },
   "jest": {
