@@ -4,7 +4,7 @@
   ],
   "command": {
     "publish": {
-      "message": "chore(release): publish",
+      "message": "chore(release): lerna publish",
       "ignoreChanges": [
         "*.stories.js",
         "*.test.js",
