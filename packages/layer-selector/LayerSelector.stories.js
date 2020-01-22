@@ -26,7 +26,7 @@ const WithMap = ({ modules }) => {
       container: mapDiv.current,
       map,
       center: [-112, 40],
-      scale: 3000000
+      zoom: 6
     });
     const selectorNode = document.createElement('div');
     view.ui.add(selectorNode, 'top-right');
