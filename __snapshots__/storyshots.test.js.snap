@@ -146,4 +146,10 @@ exports[`Storyshots LayerSelector/Item Default Overlay 1`] = `
 </div>
 `;
 
-exports[`Storyshots LayerSelector/WithMap Zoom Only 1`] = `null`;
+exports[`Storyshots LayerSelector/WithMap No Zoom Or Scale 1`] = `null`;
+
+exports[`Storyshots LayerSelector/WithMap Scale 1`] = `null`;
+
+exports[`Storyshots LayerSelector/WithMap Zoom 1`] = `null`;
+
+exports[`Storyshots LayerSelector/WithMap Zoom And Scale 1`] = `null`;

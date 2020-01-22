@@ -43,4 +43,7 @@ const WithMap = ({ modules, scale, zoom, center=[-112, 40] }) => {
   );
 };
 
-export const zoomOnly = (modules) => <WithMap modules={modules} zoom={6} />;
+export const zoom = (modules) => <WithMap modules={modules} zoom={6} />;
+export const scale = (modules) => <WithMap modules={modules} scale={12000} />;
+export const noZoomOrScale = (modules) => <WithMap modules={modules} />;
+export const zoomAndScale = (modules) => <WithMap modules={modules} zoom={6} scale={12000} />;
