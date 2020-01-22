@@ -4,8 +4,6 @@ exports[`Storyshots LayerSelector Basic 1`] = `null`;
 
 exports[`Storyshots LayerSelector In Container 1`] = `null`;
 
-exports[`Storyshots LayerSelector With Map 1`] = `null`;
-
 exports[`Storyshots LayerSelector/Container Closed 1`] = `
 <div
   area-haspopup="true"
@@ -147,3 +145,5 @@ exports[`Storyshots LayerSelector/Item Default Overlay 1`] = `
   </label>
 </div>
 `;
+
+exports[`Storyshots LayerSelector/WithMap Zoom Only 1`] = `null`;
