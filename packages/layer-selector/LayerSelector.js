@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import { createDefaultTileInfo } from './TileInfo';
+import { setTileInfosForApplianceLayers } from './Discover';
 import './LayerSelector.css';
 import icon from './layers.svg';
 
@@ -44,82 +46,6 @@ const LayerSelectorItem = (props) => {
 };
 
 const imageryAttributionJsonUrl = 'https://mapserv.utah.gov/cdn/attribution/imagery.json';
-
-/**
- * Creates the default TileInfo constructor object for appliance layers.
- * @private
- * @returns {object} The least common denominator constructor object for appliance layers.
- */
-const createDefaultTileInfo = (LOD) => {
-  const tileSize = 256;
-  const earthCircumference = 40075016.685568;
-  const inchesPerMeter = 39.37;
-  const initialResolution = earthCircumference / tileSize;
-
-  const dpi = 96;
-  const maxLevel = 20;
-  const squared = 2;
-  const lods = [];
-
-  for (let level = 0; level <= maxLevel; level++) {
-    const resolution = initialResolution / Math.pow(squared, level);
-    const scale = resolution * dpi * inchesPerMeter;
-
-    lods.push(new LOD({
-      level: level,
-      scale: scale,
-      resolution: resolution
-    }));
-  }
-
-  return {
-    dpi: dpi,
-    size: tileSize,
-    origin: {
-      x: -20037508.342787,
-      y: 20037508.342787
-    },
-    spatialReference: {
-      wkid: 3857
-    },
-    lods: lods
-  };
-};
-
-
-/** Sets the TileInfo for each of Discover layers since they all use different levels.
-* @private
-* @param {applianceLayer} layers - The appliance layers object `{ 'id': { urlPattern: ''}}`
-* @returns {applianceLayer} - returns Discover layers object with a new `tileInfo` property.
-*/
-const setTileInfosForApplianceLayers = (layers, defaultTileInfo, TileInfo) => {
-  const lods = defaultTileInfo.lods;
-  const fiveToNineteen = lods.slice(0, 20); // eslint-disable-line no-magic-numbers
-  const fiveToSeventeen = lods.slice(0, 18); // eslint-disable-line no-magic-numbers
-  const zeroToEighteen = lods.slice(0, 19); // eslint-disable-line no-magic-numbers
-
-  layers.Imagery.tileInfo = new TileInfo(defaultTileInfo);
-  layers.Hybrid.tileInfo = new TileInfo(defaultTileInfo);
-
-  let tileInfo = Object.assign({}, defaultTileInfo);
-  tileInfo.lods = zeroToEighteen;
-
-  layers['Color IR'].tileInfo = new TileInfo(tileInfo);
-
-  tileInfo = Object.assign({}, defaultTileInfo);
-  tileInfo.lods = fiveToSeventeen;
-
-  layers.Topo.tileInfo = new TileInfo(tileInfo);
-
-  tileInfo = Object.assign({}, defaultTileInfo);
-  tileInfo.lods = fiveToNineteen;
-
-  layers.Lite.tileInfo = new TileInfo(tileInfo);
-  layers.Overlay.tileInfo = new TileInfo(tileInfo);
-
-  return layers;
-};
-
 
 /**
 * Takes layer tokens from `applianceLayers` keys and resolves them to `layerFactory` objects with
