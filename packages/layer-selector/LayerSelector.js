@@ -186,6 +186,13 @@ const LayerSelector = (props) => {
         layerList.remove(managedLayersDraft[layerItem.id].layer);
       }
 
+      // When you set the zoom on a map view without a cached layer, it has no effect on the scale of the map.
+      // This is a hack to re-apply the zoom after adding the first cached layer.
+      if (props.view.scale !== managedLayersDraft[layerItem.id].layer.tileInfo.lods[props.view.zoom].scale) {
+        // eslint-disable-next-line no-self-assign
+        props.view.zoom = props.view.zoom;
+      }
+
       setManagedLayers(managedLayersDraft);
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
