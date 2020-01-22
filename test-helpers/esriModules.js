@@ -8,7 +8,9 @@ export default async () => {
     'esri/Basemap',
     'esri/layers/support/LOD',
     'esri/layers/support/TileInfo',
-    'esri/layers/WebTileLayer'
+    'esri/layers/WebTileLayer',
+    'esri/layers/FeatureLayer',
+    'esri/layers/TileLayer'
   ];
 
   const [
@@ -17,7 +19,9 @@ export default async () => {
     Basemap,
     LOD,
     TileInfo,
-    WebTileLayer
+    WebTileLayer,
+    FeatureLayer,
+    TileLayer
   ] = await loadModules(requires, {
     version: '4.14',
     css: true
@@ -29,6 +33,8 @@ export default async () => {
     Basemap,
     LOD,
     TileInfo,
-    WebTileLayer
+    WebTileLayer,
+    FeatureLayer,
+    TileLayer
   };
 };
