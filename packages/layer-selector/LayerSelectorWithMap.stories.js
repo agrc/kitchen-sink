@@ -50,11 +50,11 @@ export const scale = (modules) => <WithMap modules={modules} scale={12000} />;
 export const noZoomOrScale = (modules) => <WithMap modules={modules} />;
 export const zoomAndScale = (modules) => <WithMap modules={modules} zoom={6} scale={12000} />;
 export const customLOD = (modules) => {
-  const tilesize = 256;
+  const tileSize = 256;
   const earthCircumference = 40075016.685568;
   const halfEarthCircumference = halfEarthCircumference * 0.5;
   const inchesPerMeter = 39.37;
-  const initialResolution = earthCircumference / tilesize;
+  const initialResolution = earthCircumference / tileSize;
 
   const lods = [];
   for (let zoom = 0; zoom <= 20; zoom++) {
