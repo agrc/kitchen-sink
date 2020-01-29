@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { createDefaultTileInfo } from './TileInfo';
@@ -130,6 +130,7 @@ const LayerSelector = (props) => {
   });
   const [linkedLayers, setLinkedLayers] = useState([]);
   const [managedLayers, setManagedLayers] = useState({});
+  const selectorNode = useRef();
 
   useEffect(() => {
     console.log('LayerSelector:updateMap');
@@ -306,6 +307,10 @@ const LayerSelector = (props) => {
       baseLayers,
       overlays
     });
+
+    const y = props.top ? 'top' : 'bottom';
+    const x = props.right ? 'right' : 'left';
+    props.view.ui.add(selectorNode.current, [y, x].join('-'));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.modules]);
 
@@ -351,20 +356,25 @@ const LayerSelector = (props) => {
   };
 
   return (
-    <div className="layer-selector--layers">
-      {layers.baseLayers.map((item, index) => (
-        <LayerSelectorItem id={item.name || item.id || 'unknown'} layerType="baselayer" selected={item.selected} onChange={onItemChanged} key={index}></LayerSelectorItem>
-      ))}
-      <hr className="layer-selector-separator" />
-      {layers.overlays.map(item => (
-        <LayerSelectorItem id={item.name || item.id || 'unknown'} layerType="overlay" selected={item.selected} onChange={onItemChanged} key={item.id || item}></LayerSelectorItem>
-      ))}
+    <div ref={selectorNode}>
+      <LayerSelectorContainer>
+        <div className="layer-selector--layers">
+          {layers.baseLayers.map((item, index) => (
+            <LayerSelectorItem id={item.name || item.id || 'unknown'} layerType="baselayer" selected={item.selected} onChange={onItemChanged} key={index}></LayerSelectorItem>
+          ))}
+          <hr className="layer-selector-separator" />
+          {layers.overlays.map(item => (
+            <LayerSelectorItem id={item.name || item.id || 'unknown'} layerType="overlay" selected={item.selected} onChange={onItemChanged} key={item.id || item}></LayerSelectorItem>
+          ))}
+        </div>
+      </LayerSelectorContainer>
     </div>
   );
 };
 
 
-export { LayerSelectorContainer, LayerSelector, LayerSelectorItem };
+export default LayerSelector;
+export { LayerSelectorContainer, LayerSelectorItem };
 
 LayerSelector.propTypes = {
   view: PropTypes.object.isRequired,
@@ -395,7 +405,13 @@ LayerSelector.propTypes = {
       id: PropTypes.string.isRequired,
       tileInfo: PropTypes.object,
       linked: PropTypes.arrayOf(PropTypes.string)
-    })]))
+    })])),
+  top: PropTypes.bool,
+  right: PropTypes.bool
+};
+LayerSelector.defaultProps = {
+  top: true,
+  right: true
 };
 
 LayerSelectorItem.propTypes = {

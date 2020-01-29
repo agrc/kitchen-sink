@@ -1,6 +1,5 @@
-import React, { useRef, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import { LayerSelector, LayerSelectorContainer } from './LayerSelector';
+import React, { useEffect, useState, useRef } from 'react';
+import LayerSelector from './LayerSelector';
 import { ModulesHelper } from '../../test-helpers/storyHelpers';
 
 
@@ -11,7 +10,12 @@ export default {
 
 const WithMap = ({ modules, baseLayers, overlays, scale, zoom, top, right, center=[-112, 40] }) => {
   const mapDiv = useRef();
+  const [ layerSelectorOptions, setLayerSelectorOptions ] = useState();
+
   useEffect(() => {
+    // This needs to be inside an effect because mapDiv.current is undefined on the first render.
+    console.log('initMap');
+
     const map = new modules.Map();
     const view = new modules.MapView({
       container: mapDiv.current,
@@ -20,10 +24,8 @@ const WithMap = ({ modules, baseLayers, overlays, scale, zoom, top, right, cente
       zoom,
       scale
     });
-    const selectorNode = document.createElement('div');
-    view.ui.add(selectorNode, 'top-right');
 
-    const layerSelectorOptions = {
+    setLayerSelectorOptions({
       view: view,
       quadWord: process.env.QUAD_WORD,
       baseLayers: baseLayers || ['Hybrid', 'Lite', 'Terrain', 'Topo', 'Color IR'],
@@ -31,17 +33,14 @@ const WithMap = ({ modules, baseLayers, overlays, scale, zoom, top, right, cente
       modules,
       top,
       right
-    };
-
-    ReactDOM.render(
-      <LayerSelectorContainer>
-        <LayerSelector {...layerSelectorOptions}></LayerSelector>
-      </LayerSelectorContainer>,
-      selectorNode);
-  }, [modules, mapDiv, center, zoom, scale, top, right, overlays, baseLayers]);
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
-    <div ref={mapDiv} style={{ position: "absolute", top: 0, left: 0, bottom: 0, right: 0 }}></div>
+    <div ref={mapDiv} style={{ position: "absolute", top: 0, left: 0, bottom: 0, right: 0 }}>
+      { layerSelectorOptions && <LayerSelector {...layerSelectorOptions}></LayerSelector> }
+    </div>
   );
 };
 
@@ -116,4 +115,6 @@ export const linkedOverlays = (modules) => {
 
   return (<WithMap modules={modules} zoom={6} baseLayers={baseLayers} overlays={overlays} />);
 };
-export const customPlacement = (modules) => <WithMap modules={modules} zoom={6} top={false} right={false} />;
+export const customPlacementBottomLeft = (modules) => <WithMap modules={modules} zoom={6} top={false} right={false} />;
+export const customPlacementBottomRight = (modules) => <WithMap modules={modules} zoom={6} top={false} />;
+export const customPlacementTopLef = (modules) => <WithMap modules={modules} zoom={6} right={false} />;

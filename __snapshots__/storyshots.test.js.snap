@@ -2,8 +2,6 @@
 
 exports[`Storyshots LayerSelector Basic 1`] = `null`;
 
-exports[`Storyshots LayerSelector In Container 1`] = `null`;
-
 exports[`Storyshots LayerSelector/Container Closed 1`] = `
 <div
   area-haspopup="true"
@@ -148,7 +146,11 @@ exports[`Storyshots LayerSelector/Item Default Overlay 1`] = `
 
 exports[`Storyshots LayerSelector/WithMap Custom LOD 1`] = `null`;
 
-exports[`Storyshots LayerSelector/WithMap Custom Placement 1`] = `null`;
+exports[`Storyshots LayerSelector/WithMap Custom Placement Bottom Left 1`] = `null`;
+
+exports[`Storyshots LayerSelector/WithMap Custom Placement Bottom Right 1`] = `null`;
+
+exports[`Storyshots LayerSelector/WithMap Custom Placement Top Lef 1`] = `null`;
 
 exports[`Storyshots LayerSelector/WithMap Linked Overlays 1`] = `null`;
 

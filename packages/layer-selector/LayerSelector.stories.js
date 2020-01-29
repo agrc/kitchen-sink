@@ -1,5 +1,5 @@
 import React  from 'react';
-import { LayerSelector, LayerSelectorContainer } from './LayerSelector';
+import LayerSelector from './LayerSelector';
 import { ModulesHelper } from '../../test-helpers/storyHelpers';
 
 export default {
@@ -7,26 +7,20 @@ export default {
   decorators: [ModulesHelper]
 };
 
+const mapViewMock = {
+  map: {},
+  when: () => {},
+  ui: {
+    add: () => {}
+  }
+};
+
 export const basic = (modules) => (
   <LayerSelector
     baseLayers={['Lite', 'Terrain', 'Topo', 'Color IR']}
     modules={modules}
-    view={{ map: {}, when: () => { } }}
+    view={mapViewMock}
     quadWord='my-fake-quad-word'
   >
   </LayerSelector>
 );
-
-export const inContainer = (modules) => (
-  <LayerSelector
-    baseLayers={['Lite', 'Terrain', 'Topo', 'Color IR']}
-    modules={modules}
-    view={{ map: {}, when: () => { } }}
-    quadWord='my-fake-quad-word'
-  >
-  </LayerSelector>
-);
-
-inContainer.story = {
-  decorators: [(story) => (<LayerSelectorContainer>{story()}</LayerSelectorContainer>)]
-};
