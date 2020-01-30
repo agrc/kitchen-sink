@@ -6,7 +6,7 @@ import { setTileInfosForApplianceLayers } from './Discover';
 import './LayerSelector.css';
 import icon from './layers.svg';
 
-const LayerSelectorContainer = (props) => {
+const ExpandableContainer = (props) => {
   const [expanded, setExpanded] = useState(props.expanded);
 
   const imageClasses = classNames(
@@ -357,7 +357,7 @@ const LayerSelector = (props) => {
 
   return (
     <div ref={selectorNode}>
-      <LayerSelectorContainer>
+      <ExpandableContainer>
         <div className="layer-selector--layers">
           {layers.baseLayers.map((item, index) => (
             <LayerSelectorItem id={item.name || item.id || 'unknown'} layerType="baselayer" selected={item.selected} onChange={onItemChanged} key={index}></LayerSelectorItem>
@@ -367,14 +367,14 @@ const LayerSelector = (props) => {
             <LayerSelectorItem id={item.name || item.id || 'unknown'} layerType="overlay" selected={item.selected} onChange={onItemChanged} key={item.id || item}></LayerSelectorItem>
           ))}
         </div>
-      </LayerSelectorContainer>
+      </ExpandableContainer>
     </div>
   );
 };
 
 
 export default LayerSelector;
-export { LayerSelectorContainer, LayerSelectorItem };
+export { ExpandableContainer, LayerSelectorItem };
 
 LayerSelector.propTypes = {
   view: PropTypes.object.isRequired,
