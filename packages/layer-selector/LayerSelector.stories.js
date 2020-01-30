@@ -24,3 +24,14 @@ export const basic = (modules) => (
   >
   </LayerSelector>
 );
+
+export const withoutExpandableContainer = (modules) => (
+  <LayerSelector
+    baseLayers={['Lite', 'Terrain', 'Topo', 'Color IR']}
+    modules={modules}
+    view={mapViewMock}
+    quadWord='my-fake-quad-word'
+    makeExpandable={false}
+  >
+  </LayerSelector>
+);

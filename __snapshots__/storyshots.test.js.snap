@@ -2,6 +2,8 @@
 
 exports[`Storyshots LayerSelector Basic 1`] = `null`;
 
+exports[`Storyshots LayerSelector Without Expandable Container 1`] = `null`;
+
 exports[`Storyshots LayerSelector/Container Closed 1`] = `
 <div
   area-haspopup="true"

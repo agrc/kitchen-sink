@@ -122,7 +122,7 @@ const createLayerFactories = (layerType, layerFactories, WebTiledLayer, quadWord
   return resolvedInfos;
 };
 
-
+const ConditionalWrapper = ({ condition, wrapper, children }) => condition ? wrapper(children) : children;
 const LayerSelector = (props) => {
   const [layers, setLayers] = useState({
     baseLayers: [],
@@ -357,17 +357,27 @@ const LayerSelector = (props) => {
 
   return (
     <div ref={selectorNode}>
-      <ExpandableContainer>
+      <ConditionalWrapper
+        condition={props.makeExpandable}
+        wrapper={children => <ExpandableContainer>{children}</ExpandableContainer>}>
         <div className="layer-selector--layers">
           {layers.baseLayers.map((item, index) => (
-            <LayerSelectorItem id={item.name || item.id || 'unknown'} layerType="baselayer" selected={item.selected} onChange={onItemChanged} key={index}></LayerSelectorItem>
+            <LayerSelectorItem id={item.name || item.id || 'unknown'}
+              layerType="baselayer"
+              selected={item.selected}
+              onChange={onItemChanged}
+              key={index} />
           ))}
           <hr className="layer-selector-separator" />
           {layers.overlays.map(item => (
-            <LayerSelectorItem id={item.name || item.id || 'unknown'} layerType="overlay" selected={item.selected} onChange={onItemChanged} key={item.id || item}></LayerSelectorItem>
+            <LayerSelectorItem id={item.name || item.id || 'unknown'}
+              layerType="overlay"
+              selected={item.selected}
+              onChange={onItemChanged}
+              key={item.id || item} />
           ))}
         </div>
-      </ExpandableContainer>
+      </ConditionalWrapper>
     </div>
   );
 };
@@ -407,11 +417,13 @@ LayerSelector.propTypes = {
       linked: PropTypes.arrayOf(PropTypes.string)
     })])),
   top: PropTypes.bool,
-  right: PropTypes.bool
+  right: PropTypes.bool,
+  makeExpandable: PropTypes.bool
 };
 LayerSelector.defaultProps = {
   top: true,
-  right: true
+  right: true,
+  makeExpandable: true
 };
 
 LayerSelectorItem.propTypes = {
