@@ -1,0 +1,21 @@
+{
+  "name": "wonkavision",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "del": "^5.1.0",
+    "dotenv": "^8.2.0",
+    "globby": "^11.0.0",
+    "ora": "^4.0.3",
+    "ssh2": "^0.8.8",
+    "yargs": "^15.1.0",
+    "yazl": "^2.5.1"
+  }
+}
