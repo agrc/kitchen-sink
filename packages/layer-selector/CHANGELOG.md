@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/agrc-widgets/kitchen-sink/compare/@agrc/layer-selector@3.1.0...@agrc/layer-selector@3.2.0) (2020-08-27)
+
+
+### Features
+
+* **layer-selector:** update color ir from 2011 to 2018 data ([0e97d7c](https://github.com/agrc-widgets/kitchen-sink/commit/0e97d7c6ed7ca6f53490564d90842ddf45614844))
+
+
+
+
+
 # 3.1.0 (2020-01-23)
 
 
