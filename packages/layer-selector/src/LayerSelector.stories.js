@@ -1,6 +1,6 @@
 import React  from 'react';
 import { LayerSelector, LayerSelectorContainer } from './LayerSelector';
-import { ModulesHelper } from '../../test-helpers/storyHelpers';
+import { ModulesHelper } from '../../../test-helpers/storyHelpers';
 
 export default {
   title: 'LayerSelector',
@@ -27,6 +27,4 @@ export const inContainer = (modules) => (
   </LayerSelector>
 );
 
-inContainer.story = {
-  decorators: [(story) => (<LayerSelectorContainer>{story()}</LayerSelectorContainer>)]
-};
+inContainer.decorators = [(story) => (<LayerSelectorContainer>{story()}</LayerSelectorContainer>)];

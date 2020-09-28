@@ -11,7 +11,7 @@ const ModulesHelperComponent = ({ story }) => {
     });
   }, []);
 
-  return (<>{modules && story(modules)}</>);
+  return (<>{modules && story({ args: modules })}</>);
 };
 
 export const ModulesHelper = (story) => <ModulesHelperComponent story={story} />;
