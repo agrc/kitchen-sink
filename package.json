@@ -18,6 +18,7 @@
     "@storybook/addon-storyshots": "^6.0.22",
     "@storybook/addons": "^6.0.22",
     "@storybook/react": "^6.0.22",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-require-context-hook": "^1.0.0",
     "babel-plugin-transform-rename-import": "^2.3.0",
@@ -41,7 +42,8 @@
     "extends": "@agrc",
     "ignorePatterns": [
       "dist/"
-    ]
+    ],
+    "parser": "babel-eslint"
   },
   "scripts": {
     "storybook": "start-storybook -p 6006",
@@ -51,7 +53,7 @@
     "start": "chokidar \"packages/**/*.*\" \"!packages/**/dist/**/*.*\" -c \"npm run build\"",
     "link": "lerna exec -- npm link",
     "unlink": "lerna exec -- npm unlink",
-    "lint": "eslint ./",
+    "lint": "lerna exec -- eslint ./",
     "prepare": "npm run build",
     "release": "lerna publish --conventional-commits",
     "pre-release": "lerna publish --conventional-commits --conventional-prerelease --canary",
