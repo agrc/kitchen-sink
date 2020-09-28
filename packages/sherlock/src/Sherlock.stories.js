@@ -14,7 +14,6 @@ const SEARCH_FIELD = 'NAME';
 const FeatureService = ({ modules }) => {
   const mapDiv = React.useRef();
   const mapView = React.useRef();
-  const sherlockNode = React.useRef();
   const [ sherlockMatches, setSherlockMatches ] = React.useState();
   const [ config, setConfig ] = React.useState();
 
@@ -56,7 +55,7 @@ const FeatureService = ({ modules }) => {
     };
 
     giddyUp();
-  }, [sherlockMatches]);
+  }, [sherlockMatches, modules]);
 
   return (
     <div ref={mapDiv} style={{ position: "absolute", top: 0, left: 0, bottom: 0, right: 0 }}>
