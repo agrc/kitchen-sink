@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import './Sherlock.scss'
+import React, { Component } from 'react';
+import './Sherlock.scss';
 import { Input, Button, InputGroup, InputGroupAddon } from 'reactstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import escapeRegExp from 'lodash.escaperegexp';
 import debounce from "lodash.debounce";
@@ -78,7 +78,7 @@ class Sherlock extends Component {
     );
 
     onSherlockMatch(graphics);
-  };
+  }
 
   itemToString(item) {
     console.log('Clue:itemToString', arguments);
@@ -111,69 +111,69 @@ class Sherlock extends Component {
             inputValue,
             getMenuProps
           }) => (
-              <div className='sherlock'>
-                { this.props.label ? <h4>{this.props.label}</h4> : null }
-                <div>
-                  <InputGroup>
-                    <Input {...getInputProps()} placeholder={this.props.placeHolder} autoComplete="off"></Input>
-                    <InputGroupAddon addonType="append">
-                      <Button size="sm" color="secondary" disabled>
-                        <FontAwesomeIcon icon={faSearch} size="lg"></FontAwesomeIcon>
-                      </Button>
-                    </InputGroupAddon>
-                  </InputGroup>
-                  <div className="sherlock__match-dropdown" {...getMenuProps()}>
-                    <ul className="sherlock__matches">
-                      {!isOpen ?
-                        null :
-                        <Clue clue={inputValue} provider={this.props.provider} maxresults={this.props.maxResultsToDisplay}>
-                          {({ short, hasmore, loading, error, data = [] }) => {
-                            if (short) {
-                              return <li className="sherlock__match-item alert-primary" disabled>Type more than 2 letters.</li>;
-                            }
+            <div className='sherlock'>
+              { this.props.label ? <h4>{this.props.label}</h4> : null }
+              <div>
+                <InputGroup>
+                  <Input {...getInputProps()} placeholder={this.props.placeHolder} autoComplete="off"></Input>
+                  <InputGroupAddon addonType="append">
+                    <Button size="sm" color="secondary" disabled>
+                      <FontAwesomeIcon icon={faSearch} size="lg"></FontAwesomeIcon>
+                    </Button>
+                  </InputGroupAddon>
+                </InputGroup>
+                <div className="sherlock__match-dropdown" {...getMenuProps()}>
+                  <ul className="sherlock__matches">
+                    {!isOpen ?
+                      null :
+                      <Clue clue={inputValue} provider={this.props.provider} maxresults={this.props.maxResultsToDisplay}>
+                        {({ short, hasmore, loading, error, data = [] }) => {
+                          if (short) {
+                            return <li className="sherlock__match-item alert-primary" disabled>Type more than 2 letters.</li>;
+                          }
 
-                            // if (loading) {
-                            //   return <li className="sherlock__match-item alert-primary" disabled>Loading...</li>;
-                            // }
+                          if (loading) {
+                            return <li className="sherlock__match-item alert-primary" disabled>Loading...</li>;
+                          }
 
-                            if (error) {
-                              return <li className="sherlock__match-item alert-danger" disabled>Error! ${error}</li>;
-                            }
+                          if (error) {
+                            return <li className="sherlock__match-item alert-danger" disabled>Error! ${error}</li>;
+                          }
 
-                            if (!data.length) {
-                              return <li className="sherlock__match-item alert-warning" disabled>No items found.</li>;
-                            }
+                          if (!data.length) {
+                            return <li className="sherlock__match-item alert-warning" disabled>No items found.</li>;
+                          }
 
-                            let items = data.map((item, index) => (
-                              <li {...getItemProps({
-                                key: index,
-                                className: 'sherlock__match-item' + (highlightedIndex === index ? ' sherlock__match-item--selected' : ''),
-                                item,
-                                index
-                              })}>
-                                <Highlighted text={item.attributes[this.props.provider.searchField]} highlight={inputValue}></Highlighted>
-                                <div>{item.attributes[this.props.provider.contextField] || ''}</div>
-                              </li>
-                            ));
+                          let items = data.map((item, index) => (
+                            <li key={index} {...getItemProps({
+                              key: index,
+                              className: 'sherlock__match-item' + (highlightedIndex === index ? ' sherlock__match-item--selected' : ''),
+                              item,
+                              index
+                            })}>
+                              <Highlighted text={item.attributes[this.props.provider.searchField]} highlight={inputValue}></Highlighted>
+                              <div>{item.attributes[this.props.provider.contextField] || ''}</div>
+                            </li>
+                          ));
 
-                            if (hasmore) {
-                              items.push(
-                                <li key="toomany" className="sherlock__match-item alert-primary text-center" disabled>More than {this.props.maxResultsToDisplay} items found.</li>
-                              );
-                            }
+                          if (hasmore) {
+                            items.push(
+                              <li key="toomany" className="sherlock__match-item alert-primary text-center" disabled>More than {this.props.maxResultsToDisplay} items found.</li>
+                            );
+                          }
 
-                            return items;
-                          }}
-                        </Clue>
-                      }
-                    </ul>
-                  </div>
+                          return items;
+                        }}
+                      </Clue>
+                    }
+                  </ul>
                 </div>
               </div>
-            )}
+            </div>
+          )}
         </Downshift>
       </div>
-    )
+    );
   }
 }
 
@@ -191,9 +191,11 @@ class Clue extends Component {
     await this.fetchData();
   }
 
+  // eslint-disable-next-line no-unused-vars
   async componentDidUpdate({ children: _, ...prevProps }) {
     console.log('Clue:componentDidUpdate', arguments);
 
+    // eslint-disable-next-line no-unused-vars
     const { children, ...props } = this.props;
     if (!isEqual(prevProps, props)) {
       await this.fetchData();
@@ -228,7 +230,7 @@ class Clue extends Component {
     let features = uniqWith(response.data, (a, b) => {
       if (hasContext) {
         return a.attributes[searchField] === b.attributes[searchField] &&
-          a.attributes[contextField] === b.attributes[contextField]
+          a.attributes[contextField] === b.attributes[contextField];
       } else {
         return a.attributes[searchField] === b.attributes[searchField];
       }
@@ -263,7 +265,7 @@ class Clue extends Component {
     if (this.props.clue.length > 2) {
       await this.makeNetworkRequest();
     }
-  };
+  }
 
   render() {
     console.log('Clue:render', arguments);
@@ -423,8 +425,8 @@ const Highlighted = ({ text = '', highlight = '' }) => {
     return <div>{text}</div>;
   }
 
-  const regex = new RegExp(`(${escapeRegExp(highlight)})`, 'gi')
-  const parts = text.split(regex)
+  const regex = new RegExp(`(${escapeRegExp(highlight)})`, 'gi');
+  const parts = text.split(regex);
 
   return (
     <div>
@@ -434,8 +436,8 @@ const Highlighted = ({ text = '', highlight = '' }) => {
         ))
       }
     </div>
-  )
-}
+  );
+};
 
 class WebApi {
   constructor(apiKey, signal) {
@@ -535,4 +537,4 @@ class WebApi {
   }
 }
 
-export { Sherlock, WebApiProvider, MapServiceProvider }
+export { Sherlock, WebApiProvider, MapServiceProvider };
