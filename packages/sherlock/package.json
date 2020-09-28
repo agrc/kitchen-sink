@@ -1,0 +1,24 @@
+{
+  "name": "@agrc/sherlock",
+  "version": "1.0.0",
+  "private": false,
+  "main": "./dist/Sherlock.js",
+  "files": [
+    "/dist",
+    "/package.json"
+  ],
+  "peerDependencies": {
+    "bootstrap": "^4.5.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
+    "downshift": "^6.0.6",
+    "lodash.escaperegexp": "^4.1.2",
+    "lodash.uniqwith": "^4.5.0",
+    "reactstrap": "^8.6.0"
+  }
+}

@@ -8,7 +8,11 @@ export default async () => {
     'esri/Basemap',
     'esri/layers/support/LOD',
     'esri/layers/support/TileInfo',
-    'esri/layers/WebTileLayer'
+    'esri/layers/WebTileLayer',
+    'esri/tasks/QueryTask',
+    'esri/tasks/support/Query',
+    'esri/Graphic',
+    'esri/core/watchUtils'
   ];
 
   const [
@@ -17,7 +21,11 @@ export default async () => {
     Basemap,
     LOD,
     TileInfo,
-    WebTileLayer
+    WebTileLayer,
+    QueryTask,
+    Query,
+    Graphic,
+    watchUtils
   ] = await loadModules(requires, {
     version: '4.14',
     css: true
@@ -29,6 +37,10 @@ export default async () => {
     Basemap,
     LOD,
     TileInfo,
-    WebTileLayer
+    WebTileLayer,
+    QueryTask,
+    Query,
+    Graphic,
+    watchUtils
   };
 };
