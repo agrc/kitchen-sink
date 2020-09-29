@@ -213,6 +213,7 @@ const LayerSelector = (props) => {
       Imagery: {
         urlPattern: `https://discover.agrc.utah.gov/login/path/${props.quadWord}/tiles/utah/{level}/{col}/{row}`,
         hasAttributionData: true,
+        copyright: 'Hexagon',
         attributionDataUrl: imageryAttributionJsonUrl
       },
       Topo: {
@@ -234,7 +235,7 @@ const LayerSelector = (props) => {
       Hybrid: {
         urlPattern: `https://discover.agrc.utah.gov/login/path/${props.quadWord}/tiles/utah/{level}/{col}/{row}`,
         linked: ['Overlay'],
-        copyright: 'Google, AGRC',
+        copyright: 'Hexagon, AGRC',
         hasAttributionData: true,
         attributionDataUrl: imageryAttributionJsonUrl
       },
