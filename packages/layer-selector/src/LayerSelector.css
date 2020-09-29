@@ -72,18 +72,6 @@
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
-.layer-selector--top {
-  top: 0;
-}
-.layer-selector--right {
-  right: 0;
-}
-.layer-selector--bottom {
-  bottom: 0;
-}
-.layer-selector--left {
-  left: 0;
-}
 .layer-selector--hidden {
   display: none;
 }
