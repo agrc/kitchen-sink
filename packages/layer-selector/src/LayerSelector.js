@@ -322,6 +322,12 @@ const LayerSelector = (props) => {
 
       const selectedItem = baseLayers.filter((layer) => layer.selected)[0];
 
+      overlays.forEach((item) => {
+        if (linkedLayers.includes(item.id)) {
+          item.selected = false;
+        }
+      });
+
       if (selectedItem.linked && selectedItem.linked.length > 0) {
         overlays.forEach((item) => {
           if (selectedItem.linked.includes(item.id)) {
@@ -329,12 +335,6 @@ const LayerSelector = (props) => {
           }
 
           return item;
-        });
-      } else {
-        overlays.forEach((item) => {
-          if (linkedLayers.includes(item.id)) {
-            item.selected = false;
-          }
         });
       }
     } else if (props.layerType === 'overlay') {
