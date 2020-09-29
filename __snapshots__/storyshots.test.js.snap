@@ -146,6 +146,12 @@ exports[`Storyshots LayerSelector/Item Default Overlay 1`] = `
 </div>
 `;
 
+exports[`Storyshots LayerSelector/WithMap Custom LOD 1`] = `null`;
+
+exports[`Storyshots LayerSelector/WithMap Land Ownership 1`] = `null`;
+
+exports[`Storyshots LayerSelector/WithMap Linked Overlays 1`] = `null`;
+
 exports[`Storyshots LayerSelector/WithMap No Zoom Or Scale 1`] = `null`;
 
 exports[`Storyshots LayerSelector/WithMap Scale 1`] = `null`;
