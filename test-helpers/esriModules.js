@@ -26,10 +26,7 @@ export default async () => {
     Query,
     Graphic,
     watchUtils
-  ] = await loadModules(requires, {
-    version: '4.14',
-    css: true
-  });
+  ] = await loadModules(requires, { css: true });
 
   return {
     Map,
