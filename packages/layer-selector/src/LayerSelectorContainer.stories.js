@@ -1,5 +1,5 @@
 import React from 'react';
-import { LayerSelectorContainer } from './LayerSelector';
+import { ExpandableContainer } from './LayerSelector';
 
 
 export default {
@@ -7,13 +7,13 @@ export default {
 };
 
 export const closed = () => (
-  <LayerSelectorContainer>
+  <ExpandableContainer>
     <div style={{width: '200px', height: '200px', border: '1px solid black'}}>peek-a-boo</div>
-  </LayerSelectorContainer>
+  </ExpandableContainer>
 );
 
 export const open = () => (
-  <LayerSelectorContainer expanded={true}>
+  <ExpandableContainer expanded={true}>
     <div style={{ width: '200px', height: '200px', border: '1px solid black' }}>peek-a-boo</div>
-  </LayerSelectorContainer>
+  </ExpandableContainer>
 );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { createDefaultTileInfo } from './TileInfo';
@@ -6,7 +6,7 @@ import { setTileInfosForApplianceLayers } from './Discover';
 import './LayerSelector.css';
 import icon from './layers.svg';
 
-const LayerSelectorContainer = (props) => {
+const ExpandableContainer = (props) => {
   const [expanded, setExpanded] = useState(props.expanded);
 
   const imageClasses = classNames(
@@ -122,7 +122,7 @@ const createLayerFactories = (layerType, layerFactories, WebTiledLayer, quadWord
   return resolvedInfos;
 };
 
-
+const ConditionalWrapper = ({ condition, wrapper, children }) => condition ? wrapper(children) : children;
 const LayerSelector = (props) => {
   const [layers, setLayers] = useState({
     baseLayers: [],
@@ -130,6 +130,7 @@ const LayerSelector = (props) => {
   });
   const [linkedLayers, setLinkedLayers] = useState([]);
   const [managedLayers, setManagedLayers] = useState({});
+  const selectorNode = useRef();
 
   useEffect(() => {
     console.log('LayerSelector:updateMap');
@@ -187,7 +188,8 @@ const LayerSelector = (props) => {
       }
 
       // When you set the zoom on a map view without a cached layer, it has no effect on the scale of the map.
-      // This is a hack to re-apply the zoom after adding the first cached layer.
+      // This is a hack to re-apply the zoom after adding the first cached layer. This works because the
+      // map view is an observable
       managedLayersDraft[layerItem.id].layer.when('loaded', () => {
         const currentScale = managedLayersDraft[layerItem.id].layer.tileInfo.lods[props.view.zoom].scale;
         if (props.view.zoom > -1 && props.view.scale !== currentScale) {
@@ -307,6 +309,9 @@ const LayerSelector = (props) => {
       baseLayers,
       overlays
     });
+
+    props.view.ui.add(selectorNode.current, props.position);
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.modules]);
 
@@ -352,20 +357,31 @@ const LayerSelector = (props) => {
   };
 
   return (
-    <div className="layer-selector--layers">
-      {layers.baseLayers.map((item, index) => (
-        <LayerSelectorItem id={item.name || item.id || 'unknown'} layerType="baselayer" selected={item.selected} onChange={onItemChanged} key={index}></LayerSelectorItem>
-      ))}
-      <hr className="layer-selector-separator" />
-      {layers.overlays.map(item => (
-        <LayerSelectorItem id={item.name || item.id || 'unknown'} layerType="overlay" selected={item.selected} onChange={onItemChanged} key={item.id || item}></LayerSelectorItem>
-      ))}
+    <div ref={selectorNode}>
+      <ConditionalWrapper
+        condition={props.makeExpandable}
+        wrapper={children => <ExpandableContainer>{children}</ExpandableContainer>}>
+        <div className="layer-selector--layers">
+          {layers.baseLayers.map((item, index) => (
+            <LayerSelectorItem id={item.name || item.id || 'unknown'}
+              layerType="baselayer"
+              selected={item.selected}
+              onChange={onItemChanged}
+              key={index} />
+          ))}
+          <hr className="layer-selector-separator" />
+          {layers.overlays.map(item => (
+            <LayerSelectorItem id={item.name || item.id || 'unknown'}
+              layerType="overlay"
+              selected={item.selected}
+              onChange={onItemChanged}
+              key={item.id || item} />
+          ))}
+        </div>
+      </ConditionalWrapper>
     </div>
   );
 };
-
-
-export { LayerSelectorContainer, LayerSelector, LayerSelectorItem };
 
 LayerSelector.propTypes = {
   view: PropTypes.object.isRequired,
@@ -396,7 +412,23 @@ LayerSelector.propTypes = {
       id: PropTypes.string.isRequired,
       tileInfo: PropTypes.object,
       linked: PropTypes.arrayOf(PropTypes.string)
-    })]))
+    })])),
+  position: PropTypes.oneOf([
+    'bottom-leading',
+    'bottom-left',
+    'bottom-right',
+    'bottom-trailing',
+    'top-leading',
+    'top-left',
+    'top-right',
+    'top-trailing'
+  ]),
+  makeExpandable: PropTypes.bool
+};
+
+LayerSelector.defaultProps = {
+  makeExpandable: true,
+  position: 'top-right'
 };
 
 LayerSelectorItem.propTypes = {
@@ -405,3 +437,6 @@ LayerSelectorItem.propTypes = {
   layerType: PropTypes.oneOf(['baselayer', 'overlay']).isRequired,
   id: PropTypes.string.isRequired
 };
+
+export { ExpandableContainer, LayerSelectorItem };
+export default LayerSelector;

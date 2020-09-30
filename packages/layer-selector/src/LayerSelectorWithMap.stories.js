@@ -1,6 +1,5 @@
-import React, { useRef, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import { LayerSelector, LayerSelectorContainer } from './LayerSelector';
+import React, { useRef, useEffect, useState } from 'react';
+import LayerSelector from './LayerSelector';
 import { ModulesHelper } from '../../../test-helpers/storyHelpers';
 
 
@@ -9,37 +8,39 @@ export default {
   decorators: [ModulesHelper]
 };
 
-const WithMap = ({ modules, scale, zoom=6, center=[-112, 40], baseLayers, overlays }) => {
+const WithMap = ({ modules, center, zoom, scale, baseLayers, overlays }) => {
   const mapDiv = useRef();
-  useEffect(() => {
-    const map = new modules.Map();
-    const view = new modules.MapView({
-      container: mapDiv.current,
-      map,
-      center,
-      zoom,
-      scale
-    });
-    const selectorNode = document.createElement('div');
-    view.ui.add(selectorNode, 'top-right');
+  const [ layerSelectorOptions, setLayerSelectorOptions ] = useState();
 
-    const layerSelectorOptions = {
-      view: view,
-      quadWord: process.env.QUAD_WORD,
-      baseLayers: baseLayers || ['Hybrid', 'Lite', 'Terrain', 'Topo', 'Color IR'],
-      overlays: overlays || ['Address Points'],
-      modules
+  useEffect(() => {
+    const initMap = () => {
+      console.log('init');
+      const map = new modules.Map();
+      const view = new modules.MapView({
+        container: mapDiv.current,
+        map,
+        center: center ? center : [-112, 40],
+        zoom,
+        scale
+      });
+
+      setLayerSelectorOptions({
+        view: view,
+        quadWord: process.env.QUAD_WORD,
+        baseLayers: baseLayers ? baseLayers : ['Hybrid', 'Lite', 'Terrain', 'Topo', 'Color IR'],
+        overlays: overlays ? overlays : ['Address Points'],
+        modules,
+        position: 'top-right'
+      });
     };
 
-    ReactDOM.render(
-      <LayerSelectorContainer>
-        <LayerSelector {...layerSelectorOptions}></LayerSelector>
-      </LayerSelectorContainer>,
-      selectorNode);
-  }, [modules, mapDiv, center, zoom, scale, baseLayers, overlays]);
+    initMap();
+  }, [modules, zoom, center, scale, baseLayers, overlays]);
 
   return (
-    <div ref={mapDiv} style={{ position: "absolute", top: 0, left: 0, bottom: 0, right: 0 }}></div>
+    <div ref={mapDiv} style={{ position: "absolute", top: 0, left: 0, bottom: 0, right: 0 }}>
+      { layerSelectorOptions ? <LayerSelector {...layerSelectorOptions}></LayerSelector> : null }
+    </div>
   );
 };
 
@@ -122,7 +123,8 @@ export const landOwnership = (modules) => {
       url: 'https://gis.trustlands.utah.gov/server/rest/services/Ownership/UT_SITLA_Ownership_LandOwnership_WM/FeatureServer/0',
       id: 'Land Ownership',
       opacity: 0.3
-    }]
+    }],
+    zoom: 10
   };
 
   return <WithMap modules={modules} {...landOwnershipOptions} />;
