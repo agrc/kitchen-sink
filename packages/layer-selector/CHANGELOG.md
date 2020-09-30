@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/agrc-widgets/kitchen-sink/compare/@agrc/layer-selector@3.2.0...@agrc/layer-selector@4.0.0) (2020-09-30)
+
+
+### Bug Fixes
+
+* **layer-selector:** fix linked layer reset between two base layers for linked ([e9e34ed](https://github.com/agrc-widgets/kitchen-sink/commit/e9e34ed1fff12699c87d4f336e56fa0c52ba388e))
+* **layer-selector:** fix linting ([84bc412](https://github.com/agrc-widgets/kitchen-sink/commit/84bc41256835bf464de3980dbfc533a66de33e13))
+* **layer-selector:** simplify use by internalizing container ([76568cd](https://github.com/agrc-widgets/kitchen-sink/commit/76568cd55b4cf6c6746257f37c3cf133839d2fd0))
+* **layer-selector:** update copyright from google to hexagon ([4b85edd](https://github.com/agrc-widgets/kitchen-sink/commit/4b85eddaf5077ec0e49bb7804237a37b982faa99))
+* **layer-selector:** wait for layer to be loaded before getting tile info ([340b104](https://github.com/agrc-widgets/kitchen-sink/commit/340b104cd360f02cee7cd1d623f7d5545829a908))
+
+
+### Features
+
+* **sherlock:** initial port from old repo ([e71acb9](https://github.com/agrc-widgets/kitchen-sink/commit/e71acb90edf04c6d3f303b50ae9a348440bdfca6))
+
+
+### BREAKING CHANGES
+
+* **layer-selector:** LayerSelector is now the default export
+
+
+
+
+
 # [3.2.0](https://github.com/agrc-widgets/kitchen-sink/compare/@agrc/layer-selector@3.1.0...@agrc/layer-selector@3.2.0) (2020-08-27)
 
 
