@@ -160,4 +160,4 @@ exports[`Storyshots LayerSelector/WithMap Zoom 1`] = `null`;
 
 exports[`Storyshots LayerSelector/WithMap Zoom And Scale 1`] = `null`;
 
-exports[`Storyshots Sherlock Feature Service 1`] = `null`;
+exports[`Storyshots Sherlock/InMap Feature Service 1`] = `null`;
