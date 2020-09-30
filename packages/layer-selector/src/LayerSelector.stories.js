@@ -1,30 +1,36 @@
 import React  from 'react';
-import { LayerSelector, LayerSelectorContainer } from './LayerSelector';
+import LayerSelector from './LayerSelector';
 import { ModulesHelper } from '../../../test-helpers/storyHelpers';
 
 export default {
   title: 'LayerSelector',
   decorators: [ModulesHelper]
 };
+const mapViewMock = {
+  map: {},
+  when: () => {},
+  ui: {
+    add: () => {}
+  }
+};
 
 export const basic = (modules) => (
   <LayerSelector
     baseLayers={['Lite', 'Terrain', 'Topo', 'Color IR']}
     modules={modules}
-    view={{ map: {}, when: () => { } }}
+    view={mapViewMock}
     quadWord='my-fake-quad-word'
   >
   </LayerSelector>
 );
 
-export const inContainer = (modules) => (
+export const withoutExpandableContainer = (modules) => (
   <LayerSelector
     baseLayers={['Lite', 'Terrain', 'Topo', 'Color IR']}
     modules={modules}
-    view={{ map: {}, when: () => { } }}
+    view={mapViewMock}
     quadWord='my-fake-quad-word'
+    makeExpandable={false}
   >
   </LayerSelector>
 );
-
-inContainer.decorators = [(story) => (<LayerSelectorContainer>{story()}</LayerSelectorContainer>)];
