@@ -4,7 +4,7 @@ import { ModulesHelper } from '../../../test-helpers/storyHelpers';
 
 
 export default {
-  title: 'Sherlock',
+  title: 'Sherlock/InMap',
   decorators: [ModulesHelper]
 };
 
@@ -33,12 +33,12 @@ const FeatureService = ({ modules }) => {
       placeHolder: 'type of city name...',
       onSherlockMatch: matches => setSherlockMatches(matches),
       modules,
-      mapViewPlacement: 'top-right',
+      position: 'top-right',
       mapView: view
     });
 
     mapView.current = view;
-  }, [modules, mapDiv]);
+  }, [modules]);
 
   React.useEffect(() => {
     const giddyUp = async () => {

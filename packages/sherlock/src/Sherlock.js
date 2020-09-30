@@ -89,7 +89,7 @@ class Sherlock extends Component {
 
   componentDidMount() {
     if (this.props.mapView) {
-      this.props.mapView.ui.add(this.innerRef.current, this.props.mapViewPlacement);
+      this.props.mapView.ui.add(this.innerRef.current, this.props.position);
     }
   }
 
