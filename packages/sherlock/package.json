@@ -1,6 +1,6 @@
 {
   "name": "@agrc/sherlock",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "private": false,
   "main": "./dist/Sherlock.js",
   "files": [

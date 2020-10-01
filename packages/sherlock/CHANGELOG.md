@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/agrc-widgets/kitchen-sink/compare/@agrc/sherlock@2.1.0...@agrc/sherlock@2.1.1) (2020-10-01)
+
+
+### Bug Fixes
+
+* **sherlock:** add missing lodash dep ([4b9c0f5](https://github.com/agrc-widgets/kitchen-sink/commit/4b9c0f5c434a2e9da66928cb8bb4c66c021b86d2))
+
+
+
+
+
 # 2.1.0 (2020-09-30)
 
 
