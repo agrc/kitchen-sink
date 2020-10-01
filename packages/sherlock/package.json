@@ -17,6 +17,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
     "downshift": "^6.0.6",
+    "lodash.debounce": "^4.0.8",
     "lodash.escaperegexp": "^4.1.2",
     "lodash.uniqwith": "^4.5.0",
     "reactstrap": "^8.6.0"
