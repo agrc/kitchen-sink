@@ -93,7 +93,7 @@ yargs
       const baseDir = path.normalize(argv.src);
       if (!argv.dryRun) {
         paths.forEach(filePath => {
-          let parent = filePath.slice(baseDir.length);
+          let parent = filePath.slice(baseDir.length + 1);
           zipFile.addFile(filePath, parent);
         });
 
