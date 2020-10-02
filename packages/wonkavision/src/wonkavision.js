@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const chalk = require('chalk');
 const Client = require('ssh2').Client;
 const del = require('del');
