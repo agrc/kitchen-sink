@@ -208,7 +208,15 @@ class Clue extends Component {
     const { clue, provider, maxresults } = this.props;
     const { searchField, contextField } = provider;
 
-    const response = await provider.search(clue).catch(e => {
+    let response;
+    try {
+      response = await provider.search(clue);
+    } catch (e) {
+      if (e.name === 'AbortError') {
+        // ignore cancelled requests
+        return;
+      }
+
       this.setState({
         data: undefined,
         error: e.message,
@@ -218,7 +226,7 @@ class Clue extends Component {
       });
 
       console.error(e);
-    });
+    }
 
     const iteratee = [`attributes.${searchField}`];
     let hasContext = false;
@@ -285,9 +293,6 @@ class Clue extends Component {
 }
 
 class ProviderBase {
-  controller = new AbortController();
-  signal = this.controller.signal;
-
   getOutFields(outFields, searchField, contextField) {
     outFields = outFields || [];
 
@@ -325,10 +330,6 @@ class ProviderBase {
 
     return statement;
   }
-
-  cancelPendingRequests() {
-    this.controller.abort();
-  }
 }
 
 class MapServiceProvider extends ProviderBase {
@@ -343,7 +344,7 @@ class MapServiceProvider extends ProviderBase {
     this.setUpQueryTask(serviceUrl, options);
   }
 
-  async setUpQueryTask(serviceUrl, options) {
+  setUpQueryTask(serviceUrl, options) {
     const { Query, QueryTask } = this.modules;
     const defaultWkid = 3857;
     this.query = new Query();
@@ -357,8 +358,14 @@ class MapServiceProvider extends ProviderBase {
   async search(searchString) {
     console.log('sherlock.MapServiceProvider:search', arguments);
 
+    if (this.abortController) {
+      this.abortController.abort();
+    }
+
+    this.abortController = new AbortController();
+
     this.query.where = this.getSearchClause(searchString);
-    const featureSet = await this.queryTask.execute(this.query);
+    const featureSet = await this.queryTask.execute(this.query, { signal: this.abortController.signal });
 
     return { data: featureSet.features };
   }
@@ -398,7 +405,7 @@ class WebApiProvider extends ProviderBase {
     }
 
     this.outFields = this.getOutFields(null, this.searchField, this.contextField);
-    this.webApi = new WebApi(apiKey, this.signal);
+    this.webApi = new WebApi(apiKey);
   }
 
   async search(searchString) {
@@ -440,7 +447,7 @@ const Highlighted = ({ text = '', highlight = '' }) => {
 };
 
 class WebApi {
-  constructor(apiKey, signal) {
+  constructor(apiKey) {
     this.baseUrl = 'https://api.mapserv.utah.gov/api/v1/';
 
     // defaultAttributeStyle: String
@@ -456,8 +463,6 @@ class WebApi {
     // apiKey: String
     //      web api key (http://developer.mapserv.utah.gov/AccountAccess)
     this.apiKey = apiKey;
-
-    this.signal = signal;
   }
 
   async search(featureClass, returnValues, options) {
@@ -512,7 +517,13 @@ class WebApi {
 
     const querystring = toQueryString(options);
 
-    const response = await fetch(url + querystring, { signal: this.signal });
+    if (this.abortController) {
+      this.abortController.abort();
+    }
+
+    this.abortController = new AbortController();
+
+    const response = await fetch(url + querystring, { signal: this.abortController.signal });
 
     if (!response.ok) {
       return {

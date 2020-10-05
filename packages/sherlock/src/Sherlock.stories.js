@@ -2,16 +2,20 @@ import React from 'react';
 import { Sherlock, MapServiceProvider } from './Sherlock';
 import { ModulesHelper } from '../../../test-helpers/storyHelpers';
 
-
 export default {
   title: 'Sherlock/InMap',
   decorators: [ModulesHelper]
 };
 
-const FEATURE_SERVICE_URL = 'https://services1.arcgis.com/99lidPhWCzftIe9K/ArcGIS/rest/services/UtahMunicipalBoundaries/FeatureServer/0';
-const SEARCH_FIELD = 'NAME';
+const CITIES_URL =
+  'https://services1.arcgis.com/99lidPhWCzftIe9K/ArcGIS/rest/services/UtahMunicipalBoundaries/FeatureServer/0';
+const NAME_FIELD = 'NAME';
+const ADDRESS_POINTS_URL =
+  'https://services1.arcgis.com/99lidPhWCzftIe9K/arcgis/rest/services/UtahAddressPoints/FeatureServer/0';
+const ADDRESS_FIELD = 'FullAdd';
+const CITY_FIELD = 'City';
 
-const FeatureService = ({ modules }) => {
+const FeatureService = ({ modules, url, searchField, contextField }) => {
   const mapDiv = React.useRef();
   const mapView = React.useRef();
   const [ sherlockMatches, setSherlockMatches ] = React.useState();
@@ -29,16 +33,21 @@ const FeatureService = ({ modules }) => {
     });
 
     setConfig({
-      provider: new MapServiceProvider(FEATURE_SERVICE_URL, SEARCH_FIELD, modules),
-      placeHolder: 'type of city name...',
-      onSherlockMatch: matches => setSherlockMatches(matches),
+      provider: new MapServiceProvider(
+        url,
+        searchField,
+        modules,
+        { contextField }
+      ),
+      placeHolder: `search by ${searchField}...`,
+      onSherlockMatch: (matches) => setSherlockMatches(matches),
       modules,
       position: 'top-right',
       mapView: view
     });
 
     mapView.current = view;
-  }, [modules]);
+  }, [modules, url, searchField, contextField]);
 
   React.useEffect(() => {
     const giddyUp = async () => {
@@ -50,7 +59,9 @@ const FeatureService = ({ modules }) => {
         mapView.current.graphics.addMany(sherlockMatches);
 
         const { watchUtils } = modules;
-        watchUtils.once(mapView.current, 'extent', () => mapView.current.graphics.removeAll());
+        watchUtils.once(mapView.current, 'extent', () => {
+          mapView.current.graphics.removeAll();
+        });
       }
     };
 
@@ -58,10 +69,23 @@ const FeatureService = ({ modules }) => {
   }, [sherlockMatches, modules]);
 
   return (
-    <div ref={mapDiv} style={{ position: "absolute", top: 0, left: 0, bottom: 0, right: 0 }}>
-      { (config) ? <Sherlock {...config} /> : null }
+    <div
+      ref={mapDiv}
+      style={{ position: 'absolute', top: 0, left: 0, bottom: 0, right: 0 }}
+    >
+      {config ? <Sherlock {...config} /> : null}
     </div>
   );
 };
 
-export const featureService = modules => <FeatureService modules={modules} />;
+export const cities = (modules) => (
+  <FeatureService modules={modules} url={CITIES_URL} searchField={NAME_FIELD} />
+);
+export const addressPoints = (modules) => (
+  <FeatureService
+    modules={modules}
+    url={ADDRESS_POINTS_URL}
+    searchField={ADDRESS_FIELD}
+    contextField={CITY_FIELD}
+  />
+);
