@@ -352,6 +352,7 @@ class MapServiceProvider extends ProviderBase {
     this.query.outFields = this.getOutFields(options.outFields, this.searchField, options.contextField);
     this.query.returnGeometry = false;
     this.query.outSpatialReference = { wkid: options.wkid || defaultWkid };
+    this.query.orderByFields = [this.searchField];
 
     this.queryTask = new QueryTask({ url: serviceUrl });
   }
