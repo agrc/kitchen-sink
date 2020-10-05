@@ -42,7 +42,8 @@ class Sherlock extends Component {
         color: [255, 255, 0, 0.5],
         size: 10
       }
-    }
+    },
+    maxResultsToDisplay: 10
   };
 
   itemToString = this.itemToString.bind(this);
@@ -210,7 +211,7 @@ class Clue extends Component {
 
     let response;
     try {
-      response = await provider.search(clue);
+      response = await provider.search(clue, maxresults);
     } catch (e) {
       if (e.name === 'AbortError') {
         // ignore cancelled requests
@@ -355,7 +356,7 @@ class MapServiceProvider extends ProviderBase {
     this.queryTask = new QueryTask({ url: serviceUrl });
   }
 
-  async search(searchString) {
+  async search(searchString, maxresults) {
     console.log('sherlock.MapServiceProvider:search', arguments);
 
     if (this.abortController) {
@@ -364,8 +365,14 @@ class MapServiceProvider extends ProviderBase {
 
     this.abortController = new AbortController();
 
-    this.query.where = this.getSearchClause(searchString);
-    const featureSet = await this.queryTask.execute(this.query, { signal: this.abortController.signal });
+    const query = this.query.clone();
+    query.where = this.getSearchClause(searchString);
+
+    if (maxresults) {
+      query.num = maxresults + 1;
+    }
+
+    const featureSet = await this.queryTask.execute(query, { signal: this.abortController.signal });
 
     return { data: featureSet.features };
   }
@@ -408,12 +415,13 @@ class WebApiProvider extends ProviderBase {
     this.webApi = new WebApi(apiKey);
   }
 
-  async search(searchString) {
+  async search(searchString, maxresults) {
     console.log('sherlock.providers.WebAPI:search', arguments);
 
     return await this.webApi.search(this.searchLayer, this.outFields, {
       predicate: this.getSearchClause(searchString),
-      spatialReference: this.wkid
+      spatialReference: this.wkid,
+      pageSize: (maxresults) ? maxresults + 1 : null
     });
   }
 
