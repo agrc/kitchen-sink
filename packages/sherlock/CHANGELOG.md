@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/agrc-widgets/kitchen-sink/compare/@agrc/sherlock@2.1.1...@agrc/sherlock@2.2.0) (2020-10-05)
+
+
+### Bug Fixes
+
+* **sherlock:** correctly use abort controller ([7cc37ed](https://github.com/agrc-widgets/kitchen-sink/commit/7cc37ed96e7145a23403bbafa7200752c2f028a3))
+* **sherlock:** optimize search queries ([b18bae8](https://github.com/agrc-widgets/kitchen-sink/commit/b18bae832ebf77e825d6eccb7d16ada17ca1be4d))
+
+
+### Features
+
+* **sherlock:** order by search field ([c87abfd](https://github.com/agrc-widgets/kitchen-sink/commit/c87abfdadf309418b450e523790627a1e8e9948c))
+
+
+
+
+
 ## [2.1.1](https://github.com/agrc-widgets/kitchen-sink/compare/@agrc/sherlock@2.1.0...@agrc/sherlock@2.1.1) (2020-10-01)
 
 
