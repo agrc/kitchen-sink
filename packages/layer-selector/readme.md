@@ -1,4 +1,4 @@
-![layer-selector](/layer-selector.gif)
+![layer-selector](layer-selector.gif)
 
 ## Usage
 
