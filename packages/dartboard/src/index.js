@@ -1,4 +1,3 @@
-import FindAddress from './FindAddress';
-import FindMilepost from './FindMilepost';
+import Dartboard from './Dartboard';
 
-export { FindAddress, FindMilepost };
+export default Dartboard;
