@@ -1,5 +1,221 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Storyshots Dartboard Address 1`] = `
+<div
+  className="dartboard"
+>
+  <div
+    className="form-group"
+  >
+    <label
+      className=""
+      htmlFor="input1"
+    >
+      Street Address
+    </label>
+    <input
+      autoComplete="nope"
+      className="form-control"
+      name="input1"
+      onChange={[Function]}
+      onKeyPress={[Function]}
+      type="text"
+      value=""
+    />
+    <small
+      className="dart-board__help-block form-text text-danger"
+    >
+      This field is required
+    </small>
+  </div>
+  <div
+    className="form-group"
+  >
+    <label
+      className=""
+      htmlFor="input2"
+    >
+      Zip or City
+    </label>
+    <input
+      autoComplete="nope"
+      className="form-control"
+      name="input2"
+      onChange={[Function]}
+      onKeyPress={[Function]}
+      type="text"
+      value=""
+    />
+    <small
+      className="dart-board__help-block form-text text-danger"
+    >
+      This field is required
+    </small>
+  </div>
+  <div
+    className="form-group"
+  >
+    <button
+      aria-label={null}
+      className="btn btn-outline-dark"
+      onClick={[Function]}
+      type="button"
+    >
+      Find
+    </button>
+    <small
+      className="dart-board__help-block form-text text-danger"
+    >
+      No match found
+    </small>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Dartboard Inline 1`] = `
+<div
+  className="dartboard form-inline"
+>
+  <div
+    className="form-group"
+  >
+    <label
+      className=""
+      htmlFor="input1"
+    >
+      Street Address
+    </label>
+    <input
+      autoComplete="nope"
+      className="form-control"
+      name="input1"
+      onChange={[Function]}
+      onKeyPress={[Function]}
+      type="text"
+      value=""
+    />
+    <small
+      className="dart-board__help-block form-text text-danger"
+    >
+      This field is required
+    </small>
+  </div>
+  <div
+    className="form-group"
+  >
+    <label
+      className=""
+      htmlFor="input2"
+    >
+      Zip or City
+    </label>
+    <input
+      autoComplete="nope"
+      className="form-control"
+      name="input2"
+      onChange={[Function]}
+      onKeyPress={[Function]}
+      type="text"
+      value=""
+    />
+    <small
+      className="dart-board__help-block form-text text-danger"
+    >
+      This field is required
+    </small>
+  </div>
+  <div
+    className="form-group"
+  >
+    <button
+      aria-label={null}
+      className="btn btn-outline-dark"
+      onClick={[Function]}
+      type="button"
+    >
+      Find
+    </button>
+    <small
+      className="dart-board__help-block form-text text-danger"
+    >
+      No match found
+    </small>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Dartboard Milepost 1`] = `
+<div
+  className="dartboard"
+>
+  <div
+    className="form-group"
+  >
+    <label
+      className=""
+      htmlFor="input1"
+    >
+      Route
+    </label>
+    <input
+      autoComplete="nope"
+      className="form-control"
+      name="input1"
+      onChange={[Function]}
+      onKeyPress={[Function]}
+      type="text"
+      value=""
+    />
+    <small
+      className="dart-board__help-block form-text text-danger"
+    >
+      This field is required
+    </small>
+  </div>
+  <div
+    className="form-group"
+  >
+    <label
+      className=""
+      htmlFor="input2"
+    >
+      Milepost
+    </label>
+    <input
+      autoComplete="nope"
+      className="form-control"
+      name="input2"
+      onChange={[Function]}
+      onKeyPress={[Function]}
+      type="text"
+      value=""
+    />
+    <small
+      className="dart-board__help-block form-text text-danger"
+    >
+      This field is required
+    </small>
+  </div>
+  <div
+    className="form-group"
+  >
+    <button
+      aria-label={null}
+      className="btn btn-outline-dark"
+      onClick={[Function]}
+      type="button"
+    >
+      Find
+    </button>
+    <small
+      className="dart-board__help-block form-text text-danger"
+    >
+      No match found
+    </small>
+  </div>
+</div>
+`;
+
 exports[`Storyshots LayerSelector Basic 1`] = `null`;
 
 exports[`Storyshots LayerSelector Without Expandable Container 1`] = `null`;
@@ -160,4 +376,6 @@ exports[`Storyshots LayerSelector/WithMap Zoom 1`] = `null`;
 
 exports[`Storyshots LayerSelector/WithMap Zoom And Scale 1`] = `null`;
 
-exports[`Storyshots Sherlock/InMap Feature Service 1`] = `null`;
+exports[`Storyshots Sherlock/InMap Address Points 1`] = `null`;
+
+exports[`Storyshots Sherlock/InMap Cities 1`] = `null`;
