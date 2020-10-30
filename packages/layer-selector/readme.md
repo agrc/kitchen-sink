@@ -1,4 +1,4 @@
-# Layer Selector
+# @agrc/layer-selector
 
 ![layer-selector](layer-selector.gif)
 
