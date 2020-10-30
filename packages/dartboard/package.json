@@ -2,10 +2,15 @@
   "name": "@agrc/dart-board",
   "version": "3.0.0",
   "private": false,
+  "license": "MIT",
+  "homepage": "https://github.com/agrc-widgets/kitchen-sink/tree/master/packages/helpers",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/agrc/kitchen-sink.git"
+  },
   "main": "./dist/index.js",
   "files": [
-    "/dist",
-    "/package.json"
+    "/dist"
   ],
   "peerDependencies": {
     "bootstrap": "^4.5.2",

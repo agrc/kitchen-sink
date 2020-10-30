@@ -2,9 +2,14 @@
   "name": "@agrc/helpers",
   "version": "1.2.0",
   "private": false,
+  "license": "MIT",
+  "homepage": "https://github.com/agrc-widgets/kitchen-sink/tree/master/packages/helpers",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/agrc/kitchen-sink.git"
+  },
   "main": "./dist/index.js",
   "files": [
-    "/dist",
-    "/package.json"
+    "/dist"
   ]
 }
