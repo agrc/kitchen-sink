@@ -3,7 +3,7 @@
   "version": "3.0.0",
   "private": false,
   "license": "MIT",
-  "homepage": "https://github.com/agrc-widgets/kitchen-sink/blob/master/packages/dartboard/READMD.md",
+  "homepage": "https://github.com/agrc-widgets/kitchen-sink/blob/master/packages/dartboard",
   "repository": {
     "type": "git",
     "url": "https://github.com/agrc/kitchen-sink.git"
