@@ -1,74 +1,191 @@
-import React, { useState } from 'react';
-import PropTypes from "prop-types";
+import React, { useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import './Dartboard.css';
-import { Button, FormGroup, FormText, Label, Input } from 'reactstrap';
-import classNames from 'classnames';
 import { toQueryString } from './common';
 
 const ADDRESS_TYPE = 'single-address';
 const MILEPOST_TYPE = 'route-milepost';
 
-const Dartboard = ({
-  apiKey,
-  type = ADDRESS_TYPE,
-  wkid = 3857,
-  inline = false,
-  pointSymbol = {
+const defaultProps = {
+  type: ADDRESS_TYPE,
+  address: {
+    acceptScore: 70,
+    suggest: 0,
+    locators: 'all',
+    poBox: false,
+    scoreDifference: false
+  },
+  milepost: {
+    side: 'increasing',
+    fullRoute: false
+  },
+  wkid: 3857,
+  callback: null,
+  format: null,
+  pointSymbol: {
     style: 'diamond',
     color: [255, 0, 0, 0.5]
   },
-  events = {
+  events: {
     success: console.log,
     error: console.error
-  },
-  className
-}) => {
-  const [firstInput, setFirstInput] = useState("");
-  const [secondInput, setSecondInput] = useState("");
+  }
+};
+
+const BootstrapDartboard = (props) => {
+  const { getFirstLabelProps,
+    getSecondLabelProps,
+    getFirstInputProps,
+    getSecondInputProps,
+    getButtonProps,
+    isFirstInputValid,
+    isSecondInputValid,
+    found
+  } = useDartboard(props);
+
+  return (
+    <div className="dartboard">
+      <div className="form-group">
+        <label {...getFirstLabelProps()}></label>
+        <input
+          {...getFirstInputProps()}
+          className="form-control"
+        ></input>
+        {!isFirstInputValid ?
+          <small className="form-text text-danger">This field is required</small>
+          : null}
+      </div>
+      <div className="form-group">
+        <label {...getSecondLabelProps()}></label>
+        <input
+          {...getSecondInputProps()}
+          className="form-control"
+        ></input>
+        {!isSecondInputValid ?
+          <small className="form-text text-danger">This field is required</small>
+          : null}
+      </div>
+      <div className="form-group">
+        <button
+          {...getButtonProps()}
+          className="btn btn-outline-dark"
+        >Find</button>
+        {found === false ?
+          <small className="form-text text-danger">No match found</small>
+          : null
+        }
+      </div>
+    </div>
+  );
+};
+
+const TailwindDartboard = (props) => {
+  const { getFirstLabelProps,
+    getSecondLabelProps,
+    getFirstInputProps,
+    getSecondInputProps,
+    getButtonProps,
+    isFirstInputValid,
+    isSecondInputValid,
+    found
+  } = useDartboard(props);
+
+  return (
+    <div className="dartboard">
+      <div className="group">
+        <label {...getFirstLabelProps()}></label>
+        <input
+          {...getFirstInputProps()}
+          className="mb-2 block mt-1 bg-white rounded border border-gray-400 text-gray-700 focus:outline-none focus:border-indigo-500 w-full text-base px-3 py-2"
+        ></input>
+        {!isFirstInputValid ?
+          <small className="block text-red-600 text-xs -mt-2">A street is required</small>
+          : null}
+      </div>
+      <div className="group">
+        <label {...getSecondLabelProps()}></label>
+        <input
+          {...getSecondInputProps()}
+          className="mb-2 block mt-1 bg-white rounded border border-gray-400 text-gray-700 focus:outline-none focus:border-indigo-500 w-full text-base px-3 py-2"
+        ></input>
+        {!isSecondInputValid ?
+          <small className="block text-red-600 text-xs -mt-2">A city or zip is required</small>
+          : null}
+      </div>
+      <div className="group">
+        <button
+          {...getButtonProps()}
+          className="text-black bg-white border border-gray-800 py-1 px-3 focus:outline-none hover:bg-gray-800 hover:text-white transition duration-200 rounded text-lg mt-4"
+        >Find</button>
+        {(() => {
+          if (found === false) {
+            return <small className="ml-3 text-red-600 text-xs">No match found</small>;
+          } else if (found === true) {
+            return <small className="ml-3 text-lg">✅</small>;
+          } else {
+            return null;
+          }
+        })()}
+      </div>
+    </div>
+  );
+};
+
+const useDartboard = (userProps={}) => {
+  const props = {
+    ...defaultProps,
+    ...userProps
+  };
+
+  const [firstInput, setFirstInput] = useState();
+  const [secondInput, setSecondInput] = useState();
   const [firstIsValid, setFirstIsValid] = useState(true);
   const [secondIsValid, setSecondIsValid] = useState(true);
-  const [found, setFound] = useState(true);
+  const [found, setFound] = useState();
 
   let baseUrl = 'https://api.mapserv.utah.gov/api/v1/geocode';
-  let outputTransform = (result, point) => {
-    return {
-      geometry: point,
-      symbol: pointSymbol,
-      attributes: {
-        address: result.inputAddress
-      },
-      popupTemplate: {
-        title: "{address}"
-      }
-    };
-  };
-
-  if (type !== ADDRESS_TYPE) {
+  if (props.type !== ADDRESS_TYPE) {
     baseUrl += '/milepost';
-
-    outputTransform = (result, point) => {
-      return {
-        geometry: point,
-        symbol: pointSymbol,
-        attributes: {
-          matchRoute: result.matchRoute
-        },
-        popupTemplate: {
-          title: '{matchRoute}'
-        }
-      };
-    };
   }
 
-  const handleKeyPress = (event) => {
-    if (event.key !== 'Enter') {
-      return;
-    }
+  const getFirstLabelProps = labelProps => ({
+    htmlFor: props.type === ADDRESS_TYPE ? 'dartboard_street_input' : 'dartboard_milepost_input',
+    children: props.type === ADDRESS_TYPE ? 'Street address' : 'Route',
+    ...labelProps
+  });
 
-    find();
-  };
+  const getSecondLabelProps = labelProps => ({
+    htmlFor: props.type === ADDRESS_TYPE ? 'dartboard_zone_input' : 'dartboard_route_input',
+    children: props.type === ADDRESS_TYPE ? 'City or Zip code' : 'Milepost',
+    ...labelProps
+  });
 
-  const find = async () => {
+  const getFirstInputProps = (inputProps) => ({
+    onChange: (e) => setFirstInput(e.target.value),
+    name: props.type === ADDRESS_TYPE
+      ? 'dartboard_street_input'
+      : 'dartboard_milepost_input',
+    onKeyPress: handleKeyPress,
+    autoComplete: 'nope',
+    ...inputProps
+  });
+
+  const getSecondInputProps = (inputProps) => ({
+    onChange: (e) => setSecondInput(e.target.value),
+    name: props.type === ADDRESS_TYPE
+      ? 'dartboard_zone_input'
+      : 'dartboard_route_input',
+    onKeyPress: handleKeyPress,
+    autoComplete: 'nope',
+    ...inputProps
+  });
+
+  const getButtonProps = (buttonProps) => ({
+    onClick: find,
+    ...buttonProps
+  });
+
+  const find = useCallback(async () => {
     if (!validate()) {
       return false;
     }
@@ -81,26 +198,44 @@ const Dartboard = ({
         secondInput
       });
     } catch (err) {
-      return events.error(response?.text() || {
-        message: err.message,
-        status: 400
-      });
+      return props.events.error(
+        response?.text() || {
+          message: err.message,
+          status: 400
+        }
+      );
     }
 
     const location = await extractResponse(response);
 
     if (location) {
-      return events.success(location);
+      return props.events.success(location);
     }
-  };
+  }, [firstInput, secondInput, validate, props.events, get, extractResponse]);
 
-  const get = options => {
+  const handleKeyPress = useCallback((event) => {
+    if (event.key !== 'Enter') {
+      return;
+    }
+
+    find();
+  }, [find]);
+
+  const get = useCallback((options) => {
     const url = `${baseUrl}/${options.firstInput}/${options.secondInput}?`;
 
-    const query = {
-      apiKey: apiKey,
-      spatialReference: wkid
+    let query = {
+      apiKey: props.apiKey,
+      spatialReference: props.wkid,
+      format: props.format,
+      callback: props.callback
     };
+
+    if (props.type === ADDRESS_TYPE) {
+      query = { ...props.address, ...query };
+    } else {
+      query = { ...props.milepost, ...query };
+    }
 
     const querystring = toQueryString(query);
 
@@ -108,13 +243,13 @@ const Dartboard = ({
       method: 'GET',
       mode: 'cors'
     });
-  };
+  }, [props.apiKey, props.wkid, props.address, props.milepost, props.type, props.format, props.callback, baseUrl]);
 
-  const extractResponse = async response => {
+  const extractResponse = useCallback(async (response) => {
     if (!response.ok) {
       setFound(false);
 
-      return events.error(await response.json());
+      return props.events.error(await response.json());
     }
 
     let result = await response.json();
@@ -122,86 +257,102 @@ const Dartboard = ({
     if (result.status !== 200) {
       setFound(false);
 
-      return events.error(response);
+      return props.events.error(response);
     }
 
     result = result.result;
+
+    if (props.format?.toLowerCase() === 'geojson') {
+      return result;
+    }
+
+    setFound(true);
 
     const point = {
       type: 'point',
       x: result.location.x,
       y: result.location.y,
       spatialReference: {
-        wkid: wkid
+        wkid: props.wkid
       }
     };
 
     return outputTransform(result, point);
-  };
+  }, [outputTransform, props.wkid, props.format, props.events]);
 
-  const validate = () => {
-    const firstValidity = firstInput.trim().length > 0;
-    const secondValidity = secondInput.trim().length > 0;
+  const validate = useCallback(() => {
+    const firstValidity = firstInput?.trim().length > 0;
+    const secondValidity = secondInput?.trim().length > 0;
 
     setFirstIsValid(firstValidity);
     setSecondIsValid(secondValidity);
 
     // reset not found message
-    setFound(true);
+    setFound(undefined);
 
     return firstValidity && secondValidity;
+  }, [firstInput, secondInput]);
+
+  const outputTransform = useCallback((result, point) => {
+    let attributes = {
+      address: result.inputAddress
+    };
+    let popupTemplate = {
+      title: '{address}'
+    };
+
+    if (props.type !== ADDRESS_TYPE) {
+      attributes = {
+        matchRoute: result.matchRoute
+      };
+      popupTemplate = {
+        title: '{matchRoute}'
+      };
+    }
+
+    return {
+      geometry: point,
+      symbol: props.pointSymbol,
+      attributes,
+      popupTemplate
+    };
+  }, [props.pointSymbol, props.type]);
+
+  return {
+    getFirstLabelProps,
+    getSecondLabelProps,
+    getFirstInputProps,
+    getSecondInputProps,
+    getButtonProps,
+    isFirstInputValid: firstIsValid,
+    isSecondInputValid: secondIsValid,
+    found
   };
-
-  const classes = classNames(
-    className,
-    'dartboard',
-    inline ? 'form-inline' : false
-  );
-
-  return (
-    <div className={classes}>
-      <FormGroup>
-        <Label for="input1">{(type === ADDRESS_TYPE) ? 'Street Address' : 'Route'}</Label>
-        <Input
-          type="text"
-          value={firstInput}
-          onChange={e => setFirstInput(e.target.value)}
-          onKeyPress={handleKeyPress}
-          autoComplete="nope"
-          name="input1"
-        />
-        <FormText color="danger" className={firstIsValid ? 'dart-board__help-block' : ''}>This field is required</FormText>
-      </FormGroup>
-      <FormGroup>
-        <Label for="input2">{(type === ADDRESS_TYPE) ? 'Zip or City' : 'Milepost'}</Label>
-        <Input
-          type="text"
-          value={secondInput}
-          onChange={e => setSecondInput(e.target.value)}
-          onKeyPress={handleKeyPress}
-          autoComplete="nope"
-          name="input2"
-        />
-        <FormText color="danger" className={secondIsValid ? 'dart-board__help-block' : ''}>This field is required</FormText>
-      </FormGroup>
-      <FormGroup>
-        <Button outline color="dark" onClick={find}>Find</Button>
-        <FormText color="danger" className={found ? 'dart-board__help-block' : ''}>No match found</FormText>
-      </FormGroup>
-    </div>
-  );
 };
 
-Dartboard.propTypes = {
+BootstrapDartboard.propTypes = TailwindDartboard.propTypes = {
   apiKey: PropTypes.string.isRequired,
   type: PropTypes.oneOf([ADDRESS_TYPE, MILEPOST_TYPE]),
+  pointSymbol: PropTypes.object,
   events: PropTypes.exact({
     success: PropTypes.func.isRequired,
     error: PropTypes.func.isRequired
   }),
   wkid: PropTypes.number,
-  inline: PropTypes.bool,
-  pointSymbol: PropTypes.object
+  address: PropTypes.shape({
+    acceptScore: PropTypes.number,
+    suggest: PropTypes.number,
+    locators: PropTypes.oneOf([null, 'all', 'addressPoints', 'roadCenterlines']),
+    poBox: PropTypes.bool,
+    scoreDifference: PropTypes.bool
+  }),
+  milepost: PropTypes.shape({
+    side: PropTypes.oneOf([null, 'increasing', 'decreasing']),
+    fullRoute: PropTypes.bool
+  }),
+  format: PropTypes.oneOf([null, 'esrijson', 'geojson']),
+  callback: PropTypes.string
 };
 
-export default Dartboard;
+export default BootstrapDartboard;
+export { useDartboard, BootstrapDartboard, TailwindDartboard };
