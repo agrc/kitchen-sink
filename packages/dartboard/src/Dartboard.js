@@ -85,6 +85,8 @@ const TailwindDartboard = (props) => {
     getFirstInputProps,
     getSecondInputProps,
     getButtonProps,
+    getFirstHelpProps,
+    getSecondHelpProps,
     isFirstInputValid,
     isSecondInputValid,
     found
@@ -99,7 +101,8 @@ const TailwindDartboard = (props) => {
           className="mb-2 block mt-1 bg-white rounded border border-gray-400 text-gray-700 focus:outline-none focus:border-indigo-500 w-full text-base px-3 py-2"
         ></input>
         {!isFirstInputValid ?
-          <small className="block text-red-600 text-xs -mt-2">A street is required</small>
+          <small {...getFirstHelpProps()}
+            className="block text-red-600 text-xs -mt-2"></small>
           : null}
       </div>
       <div className="group">
@@ -109,7 +112,8 @@ const TailwindDartboard = (props) => {
           className="mb-2 block mt-1 bg-white rounded border border-gray-400 text-gray-700 focus:outline-none focus:border-indigo-500 w-full text-base px-3 py-2"
         ></input>
         {!isSecondInputValid ?
-          <small className="block text-red-600 text-xs -mt-2">A city or zip is required</small>
+          <small {...getSecondHelpProps()}
+            className="block text-red-600 text-xs -mt-2"></small>
           : null}
       </div>
       <div className="group">
@@ -177,6 +181,16 @@ const useDartboard = (userProps={}) => {
       : 'dartboard_route_input',
     onKeyPress: handleKeyPress,
     autoComplete: 'nope',
+    ...inputProps
+  });
+
+  const getFirstHelpProps = (inputProps) => ({
+    children: props.type === ADDRESS_TYPE ? 'A street address is required' : 'A highway route number is required',
+    ...inputProps
+  });
+
+  const getSecondHelpProps = (inputProps) => ({
+    children: props.type === ADDRESS_TYPE ? 'A city or zip code is required' : 'A milepost number is required',
     ...inputProps
   });
 
@@ -324,6 +338,8 @@ const useDartboard = (userProps={}) => {
     getFirstInputProps,
     getSecondInputProps,
     getButtonProps,
+    getFirstHelpProps,
+    getSecondHelpProps,
     isFirstInputValid: firstIsValid,
     isSecondInputValid: secondIsValid,
     found
