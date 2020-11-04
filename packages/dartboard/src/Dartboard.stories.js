@@ -1,5 +1,6 @@
 import React from 'react';
 import Dartboard from './Dartboard';
+import { TailwindDartboard } from './Dartboard';
 
 export default {
   title: 'Dartboard',
@@ -9,14 +10,18 @@ export default {
   }
 };
 
-export const Address = (args) => (
-  <Dartboard apiKey='AGRC-Dev' events={{...args}} />
+export const DefaultAddress = (args) => (
+  <Dartboard apiKey="AGRC-Dev" events={{ ...args }}/>
 );
 
-export const Milepost = (args) => (
-  <Dartboard apiKey="AGRC-Dev" events={{...args}} type = "route-milepost" />
+export const DefaultMilepost = (args) => (
+  <Dartboard apiKey="AGRC-Dev" events={{...args}} type="route-milepost" />
 );
 
-export const Inline = (args) => (
-  <Dartboard apiKey='AGRC-Dev' events={{...args}} inline={true} />
+export const MilepostWithArguments = (args) => (
+  <Dartboard milepost={{ side: "decreasing" }} wkid={26912} format="geojson" apiKey="AGRC-Dev" events={{...args}} type="route-milepost" />
+);
+
+export const AddressWithTailwind = (args) => (
+  <TailwindDartboard apiKey="AGRC-Dev" events={{ ...args }} />
 );
