@@ -32,6 +32,14 @@ const defaultProps = {
   }
 };
 
+const sanitize = (attributes={}) => {
+  const dartboardCustomProps = ['beforeClick', 'beforeKeyUp'];
+
+  return Object.keys(attributes)
+    .filter(key => dartboardCustomProps.indexOf(key) === -1)
+    .reduce((res, key) => (res[key] = attributes[key], res), {});
+};
+
 const BootstrapDartboard = (props) => {
   const { getFirstLabelProps,
     getSecondLabelProps,
@@ -67,7 +75,9 @@ const BootstrapDartboard = (props) => {
       </div>
       <div className="form-group">
         <button
-          {...getButtonProps()}
+          {...getButtonProps({
+            beforeClick: () => false
+          })}
           className="btn btn-outline-dark"
         >Find</button>
         {found === false ?
@@ -169,9 +179,9 @@ const useDartboard = (userProps={}) => {
     name: props.type === ADDRESS_TYPE
       ? 'dartboard_street_input'
       : 'dartboard_milepost_input',
-    onKeyPress: handleKeyPress,
-    autoComplete: 'nope',
-    ...inputProps
+    onKeyUp: (e) => inputProps?.beforeKeyUp(e) && handleKeyUp(e),
+    autoComplete: 'new-password',
+    ...sanitize(inputProps)
   });
 
   const getSecondInputProps = (inputProps) => ({
@@ -179,9 +189,9 @@ const useDartboard = (userProps={}) => {
     name: props.type === ADDRESS_TYPE
       ? 'dartboard_zone_input'
       : 'dartboard_route_input',
-    onKeyPress: handleKeyPress,
-    autoComplete: 'nope',
-    ...inputProps
+    onKeyUp: (e) => inputProps?.beforeKeyUp(e) && handleKeyUp(e),
+    autoComplete: 'new-password',
+    ...sanitize(inputProps)
   });
 
   const getFirstHelpProps = (inputProps) => ({
@@ -195,8 +205,8 @@ const useDartboard = (userProps={}) => {
   });
 
   const getButtonProps = (buttonProps) => ({
-    onClick: find,
-    ...buttonProps
+    onClick: (e) => buttonProps?.beforeClick(e) && find(e),
+    ...sanitize(buttonProps)
   });
 
   const find = useCallback(async () => {
@@ -227,7 +237,7 @@ const useDartboard = (userProps={}) => {
     }
   }, [firstInput, secondInput, validate, props.events, get, extractResponse]);
 
-  const handleKeyPress = useCallback((event) => {
+  const handleKeyUp = useCallback((event) => {
     if (event.key !== 'Enter') {
       return;
     }
@@ -333,6 +343,7 @@ const useDartboard = (userProps={}) => {
   }, [props.pointSymbol, props.type]);
 
   return {
+    // prop getters
     getFirstLabelProps,
     getSecondLabelProps,
     getFirstInputProps,
@@ -340,9 +351,16 @@ const useDartboard = (userProps={}) => {
     getButtonProps,
     getFirstHelpProps,
     getSecondHelpProps,
-    isFirstInputValid: firstIsValid,
+    // actions
+    setFirstIsValid,
+    setSecondIsValid,
+    setFound,
+    // state
     isSecondInputValid: secondIsValid,
-    found
+    isFirstInputValid: firstIsValid,
+    found,
+    firstInput,
+    secondInput
   };
 };
 
