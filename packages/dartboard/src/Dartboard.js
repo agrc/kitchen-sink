@@ -302,7 +302,7 @@ const useDartboard = (userProps={}) => {
     setSecondIsValid(secondValidity);
 
     // reset not found message
-    setFound(undefined);
+    setFound(null);
 
     return firstValidity && secondValidity;
   }, [firstInput, secondInput]);
