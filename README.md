@@ -12,6 +12,7 @@ Please use [conventional commits](https://www.conventionalcommits.org) with the 
 - `layer-selector`
 - `sherlock`
 - `helpers`
+- `dart-board`
 
 ### `npm run build`
 
