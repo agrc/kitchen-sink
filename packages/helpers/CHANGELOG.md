@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.2](https://github.com/agrc/kitchen-sink/compare/@agrc/helpers@1.2.0...@agrc/helpers@1.2.2) (2020-11-05)
+
+
+### Bug Fixes
+
+* standardize package.json's and readme's ([2896c50](https://github.com/agrc/kitchen-sink/commit/2896c5074f397c43945d08d5d66435cc43a1f78a))
+
+
+
+
+
 ## [1.2.1](https://github.com/agrc/kitchen-sink/compare/@agrc/helpers@1.2.0...@agrc/helpers@1.2.1) (2020-11-05)
 
 
