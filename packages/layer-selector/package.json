@@ -1,6 +1,6 @@
 {
   "name": "@agrc/layer-selector",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "private": false,
   "license": "MIT",
   "homepage": "https://github.com/agrc-widgets/kitchen-sink/tree/master/packages/layer-selector",
