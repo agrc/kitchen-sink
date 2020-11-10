@@ -1,4 +1,5 @@
 import WebAPI from './WebAPI';
+import { useMapReady } from './ready';
+import { toQueryString } from './url';
 
-
-export { WebAPI };
+export { WebAPI, useMapReady, toQueryString };
