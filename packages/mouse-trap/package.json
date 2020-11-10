@@ -2,44 +2,25 @@
   "name": "@agrc/mouse-trap",
   "version": "1.0.0",
   "description": "Widget to display cursor coordinates while hovering over a map",
-  "scripts": {
-    "test": "grunt travis --verbose"
-  },
+  "license": "MIT",
+  "homepage": "https://github.com/agrc-widgets/kitchen-sink/tree/master/packages/mouse-trap",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/agrc-widgets/mouse-trap.git"
+    "url": "https://github.com/agrc/kitchen-sink.git"
+  },
+  "main": "./dist/index.js",
+  "files": [
+    "/dist"
+  ],
+  "peerDependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   },
   "keywords": [
     "agrc",
     "widgets",
     "esri",
-    "javascript",
+    "coordinates",
     "projection"
-  ],
-  "dojoBuild": "mouse-trap.profile.js",
-  "author": "AGRC treehouse",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/agrc-widgets/mouse-trap/issues"
-  },
-  "homepage": "https://github.com/agrc-widgets/mouse-trap#readme",
-  "dependencies": {
-    "arcgis-js-api": "^4.7.x"
-  },
-  "devDependencies": {
-    "babel-plugin-transform-remove-strict-mode": "^0.0.2",
-    "babel-preset-env": "^1.7.0",
-    "eslint-config-agrc": "^1.1.0",
-    "eslint-plugin-html": "4.0.3",
-    "grunt": "1.0.3",
-    "grunt-babel": "^6.0.0",
-    "grunt-bump": "^0.8.0",
-    "grunt-contrib-connect": "^1.0.2",
-    "grunt-contrib-jasmine": "2.0.1",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-eslint": "20.1.0",
-    "jasmine": "3.1.0",
-    "jasmine-favicon-reporter": "1.0.0",
-    "load-grunt-tasks": "4.0.0"
-  }
+  ]
 }
