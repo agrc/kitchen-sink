@@ -26,5 +26,14 @@
     "lodash.escaperegexp": "^4.1.2",
     "lodash.uniqwith": "^4.5.0",
     "reactstrap": "^8.6.0"
-  }
+  },
+  "keywords": [
+    "agrc",
+    "component",
+    "esri",
+    "react",
+    "searching",
+    "type-ahead",
+    "spatial"
+  ]
 }

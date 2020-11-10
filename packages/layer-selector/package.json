@@ -19,5 +19,13 @@
   },
   "dependencies": {
     "classnames": "^2.2.6"
-  }
+  },
+  "keywords": [
+    "agrc",
+    "component",
+    "esri",
+    "react",
+    "basemap",
+    "spatial"
+  ]
 }

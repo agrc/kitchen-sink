@@ -19,5 +19,13 @@
   },
   "dependencies": {
     "reactstrap": "^8.6.0"
-  }
+  },
+  "keywords": [
+    "agrc",
+    "component",
+    "esri",
+    "react",
+    "geocoding",
+    "spatial"
+  ]
 }
