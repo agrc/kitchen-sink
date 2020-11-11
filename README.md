@@ -13,6 +13,7 @@ Please use [conventional commits](https://www.conventionalcommits.org) with the 
 - `sherlock`
 - `helpers`
 - `dart-board`
+- `mousetrap`
 
 ### `npm run build`
 
