@@ -8,15 +8,9 @@ import debounce from "lodash.debounce";
 import sortBy from 'lodash.sortby';
 import uniqWith from 'lodash.uniqwith';
 import Downshift from 'downshift';
-import isEqual from "react-fast-compare";
+import isEqual from 'react-fast-compare';
+import { toQueryString } from '@agrc/helpers';
 
-
-const toQueryString = (obj) => {
-  return Object.keys(obj)
-    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]))
-    .join('&')
-    .replace(/%20/g, '+');
-};
 
 class Sherlock extends Component {
   static defaultProps = {
