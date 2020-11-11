@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import debounce from 'lodash.throttle';
+import throttle from 'lodash.throttle';
 import { project, isSupported, load } from '@arcgis/core/geometry/projection';
 
 const projectPoint = (viewPoint, options = { projectToWkid: 4326, decimals: 3 }) => {
