@@ -18,6 +18,7 @@
     "react-dom": "^16.12.0"
   },
   "dependencies": {
+    "@agrc/helpers": "^1.2.2",
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
@@ -26,6 +27,9 @@
     "lodash.escaperegexp": "^4.1.2",
     "lodash.uniqwith": "^4.5.0",
     "reactstrap": "^8.6.0"
+  },
+  "publishConfig": {
+    "directory": "dist"
   },
   "keywords": [
     "agrc",
