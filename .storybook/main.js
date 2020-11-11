@@ -1,4 +1,5 @@
 const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   stories: ['../packages/**/*.stories.js'],
@@ -14,6 +15,16 @@ module.exports = {
       use: ['style-loader', 'css-loader', 'sass-loader'],
       include: path.resolve(__dirname, '../')
     });
+
+    config.plugins.push(new CopyPlugin({
+      patterns: [
+        {
+          context: 'node_modules',
+          from: `@arcgis/core/assets`,
+          to: 'assets'
+        }
+      ]
+    }));
 
     return config;
   }
