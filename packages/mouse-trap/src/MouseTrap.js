@@ -34,7 +34,7 @@ const MouseTrap = ({render, mapView, options = defaultOptions}) => {
     let handle = null;
 
     load().then(() => {
-      handle = mapView.on('pointer-move', debounce((evt) => setLocation(projectPoint(mapView.toMap(evt), options)),
+      handle = mapView.on('pointer-move', throttle((evt) => setLocation(projectPoint(mapView.toMap(evt), options)),
         options.wait));
     });
 
