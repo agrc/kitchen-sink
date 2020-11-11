@@ -1,3 +1,3 @@
-import MouseTrap from './MouseTrap';
+import useMouseTrap from './MouseTrap';
 
-export default MouseTrap;
+export default useMouseTrap;
