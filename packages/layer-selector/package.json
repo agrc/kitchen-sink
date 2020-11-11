@@ -20,6 +20,9 @@
   "dependencies": {
     "classnames": "^2.2.6"
   },
+  "publishConfig": {
+    "directory": "dist"
+  },
   "keywords": [
     "agrc",
     "component",
