@@ -76,7 +76,7 @@ const BootstrapDartboard = (props) => {
       <div className="form-group">
         <button
           {...getButtonProps({
-            beforeClick: () => false
+            beforeClick: () => true
           })}
           className="btn btn-outline-dark"
         >Find</button>
