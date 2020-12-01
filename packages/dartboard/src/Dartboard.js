@@ -32,7 +32,7 @@ const defaultProps = {
   }
 };
 
-const sanitize = (attributes={}) => {
+const sanitize = (attributes = {}) => {
   const dartboardCustomProps = ['beforeClick', 'beforeKeyUp'];
 
   return Object.keys(attributes)
@@ -75,9 +75,7 @@ const BootstrapDartboard = (props) => {
       </div>
       <div className="form-group">
         <button
-          {...getButtonProps({
-            beforeClick: () => true
-          })}
+          {...getButtonProps()}
           className="btn btn-outline-dark"
         >Find</button>
         {found === false ?
@@ -179,7 +177,10 @@ const useDartboard = (userProps={}) => {
     name: props.type === ADDRESS_TYPE
       ? 'dartboard_street_input'
       : 'dartboard_milepost_input',
-    onKeyUp: (e) => inputProps?.beforeKeyUp(e) && handleKeyUp(e),
+    onKeyUp: (e) => {
+      inputProps?.beforeKeyUp(e);
+      handleKeyUp(e);
+    },
     autoComplete: 'new-password',
     ...sanitize(inputProps)
   });
@@ -189,7 +190,10 @@ const useDartboard = (userProps={}) => {
     name: props.type === ADDRESS_TYPE
       ? 'dartboard_zone_input'
       : 'dartboard_route_input',
-    onKeyUp: (e) => inputProps?.beforeKeyUp(e) && handleKeyUp(e),
+    onKeyUp: (e) => {
+      inputProps?.beforeKeyUp(e);
+      handleKeyUp(e);
+    },
     autoComplete: 'new-password',
     ...sanitize(inputProps)
   });
@@ -205,7 +209,10 @@ const useDartboard = (userProps={}) => {
   });
 
   const getButtonProps = (buttonProps) => ({
-    onClick: (e) => buttonProps?.beforeClick(e) && find(e),
+    onClick: (e) => {
+      buttonProps?.beforeClick(e);
+      find(e);
+    },
     ...sanitize(buttonProps)
   });
 
@@ -305,8 +312,8 @@ const useDartboard = (userProps={}) => {
   }, [outputTransform, props.wkid, props.format, props.events]);
 
   const validate = useCallback(() => {
-    const firstValidity = firstInput?.trim().length > 0;
-    const secondValidity = secondInput?.trim().length > 0;
+    const firstValidity = firstInput?.trim()?.length > 0;
+    const secondValidity = secondInput?.trim()?.length > 0;
 
     setFirstIsValid(firstValidity);
     setSecondIsValid(secondValidity);
