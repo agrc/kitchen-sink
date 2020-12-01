@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.3](https://github.com/agrc/kitchen-sink/compare/@agrc/sherlock@2.2.2...@agrc/sherlock@2.2.3) (2020-12-01)
+
+**Note:** Version bump only for package @agrc/sherlock
+
+
+
+
+
 ## [2.2.2](https://github.com/agrc/kitchen-sink/compare/@agrc/sherlock@2.2.0...@agrc/sherlock@2.2.2) (2020-11-05)
 
 

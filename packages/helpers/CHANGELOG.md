@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/agrc/kitchen-sink/compare/@agrc/helpers@1.2.2...@agrc/helpers@1.3.0) (2020-12-01)
+
+
+### Features
+
+* **helpers:** add mapview ready and toquerystring ([a616049](https://github.com/agrc/kitchen-sink/commit/a616049f1120ec4adc81d63a89bed04729d3edb1))
+
+
+
+
+
 ## [1.2.2](https://github.com/agrc/kitchen-sink/compare/@agrc/helpers@1.2.0...@agrc/helpers@1.2.2) (2020-11-05)
 
 

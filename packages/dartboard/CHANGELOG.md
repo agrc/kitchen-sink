@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.1](https://github.com/agrc/kitchen-sink/compare/@agrc/dart-board@3.2.0...@agrc/dart-board@3.2.1) (2020-12-01)
+
+
+### Bug Fixes
+
+* **dartboard:** return true from default beforeclick ([e019b7a](https://github.com/agrc/kitchen-sink/commit/e019b7a18439cc47b4d759684dd8b00668ea20a6))
+
+
+
+
+
 # 3.2.0 (2020-11-05)
 
 
