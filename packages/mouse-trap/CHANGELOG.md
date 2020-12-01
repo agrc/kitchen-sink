@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/agrc/kitchen-sink/compare/@agrc/mouse-trap@1.1.0...@agrc/mouse-trap@1.1.1) (2020-12-01)
+
+
+### Bug Fixes
+
+* **mouse-trap:** set as public package ([52ed0f9](https://github.com/agrc/kitchen-sink/commit/52ed0f911d56f17ba1a3d7b63e53e6a907b4be8b))
+
+
+
+
+
 # 1.1.0 (2020-12-01)
 
 

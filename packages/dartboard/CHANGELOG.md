@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.2](https://github.com/agrc/kitchen-sink/compare/@agrc/dart-board@3.2.1...@agrc/dart-board@3.2.2) (2020-12-01)
+
+
+### Bug Fixes
+
+* **dart-board:** modify event handlers and validation null check ([a5b019a](https://github.com/agrc/kitchen-sink/commit/a5b019ae54cdc787b975de7974dab60dbd981926))
+
+
+
+
+
 ## [3.2.1](https://github.com/agrc/kitchen-sink/compare/@agrc/dart-board@3.2.0...@agrc/dart-board@3.2.1) (2020-12-01)
 
 
