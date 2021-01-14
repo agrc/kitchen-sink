@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { toQueryString } from '@agrc/helpers';
+import classNames from 'clsx';
 import './Dartboard.css';
 
 const ADDRESS_TYPE = 'single-address';
@@ -52,7 +53,7 @@ const BootstrapDartboard = (props) => {
   } = useDartboard(props);
 
   return (
-    <div className="dartboard">
+    <div className={classNames('dartboard', props.className)}>
       <div className="form-group">
         <label {...getFirstLabelProps()}></label>
         <input
@@ -101,7 +102,7 @@ const TailwindDartboard = (props) => {
   } = useDartboard(props);
 
   return (
-    <div className="dartboard">
+    <div className={classNames('dartboard', props.className)}>
       <div className="group">
         <label {...getFirstLabelProps()}></label>
         <input
