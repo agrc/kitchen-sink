@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import classNames from 'classnames';
+import classNames from 'clsx';
 import PropTypes from 'prop-types';
 import { createDefaultTileInfo } from './TileInfo';
 import { setTileInfosForApplianceLayers } from './Discover';
@@ -200,7 +200,7 @@ const LayerSelector = (props) => {
 
       setManagedLayers(managedLayersDraft);
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [layers]);
 
   useEffect(() => {
@@ -252,7 +252,7 @@ const LayerSelector = (props) => {
       }
     };
 
-    const {LOD, TileInfo, Basemap, WebTileLayer} = props.modules;
+    const { LOD, TileInfo, Basemap, WebTileLayer } = props.modules;
 
     props.view.map.basemap = new Basemap();
 
@@ -312,7 +312,7 @@ const LayerSelector = (props) => {
 
     props.view.ui.add(selectorNode.current, props.position);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.modules]);
 
   const onItemChanged = (event, props) => {
