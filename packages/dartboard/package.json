@@ -13,13 +13,14 @@
     "/dist"
   ],
   "peerDependencies": {
-    "bootstrap": "^4.5.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "bootstrap": "^4.5.3",
+    "react": "^16.8.0 || ^17.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0"
   },
   "dependencies": {
     "@agrc/helpers": "^1.3.0",
-    "reactstrap": "^8.6.0"
+    "clsx": "^1.1.1",
+    "reactstrap": "^8.8.1"
   },
   "publishConfig": {
     "directory": "dist"
