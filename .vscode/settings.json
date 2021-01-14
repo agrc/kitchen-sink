@@ -1,17 +1,28 @@
 {
   "cSpell.words": [
+    "Centerlines",
     "SGID",
     "TSQL",
+    "Topo",
     "agrc",
+    "arcgis",
     "baselayer",
     "basemap",
+    "clsx",
     "copyfiles",
+    "escaperegexp",
+    "esrijson",
     "fontawesome",
     "fortawesome",
     "hasmore",
+    "haspopup",
+    "lods",
     "maxresults",
     "storyshots",
     "toomany",
+    "uniqwith",
+    "webm",
+    "webp",
     "wkid"
   ]
 }
