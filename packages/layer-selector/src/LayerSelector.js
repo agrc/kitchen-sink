@@ -135,16 +135,22 @@ const LayerSelector = (props) => {
   useEffect(() => {
     console.log('LayerSelector:updateMap');
 
-    const managedLayersDraft = {...managedLayers};
+    const managedLayersDraft = { ...managedLayers };
     const layerItems = layers.baseLayers.concat(layers.overlays);
 
     layerItems.forEach(layerItem => {
       let layerList = null;
       switch (layerItem.layerType) {
         case 'baselayer':
-          if (props.view.map.basemap && props.view.map.basemap.baseLayers) {
-            layerList = props.view.map.basemap.baseLayers;
+          if (!props.view.map.basemap?.baseLayers) {
+            props.view.map.basemap = {
+              baseLayers: [],
+              id: 'layer-selector',
+              title: 'layer-selector'
+            };
           }
+
+          layerList = props.view.map.basemap.baseLayers;
           break;
         case 'overlay':
           layerList = props.view.map.layers;
