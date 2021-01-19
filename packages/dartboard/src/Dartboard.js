@@ -182,7 +182,7 @@ const useDartboard = (userProps={}) => {
       inputProps?.beforeKeyUp(e);
       handleKeyUp(e);
     },
-    autoComplete: 'new-password',
+    autoComplete: 'off',
     ...sanitize(inputProps)
   });
 
@@ -195,7 +195,7 @@ const useDartboard = (userProps={}) => {
       inputProps?.beforeKeyUp(e);
       handleKeyUp(e);
     },
-    autoComplete: 'new-password',
+    autoComplete: 'off',
     ...sanitize(inputProps)
   });
 
