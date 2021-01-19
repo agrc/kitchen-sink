@@ -13,7 +13,7 @@
     },
     "version": {
       "allowBranch": [
-        "master"
+        "main"
       ],
       "signGitCommit": true,
       "signGitTag": true

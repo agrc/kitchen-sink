@@ -4,7 +4,7 @@
   "private": false,
   "description": "Widget to display cursor coordinates while hovering over a map",
   "license": "MIT",
-  "homepage": "https://github.com/agrc-widgets/kitchen-sink/tree/master/packages/mouse-trap",
+  "homepage": "https://github.com/agrc/kitchen-sink/tree/main/packages/mouse-trap",
   "repository": {
     "type": "git",
     "url": "https://github.com/agrc/kitchen-sink.git"
