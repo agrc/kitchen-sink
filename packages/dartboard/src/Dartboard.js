@@ -214,6 +214,7 @@ const useDartboard = (userProps={}) => {
       buttonProps?.beforeClick(e);
       find(e);
     },
+    type: 'button',
     ...sanitize(buttonProps)
   });
 
