@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.4](https://github.com/agrc/kitchen-sink/compare/@agrc/layer-selector@4.0.3...@agrc/layer-selector@4.0.4) (2021-01-20)
+
+
+### Bug Fixes
+
+* **layer-selector:** always set empty basemap object ([3080819](https://github.com/agrc/kitchen-sink/commit/3080819e62b822260903adebc61497e68ad2383f))
+
+
+
+
+
 ## [4.0.3](https://github.com/agrc/kitchen-sink/compare/@agrc/layer-selector@4.0.2...@agrc/layer-selector@4.0.3) (2020-12-01)
 
 **Note:** Version bump only for package @agrc/layer-selector

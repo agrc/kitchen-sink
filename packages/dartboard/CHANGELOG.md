@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://github.com/agrc/kitchen-sink/compare/@agrc/dart-board@3.2.2...@agrc/dart-board@3.3.0) (2021-01-20)
+
+
+### Bug Fixes
+
+* **dart-boad:** use off instead of new-password ([24d665c](https://github.com/agrc/kitchen-sink/commit/24d665c4845dac77d16ff5a1c1ee4f144ca79ba7))
+* **dart-board:** add type button to find button ([51deac7](https://github.com/agrc/kitchen-sink/commit/51deac74b4238f13516d34e3c2aefd9aee1d3218))
+
+
+### Features
+
+* **dart-board:** merge external css ([2af1f33](https://github.com/agrc/kitchen-sink/commit/2af1f335487bd3de4fa178d6d4c1bca82adc0cc2))
+
+
+
+
+
 ## [3.2.2](https://github.com/agrc/kitchen-sink/compare/@agrc/dart-board@3.2.1...@agrc/dart-board@3.2.2) (2020-12-01)
 
 
