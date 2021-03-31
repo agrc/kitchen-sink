@@ -282,6 +282,13 @@ class LocatorSuggestProvider extends (ProviderBase) {
         wkid: this.outSRID
       }
     };
+    // used to zoom to result
+    candidate.attributes.extent = {
+      ...candidate.extent,
+      spatialReference: {
+        wkid: this.outSRID
+      }
+    };
 
     return { data: [candidate] };
   }
