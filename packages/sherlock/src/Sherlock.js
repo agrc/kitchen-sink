@@ -130,7 +130,7 @@ class Sherlock extends Component {
                           }
 
                           if (error) {
-                            return <li className="sherlock__match-item alert-danger" disabled>Error! ${error}</li>;
+                            return <li className="sherlock__match-item alert-danger" disabled>{error}</li>;
                           }
 
                           if (!data.length) {
@@ -219,6 +219,8 @@ class Clue extends Component {
       });
 
       console.error(e);
+
+      return;
     }
 
     const iteratee = [`attributes.${searchField}`];

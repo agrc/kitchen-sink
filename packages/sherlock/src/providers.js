@@ -258,15 +258,23 @@ class LocatorSuggestProvider extends (ProviderBase) {
   async search(searchString, maxresults) {
     const suggestUrl = `${this.url}/suggest?text=${searchString}&maxSuggestions=${maxresults}`;
 
-    const response = await fetch(suggestUrl);
-    const responseJson = await response.json();
-    const features = responseJson.suggestions.map(suggestion => {
-      return {
-        attributes: suggestion
-      };
-    });
+    let response;
+    try {
+      response = await fetch(suggestUrl);
+      const responseJson = await response.json();
+      const features = responseJson.suggestions.map(suggestion => {
+        return {
+          attributes: suggestion
+        };
+      });
 
-    return { data: features };
+      return { ok: true, data: features };
+    } catch {
+      const message = 'error with suggest request';
+      console.error(message , response);
+
+      throw new Error(message);
+    }
   }
 
   async getFeature(magicKey) {
@@ -290,7 +298,7 @@ class LocatorSuggestProvider extends (ProviderBase) {
       }
     };
 
-    return { data: [candidate] };
+    return { ok: true, data: [candidate] };
   }
 }
 
