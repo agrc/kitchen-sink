@@ -253,7 +253,7 @@ class Clue extends Component {
       short: clue.length <= 2,
       hasmore: hasMore
     });
-  });
+  }, 100);
 
   async fetchData() {
     console.log('Clue:fetchData', arguments);
