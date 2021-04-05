@@ -56,11 +56,9 @@ class Sherlock extends Component {
       contextValue = feature.attributes[provider.contextField];
     }
 
-    const response = await provider.getFeature(searchValue, contextValue);
+    const results = await provider.getFeature(searchValue, contextValue);
 
     const { Graphic } = this.props.modules;
-
-    const results = response.data;
 
     const graphics = results.map(feature =>
       (new Graphic({
@@ -201,9 +199,9 @@ class Clue extends Component {
     const { clue, provider, maxresults } = this.props;
     const { searchField, contextField } = provider;
 
-    let response;
+    let data;
     try {
-      response = await provider.search(clue, maxresults);
+      data = await provider.search(clue, maxresults);
     } catch (e) {
       if (e.name === 'AbortError') {
         // ignore cancelled requests
@@ -230,7 +228,7 @@ class Clue extends Component {
       hasContext = true;
     }
 
-    let features = uniqWith(response.data, (a, b) => {
+    let features = uniqWith(data, (a, b) => {
       if (hasContext) {
         return a.attributes[searchField] === b.attributes[searchField] &&
           a.attributes[contextField] === b.attributes[contextField];
