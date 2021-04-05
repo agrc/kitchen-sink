@@ -82,7 +82,7 @@ class MapServiceProvider extends ProviderBase {
 
     const featureSet = await this.queryTask.execute(query, { signal: this.abortController.signal });
 
-    return { data: featureSet.features };
+    return featureSet.features;
   }
 
   async getFeature(searchValue, contextValue) {
@@ -92,7 +92,7 @@ class MapServiceProvider extends ProviderBase {
     this.query.returnGeometry = true;
     const featureSet = await this.queryTask.execute(this.query);
 
-    return { data: featureSet.features };
+    return featureSet.features;
   }
 }
 
@@ -223,25 +223,16 @@ class WebApi {
     const response = await fetch(url + querystring, { signal: this.abortController.signal });
 
     if (!response.ok) {
-      return {
-        ok: false,
-        message: response.message || response.statusText
-      };
+      throw Error(response.message || response.statusText);
     }
 
     const result = await response.json();
 
     if (result.status !== 200) {
-      return {
-        ok: false,
-        message: result.message
-      };
+      throw Error(result.message);
     }
 
-    return {
-      ok: true,
-      data: result.result
-    };
+    return result.result;
   }
 }
 
@@ -268,7 +259,7 @@ class LocatorSuggestProvider extends (ProviderBase) {
         };
       });
 
-      return { ok: true, data: features };
+      return features;
     } catch {
       const message = 'error with suggest request';
       console.error(message , response);
@@ -298,7 +289,7 @@ class LocatorSuggestProvider extends (ProviderBase) {
       }
     };
 
-    return { ok: true, data: [candidate] };
+    return [candidate];
   }
 }
 
