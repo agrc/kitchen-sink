@@ -34,15 +34,10 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "lerna": "^3.22.1",
-    "react": "*",
-    "react-dom": "^17.0.2",
     "react-test-renderer": "^17.0.1",
     "regenerator-runtime": "^0.13.7",
     "sass": "^1.32.4",
     "sass-loader": "^10.1.1"
-  },
-  "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0"
   },
   "eslintConfig": {
     "extends": "@agrc",
