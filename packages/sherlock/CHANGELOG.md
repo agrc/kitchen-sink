@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/agrc/kitchen-sink/compare/@agrc/sherlock@2.2.4...@agrc/sherlock@2.3.0) (2021-04-07)
+
+
+### Bug Fixes
+
+* **sherlock:** handle masquerade errors ([66ac012](https://github.com/agrc/kitchen-sink/commit/66ac0128407772bbffb2d76f293ea486a6b35930))
+* **sherlock:** standardize provider api ([0cd671d](https://github.com/agrc/kitchen-sink/commit/0cd671d6565b5ae56a7307ab2e5fc0934221632f))
+* **sherlock:** throttle network requests ([7bec14b](https://github.com/agrc/kitchen-sink/commit/7bec14be7b033a8035be6ebbb3cc5301686ab47c))
+* add missing dependency ([4d56dfe](https://github.com/agrc/kitchen-sink/commit/4d56dfe0c64cc77d8983fc23dc2bbe8c2e5dd359))
+
+
+### Features
+
+* **sherlock:** add extent ([a01e94f](https://github.com/agrc/kitchen-sink/commit/a01e94fcdc62c64fa385e0fd2f984357102fbab9))
+* add LocatorSuggestProvider to sherlock ([0bd35a7](https://github.com/agrc/kitchen-sink/commit/0bd35a7ac9a06a580482f1e18a63da53cdeac820))
+
+
+
+
+
 ## [2.2.4](https://github.com/agrc/kitchen-sink/compare/@agrc/sherlock@2.2.3...@agrc/sherlock@2.2.4) (2021-01-20)
 
 **Note:** Version bump only for package @agrc/sherlock

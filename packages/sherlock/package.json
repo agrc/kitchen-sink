@@ -1,6 +1,6 @@
 {
   "name": "@agrc/sherlock",
-  "version": "2.2.4",
+  "version": "2.3.0",
   "private": false,
   "license": "MIT",
   "homepage": "https://github.com/agrc/kitchen-sink/tree/main/packages/sherlock",

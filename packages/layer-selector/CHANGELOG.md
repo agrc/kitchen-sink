@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.5](https://github.com/agrc/kitchen-sink/compare/@agrc/layer-selector@4.0.4...@agrc/layer-selector@4.0.5) (2021-04-07)
+
+**Note:** Version bump only for package @agrc/layer-selector
+
+
+
+
+
 ## [4.0.4](https://github.com/agrc/kitchen-sink/compare/@agrc/layer-selector@4.0.3...@agrc/layer-selector@4.0.4) (2021-01-20)
 
 
