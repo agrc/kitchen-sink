@@ -1,0 +1,30 @@
+{
+  "name": "@ugrc/utilities",
+  "version": "1.3.1",
+  "private": false,
+  "license": "MIT",
+  "homepage": "https://github.com/agrc/kitchen-sink/tree/main/packages/utilities",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agrc/kitchen-sink.git"
+  },
+  "main": "./dist/index.js",
+  "files": [
+    "/dist"
+  ],
+  "publishConfig": {
+    "directory": "dist"
+  },
+  "description": "Shared helpers for [UGRC React Components](https://github.com/agrc/kitchen-sink).",
+  "bugs": {
+    "url": "https://github.com/agrc/kitchen-sink/issues"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm test"
+  },
+  "keywords": [
+    "utilities"
+  ],
+  "author": "ugrc developers"
+}

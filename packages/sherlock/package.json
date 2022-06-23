@@ -1,12 +1,12 @@
 {
-  "name": "@agrc/sherlock",
+  "name": "@ugrc/sherlock",
   "version": "2.3.0",
   "private": false,
   "license": "MIT",
   "homepage": "https://github.com/agrc/kitchen-sink/tree/main/packages/sherlock",
   "repository": {
     "type": "git",
-    "url": "https://github.com/agrc/kitchen-sink.git"
+    "url": "git+https://github.com/agrc/kitchen-sink.git"
   },
   "main": "./dist/index.js",
   "files": [
@@ -40,5 +40,14 @@
     "searching",
     "type-ahead",
     "spatial"
-  ]
+  ],
+  "description": "A React component for searching for data and zooming to it on the map.",
+  "bugs": {
+    "url": "https://github.com/agrc/kitchen-sink/issues"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "ugrc developers"
 }

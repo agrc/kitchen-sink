@@ -1,12 +1,12 @@
 {
-  "name": "@agrc/layer-selector",
+  "name": "@ugrc/layer-selector",
   "version": "4.0.5",
   "private": false,
   "license": "MIT",
   "homepage": "https://github.com/agrc/kitchen-sink/tree/main/packages/layer-selector",
   "repository": {
     "type": "git",
-    "url": "https://github.com/agrc/kitchen-sink.git"
+    "url": "git+https://github.com/agrc/kitchen-sink.git"
   },
   "main": "./dist/LayerSelector.js",
   "files": [
@@ -30,5 +30,14 @@
     "react",
     "basemap",
     "spatial"
-  ]
+  ],
+  "description": "![layer-selector](layer-selector.gif)",
+  "bugs": {
+    "url": "https://github.com/agrc/kitchen-sink/issues"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "ugrc developers"
 }
