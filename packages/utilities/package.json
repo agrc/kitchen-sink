@@ -24,20 +24,23 @@
       "require": "./dist/utilities.umd.js"
     }
   },
-  "main": "./dist/utilities.js",
-  "module": "./dist/utilities.es.js",
+  "main": "./dist/index.es.js",
+  "module": "./dist/index.es.js",
   "files": [
     "/dist"
   ],
   "scripts": {
     "build": "vite build --config ../../vite.config.js",
-    "test": "npm test"
-  },
-  "publishConfig": {
-    "directory": "dist"
+    "test": "vitest --config ../../vite.config.js"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
+  },
+  "publishConfig": {
+    "directory": "dist"
+  },
+  "dependencies": {
+    "@arcgis/core": "^4.0.0"
   }
 }

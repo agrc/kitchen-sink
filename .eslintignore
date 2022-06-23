@@ -1,0 +1,6 @@
+__mocks__
+__snapshots__
+node_modules
+dist
+package-lock.json
+.vscode

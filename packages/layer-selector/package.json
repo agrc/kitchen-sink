@@ -27,9 +27,10 @@
     "layer-selector.gif"
   ],
   "scripts": {
-    "test": "npm test"
+    "test": "vitest --config ../../vite.config.js"
   },
   "dependencies": {
+    "@arcgis/core": "^4.0.0",
     "clsx": "^1.1.1"
   },
   "peerDependencies": {

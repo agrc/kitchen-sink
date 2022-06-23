@@ -1,10 +1,13 @@
-import React from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Sherlock, MapServiceProvider } from './index';
-import { ModulesHelper } from '../../../test-helpers/storyHelpers';
+import Map from '@arcgis/core/Map';
+import MapView from '@arcgis/core/views/MapView';
+import '@arcgis/core/assets/esri/themes/light/main.css';
+import * as watchUtils from '@arcgis/core/core/watchUtils';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default {
   title: 'Sherlock/InMap',
-  decorators: [ModulesHelper],
 };
 
 const CITIES_URL =
@@ -15,17 +18,17 @@ const ADDRESS_POINTS_URL =
 const ADDRESS_FIELD = 'FullAdd';
 const CITY_FIELD = 'City';
 
-const FeatureService = ({ modules, url, searchField, contextField }) => {
-  const mapDiv = React.useRef();
-  const mapView = React.useRef();
-  const [sherlockMatches, setSherlockMatches] = React.useState();
-  const [config, setConfig] = React.useState();
+const FeatureService = ({ url, searchField, contextField }) => {
+  const mapDiv = useRef();
+  const mapView = useRef();
+  const [sherlockMatches, setSherlockMatches] = useState();
+  const [config, setConfig] = useState();
 
-  React.useEffect(() => {
+  useEffect(() => {
     console.log('init sherlock');
 
-    const map = new modules.Map({ basemap: 'streets-night-vector' });
-    const view = new modules.MapView({
+    const map = new Map({ basemap: 'streets-night-vector' });
+    const view = new MapView({
       container: mapDiv.current,
       map,
       center: [-71.0589, 42.3601],
@@ -33,20 +36,19 @@ const FeatureService = ({ modules, url, searchField, contextField }) => {
     });
 
     setConfig({
-      provider: new MapServiceProvider(url, searchField, modules, {
+      provider: new MapServiceProvider(url, searchField, {
         contextField,
       }),
       placeHolder: `search by ${searchField}...`,
       onSherlockMatch: (matches) => setSherlockMatches(matches),
-      modules,
       position: 'top-right',
       mapView: view,
     });
 
     mapView.current = view;
-  }, [modules, url, searchField, contextField]);
+  }, [url, searchField, contextField]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const giddyUp = async () => {
       if (sherlockMatches) {
         await mapView.current.goTo({
@@ -55,7 +57,6 @@ const FeatureService = ({ modules, url, searchField, contextField }) => {
 
         mapView.current.graphics.addMany(sherlockMatches);
 
-        const { watchUtils } = modules;
         watchUtils.once(mapView.current, 'extent', () => {
           mapView.current.graphics.removeAll();
         });
@@ -63,7 +64,7 @@ const FeatureService = ({ modules, url, searchField, contextField }) => {
     };
 
     giddyUp();
-  }, [sherlockMatches, modules]);
+  }, [sherlockMatches]);
 
   return (
     <div
@@ -75,12 +76,11 @@ const FeatureService = ({ modules, url, searchField, contextField }) => {
   );
 };
 
-export const cities = (modules) => (
-  <FeatureService modules={modules} url={CITIES_URL} searchField={NAME_FIELD} />
+export const cities = () => (
+  <FeatureService url={CITIES_URL} searchField={NAME_FIELD} />
 );
-export const addressPoints = (modules) => (
+export const addressPoints = () => (
   <FeatureService
-    modules={modules}
     url={ADDRESS_POINTS_URL}
     searchField={ADDRESS_FIELD}
     contextField={CITY_FIELD}

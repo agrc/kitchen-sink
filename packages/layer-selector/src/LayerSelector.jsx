@@ -1,10 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import classNames from 'clsx';
 import PropTypes from 'prop-types';
 import { createDefaultTileInfo } from './TileInfo';
 import { setTileInfosForApplianceLayers } from './Discover';
 import './LayerSelector.css';
 import icon from './layers.svg';
+import Basemap from '@arcgis/core/Basemap';
+import LOD from '@arcgis/core/layers/support/LOD';
+import TileInfo from '@arcgis/core/layers/support/TileInfo';
+import WebTileLayer from '@arcgis/core/layers/WebTileLayer';
 
 const ExpandableContainer = (props) => {
   const [expanded, setExpanded] = useState(props.expanded);
@@ -18,6 +22,8 @@ const ExpandableContainer = (props) => {
   return (
     <div
       className="layer-selector"
+      // onFocus={() => setExpanded(true)}
+      // onBlur={() => setExpanded(false)}
       onMouseOver={() => setExpanded(true)}
       onMouseOut={() => setExpanded(false)}
       area-haspopup="true"
@@ -26,6 +32,11 @@ const ExpandableContainer = (props) => {
       <form className={fromClasses}>{props.children}</form>
     </div>
   );
+};
+
+ExpandableContainer.propTypes = {
+  children: PropTypes.object,
+  expanded: PropTypes.bool,
 };
 
 const LayerSelectorItem = (props) => {
@@ -159,8 +170,6 @@ const LayerSelector = (props) => {
   const selectorNode = useRef();
 
   useEffect(() => {
-    console.log('LayerSelector:updateMap');
-
     const managedLayersDraft = { ...managedLayers };
     const layerItems = layers.baseLayers.concat(layers.overlays);
 
@@ -207,9 +216,6 @@ const LayerSelector = (props) => {
       }
 
       if (!managedLayersDraft[layerItem.id].layer) {
-        if (typeof layerItem.Factory === 'string') {
-          layerItem.Factory = props.modules[layerItem.Factory];
-        }
         managedLayersDraft[layerItem.id].layer = new layerItem.Factory(
           layerItem
         );
@@ -262,24 +268,24 @@ const LayerSelector = (props) => {
       },
       Topo: {
         urlPattern: `https://discover.agrc.utah.gov/login/path/${props.quadWord}/tiles/topo_basemap/{level}/{col}/{row}`,
-        copyright: 'AGRC',
+        copyright: 'UGRC',
       },
       Terrain: {
         urlPattern: `https://discover.agrc.utah.gov/login/path/${props.quadWord}/tiles/terrain_basemap/{level}/{col}/{row}`,
-        copyright: 'AGRC',
+        copyright: 'UGRC',
       },
       Lite: {
         urlPattern: `https://discover.agrc.utah.gov/login/path/${props.quadWord}/tiles/lite_basemap/{level}/{col}/{row}`,
-        copyright: 'AGRC',
+        copyright: 'UGRC',
       },
       'Color IR': {
         urlPattern: `https://discover.agrc.utah.gov/login/path/${props.quadWord}/tiles/naip_2018_nrg/{level}/{col}/{row}`,
-        copyright: 'AGRC',
+        copyright: 'UGRC',
       },
       Hybrid: {
         urlPattern: `https://discover.agrc.utah.gov/login/path/${props.quadWord}/tiles/utah/{level}/{col}/{row}`,
         linked: ['Overlay'],
-        copyright: 'Hexagon, AGRC',
+        copyright: 'Hexagon, UGRC',
         hasAttributionData: true,
         attributionDataUrl: imageryAttributionJsonUrl,
       },
@@ -291,8 +297,6 @@ const LayerSelector = (props) => {
         urlPattern: `https://discover.agrc.utah.gov/login/path/${props.quadWord}/tiles/address_points_basemap/{level}/{col}/{row}`,
       },
     };
-
-    const { LOD, TileInfo, Basemap, WebTileLayer } = props.modules;
 
     props.view.map.basemap = new Basemap();
 
@@ -341,7 +345,11 @@ const LayerSelector = (props) => {
     }
 
     // insert overlay to first spot because hybrid
-    if (hasHybrid) {
+    if (
+      hasHybrid &&
+      overlays[0] !== 'Overlay' &&
+      overlays[0]?.id !== 'Overlay'
+    ) {
       overlays.splice(0, 0, 'Overlay');
     }
 
@@ -451,7 +459,6 @@ const LayerSelector = (props) => {
 LayerSelector.propTypes = {
   view: PropTypes.object.isRequired,
   quadWord: PropTypes.string,
-  modules: PropTypes.object.isRequired,
   baseLayers: PropTypes.arrayOf(
     PropTypes.oneOfType([
       PropTypes.oneOf([
@@ -513,6 +520,8 @@ LayerSelector.propTypes = {
     'top-trailing',
   ]),
   makeExpandable: PropTypes.bool,
+  layerType: PropTypes.string,
+  id: PropTypes.string,
 };
 
 LayerSelector.defaultProps = {

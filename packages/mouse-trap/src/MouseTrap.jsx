@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import throttle from 'lodash.throttle';
-import { project, isSupported, load } from '@arcgis/core/geometry/projection';
+import { project, load } from '@arcgis/core/geometry/projection';
 
 const projectPoint = (
   viewPoint,
@@ -36,11 +36,6 @@ const MouseTrap = ({ render, mapView, options = defaultOptions }) => {
       return;
     }
 
-    if (!isSupported()) {
-      console.error('app/mouse-trap::Geometry projection is not supported.');
-
-      return;
-    }
     let handle = null;
 
     load().then(() => {

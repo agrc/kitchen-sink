@@ -1,10 +1,8 @@
-import React from 'react';
-import LayerSelector from './LayerSelector';
-import { ModulesHelper } from '../../../test-helpers/storyHelpers';
+import LayerSelector from './LayerSelector.jsx';
 
 export default {
   title: 'LayerSelector',
-  decorators: [ModulesHelper],
+  module: LayerSelector,
 };
 const mapViewMock = {
   map: {},
@@ -14,19 +12,17 @@ const mapViewMock = {
   },
 };
 
-export const basic = (modules) => (
+export const basic = () => (
   <LayerSelector
     baseLayers={['Lite', 'Terrain', 'Topo', 'Color IR']}
-    modules={modules}
     view={mapViewMock}
     quadWord="my-fake-quad-word"
   ></LayerSelector>
 );
 
-export const withoutExpandableContainer = (modules) => (
+export const withoutExpandableContainer = () => (
   <LayerSelector
     baseLayers={['Lite', 'Terrain', 'Topo', 'Color IR']}
-    modules={modules}
     view={mapViewMock}
     quadWord="my-fake-quad-word"
     makeExpandable={false}

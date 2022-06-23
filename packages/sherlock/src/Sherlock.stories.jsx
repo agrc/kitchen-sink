@@ -1,23 +1,20 @@
-import * as React from 'react';
+import { useState } from 'react';
 import { Sherlock, LocatorSuggestProvider } from './index';
-import { ModulesHelper } from '../../../test-helpers/storyHelpers';
 
 export default {
   title: 'Sherlock',
-  decorators: [ModulesHelper],
 };
 
-const Wrapper = ({ modules }) => {
+const Wrapper = () => {
   const url =
-    'https://masquerade-kkktr623oa-uc.a.run.app/arcgis/rest/services/UtahLocator/GeocodeServer';
-  const [matches, setMatches] = React.useState();
+    'https://masquerade.ugrc.utah.gov/arcgis/rest/services/UtahLocator/GeocodeServer';
+  const [matches, setMatches] = useState();
 
   return (
     <>
       <Sherlock
         provider={new LocatorSuggestProvider(url, 3857)}
         onSherlockMatch={(matches) => setMatches(matches)}
-        modules={modules}
       />
       <pre>{JSON.stringify(matches, null, '  ')}</pre>
     </>

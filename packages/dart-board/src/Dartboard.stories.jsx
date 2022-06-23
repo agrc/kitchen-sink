@@ -1,9 +1,8 @@
-import React from 'react';
-import Dartboard from './Dartboard';
-import { TailwindDartboard, useDartboard } from './Dartboard';
+import Dartboard, { TailwindDartboard, useDartboard } from './Dartboard.jsx';
 
 export default {
   title: 'Dartboard',
+  component: Dartboard,
   argTypes: {
     success: { action: 'ok' },
     error: { action: 'fail' },
@@ -11,11 +10,11 @@ export default {
 };
 
 export const DefaultAddress = (args) => (
-  <Dartboard apiKey="AGRC-Dev" events={{ ...args }} />
+  <Dartboard apiKey="storybook" events={{ ...args }} />
 );
 
 export const DefaultMilepost = (args) => (
-  <Dartboard apiKey="AGRC-Dev" events={{ ...args }} type="route-milepost" />
+  <Dartboard apiKey="storybook" events={{ ...args }} type="route-milepost" />
 );
 
 export const MilepostWithArguments = (args) => (
@@ -23,14 +22,14 @@ export const MilepostWithArguments = (args) => (
     milepost={{ side: 'decreasing' }}
     wkid={26912}
     format="geojson"
-    apiKey="AGRC-Dev"
+    apiKey="storybook"
     events={{ ...args }}
     type="route-milepost"
   />
 );
 
 export const AddressWithTailwind = (args) => (
-  <TailwindDartboard apiKey="AGRC-Dev" events={{ ...args }} />
+  <TailwindDartboard apiKey="storybook" events={{ ...args }} />
 );
 
 export const HookWithEvents = (args) => {
@@ -138,5 +137,7 @@ export const HookWithEvents = (args) => {
     );
   };
 
-  return <DartboardHook apiKey="agrc-dev" events={{ ...args }}></DartboardHook>;
+  return (
+    <DartboardHook apiKey="storybook" events={{ ...args }}></DartboardHook>
+  );
 };

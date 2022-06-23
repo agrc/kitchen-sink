@@ -1,35 +1,15 @@
-const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
-
 module.exports = {
-  stories: ['../packages/**/*.stories.js'],
+  stories: ['../packages/*/src/*.stories.@(js|jsx)'],
   addons: [
-    {
-      name: '@storybook/addon-essentials',
-      options: {
-        backgrounds: false,
-      },
-    },
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
   ],
-  webpackFinal: async (config) => {
-    config.module.rules.push({
-      test: /\.scss$/,
-      use: ['style-loader', 'css-loader', 'sass-loader'],
-      include: path.resolve(__dirname, '../'),
-    });
-
-    config.plugins.push(
-      new CopyPlugin({
-        patterns: [
-          {
-            context: 'node_modules',
-            from: `@arcgis/core/assets`,
-            to: 'assets',
-          },
-        ],
-      })
-    );
-
-    return config;
+  framework: '@storybook/react',
+  core: {
+    builder: '@storybook/builder-vite',
+  },
+  features: {
+    storyStoreV7: true,
   },
 };

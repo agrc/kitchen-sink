@@ -1,8 +1,8 @@
-import React from 'react';
-import { LayerSelectorItem } from './LayerSelector';
+import { LayerSelectorItem } from './LayerSelector.jsx';
 
 export default {
   title: 'LayerSelector/Item',
+  component: LayerSelectorItem,
 };
 
 export const defaultBaseLayer = () => (

@@ -1,8 +1,8 @@
-import React from 'react';
-import { ExpandableContainer } from './LayerSelector';
+import { ExpandableContainer } from './LayerSelector.jsx';
 
 export default {
   title: 'LayerSelector/Container',
+  component: ExpandableContainer,
 };
 
 export const closed = () => (

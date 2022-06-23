@@ -1,12 +1,13 @@
-import React, { useRef, useEffect, useState } from 'react';
-import MouseTrap from './MouseTrap';
+import { useRef, useEffect, useState } from 'react';
+import MouseTrap from './MouseTrap.jsx';
 import EsriMap from '@arcgis/core/Map';
 import MapView from '@arcgis/core/views/MapView';
-import { useMapReady } from '@agrc/helpers';
+import { useMapReady } from '@ugrc/utilities';
 import '@arcgis/core/assets/esri/themes/light/main.css';
 
 export default {
   title: 'MouseTrap',
+  component: MouseTrap,
 };
 
 const WithMap = () => {
