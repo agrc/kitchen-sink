@@ -4,7 +4,7 @@ import { ModulesHelper } from '../../../test-helpers/storyHelpers';
 
 export default {
   title: 'Sherlock',
-  decorators: [ModulesHelper]
+  decorators: [ModulesHelper],
 };
 
 const Wrapper = ({ modules }) => {

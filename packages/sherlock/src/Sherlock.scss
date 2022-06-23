@@ -1,9 +1,10 @@
-$highlightColor: #42738D;
+$highlightColor: #42738d;
 $width: 260px;
 
 .sherlock {
   width: $width;
-  input[type="text"], button.disabled {
+  input[type='text'],
+  button.disabled {
     border-radius: 0;
   }
   button.disabled {

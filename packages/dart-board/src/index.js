@@ -1,3 +1,3 @@
-import Dartboard from './Dartboard';
+import Dartboard from './Dartboard.jsx';
 
 export default Dartboard;

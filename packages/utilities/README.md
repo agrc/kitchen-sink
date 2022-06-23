@@ -1,3 +1,3 @@
-# @agrc/helpers
+# @ugrc/utilities
 
-Shared helpers for [AGRC React Components](https://github.com/agrc/kitchen-sink).
+Shared utilities for [UGRC React Components](https://github.com/agrc/kitchen-sink).

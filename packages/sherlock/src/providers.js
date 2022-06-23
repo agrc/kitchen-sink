@@ -56,7 +56,11 @@ class MapServiceProvider extends ProviderBase {
     const { Query, QueryTask } = this.modules;
     const defaultWkid = 3857;
     this.query = new Query();
-    this.query.outFields = this.getOutFields(options.outFields, this.searchField, options.contextField);
+    this.query.outFields = this.getOutFields(
+      options.outFields,
+      this.searchField,
+      options.contextField
+    );
     this.query.returnGeometry = false;
     this.query.outSpatialReference = { wkid: options.wkid || defaultWkid };
     this.query.orderByFields = [this.searchField];
@@ -80,7 +84,9 @@ class MapServiceProvider extends ProviderBase {
       query.num = maxresults + 1;
     }
 
-    const featureSet = await this.queryTask.execute(query, { signal: this.abortController.signal });
+    const featureSet = await this.queryTask.execute(query, {
+      signal: this.abortController.signal,
+    });
 
     return featureSet.features;
   }
@@ -105,7 +111,7 @@ class WebApiProvider extends ProviderBase {
     this.geometryClasses = {
       point: console.log,
       polygon: console.log,
-      polyline: console.log
+      polyline: console.log,
     };
 
     this.searchLayer = searchLayer;
@@ -114,12 +120,20 @@ class WebApiProvider extends ProviderBase {
     if (options) {
       this.wkid = options.wkid || defaultWkid;
       this.contextField = options.contextField;
-      this.outFields = this.getOutFields(options.outFields, this.searchField, this.contextField);
+      this.outFields = this.getOutFields(
+        options.outFields,
+        this.searchField,
+        this.contextField
+      );
     } else {
       this.wkid = defaultWkid;
     }
 
-    this.outFields = this.getOutFields(null, this.searchField, this.contextField);
+    this.outFields = this.getOutFields(
+      null,
+      this.searchField,
+      this.contextField
+    );
     this.webApi = new WebApi(apiKey);
   }
 
@@ -129,17 +143,21 @@ class WebApiProvider extends ProviderBase {
     return await this.webApi.search(this.searchLayer, this.outFields, {
       predicate: this.getSearchClause(searchString),
       spatialReference: this.wkid,
-      pageSize: (maxresults) ? maxresults + 1 : null
+      pageSize: maxresults ? maxresults + 1 : null,
     });
   }
 
   async getFeature(searchValue, contextValue) {
     console.log('sherlock.providers.WebAPI:getFeature', arguments);
 
-    return await this.webApi.search(this.searchLayer, this.outFields.concat('shape@'), {
-      predicate: this.getFeatureClause(searchValue, contextValue),
-      spatialReference: this.wkid
-    });
+    return await this.webApi.search(
+      this.searchLayer,
+      this.outFields.concat('shape@'),
+      {
+        predicate: this.getFeatureClause(searchValue, contextValue),
+        spatialReference: this.wkid,
+      }
+    );
   }
 }
 
@@ -153,7 +171,6 @@ class WebApi {
     // xhrProvider: dojo/request/* provider
     //      The current provider as determined by the search function
     this.xhrProvider = null;
-
 
     // Properties to be sent into constructor
 
@@ -201,7 +218,9 @@ class WebApi {
     // returns: Promise
     console.log('WebApi:search', arguments);
 
-    var url = `${this.baseUrl}search/${featureClass}/${encodeURIComponent(returnValues.join(','))}?`;
+    var url = `${this.baseUrl}search/${featureClass}/${encodeURIComponent(
+      returnValues.join(',')
+    )}?`;
 
     if (!options) {
       options = {};
@@ -220,7 +239,9 @@ class WebApi {
 
     this.abortController = new AbortController();
 
-    const response = await fetch(url + querystring, { signal: this.abortController.signal });
+    const response = await fetch(url + querystring, {
+      signal: this.abortController.signal,
+    });
 
     if (!response.ok) {
       throw Error(response.message || response.statusText);
@@ -236,9 +257,9 @@ class WebApi {
   }
 }
 
-class LocatorSuggestProvider extends (ProviderBase) {
-  searchField = 'text'
-  idField = 'magicKey'
+class LocatorSuggestProvider extends ProviderBase {
+  searchField = 'text';
+  idField = 'magicKey';
 
   constructor(url, outSRID) {
     super();
@@ -253,16 +274,16 @@ class LocatorSuggestProvider extends (ProviderBase) {
     try {
       response = await fetch(suggestUrl);
       const responseJson = await response.json();
-      const features = responseJson.suggestions.map(suggestion => {
+      const features = responseJson.suggestions.map((suggestion) => {
         return {
-          attributes: suggestion
+          attributes: suggestion,
         };
       });
 
       return features;
     } catch {
       const message = 'error with suggest request';
-      console.error(message , response);
+      console.error(message, response);
 
       throw new Error(message);
     }
@@ -278,15 +299,15 @@ class LocatorSuggestProvider extends (ProviderBase) {
       ...candidate.location,
       type: 'point',
       spatialReference: {
-        wkid: this.outSRID
-      }
+        wkid: this.outSRID,
+      },
     };
     // used to zoom to result
     candidate.attributes.extent = {
       ...candidate.extent,
       spatialReference: {
-        wkid: this.outSRID
-      }
+        wkid: this.outSRID,
+      },
     };
 
     return [candidate];

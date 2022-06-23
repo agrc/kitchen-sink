@@ -27,13 +27,11 @@ export default {};
 //         //      The current provider as determined by the search function
 //         xhrProvider: null,
 
-
 //         // Properties to be sent into constructor
 
 //         // apiKey: String
 //         //      web api key (http://developer.mapserv.utah.gov/AccountAccess)
 //         apiKey: null,
-
 
 //         constructor: function (params) {
 //             // summary:

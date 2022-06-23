@@ -6,20 +6,27 @@ export default {
   title: 'Dartboard',
   argTypes: {
     success: { action: 'ok' },
-    error: { action: 'fail' }
-  }
+    error: { action: 'fail' },
+  },
 };
 
 export const DefaultAddress = (args) => (
-  <Dartboard apiKey="AGRC-Dev" events={{ ...args }}/>
+  <Dartboard apiKey="AGRC-Dev" events={{ ...args }} />
 );
 
 export const DefaultMilepost = (args) => (
-  <Dartboard apiKey="AGRC-Dev" events={{...args}} type="route-milepost" />
+  <Dartboard apiKey="AGRC-Dev" events={{ ...args }} type="route-milepost" />
 );
 
 export const MilepostWithArguments = (args) => (
-  <Dartboard milepost={{ side: "decreasing" }} wkid={26912} format="geojson" apiKey="AGRC-Dev" events={{...args}} type="route-milepost" />
+  <Dartboard
+    milepost={{ side: 'decreasing' }}
+    wkid={26912}
+    format="geojson"
+    apiKey="AGRC-Dev"
+    events={{ ...args }}
+    type="route-milepost"
+  />
 );
 
 export const AddressWithTailwind = (args) => (
@@ -28,7 +35,8 @@ export const AddressWithTailwind = (args) => (
 
 export const HookWithEvents = (args) => {
   const DartboardHook = (props) => {
-    const { getFirstLabelProps,
+    const {
+      getFirstLabelProps,
       getSecondLabelProps,
       getFirstInputProps,
       getSecondInputProps,
@@ -41,7 +49,7 @@ export const HookWithEvents = (args) => {
       isSecondInputValid,
       found,
       firstInput,
-      secondInput
+      secondInput,
     } = useDartboard(props);
 
     const validateStreet = (e, input) => {
@@ -75,38 +83,50 @@ export const HookWithEvents = (args) => {
           <label {...getFirstLabelProps()}></label>
           <input
             {...getFirstInputProps({
-              beforeKeyUp: (e) => validateStreet(e, firstInput)
+              beforeKeyUp: (e) => validateStreet(e, firstInput),
             })}
             className="mb-2 block mt-1 bg-white rounded border border-gray-400 text-gray-700 focus:outline-none focus:border-indigo-500 w-full text-base px-3 py-2"
           ></input>
-          {!isFirstInputValid ?
-            <small {...getFirstHelpProps()}
-              className="block text-red-600 text-xs -mt-2"></small>
-            : null}
+          {!isFirstInputValid ? (
+            <small
+              {...getFirstHelpProps()}
+              className="block text-red-600 text-xs -mt-2"
+            ></small>
+          ) : null}
         </div>
         <div className="group">
           <label {...getSecondLabelProps()}>Zip code</label>
           <input
             {...getSecondInputProps({
-              beforeKeyUp: (e) => validateZip(e, secondInput)
+              beforeKeyUp: (e) => validateZip(e, secondInput),
             })}
             className="mb-2 block mt-1 bg-white rounded border border-gray-400 text-gray-700 focus:outline-none focus:border-indigo-500 w-full text-base px-3 py-2"
           ></input>
-          {!isSecondInputValid ?
-            <small {...getSecondHelpProps()}
-              className="block text-red-600 text-xs -mt-2"></small>
-            : null}
+          {!isSecondInputValid ? (
+            <small
+              {...getSecondHelpProps()}
+              className="block text-red-600 text-xs -mt-2"
+            ></small>
+          ) : null}
         </div>
         <div className="group">
           <button
             {...getButtonProps({
-              beforeClick: () => validateStreet(null, firstInput) && validateZip(null, secondInput)
+              beforeClick: () =>
+                validateStreet(null, firstInput) &&
+                validateZip(null, secondInput),
             })}
             className="text-black bg-white border border-gray-800 py-1 px-3 focus:outline-none hover:bg-gray-800 hover:text-white transition duration-200 rounded text-lg mt-4"
-          >Find</button>
+          >
+            Find
+          </button>
           {(() => {
             if (found === false) {
-              return <small className="ml-3 text-red-600 text-xs">No match found</small>;
+              return (
+                <small className="ml-3 text-red-600 text-xs">
+                  No match found
+                </small>
+              );
             } else if (found === true) {
               return <small className="ml-3 text-lg">✅</small>;
             } else {
@@ -118,5 +138,5 @@ export const HookWithEvents = (args) => {
     );
   };
 
-  return <DartboardHook apiKey='agrc-dev' events={{...args}}></DartboardHook>;
+  return <DartboardHook apiKey="agrc-dev" events={{ ...args }}></DartboardHook>;
 };

@@ -1,6 +1,5 @@
 import { loadModules } from 'esri-loader';
 
-
 export default async () => {
   const requires = [
     'esri/Map',
@@ -14,7 +13,7 @@ export default async () => {
     'esri/tasks/QueryTask',
     'esri/tasks/support/Query',
     'esri/Graphic',
-    'esri/core/watchUtils'
+    'esri/core/watchUtils',
   ];
 
   const [
@@ -29,7 +28,7 @@ export default async () => {
     QueryTask,
     Query,
     Graphic,
-    watchUtils
+    watchUtils,
   ] = await loadModules(requires, { css: true });
 
   return {
@@ -44,6 +43,6 @@ export default async () => {
     QueryTask,
     Query,
     Graphic,
-    watchUtils
+    watchUtils,
   };
 };

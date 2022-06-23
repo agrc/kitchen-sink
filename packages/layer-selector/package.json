@@ -2,42 +2,41 @@
   "name": "@ugrc/layer-selector",
   "version": "4.0.5",
   "private": false,
-  "license": "MIT",
-  "homepage": "https://github.com/agrc/kitchen-sink/tree/main/packages/layer-selector",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/agrc/kitchen-sink.git"
-  },
-  "main": "./dist/LayerSelector.js",
-  "files": [
-    "/dist",
-    "layer-selector.gif"
-  ],
-  "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0"
-  },
-  "dependencies": {
-    "clsx": "^1.1.1"
-  },
-  "publishConfig": {
-    "directory": "dist"
-  },
+  "description": "![layer-selector](layer-selector.gif)",
   "keywords": [
-    "agrc",
+    "ugrc",
     "component",
     "esri",
     "react",
     "basemap",
     "spatial"
   ],
-  "description": "![layer-selector](layer-selector.gif)",
+  "homepage": "https://github.com/agrc/kitchen-sink/tree/main/packages/layer-selector",
   "bugs": {
     "url": "https://github.com/agrc/kitchen-sink/issues"
   },
-  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agrc/kitchen-sink.git"
+  },
+  "license": "MIT",
+  "author": "ugrc developers",
+  "main": "./dist/LayerSelector.js",
+  "files": [
+    "/dist",
+    "layer-selector.gif"
+  ],
   "scripts": {
     "test": "npm test"
   },
-  "author": "ugrc developers"
+  "dependencies": {
+    "clsx": "^1.1.1"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "publishConfig": {
+    "directory": "dist"
+  }
 }

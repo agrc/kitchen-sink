@@ -4,7 +4,7 @@ import { ModulesHelper } from '../../../test-helpers/storyHelpers';
 
 export default {
   title: 'Sherlock/InMap',
-  decorators: [ModulesHelper]
+  decorators: [ModulesHelper],
 };
 
 const CITIES_URL =
@@ -18,8 +18,8 @@ const CITY_FIELD = 'City';
 const FeatureService = ({ modules, url, searchField, contextField }) => {
   const mapDiv = React.useRef();
   const mapView = React.useRef();
-  const [ sherlockMatches, setSherlockMatches ] = React.useState();
-  const [ config, setConfig ] = React.useState();
+  const [sherlockMatches, setSherlockMatches] = React.useState();
+  const [config, setConfig] = React.useState();
 
   React.useEffect(() => {
     console.log('init sherlock');
@@ -29,21 +29,18 @@ const FeatureService = ({ modules, url, searchField, contextField }) => {
       container: mapDiv.current,
       map,
       center: [-71.0589, 42.3601],
-      zoom: 12
+      zoom: 12,
     });
 
     setConfig({
-      provider: new MapServiceProvider(
-        url,
-        searchField,
-        modules,
-        { contextField }
-      ),
+      provider: new MapServiceProvider(url, searchField, modules, {
+        contextField,
+      }),
       placeHolder: `search by ${searchField}...`,
       onSherlockMatch: (matches) => setSherlockMatches(matches),
       modules,
       position: 'top-right',
-      mapView: view
+      mapView: view,
     });
 
     mapView.current = view;
@@ -53,7 +50,7 @@ const FeatureService = ({ modules, url, searchField, contextField }) => {
     const giddyUp = async () => {
       if (sherlockMatches) {
         await mapView.current.goTo({
-          target: sherlockMatches
+          target: sherlockMatches,
         });
 
         mapView.current.graphics.addMany(sherlockMatches);

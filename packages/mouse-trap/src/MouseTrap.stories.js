@@ -6,7 +6,7 @@ import { useMapReady } from '@agrc/helpers';
 import '@arcgis/core/assets/esri/themes/light/main.css';
 
 export default {
-  title: 'MouseTrap'
+  title: 'MouseTrap',
 };
 
 const WithMap = () => {
@@ -16,7 +16,7 @@ const WithMap = () => {
 
   useEffect(() => {
     const esriMap = new EsriMap({
-      basemap: 'topo-vector'
+      basemap: 'topo-vector',
     });
 
     const view = new MapView({
@@ -25,24 +25,29 @@ const WithMap = () => {
       zoom: 4,
       center: [15, 65],
       ui: {
-        components: ['zoom']
-      }
+        components: ['zoom'],
+      },
     });
     setView(view);
   }, []);
 
-  return (<>
-    <div ref={mapDiv} style={{ width: '250px', height: '250px' }}>
-    </div>
-    { ready ?
-      <MouseTrap mapView={view} render={({ x, y }) => {
-        return <>
-          <span>x: {x}</span>
-          <span style={{paddingLeft: '1rem'}}>y: {y}</span>
-        </>;
-      }}></MouseTrap>
-      : null}
-  </>
+  return (
+    <>
+      <div ref={mapDiv} style={{ width: '250px', height: '250px' }}></div>
+      {ready ? (
+        <MouseTrap
+          mapView={view}
+          render={({ x, y }) => {
+            return (
+              <>
+                <span>x: {x}</span>
+                <span style={{ paddingLeft: '1rem' }}>y: {y}</span>
+              </>
+            );
+          }}
+        ></MouseTrap>
+      ) : null}
+    </>
   );
 };
 

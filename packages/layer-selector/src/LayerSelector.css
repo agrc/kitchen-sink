@@ -28,10 +28,10 @@
   margin-top: 0px;
   margin-bottom: 0px;
 }
-.layer-selector-item.radio input[type=checkbox],
-.layer-selector-item.checkbox input[type=checkbox],
-.layer-selector-item.radio input[type=radio],
-.layer-selector-item.checkbox input[type=radio] {
+.layer-selector-item.radio input[type='checkbox'],
+.layer-selector-item.checkbox input[type='checkbox'],
+.layer-selector-item.radio input[type='radio'],
+.layer-selector-item.checkbox input[type='radio'] {
   position: absolute;
   margin-left: -20px;
 }

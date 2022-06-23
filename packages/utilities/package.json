@@ -2,29 +2,42 @@
   "name": "@ugrc/utilities",
   "version": "1.3.1",
   "private": false,
-  "license": "MIT",
+  "description": "Shared helpers for [UGRC React Components](https://github.com/agrc/kitchen-sink).",
+  "keywords": [
+    "ugrc",
+    "utilities"
+  ],
   "homepage": "https://github.com/agrc/kitchen-sink/tree/main/packages/utilities",
+  "bugs": {
+    "url": "https://github.com/agrc/kitchen-sink/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/agrc/kitchen-sink.git"
   },
-  "main": "./dist/index.js",
+  "license": "MIT",
+  "author": "ugrc developers",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/utilities.es.js",
+      "require": "./dist/utilities.umd.js"
+    }
+  },
+  "main": "./dist/utilities.js",
+  "module": "./dist/utilities.es.js",
   "files": [
     "/dist"
   ],
+  "scripts": {
+    "build": "vite build --config ../../vite.config.js",
+    "test": "npm test"
+  },
   "publishConfig": {
     "directory": "dist"
   },
-  "description": "Shared helpers for [UGRC React Components](https://github.com/agrc/kitchen-sink).",
-  "bugs": {
-    "url": "https://github.com/agrc/kitchen-sink/issues"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "npm test"
-  },
-  "keywords": [
-    "utilities"
-  ],
-  "author": "ugrc developers"
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  }
 }

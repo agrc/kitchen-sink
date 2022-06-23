@@ -4,7 +4,7 @@ import { Input, Button, InputGroup, InputGroupAddon } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import escapeRegExp from 'lodash.escaperegexp';
-import debounce from "lodash.debounce";
+import debounce from 'lodash.debounce';
 import sortBy from 'lodash.sortby';
 import uniqWith from 'lodash.uniqwith';
 import Downshift from 'downshift';
@@ -15,27 +15,27 @@ class Sherlock extends Component {
     symbols: {
       polygon: {
         type: 'simple-fill',
-        color: [240, 240, 240, .5],
+        color: [240, 240, 240, 0.5],
         outline: {
           style: 'solid',
-          color: [255, 255, 0, .5],
-          width: 2.5
-        }
+          color: [255, 255, 0, 0.5],
+          width: 2.5,
+        },
       },
       line: {
         type: 'simple-line',
         style: 'solid',
         color: [255, 255, 0],
-        width: 5
+        width: 5,
       },
       point: {
         type: 'simple-marker',
         style: 'circle',
         color: [255, 255, 0, 0.5],
-        size: 10
-      }
+        size: 10,
+      },
     },
-    maxResultsToDisplay: 10
+    maxResultsToDisplay: 10,
   };
 
   itemToString = this.itemToString.bind(this);
@@ -49,7 +49,8 @@ class Sherlock extends Component {
   async handleStateChange(feature) {
     const { provider, symbols, onSherlockMatch } = this.props;
 
-    const searchValue = feature.attributes[provider.idField || provider.searchField];
+    const searchValue =
+      feature.attributes[provider.idField || provider.searchField];
 
     let contextValue;
     if (provider.contextField) {
@@ -60,12 +61,13 @@ class Sherlock extends Component {
 
     const { Graphic } = this.props.modules;
 
-    const graphics = results.map(feature =>
-      (new Graphic({
-        geometry: feature.geometry,
-        attributes: feature.attributes,
-        symbol: symbols[feature.geometry.type]
-      }))
+    const graphics = results.map(
+      (feature) =>
+        new Graphic({
+          geometry: feature.geometry,
+          attributes: feature.attributes,
+          symbol: symbols[feature.geometry.type],
+        })
     );
 
     onSherlockMatch(graphics);
@@ -88,7 +90,7 @@ class Sherlock extends Component {
     console.log('SherlockDownshift:render', arguments);
     const props = {
       itemToString: this.itemToString,
-      onChange: this.handleStateChange
+      onChange: this.handleStateChange,
     };
 
     return (
@@ -100,63 +102,126 @@ class Sherlock extends Component {
             highlightedIndex,
             isOpen,
             inputValue,
-            getMenuProps
+            getMenuProps,
           }) => (
-            <div className='sherlock'>
-              { this.props.label ? <h4>{this.props.label}</h4> : null }
+            <div className="sherlock">
+              {this.props.label ? <h4>{this.props.label}</h4> : null}
               <div>
                 <InputGroup>
-                  <Input {...getInputProps()} placeholder={this.props.placeHolder} autoComplete="off"></Input>
+                  <Input
+                    {...getInputProps()}
+                    placeholder={this.props.placeHolder}
+                    autoComplete="off"
+                  ></Input>
                   <InputGroupAddon addonType="append">
                     <Button size="sm" color="secondary" disabled>
-                      <FontAwesomeIcon icon={faSearch} size="lg"></FontAwesomeIcon>
+                      <FontAwesomeIcon
+                        icon={faSearch}
+                        size="lg"
+                      ></FontAwesomeIcon>
                     </Button>
                   </InputGroupAddon>
                 </InputGroup>
                 <div className="sherlock__match-dropdown" {...getMenuProps()}>
                   <ul className="sherlock__matches">
-                    {!isOpen ?
-                      null :
-                      <Clue clue={inputValue} provider={this.props.provider} maxresults={this.props.maxResultsToDisplay}>
+                    {!isOpen ? null : (
+                      <Clue
+                        clue={inputValue}
+                        provider={this.props.provider}
+                        maxresults={this.props.maxResultsToDisplay}
+                      >
                         {({ short, hasmore, loading, error, data = [] }) => {
                           if (short) {
-                            return <li className="sherlock__match-item alert-primary" disabled>Type more than 2 letters.</li>;
+                            return (
+                              <li
+                                className="sherlock__match-item alert-primary"
+                                disabled
+                              >
+                                Type more than 2 letters.
+                              </li>
+                            );
                           }
 
                           if (loading) {
-                            return <li className="sherlock__match-item alert-primary" disabled>Loading...</li>;
+                            return (
+                              <li
+                                className="sherlock__match-item alert-primary"
+                                disabled
+                              >
+                                Loading...
+                              </li>
+                            );
                           }
 
                           if (error) {
-                            return <li className="sherlock__match-item alert-danger" disabled>{error}</li>;
+                            return (
+                              <li
+                                className="sherlock__match-item alert-danger"
+                                disabled
+                              >
+                                {error}
+                              </li>
+                            );
                           }
 
                           if (!data.length) {
-                            return <li className="sherlock__match-item alert-warning" disabled>No items found.</li>;
+                            return (
+                              <li
+                                className="sherlock__match-item alert-warning"
+                                disabled
+                              >
+                                No items found.
+                              </li>
+                            );
                           }
 
                           let items = data.map((item, index) => (
-                            <li key={index} {...getItemProps({
-                              key: index,
-                              className: 'sherlock__match-item' + (highlightedIndex === index ? ' sherlock__match-item--selected' : ''),
-                              item,
-                              index
-                            })}>
-                              <Highlighted text={item.attributes[this.props.provider.searchField]} highlight={inputValue}></Highlighted>
-                              <div>{item.attributes[this.props.provider.contextField] || ''}</div>
+                            <li
+                              key={index}
+                              {...getItemProps({
+                                key: index,
+                                className:
+                                  'sherlock__match-item' +
+                                  (highlightedIndex === index
+                                    ? ' sherlock__match-item--selected'
+                                    : ''),
+                                item,
+                                index,
+                              })}
+                            >
+                              <Highlighted
+                                text={
+                                  item.attributes[
+                                    this.props.provider.searchField
+                                  ]
+                                }
+                                highlight={inputValue}
+                              ></Highlighted>
+                              <div>
+                                {item.attributes[
+                                  this.props.provider.contextField
+                                ] || ''}
+                              </div>
                             </li>
                           ));
 
                           if (hasmore) {
                             items.push(
-                              <li key="toomany" className="sherlock__match-item alert-primary text-center" disabled>More than {this.props.maxResultsToDisplay} items found.</li>
+                              <li
+                                key="toomany"
+                                className="sherlock__match-item alert-primary text-center"
+                                disabled
+                              >
+                                More than {this.props.maxResultsToDisplay} items
+                                found.
+                              </li>
                             );
                           }
 
                           return items;
                         }}
                       </Clue>
-                    }
+                    )}
                   </ul>
                 </div>
               </div>
@@ -174,7 +239,7 @@ class Clue extends Component {
     loading: false,
     error: false,
     short: true,
-    hasmore: false
+    hasmore: false,
   };
 
   async componentDidMount() {
@@ -213,7 +278,7 @@ class Clue extends Component {
         error: e.message,
         loading: false,
         short: clue.length <= 2,
-        hasmore: false
+        hasmore: false,
       });
 
       console.error(e);
@@ -230,8 +295,10 @@ class Clue extends Component {
 
     let features = uniqWith(data, (a, b) => {
       if (hasContext) {
-        return a.attributes[searchField] === b.attributes[searchField] &&
-          a.attributes[contextField] === b.attributes[contextField];
+        return (
+          a.attributes[searchField] === b.attributes[searchField] &&
+          a.attributes[contextField] === b.attributes[contextField]
+        );
       } else {
         return a.attributes[searchField] === b.attributes[searchField];
       }
@@ -249,7 +316,7 @@ class Clue extends Component {
       loading: false,
       error: false,
       short: clue.length <= 2,
-      hasmore: hasMore
+      hasmore: hasMore,
     });
   }, 100);
 
@@ -260,7 +327,7 @@ class Clue extends Component {
       error: false,
       loading: true,
       short: this.props.clue.length <= 2,
-      hasmore: false
+      hasmore: false,
     });
 
     if (this.props.clue.length > 2) {
@@ -280,7 +347,7 @@ class Clue extends Component {
       loading,
       error,
       hasmore,
-      refetch: this.fetchData
+      refetch: this.fetchData,
     });
   }
 }
@@ -295,11 +362,15 @@ const Highlighted = ({ text = '', highlight = '' }) => {
 
   return (
     <div>
-      {
-        parts.filter(part => part).map((part, i) => (
-          regex.test(part) ? <mark key={i}>{part}</mark> : <span key={i}>{part}</span>
-        ))
-      }
+      {parts
+        .filter((part) => part)
+        .map((part, i) =>
+          regex.test(part) ? (
+            <mark key={i}>{part}</mark>
+          ) : (
+            <span key={i}>{part}</span>
+          )
+        )}
     </div>
   );
 };
