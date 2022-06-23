@@ -14,6 +14,7 @@
     "haspopup",
     "lods",
     "maxresults",
+    "packagejson",
     "SGID",
     "SRID",
     "storyshots",
@@ -25,5 +26,7 @@
     "webm",
     "webp",
     "wkid"
-  ]
+  ],
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
