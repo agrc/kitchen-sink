@@ -23,8 +23,8 @@
       "import": "./dist/utilities.esm.js"
     }
   },
-  "main": "./dist/index.esm.js",
-  "module": "./dist/index.esm.js",
+  "main": "./dist/utilities.esm.js",
+  "module": "./dist/utilities.esm.js",
   "files": [
     "/dist"
   ],
