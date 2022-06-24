@@ -20,6 +20,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: lts/*
+          check-latest: true
           cache: npm
 
       - name: 📥 Download dependencies
@@ -41,10 +42,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: lts/*
+          check-latest: true
           cache: npm
 
       - name: 📥 Download dependencies
-        run: npm ci && npm install --workspaces
+        run: npm ci
 
       - name: 🧪 Run tests
         run: npm test
@@ -62,10 +64,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: lts/*
+          check-latest: true
           cache: npm
 
       - name: 📥 Download dependencies
-        run: npm ci && npm install --workspaces
+        run: npm ci
 
       - name: 🏗 Run build script
         run: npm run build
