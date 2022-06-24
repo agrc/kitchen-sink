@@ -16,7 +16,7 @@
     "packages/utilities"
   ],
   "scripts": {
-    "build": "",
+    "build": "npm run build -ws",
     "build-storybook": "build-storybook",
     "format": "prettier . --write",
     "graduate": "",
@@ -69,6 +69,10 @@
       "prettier"
     ]
   },
+  "dependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
   "devDependencies": {
     "@arcgis/core": "^4.0.0",
     "@babel/core": "^7.18.5",
@@ -94,9 +98,5 @@
     "sass": "^1.32.4",
     "vite": "^2.9.12",
     "vitest": "^0.15.2"
-  },
-  "dependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
   }
 }
