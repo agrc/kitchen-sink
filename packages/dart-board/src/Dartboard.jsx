@@ -240,44 +240,18 @@ const useDartboard = (userProps = {}) => {
     ...sanitize(buttonProps),
   });
 
-  const find = useCallback(async () => {
-    if (!validate()) {
-      return false;
-    }
+  const validate = useCallback(() => {
+    const firstValidity = firstInput?.trim()?.length > 0;
+    const secondValidity = secondInput?.trim()?.length > 0;
 
-    let response;
+    setFirstIsValid(firstValidity);
+    setSecondIsValid(secondValidity);
 
-    try {
-      response = await get({
-        firstInput,
-        secondInput,
-      });
-    } catch (err) {
-      return props.events.error(
-        response?.text() || {
-          message: err.message,
-          status: 400,
-        }
-      );
-    }
+    // reset not found message
+    setFound(null);
 
-    const location = await extractResponse(response);
-
-    if (location) {
-      return props.events.success(location);
-    }
-  }, [firstInput, secondInput, validate, props.events, get, extractResponse]);
-
-  const handleKeyUp = useCallback(
-    (event) => {
-      if (event.key !== 'Enter') {
-        return;
-      }
-
-      find();
-    },
-    [find]
-  );
+    return firstValidity && secondValidity;
+  }, [firstInput, secondInput]);
 
   const get = useCallback(
     (options) => {
@@ -313,6 +287,34 @@ const useDartboard = (userProps = {}) => {
       props.callback,
       baseUrl,
     ]
+  );
+
+  const outputTransform = useCallback(
+    (result, point) => {
+      let attributes = {
+        address: result.inputAddress,
+      };
+      let popupTemplate = {
+        title: '{address}',
+      };
+
+      if (props.type !== ADDRESS_TYPE) {
+        attributes = {
+          matchRoute: result.matchRoute,
+        };
+        popupTemplate = {
+          title: '{matchRoute}',
+        };
+      }
+
+      return {
+        geometry: point,
+        symbol: props.pointSymbol,
+        attributes,
+        popupTemplate,
+      };
+    },
+    [props.pointSymbol, props.type]
   );
 
   const extractResponse = useCallback(
@@ -353,45 +355,43 @@ const useDartboard = (userProps = {}) => {
     [outputTransform, props.wkid, props.format, props.events]
   );
 
-  const validate = useCallback(() => {
-    const firstValidity = firstInput?.trim()?.length > 0;
-    const secondValidity = secondInput?.trim()?.length > 0;
+  const find = useCallback(async () => {
+    if (!validate()) {
+      return false;
+    }
 
-    setFirstIsValid(firstValidity);
-    setSecondIsValid(secondValidity);
+    let response;
 
-    // reset not found message
-    setFound(null);
+    try {
+      response = await get({
+        firstInput,
+        secondInput,
+      });
+    } catch (err) {
+      return props.events.error(
+        response?.text() || {
+          message: err.message,
+          status: 400,
+        }
+      );
+    }
 
-    return firstValidity && secondValidity;
-  }, [firstInput, secondInput]);
+    const location = await extractResponse(response);
 
-  const outputTransform = useCallback(
-    (result, point) => {
-      let attributes = {
-        address: result.inputAddress,
-      };
-      let popupTemplate = {
-        title: '{address}',
-      };
+    if (location) {
+      return props.events.success(location);
+    }
+  }, [firstInput, secondInput, validate, props.events, get, extractResponse]);
 
-      if (props.type !== ADDRESS_TYPE) {
-        attributes = {
-          matchRoute: result.matchRoute,
-        };
-        popupTemplate = {
-          title: '{matchRoute}',
-        };
+  const handleKeyUp = useCallback(
+    (event) => {
+      if (event.key !== 'Enter') {
+        return;
       }
 
-      return {
-        geometry: point,
-        symbol: props.pointSymbol,
-        attributes,
-        popupTemplate,
-      };
+      find();
     },
-    [props.pointSymbol, props.type]
+    [find]
   );
 
   return {

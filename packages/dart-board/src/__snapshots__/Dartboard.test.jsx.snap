@@ -1,0 +1,95 @@
+// Vitest Snapshot v1
+
+exports[`Dartboard snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="dartboard"
+  >
+    <div
+      class="form-group"
+    >
+      <label
+        for="dartboard_street_input"
+      >
+        Street address
+      </label>
+      <input
+        autocomplete="off"
+        class="form-control"
+        name="dartboard_street_input"
+      />
+    </div>
+    <div
+      class="form-group"
+    >
+      <label
+        for="dartboard_zone_input"
+      >
+        City or Zip code
+      </label>
+      <input
+        autocomplete="off"
+        class="form-control"
+        name="dartboard_zone_input"
+      />
+    </div>
+    <div
+      class="form-group"
+    >
+      <button
+        class="btn btn-outline-dark"
+        type="button"
+      >
+        Find
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Dartboard tests > Dartboard snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="dartboard"
+  >
+    <div
+      class="form-group"
+    >
+      <label
+        for="dartboard_street_input"
+      >
+        Street address
+      </label>
+      <input
+        autocomplete="off"
+        class="form-control"
+        name="dartboard_street_input"
+      />
+    </div>
+    <div
+      class="form-group"
+    >
+      <label
+        for="dartboard_zone_input"
+      >
+        City or Zip code
+      </label>
+      <input
+        autocomplete="off"
+        class="form-control"
+        name="dartboard_zone_input"
+      />
+    </div>
+    <div
+      class="form-group"
+    >
+      <button
+        class="btn btn-outline-dark"
+        type="button"
+      >
+        Find
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
