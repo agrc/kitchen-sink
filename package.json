@@ -7,7 +7,6 @@
     "url": "https://github.com/agrc/kitchen-sink.git"
   },
   "license": "MIT",
-  "main": "",
   "workspaces": [
     "packages/dart-board",
     "packages/layer-selector",
@@ -19,13 +18,8 @@
     "build": "npm run build -ws",
     "build-storybook": "build-storybook",
     "format": "prettier . --write",
-    "graduate": "",
     "lint": "eslint .",
     "lint:fix": "eslint . --quiet --fix",
-    "pre-release": "",
-    "prepare": "",
-    "release": "",
-    "start": "",
     "storybook": "start-storybook -p 6006",
     "test": "vitest"
   },
