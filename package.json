@@ -7,6 +7,8 @@
     "url": "https://github.com/agrc/kitchen-sink.git"
   },
   "license": "MIT",
+  "author": "ugrc developers",
+  "type": "module",
   "workspaces": [
     "packages/dart-board",
     "packages/layer-selector",

@@ -1,15 +1,15 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-const path = require('path');
+import { basename, resolve } from 'path';
 
 const directory = process.cwd();
-const packageName = path.basename(process.cwd());
+const packageName = basename(process.cwd());
 
-module.exports = defineConfig({
+export default defineConfig({
   plugins: [react()],
   build: {
     lib: {
-      entry: path.resolve(directory, 'src/index.js'),
+      entry: resolve(directory, 'src/index.js'),
       formats: ['esm'],
       name: `@ugrc/${packageName}`,
       fileName: (format) => `${packageName}.${format}.js`,
