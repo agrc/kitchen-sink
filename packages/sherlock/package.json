@@ -22,15 +22,22 @@
   },
   "license": "MIT",
   "author": "ugrc developers",
-  "main": "./dist/index.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/sherlock.esm.js"
+    }
+  },
+  "main": "./dist/sherlock.esm.js",
+  "module": "./dist/sherlock.esm.js",
   "files": [
     "/dist"
   ],
   "scripts": {
+    "build": "vite build --config ../../vite.config.js",
     "test": "vitest --config ../../vite.config.js"
   },
   "dependencies": {
-    "@arcgis/core": "^4.0.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "@fortawesome/react-fontawesome": "^0.1.14",
@@ -43,6 +50,7 @@
     "reactstrap": "^8.8.1"
   },
   "peerDependencies": {
+    "@arcgis/core": "^4.0.0",
     "bootstrap": "^4.5.3",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"

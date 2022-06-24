@@ -21,19 +21,26 @@
   },
   "license": "MIT",
   "author": "ugrc developers",
-  "main": "./dist/LayerSelector.js",
+  "exports": {
+    ".": {
+      "import": "./dist/layer-selector.esm.js"
+    }
+  },
+  "main": "./dist/layer-selector.esm.js",
+  "module": "./dist/layer-selector.esm.js",
   "files": [
     "/dist",
     "layer-selector.gif"
   ],
   "scripts": {
+    "build": "vite build --config ../../vite.config.js",
     "test": "vitest --config ../../vite.config.js"
   },
   "dependencies": {
-    "@arcgis/core": "^4.0.0",
     "clsx": "^1.1.1"
   },
   "peerDependencies": {
+    "@arcgis/core": "^4.0.0",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
   },

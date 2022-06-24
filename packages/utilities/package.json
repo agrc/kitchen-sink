@@ -20,12 +20,11 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/utilities.es.js",
-      "require": "./dist/utilities.umd.js"
+      "import": "./dist/utilities.esm.js"
     }
   },
-  "main": "./dist/index.es.js",
-  "module": "./dist/index.es.js",
+  "main": "./dist/index.esm.js",
+  "module": "./dist/index.esm.js",
   "files": [
     "/dist"
   ],
@@ -34,13 +33,11 @@
     "test": "vitest --config ../../vite.config.js"
   },
   "peerDependencies": {
+    "@arcgis/core": "^4.0.0",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
   },
   "publishConfig": {
     "directory": "dist"
-  },
-  "dependencies": {
-    "@arcgis/core": "^4.0.0"
   }
 }

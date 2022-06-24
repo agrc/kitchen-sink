@@ -24,12 +24,11 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/dart-board.es.js",
-      "require": "./dist/dart-board.umd.js"
+      "import": "./dist/dart-board.esm.js"
     }
   },
-  "main": "./dist/dart-board.js",
-  "module": "./dist/dart-board.es.js",
+  "main": "./dist/dart-board.esm.js",
+  "module": "./dist/dart-board.esm.js",
   "files": [
     "/dist"
   ],
@@ -38,7 +37,6 @@
     "test": "vitest --config ../../vite.config.js"
   },
   "dependencies": {
-    "@arcgis/core": "^4.0.0",
     "@ugrc/utilities": "^1.3.1",
     "clsx": "^1.1.1",
     "reactstrap": "^8.8.1"
