@@ -44,7 +44,7 @@ jobs:
           cache: npm
 
       - name: 📥 Download dependencies
-        run: npm install --workspaces
+        run: npm ci && npm install --workspaces
 
       - name: 🧪 Run tests
         run: npm test
@@ -65,7 +65,7 @@ jobs:
           cache: npm
 
       - name: 📥 Download dependencies
-        run: npm install --workspaces
+        run: npm ci && npm install --workspaces
 
       - name: 🏗 Run build script
         run: npm run build
