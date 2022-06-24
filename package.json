@@ -15,7 +15,7 @@
     "packages/utilities"
   ],
   "scripts": {
-    "build": "npm run build -ws",
+    "build": "npm run build --workspace packages/utilities && npm run build --workspaces",
     "build-storybook": "build-storybook",
     "format": "prettier . --write",
     "lint": "eslint .",
