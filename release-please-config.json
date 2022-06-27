@@ -3,6 +3,7 @@
   "plugins": [
     "node-workspace"
   ],
+  "group-pull-request-title-pattern": "chore(monorepo): create releases",
   "packages": {
     "packages/dart-board": {},
     "packages/layer-selector": {},
