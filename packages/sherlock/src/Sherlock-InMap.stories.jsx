@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default {
   title: 'Sherlock/InMap',
+  component: Sherlock,
 };
 
 const CITIES_URL =

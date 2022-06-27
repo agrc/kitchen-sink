@@ -2,7 +2,7 @@ import LayerSelector from './LayerSelector.jsx';
 
 export default {
   title: 'LayerSelector',
-  module: LayerSelector,
+  component: LayerSelector,
 };
 const mapViewMock = {
   map: {},

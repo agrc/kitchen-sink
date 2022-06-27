@@ -6,7 +6,7 @@ import { useMapReady } from '@ugrc/utilities';
 import '@arcgis/core/assets/esri/themes/light/main.css';
 
 export default {
-  title: 'MouseTrap',
+  title: 'MouseTrap/MouseTrap',
   component: MouseTrap,
 };
 

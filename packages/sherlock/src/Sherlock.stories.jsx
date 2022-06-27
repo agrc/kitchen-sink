@@ -3,6 +3,7 @@ import { Sherlock, LocatorSuggestProvider } from './index';
 
 export default {
   title: 'Sherlock',
+  component: Sherlock,
 };
 
 const Wrapper = () => {
