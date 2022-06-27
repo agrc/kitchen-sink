@@ -23,7 +23,7 @@ jobs:
     name: Publish to npm
     runs-on: ubuntu-latest
     needs: release
-    if: needs.release.steps.release.outputs.release_created
+    if: needs.release.steps.release.outputs.releases_created
     steps:
       - name: ⬇️ Set up code
         uses: actions/checkout@v3
