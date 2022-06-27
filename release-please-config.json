@@ -1,0 +1,12 @@
+{
+  "packages": {
+    "plugins": [
+      "node-workspace"
+    ],
+    "packages/dart-board": {},
+    "packages/layer-selector": {},
+    "packages/mouse-trap": {},
+    "packages/sherlock": {},
+    "packages/utilities": {}
+  }
+}
