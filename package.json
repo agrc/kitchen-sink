@@ -21,7 +21,8 @@
     "format": "prettier . --write",
     "lint": "eslint .",
     "lint:fix": "eslint . --quiet --fix",
-    "storybook": "start-storybook -p 6006",
+    "npm-check": "npm exec --workspaces -- npx npm-check --update",
+    "storybook": "start-storybook --port 6006",
     "test": "vitest"
   },
   "prettier": {
@@ -69,7 +70,7 @@
     "react-dom": ">=16.8.0"
   },
   "devDependencies": {
-    "@arcgis/core": "^4.18.0",
+    "@arcgis/core": "^4.20.0",
     "@babel/core": "^7.18.5",
     "@mdx-js/react": "^2.1.2",
     "@storybook/addon-actions": "^6.5.9",
