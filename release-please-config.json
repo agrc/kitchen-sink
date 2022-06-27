@@ -7,6 +7,14 @@
     "packages/layer-selector": {},
     "packages/mouse-trap": {},
     "packages/sherlock": {},
-    "packages/utilities": {}
+    "packages/utilities": {},
+    ".": {
+      "draft": false,
+      "prerelease": false,
+      "bumpMinorPreMajor": false,
+      "bumpPatchForMinorPreMajor": false,
+      "changelogPath": "CHANGELOG.md",
+      "versioning": "default"
+    }
   }
 }
