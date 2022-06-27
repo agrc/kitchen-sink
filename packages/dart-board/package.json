@@ -22,18 +22,14 @@
   "license": "MIT",
   "author": "ugrc developers",
   "type": "module",
-  "exports": {
-    ".": {
-      "import": "./dist/dart-board.esm.js"
-    }
-  },
-  "main": "./dist/dart-board.esm.js",
-  "module": "./dist/dart-board.esm.js",
+  "main": "./src/index.js",
+  "module": "./src/index.js",
   "files": [
-    "/dist"
+    "/src/index.js",
+    "/src/Dartboard.jsx",
+    "/src/Dartboard.css"
   ],
   "scripts": {
-    "build": "vite build --config ../../vite.config.js",
     "test": "vitest --config ../../vite.config.js"
   },
   "dependencies": {

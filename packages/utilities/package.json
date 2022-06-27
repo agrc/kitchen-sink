@@ -18,15 +18,13 @@
   "license": "MIT",
   "author": "ugrc developers",
   "type": "module",
-  "exports": {
-    ".": {
-      "import": "./dist/utilities.esm.js"
-    }
-  },
-  "main": "./dist/utilities.esm.js",
-  "module": "./dist/utilities.esm.js",
+  "main": "./src/index.js",
+  "module": "./src/index.js",
   "files": [
-    "/dist"
+    "/src/index.js",
+    "/src/ready.ts",
+    "/src/url.js",
+    "/src/WebAPI.js"
   ],
   "scripts": {
     "build": "vite build --config ../../vite.config.js",

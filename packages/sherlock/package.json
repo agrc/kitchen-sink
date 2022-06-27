@@ -23,18 +23,14 @@
   "license": "MIT",
   "author": "ugrc developers",
   "type": "module",
-  "exports": {
-    ".": {
-      "import": "./dist/sherlock.esm.js"
-    }
-  },
-  "main": "./dist/sherlock.esm.js",
-  "module": "./dist/sherlock.esm.js",
+  "main": "./src/index.js",
+  "module": "./src/index.js",
   "files": [
-    "/dist"
+    "/src/index.js",
+    "/src/Sherlock.jsx",
+    "/src/Sherlock.scss"
   ],
   "scripts": {
-    "build": "vite build --config ../../vite.config.js",
     "test": "vitest --config ../../vite.config.js"
   },
   "dependencies": {

@@ -21,19 +21,18 @@
   },
   "license": "MIT",
   "author": "ugrc developers",
-  "exports": {
-    ".": {
-      "import": "./dist/layer-selector.esm.js"
-    }
-  },
-  "main": "./dist/layer-selector.esm.js",
-  "module": "./dist/layer-selector.esm.js",
+  "main": "./src/index.js",
+  "module": "./src/index.js",
   "files": [
-    "/dist",
+    "/src/index.js",
+    "/src/Discover.js",
+    "/src/TileInfo.js",
+    "/src/layers.svg",
+    "/src/LayerSelector.css",
+    "/src/LayerSelector.jsx",
     "layer-selector.gif"
   ],
   "scripts": {
-    "build": "vite build --config ../../vite.config.js",
     "test": "vitest --config ../../vite.config.js"
   },
   "dependencies": {

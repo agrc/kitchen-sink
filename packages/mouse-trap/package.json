@@ -21,18 +21,13 @@
   "license": "MIT",
   "author": "ugrc developers",
   "type": "module",
-  "exports": {
-    ".": {
-      "import": "./dist/mouse-trap.esm.js"
-    }
-  },
-  "main": "./dist/mouse-trap.esm.js",
-  "module": "./dist/mouse-trap.esm.js",
+  "main": "./src/index.js",
+  "module": "./src/index.js",
   "files": [
-    "/dist"
+    "/src/index.js",
+    "/src/MouseTrap.jsx"
   ],
   "scripts": {
-    "build": "vite build --config ../../vite.config.js",
     "test": "vitest --config ../../vite.config.js"
   },
   "dependencies": {
