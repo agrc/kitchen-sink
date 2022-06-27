@@ -39,7 +39,7 @@
     "clsx": "^1.1.1"
   },
   "peerDependencies": {
-    "@arcgis/core": "^4.18.0",
+    "@arcgis/core": "^4.20.0",
     "prop-types": "^15.8.1",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
