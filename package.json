@@ -10,14 +10,14 @@
   "author": "ugrc developers",
   "type": "module",
   "workspaces": [
+    "packages/utilities",
     "packages/dart-board",
     "packages/layer-selector",
     "packages/mouse-trap",
-    "packages/sherlock",
-    "packages/utilities"
+    "packages/sherlock"
   ],
   "scripts": {
-    "build": "npm run build --workspace packages/utilities && npm run build --workspaces",
+    "build": "npm run build --workspaces",
     "build-storybook": "build-storybook",
     "format": "prettier . --write",
     "lint": "eslint .",
