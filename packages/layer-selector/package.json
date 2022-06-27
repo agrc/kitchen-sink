@@ -1,34 +1,50 @@
 {
-  "name": "@agrc/layer-selector",
+  "name": "@ugrc/layer-selector",
   "version": "4.0.5",
   "private": false,
-  "license": "MIT",
-  "homepage": "https://github.com/agrc/kitchen-sink/tree/main/packages/layer-selector",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/agrc/kitchen-sink.git"
-  },
-  "main": "./dist/LayerSelector.js",
-  "files": [
-    "/dist",
-    "layer-selector.gif"
-  ],
-  "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0"
-  },
-  "dependencies": {
-    "clsx": "^1.1.1"
-  },
-  "publishConfig": {
-    "directory": "dist"
-  },
+  "description": "![layer-selector](layer-selector.gif)",
   "keywords": [
-    "agrc",
+    "ugrc",
     "component",
     "esri",
     "react",
     "basemap",
     "spatial"
-  ]
+  ],
+  "homepage": "https://github.com/agrc/kitchen-sink/tree/main/packages/layer-selector",
+  "bugs": {
+    "url": "https://github.com/agrc/kitchen-sink/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agrc/kitchen-sink.git"
+  },
+  "license": "MIT",
+  "author": "ugrc developers",
+  "main": "./src/index.js",
+  "module": "./src/index.js",
+  "files": [
+    "/src/index.js",
+    "/src/Discover.js",
+    "/src/TileInfo.js",
+    "/src/layers.svg",
+    "/src/LayerSelector.css",
+    "/src/LayerSelector.jsx",
+    "layer-selector.gif"
+  ],
+  "scripts": {
+    "test": "vitest --config ../../vite.config.js"
+  },
+  "dependencies": {
+    "clsx": "^1.1.1"
+  },
+  "peerDependencies": {
+    "@arcgis/core": "^4.18.0",
+    "prop-types": "^15.8.1",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "publishConfig": {
+    "directory": "dist"
+  }
 }

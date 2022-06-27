@@ -1,16 +1,13 @@
 {
-  "name": "@ugrc/mouse-trap",
-  "version": "1.1.3",
+  "name": "@ugrc/utilities",
+  "version": "1.3.1",
   "private": false,
-  "description": "Widget to display cursor coordinates while hovering over a map",
+  "description": "Shared helpers for [UGRC React Components](https://github.com/agrc/kitchen-sink).",
   "keywords": [
     "ugrc",
-    "widgets",
-    "esri",
-    "coordinates",
-    "projection"
+    "utilities"
   ],
-  "homepage": "https://github.com/agrc/kitchen-sink/tree/main/packages/mouse-trap",
+  "homepage": "https://github.com/agrc/kitchen-sink/tree/main/packages/utilities",
   "bugs": {
     "url": "https://github.com/agrc/kitchen-sink/issues"
   },
@@ -25,14 +22,13 @@
   "module": "./src/index.js",
   "files": [
     "/src/index.js",
-    "/src/MouseTrap.jsx"
+    "/src/ready.ts",
+    "/src/url.js",
+    "/src/WebAPI.js"
   ],
   "scripts": {
+    "build": "vite build --config ../../vite.config.js",
     "test": "vitest --config ../../vite.config.js"
-  },
-  "dependencies": {
-    "@ugrc/utilities": "^1.3.1",
-    "lodash.throttle": "^4.1.1"
   },
   "peerDependencies": {
     "@arcgis/core": "^4.18.0",

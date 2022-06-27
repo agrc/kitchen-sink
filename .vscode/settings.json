@@ -1,14 +1,9 @@
 {
   "cSpell.words": [
-    "Centerlines",
-    "SGID",
-    "SRID",
-    "TSQL",
-    "Topo",
-    "agrc",
     "arcgis",
     "baselayer",
     "basemap",
+    "Centerlines",
     "clsx",
     "copyfiles",
     "escaperegexp",
@@ -19,11 +14,19 @@
     "haspopup",
     "lods",
     "maxresults",
+    "packagejson",
+    "SGID",
+    "SRID",
     "storyshots",
     "toomany",
+    "Topo",
+    "TSQL",
+    "ugrc",
     "uniqwith",
     "webm",
     "webp",
     "wkid"
-  ]
+  ],
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

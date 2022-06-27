@@ -2,3 +2,4 @@ node_modules
 dist
 .env.development
 .DS_Store
+.env.local

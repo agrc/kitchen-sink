@@ -1,0 +1,91 @@
+// Vitest Snapshot v1
+
+exports[`LayerSelector tests > LayerSelector snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      area-haspopup="true"
+      class="layer-selector"
+    >
+      <input
+        alt="layers"
+        class="layer-selector__toggle"
+        src="/packages/layer-selector/src/layers.svg"
+        type="image"
+      />
+      <form
+        class="layer-selector--hidden"
+      >
+        <div
+          class="layer-selector--layers"
+        >
+          <div
+            class="layer-selector-item radio checkbox"
+          >
+            <label
+              class="layer-selector--item"
+            >
+              <input
+                checked=""
+                class="layer-selector-item-input"
+                name="baselayer"
+                type="radio"
+                value="Lite"
+              />
+              Lite
+            </label>
+          </div>
+          <div
+            class="layer-selector-item radio checkbox"
+          >
+            <label
+              class="layer-selector--item"
+            >
+              <input
+                class="layer-selector-item-input"
+                name="baselayer"
+                type="radio"
+                value="Terrain"
+              />
+              Terrain
+            </label>
+          </div>
+          <div
+            class="layer-selector-item radio checkbox"
+          >
+            <label
+              class="layer-selector--item"
+            >
+              <input
+                class="layer-selector-item-input"
+                name="baselayer"
+                type="radio"
+                value="Topo"
+              />
+              Topo
+            </label>
+          </div>
+          <div
+            class="layer-selector-item radio checkbox"
+          >
+            <label
+              class="layer-selector--item"
+            >
+              <input
+                class="layer-selector-item-input"
+                name="baselayer"
+                type="radio"
+                value="Color IR"
+              />
+              Color IR
+            </label>
+          </div>
+          <hr
+            class="layer-selector-separator"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+</DocumentFragment>
+`;
