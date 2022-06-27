@@ -1,6 +1,6 @@
 {
   "name": "@ugrc/sherlock",
-  "version": "2.3.0",
+  "version": "3.0.0",
   "private": false,
   "description": "A React component for searching for data and zooming to it on the map.",
   "keywords": [
