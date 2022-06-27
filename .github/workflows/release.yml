@@ -19,7 +19,6 @@ jobs:
         id: release-please
         uses: google-github-actions/release-please-action@v3
         with:
-          pull-request-title-pattern: 'chore(monorepo): create releases'
           release-type: node
           monorepo-tags: true
           command: manifest
