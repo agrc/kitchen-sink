@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import { basename, resolve } from 'path';
 
 const directory = process.cwd();
-const packageName = basename(process.cwd());
+const packageName = basename(directory);
 
 export default defineConfig({
   plugins: [react()],
