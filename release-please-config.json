@@ -1,8 +1,8 @@
 {
+  "plugins": [
+    "node-workspace"
+  ],
   "packages": {
-    "plugins": [
-      "node-workspace"
-    ],
     "packages/dart-board": {},
     "packages/layer-selector": {},
     "packages/mouse-trap": {},
