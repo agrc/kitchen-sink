@@ -1,5 +1,4 @@
 {
-  "bootstrap-sha": "2919caa28eb25ef926ca9db1276d22e8f5170f10",
   "packages/dart-board": "3.3.1",
   "packages/layer-selector": "4.0.5",
   "packages/mouse-trap": "1.1.3",
