@@ -2,13 +2,15 @@
   "name": "@ugrc/layer-selector",
   "version": "5.0.0",
   "private": false,
-  "description": "![layer-selector](layer-selector.gif)",
+  "description": "This is a react component for adding a quick base map selector with a happy path for using [UGRC's Discover Service](https://gis.utah.gov/discover).",
   "keywords": [
     "ugrc",
     "component",
     "esri",
+    "arcgis",
     "react",
     "basemap",
+    "base map",
     "spatial"
   ],
   "homepage": "https://github.com/agrc/kitchen-sink/tree/main/packages/layer-selector",
@@ -29,8 +31,7 @@
     "/src/TileInfo.js",
     "/src/layers.svg",
     "/src/LayerSelector.css",
-    "/src/LayerSelector.jsx",
-    "layer-selector.gif"
+    "/src/LayerSelector.jsx"
   ],
   "scripts": {
     "test": "vitest --config ../../vite.config.js"
