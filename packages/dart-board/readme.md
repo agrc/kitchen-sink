@@ -7,7 +7,6 @@ This is a react component for geocoding addresses and route/mileposts using [UGR
 Install with [npm](https://www.npmjs.com/)
 
 ```bash
-# via npm
 npm install @ugrc/dart-board
 ```
 
