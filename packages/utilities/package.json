@@ -5,7 +5,10 @@
   "description": "Shared helpers for [UGRC React Components](https://github.com/agrc/kitchen-sink).",
   "keywords": [
     "ugrc",
-    "utilities"
+    "utilities",
+    "esri",
+    "arcgis",
+    "react"
   ],
   "homepage": "https://github.com/agrc/kitchen-sink/tree/main/packages/utilities",
   "bugs": {
