@@ -1,6 +1,8 @@
 name: Publish Packages
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 concurrency:
   group: '${{ github.head_ref || github.ref }}'
@@ -8,29 +10,23 @@ concurrency:
 
 jobs:
   release:
-    name: Release Please
+    name: Create and publish packages
     runs-on: ubuntu-latest
-    outputs:
-      releases_created: ${{ steps.release-please.outputs.releases_created }}
     steps:
-      - name: 🛠️ Create release
-        id: release-please
+      - name: 🛠️ Create releases
+        id: release
         uses: google-github-actions/release-please-action@v3
         with:
           release-type: node
           monorepo-tags: true
           command: manifest
 
-  publish:
-    name: Publish to npm
-    runs-on: ubuntu-latest
-    needs: release
-    if: needs.release.releases_created
-    steps:
       - name: ⬇️ Set up code
+        if: ${{ steps.release.outputs.releases_created }}
         uses: actions/checkout@v3
 
       - name: ⎔ Setup Node.js
+        if: ${{ steps.release.outputs.releases_created }}
         uses: actions/setup-node@v3
         with:
           node-version: lts/*
@@ -38,9 +34,11 @@ jobs:
           cache: npm
 
       - name: 📥 Download dependencies
+        if: ${{ steps.release.outputs.releases_created }}
         run: npm ci
 
       - name: 🚢 Publish packages
+        if: ${{ steps.release.outputs.releases_created }}
         run: npm publish --workspaces
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
