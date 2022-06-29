@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0](https://github.com/agrc/kitchen-sink/compare/utilities-v1.3.1...utilities-v2.0.0) (2022-06-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* **utilities:** update dependencies
+
+### Miscellaneous Chores
+
+* **utilities:** update dependencies ([eee7a26](https://github.com/agrc/kitchen-sink/commit/eee7a262f2e291877f5dca8c10da3d5cc8fcc062))
+
 ## [1.3.1](https://github.com/agrc/kitchen-sink/compare/@agrc/helpers@1.3.0...@agrc/helpers@1.3.1) (2021-01-20)
 
 **Note:** Version bump only for package @agrc/helpers
