@@ -2,11 +2,13 @@
   "name": "@ugrc/mouse-trap",
   "version": "2.0.0",
   "private": false,
-  "description": "Widget to display cursor coordinates while hovering over a map",
+  "description": "A react component to display cursor coordinates while hovering over an arcgis map",
   "keywords": [
     "ugrc",
-    "widgets",
+    "component",
     "esri",
+    "arcgis",
+    "react",
     "coordinates",
     "projection"
   ],
