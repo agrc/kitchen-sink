@@ -1,14 +1,14 @@
-# @agrc/dart-board
+# @ugrc/dart-board
 
-[![NPM version](https://badgen.net/npm/v/@agrc/dart-board)](https://www.npmjs.com/package/@agrc/dart-board)
+[![NPM version](https://badgen.net/npm/v/@ugrc/dart-board)](https://www.npmjs.com/package/@ugrc/dart-board)
 
-React component for geocoding addresses and route/mileposts using [AGRC's web api](https://api.mapserv.utah.gov).
+This is a react component for geocoding addresses and route/mileposts using [UGRC's API](https://api.mapserv.utah.gov).
 
 Install with [npm](https://www.npmjs.com/)
 
 ```bash
 # via npm
-npm install @agrc/dart-board
+npm install @ugrc/dart-board
 ```
 
 ## Component properties
