@@ -2,11 +2,12 @@
   "name": "@ugrc/dart-board",
   "version": "4.0.0",
   "private": false,
-  "description": "[![NPM version](https://badgen.net/npm/v/@ugrc/dart-board)](https://www.npmjs.com/package/@ugrc/dart-board)",
+  "description": "This is a react component for geocoding addresses and route/mileposts using [UGRC's API](https://api.mapserv.utah.gov).",
   "keywords": [
     "ugrc",
     "component",
     "esri",
+    "arcgis",
     "react",
     "geocoding",
     "spatial"
