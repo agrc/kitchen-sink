@@ -10,7 +10,7 @@ import uniqWith from 'lodash.uniqwith';
 import PropTypes from 'prop-types';
 import { useCallback, useEffect, useState } from 'react';
 import { Button, Input, InputGroup } from 'reactstrap';
-import './Sherlock.scss';
+import './Sherlock.css';
 
 const defaultSymbols = {
   polygon: {

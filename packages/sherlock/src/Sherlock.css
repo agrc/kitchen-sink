@@ -1,23 +1,23 @@
-$highlightColor: #42738d;
-$width: 260px;
-
 .sherlock {
+  --width: 260px;
+  --highlight-color: #42738d;
   position: absolute;
   z-index: 3;
-  width: $width;
+  width: var(--width);
   left: 62px;
   top: 7px;
-  input[type='text'],
-  button.disabled {
-    border-radius: 0;
-  }
-  button.disabled {
-    opacity: 1;
-    background-color: $highlightColor;
-  }
 }
+.sherlock input[type='text'],
+.sherlock button.disabled {
+  border-radius: 0;
+}
+.sherlock button.disabled {
+  opacity: 1;
+  background-color: var(--highlight-color);
+}
+
 .sherlock__match-dropdown {
-  width: $width;
+  width: var(--width);
   background-color: #fff;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   font-size: 12px;
@@ -34,9 +34,9 @@ $width: 260px;
   padding: 2px 12px;
   display: flex;
   justify-content: space-between;
-  mark {
-    padding: 0;
-  }
+}
+.sherlock mark {
+  padding: 0;
 }
 .sherlock__match-item:hover,
 .sherlock__match-item--selected {
