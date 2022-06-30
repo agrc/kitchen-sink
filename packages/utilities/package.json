@@ -25,9 +25,10 @@
   "module": "./src/index.js",
   "files": [
     "/src/index.js",
-    "/src/ready.ts",
+    "/src/hooks.ts",
     "/src/url.js",
-    "/src/WebAPI.js"
+    "/src/WebAPI.js",
+    "/src/use*.js"
   ],
   "scripts": {
     "build": "vite build --config ../../vite.config.js",
