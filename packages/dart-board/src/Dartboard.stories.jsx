@@ -1,4 +1,4 @@
-import Dartboard, { TailwindDartboard, useDartboard } from './Dartboard.jsx';
+import Dartboard, { TailwindDartboard, useDartboard } from './index';
 
 export default {
   title: 'Dartboard',

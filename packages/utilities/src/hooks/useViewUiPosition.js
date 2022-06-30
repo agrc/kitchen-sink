@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-export function useViewUiPosition(view, position) {
+export default function useViewUiPosition(view, position) {
   const me = useRef();
 
   useEffect(() => {

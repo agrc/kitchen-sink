@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const useMapReady = (view) => {
+export default function useMapReady(view) {
   const [ready, setReady] = useState(false);
   const [callbackRegistered, setCallbackRegistered] = useState(false);
 
@@ -11,4 +11,4 @@ export const useMapReady = (view) => {
   }
 
   return ready;
-};
+}

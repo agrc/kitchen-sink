@@ -1,4 +1,4 @@
-import { ExpandableContainer } from './LayerSelector.jsx';
+import { ExpandableContainer } from './';
 
 export default {
   title: 'LayerSelector/Container',

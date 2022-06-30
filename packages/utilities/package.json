@@ -20,18 +20,22 @@
   },
   "license": "MIT",
   "author": "ugrc developers",
-  "type": "module",
-  "main": "./src/index.js",
-  "module": "./src/index.js",
-  "files": [
-    "/src/index.js",
-    "/src/hooks.ts",
-    "/src/url.js",
-    "/src/WebAPI.js",
-    "/src/use*.js"
+  "maintainers": [
+    {
+      "name": "Steve Gourley",
+      "email": "sgourley@utah.gov"
+    },
+    {
+      "name": "Scott Davis",
+      "email": "stdavis@utah.gov"
+    }
   ],
+  "type": "module",
+  "exports": {
+    ".": "./src/index",
+    "./hooks": "./src/hooks/index"
+  },
   "scripts": {
-    "build": "vite build --config ../../vite.config.js",
     "test": "vitest --config ../../vite.config.js"
   },
   "peerDependencies": {
@@ -39,8 +43,5 @@
     "prop-types": "^15.8.1",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
-  },
-  "publishConfig": {
-    "directory": "dist"
   }
 }

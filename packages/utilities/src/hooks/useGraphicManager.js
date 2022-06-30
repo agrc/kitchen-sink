@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-export function useGraphicManager(mapView) {
+export default function useGraphicManager(mapView) {
   const [graphic, setGraphic] = useState();
   const previousGraphic = useRef();
 

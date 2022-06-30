@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-export function useInterval(func, delay) {
+export default function useInterval(func, delay) {
   const handle = useRef(null);
 
   useEffect(() => {
