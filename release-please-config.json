@@ -1,8 +1,6 @@
 {
   "bootstrap-sha": "2919caa28eb25ef926ca9db1276d22e8f5170f10",
-  "plugins": [
-    "node-workspace"
-  ],
+  "plugins": ["node-workspace"],
   "packages": {
     "packages/dart-board": {},
     "packages/layer-selector": {},
