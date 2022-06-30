@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/agrc/kitchen-sink/compare/dart-board-v4.0.0...dart-board-v4.0.1) (2022-06-30)
+
+
+### Bug Fixes
+
+* **dart-board:** improve importing and publishing ([a3910b3](https://github.com/agrc/kitchen-sink/commit/a3910b34da569b00fb25679270e428704c20cca7))
+* **utilities:** improve importing and publishing ([fbd9464](https://github.com/agrc/kitchen-sink/commit/fbd9464bab5912a317b8a8d42268c0716aab2ce9))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ugrc/utilities bumped from ^2.0.0 to ^2.1.0
+
 ## [4.0.0](https://github.com/agrc/kitchen-sink/compare/dart-board-v3.3.1...dart-board-v4.0.0) (2022-06-29)
 
 

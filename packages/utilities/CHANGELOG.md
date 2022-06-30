@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.0](https://github.com/agrc/kitchen-sink/compare/utilities-v2.0.0...utilities-v2.1.0) (2022-06-30)
+
+
+### Features
+
+* **utilities:** add interval hook ([0a35bcd](https://github.com/agrc/kitchen-sink/commit/0a35bcd2e303c818251aaab9b6fe601a05c4e8b6))
+* **utilities:** add view loading hook ([af9ae0a](https://github.com/agrc/kitchen-sink/commit/af9ae0ad0ed01c54404c7f543f7114a713dd96fd))
+* **utilities:** add view ui position hook ([78cb569](https://github.com/agrc/kitchen-sink/commit/78cb569c28af9e6b9cb149c8a7b2af80db888d4d))
+* **utilities:** add web map hook ([4d9f45b](https://github.com/agrc/kitchen-sink/commit/4d9f45b981e45401fa4acda12dcc4d378ca33ad5))
+* **utilities:** graphic management hook ([78e1d07](https://github.com/agrc/kitchen-sink/commit/78e1d079a679831db4a8231de1fd9f0d89417fd2))
+* **utilities:** track open/closed state hook ([a155b03](https://github.com/agrc/kitchen-sink/commit/a155b0372d06c6adbda875c13a67997d9c70dfbd))
+* **utilities:** zoom to a point hook ([1dcd822](https://github.com/agrc/kitchen-sink/commit/1dcd82238fb5ce5f5955891c25088972adeea91f))
+
+
+### Bug Fixes
+
+* **utilities:** improve importing and publishing ([fbd9464](https://github.com/agrc/kitchen-sink/commit/fbd9464bab5912a317b8a8d42268c0716aab2ce9))
+
 ## [2.0.0](https://github.com/agrc/kitchen-sink/compare/utilities-v1.3.1...utilities-v2.0.0) (2022-06-29)
 
 
