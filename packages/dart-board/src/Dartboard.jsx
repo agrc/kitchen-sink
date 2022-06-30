@@ -445,5 +445,5 @@ BootstrapDartboard.propTypes = TailwindDartboard.propTypes = {
   callback: PropTypes.string,
 };
 
-export default BootstrapDartboard;
+export default TailwindDartboard;
 export { useDartboard, BootstrapDartboard, TailwindDartboard };
