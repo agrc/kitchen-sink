@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 
-export default function useViewLoading(view) {
+export function useViewLoading(view) {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const init = () => {
-      view.watch('updating', (updating) => setIsLoading(updating));
+      view?.watch('updating', (updating) => setIsLoading(updating));
     };
 
     if (view) {
