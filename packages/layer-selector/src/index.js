@@ -1,3 +1,7 @@
-import LayerSelector from './LayerSelector.jsx';
+import LayerSelector, {
+  ExpandableContainer,
+  LayerSelectorItem,
+} from './LayerSelector.jsx';
 
 export default LayerSelector;
+export { ExpandableContainer, LayerSelectorItem };

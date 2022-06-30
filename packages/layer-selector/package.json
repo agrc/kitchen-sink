@@ -23,16 +23,20 @@
   },
   "license": "MIT",
   "author": "ugrc developers",
-  "main": "./src/index.js",
-  "module": "./src/index.js",
-  "files": [
-    "/src/index.js",
-    "/src/Discover.js",
-    "/src/TileInfo.js",
-    "/src/layers.svg",
-    "/src/LayerSelector.css",
-    "/src/LayerSelector.jsx"
+  "maintainers": [
+    {
+      "name": "Steve Gourley",
+      "email": "sgourley@utah.gov"
+    },
+    {
+      "name": "Scott Davis",
+      "email": "stdavis@utah.gov"
+    }
   ],
+  "type": "module",
+  "exports": {
+    ".": "./src/index"
+  },
   "scripts": {
     "test": "vitest --config ../../vite.config.js"
   },
@@ -44,8 +48,5 @@
     "prop-types": "^15.8.1",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
-  },
-  "publishConfig": {
-    "directory": "dist"
   }
 }
