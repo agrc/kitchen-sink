@@ -17,6 +17,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **sherlock:** add extent ([a01e94f](https://github.com/agrc/kitchen-sink/commit/a01e94fcdc62c64fa385e0fd2f984357102fbab9))
 - add LocatorSuggestProvider to sherlock ([0bd35a7](https://github.com/agrc/kitchen-sink/commit/0bd35a7ac9a06a580482f1e18a63da53cdeac820))
 
+## [3.0.1](https://github.com/agrc/kitchen-sink/compare/sherlock-v3.0.0...sherlock-v3.0.1) (2022-06-30)
+
+
+### Bug Fixes
+
+* **sherlock:** improve importing and publishing ([17760df](https://github.com/agrc/kitchen-sink/commit/17760df509216e9c3b289a7f2e9f99f1f6ef4982))
+* **utilities:** improve importing and publishing ([fbd9464](https://github.com/agrc/kitchen-sink/commit/fbd9464bab5912a317b8a8d42268c0716aab2ce9))
+
 ## [3.0.0](https://github.com/agrc/kitchen-sink/compare/sherlock-v2.3.0...sherlock-v3.0.0) (2022-06-29)
 
 
