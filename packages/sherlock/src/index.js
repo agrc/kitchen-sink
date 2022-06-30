@@ -4,4 +4,5 @@ import Sherlock, {
   LocatorSuggestProvider,
 } from './Sherlock.jsx';
 
-export { Sherlock, WebApiProvider, MapServiceProvider, LocatorSuggestProvider };
+export { WebApiProvider, MapServiceProvider, LocatorSuggestProvider };
+export default Sherlock;

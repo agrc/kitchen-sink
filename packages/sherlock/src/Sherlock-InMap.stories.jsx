@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { Sherlock, MapServiceProvider } from './index';
+import Sherlock, { MapServiceProvider } from './';
 import Map from '@arcgis/core/Map';
 import MapView from '@arcgis/core/views/MapView';
 import '@arcgis/core/assets/esri/themes/light/main.css';
