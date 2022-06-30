@@ -23,14 +23,20 @@
   },
   "license": "MIT",
   "author": "ugrc developers",
-  "type": "module",
-  "main": "./src/index.js",
-  "module": "./src/index.js",
-  "files": [
-    "/src/index.js",
-    "/src/Sherlock.jsx",
-    "/src/Sherlock.scss"
+  "maintainers": [
+    {
+      "name": "Steve Gourley",
+      "email": "sgourley@utah.gov"
+    },
+    {
+      "name": "Scott Davis",
+      "email": "stdavis@utah.gov"
+    }
   ],
+  "type": "module",
+  "exports": {
+    ".": "./src/index"
+  },
   "scripts": {
     "test": "vitest --config ../../vite.config.js"
   },
