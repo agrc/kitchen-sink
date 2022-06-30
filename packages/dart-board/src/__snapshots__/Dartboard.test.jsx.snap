@@ -6,7 +6,7 @@ exports[`Dartboard tests > Dartboard snapshot 1`] = `
     class="dartboard"
   >
     <div
-      class="form-group"
+      class="group"
     >
       <label
         for="dartboard_street_input"
@@ -15,12 +15,12 @@ exports[`Dartboard tests > Dartboard snapshot 1`] = `
       </label>
       <input
         autocomplete="off"
-        class="form-control"
+        class="mb-2 block mt-1 bg-white rounded border border-gray-400 text-gray-700 focus:outline-none focus:border-indigo-500 w-full text-base px-3 py-2"
         name="dartboard_street_input"
       />
     </div>
     <div
-      class="form-group"
+      class="group"
     >
       <label
         for="dartboard_zone_input"
@@ -29,15 +29,15 @@ exports[`Dartboard tests > Dartboard snapshot 1`] = `
       </label>
       <input
         autocomplete="off"
-        class="form-control"
+        class="mb-2 block mt-1 bg-white rounded border border-gray-400 text-gray-700 focus:outline-none focus:border-indigo-500 w-full text-base px-3 py-2"
         name="dartboard_zone_input"
       />
     </div>
     <div
-      class="form-group"
+      class="group"
     >
       <button
-        class="btn btn-outline-dark"
+        class="text-black bg-white border border-gray-800 py-1 px-3 focus:outline-none hover:bg-gray-800 hover:text-white transition duration-200 rounded text-lg mt-4"
         type="button"
       >
         Find

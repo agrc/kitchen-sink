@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
-import LayerSelector from './LayerSelector.jsx';
+import LayerSelector from './';
 import Map from '@arcgis/core/Map';
 import MapView from '@arcgis/core/views/MapView';
 import FeatureLayer from '@arcgis/core/layers/FeatureLayer';

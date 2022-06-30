@@ -1,4 +1,4 @@
-import LayerSelector from './LayerSelector.jsx';
+import LayerSelector from './';
 
 export default {
   title: 'LayerSelector',

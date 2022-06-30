@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { render } from '@testing-library/react';
-import LayerSelector from './LayerSelector.jsx';
+import LayerSelector from './';
 
 describe('LayerSelector tests', () => {
   it('LayerSelector snapshot', () => {

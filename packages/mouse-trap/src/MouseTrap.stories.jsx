@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
-import MouseTrap from './MouseTrap.jsx';
+import MouseTrap from './';
 import EsriMap from '@arcgis/core/Map';
 import MapView from '@arcgis/core/views/MapView';
 import { useMapReady } from '@ugrc/utilities/hooks';

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { render } from '@testing-library/react';
-import Dartboard from './Dartboard.jsx';
+import Dartboard from './';
 
 describe('Dartboard tests', () => {
   it('Dartboard snapshot', () => {

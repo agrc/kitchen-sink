@@ -1,4 +1,2 @@
-import WebAPI from './WebAPI';
-import { toQueryString } from './url';
-
-export { WebAPI, toQueryString };
+export { default } from './WebAPI';
+export { toQueryString } from './url';

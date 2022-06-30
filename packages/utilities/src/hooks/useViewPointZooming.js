@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export function useViewPointZooming(mapView) {
+export default function useViewPointZooming(mapView) {
   const [viewPoint, setViewPoint] = useState(null);
 
   useEffect(() => {

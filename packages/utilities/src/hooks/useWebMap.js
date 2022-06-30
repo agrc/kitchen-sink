@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import MapView from '@arcgis/core/views/MapView';
 import WebMap from '@arcgis/core/WebMap';
 
-export function useWebMap(div, id) {
+export default function useWebMap(div, id) {
   const webMap = useRef(null);
   const mapView = useRef(null);
 

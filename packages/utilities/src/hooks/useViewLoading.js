@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export function useViewLoading(view) {
+export default function useViewLoading(view) {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
