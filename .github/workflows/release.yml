@@ -32,6 +32,7 @@ jobs:
           node-version: lts/*
           check-latest: true
           cache: npm
+          registry-url: 'https://registry.npmjs.org'
 
       - name: 📥 Download dependencies
         if: ${{ steps.release.outputs.releases_created }}
