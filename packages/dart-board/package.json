@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@ugrc/utilities": "^2.1.0",
-    "clsx": "^1.1.1",
+    "clsx": "^1.2.0",
     "reactstrap": "^9.1.1"
   },
   "peerDependencies": {
