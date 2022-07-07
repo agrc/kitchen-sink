@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/agrc/kitchen-sink/compare/utilities-v2.1.0...utilities-v2.1.1) (2022-07-07)
+
+
+### Bug Fixes
+
+* **utilities:** remove console.logs ([462a204](https://github.com/agrc/kitchen-sink/commit/462a204c2d64a0a70b8d8eed015190d35ba86c6c))
+
 ## [2.1.0](https://github.com/agrc/kitchen-sink/compare/utilities-v2.0.0...utilities-v2.1.0) (2022-06-30)
 
 
