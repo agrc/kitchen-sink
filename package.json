@@ -14,7 +14,8 @@
     "packages/dart-board",
     "packages/layer-selector",
     "packages/mouse-trap",
-    "packages/sherlock"
+    "packages/sherlock",
+    "packages/default-extent"
   ],
   "scripts": {
     "build-storybook": "build-storybook",
