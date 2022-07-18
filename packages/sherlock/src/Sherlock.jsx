@@ -542,7 +542,7 @@ class WebApi {
       options.attributeStyle = this.defaultAttributeStyle;
     }
 
-    const response = await fetch(url + URLSearchParams(options), {
+    const response = await fetch(url + new URLSearchParams(options), {
       signal: this.signal,
     });
 
