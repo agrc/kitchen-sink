@@ -1,11 +1,7 @@
 .sherlock {
   --width: 260px;
   --highlight-color: #42738d;
-  position: absolute;
-  z-index: 3;
   width: var(--width);
-  left: 62px;
-  top: 7px;
 }
 .sherlock input[type='text'],
 .sherlock button.disabled {
