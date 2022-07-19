@@ -22,11 +22,11 @@ jobs:
           command: manifest
 
       - name: ⬇️ Set up code
-        if: ${{ steps.release.outputs.releases_created }}
+        if: steps.release.outputs.releases_created
         uses: actions/checkout@v3
 
       - name: ⎔ Setup Node.js
-        if: ${{ steps.release.outputs.releases_created }}
+        if: steps.release.outputs.releases_created
         uses: actions/setup-node@v3
         with:
           node-version: lts/*
@@ -35,11 +35,11 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: 📥 Download dependencies
-        if: ${{ steps.release.outputs.releases_created }}
+        if: steps.release.outputs.releases_created
         run: npm ci
 
       - name: 🚢 Publish packages
-        if: ${{ steps.release.outputs.releases_created }}
-        run: npm publish --workspaces
+        if: steps.release.outputs.releases_created
+        run: ./scripts/publish.sh
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
