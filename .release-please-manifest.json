@@ -2,6 +2,6 @@
   "packages/dart-board": "4.0.2",
   "packages/layer-selector": "5.0.1",
   "packages/mouse-trap": "2.0.2",
-  "packages/sherlock": "3.0.1",
+  "packages/sherlock": "3.0.2",
   "packages/utilities": "2.1.1"
 }
