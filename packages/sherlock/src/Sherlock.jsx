@@ -1,5 +1,5 @@
 import Graphic from '@arcgis/core/Graphic';
-import * as query from '@arcgis/core/rest/query';
+import { executeQueryJSON } from '@arcgis/core/rest/query';
 import Query from '@arcgis/core/rest/support/Query';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -363,10 +363,7 @@ export class MapServiceProvider extends ProviderBase {
     console.log('sherlock.MapServiceProvider:search', arguments);
 
     this.query.where = this.getSearchClause(searchString);
-    const featureSet = await query.executeQueryJSON(
-      this.serviceUrl,
-      this.query
-    );
+    const featureSet = await executeQueryJSON(this.serviceUrl, this.query);
 
     return { data: featureSet.features };
   }
@@ -376,10 +373,7 @@ export class MapServiceProvider extends ProviderBase {
 
     this.query.where = this.getFeatureClause(searchValue, contextValue);
     this.query.returnGeometry = true;
-    const featureSet = await query.executeQueryJSON(
-      this.serviceUrl,
-      this.query
-    );
+    const featureSet = await executeQueryJSON(this.serviceUrl, this.query);
 
     return { data: featureSet.features };
   }
