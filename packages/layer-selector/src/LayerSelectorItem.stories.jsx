@@ -1,4 +1,5 @@
 import { LayerSelectorItem } from './';
+import './LayerSelector.css';
 
 export default {
   title: 'LayerSelector/Item',

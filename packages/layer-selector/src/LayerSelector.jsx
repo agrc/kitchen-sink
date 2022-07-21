@@ -3,7 +3,6 @@ import classNames from 'clsx';
 import PropTypes from 'prop-types';
 import { createDefaultTileInfo } from './TileInfo';
 import { setTileInfosForApplianceLayers } from './Discover';
-import './LayerSelector.css';
 import icon from './layers.svg';
 import Basemap from '@arcgis/core/Basemap';
 import LOD from '@arcgis/core/layers/support/LOD';

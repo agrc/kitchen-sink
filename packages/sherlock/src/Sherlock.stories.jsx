@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Sherlock, { LocatorSuggestProvider } from './';
+import './Sherlock.css';
 
 export default {
   title: 'Sherlock',
