@@ -9,6 +9,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @ugrc/utilities bumped from ^2.1.0 to ^2.1.1
 
+## [2.0.3](https://github.com/agrc/kitchen-sink/compare/mouse-trap-v2.0.2...mouse-trap-v2.0.3) (2022-07-21)
+
+
+### Bug Fixes
+
+* compile jsx to js for vite dev optimizations ([5af363d](https://github.com/agrc/kitchen-sink/commit/5af363d73630185a2a6b9ae1119ef0375d400e97))
+* **mouse-trap:** replace cjs with esm for bundling ([feb390b](https://github.com/agrc/kitchen-sink/commit/feb390b5719354619dab60f85560183d51536256))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ugrc/utilities bumped from ^2.1.1 to ^2.1.2
+
 ## [2.0.1](https://github.com/agrc/kitchen-sink/compare/mouse-trap-v2.0.0...mouse-trap-v2.0.1) (2022-06-30)
 
 
