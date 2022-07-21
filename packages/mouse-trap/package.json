@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "@ugrc/utilities": "^2.1.1",
-    "lodash.throttle": "^4.1.1"
+    "lodash-es": "^4.17.21"
   },
   "peerDependencies": {
     "@arcgis/core": "^4.20.0",
