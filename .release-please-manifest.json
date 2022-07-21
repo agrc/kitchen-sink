@@ -1,7 +1,7 @@
 {
-  "packages/dart-board": "4.0.4",
-  "packages/layer-selector": "5.0.3",
+  "packages/dart-board": "5.0.0",
+  "packages/layer-selector": "6.0.0",
   "packages/mouse-trap": "2.0.4",
-  "packages/sherlock": "3.0.4",
+  "packages/sherlock": "4.0.0",
   "packages/utilities": "2.1.3"
 }

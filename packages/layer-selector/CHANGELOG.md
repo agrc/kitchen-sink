@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.0](https://github.com/agrc/kitchen-sink/compare/layer-selector-v5.0.3...layer-selector-v6.0.0) (2022-07-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* inlined styles aren't displayed
+
+### Bug Fixes
+
+* inlined styles aren't displayed ([cf77155](https://github.com/agrc/kitchen-sink/commit/cf7715585fe5a314a99910222784a317c8260e5c))
+
 ## [5.0.3](https://github.com/agrc/kitchen-sink/compare/layer-selector-v5.0.2...layer-selector-v5.0.3) (2022-07-21)
 
 
