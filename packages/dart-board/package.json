@@ -34,9 +34,12 @@
   ],
   "type": "module",
   "exports": {
-    ".": "./src/index"
+    ".": {
+      "import": "./dist/index.esm.js"
+    }
   },
   "scripts": {
+    "build": "vite build --config ../../vite.config.js",
     "test": "vitest --config ../../vite.config.js"
   },
   "dependencies": {
@@ -48,7 +51,6 @@
     "@arcgis/core": "^4.20.0",
     "bootstrap": "^4.5.3",
     "prop-types": "^15.8.1",
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react": ">=16.8.0"
   }
 }
