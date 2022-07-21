@@ -38,6 +38,10 @@
       "import": "./dist/index.esm.js"
     }
   },
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "build": "vite build --config ../../vite.config.js",
     "test": "vitest --config ../../vite.config.js"
