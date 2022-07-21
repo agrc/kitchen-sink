@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import throttle from 'lodash.throttle';
+import { throttle } from 'lodash-es';
 import { project, load } from '@arcgis/core/geometry/projection';
 
 const projectPoint = (
