@@ -1,6 +1,6 @@
 {
   "name": "@ugrc/mouse-trap",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "private": false,
   "description": "A react component to display cursor coordinates while hovering over an arcgis map",
   "keywords": [
@@ -43,7 +43,7 @@
     "test": "vitest --config ../../vite.config.js"
   },
   "dependencies": {
-    "@ugrc/utilities": "^2.1.1",
+    "@ugrc/utilities": "^2.1.2",
     "lodash-es": "^4.17.21"
   },
   "peerDependencies": {

@@ -17,6 +17,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **sherlock:** add extent ([a01e94f](https://github.com/agrc/kitchen-sink/commit/a01e94fcdc62c64fa385e0fd2f984357102fbab9))
 - add LocatorSuggestProvider to sherlock ([0bd35a7](https://github.com/agrc/kitchen-sink/commit/0bd35a7ac9a06a580482f1e18a63da53cdeac820))
 
+## [3.0.3](https://github.com/agrc/kitchen-sink/compare/sherlock-v3.0.2...sherlock-v3.0.3) (2022-07-21)
+
+
+### Bug Fixes
+
+* compile jsx to js for vite dev optimizations ([5af363d](https://github.com/agrc/kitchen-sink/commit/5af363d73630185a2a6b9ae1119ef0375d400e97))
+* **sherlock:** refactor import for smaller bundle ([c3b19d5](https://github.com/agrc/kitchen-sink/commit/c3b19d5f3cf5704261855e0a4ad031093bab4f5b))
+
 ## [3.0.2](https://github.com/agrc/kitchen-sink/compare/sherlock-v3.0.1...sherlock-v3.0.2) (2022-07-19)
 
 

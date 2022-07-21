@@ -9,6 +9,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @ugrc/utilities bumped from ^2.1.0 to ^2.1.1
 
+## [4.0.3](https://github.com/agrc/kitchen-sink/compare/dart-board-v4.0.2...dart-board-v4.0.3) (2022-07-21)
+
+
+### Bug Fixes
+
+* compile jsx to js for vite dev optimizations ([5af363d](https://github.com/agrc/kitchen-sink/commit/5af363d73630185a2a6b9ae1119ef0375d400e97))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ugrc/utilities bumped from ^2.1.1 to ^2.1.2
+
 ## [4.0.1](https://github.com/agrc/kitchen-sink/compare/dart-board-v4.0.0...dart-board-v4.0.1) (2022-06-30)
 
 
