@@ -38,6 +38,9 @@ jobs:
         if: steps.release.outputs.releases_created
         run: npm ci
 
+      - name: 🏗 Run build script
+        run: npm run build
+
       - name: 🚢 Publish packages
         if: steps.release.outputs.releases_created
         run: ./scripts/publish.sh

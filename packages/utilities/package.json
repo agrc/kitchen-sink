@@ -32,16 +32,20 @@
   ],
   "type": "module",
   "exports": {
-    ".": "./src/index",
-    "./hooks": "./src/hooks/index"
+    ".": {
+      "import": "./dist/index.esm.js"
+    },
+    "./hooks": {
+      "import": "./dist/index.esm2.js"
+    }
   },
   "scripts": {
+    "build": "vite build --config ../../vite.config.js",
     "test": "vitest --config ../../vite.config.js"
   },
   "peerDependencies": {
     "@arcgis/core": "^4.20.0",
     "prop-types": "^15.8.1",
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react": ">=16.8.0"
   }
 }
