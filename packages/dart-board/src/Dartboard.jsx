@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { toQueryString } from '@ugrc/utilities';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import './Dartboard.css';
 
 const ADDRESS_TYPE = 'single-address';
