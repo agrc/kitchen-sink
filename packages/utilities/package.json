@@ -1,6 +1,6 @@
 {
   "name": "@ugrc/utilities",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "private": false,
   "description": "Shared helpers for [UGRC React Components](https://github.com/agrc/kitchen-sink).",
   "keywords": [

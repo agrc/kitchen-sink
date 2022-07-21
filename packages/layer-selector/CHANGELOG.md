@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.3](https://github.com/agrc/kitchen-sink/compare/layer-selector-v5.0.2...layer-selector-v5.0.3) (2022-07-21)
+
+
+### Bug Fixes
+
+* add files to correct publishing ([4499372](https://github.com/agrc/kitchen-sink/commit/4499372c102015acd59adc4d5342082a85548de4))
+
 ## [5.0.2](https://github.com/agrc/kitchen-sink/compare/layer-selector-v5.0.1...layer-selector-v5.0.2) (2022-07-21)
 
 
