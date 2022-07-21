@@ -8,7 +8,6 @@ import { escapeRegExp, sortBy, uniqWith } from 'lodash-es';
 import PropTypes from 'prop-types';
 import { useCallback, useEffect, useState } from 'react';
 import { Button, Input, InputGroup } from 'reactstrap';
-import './Sherlock.css';
 
 const defaultSymbols = {
   polygon: {

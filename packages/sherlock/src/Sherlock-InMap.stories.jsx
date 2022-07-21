@@ -5,6 +5,7 @@ import MapView from '@arcgis/core/views/MapView';
 import '@arcgis/core/assets/esri/themes/light/main.css';
 import * as watchUtils from '@arcgis/core/core/watchUtils';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './Sherlock.css';
 
 export default {
   title: 'Sherlock/InMap',

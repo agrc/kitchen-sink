@@ -7,6 +7,7 @@ import TileInfo from '@arcgis/core/layers/support/TileInfo';
 import WebTileLayer from '@arcgis/core/layers/WebTileLayer';
 import TileLayer from '@arcgis/core/layers/TileLayer';
 import '@arcgis/core/assets/esri/themes/light/main.css';
+import './LayerSelector.css';
 
 export default {
   title: 'LayerSelector/WithMap',

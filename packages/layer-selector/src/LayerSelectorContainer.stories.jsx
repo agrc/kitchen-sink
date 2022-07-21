@@ -1,4 +1,5 @@
 import { ExpandableContainer } from './';
+import './LayerSelector.css';
 
 export default {
   title: 'LayerSelector/Container',
