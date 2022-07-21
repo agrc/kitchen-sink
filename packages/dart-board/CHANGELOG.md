@@ -9,6 +9,17 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @ugrc/utilities bumped from ^2.1.0 to ^2.1.1
 
+## [5.0.0](https://github.com/agrc/kitchen-sink/compare/dart-board-v4.0.4...dart-board-v5.0.0) (2022-07-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* inlined styles aren't displayed
+
+### Bug Fixes
+
+* inlined styles aren't displayed ([cf77155](https://github.com/agrc/kitchen-sink/commit/cf7715585fe5a314a99910222784a317c8260e5c))
+
 ## [4.0.4](https://github.com/agrc/kitchen-sink/compare/dart-board-v4.0.3...dart-board-v4.0.4) (2022-07-21)
 
 
