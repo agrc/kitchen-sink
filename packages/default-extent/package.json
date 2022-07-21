@@ -1,0 +1,52 @@
+{
+  "name": "@ugrc/default-extent",
+  "version": "1.0.0",
+  "private": false,
+  "description": "A react component that creates and places a button in an esri map to set the default map view",
+  "keywords": [
+    "ugrc",
+    "component",
+    "arcgis",
+    "esri",
+    "react",
+    "map",
+    "extent",
+    "home"
+  ],
+  "homepage": "https://github.com/agrc/kitchen-sink/tree/main/packages/default-extent",
+  "bugs": {
+    "url": "https://github.com/agrc/kitchen-sink/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agrc/kitchen-sink.git"
+  },
+  "license": "MIT",
+  "author": "ugrc developers",
+  "maintainers": [
+    {
+      "name": "Steve Gourley",
+      "email": "sgourley@utah.gov"
+    },
+    {
+      "name": "Scott Davis",
+      "email": "stdavis@utah.gov"
+    }
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./src/index"
+  },
+  "scripts": {
+    "test": "vitest --config ../../vite.config.js"
+  },
+  "dependencies": {
+    "@ugrc/utilities": "^2.1.1"
+  },
+  "peerDependencies": {
+    "@arcgis/core": "^4.20.0",
+    "prop-types": "^15.8.1",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  }
+}
