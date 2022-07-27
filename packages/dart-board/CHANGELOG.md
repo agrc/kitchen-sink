@@ -9,6 +9,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @ugrc/utilities bumped from ^2.1.0 to ^2.1.1
 
+## [5.0.1](https://github.com/agrc/kitchen-sink/compare/dart-board-v5.0.0...dart-board-v5.0.1) (2022-07-27)
+
+
+### Bug Fixes
+
+* **dart-board:** remove optional bootstrap dependency ([7530617](https://github.com/agrc/kitchen-sink/commit/7530617d79f94966cc823bb1170da8a82ac2d343))
+
 ## [5.0.0](https://github.com/agrc/kitchen-sink/compare/dart-board-v4.0.4...dart-board-v5.0.0) (2022-07-21)
 
 

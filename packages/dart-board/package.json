@@ -1,6 +1,6 @@
 {
   "name": "@ugrc/dart-board",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "private": false,
   "description": "This is a react component for geocoding addresses and route/mileposts using [UGRC's API](https://api.mapserv.utah.gov).",
   "keywords": [
