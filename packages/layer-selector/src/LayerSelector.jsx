@@ -182,6 +182,16 @@ const LayerSelector = (props) => {
   const [managedLayers, setManagedLayers] = useState({});
   const selectorNode = useRef();
 
+  const [opacity, setOpacity] = useState(1);
+  useEffect(() => {
+    for (const layerId in managedLayers) {
+      const managedLayer = managedLayers[layerId];
+      if (managedLayer.layer) {
+        managedLayer.layer.opacity = opacity;
+      }
+    }
+  }, [managedLayers, opacity]);
+
   useEffect(() => {
     const managedLayersDraft = { ...managedLayers };
     const layerItems = layers.baseLayers.concat(layers.overlays);
@@ -204,7 +214,7 @@ const LayerSelector = (props) => {
           layerList = props.view.map.layers;
           break;
         default:
-          break;
+          throw new Error(`unknown layerType: ${layerItem.layerType}`);
       }
 
       if (layerItem.selected === false) {
@@ -374,7 +384,7 @@ const LayerSelector = (props) => {
       ) || [];
 
     // set visibility of linked layers to match
-    if (defaultSelection.linked && defaultSelection.linked.length > 0) {
+    if (defaultSelection?.linked && defaultSelection.linked.length > 0) {
       overlays.forEach((layer) => {
         if (defaultSelection.linked.includes(layer.id)) {
           layer.selected = true;
@@ -456,7 +466,9 @@ const LayerSelector = (props) => {
               key={index}
             />
           ))}
-          <hr className="layer-selector-separator" />
+          {layers.overlays.length ? (
+            <hr className="layer-selector-separator" />
+          ) : null}
           {layers.overlays.map((item) => (
             <LayerSelectorItem
               id={item.name || item.id || 'unknown'}
@@ -466,6 +478,21 @@ const LayerSelector = (props) => {
               key={item.id || item}
             />
           ))}
+          {props.showOpacitySlider ? (
+            <>
+              <hr className="layer-selector-separator" />
+              <input
+                type="range"
+                min="0"
+                max="100"
+                step="1"
+                value={opacity * 100}
+                onChange={(event) =>
+                  setOpacity(parseFloat(event.target.value) / 100.0)
+                }
+              />
+            </>
+          ) : null}
         </div>
       </ConditionalWrapper>
     </div>
@@ -538,11 +565,13 @@ LayerSelector.propTypes = {
   makeExpandable: PropTypes.bool,
   layerType: PropTypes.string,
   id: PropTypes.string,
+  showOpacitySlider: PropTypes.bool,
 };
 
 LayerSelector.defaultProps = {
   makeExpandable: true,
   position: 'top-right',
+  showOpacitySlider: false,
 };
 
 LayerSelectorItem.propTypes = {

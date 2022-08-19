@@ -80,9 +80,6 @@ exports[`LayerSelector tests > LayerSelector snapshot 1`] = `
               Color IR
             </label>
           </div>
-          <hr
-            class="layer-selector-separator"
-          />
         </div>
       </form>
     </div>

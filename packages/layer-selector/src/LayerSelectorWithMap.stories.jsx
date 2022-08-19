@@ -15,7 +15,14 @@ export default {
   component: LayerSelector,
 };
 
-const WithMap = ({ center, zoom, scale, baseLayers, overlays }) => {
+const WithMap = ({
+  center,
+  zoom,
+  scale,
+  baseLayers,
+  overlays,
+  showOpacitySlider,
+}) => {
   const mapDiv = useRef();
   const [layerSelectorOptions, setLayerSelectorOptions] = useState();
 
@@ -39,11 +46,12 @@ const WithMap = ({ center, zoom, scale, baseLayers, overlays }) => {
           : ['Hybrid', 'Lite', 'Terrain', 'Topo', 'Color IR'],
         overlays: overlays ? overlays : ['Address Points'],
         position: 'top-right',
+        showOpacitySlider,
       });
     };
 
     initMap();
-  }, [zoom, center, scale, baseLayers, overlays]);
+  }, [zoom, center, scale, baseLayers, overlays, showOpacitySlider]);
 
   return (
     <div
@@ -62,6 +70,7 @@ WithMap.propTypes = {
   scale: PropTypes.number,
   baseLayers: PropTypes.array,
   overlays: PropTypes.array,
+  showOpacitySlider: PropTypes.bool,
 };
 
 export const zoom = () => <WithMap zoom={6} />;
@@ -159,3 +168,5 @@ export const landOwnership = () => {
 
   return <WithMap {...landOwnershipOptions} />;
 };
+
+export const opacitySlider = () => <WithMap showOpacitySlider zoom={6} />;
