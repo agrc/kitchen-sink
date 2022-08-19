@@ -330,14 +330,12 @@ const LayerSelector = (props) => {
       ) || [];
     let overlays = props.overlays || [];
 
-    let hasDefaultSelection = false;
     let defaultSelection = null;
     let hasHybrid = false;
     let linkedLayersBuilder = [];
 
     baseLayers.forEach((layer) => {
       if (layer.selected === true) {
-        hasDefaultSelection = true;
         defaultSelection = layer;
       }
 
@@ -352,7 +350,7 @@ const LayerSelector = (props) => {
     setLinkedLayers(linkedLayersBuilder);
 
     // set default basemap to index 0 if not specified by the user
-    if (!hasDefaultSelection && baseLayers.length > 0) {
+    if (!defaultSelection && baseLayers.length > 0) {
       baseLayers[0].selected = true;
       defaultSelection = baseLayers[0];
     }
@@ -390,9 +388,14 @@ const LayerSelector = (props) => {
     });
 
     props.view.ui.add(selectorNode.current, props.position);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.modules]);
+  }, [
+    props.baseLayers,
+    props.overlays,
+    props.position,
+    props.quadWord,
+    props.view.map,
+    props.view.ui,
+  ]);
 
   const onItemChanged = (event, props) => {
     console.log('LayerSelector.onItemChanged', props);
