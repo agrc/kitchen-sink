@@ -1,47 +1,31 @@
 .layer-selector-item {
   margin: 0 8px;
 }
-.layer-selector--item {
-  max-width: 100px;
+.layer-selector-item--text {
   overflow: hidden;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
-  display: inline-block;
   font-size: 90%;
+  max-width: 100px;
+  white-space: nowrap;
+}
+.layer-selector--item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   user-select: none;
 }
-.layer-selector-item-input {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 0;
-  margin: 4px 0 0;
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-  position: relative;
-  display: block;
+.layer-selector-item {
+  margin: 0.5em;
 }
-.layer-selector-item.radio,
-.layer-selector-item.checkbox {
-  position: relative;
-  margin-top: 0px;
-  margin-bottom: 0px;
+.layer-selector-item:first-child {
+  margin-top: 0;
 }
-.layer-selector-item.radio input[type='checkbox'],
-.layer-selector-item.checkbox input[type='checkbox'],
-.layer-selector-item.radio input[type='radio'],
-.layer-selector-item.checkbox input[type='radio'] {
-  position: absolute;
-  margin-left: -20px;
-}
-.layer-selector-item.radio label,
-.layer-selector-item.checkbox label {
-  min-height: 20px;
-  padding-left: 20px;
+.layer-selector-item:last-child {
   margin-bottom: 0;
-  font-weight: 400;
-  cursor: pointer;
+}
+.layer-selector-item input {
+  margin: 0 0.5em 0 0;
 }
 .layer-selector {
   background: #fff;

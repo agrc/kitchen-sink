@@ -1,5 +1,6 @@
 import LayerSelector from './';
 import './LayerSelector.css';
+import Collection from '@arcgis/core/core/Collection';
 
 export default {
   title: 'LayerSelector',
@@ -7,9 +8,9 @@ export default {
 };
 const mapViewMock = {
   map: {
-    layers: [],
+    layers: new Collection(),
     basemap: {
-      layers: [],
+      layers: new Collection(),
     },
   },
   when: () => {},
