@@ -85,6 +85,7 @@
     "@types/arcgis-js-api": "^4.24.0",
     "@vitejs/plugin-react": "^2.0.0",
     "babel-loader": "^8.2.5",
+    "chokidar-cli": "^3.0.0",
     "eslint": "^8.21.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",

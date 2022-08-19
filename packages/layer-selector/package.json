@@ -48,6 +48,7 @@
   ],
   "scripts": {
     "build": "vite build --config ../../vite.config.js",
+    "build:watch": "chokidar \"src/**/*.(js|jsx|css)\" -c \"npm run build\"",
     "test": "vitest --config ../../vite.config.js"
   },
   "dependencies": {
