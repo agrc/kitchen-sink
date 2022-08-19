@@ -8,6 +8,12 @@ import Basemap from '@arcgis/core/Basemap';
 import LOD from '@arcgis/core/layers/support/LOD';
 import TileInfo from '@arcgis/core/layers/support/TileInfo';
 import WebTileLayer from '@arcgis/core/layers/WebTileLayer';
+import FeatureLayer from '@arcgis/core/layers/FeatureLayer';
+
+const commonFactories = {
+  FeatureLayer,
+  WebTileLayer,
+};
 
 const ExpandableContainer = (props) => {
   const [expanded, setExpanded] = useState(props.expanded);
@@ -148,6 +154,14 @@ const createLayerFactories = (
 
       if (!li.selected) {
         li.selected = false;
+      }
+
+      if (typeof li.Factory === 'string') {
+        li.Factory = commonFactories[li.Factory];
+
+        if (!li.Factory) {
+          throw new Error(`Unknown layer factory: ${li.Factory}`);
+        }
       }
 
       resolvedInfos.push(li);
