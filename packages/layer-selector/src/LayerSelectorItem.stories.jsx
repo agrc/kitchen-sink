@@ -38,3 +38,11 @@ export const checkedOverlay = () => (
     id="Overlay Layer"
   />
 );
+export const longLabel = () => (
+  <LayerSelectorItem
+    layerType="overlay"
+    selected={true}
+    onChange={() => {}}
+    id="Overlay Layer A Longer Label"
+  />
+);

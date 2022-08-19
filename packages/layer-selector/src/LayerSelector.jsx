@@ -55,12 +55,11 @@ const LayerSelectorItem = (props) => {
     <div className="layer-selector-item radio checkbox">
       <label className="layer-selector--item">
         <input
-          className="layer-selector-item-input"
           {...inputOptions}
           checked={props.selected}
           onChange={(event) => props.onChange(event, props)}
         />
-        {inputOptions.value}
+        <span className="layer-selector-item--text">{inputOptions.value}</span>
       </label>
     </div>
   );

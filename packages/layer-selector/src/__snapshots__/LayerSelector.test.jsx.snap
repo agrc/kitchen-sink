@@ -27,12 +27,15 @@ exports[`LayerSelector tests > LayerSelector snapshot 1`] = `
             >
               <input
                 checked=""
-                class="layer-selector-item-input"
                 name="baselayer"
                 type="radio"
                 value="Lite"
               />
-              Lite
+              <span
+                class="layer-selector-item--text"
+              >
+                Lite
+              </span>
             </label>
           </div>
           <div
@@ -42,12 +45,15 @@ exports[`LayerSelector tests > LayerSelector snapshot 1`] = `
               class="layer-selector--item"
             >
               <input
-                class="layer-selector-item-input"
                 name="baselayer"
                 type="radio"
                 value="Terrain"
               />
-              Terrain
+              <span
+                class="layer-selector-item--text"
+              >
+                Terrain
+              </span>
             </label>
           </div>
           <div
@@ -57,12 +63,15 @@ exports[`LayerSelector tests > LayerSelector snapshot 1`] = `
               class="layer-selector--item"
             >
               <input
-                class="layer-selector-item-input"
                 name="baselayer"
                 type="radio"
                 value="Topo"
               />
-              Topo
+              <span
+                class="layer-selector-item--text"
+              >
+                Topo
+              </span>
             </label>
           </div>
           <div
@@ -72,12 +81,15 @@ exports[`LayerSelector tests > LayerSelector snapshot 1`] = `
               class="layer-selector--item"
             >
               <input
-                class="layer-selector-item-input"
                 name="baselayer"
                 type="radio"
                 value="Color IR"
               />
-              Color IR
+              <span
+                class="layer-selector-item--text"
+              >
+                Color IR
+              </span>
             </label>
           </div>
         </div>
