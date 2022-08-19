@@ -6,7 +6,12 @@ export default {
   component: LayerSelector,
 };
 const mapViewMock = {
-  map: {},
+  map: {
+    layers: [],
+    basemap: {
+      layers: [],
+    },
+  },
   when: () => {},
   ui: {
     add: () => {},
@@ -27,5 +32,6 @@ export const withoutExpandableContainer = () => (
     view={mapViewMock}
     quadWord="my-fake-quad-word"
     makeExpandable={false}
+    overlays={['Address Points']}
   ></LayerSelector>
 );
