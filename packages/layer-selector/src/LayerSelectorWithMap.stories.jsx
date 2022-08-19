@@ -8,6 +8,7 @@ import WebTileLayer from '@arcgis/core/layers/WebTileLayer';
 import TileLayer from '@arcgis/core/layers/TileLayer';
 import '@arcgis/core/assets/esri/themes/light/main.css';
 import './LayerSelector.css';
+import PropTypes from 'prop-types';
 
 export default {
   title: 'LayerSelector/WithMap',
@@ -54,6 +55,13 @@ const WithMap = ({ center, zoom, scale, baseLayers, overlays }) => {
       ) : null}
     </div>
   );
+};
+WithMap.propTypes = {
+  center: PropTypes.arrayOf(PropTypes.number),
+  zoom: PropTypes.number,
+  scale: PropTypes.number,
+  baseLayers: PropTypes.array,
+  overlays: PropTypes.array,
 };
 
 export const zoom = () => <WithMap zoom={6} />;
