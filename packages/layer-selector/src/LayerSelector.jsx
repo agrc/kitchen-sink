@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { createDefaultTileInfo } from './TileInfo';
 import { setTileInfosForApplianceLayers } from './Discover';
 import icon from './layers.svg';
-import Basemap from '@arcgis/core/Basemap';
 import LOD from '@arcgis/core/layers/support/LOD';
 import TileInfo from '@arcgis/core/layers/support/TileInfo';
 import WebTileLayer from '@arcgis/core/layers/WebTileLayer';
@@ -321,7 +320,7 @@ const LayerSelector = (props) => {
       },
     };
 
-    props.view.map.basemap = new Basemap();
+    props.view.map.basemap = {};
 
     const defaultTileInfo = createDefaultTileInfo(LOD);
     const applianceLayers = setTileInfosForApplianceLayers(
