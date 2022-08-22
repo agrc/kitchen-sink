@@ -36,3 +36,21 @@ export const withoutExpandableContainer = () => (
     overlays={['Address Points']}
   ></LayerSelector>
 );
+
+export const defaultSelection = () => (
+  <LayerSelector
+    baseLayers={[
+      'Lite',
+      'Terrain',
+      {
+        token: 'Topo',
+        selected: true,
+      },
+      'Color IR',
+    ]}
+    view={mapViewMock}
+    quadWord="my-fake-quad-word"
+    makeExpandable={false}
+    overlays={['Address Points']}
+  ></LayerSelector>
+);

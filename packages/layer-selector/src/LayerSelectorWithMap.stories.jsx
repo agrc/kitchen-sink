@@ -120,6 +120,7 @@ export const customLOD = () => {
 
   return <WithMap zoom={6} baseLayers={baseLayers} />;
 };
+
 export const linkedOverlays = () => {
   const baseLayers = [
     {
@@ -152,6 +153,37 @@ export const linkedOverlays = () => {
   return <WithMap zoom={6} baseLayers={baseLayers} overlays={overlays} />;
 };
 
+export const defaultSelection = () => {
+  const baseLayers = [
+    {
+      Factory: TileLayer,
+      url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer',
+      id: 'Topo',
+    },
+    {
+      Factory: TileLayer,
+      url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer',
+      id: 'Terrain',
+      selected: true,
+    },
+  ];
+
+  const overlays = [
+    {
+      Factory: FeatureLayer,
+      url: 'https://services1.arcgis.com/99lidPhWCzftIe9K/arcgis/rest/services/UtahMunicipalBoundaries/FeatureServer/0',
+      id: 'Cities',
+      selected: true,
+    },
+    {
+      Factory: FeatureLayer,
+      url: 'https://services1.arcgis.com/99lidPhWCzftIe9K/arcgis/rest/services/UtahCountyBoundaries/FeatureServer/0',
+      id: 'Counties',
+    },
+  ];
+
+  return <WithMap zoom={6} baseLayers={baseLayers} overlays={overlays} />;
+};
 export const landOwnership = () => {
   const landOwnershipOptions = {
     overlays: [
