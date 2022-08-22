@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.0](https://github.com/agrc/kitchen-sink/compare/layer-selector-v6.0.0...layer-selector-v6.1.0) (2022-08-22)
+
+
+### Features
+
+* **layer-selector:** add optional opacity slider ([e5b8e71](https://github.com/agrc/kitchen-sink/commit/e5b8e71988bcddbd7d336d423853b98b9d3172a0))
+
+
+### Bug Fixes
+
+* **layer-selector:** clean up and simplify layout and styling ([c0fdc1f](https://github.com/agrc/kitchen-sink/commit/c0fdc1f33787d49e5e6e103fe1fb6ba218ae794d))
+* **layer-selector:** disable invalid lint error ([c4bfff7](https://github.com/agrc/kitchen-sink/commit/c4bfff7c0acad909cea8123b4ff3bd130064d427))
+* **layer-selector:** support strings as layer factory configs ([ab81290](https://github.com/agrc/kitchen-sink/commit/ab812901dab138c34934a8a74ce51da772a6cae5))
+
 ## [6.0.0](https://github.com/agrc/kitchen-sink/compare/layer-selector-v5.0.3...layer-selector-v6.0.0) (2022-07-21)
 
 
