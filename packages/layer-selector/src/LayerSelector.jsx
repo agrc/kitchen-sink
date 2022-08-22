@@ -25,6 +25,7 @@ const ExpandableContainer = (props) => {
   const fromClasses = classNames({ 'layer-selector--hidden': !expanded });
 
   return (
+    // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
     <div
       className="layer-selector"
       // onFocus={() => setExpanded(true)}
