@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.0](https://github.com/agrc/kitchen-sink/compare/utilities-v2.1.3...utilities-v2.2.0) (2022-08-22)
+
+
+### Features
+
+* **utilities:** add useLocalStorage hook ([1aca06f](https://github.com/agrc/kitchen-sink/commit/1aca06f6183e04f094ae60ab2253a5e7bf1ce48f))
+
 ## [2.1.3](https://github.com/agrc/kitchen-sink/compare/utilities-v2.1.2...utilities-v2.1.3) (2022-07-21)
 
 
