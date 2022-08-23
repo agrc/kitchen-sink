@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.1](https://github.com/agrc/kitchen-sink/compare/utilities-v2.2.0...utilities-v2.2.1) (2022-08-23)
+
+
+### Bug Fixes
+
+* **utilities:** sort imports ([f9bb166](https://github.com/agrc/kitchen-sink/commit/f9bb166b9e45a10d00131c4096337376d4c1f2ad))
+
 ## [2.2.0](https://github.com/agrc/kitchen-sink/compare/utilities-v2.1.3...utilities-v2.2.0) (2022-08-22)
 
 
