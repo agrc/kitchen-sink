@@ -184,13 +184,15 @@ const LayerSelector = (props) => {
 
   const [opacity, setOpacity] = useState(1);
   useEffect(() => {
-    for (const layerId in managedLayers) {
-      const managedLayer = managedLayers[layerId];
-      if (managedLayer.layer) {
-        managedLayer.layer.opacity = opacity;
+    if (props.showOpacitySlider) {
+      for (const layerId in managedLayers) {
+        const managedLayer = managedLayers[layerId];
+        if (managedLayer.layer) {
+          managedLayer.layer.opacity = opacity;
+        }
       }
     }
-  }, [managedLayers, opacity]);
+  }, [props.showOpacitySlider, managedLayers, opacity]);
 
   useEffect(() => {
     const managedLayersDraft = { ...managedLayers };
