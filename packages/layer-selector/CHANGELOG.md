@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.1](https://github.com/agrc/kitchen-sink/compare/layer-selector-v6.1.0...layer-selector-v6.1.1) (2022-09-06)
+
+
+### Bug Fixes
+
+* **layer-selector:** do not set opacity if not using slider ([f160305](https://github.com/agrc/kitchen-sink/commit/f16030508619485d1af7636ab53e19ab1f4ca6d1))
+
 ## [6.1.0](https://github.com/agrc/kitchen-sink/compare/layer-selector-v6.0.0...layer-selector-v6.1.0) (2022-08-22)
 
 
