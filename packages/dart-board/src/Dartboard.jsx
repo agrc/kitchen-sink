@@ -342,12 +342,17 @@ const useDartboard = (userProps = {}) => {
 
       const point = {
         type: 'point',
-        x: result.location.x,
-        y: result.location.y,
+        x: result?.location?.x,
+        y: result?.location?.y,
         spatialReference: {
           wkid: props.wkid,
         },
       };
+
+      if (props.format?.toLowerCase() === 'esrijson') {
+        point.x = result?.geometry?.x;
+        point.y = result?.geometry?.y;
+      }
 
       return outputTransform(result, point);
     },
