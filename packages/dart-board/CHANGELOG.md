@@ -21,6 +21,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @ugrc/utilities bumped from ^2.2.0 to ^2.2.1
 
+## [5.0.4](https://github.com/agrc/kitchen-sink/compare/dart-board-v5.0.3...dart-board-v5.0.4) (2022-10-05)
+
+
+### Bug Fixes
+
+* **dart-board:** update result for esrijson results ([2eca961](https://github.com/agrc/kitchen-sink/commit/2eca961daaa2a334c9e4454d9939571dbd89570a))
+
 ## [5.0.1](https://github.com/agrc/kitchen-sink/compare/dart-board-v5.0.0...dart-board-v5.0.1) (2022-07-27)
 
 
