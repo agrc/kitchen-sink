@@ -3,9 +3,10 @@ import Sherlock, { MapServiceProvider } from './';
 import Map from '@arcgis/core/Map';
 import MapView from '@arcgis/core/views/MapView';
 import '@arcgis/core/assets/esri/themes/light/main.css';
-import * as watchUtils from '@arcgis/core/core/watchUtils';
+import * as reactiveUtils from '@arcgis/core/core/reactiveUtils';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Sherlock.css';
+import PropTypes from 'prop-types';
 
 export default {
   title: 'Sherlock/InMap',
@@ -59,9 +60,12 @@ const FeatureService = ({ url, searchField, contextField }) => {
 
         mapView.current.graphics.addMany(sherlockMatches);
 
-        watchUtils.once(mapView.current, 'extent', () => {
-          mapView.current.graphics.removeAll();
-        });
+        reactiveUtils.once(
+          () => mapView.current.extent,
+          () => {
+            mapView.current.graphics.removeAll();
+          }
+        );
       }
     };
 
@@ -73,9 +77,20 @@ const FeatureService = ({ url, searchField, contextField }) => {
       ref={mapDiv}
       style={{ position: 'absolute', top: 0, left: 0, bottom: 0, right: 0 }}
     >
-      {config ? <Sherlock {...config} /> : null}
+      {config ? (
+        <Sherlock
+          {...config}
+          style={{ position: 'absolute', top: '0.5em', right: '0.5em' }}
+        />
+      ) : null}
     </div>
   );
+};
+
+FeatureService.propTypes = {
+  url: PropTypes.string.isRequired,
+  searchField: PropTypes.string.isRequired,
+  contextField: PropTypes.string,
 };
 
 export const cities = () => (
