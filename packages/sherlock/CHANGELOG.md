@@ -17,6 +17,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **sherlock:** add extent ([a01e94f](https://github.com/agrc/kitchen-sink/commit/a01e94fcdc62c64fa385e0fd2f984357102fbab9))
 - add LocatorSuggestProvider to sherlock ([0bd35a7](https://github.com/agrc/kitchen-sink/commit/0bd35a7ac9a06a580482f1e18a63da53cdeac820))
 
+## [4.0.1](https://github.com/agrc/kitchen-sink/compare/sherlock-v4.0.0...sherlock-v4.0.1) (2022-11-07)
+
+
+### Bug Fixes
+
+* November dependency bumps 🌲 ([27f06e6](https://github.com/agrc/kitchen-sink/commit/27f06e64b2006de94fb90f2e8934fbab35fb295d))
+* replace deprecated esri module ([6e4580a](https://github.com/agrc/kitchen-sink/commit/6e4580a97b779dd89d08c51c32822a184cb4f158))
+
 ## [4.0.0](https://github.com/agrc/kitchen-sink/compare/sherlock-v3.0.4...sherlock-v4.0.0) (2022-07-21)
 
 

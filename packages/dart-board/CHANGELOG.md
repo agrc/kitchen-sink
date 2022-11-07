@@ -21,6 +21,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @ugrc/utilities bumped from ^2.2.0 to ^2.2.1
 
+## [5.0.5](https://github.com/agrc/kitchen-sink/compare/dart-board-v5.0.4...dart-board-v5.0.5) (2022-11-07)
+
+
+### Bug Fixes
+
+* November dependency bumps 🌲 ([27f06e6](https://github.com/agrc/kitchen-sink/commit/27f06e64b2006de94fb90f2e8934fbab35fb295d))
+* replace deprecated esri module ([6e4580a](https://github.com/agrc/kitchen-sink/commit/6e4580a97b779dd89d08c51c32822a184cb4f158))
+
 ## [5.0.4](https://github.com/agrc/kitchen-sink/compare/dart-board-v5.0.3...dart-board-v5.0.4) (2022-10-05)
 
 
