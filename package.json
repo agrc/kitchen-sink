@@ -97,7 +97,7 @@
     "prettier": "^2.7.1",
     "prettier-plugin-packagejson": "^2.3.0",
     "read-pkg": "^7.1.0",
-    "release-please": "^14.16.0",
+    "release-please": "^14.17.3",
     "sass": "^1.56.0",
     "vite": "^3.2.3",
     "vitest": "^0.24.5"
