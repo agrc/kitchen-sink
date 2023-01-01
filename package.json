@@ -73,7 +73,7 @@
   "devDependencies": {
     "@arcgis/core": "^4.25.5",
     "@babel/core": "^7.20.5",
-    "@mdx-js/react": "^2.1.5",
+    "@mdx-js/react": "^2.2.1",
     "@storybook/addon-actions": "^6.5.14",
     "@storybook/addon-essentials": "^6.5.14",
     "@storybook/addon-interactions": "^6.5.14",
