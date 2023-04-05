@@ -1,9 +1,13 @@
-name: Node.js CI
+name: Pull Request Events
 
 on: pull_request
 
+permissions:
+  contents: write
+  pull-requests: write
+
 concurrency:
-  group: '${{ github.head_ref || github.ref }}'
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -20,7 +24,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: lts/*
-          check-latest: true
           cache: npm
 
       - name: 📥 Download dependencies
@@ -29,11 +32,10 @@ jobs:
       - name: 🧼 Lint files
         run: npm run lint
 
-  test:
+  test-unit:
     name: Unit tests
     runs-on: ubuntu-latest
-    environment:
-      name: dev
+
     steps:
       - name: ⬇️ Set up code
         uses: actions/checkout@v3
@@ -42,7 +44,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: lts/*
-          check-latest: true
           cache: npm
 
       - name: 📥 Download dependencies
