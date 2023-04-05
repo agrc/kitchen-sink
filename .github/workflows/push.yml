@@ -10,8 +10,10 @@ concurrency:
 
 jobs:
   release:
-    name: Create and publish packages
+    name: Create releases
     runs-on: ubuntu-latest
+    outputs:
+      releases_created: ${{ steps.release.outputs.releases_created }}
     steps:
       - name: 🛠️ Create releases
         id: release
@@ -21,12 +23,16 @@ jobs:
           monorepo-tags: true
           command: manifest
 
+  deploy:
+    name: Create and publish packages
+    runs-on: ubuntu-latest
+    needs: release
+    if: needs.release.outputs.releases_created
+    steps:
       - name: ⬇️ Set up code
-        if: steps.release.outputs.releases_created
         uses: actions/checkout@v3
 
       - name: ⎔ Setup Node.js
-        if: steps.release.outputs.releases_created
         uses: actions/setup-node@v3
         with:
           node-version: lts/*
@@ -35,15 +41,12 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: 📥 Download dependencies
-        if: steps.release.outputs.releases_created
         run: npm ci
 
       - name: 🏗 Run build script
-        if: steps.release.outputs.releases_created
         run: npm run build
 
       - name: 🚢 Publish packages
-        if: steps.release.outputs.releases_created
         run: ./scripts/publish.sh
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
