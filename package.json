@@ -22,7 +22,7 @@
     "format": "prettier . --write",
     "lint": "eslint .",
     "lint:fix": "eslint . --quiet --fix",
-    "npm-check": "npm exec --workspaces -- npx npm-check --update",
+    "npm-check": "npx npm-check-updates --color --interactive --format group,repo --workspaces --root",
     "storybook": "storybook dev --port 6006",
     "test": "vitest"
   },
