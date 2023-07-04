@@ -21,6 +21,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @ugrc/utilities bumped from ^2.2.0 to ^2.2.1
 
+## [5.0.6](https://github.com/agrc/kitchen-sink/compare/dart-board-v5.0.5...dart-board-v5.0.6) (2023-07-04)
+
+
+### Bug Fixes
+
+* **dart-board:** Q3 Dependency Bumps 🌲 ([8dfe845](https://github.com/agrc/kitchen-sink/commit/8dfe8453a4532475d0fec2796142103c404f5c71))
+* **mono-repo:** Q3 Dependency Bumps 🌲 ([52ebdb2](https://github.com/agrc/kitchen-sink/commit/52ebdb2c3d6020b7a1aa17f3309c307ce08c8663))
+* **sherlock:** Q3 Dependency Bumps 🌲 ([4c4c181](https://github.com/agrc/kitchen-sink/commit/4c4c18170b76b0c3f20d06c21024857c8729b87c))
+
 ## [5.0.5](https://github.com/agrc/kitchen-sink/compare/dart-board-v5.0.4...dart-board-v5.0.5) (2022-11-07)
 
 

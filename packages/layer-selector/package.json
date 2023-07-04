@@ -1,6 +1,6 @@
 {
   "name": "@ugrc/layer-selector",
-  "version": "6.1.1",
+  "version": "6.1.2",
   "private": false,
   "description": "This is a react component for adding a quick base map selector with a happy path for using [UGRC's Discover Service](https://gis.utah.gov/discover).",
   "keywords": [

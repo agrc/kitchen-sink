@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.2](https://github.com/agrc/kitchen-sink/compare/layer-selector-v6.1.1...layer-selector-v6.1.2) (2023-07-04)
+
+
+### Bug Fixes
+
+* **layer-selector:** Q3 Dependency Bumps 🌲 ([01b3849](https://github.com/agrc/kitchen-sink/commit/01b38493a54c71e48ca0adee6be91bb137ac1abf))
+* **mono-repo:** Q3 Dependency Bumps 🌲 ([52ebdb2](https://github.com/agrc/kitchen-sink/commit/52ebdb2c3d6020b7a1aa17f3309c307ce08c8663))
+* **sherlock:** Q3 Dependency Bumps 🌲 ([4c4c181](https://github.com/agrc/kitchen-sink/commit/4c4c18170b76b0c3f20d06c21024857c8729b87c))
+
 ## [6.1.1](https://github.com/agrc/kitchen-sink/compare/layer-selector-v6.1.0...layer-selector-v6.1.1) (2022-09-06)
 
 
