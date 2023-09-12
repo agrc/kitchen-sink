@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.0](https://github.com/agrc/kitchen-sink/compare/layer-selector-v6.1.2...layer-selector-v6.2.0) (2023-09-12)
+
+
+### Features
+
+* **layer-selector:** add string factory support for TileLayer base layers ([27cd0f0](https://github.com/agrc/kitchen-sink/commit/27cd0f08e8851da04196247c40c8f7d51a8ac997))
+
 ## [6.1.2](https://github.com/agrc/kitchen-sink/compare/layer-selector-v6.1.1...layer-selector-v6.1.2) (2023-07-04)
 
 
