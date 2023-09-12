@@ -43,7 +43,19 @@ const WithMap = ({
         quadWord: import.meta.env.VITE_QUAD_WORD,
         baseLayers: baseLayers
           ? baseLayers
-          : ['Hybrid', 'Lite', 'Terrain', 'Topo', 'Color IR'],
+          : [
+              'Hybrid',
+              'Lite',
+              'Terrain',
+              'Topo',
+              'Color IR',
+              {
+                id: 'Vision Refresh Basemap',
+                Factory: 'TileLayer',
+                url: 'https://gis.wfrc.org/arcgis/rest/services/WC2050Vision/2023_Vision_Refresh_Basemap/MapServer/',
+                opacity: 1,
+              },
+            ],
         overlays: overlays ? overlays : ['Address Points'],
         position: 'top-right',
         showOpacitySlider,
