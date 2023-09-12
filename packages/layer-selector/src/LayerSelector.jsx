@@ -9,10 +9,12 @@ import LOD from '@arcgis/core/layers/support/LOD';
 import TileInfo from '@arcgis/core/layers/support/TileInfo';
 import WebTileLayer from '@arcgis/core/layers/WebTileLayer';
 import FeatureLayer from '@arcgis/core/layers/FeatureLayer';
+import TileLayer from '@arcgis/core/layers/TileLayer';
 
 const commonFactories = {
   FeatureLayer,
   WebTileLayer,
+  TileLayer,
 };
 
 const ExpandableContainer = (props) => {
