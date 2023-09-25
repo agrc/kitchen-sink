@@ -53,7 +53,7 @@ const WithMap = ({
                 id: 'Vision Refresh Basemap',
                 Factory: 'TileLayer',
                 url: 'https://gis.wfrc.org/arcgis/rest/services/WC2050Vision/2023_Vision_Refresh_Basemap/MapServer/',
-                opacity: 1,
+                opacity: 0.25,
               },
             ],
         overlays: overlays ? overlays : ['Address Points'],

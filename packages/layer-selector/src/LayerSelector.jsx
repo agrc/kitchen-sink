@@ -184,17 +184,19 @@ const LayerSelector = (props) => {
   const [managedLayers, setManagedLayers] = useState({});
   const selectorNode = useRef();
 
-  const [opacity, setOpacity] = useState(1);
-  useEffect(() => {
+  function onChangeOpacity(event) {
+    const sliderOpacity = parseFloat(event.target.value) / 100.0;
     if (props.showOpacitySlider) {
       for (const layerId in managedLayers) {
         const managedLayer = managedLayers[layerId];
         if (managedLayer.layer) {
-          managedLayer.layer.opacity = opacity;
+          const originalOpacity = managedLayer.layer.originalOpacity ?? 1;
+          const newOpacity = originalOpacity - (1 - sliderOpacity);
+          managedLayer.layer.opacity = newOpacity < 0 ? 0 : newOpacity;
         }
       }
     }
-  }, [props.showOpacitySlider, managedLayers, opacity]);
+  }
 
   useEffect(() => {
     const managedLayersDraft = { ...managedLayers };
@@ -243,9 +245,10 @@ const LayerSelector = (props) => {
       }
 
       if (!managedLayersDraft[layerItem.id].layer) {
-        managedLayersDraft[layerItem.id].layer = new layerItem.Factory(
-          layerItem
-        );
+        managedLayersDraft[layerItem.id].layer = new layerItem.Factory({
+          originalOpacity: layerItem.opacity,
+          ...layerItem,
+        });
       }
 
       if (layerItem.selected === true) {
@@ -490,10 +493,8 @@ const LayerSelector = (props) => {
                 min="0"
                 max="100"
                 step="1"
-                value={opacity * 100}
-                onChange={(event) =>
-                  setOpacity(parseFloat(event.target.value) / 100.0)
-                }
+                defaultValue="100"
+                onChange={onChangeOpacity}
               />
             </>
           ) : null}
