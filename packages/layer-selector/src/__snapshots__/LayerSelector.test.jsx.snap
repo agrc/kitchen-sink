@@ -4,7 +4,7 @@ exports[`LayerSelector tests > LayerSelector snapshot 1`] = `
 <DocumentFragment>
   <div>
     <div
-      area-haspopup="true"
+      aria-haspopup="true"
       class="layer-selector"
     >
       <input
