@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.1](https://github.com/agrc/kitchen-sink/compare/layer-selector-v6.2.0...layer-selector-v6.2.1) (2023-09-25)
+
+
+### Bug Fixes
+
+* **layer-selector:** make opacity slider take into account initial layer opacities ([844c8a7](https://github.com/agrc/kitchen-sink/commit/844c8a730ec2e9e01a83feb6d972b39a23b589a5))
+* **layer-selector:** typo in aria element attribute ([2e22b62](https://github.com/agrc/kitchen-sink/commit/2e22b623e111f1bbd1b24f4f7321b5e59fa83047))
+
 ## [6.2.0](https://github.com/agrc/kitchen-sink/compare/layer-selector-v6.1.2...layer-selector-v6.2.0) (2023-09-12)
 
 
