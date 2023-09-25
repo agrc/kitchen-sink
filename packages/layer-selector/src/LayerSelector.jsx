@@ -34,7 +34,7 @@ const ExpandableContainer = (props) => {
       // onBlur={() => setExpanded(false)}
       onMouseOver={() => setExpanded(true)}
       onMouseOut={() => setExpanded(false)}
-      area-haspopup="true"
+      aria-haspopup="true"
     >
       <input type="image" className={imageClasses} src={icon} alt="layers" />
       <form className={fromClasses}>{props.children}</form>
