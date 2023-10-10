@@ -75,7 +75,7 @@
     "@babel/core": "^7.22.5",
     "@mdx-js/react": "^2.3.0",
     "@storybook/addon-actions": "^7.0.25",
-    "@storybook/addon-essentials": "^7.0.25",
+    "@storybook/addon-essentials": "^7.4.6",
     "@storybook/addon-interactions": "^7.0.25",
     "@storybook/addon-links": "^7.0.25",
     "@storybook/react": "^7.0.25",
