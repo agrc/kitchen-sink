@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.2](https://github.com/agrc/kitchen-sink/compare/layer-selector-v6.2.1...layer-selector-v6.2.2) (2023-10-10)
+
+
+### Bug Fixes
+
+* fix storybook/vite errors ([500ff07](https://github.com/agrc/kitchen-sink/commit/500ff07e586e0edac63e2289e0e0878b52d0b38f))
+
 ## [6.2.1](https://github.com/agrc/kitchen-sink/compare/layer-selector-v6.2.0...layer-selector-v6.2.1) (2023-09-25)
 
 
