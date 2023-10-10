@@ -17,6 +17,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **sherlock:** add extent ([a01e94f](https://github.com/agrc/kitchen-sink/commit/a01e94fcdc62c64fa385e0fd2f984357102fbab9))
 - add LocatorSuggestProvider to sherlock ([0bd35a7](https://github.com/agrc/kitchen-sink/commit/0bd35a7ac9a06a580482f1e18a63da53cdeac820))
 
+## [4.0.4](https://github.com/agrc/kitchen-sink/compare/sherlock-v4.0.3...sherlock-v4.0.4) (2023-10-10)
+
+
+### Bug Fixes
+
+* fix storybook/vite errors ([500ff07](https://github.com/agrc/kitchen-sink/commit/500ff07e586e0edac63e2289e0e0878b52d0b38f))
+
 ## [4.0.3](https://github.com/agrc/kitchen-sink/compare/sherlock-v4.0.2...sherlock-v4.0.3) (2023-07-04)
 
 

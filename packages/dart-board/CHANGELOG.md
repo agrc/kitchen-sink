@@ -21,6 +21,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @ugrc/utilities bumped from ^2.2.0 to ^2.2.1
 
+## [5.0.7](https://github.com/agrc/kitchen-sink/compare/dart-board-v5.0.6...dart-board-v5.0.7) (2023-10-10)
+
+
+### Bug Fixes
+
+* fix storybook/vite errors ([500ff07](https://github.com/agrc/kitchen-sink/commit/500ff07e586e0edac63e2289e0e0878b52d0b38f))
+
 ## [5.0.6](https://github.com/agrc/kitchen-sink/compare/dart-board-v5.0.5...dart-board-v5.0.6) (2023-07-04)
 
 
