@@ -20,3 +20,6 @@ updates:
       interval: monthly
     labels:
       - dependencies
+    groups:
+      ci-dependencies:
+        dependency-type: 'production'
