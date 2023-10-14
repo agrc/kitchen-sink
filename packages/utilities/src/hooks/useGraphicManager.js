@@ -11,9 +11,9 @@ export default function useGraphicManager(mapView) {
       }
 
       if (Array.isArray(graphics)) {
-        graphics.forEach((x) => mapView.current.graphics.remove(x));
+        graphics.forEach((x) => mapView.graphics.remove(x));
       } else {
-        mapView.current.graphics.remove(graphics);
+        mapView.graphics.remove(graphics);
       }
     },
     [mapView]
@@ -24,15 +24,15 @@ export default function useGraphicManager(mapView) {
     previousGraphic.current = graphic;
 
     if (Array.isArray(graphic)) {
-      mapView.current?.when(() => {
-        mapView.current.graphics.addMany(graphic);
+      mapView?.when(() => {
+        mapView.graphics.addMany(graphic);
       });
 
       return;
     }
 
-    mapView.current?.when(() => {
-      mapView.current.graphics.add(graphic);
+    mapView?.when(() => {
+      mapView.graphics.add(graphic);
     });
   }, [graphic, removeGraphics, mapView]);
 
