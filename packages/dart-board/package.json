@@ -12,7 +12,7 @@
     "geocoding",
     "spatial"
   ],
-  "homepage": "https://github.com/agrc/kitchen-sink/blob/main/packages/dartboard/READMD.md",
+  "homepage": "https://github.com/agrc/kitchen-sink/blob/main/packages/dart-board/READMD.md",
   "bugs": {
     "url": "https://github.com/agrc/kitchen-sink/issues"
   },
