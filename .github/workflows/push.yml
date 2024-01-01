@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: 🛠️ Create releases
         id: release
-        uses: google-github-actions/release-please-action@v3
+        uses: google-github-actions/release-please-action@v4
         with:
           release-type: node
           monorepo-tags: true
