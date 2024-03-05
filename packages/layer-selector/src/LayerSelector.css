@@ -6,7 +6,6 @@
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   font-size: 90%;
-  max-width: 100px;
   white-space: nowrap;
 }
 .layer-selector--item {
@@ -30,7 +29,6 @@
 .layer-selector {
   background: #fff;
   pointer-events: auto;
-  max-width: 150px;
 }
 .layer-selector--width {
   width: 8em;
