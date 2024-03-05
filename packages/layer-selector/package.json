@@ -52,7 +52,7 @@
     "test": "vitest --config ../../vite.config.js"
   },
   "dependencies": {
-    "clsx": "^2.0.0"
+    "clsx": "^2.1.0"
   },
   "peerDependencies": {
     "@arcgis/core": "^4.20.0",
