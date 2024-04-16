@@ -9,7 +9,6 @@ import './Sherlock.css';
 import PropTypes from 'prop-types';
 
 export default {
-  title: 'Sherlock/InMap',
   component: Sherlock,
 };
 

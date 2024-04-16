@@ -11,7 +11,6 @@ import './LayerSelector.css';
 import PropTypes from 'prop-types';
 
 export default {
-  title: 'LayerSelector/WithMap',
   component: LayerSelector,
 };
 

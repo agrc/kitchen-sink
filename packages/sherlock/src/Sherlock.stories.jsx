@@ -3,7 +3,6 @@ import Sherlock, { LocatorSuggestProvider } from './';
 import './Sherlock.css';
 
 export default {
-  title: 'Sherlock',
   component: Sherlock,
 };
 

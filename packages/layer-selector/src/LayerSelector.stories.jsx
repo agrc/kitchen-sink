@@ -3,7 +3,6 @@ import './LayerSelector.css';
 import Collection from '@arcgis/core/core/Collection';
 
 export default {
-  title: 'LayerSelector',
   component: LayerSelector,
 };
 const mapViewMock = {

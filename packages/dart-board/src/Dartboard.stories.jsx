@@ -2,7 +2,6 @@ import Dartboard, { TailwindDartboard, useDartboard } from './index';
 import './Dartboard.css';
 
 export default {
-  title: 'Dartboard',
   component: Dartboard,
   argTypes: {
     success: { action: 'ok' },
