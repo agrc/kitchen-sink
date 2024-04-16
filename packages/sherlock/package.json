@@ -52,10 +52,10 @@
     "test": "vitest --config ../../vite.config.js"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.5.1",
-    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "downshift": "^8.4.0",
+    "downshift": "^9.0.4",
     "lodash-es": "^4.17.21",
     "react-fast-compare": "^3.2.2",
     "reactstrap": "^9.2.2"
