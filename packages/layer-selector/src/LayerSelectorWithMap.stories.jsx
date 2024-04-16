@@ -3,6 +3,7 @@ import LayerSelector from './';
 import Map from '@arcgis/core/Map';
 import MapView from '@arcgis/core/views/MapView';
 import FeatureLayer from '@arcgis/core/layers/FeatureLayer';
+import VectorTileLayer from '@arcgis/core/layers/VectorTileLayer';
 import TileInfo from '@arcgis/core/layers/support/TileInfo';
 import WebTileLayer from '@arcgis/core/layers/WebTileLayer';
 import TileLayer from '@arcgis/core/layers/TileLayer';
@@ -200,8 +201,8 @@ export const landOwnership = () => {
     overlays: [
       'Address Points',
       {
-        Factory: FeatureLayer,
-        url: 'https://gis.trustlands.utah.gov/server/rest/services/Ownership/UT_SITLA_Ownership_LandOwnership_WM/FeatureServer/0',
+        Factory: VectorTileLayer,
+        url: 'https://gis.trustlands.utah.gov/hosting/rest/services/Hosted/Land_Ownership_WM_VectorTile/VectorTileServer',
         id: 'Land Ownership',
         opacity: 0.3,
       },
