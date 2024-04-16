@@ -2,6 +2,11 @@
 
 ## Development
 
+1. Build the packages
+   1. `npm run build`
+2. View the stories
+   1. `npm run storybook`
+
 ### Conventional Commits
 
 Please use [conventional commits](https://www.conventionalcommits.org) with the following scopes:
