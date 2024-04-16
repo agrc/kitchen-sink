@@ -23,7 +23,7 @@ const createDefaultTileInfo = (LOD) => {
         level: level,
         scale: scale,
         resolution: resolution,
-      })
+      }),
     );
   }
 

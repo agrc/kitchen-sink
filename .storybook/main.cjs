@@ -1,18 +1,15 @@
-const {
-  dirname,
-  join
-} = require("path");
+const { dirname, join } = require('path');
 
 module.exports = {
-  stories: ['../packages/*/src/*.stories.@(js|jsx)'],
+  stories: ['../packages/*/src/*.stories.jsx'],
   addons: [
-    getAbsolutePath("@storybook/addon-links"),
-    getAbsolutePath("@storybook/addon-essentials"),
-    getAbsolutePath("@storybook/addon-interactions"),
-    "@chromatic-com/storybook"
+    getAbsolutePath('@storybook/addon-links'),
+    getAbsolutePath('@storybook/addon-essentials'),
+    getAbsolutePath('@storybook/addon-interactions'),
+    '@chromatic-com/storybook',
   ],
   framework: {
-    name: getAbsolutePath("@storybook/react-vite"),
+    name: getAbsolutePath('@storybook/react-vite'),
     options: {},
   },
   docs: {
@@ -21,5 +18,5 @@ module.exports = {
 };
 
 function getAbsolutePath(value) {
-  return dirname(require.resolve(join(value, "package.json")));
+  return dirname(require.resolve(join(value, 'package.json')));
 }

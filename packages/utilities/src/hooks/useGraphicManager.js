@@ -16,7 +16,7 @@ export default function useGraphicManager(mapView) {
         mapView.current.graphics.remove(graphics);
       }
     },
-    [mapView]
+    [mapView],
   );
 
   useEffect(() => {

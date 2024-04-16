@@ -84,7 +84,7 @@ const createLayerFactories = (
   layerFactories,
   WebTiledLayer,
   quadWord,
-  applianceLayers
+  applianceLayers,
 ) => {
   const resolvedInfos = [];
   layerFactories.forEach((li) => {
@@ -103,7 +103,7 @@ const createLayerFactories = (
             id +
             '` without setting ' +
             'your `quadWord` from Discover. The requests for tiles will fail to ' +
-            ' authenticate. Pass `quadWord` into the constructor of this widget.'
+            ' authenticate. Pass `quadWord` into the constructor of this widget.',
         );
 
         return false;
@@ -119,7 +119,7 @@ const createLayerFactories = (
             'the supported tokens (' +
             Object.keys(applianceLayers).join(', ') +
             ') or pass in the information on how to create your custom layer ' +
-            '(`{Factory, url, id}`).'
+            '(`{Factory, url, id}`).',
         );
 
         return false;
@@ -227,7 +227,7 @@ const LayerSelector = (props) => {
         var managedLayer = managedLayersDraft[layerItem.id] || {};
         if (!managedLayer.layer) {
           managedLayer.layer = layerList.getItemAt(
-            layerList.indexOf(layerItem.layer)
+            layerList.indexOf(layerItem.layer),
           );
         }
 
@@ -281,7 +281,7 @@ const LayerSelector = (props) => {
     if (!props.baseLayers || props.baseLayers.length < 1) {
       console.warn(
         'layer-selector::`baseLayers` is null or empty. Make sure you have spelled it correctly ' +
-          'and are passing it into the constructor of this widget.'
+          'and are passing it into the constructor of this widget.',
       );
 
       return;
@@ -334,7 +334,7 @@ const LayerSelector = (props) => {
     const applianceLayers = setTileInfosForApplianceLayers(
       applianceLayerTemplates,
       defaultTileInfo,
-      TileInfo
+      TileInfo,
     );
 
     const baseLayers =
@@ -343,7 +343,7 @@ const LayerSelector = (props) => {
         props.baseLayers,
         WebTileLayer,
         props.quadWord,
-        applianceLayers
+        applianceLayers,
       ) || [];
     let overlays = props.overlays || [];
 
@@ -387,7 +387,7 @@ const LayerSelector = (props) => {
         overlays,
         WebTileLayer,
         props.quadWord,
-        applianceLayers
+        applianceLayers,
       ) || [];
 
     // set visibility of linked layers to match
@@ -541,7 +541,7 @@ LayerSelector.propTypes = {
         selected: PropTypes.bool,
         linked: PropTypes.arrayOf(PropTypes.string),
       }),
-    ])
+    ]),
   ).isRequired,
   overlays: PropTypes.arrayOf(
     PropTypes.oneOfType([
@@ -555,7 +555,7 @@ LayerSelector.propTypes = {
         tileInfo: PropTypes.object,
         linked: PropTypes.arrayOf(PropTypes.string),
       }),
-    ])
+    ]),
   ),
   position: PropTypes.oneOf([
     'bottom-leading',

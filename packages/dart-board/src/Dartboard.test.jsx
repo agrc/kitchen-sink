@@ -10,7 +10,7 @@ describe('Dartboard tests', () => {
     };
 
     const { asFragment } = render(
-      <Dartboard apiKey="storybook" events={{ ...args }} />
+      <Dartboard apiKey="storybook" events={{ ...args }} />,
     );
     expect(asFragment()).toMatchSnapshot();
   });

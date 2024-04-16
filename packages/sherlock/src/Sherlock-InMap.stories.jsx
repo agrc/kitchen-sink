@@ -63,7 +63,7 @@ const FeatureService = ({ url, searchField, contextField }) => {
           () => mapView.current.extent,
           () => {
             mapView.current.graphics.removeAll();
-          }
+          },
         );
       }
     };

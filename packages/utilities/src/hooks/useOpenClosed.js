@@ -15,7 +15,7 @@ export default function useOpenClosed(initial = false) {
         setState((s) => (s ? false : true));
       },
     }),
-    []
+    [],
   );
 
   return [state, handlers];

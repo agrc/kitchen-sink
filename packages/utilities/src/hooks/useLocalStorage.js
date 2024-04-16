@@ -8,14 +8,14 @@ export default function (key, initialValue, parseWithJSON = false) {
   };
 
   const [value, setValue] = useState(
-    () => getValueFromLocalStorage() ?? initialValue
+    () => getValueFromLocalStorage() ?? initialValue,
   );
 
   const setNewValue = (newValue) => {
     setValue(newValue);
     localStorage.setItem(
       key,
-      parseWithJSON ? JSON.stringify(newValue) : newValue
+      parseWithJSON ? JSON.stringify(newValue) : newValue,
     );
   };
 

@@ -4,13 +4,13 @@ import { project, load } from '@arcgis/core/geometry/projection';
 
 const projectPoint = (
   viewPoint,
-  options = { projectToWkid: 4326, decimals: 3 }
+  options = { projectToWkid: 4326, decimals: 3 },
 ) => {
   const projected = project(viewPoint, { wkid: options.projectToWkid });
 
   if (!projected) {
     console.log(
-      'app/mouse-trap::Projected point is null. Possibly outside of spatial reference area.'
+      'app/mouse-trap::Projected point is null. Possibly outside of spatial reference area.',
     );
 
     return;
@@ -30,7 +30,7 @@ const MouseTrap = ({ render, mapView, options = defaultOptions }) => {
   useEffect(() => {
     if (!mapView) {
       console.error(
-        'app/mouse-trap::A MapView is required for this component.'
+        'app/mouse-trap::A MapView is required for this component.',
       );
 
       return;
@@ -43,8 +43,8 @@ const MouseTrap = ({ render, mapView, options = defaultOptions }) => {
         'pointer-move',
         throttle(
           (evt) => setLocation(projectPoint(mapView.toMap(evt), options)),
-          options.wait
-        )
+          options.wait,
+        ),
       );
     });
 

@@ -285,7 +285,7 @@ const useDartboard = (userProps = {}) => {
       props.format,
       props.callback,
       baseUrl,
-    ]
+    ],
   );
 
   const outputTransform = useCallback(
@@ -313,7 +313,7 @@ const useDartboard = (userProps = {}) => {
         popupTemplate,
       };
     },
-    [props.pointSymbol, props.type]
+    [props.pointSymbol, props.type],
   );
 
   const extractResponse = useCallback(
@@ -356,7 +356,7 @@ const useDartboard = (userProps = {}) => {
 
       return outputTransform(result, point);
     },
-    [outputTransform, props.wkid, props.format, props.events]
+    [outputTransform, props.wkid, props.format, props.events],
   );
 
   const find = useCallback(async () => {
@@ -376,7 +376,7 @@ const useDartboard = (userProps = {}) => {
         response?.text() || {
           message: err.message,
           status: 400,
-        }
+        },
       );
     }
 
@@ -395,7 +395,7 @@ const useDartboard = (userProps = {}) => {
 
       find();
     },
-    [find]
+    [find],
   );
 
   return {

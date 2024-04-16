@@ -59,7 +59,7 @@ export default function Sherlock({
           geometry: feature.geometry,
           attributes: feature.attributes,
           symbol: symbols[feature.geometry.type],
-        })
+        }),
     );
 
     onSherlockMatch(graphics);
@@ -168,7 +168,7 @@ export default function Sherlock({
                             disabled
                           >
                             More than {maxResultsToDisplay} items found.
-                          </li>
+                          </li>,
                         );
                       }
 
@@ -352,7 +352,7 @@ export class MapServiceProvider extends ProviderBase {
     this.query.outFields = this.getOutFields(
       options.outFields,
       this.searchField,
-      options.contextField
+      options.contextField,
     );
     this.query.returnGeometry = false;
     this.query.outSpatialReference = { wkid: options.wkid || defaultWkid };
@@ -399,7 +399,7 @@ export class WebApiProvider extends ProviderBase {
       this.outFields = this.getOutFields(
         options.outFields,
         this.searchField,
-        this.contextField
+        this.contextField,
       );
     } else {
       this.wkid = defaultWkid;
@@ -408,7 +408,7 @@ export class WebApiProvider extends ProviderBase {
     this.outFields = this.getOutFields(
       null,
       this.searchField,
-      this.contextField
+      this.contextField,
     );
     this.webApi = new WebApi(apiKey, this.signal);
   }
@@ -431,7 +431,7 @@ export class WebApiProvider extends ProviderBase {
       {
         predicate: this.getFeatureClause(searchValue, contextValue),
         spatialReference: this.wkid,
-      }
+      },
     );
   }
 }
@@ -453,7 +453,7 @@ const Highlighted = ({ text = '', highlight = '' }) => {
             <mark key={i}>{part}</mark>
           ) : (
             <span key={i}>{part}</span>
-          )
+          ),
         )}
     </div>
   );
@@ -523,7 +523,7 @@ class WebApi {
     console.log('WebApi:search', arguments);
 
     var url = `${this.baseUrl}search/${featureClass}/${encodeURIComponent(
-      returnValues.join(',')
+      returnValues.join(','),
     )}?`;
 
     if (!options) {
