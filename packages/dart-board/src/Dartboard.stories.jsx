@@ -9,28 +9,34 @@ export default {
   },
 };
 
-export const DefaultAddress = (args) => (
-  <Dartboard apiKey="storybook" events={{ ...args }} />
-);
+export const DefaultAddress = {
+  render: (args) => <Dartboard apiKey="storybook" events={{ ...args }} />,
+};
 
-export const DefaultMilepost = (args) => (
-  <Dartboard apiKey="storybook" events={{ ...args }} type="route-milepost" />
-);
+export const DefaultMilepost = {
+  render: (args) => (
+    <Dartboard apiKey="storybook" events={{ ...args }} type="route-milepost" />
+  ),
+};
 
-export const MilepostWithArguments = (args) => (
-  <Dartboard
-    milepost={{ side: 'decreasing' }}
-    wkid={26912}
-    format="geojson"
-    apiKey="storybook"
-    events={{ ...args }}
-    type="route-milepost"
-  />
-);
+export const MilepostWithArguments = {
+  render: (args) => (
+    <Dartboard
+      milepost={{ side: 'decreasing' }}
+      wkid={26912}
+      format="geojson"
+      apiKey="storybook"
+      events={{ ...args }}
+      type="route-milepost"
+    />
+  ),
+};
 
-export const AddressWithTailwind = (args) => (
-  <TailwindDartboard apiKey="storybook" events={{ ...args }} />
-);
+export const AddressWithTailwind = {
+  render: (args) => (
+    <TailwindDartboard apiKey="storybook" events={{ ...args }} />
+  ),
+};
 
 export const HookWithEvents = (args) => {
   const DartboardHook = (props) => {

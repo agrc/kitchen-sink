@@ -18,38 +18,44 @@ const mapViewMock = {
   },
 };
 
-export const basic = () => (
-  <LayerSelector
-    baseLayers={['Lite', 'Terrain', 'Topo', 'Color IR']}
-    view={mapViewMock}
-    quadWord="my-fake-quad-word"
-  ></LayerSelector>
-);
+export const basic = {
+  render: () => (
+    <LayerSelector
+      baseLayers={['Lite', 'Terrain', 'Topo', 'Color IR']}
+      view={mapViewMock}
+      quadWord="my-fake-quad-word"
+    ></LayerSelector>
+  ),
+};
 
-export const withoutExpandableContainer = () => (
-  <LayerSelector
-    baseLayers={['Lite', 'Terrain', 'Topo', 'Color IR']}
-    view={mapViewMock}
-    quadWord="my-fake-quad-word"
-    makeExpandable={false}
-    overlays={['Address Points']}
-  ></LayerSelector>
-);
+export const withoutExpandableContainer = {
+  render: () => (
+    <LayerSelector
+      baseLayers={['Lite', 'Terrain', 'Topo', 'Color IR']}
+      view={mapViewMock}
+      quadWord="my-fake-quad-word"
+      makeExpandable={false}
+      overlays={['Address Points']}
+    ></LayerSelector>
+  ),
+};
 
-export const defaultSelection = () => (
-  <LayerSelector
-    baseLayers={[
-      'Lite',
-      'Terrain',
-      {
-        token: 'Topo',
-        selected: true,
-      },
-      'Color IR',
-    ]}
-    view={mapViewMock}
-    quadWord="my-fake-quad-word"
-    makeExpandable={false}
-    overlays={['Address Points']}
-  ></LayerSelector>
-);
+export const defaultSelection = {
+  render: () => (
+    <LayerSelector
+      baseLayers={[
+        'Lite',
+        'Terrain',
+        {
+          token: 'Topo',
+          selected: true,
+        },
+        'Color IR',
+      ]}
+      view={mapViewMock}
+      quadWord="my-fake-quad-word"
+      makeExpandable={false}
+      overlays={['Address Points']}
+    ></LayerSelector>
+  ),
+};
