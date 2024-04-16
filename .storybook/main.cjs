@@ -1,18 +1,25 @@
+const {
+  dirname,
+  join
+} = require("path");
+
 module.exports = {
   stories: ['../packages/*/src/*.stories.@(js|jsx)'],
   addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
+    getAbsolutePath("@storybook/addon-links"),
+    getAbsolutePath("@storybook/addon-essentials"),
+    getAbsolutePath("@storybook/addon-interactions"),
+    "@chromatic-com/storybook"
   ],
   framework: {
-    name: '@storybook/react-vite',
+    name: getAbsolutePath("@storybook/react-vite"),
     options: {},
-  },
-  features: {
-    storyStoreV7: true,
   },
   docs: {
     autodocs: true,
   },
 };
+
+function getAbsolutePath(value) {
+  return dirname(require.resolve(join(value, "package.json")));
+}
