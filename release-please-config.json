@@ -7,7 +7,6 @@
     "packages/layer-selector": {},
     "packages/mouse-trap": {},
     "packages/sherlock": {},
-    "packages/tooltip": {},
     "packages/utilities": {}
   },
   "include-component-in-tag": true
