@@ -12,13 +12,13 @@
 Please use [conventional commits](https://www.conventionalcommits.org) with the following scopes:
 
 - `monorepo`
+- `dart-board`
+- `header`
 - `layer-selector`
+- `mouse-trap`
+- `popover`
 - `sherlock`
 - `utilities`
-- `dart-board`
-- `mouse-trap`
-- `header`
-- `popover`
 
 ### NPM Linking
 

@@ -3,9 +3,11 @@
   "plugins": ["node-workspace"],
   "packages": {
     "packages/dart-board": {},
+    "packages/header": {},
     "packages/layer-selector": {},
     "packages/mouse-trap": {},
     "packages/sherlock": {},
+    "packages/tooltip": {},
     "packages/utilities": {}
   },
   "include-component-in-tag": true
