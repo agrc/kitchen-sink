@@ -21,6 +21,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @ugrc/utilities bumped from ^2.2.0 to ^2.2.1
 
+## [5.0.9](https://github.com/agrc/kitchen-sink/compare/dart-board-v5.0.8...dart-board-v5.0.9) (2024-05-13)
+
+
+### Bug Fixes
+
+* **dart-board:** fix readme npm link ([ea75a90](https://github.com/agrc/kitchen-sink/commit/ea75a90f6d49c5606ae38b8ecc54782dccad3bdb))
+* **monorepo:** fresh npm install ([7f7599b](https://github.com/agrc/kitchen-sink/commit/7f7599b6743b4e1c13d9617acafbb15d4b00f2c3))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ugrc/utilities bumped from ^2.2.1 to ^2.2.2
+
 ## [5.0.8](https://github.com/agrc/kitchen-sink/compare/dart-board-v5.0.7...dart-board-v5.0.8) (2024-03-06)
 
 
