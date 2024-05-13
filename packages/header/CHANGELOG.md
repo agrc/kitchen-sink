@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.1](https://github.com/agrc/kitchen-sink/compare/header-v1.1.0...header-v1.1.1) (2024-05-13)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ugrc/popover bumped from ^1.0.0 to ^1.1.0
+
 ## [1.1.0](https://github.com/agrc/kitchen-sink/compare/header-v1.0.0...header-v1.1.0) (2024-05-13)
 
 
