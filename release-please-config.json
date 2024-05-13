@@ -7,7 +7,8 @@
     "packages/layer-selector": {},
     "packages/mouse-trap": {},
     "packages/sherlock": {},
-    "packages/utilities": {}
+    "packages/utilities": {},
+    "packages/popover": {}
   },
   "include-component-in-tag": true
 }
