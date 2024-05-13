@@ -6,7 +6,7 @@ import {
 import { Squares2X2Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import * as Collapsible from '@radix-ui/react-collapsible';
 import PropTypes from 'prop-types';
-import Popover from '@ugrc/Popover';
+import Popover from '@ugrc/popover';
 
 const Header = ({ className, children, links = [] }) => {
   return (
