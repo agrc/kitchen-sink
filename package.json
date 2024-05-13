@@ -15,6 +15,7 @@
     "packages/header",
     "packages/layer-selector",
     "packages/mouse-trap",
+    "packages/popover",
     "packages/sherlock"
   ],
   "scripts": {
