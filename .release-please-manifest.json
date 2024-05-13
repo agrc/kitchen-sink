@@ -1,9 +1,9 @@
 {
   "packages/dart-board": "5.0.8",
-  "packages/header": "0.1.0",
+  "packages/header": "1.0.0",
   "packages/layer-selector": "6.2.3",
   "packages/mouse-trap": "2.0.6",
-  "packages/popover": "0.1.0",
+  "packages/popover": "1.0.0",
   "packages/sherlock": "4.0.5",
   "packages/utilities": "2.2.1"
 }

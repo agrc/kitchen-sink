@@ -1,6 +1,6 @@
 {
   "name": "@ugrc/popover",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": false,
   "description": "This is a react component that implements the Utah Design System popover.",
   "keywords": [
