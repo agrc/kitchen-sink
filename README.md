@@ -17,6 +17,7 @@ Please use [conventional commits](https://www.conventionalcommits.org) with the 
 - `utilities`
 - `dart-board`
 - `mouse-trap`
+- `header`
 
 ### NPM Linking
 

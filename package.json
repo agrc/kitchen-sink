@@ -12,6 +12,7 @@
   "workspaces": [
     "packages/utilities",
     "packages/dart-board",
+    "packages/header",
     "packages/layer-selector",
     "packages/mouse-trap",
     "packages/sherlock"
