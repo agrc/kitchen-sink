@@ -1,6 +1,6 @@
 {
   "name": "@ugrc/header",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": false,
   "description": "This is a react component that implements the Utah Design System standard header.",
   "keywords": [

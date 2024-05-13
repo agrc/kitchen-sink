@@ -21,6 +21,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @ugrc/utilities bumped from ^2.2.0 to ^2.2.1
 
+## [2.0.7](https://github.com/agrc/kitchen-sink/compare/mouse-trap-v2.0.6...mouse-trap-v2.0.7) (2024-05-13)
+
+
+### Bug Fixes
+
+* **monorepo:** fresh npm install ([7f7599b](https://github.com/agrc/kitchen-sink/commit/7f7599b6743b4e1c13d9617acafbb15d4b00f2c3))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ugrc/utilities bumped from ^2.2.1 to ^2.2.2
+
 ## [2.0.4](https://github.com/agrc/kitchen-sink/compare/mouse-trap-v2.0.3...mouse-trap-v2.0.4) (2022-07-21)
 
 

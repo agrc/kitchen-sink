@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.4](https://github.com/agrc/kitchen-sink/compare/layer-selector-v6.2.3...layer-selector-v6.2.4) (2024-05-13)
+
+
+### Bug Fixes
+
+* **monorepo:** fresh npm install ([7f7599b](https://github.com/agrc/kitchen-sink/commit/7f7599b6743b4e1c13d9617acafbb15d4b00f2c3))
+
 ## [6.2.3](https://github.com/agrc/kitchen-sink/compare/layer-selector-v6.2.2...layer-selector-v6.2.3) (2024-03-06)
 
 
