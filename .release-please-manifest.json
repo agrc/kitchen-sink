@@ -3,5 +3,6 @@
   "packages/layer-selector": "6.2.3",
   "packages/mouse-trap": "2.0.6",
   "packages/sherlock": "4.0.5",
-  "packages/utilities": "2.2.1"
+  "packages/utilities": "2.2.1",
+  "packages/header": "0.1.0",
 }
