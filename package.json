@@ -10,13 +10,13 @@
   "author": "ugrc developers",
   "type": "module",
   "workspaces": [
+    "packages/utilities",
+    "packages/popover",
     "packages/dart-board",
     "packages/header",
     "packages/layer-selector",
     "packages/mouse-trap",
-    "packages/popover",
-    "packages/sherlock",
-    "packages/utilities"
+    "packages/sherlock"
   ],
   "scripts": {
     "build": "npm run build --workspaces",
