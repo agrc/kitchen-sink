@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/agrc/kitchen-sink/compare/header-v1.1.1...header-v1.1.2) (2024-05-21)
+
+
+### Bug Fixes
+
+* **header:** hide external link icon for relative links ([76116e5](https://github.com/agrc/kitchen-sink/commit/76116e5fedbb13d23d378bfc6a41331242e596cf))
+
 ## [1.1.1](https://github.com/agrc/kitchen-sink/compare/header-v1.1.0...header-v1.1.1) (2024-05-13)
 
 
