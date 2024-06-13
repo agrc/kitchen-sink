@@ -1,6 +1,6 @@
 {
   "name": "@ugrc/sherlock",
-  "version": "4.0.6",
+  "version": "4.0.7",
   "private": false,
   "description": "A React component for searching for data and zooming to it on an arcgis map.",
   "keywords": [
