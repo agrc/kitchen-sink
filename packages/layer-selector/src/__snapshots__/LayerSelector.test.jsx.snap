@@ -4,96 +4,81 @@ exports[`LayerSelector tests > LayerSelector snapshot 1`] = `
 <DocumentFragment>
   <div>
     <div
-      aria-haspopup="true"
-      class="layer-selector"
+      class="layer-selector--layers"
     >
-      <input
-        alt="layers"
-        class="layer-selector__toggle"
-        src="/packages/layer-selector/src/layers.svg"
-        type="image"
-      />
-      <form
-        class="layer-selector--hidden"
+      <div
+        class="layer-selector-item radio checkbox"
       >
-        <div
-          class="layer-selector--layers"
+        <label
+          class="layer-selector--item"
         >
-          <div
-            class="layer-selector-item radio checkbox"
+          <input
+            checked=""
+            name="baselayer"
+            type="radio"
+            value="Lite"
+          />
+          <span
+            class="layer-selector-item--text"
           >
-            <label
-              class="layer-selector--item"
-            >
-              <input
-                checked=""
-                name="baselayer"
-                type="radio"
-                value="Lite"
-              />
-              <span
-                class="layer-selector-item--text"
-              >
-                Lite
-              </span>
-            </label>
-          </div>
-          <div
-            class="layer-selector-item radio checkbox"
+            Lite
+          </span>
+        </label>
+      </div>
+      <div
+        class="layer-selector-item radio checkbox"
+      >
+        <label
+          class="layer-selector--item"
+        >
+          <input
+            name="baselayer"
+            type="radio"
+            value="Terrain"
+          />
+          <span
+            class="layer-selector-item--text"
           >
-            <label
-              class="layer-selector--item"
-            >
-              <input
-                name="baselayer"
-                type="radio"
-                value="Terrain"
-              />
-              <span
-                class="layer-selector-item--text"
-              >
-                Terrain
-              </span>
-            </label>
-          </div>
-          <div
-            class="layer-selector-item radio checkbox"
+            Terrain
+          </span>
+        </label>
+      </div>
+      <div
+        class="layer-selector-item radio checkbox"
+      >
+        <label
+          class="layer-selector--item"
+        >
+          <input
+            name="baselayer"
+            type="radio"
+            value="Topo"
+          />
+          <span
+            class="layer-selector-item--text"
           >
-            <label
-              class="layer-selector--item"
-            >
-              <input
-                name="baselayer"
-                type="radio"
-                value="Topo"
-              />
-              <span
-                class="layer-selector-item--text"
-              >
-                Topo
-              </span>
-            </label>
-          </div>
-          <div
-            class="layer-selector-item radio checkbox"
+            Topo
+          </span>
+        </label>
+      </div>
+      <div
+        class="layer-selector-item radio checkbox"
+      >
+        <label
+          class="layer-selector--item"
+        >
+          <input
+            name="baselayer"
+            type="radio"
+            value="Color IR"
+          />
+          <span
+            class="layer-selector-item--text"
           >
-            <label
-              class="layer-selector--item"
-            >
-              <input
-                name="baselayer"
-                type="radio"
-                value="Color IR"
-              />
-              <span
-                class="layer-selector-item--text"
-              >
-                Color IR
-              </span>
-            </label>
-          </div>
-        </div>
-      </form>
+            Color IR
+          </span>
+        </label>
+      </div>
     </div>
   </div>
 </DocumentFragment>
