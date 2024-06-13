@@ -27,8 +27,6 @@ const FeatureService = ({ url, searchField, contextField }) => {
   const [config, setConfig] = useState();
 
   useEffect(() => {
-    console.log('init sherlock');
-
     const map = new Map({ basemap: 'streets-night-vector' });
     const view = new MapView({
       container: mapDiv.current,

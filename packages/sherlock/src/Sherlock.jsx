@@ -66,8 +66,6 @@ export default function Sherlock({
   };
 
   const itemToString = (item) => {
-    console.log('Clue:itemToString', arguments);
-
     return item ? item.attributes[provider.searchField] : '';
   };
 
@@ -212,7 +210,6 @@ function Clue({ clue, provider, maxResults, children }) {
   };
 
   const makeNetworkRequest = useCallback(async () => {
-    console.log('makeNetworkRequest');
     const { searchField, contextField } = provider;
 
     const response = await provider.search(clue).catch((e) => {
@@ -262,7 +259,6 @@ function Clue({ clue, provider, maxResults, children }) {
   }, [clue, maxResults, provider]);
 
   useEffect(() => {
-    console.log('clue or makeNetworkRequest changed');
     updateState({
       error: false,
       loading: true,
@@ -336,7 +332,6 @@ class ProviderBase {
 
 export class MapServiceProvider extends ProviderBase {
   constructor(serviceUrl, searchField, options = {}) {
-    console.log('sherlock.MapServiceProvider:constructor', arguments);
     super();
 
     this.searchField = searchField;
@@ -359,8 +354,6 @@ export class MapServiceProvider extends ProviderBase {
   }
 
   async search(searchString) {
-    console.log('sherlock.MapServiceProvider:search', arguments);
-
     this.query.where = this.getSearchClause(searchString);
     const featureSet = await executeQueryJSON(this.serviceUrl, this.query);
 
@@ -368,8 +361,6 @@ export class MapServiceProvider extends ProviderBase {
   }
 
   async getFeature(searchValue, contextValue) {
-    console.log('sherlock.MapServiceProvider', arguments);
-
     this.query.where = this.getFeatureClause(searchValue, contextValue);
     this.query.returnGeometry = true;
     const featureSet = await executeQueryJSON(this.serviceUrl, this.query);
@@ -381,7 +372,6 @@ export class MapServiceProvider extends ProviderBase {
 export class WebApiProvider extends ProviderBase {
   constructor(apiKey, searchLayer, searchField, options) {
     super();
-    console.log('sherlock.providers.WebAPI:constructor', arguments);
 
     const defaultWkid = 3857;
     this.geometryClasses = {
@@ -414,8 +404,6 @@ export class WebApiProvider extends ProviderBase {
   }
 
   async search(searchString) {
-    console.log('sherlock.providers.WebAPI:search', arguments);
-
     return await this.webApi.search(this.searchLayer, this.outFields, {
       predicate: this.getSearchClause(searchString),
       spatialReference: this.wkid,
@@ -423,8 +411,6 @@ export class WebApiProvider extends ProviderBase {
   }
 
   async getFeature(searchValue, contextValue) {
-    console.log('sherlock.providers.WebAPI:getFeature', arguments);
-
     return await this.webApi.search(
       this.searchLayer,
       this.outFields.concat('shape@'),
@@ -520,8 +506,6 @@ class WebApi {
     //      'camel': camel cases all attribute names
     //
     // returns: Promise
-    console.log('WebApi:search', arguments);
-
     var url = `${this.baseUrl}search/${featureClass}/${encodeURIComponent(
       returnValues.join(','),
     )}?`;
