@@ -175,7 +175,13 @@ const createLayerFactories = (
 
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
-const LayerSelector = (props) => {
+const LayerSelector = (
+  props = {
+    makeExpandable: true,
+    position: 'top-right',
+    showOpacitySlider: false,
+  },
+) => {
   const [layers, setLayers] = useState({
     baseLayers: [],
     overlays: [],
@@ -415,7 +421,6 @@ const LayerSelector = (props) => {
   ]);
 
   const onItemChanged = (event, props) => {
-    console.log('LayerSelector.onItemChanged', props);
     const overlays = layers.overlays;
     const baseLayers = layers.baseLayers;
 
@@ -571,12 +576,6 @@ LayerSelector.propTypes = {
   layerType: PropTypes.string,
   id: PropTypes.string,
   showOpacitySlider: PropTypes.bool,
-};
-
-LayerSelector.defaultProps = {
-  makeExpandable: true,
-  position: 'top-right',
-  showOpacitySlider: false,
 };
 
 LayerSelectorItem.propTypes = {
