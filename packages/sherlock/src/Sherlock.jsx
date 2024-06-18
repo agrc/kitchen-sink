@@ -7,7 +7,6 @@ import Downshift from 'downshift';
 import { escapeRegExp, sortBy, uniqWith } from 'lodash-es';
 import PropTypes from 'prop-types';
 import { useCallback, useEffect, useState } from 'react';
-import { Button, Input, InputGroup } from 'reactstrap';
 
 const defaultSymbols = {
   polygon: {
@@ -38,7 +37,7 @@ export default function Sherlock({
   provider,
   onSherlockMatch,
   label,
-  placeHolder,
+  placeHolder = 'Search',
   maxResultsToDisplay,
 }) {
   const handleStateChange = async (feature) => {
@@ -81,20 +80,20 @@ export default function Sherlock({
       }) => (
         <div className="sherlock">
           <h4>{label}</h4>
-          <div style={{ paddingBottom: '1em' }}>
-            <InputGroup>
-              <Input
+          <div className="sherlock__container">
+            <div className="sherlock__input-group">
+              <button disabled style={{ marginRight: '.5em', color: '#767' }}>
+                <FontAwesomeIcon icon={faSearch} size="lg" />
+              </button>
+              <input
                 {...getInputProps()}
                 placeholder={placeHolder}
-                autoComplete="nope"
-              ></Input>
-              <Button size="sm" color="secondary" disabled>
-                <FontAwesomeIcon icon={faSearch} size="lg"></FontAwesomeIcon>
-              </Button>
-            </InputGroup>
-            <div className="sherlock__match-dropdown" {...getMenuProps()}>
-              <ul className="sherlock__matches">
-                {!isOpen ? null : (
+                autoComplete="off"
+              />
+            </div>
+            {!isOpen ? null : (
+              <div className="sherlock__match-dropdown" {...getMenuProps()}>
+                <ul className="sherlock__matches">
                   <Clue
                     clue={inputValue}
                     provider={provider}
@@ -104,8 +103,11 @@ export default function Sherlock({
                       if (short) {
                         return (
                           <li
-                            className="sherlock__match-item alert-primary"
+                            className="sherlock__match-item"
                             disabled
+                            style={{
+                              backgroundColor: '#cff4fc',
+                            }}
                           >
                             Type more than 2 letters.
                           </li>
@@ -115,8 +117,11 @@ export default function Sherlock({
                       if (error) {
                         return (
                           <li
-                            className="sherlock__match-item alert-danger"
+                            className="sherlock__match-item"
                             disabled
+                            style={{
+                              backgroundColor: '#f8d7da',
+                            }}
                           >
                             Error! ${error}
                           </li>
@@ -126,8 +131,11 @@ export default function Sherlock({
                       if (!data.length) {
                         return (
                           <li
-                            className="sherlock__match-item alert-warning"
+                            className="sherlock__match-item"
                             disabled
+                            style={{
+                              background: '#fff3cd',
+                            }}
                           >
                             No items found.
                           </li>
@@ -162,8 +170,12 @@ export default function Sherlock({
                         items.push(
                           <li
                             key="too-many"
-                            className="sherlock__match-item alert-primary text-center"
+                            className="sherlock__match-item"
                             disabled
+                            style={{
+                              backgroundColor: '#cff4fc',
+                              textAlign: 'center',
+                            }}
                           >
                             More than {maxResultsToDisplay} items found.
                           </li>,
@@ -173,9 +185,9 @@ export default function Sherlock({
                       return items;
                     }}
                   </Clue>
-                )}
-              </ul>
-            </div>
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       )}
