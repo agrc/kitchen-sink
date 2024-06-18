@@ -57,12 +57,10 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "downshift": "^9.0.4",
     "lodash-es": "^4.17.21",
-    "react-fast-compare": "^3.2.2",
-    "reactstrap": "^9.2.2"
+    "react-fast-compare": "^3.2.2"
   },
   "peerDependencies": {
     "@arcgis/core": "^4.20.0",
-    "bootstrap": "^4.5.3",
     "prop-types": "^15.8.1",
     "react": ">=16.8.0"
   }

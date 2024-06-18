@@ -4,7 +4,6 @@ import Map from '@arcgis/core/Map';
 import MapView from '@arcgis/core/views/MapView';
 import '@arcgis/core/assets/esri/themes/light/main.css';
 import * as reactiveUtils from '@arcgis/core/core/reactiveUtils';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './Sherlock.css';
 import PropTypes from 'prop-types';
 

@@ -7,7 +7,6 @@ import Downshift from 'downshift';
 import { escapeRegExp, sortBy, uniqWith } from 'lodash-es';
 import PropTypes from 'prop-types';
 import { useCallback, useEffect, useState } from 'react';
-import { Button, Input, InputGroup } from 'reactstrap';
 
 const defaultSymbols = {
   polygon: {
@@ -38,7 +37,7 @@ export default function Sherlock({
   provider,
   onSherlockMatch,
   label,
-  placeHolder,
+  placeHolder = 'Search',
   maxResultsToDisplay,
 }) {
   const handleStateChange = async (feature) => {
@@ -83,17 +82,20 @@ export default function Sherlock({
       }) => (
         <div className="sherlock">
           <h4>{label}</h4>
-          <div style={{ paddingBottom: '1em' }}>
-            <InputGroup>
-              <Input
+          <div className="sherlock__container">
+            <div className="sherlock__input-group">
+              <button disabled style={{ marginRight: '.5em', color: '#767' }}>
+                <FontAwesomeIcon icon={faSearch} size="lg" />
+              </button>
+              <input
                 {...getInputProps()}
                 placeholder={placeHolder}
-                autoComplete="nope"
-              ></Input>
-              <Button size="sm" color="secondary" disabled>
-                <FontAwesomeIcon icon={faSearch} size="lg"></FontAwesomeIcon>
-              </Button>
-            </InputGroup>
+                autoComplete="off"
+                style={{
+                  outline: 'none',
+                }}
+              />
+            </div>
             <div className="sherlock__match-dropdown" {...getMenuProps()}>
               <ul className="sherlock__matches">
                 {!isOpen ? null : (
