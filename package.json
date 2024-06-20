@@ -29,6 +29,10 @@
     "test": "vitest"
   },
   "prettier": {
+    "plugins": [
+      "prettier-plugin-packagejson",
+      "prettier-plugin-tailwindcss"
+    ],
     "semi": true,
     "singleQuote": true
   },
@@ -99,6 +103,7 @@
     "jsdom": "^24.1.0",
     "prettier": "^3.3.2",
     "prettier-plugin-packagejson": "^2.5.0",
+    "prettier-plugin-tailwindcss": "^0.6.5",
     "read-pkg": "^9.0.1",
     "release-please": "^16.12.0",
     "sass": "^1.77.6",
