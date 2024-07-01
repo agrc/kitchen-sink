@@ -49,7 +49,7 @@
     "test": "vitest --config ../../vite.config.js"
   },
   "dependencies": {
-    "@radix-ui/react-popover": "^1.0.7"
+    "@radix-ui/react-popover": "^1.1.1"
   },
   "peerDependencies": {
     "react": ">=16.8.0"
