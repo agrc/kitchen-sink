@@ -1,0 +1,40 @@
+{
+  "name": "@ugrc/tailwind-colors",
+  "version": "1.0.0",
+  "private": false,
+  "description": "The default UGRC colors for tailwind",
+  "keywords": [
+    "ugrc",
+    "tailwind",
+    "plugin"
+  ],
+  "homepage": "https://github.com/agrc/kitchen-sink/tree/main/packages/utilities",
+  "bugs": {
+    "url": "https://github.com/agrc/kitchen-sink/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agrc/kitchen-sink.git"
+  },
+  "license": "MIT",
+  "author": "ugrc developers",
+  "maintainers": [
+    {
+      "name": "Steve Gourley",
+      "email": "sgourley@utah.gov"
+    },
+    {
+      "name": "Scott Davis",
+      "email": "stdavis@utah.gov"
+    }
+  ],
+  "type": "commonjs",
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "build": "echo skipping",
+    "test": "vitest --config ../../vite.config.js"
+  }
+}
