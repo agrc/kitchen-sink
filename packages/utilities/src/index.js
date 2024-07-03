@@ -1,2 +1,2 @@
-export { default } from './WebAPI';
-export { toQueryString } from './url';
+export * from './api';
+export * from './url';
