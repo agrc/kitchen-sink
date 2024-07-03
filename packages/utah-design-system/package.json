@@ -1,0 +1,60 @@
+{
+  "name": "@ugrc/utah-design-system",
+  "version": "1.0.0",
+  "private": false,
+  "description": "This is a collection of react components for implementing the [Utah Design System](https://designsystem.utah.gov).",
+  "keywords": [
+    "ugrc",
+    "component",
+    "esri",
+    "arcgis",
+    "react",
+    "design-system",
+    "spatial"
+  ],
+  "homepage": "https://github.com/agrc/kitchen-sink/blob/main/packages/utah-design-system/README.md",
+  "bugs": {
+    "url": "https://github.com/agrc/kitchen-sink/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agrc/kitchen-sink.git"
+  },
+  "license": "MIT",
+  "author": "ugrc developers",
+  "maintainers": [
+    {
+      "name": "Steve Gourley",
+      "email": "sgourley@utah.gov"
+    },
+    {
+      "name": "Scott Davis",
+      "email": "stdavis@utah.gov"
+    }
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js"
+    },
+    "./src/": {
+      "import": "./src/"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "vite build --config ../../vite.config.js",
+    "build:watch": "chokidar \"src/**/*.(js|jsx|tsx)\" -c \"npm run build\"",
+    "test": "vitest --config ../../vite.config.js"
+  },
+  "dependencies": {
+    "@ugrc/utilities": "*"
+  },
+  "peerDependencies": {
+    "prop-types": "^15.8.1",
+    "react": ">=16.8.0"
+  }
+}
