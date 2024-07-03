@@ -334,7 +334,13 @@ const LayerSelector = (
       },
     };
 
-    props.view.map.basemap = new Basemap();
+    try {
+      props.view.map.basemap = {};
+    } catch (e) {
+      console.warn(
+        'layer-selector::You must pass a view with a map to the constructor of this widget.',
+      );
+    }
 
     const defaultTileInfo = createDefaultTileInfo(LOD);
     const applianceLayers = setTileInfosForApplianceLayers(
