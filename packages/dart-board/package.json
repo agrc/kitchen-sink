@@ -51,9 +51,8 @@
     "test": "vitest --config ../../vite.config.js"
   },
   "dependencies": {
-    "@ugrc/utilities": "^2.2.2",
-    "clsx": "^2.1.0",
-    "reactstrap": "^9.2.2"
+    "@ugrc/utilities": "*",
+    "@ugrc/utah-design-system": "*"
   },
   "peerDependencies": {
     "@arcgis/core": "^4.20.0",

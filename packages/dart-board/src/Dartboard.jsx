@@ -1,7 +1,8 @@
 import { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { toQueryString } from '@ugrc/utilities';
-import { clsx } from 'clsx';
+import { TextField, Button, FormErrors } from '@ugrc/utah-design-system';
+import { Controller, useForm } from 'react-hook-form';
 
 const ADDRESS_TYPE = 'single-address';
 const MILEPOST_TYPE = 'route-milepost';
@@ -40,103 +41,63 @@ const sanitize = (attributes = {}) => {
     .reduce((res, key) => ((res[key] = attributes[key]), res), {});
 };
 
-const BootstrapDartboard = (props) => {
-  const {
-    getFirstLabelProps,
-    getSecondLabelProps,
-    getFirstInputProps,
-    getSecondInputProps,
-    getButtonProps,
-    isFirstInputValid,
-    isSecondInputValid,
-    found,
-  } = useDartboard(props);
-
-  return (
-    <div className={clsx('dartboard', props.className)}>
-      <div className="form-group">
-        <label {...getFirstLabelProps()}></label>
-        <input {...getFirstInputProps()} className="form-control"></input>
-        {!isFirstInputValid ? (
-          <small className="form-text text-danger">
-            This field is required
-          </small>
-        ) : null}
-      </div>
-      <div className="form-group">
-        <label {...getSecondLabelProps()}></label>
-        <input {...getSecondInputProps()} className="form-control"></input>
-        {!isSecondInputValid ? (
-          <small className="form-text text-danger">
-            This field is required
-          </small>
-        ) : null}
-      </div>
-      <div className="form-group">
-        <button {...getButtonProps()} className="btn btn-outline-dark">
-          Find
-        </button>
-        {found === false ? (
-          <small className="form-text text-danger">No match found</small>
-        ) : null}
-      </div>
-    </div>
-  );
-};
-
 const TailwindDartboard = (props) => {
   const {
-    getFirstLabelProps,
-    getSecondLabelProps,
-    getFirstInputProps,
-    getSecondInputProps,
+    control,
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      dartboard_input_one: '',
+      dartboard_input_two: '',
+    },
+  });
+  const {
+    getFirstFieldProps,
+    getSecondFieldProps,
     getButtonProps,
-    getFirstHelpProps,
-    getSecondHelpProps,
     isFirstInputValid,
     isSecondInputValid,
     found,
   } = useDartboard(props);
 
+  console.log('errors', errors);
+
   return (
-    <div className={clsx('dartboard', props.className)}>
-      <div className="group">
-        <label {...getFirstLabelProps()}></label>
-        <input
-          {...getFirstInputProps()}
-          className="mb-2 block mt-1 bg-white rounded border border-gray-400 text-gray-700 focus:outline-none focus:border-indigo-500 w-full text-base px-3 py-2"
-        ></input>
-        {!isFirstInputValid ? (
-          <small
-            {...getFirstHelpProps()}
-            className="block text-red-600 text-xs -mt-2"
-          ></small>
-        ) : null}
+    <form
+      className="space-y-4"
+      onSubmit={handleSubmit(() => console.log('hello'))}
+    >
+      <FormErrors errors={errors} />
+      <div>
+        <Controller
+          control={control}
+          name="dartboard_input_one"
+          rules={{ required: true }}
+          render={({ field }) => (
+            <TextField {...getFirstFieldProps()} {...field} />
+          )}
+        ></Controller>
       </div>
       <div className="group">
-        <label {...getSecondLabelProps()}></label>
-        <input
-          {...getSecondInputProps()}
-          className="mb-2 block mt-1 bg-white rounded border border-gray-400 text-gray-700 focus:outline-none focus:border-indigo-500 w-full text-base px-3 py-2"
-        ></input>
-        {!isSecondInputValid ? (
-          <small
-            {...getSecondHelpProps()}
-            className="block text-red-600 text-xs -mt-2"
-          ></small>
-        ) : null}
+        <Controller
+          control={control}
+          name="dartboard_input_two"
+          rules={{ required: true }}
+          render={({ field }) => (
+            <TextField {...getSecondFieldProps()} {...field} />
+          )}
+        />
       </div>
       <div className="group">
-        <button
-          {...getButtonProps()}
-          className="text-black bg-white border border-gray-800 py-1 px-3 focus:outline-none hover:bg-gray-800 hover:text-white transition duration-200 rounded text-lg mt-4"
-        >
+        <Button {...getButtonProps()} type="submit">
           Find
-        </button>
+        </Button>
         {(() => {
           if (found === false) {
             return (
-              <small className="ml-3 text-red-600 text-xs">
+              <small className="ml-3 text-xs text-red-600">
                 No match found
               </small>
             );
@@ -147,7 +108,7 @@ const TailwindDartboard = (props) => {
           }
         })()}
       </div>
-    </div>
+    </form>
   );
 };
 
@@ -168,74 +129,53 @@ const useDartboard = (userProps = {}) => {
     baseUrl += '/milepost';
   }
 
-  const getFirstLabelProps = (labelProps) => ({
-    htmlFor:
-      props.type === ADDRESS_TYPE
-        ? 'dartboard_street_input'
-        : 'dartboard_milepost_input',
-    children: props.type === ADDRESS_TYPE ? 'Street address' : 'Route',
-    ...labelProps,
-  });
-
-  const getSecondLabelProps = (labelProps) => ({
-    htmlFor:
-      props.type === ADDRESS_TYPE
-        ? 'dartboard_zone_input'
-        : 'dartboard_route_input',
-    children: props.type === ADDRESS_TYPE ? 'City or Zip code' : 'Milepost',
-    ...labelProps,
-  });
-
-  const getFirstInputProps = (inputProps) => ({
-    onChange: (e) => setFirstInput(e.target.value),
-    name:
-      props.type === ADDRESS_TYPE
-        ? 'dartboard_street_input'
-        : 'dartboard_milepost_input',
-    onKeyUp: (e) => {
-      inputProps?.beforeKeyUp(e);
-      handleKeyUp(e);
-    },
-    autoComplete: 'off',
-    ...sanitize(inputProps),
-  });
-
-  const getSecondInputProps = (inputProps) => ({
-    onChange: (e) => setSecondInput(e.target.value),
-    name:
-      props.type === ADDRESS_TYPE
-        ? 'dartboard_zone_input'
-        : 'dartboard_route_input',
-    onKeyUp: (e) => {
-      inputProps?.beforeKeyUp(e);
-      handleKeyUp(e);
-    },
-    autoComplete: 'off',
-    ...sanitize(inputProps),
-  });
-
-  const getFirstHelpProps = (inputProps) => ({
-    children:
+  const getFirstFieldProps = (inputProps) => ({
+    label: props.type === ADDRESS_TYPE ? 'Street address' : 'Route',
+    errorMessage:
       props.type === ADDRESS_TYPE
         ? 'A street address is required'
         : 'A highway route number is required',
-    ...inputProps,
+    isRequired: true,
+    onChange: setFirstInput,
+    name:
+      props.type === ADDRESS_TYPE
+        ? 'dartboard_street_input'
+        : 'dartboard_milepost_input',
+    onKeyUp: (e) => {
+      inputProps?.beforeKeyUp(e);
+      handleKeyUp(e);
+    },
+    autoComplete: 'off',
+    ...sanitize(inputProps),
   });
 
-  const getSecondHelpProps = (inputProps) => ({
-    children:
+  const getSecondFieldProps = (inputProps) => ({
+    label: props.type === ADDRESS_TYPE ? 'City or Zip code' : 'Milepost',
+    errorMessage:
       props.type === ADDRESS_TYPE
         ? 'A city or zip code is required'
         : 'A milepost number is required',
-    ...inputProps,
+    isRequired: true,
+    onChange: setSecondInput,
+    name:
+      props.type === ADDRESS_TYPE
+        ? 'dartboard_zone_input'
+        : 'dartboard_route_input',
+    onKeyUp: (e) => {
+      inputProps?.beforeKeyUp(e);
+      handleKeyUp(e);
+    },
+    autoComplete: 'off',
+    ...sanitize(inputProps),
   });
 
   const getButtonProps = (buttonProps) => ({
-    onClick: (e) => {
+    onPress: (e) => {
       buttonProps?.beforeClick(e);
       find(e);
     },
     type: 'button',
+    variant: 'secondary',
     ...sanitize(buttonProps),
   });
 
@@ -400,13 +340,9 @@ const useDartboard = (userProps = {}) => {
 
   return {
     // prop getters
-    getFirstLabelProps,
-    getSecondLabelProps,
-    getFirstInputProps,
-    getSecondInputProps,
+    getFirstFieldProps,
+    getSecondFieldProps,
     getButtonProps,
-    getFirstHelpProps,
-    getSecondHelpProps,
     // actions
     setFirstIsValid,
     setSecondIsValid,
@@ -420,34 +356,4 @@ const useDartboard = (userProps = {}) => {
   };
 };
 
-BootstrapDartboard.propTypes = TailwindDartboard.propTypes = {
-  apiKey: PropTypes.string.isRequired,
-  type: PropTypes.oneOf([ADDRESS_TYPE, MILEPOST_TYPE]),
-  pointSymbol: PropTypes.object,
-  events: PropTypes.exact({
-    success: PropTypes.func.isRequired,
-    error: PropTypes.func.isRequired,
-  }),
-  wkid: PropTypes.number,
-  address: PropTypes.shape({
-    acceptScore: PropTypes.number,
-    suggest: PropTypes.number,
-    locators: PropTypes.oneOf([
-      null,
-      'all',
-      'addressPoints',
-      'roadCenterlines',
-    ]),
-    poBox: PropTypes.bool,
-    scoreDifference: PropTypes.bool,
-  }),
-  milepost: PropTypes.shape({
-    side: PropTypes.oneOf([null, 'increasing', 'decreasing']),
-    fullRoute: PropTypes.bool,
-  }),
-  format: PropTypes.oneOf([null, 'esrijson', 'geojson']),
-  callback: PropTypes.string,
-};
-
-export default TailwindDartboard;
-export { useDartboard, BootstrapDartboard, TailwindDartboard };
+export { useDartboard, TailwindDartboard };
