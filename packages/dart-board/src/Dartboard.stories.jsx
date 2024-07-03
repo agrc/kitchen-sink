@@ -1,5 +1,4 @@
-import Dartboard, { TailwindDartboard, useDartboard } from './index';
-import './Dartboard.css';
+import { TailwindDartboard as Dartboard, useDartboard } from './index';
 
 export default {
   component: Dartboard,
@@ -29,12 +28,6 @@ export const MilepostWithArguments = {
       events={{ ...args }}
       type="route-milepost"
     />
-  ),
-};
-
-export const AddressWithTailwind = {
-  render: (args) => (
-    <TailwindDartboard apiKey="storybook" events={{ ...args }} />
   ),
 };
 
@@ -90,12 +83,12 @@ export const HookWithEvents = (args) => {
             {...getFirstInputProps({
               beforeKeyUp: (e) => validateStreet(e, firstInput),
             })}
-            className="mb-2 block mt-1 bg-white rounded border border-gray-400 text-gray-700 focus:outline-none focus:border-indigo-500 w-full text-base px-3 py-2"
+            className="mb-2 mt-1 block w-full rounded border border-gray-400 bg-white px-3 py-2 text-base text-gray-700 focus:border-indigo-500 focus:outline-none"
           ></input>
           {!isFirstInputValid ? (
             <small
               {...getFirstHelpProps()}
-              className="block text-red-600 text-xs -mt-2"
+              className="-mt-2 block text-xs text-rose-600"
             ></small>
           ) : null}
         </div>
@@ -105,12 +98,12 @@ export const HookWithEvents = (args) => {
             {...getSecondInputProps({
               beforeKeyUp: (e) => validateZip(e, secondInput),
             })}
-            className="mb-2 block mt-1 bg-white rounded border border-gray-400 text-gray-700 focus:outline-none focus:border-indigo-500 w-full text-base px-3 py-2"
+            className="mb-2 mt-1 block w-full rounded border border-gray-400 bg-white px-3 py-2 text-base text-gray-700 focus:border-indigo-500 focus:outline-none"
           ></input>
           {!isSecondInputValid ? (
             <small
               {...getSecondHelpProps()}
-              className="block text-red-600 text-xs -mt-2"
+              className="-mt-2 block text-xs text-rose-600"
             ></small>
           ) : null}
         </div>
@@ -121,14 +114,14 @@ export const HookWithEvents = (args) => {
                 validateStreet(null, firstInput) &&
                 validateZip(null, secondInput),
             })}
-            className="text-black bg-white border border-gray-800 py-1 px-3 focus:outline-none hover:bg-gray-800 hover:text-white transition duration-200 rounded text-lg mt-4"
+            className="mt-4 rounded border border-gray-800 bg-white px-3 py-1 text-lg text-black transition duration-200 hover:bg-gray-800 hover:text-white focus:outline-none"
           >
             Find
           </button>
           {(() => {
             if (found === false) {
               return (
-                <small className="ml-3 text-red-600 text-xs">
+                <small className="ml-3 text-xs text-rose-600">
                   No match found
                 </small>
               );
