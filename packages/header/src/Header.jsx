@@ -12,7 +12,7 @@ const Header = ({ className, children, links = [] }) => {
   return (
     <Collapsible.Root>
       <header className={className}>
-        <div className="flex items-center justify-between border-b border-dashed border-b-wavy-300 px-3 py-6 dark:border-b-mustard-300">
+        <div className="border-b-wavy-300 dark:border-b-mustard-300 flex items-center justify-between border-b border-dashed px-3 py-6">
           <div className="flex h-16 flex-1 flex-row space-x-6 divide-x divide-slate-500">
             <Collapsible.Trigger className="h-16 w-28">
               <span className="sr-only">
@@ -79,7 +79,7 @@ const Header = ({ className, children, links = [] }) => {
 
 const Flyout = () => {
   return (
-    <div className="relative z-10 border-b border-b-mustard-300 bg-wavy-800 px-6 py-4 shadow-lg">
+    <div className="border-b-mustard-300 bg-wavy-800 relative z-10 border-b px-6 py-4 shadow-lg">
       <h3 className="mb-2 text-white">
         This is an official website of the State of Utah. Here&apos;s how you
         know:
