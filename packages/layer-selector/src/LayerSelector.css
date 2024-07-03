@@ -44,6 +44,8 @@
   min-width: 36px;
   padding: 10px 5px;
   white-space: nowrap;
+  background-color: #fff;
+  color: #000;
 }
 .layer-selector--separator {
   display: block;
