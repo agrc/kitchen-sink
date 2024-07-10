@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.5](https://github.com/agrc/kitchen-sink/compare/layer-selector-v6.2.4...layer-selector-v6.2.5) (2024-07-10)
+
+
+### Bug Fixes
+
+* **layer-selector:** remove deprecated default propTypes ([b33de32](https://github.com/agrc/kitchen-sink/commit/b33de3225edc96e8042e9f5f809360bdc16cf4ec))
+
 ## [6.2.4](https://github.com/agrc/kitchen-sink/compare/layer-selector-v6.2.3...layer-selector-v6.2.4) (2024-05-13)
 
 
