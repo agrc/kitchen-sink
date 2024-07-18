@@ -198,7 +198,7 @@ export const masqueradeProvider = (url, wkid) => {
   };
 };
 
-export const AriaSherlock = (props) => {
+export const Sherlock = (props) => {
   let list = useAsyncList({ ...props.provider });
   const selectionChanged = async (key) => {
     if (typeof props?.onSherlockMatch !== 'function') {
