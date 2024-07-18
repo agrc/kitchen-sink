@@ -6,3 +6,4 @@ export * from './components/Button';
 export * from './components/Form';
 export * from './components/Banner';
 export * from './components/Spinner';
+export * from './components/Geocode.jsx';
