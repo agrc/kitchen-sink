@@ -31,7 +31,7 @@ export const Header = (props) => {
   );
 
   return (
-    <header>
+    <header className="w-full">
       <div className="pointer-events-none absolute z-50 flex w-full items-center justify-center overflow-hidden bg-transparent">
         <div className="pointer-events-none translate-y-[-150%] rounded-b border border-t-0 bg-zinc-200 leading-6 transition-all duration-500 ease-in-out focus-within:translate-y-0 focus-within:border-black/30 focus-within:shadow-lg dark:bg-zinc-700">
           <a
@@ -42,8 +42,8 @@ export const Header = (props) => {
           </a>
         </div>
       </div>
-      <div className="flex items-center justify-between border-b border-b-primary-900/30 bg-white pb-2 pr-3 pt-1 dark:border-black/30 dark:bg-zinc-700/20">
-        <div className="flex h-16 flex-1 flex-row space-x-4 divide-x divide-zinc-500 pl-3 sm:space-x-6">
+      <div className="flex items-center justify-between border-b border-b-primary-900/30 bg-white py-2 pr-3 dark:border-black/30 dark:bg-zinc-700/20">
+        <div className="flex h-16 space-x-4 divide-x divide-primary-950 pl-3 dark:divide-zinc-600 sm:space-x-6">
           <div className="flex items-center rounded-md px-3 transition-shadow ease-in-out focus-within:ring-2 focus-within:ring-primary-900 focus-within:ring-offset-2 dark:ring-offset-transparent dark:focus-within:ring-secondary-600">
             <Button
               {...triggerProps}
@@ -56,7 +56,7 @@ export const Header = (props) => {
               <UtahLogo className="h-[53px] w-[118px] fill-primary-900 font-utah text-sm dark:fill-white" />
             </Button>
           </div>
-          <div className="flex flex-1 basis-full justify-start pl-3 text-zinc-900 dark:text-zinc-100 sm:pl-5">
+          <div className="flex flex-1 basis-full justify-start pl-4 text-zinc-900 dark:text-zinc-100 sm:pl-5 md:pl-8">
             {props.children}
           </div>
         </div>
@@ -169,7 +169,7 @@ export const UgrcLogo = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
-    className="block h-full max-w-52 text-zinc-600 sm:max-w-none"
+    className="hidden h-full max-w-52 text-zinc-600 sm:block sm:max-w-none"
     viewBox="0 0 64 64"
   >
     <defs>

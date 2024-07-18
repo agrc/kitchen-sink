@@ -4,12 +4,12 @@ export default {
   component: Component,
   decorators: [
     (Story) => (
-      <>
+      <div className="h-dvh">
         <Story />
-        <p className="h-24 bg-zinc-100 p-6" id="main-content">
+        <p className="h-full bg-zinc-100 p-6" id="main-content">
           Main content
         </p>
-      </>
+      </div>
     ),
   ],
 };
