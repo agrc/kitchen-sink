@@ -1,8 +1,8 @@
 import {
-  AriaSherlock as Component,
+  Sherlock as Component,
   masqueradeProvider,
   ugrcApiProvider,
-} from './AutoComplete.jsx';
+} from './Sherlock.jsx';
 
 export default {
   component: Component,
