@@ -30,7 +30,7 @@ export default {
     options: {},
   },
 
-  docs: 'tag',
+  docs: {},
 
   typescript: {
     reactDocgen: 'react-docgen-typescript',
