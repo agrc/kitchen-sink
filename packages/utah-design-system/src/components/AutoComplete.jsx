@@ -5,7 +5,7 @@ import {
   ChevronUpDownIcon,
   CheckIcon,
 } from '@heroicons/react/24/solid';
-import Spinner from './Spinner.jsx';
+import { Spinner } from './Spinner.jsx';
 import {
   Input,
   Label,
@@ -239,7 +239,10 @@ export const AriaSherlock = (props) => {
         </Label>
       )}
       <div className="group mt-1 grow-[9999] basis-64 rounded-md transition-shadow ease-in-out focus-within:ring-2 focus-within:ring-primary-900 focus-within:ring-offset-2 dark:ring-offset-transparent dark:focus-within:ring-secondary-600">
-        <Group className="relative flex rounded-md border border-transparent bg-white py-1.5 shadow ring-1 ring-zinc-900/5 dark:border-zinc-200/40 dark:bg-zinc-700/50">
+        <Group
+          aria-hidden
+          className="relative flex rounded-md border border-transparent bg-white py-1.5 shadow ring-1 ring-zinc-900/5 dark:border-zinc-200/40 dark:bg-zinc-700/50"
+        >
           <MagnifyingGlassIcon
             aria-hidden
             className="pointer-events-none absolute inset-y-0 left-3 h-full w-6 text-zinc-400 group-focus-within:text-primary-900 dark:group-focus-within:text-zinc-300"

@@ -12,10 +12,10 @@
 /**
  * @returns {JSX.Element}
  */
-export default function Spinner() {
+export const Spinner = () => {
   return (
     <svg
-      className="h-full w-6 motion-safe:animate-spin"
+      className="h-full shrink-0 motion-safe:animate-spin"
       fill="none"
       role="progressbar"
       aria-live="polite"
@@ -23,6 +23,8 @@ export default function Spinner() {
       aria-valuetext="loading"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
+      width="18"
+      height="18"
     >
       <circle
         className="opacity-25"
@@ -39,4 +41,11 @@ export default function Spinner() {
       ></path>
     </svg>
   );
-}
+};
+
+Spinner.sleep = async (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+Spinner.minDelay = async (promise, ms = 2500) => {
+  await Promise.allSettled([promise, Spinner.sleep(ms)]);
+
+  return promise;
+};
