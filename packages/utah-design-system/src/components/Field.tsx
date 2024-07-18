@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ForwardedRef, forwardRef } from 'react';
 import {
   FieldErrorProps,
   Group,
@@ -83,8 +83,10 @@ export function FieldGroup(props: GroupProps) {
   );
 }
 
-export const Input = forwardRef(function Input(props: InputProps, ref) {
-  console.log('input', props);
+export const Input = forwardRef(function Input(
+  props: InputProps,
+  ref: ForwardedRef<HTMLInputElement>,
+) {
   return (
     <RACInput
       {...props}

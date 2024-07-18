@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { ForwardedRef, forwardRef } from 'react';
 import {
   TextField as AriaTextField,
   TextFieldProps as AriaTextFieldProps,
@@ -31,7 +31,7 @@ export interface TextFieldProps extends AriaTextFieldProps {
 
 export const TextField = forwardRef(function TextField(
   { label, description, errorMessage, ...props }: TextFieldProps,
-  ref,
+  ref: ForwardedRef<HTMLInputElement>,
 ) {
   return (
     <AriaTextField
@@ -42,7 +42,7 @@ export const TextField = forwardRef(function TextField(
       )}
     >
       {label && <Label>{label}</Label>}
-      <Input className={inputStyles} ref={ref} />
+      <Input ref={ref} className={inputStyles} />
       {description && <Description>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>
     </AriaTextField>
