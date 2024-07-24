@@ -24,7 +24,7 @@ let button = tv({
         'bg-accent-500 hover:bg-accent-300 pressed:bg-accent-400 text-zinc-900',
       destructive:
         'bg-rose-700 hover:bg-rose-800 pressed:bg-rose-900 text-white',
-      icon: 'border-0 p-1 flex items-center justify-center text-gray-600 hover:bg-black/[5%] pressed:bg-black/10 dark:text-zinc-400 dark:hover:bg-white/10 dark:pressed:bg-white/20 disabled:bg-transparent',
+      icon: 'border-0 p-1 flex items-center justify-center text-zinc-900 hover:bg-black/5 pressed:bg-black/10 dark:text-zinc-400 dark:hover:bg-white/10 dark:pressed:bg-white/20 disabled:bg-transparent',
     },
     isDisabled: {
       true: 'bg-zinc-100 dark:bg-zinc-500 text-zinc-500 dark:text-zinc-100 border-black/20 dark:border-white/20',
