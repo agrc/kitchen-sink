@@ -55,7 +55,7 @@ export const fieldBorderStyles = tv({
     isFocusWithin: {
       false:
         'border-transparent dark:border-zinc-500 forced-colors:border-[ButtonBorder]',
-      true: 'border-primary-900 dark:border-zinc-300 forced-colors:border-[Highlight]',
+      true: 'border-primary-900 dark:border-zinc-500 forced-colors:border-[Highlight]',
     },
     isInvalid: {
       true: 'border-rose-600 dark:border-rose-600 forced-colors:border-[Mark]',
