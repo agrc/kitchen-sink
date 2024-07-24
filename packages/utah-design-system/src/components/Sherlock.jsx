@@ -8,7 +8,6 @@ import {
 import { Spinner } from './Spinner.jsx';
 import {
   Input,
-  Label,
   ListBox,
   ListBoxItem,
   Popover,
@@ -17,8 +16,12 @@ import {
   Button,
   Group,
 } from 'react-aria-components';
+import { Label } from './Field';
 import { useAsyncList } from 'react-stately';
 import { search } from '@ugrc/utilities';
+import { tv } from 'tailwind-variants';
+import { focusRing } from './utils';
+import { fieldBorderStyles } from './Field';
 
 const defaultSymbols = {
   polygon: {
@@ -43,6 +46,14 @@ const defaultSymbols = {
     size: 10,
   },
 };
+
+const inputStyles = tv({
+  extend: focusRing,
+  base: 'border border-transparent bg-white py-1.5 shadow ring-1 ring-zinc-900/5 rounded-md flex relative py-1.5 dark:bg-zinc-900',
+  variants: {
+    isFocused: fieldBorderStyles.variants.isFocusWithin,
+  },
+});
 
 // todo: use or lose these
 let defaultItems = [
@@ -233,24 +244,17 @@ export const Sherlock = (props) => {
       allowsEmptyCollection={true}
       onSelectionChange={selectionChanged}
     >
-      {props.label && (
-        <Label className="text-zinc-900 dark:text-zinc-100">
-          {props.label}
-        </Label>
-      )}
-      <div className="group mt-1 grow-[9999] basis-64 rounded-md transition-shadow ease-in-out focus-within:ring-2 focus-within:ring-primary-900 focus-within:ring-offset-2 dark:ring-offset-transparent dark:focus-within:ring-secondary-600">
-        <Group
-          aria-hidden
-          className="relative flex rounded-md border border-transparent bg-white py-1.5 shadow ring-1 ring-zinc-900/5 dark:border-zinc-200/40 dark:bg-zinc-700/50"
-        >
+      {props.label && <Label>{props.label}</Label>}
+      <div className="group mt-1 grow-[9999] basis-64 rounded-md transition-shadow ease-in-out">
+        <Group aria-hidden className={inputStyles}>
           <MagnifyingGlassIcon
             aria-hidden
-            className="pointer-events-none absolute inset-y-0 left-3 h-full w-6 text-zinc-400 group-focus-within:text-primary-900 dark:group-focus-within:text-zinc-300"
+            className="pointer-events-none absolute inset-y-0 left-2 h-full w-5 text-zinc-400 group-focus-within:text-primary-900 dark:group-focus-within:text-zinc-300"
           />
           <Input
             placeholder={props.placeholder}
             onChange={(event) => list.setFilterText(event.target.value)}
-            className="block w-full appearance-none bg-transparent pl-12 pr-3 leading-5 text-zinc-900 caret-primary-800 placeholder:text-zinc-400 focus:outline-none dark:text-white dark:caret-accent-500 dark:ring-zinc-200/20 dark:placeholder:text-zinc-300 dark:focus:ring-accent-700 sm:text-sm"
+            className="block w-full appearance-none bg-transparent pl-9 pr-3 leading-5 text-zinc-900 caret-primary-800 placeholder:text-zinc-400 focus:outline-none dark:text-white dark:caret-accent-500 dark:ring-zinc-200/20 dark:placeholder:text-zinc-300 dark:focus:ring-accent-700 sm:text-sm"
           />
           {(list.loadingState === 'loading' ||
             list.loadingState === 'filtering') && (
@@ -264,7 +268,7 @@ export const Sherlock = (props) => {
           <Button>
             <ChevronUpDownIcon
               aria-hidden
-              className="h-full w-6 shrink-0 text-zinc-500 dark:text-zinc-400"
+              className="h-full w-5 shrink-0 text-zinc-500 dark:text-zinc-400"
             />
           </Button>
         </Group>
@@ -272,20 +276,20 @@ export const Sherlock = (props) => {
       <FieldError>{list.error}</FieldError>
       <Popover className="w-[--trigger-width] py-1">
         <ListBox
-          className="group mt-1 grow-[9999] basis-64 rounded-md border border-transparent bg-white shadow ring-1 ring-zinc-900/5 dark:border-zinc-200/20 dark:bg-zinc-700"
+          className="group mt-1 grow-[9999] basis-64 overflow-hidden rounded-md border border-transparent bg-white shadow ring-1 ring-zinc-900/5 dark:border-zinc-200/20 dark:bg-zinc-700"
           renderEmptyState={(event) => {
             if (
               event.state.inputValue.length >= 3 &&
               list.loadingState === 'idle'
             ) {
               return (
-                <div className="rounded-md bg-rose-100 py-2 text-center">
+                <div className="bg-rose-100 py-2 text-center dark:bg-rose-700">
                   No items found matching your search
                 </div>
               );
             }
             return (
-              <div className="rounded-md bg-blue-100 py-2 text-center">
+              <div className="bg-sky-100 py-2 text-center dark:bg-sky-700">
                 Type 2 or more characters to begin searching
               </div>
             );
