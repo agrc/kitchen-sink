@@ -67,9 +67,11 @@
     ]
   },
   "dependencies": {
-    "@storybook/test": "^8.1.11",
+    "@arcgis/core": "^4.30.9",
     "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react-dom": ">=16.8.0",
+    "react-hook-form": "^7.52.1",
+    "react-lorem-ipsum": "^1.4.10"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.6.1",
@@ -98,11 +100,9 @@
     "prettier": "^3.3.3",
     "prettier-plugin-packagejson": "^2.5.1",
     "prettier-plugin-tailwindcss": "^0.6.5",
-    "react-lorem-ipsum": "^1.4.10",
     "read-pkg": "^9.0.1",
     "release-please": "^16.12.0",
     "storybook": "^8.2.6",
-    "tailwind-variants": "^0.2.1",
     "tailwindcss": "^3.4.7",
     "tailwindcss-react-aria-components": "^1.1.4",
     "vite": "^5.3.5",
