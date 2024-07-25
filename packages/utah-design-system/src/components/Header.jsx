@@ -15,6 +15,7 @@ import { useModalOverlay, useOverlayTrigger } from 'react-aria';
 import PropTypes from 'prop-types';
 import { useRef } from 'react';
 import { useOverlayTriggerState } from 'react-stately';
+
 const dismiss = (e, action) => {
   if (e.key !== 'Escape') {
     return;
