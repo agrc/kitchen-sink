@@ -60,10 +60,6 @@
     "react-fast-compare": "^3.2.2",
     "reactstrap": "^9.2.2"
   },
-  "devDependencies": {
-    "prettier": "^3.3.2",
-    "prettier-plugin-tailwindcss": "^0.6.5"
-  },
   "peerDependencies": {
     "@arcgis/core": "^4.20.0",
     "bootstrap": "^4.5.3",

@@ -5,6 +5,7 @@ import MapView from '@arcgis/core/views/MapView';
 import '@arcgis/core/assets/esri/themes/light/main.css';
 import * as reactiveUtils from '@arcgis/core/core/reactiveUtils';
 import PropTypes from 'prop-types';
+import './Sherlock.css';
 
 export default {
   component: Sherlock,
