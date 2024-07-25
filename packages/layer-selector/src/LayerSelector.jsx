@@ -335,7 +335,7 @@ const LayerSelector = (
     };
 
     try {
-      props.view.map.basemap = {};
+      props.view.map.basemap = new Basemap();
     } catch (e) {
       console.warn(
         'layer-selector::You must pass a view with a map to the constructor of this widget.',
