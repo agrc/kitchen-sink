@@ -38,8 +38,8 @@
     ".": {
       "import": "./dist/index.esm.js"
     },
-    "./src/": {
-      "import": "./src/"
+    "./src": {
+      "import": "./src/index.js"
     }
   },
   "files": [
