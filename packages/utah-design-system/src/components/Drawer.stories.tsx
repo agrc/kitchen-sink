@@ -1,5 +1,5 @@
 import { Button } from './Button';
-import { Drawer, DrawerGriddy } from './Drawer';
+import { Drawer } from './Drawer';
 import { useOverlayTriggerState } from 'react-stately';
 import { useOverlayTrigger } from 'react-aria';
 import { LoremIpsum } from 'react-lorem-ipsum';
