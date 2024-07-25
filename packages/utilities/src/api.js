@@ -72,7 +72,7 @@ export const geocode = async (
     }
 
     return {
-      status: error.response?.status, // response is undefined when got throws
+      status: error.response?.status,
       message: response?.error ?? response?.message,
     };
   }
@@ -119,7 +119,7 @@ export const search = async (
     }
 
     return {
-      status: error.response?.status, // response is undefined when got throws
+      status: error.response?.status,
       message: response?.error ?? response?.message,
     };
   }
