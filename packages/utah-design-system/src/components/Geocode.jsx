@@ -1,11 +1,9 @@
 import { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { toQueryString } from '@ugrc/utilities';
-import {
-  TextField,
-  Button,
-  Spinner,
-} from '@ugrc/utah-design-system/development';
+import { Button } from './Button';
+import { TextField } from './TextField';
+import { Spinner } from './Spinner';
 import { Group } from 'react-aria-components';
 
 const ADDRESS_TYPE = 'single-address';
