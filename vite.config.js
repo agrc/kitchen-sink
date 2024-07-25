@@ -12,6 +12,7 @@ const rollupOptions = {
     ...Object.keys(packageJson?.dependencies ?? {}),
     ...Object.keys(packageJson?.peerDependencies ?? {}),
     /@arcgis\/core\/.*/,
+    'react/jsx-runtime',
   ],
 };
 
