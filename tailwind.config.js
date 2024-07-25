@@ -1,4 +1,4 @@
-import ugrcTheme from './packages/tailwind/src/index';
+import ugrcTheme from './packages/tailwind-preset/src/index';
 import rac from 'tailwindcss-react-aria-components';
 
 export default {
