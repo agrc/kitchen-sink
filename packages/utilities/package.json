@@ -37,6 +37,12 @@
     },
     "./hooks": {
       "import": "./dist/index.esm2.js"
+    },
+    "./src": {
+      "import": "./src/index.js"
+    },
+    "./src/hooks": {
+      "import": "./src/hooks/index.js"
     }
   },
   "files": [
