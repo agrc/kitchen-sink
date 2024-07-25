@@ -1,14 +1,14 @@
 {
-  "name": "@ugrc/tailwind-colors",
+  "name": "@ugrc/tailwind-preset",
   "version": "1.0.0",
   "private": false,
-  "description": "The default UGRC colors for tailwind",
+  "description": "The default UGRC preset for tailwind",
   "keywords": [
     "ugrc",
-    "tailwind",
-    "plugin"
+    "tailwindcss",
+    "preset"
   ],
-  "homepage": "https://github.com/agrc/kitchen-sink/tree/main/packages/utilities",
+  "homepage": "https://github.com/agrc/kitchen-sink/tree/main/packages/tailwind/README.md",
   "bugs": {
     "url": "https://github.com/agrc/kitchen-sink/issues"
   },
@@ -35,6 +35,6 @@
   ],
   "scripts": {
     "build": "echo skipping",
-    "test": "vitest --config ../../vite.config.js"
+    "test": "echo skipping"
   }
 }
