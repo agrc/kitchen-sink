@@ -1,4 +1,5 @@
-import { TailwindDartboard as Dartboard, useDartboard } from './index';
+import Dartboard, { TailwindDartboard, useDartboard } from './index';
+import './Dartboard.css';
 
 export default {
   component: Dartboard,
@@ -28,6 +29,12 @@ export const MilepostWithArguments = {
       events={{ ...args }}
       type="route-milepost"
     />
+  ),
+};
+
+export const AddressWithTailwind = {
+  render: (args) => (
+    <TailwindDartboard apiKey="storybook" events={{ ...args }} />
   ),
 };
 
@@ -88,7 +95,7 @@ export const HookWithEvents = (args) => {
           {!isFirstInputValid ? (
             <small
               {...getFirstHelpProps()}
-              className="-mt-2 block text-xs text-rose-600"
+              className="-mt-2 block text-xs text-red-600"
             ></small>
           ) : null}
         </div>
@@ -103,7 +110,7 @@ export const HookWithEvents = (args) => {
           {!isSecondInputValid ? (
             <small
               {...getSecondHelpProps()}
-              className="-mt-2 block text-xs text-rose-600"
+              className="-mt-2 block text-xs text-red-600"
             ></small>
           ) : null}
         </div>
@@ -121,7 +128,7 @@ export const HookWithEvents = (args) => {
           {(() => {
             if (found === false) {
               return (
-                <small className="ml-3 text-xs text-rose-600">
+                <small className="ml-3 text-xs text-red-600">
                   No match found
                 </small>
               );
