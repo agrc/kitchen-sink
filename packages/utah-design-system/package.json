@@ -37,7 +37,7 @@
     ".": {
       "import": "./dist/index.esm.js"
     },
-    "./development": {
+    "./src": {
       "import": "./src/index.js"
     }
   },
