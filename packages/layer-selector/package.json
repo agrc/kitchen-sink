@@ -40,6 +40,9 @@
     },
     "./src": {
       "import": "./src/"
+    },
+    "./dev": {
+      "import": "./src/index.js"
     }
   },
   "files": [
