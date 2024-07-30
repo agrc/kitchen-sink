@@ -8,7 +8,8 @@
     "packages/mouse-trap": {},
     "packages/sherlock": {},
     "packages/utilities": {},
-    "packages/popover": {}
+    "packages/popover": {},
+    "packages/utah-design-system": {}
   },
   "include-component-in-tag": true
 }
