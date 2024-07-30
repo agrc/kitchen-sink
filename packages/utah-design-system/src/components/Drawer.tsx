@@ -54,7 +54,7 @@ export const Drawer = ({
         data-type={type}
         data-open={state.isOpen}
         {...(overlayProps || internalOverlayProps)}
-        className='h-full w-80 overflow-y-auto text-zinc-900 duration-500 ease-in-out data-[type="sidebar"]:data-[open="false"]:-translate-x-full data-[type="sidebar"]:data-[open="true"]:translate-x-0 dark:text-zinc-100'
+        className="overflow-y-auto text-zinc-900 duration-500 ease-in-out data-[type='sidebar']:h-full data-[type='sidebar']:w-80 data-[type='sidebar']:data-[open='false']:-translate-x-full data-[type='sidebar']:data-[open='true']:translate-x-0 dark:text-zinc-100"
       >
         {children}
       </aside>
@@ -67,7 +67,7 @@ export const Drawer = ({
 };
 
 const DefaultDrawerTrigger = ({ triggerProps, state }) => (
-  <div className="group absolute -right-8 top-[calc(50%-24px)] z-10 w-6 overflow-hidden rounded rounded-l-none border-l-0 border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-800">
+  <div className="group absolute z-10 w-6 overflow-hidden rounded border-zinc-200 bg-white group-data-[type='sidebar']:-right-8 group-data-[type='sidebar']:top-[calc(50%-24px)] group-data-[type='sidebar']:rounded-l-none group-data-[type='sidebar']:border-l-0 dark:border-zinc-700 dark:bg-zinc-800">
     <Button
       className="flex h-10 w-6 items-center justify-center rounded-none border-0 bg-transparent p-1 shadow-md hover:bg-current group-hover:bg-black/10 dark:group-hover:bg-white/10"
       {...triggerProps}
