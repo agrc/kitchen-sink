@@ -1,9 +1,9 @@
 export const SocialMedia = () => (
-  <div className="flex flex-col items-center gap-1 bg-primary-900 px-8 py-2 text-zinc-50 dark:bg-zinc-800 sm:flex-row sm:gap-4 sm:py-0">
+  <div className="flex flex-col items-center gap-1 bg-primary-900 py-2 text-zinc-50 dark:bg-zinc-800 sm:flex-row sm:gap-4 sm:py-0 md:px-8">
     <div className="order-last text-sm font-medium uppercase sm:order-first">
       Connect with us
     </div>
-    <div className="sm:flex-0 flex items-center gap-1">
+    <div className="flex items-center gap-1 sm:flex-none">
       <a
         href="mailto:ugrc@utah.gov"
         className="custom-style focus:ring-accent flex grow items-center justify-center rounded-full p-2 transition-all ease-in-out hover:bg-white/20 focus:outline-none focus:ring-4"
