@@ -13,8 +13,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "skipLibCheck": true
   },
-  "include": ["src", "stories"]
+  "include": ["packages", "src"]
 }
