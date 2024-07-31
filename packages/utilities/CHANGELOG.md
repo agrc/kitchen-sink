@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.4](https://github.com/agrc/kitchen-sink/compare/utilities-v2.2.3...utilities-v2.2.4) (2024-07-31)
+
+
+### Bug Fixes
+
+* **utilities:** useGraphicsManager no longer accepts a ref ([c26546a](https://github.com/agrc/kitchen-sink/commit/c26546a7f9323f42e43ac385db1cbe7625d11ec8)), closes [#166](https://github.com/agrc/kitchen-sink/issues/166)
+
 ## [2.2.3](https://github.com/agrc/kitchen-sink/compare/utilities-v2.2.2...utilities-v2.2.3) (2024-07-25)
 
 

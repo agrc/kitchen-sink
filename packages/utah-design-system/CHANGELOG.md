@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.2.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.1.0...utah-design-system-v1.2.0) (2024-07-31)
+
+
+### Features
+
+* **design:** Geocode - improve popup template for address geocodes ([652cd58](https://github.com/agrc/kitchen-sink/commit/652cd58daae513e4a6bff8a7ddd41f885c007b13))
+
+
+### Bug Fixes
+
+* **design:** don't set text colors for drawer ([9fd4c5d](https://github.com/agrc/kitchen-sink/commit/9fd4c5d66363f54a460455391948f2aaac824f05))
+* **design:** fix hover on drawer trigger butoon ([eef1594](https://github.com/agrc/kitchen-sink/commit/eef1594f7a03ed83295802d877b5566e91a5b6ec))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ugrc/utilities bumped from * to 2.2.4
+
 ## [1.1.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.0.0...utah-design-system-v1.1.0) (2024-07-30)
 
 
