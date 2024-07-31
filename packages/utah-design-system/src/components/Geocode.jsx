@@ -256,9 +256,19 @@ const useGeocoding = (userProps = {}) => {
     (result, point) => {
       let attributes = {
         address: result.inputAddress,
+        addressSystem: result.addressGrid,
+        locator:
+          result.locator === 'AddressPoints.AddressGrid'
+            ? 'address point'
+            : 'road centerline',
+        score: result.score,
+        matchAddress: result.matchAddress,
       };
       let popupTemplate = {
-        title: '{address}',
+        title: 'dartboard geocoding match',
+        content:
+          'The input address <strong>{address}</strong> matched against <strong>{matchAddress}</strong> using {locator} data.<br><br>The confidence score is {score}.<br><br>This address belongs to the {addressSystem} address system.',
+        overwriteActions: true,
       };
 
       if (props.type !== ADDRESS_TYPE) {
