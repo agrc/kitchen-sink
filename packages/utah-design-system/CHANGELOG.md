@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.2.0...utah-design-system-v1.2.1) (2024-07-31)
+
+
+### Bug Fixes
+
+* **design:** export field components ([e8616c6](https://github.com/agrc/kitchen-sink/commit/e8616c60337d3b58df5a908b91d5f10078679af4))
+* **footer:** add custom style to links ([d664858](https://github.com/agrc/kitchen-sink/commit/d66485802b666be669440080a63f32ec131a85ac))
+
 ## [1.2.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.1.0...utah-design-system-v1.2.0) (2024-07-31)
 
 
