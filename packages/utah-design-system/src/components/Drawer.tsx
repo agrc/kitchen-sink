@@ -36,8 +36,7 @@ const drawerTriggerProps = useOverlayTrigger(
 
 const drawer = tv({
   slots: {
-    container:
-      'group shrink-0 bg-white duration-500 ease-in-out dark:bg-zinc-800',
+    container: 'shrink-0 bg-white duration-500 ease-in-out dark:bg-zinc-800',
     content: 'duration-500 ease-in-out',
     trigger:
       'group/trigger absolute z-10 overflow-hidden rounded border-zinc-200 bg-white ',
