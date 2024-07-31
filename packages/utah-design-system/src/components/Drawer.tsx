@@ -39,9 +39,10 @@ const drawer = tv({
     container:
       'group shrink-0 bg-white duration-500 ease-in-out dark:bg-zinc-800',
     content: 'duration-500 ease-in-out',
-    trigger: 'absolute z-10 overflow-hidden rounded border-zinc-200 bg-white ',
+    trigger:
+      'group/trigger absolute z-10 overflow-hidden rounded border-zinc-200 bg-white ',
     triggerButton:
-      'flex items-center justify-center rounded-none border-0 bg-transparent p-1 shadow-md hover:bg-current group-hover:bg-black/10 dark:group-hover:bg-white/10',
+      'flex items-center justify-center rounded-none border-0 bg-transparent p-1 shadow-md hover:bg-current group-hover/trigger:bg-black/10 dark:group-hover/trigger:bg-white/10',
   },
   variants: {
     type: {
