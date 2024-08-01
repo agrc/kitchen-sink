@@ -76,13 +76,13 @@
   "devDependencies": {
     "@chromatic-com/storybook": "^1.6.1",
     "@mdx-js/react": "^3.0.1",
-    "@storybook/addon-actions": "^8.2.6",
-    "@storybook/addon-essentials": "^8.2.6",
-    "@storybook/addon-interactions": "^8.2.6",
-    "@storybook/addon-links": "^8.2.6",
-    "@storybook/addon-themes": "^8.2.6",
-    "@storybook/react": "^8.2.6",
-    "@storybook/react-vite": "^8.2.6",
+    "@storybook/addon-actions": "^8.2.7",
+    "@storybook/addon-essentials": "^8.2.7",
+    "@storybook/addon-interactions": "^8.2.7",
+    "@storybook/addon-links": "^8.2.7",
+    "@storybook/addon-themes": "^8.2.7",
+    "@storybook/react": "^8.2.7",
+    "@storybook/react-vite": "^8.2.7",
     "@storybook/test": "^8.2.6",
     "@testing-library/react": "^16.0.0",
     "@vitejs/plugin-react": "^4.3.1",
@@ -106,6 +106,6 @@
     "tailwindcss": "^3.4.7",
     "tailwindcss-react-aria-components": "^1.1.4",
     "vite": "^5.3.5",
-    "vitest": "^2.0.4"
+    "vitest": "^2.0.5"
   }
 }
