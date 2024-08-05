@@ -1,4 +1,5 @@
 import govOpsLogo from '../assets/govops-logo.webp';
+import { Link } from './Link';
 
 export const Footer = () => (
   <>
@@ -31,68 +32,76 @@ export const Footer = () => (
           <div className="whitespace-nowrap font-bold">Main Menu</div>
           <ul className="grid gap-2 pl-1 text-sm leading-loose md:gap-0">
             <li className="mt-4 block">
-              <a
+              <Link
                 href="https://gis.utah.gov/"
-                className="custom-style focus:ring-accent rounded hover:underline focus:outline-none focus:ring-1"
+                variant="secondary"
+                quiet={true}
               >
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="https://gis.utah.gov/products/"
-                className="custom-style focus:ring-accent rounded hover:underline focus:outline-none focus:ring-1"
+                variant="secondary"
+                quiet={true}
               >
                 Products
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="https://gis.utah.gov/solutions/"
-                className="custom-style focus:ring-accent rounded hover:underline focus:outline-none focus:ring-1"
+                variant="secondary"
+                quiet={true}
               >
                 Solutions
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="https://gis.utah.gov/documentation/"
-                className="custom-style focus:ring-accent rounded hover:underline focus:outline-none focus:ring-1"
+                variant="secondary"
+                quiet={true}
               >
                 Documentation
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="https://gis.utah.gov/collaboration/"
-                className="custom-style focus:ring-accent rounded hover:underline focus:outline-none focus:ring-1"
+                variant="secondary"
+                quiet={true}
               >
                 Collaboration
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="https://gis.utah.gov/blog/"
-                className="custom-style focus:ring-accent rounded hover:underline focus:outline-none focus:ring-1"
+                variant="secondary"
+                quiet={true}
               >
                 Blog
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="https://gis.utah.gov/about/"
-                className="custom-style focus:ring-accent rounded hover:underline focus:outline-none focus:ring-1"
+                variant="secondary"
+                quiet={true}
               >
                 About
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="https://gis.utah.gov/contact/"
-                className="custom-style focus:ring-accent rounded hover:underline focus:outline-none focus:ring-1"
+                variant="secondary"
+                quiet={true}
               >
                 Contact
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -100,44 +109,49 @@ export const Footer = () => (
           <div className="whitespace-nowrap font-bold">Helpful Links</div>
           <ul className="grid gap-2 pl-1 text-sm leading-loose md:gap-0">
             <li className="mt-4 block">
-              <a
+              <Link
                 href="https://github.com/agrc/gis.utah.gov/blob/main/.github/contributing.md"
-                className="custom-style focus:ring-accent rounded hover:underline focus:outline-none focus:ring-1"
+                variant="secondary"
+                quiet={true}
               >
                 Content contributing guide
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="https://gis.utah.gov/about/media/"
-                className="custom-style focus:ring-accent rounded hover:underline focus:outline-none focus:ring-1"
+                variant="secondary"
+                quiet={true}
               >
                 Logos and media resources
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="https://gis.utah.gov/documentation/policy/"
-                className="custom-style focus:ring-accent rounded hover:underline focus:outline-none focus:ring-1"
+                variant="secondary"
+                quiet={true}
               >
                 UGRC Policies
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="https://gis.utah.gov/about/code/"
-                className="custom-style focus:ring-accent rounded hover:underline focus:outline-none focus:ring-1"
+                variant="secondary"
+                quiet={true}
               >
                 GIS-related Utah statute
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="https://s.utah.gov/ugrc-newsletter"
-                className="custom-style focus:ring-accent rounded hover:underline focus:outline-none focus:ring-1"
+                variant="secondary"
+                quiet={true}
               >
                 Sign up for our newsletter
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -145,20 +159,22 @@ export const Footer = () => (
           <div className="whitespace-nowrap font-bold">Website Information</div>
           <ul className="grid gap-2 pl-1 text-sm leading-loose md:gap-0">
             <li>
-              <a
+              <Link
                 href="https://gis.utah.gov/collaboration/community/contributors/"
-                className="custom-style focus:ring-accent rounded hover:underline focus:outline-none focus:ring-1"
+                variant="secondary"
+                quiet={true}
               >
                 Contributors
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="https://github.com/agrc/gis.utah.gov/issues/new"
-                className="custom-style focus:ring-accent rounded hover:underline focus:outline-none focus:ring-1"
+                variant="secondary"
+                quiet={true}
               >
                 Report an issue
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -189,37 +205,37 @@ export const Footer = () => (
         </div>
         <div className="pt-6 text-center text-sm lg:pt-0">
           <div className="space-x-2 leading-10 text-zinc-50 lg:space-x-4">
-            <a href="https://www.utah.gov" className="custom-style">
+            <Link href="https://www.utah.gov" variant="secondary">
               Utah.gov Home
-            </a>
+            </Link>
             <span className="border-l-2" aria-hidden="true"></span>
-            <a
+            <Link
               href="https://www.utah.gov/disclaimer.html"
-              className="custom-style"
+              variant="secondary"
             >
               Terms of Use
-            </a>
+            </Link>
             <span className="border-l-2" aria-hidden="true"></span>
-            <a
+            <Link
               href="https://www.utah.gov/privacypolicy.html"
-              className="custom-style"
+              variant="secondary"
             >
               Privacy Policy
-            </a>
+            </Link>
             <span className="border-l-2" aria-hidden="true"></span>
-            <a
+            <Link
               href="https://www.utah.gov/accessibility.html"
-              className="custom-style"
+              variant="secondary"
             >
               Accessibility
-            </a>
+            </Link>
             <span className="border-l-2" aria-hidden="true"></span>
-            <a
+            <Link
               href="https://www.utah.gov/translate.html"
-              className="custom-style"
+              variant="secondary"
             >
               Translate
-            </a>
+            </Link>
           </div>
         </div>
       </div>
