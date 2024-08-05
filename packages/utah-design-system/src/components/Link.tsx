@@ -42,11 +42,6 @@ const styles = tv({
 });
 
 export function Link(props: LinkProps) {
-  console.log(
-    'link props',
-    styles({ variant: props.variant, quiet: props.quiet }),
-  );
-
   return (
     <AriaLink
       {...props}
