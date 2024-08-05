@@ -49,7 +49,7 @@ export const Header = (props) => {
             <Button
               {...triggerProps}
               onKeyDown={(event) => dismiss(event, state.close)}
-              className="focus:outline-none"
+              className="cursor-default focus:outline-none"
             >
               <span className="sr-only">
                 An official website of the State of Utah. Click to learn more.
@@ -66,7 +66,7 @@ export const Header = (props) => {
             <div className="flex items-center justify-self-end lg:mr-10">
               <Button
                 aria-label="secondary menu"
-                className="rounded-md outline-none transition-shadow ease-in-out focus:ring-2 focus:ring-primary-900 focus:ring-offset-2 dark:ring-offset-transparent dark:focus:ring-secondary-600"
+                className="cursor-default rounded-md outline-none transition-shadow ease-in-out focus:ring-2 focus:ring-primary-900 focus:ring-offset-2 dark:ring-offset-transparent dark:focus:ring-secondary-600"
               >
                 <Squares2X2Icon className="h-full w-8 text-primary-900 dark:text-zinc-300" />
               </Button>
@@ -153,7 +153,7 @@ const Flyout = ({ state, ...props }) => {
         </div>
         <Button
           onPress={state.close}
-          className="absolute right-2 top-2 rounded-full p-1 text-zinc-50 outline-none ring-offset-transparent transition-shadow ease-in-out hover:bg-black/10 focus:ring-2 focus:ring-secondary-600 focus:ring-offset-2"
+          className="absolute right-2 top-2 cursor-default rounded-full p-1 text-zinc-50 outline-none ring-offset-transparent transition-shadow ease-in-out hover:bg-black/10 focus:ring-2 focus:ring-secondary-600 focus:ring-offset-2"
         >
           <XMarkIcon className="w-7" />
           <span className="sr-only">Close official website popup</span>
