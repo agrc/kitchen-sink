@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.2.1...utah-design-system-v1.3.0) (2024-08-06)
+
+
+### Features
+
+* **link:** add link component to the design system ([c01c2b4](https://github.com/agrc/kitchen-sink/commit/c01c2b452d3d07a4525b240f1290afc0f7ba67f9))
+
 ## [1.2.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.2.0...utah-design-system-v1.2.1) (2024-07-31)
 
 
