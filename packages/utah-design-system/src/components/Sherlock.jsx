@@ -84,7 +84,7 @@ export const ugrcApiProvider = (
         {
           predicate: `UPPER(${field}) LIKE UPPER('%${filterText}%')`,
           spatialReference: options?.wkid,
-          attributeStyle: 'identical',
+          attributeStyle: 'input',
         },
         signal,
       );
@@ -139,7 +139,7 @@ export const ugrcApiProvider = (
         ...options,
         predicate: `UPPER(${field}) LIKE UPPER('%${value}%')`,
         spatialReference: options?.wkid ?? 26912,
-        attributeStyle: 'identical',
+        attributeStyle: 'input',
       };
 
       if (qualifier) {
