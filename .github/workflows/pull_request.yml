@@ -34,6 +34,9 @@ jobs:
       - name: 🧼 Lint files
         run: npm run lint
 
+      - name: ✔ Check Typescript
+        run: npx tsc
+
   test-unit:
     name: Unit tests
     runs-on: ubuntu-latest
