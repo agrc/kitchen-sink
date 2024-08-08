@@ -89,7 +89,7 @@ export const search = async (
     geometry: undefined,
     spatialReference: undefined,
     buffer: undefined,
-    attributeStyle: 'identical',
+    attributeStyle: 'input',
   },
   signal,
 ) => {
