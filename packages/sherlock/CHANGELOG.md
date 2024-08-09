@@ -17,6 +17,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **sherlock:** add extent ([a01e94f](https://github.com/agrc/kitchen-sink/commit/a01e94fcdc62c64fa385e0fd2f984357102fbab9))
 - add LocatorSuggestProvider to sherlock ([0bd35a7](https://github.com/agrc/kitchen-sink/commit/0bd35a7ac9a06a580482f1e18a63da53cdeac820))
 
+## [4.0.8](https://github.com/agrc/kitchen-sink/compare/sherlock-v4.0.7...sherlock-v4.0.8) (2024-08-09)
+
+
+### Bug Fixes
+
+* **sherlock:** use new value for attribute style for web api ([1dbf244](https://github.com/agrc/kitchen-sink/commit/1dbf24498bf4df495b0933422bd78f9176bfadcd))
+
 ## [4.0.7](https://github.com/agrc/kitchen-sink/compare/sherlock-v4.0.6...sherlock-v4.0.7) (2024-07-10)
 
 

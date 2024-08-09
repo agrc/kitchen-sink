@@ -21,6 +21,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @ugrc/utilities bumped from ^2.2.0 to ^2.2.1
 
+## [5.0.12](https://github.com/agrc/kitchen-sink/compare/dart-board-v5.0.11...dart-board-v5.0.12) (2024-08-09)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ugrc/utilities bumped from ^2.2.4 to ^2.2.5
+
 ## [5.0.11](https://github.com/agrc/kitchen-sink/compare/dart-board-v5.0.10...dart-board-v5.0.11) (2024-07-31)
 
 
