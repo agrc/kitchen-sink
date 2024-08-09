@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.3.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.3.0...utah-design-system-v1.3.1) (2024-08-09)
+
+
+### Bug Fixes
+
+* **sherlock:** use new value for attribute style for web api ([d3e9574](https://github.com/agrc/kitchen-sink/commit/d3e95743ecaa9b1a4c29989c248799f492ff6cd9))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ugrc/utilities bumped from 2.2.4 to 2.2.5
+
 ## [1.3.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.2.1...utah-design-system-v1.3.0) (2024-08-06)
 
 

@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.5](https://github.com/agrc/kitchen-sink/compare/utilities-v2.2.4...utilities-v2.2.5) (2024-08-09)
+
+
+### Bug Fixes
+
+* **utilities:** use new value for attribute style for web api search requests ([3961079](https://github.com/agrc/kitchen-sink/commit/3961079f5b9af9d56c7f61a96fb59afc89e927f9))
+
 ## [2.2.4](https://github.com/agrc/kitchen-sink/compare/utilities-v2.2.3...utilities-v2.2.4) (2024-07-31)
 
 
