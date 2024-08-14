@@ -1,3 +1,4 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   theme: {
     extend: {
@@ -55,4 +56,5 @@ module.exports = {
       },
     },
   },
+  plugins: [require('tailwindcss-react-aria-components')],
 };

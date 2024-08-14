@@ -36,5 +36,8 @@
   "scripts": {
     "build": "echo skipping",
     "test": "echo skipping"
+  },
+  "dependencies": {
+    "tailwindcss-react-aria-components": "^1.1.4"
   }
 }
