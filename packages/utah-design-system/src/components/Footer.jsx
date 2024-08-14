@@ -205,13 +205,14 @@ export const Footer = () => (
         </div>
         <div className="pt-6 text-center text-sm lg:pt-0">
           <div className="space-x-2 leading-10 text-zinc-50 lg:space-x-4">
-            <Link href="https://www.utah.gov" variant="secondary">
+            <Link href="https://www.utah.gov" variant="secondary" quiet={true}>
               Utah.gov Home
             </Link>
             <span className="border-l-2" aria-hidden="true"></span>
             <Link
               href="https://www.utah.gov/disclaimer.html"
               variant="secondary"
+              quiet={true}
             >
               Terms of Use
             </Link>
@@ -219,6 +220,7 @@ export const Footer = () => (
             <Link
               href="https://www.utah.gov/privacypolicy.html"
               variant="secondary"
+              quiet={true}
             >
               Privacy Policy
             </Link>
@@ -226,6 +228,7 @@ export const Footer = () => (
             <Link
               href="https://www.utah.gov/accessibility.html"
               variant="secondary"
+              quiet={true}
             >
               Accessibility
             </Link>
@@ -233,6 +236,7 @@ export const Footer = () => (
             <Link
               href="https://www.utah.gov/translate.html"
               variant="secondary"
+              quiet={true}
             >
               Translate
             </Link>
