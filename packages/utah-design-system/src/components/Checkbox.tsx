@@ -1,5 +1,5 @@
 import { CheckIcon, MinusIcon } from '@heroicons/react/24/solid';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import {
   Checkbox as AriaCheckbox,
   CheckboxGroup as AriaCheckboxGroup,
