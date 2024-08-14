@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.4.0...utah-design-system-v1.4.1) (2024-08-14)
+
+
+### Bug Fixes
+
+* **footer:** style all links properly ([a3bf877](https://github.com/agrc/kitchen-sink/commit/a3bf877024827d07996934c51c5b23bb2ff6a413))
+
 ## [1.4.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.3.1...utah-design-system-v1.4.0) (2024-08-14)
 
 
