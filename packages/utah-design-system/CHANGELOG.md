@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.3.1...utah-design-system-v1.4.0) (2024-08-14)
+
+
+### Features
+
+* **design:** create checkbox and radio button components ([eafe98a](https://github.com/agrc/kitchen-sink/commit/eafe98aace8005384fa67886ce82016560148df1))
+
 ## [1.3.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.3.0...utah-design-system-v1.3.1) (2024-08-09)
 
 
