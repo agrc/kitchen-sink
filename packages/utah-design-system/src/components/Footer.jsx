@@ -1,5 +1,5 @@
 import govOpsLogo from '../assets/govops-logo.webp';
-import { Link } from './Link';
+import { Link } from './Link.tsx';
 
 export const Footer = () => (
   <>
