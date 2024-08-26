@@ -39,7 +39,7 @@ const drawer = tv({
     container: 'shrink-0 bg-white duration-500 ease-in-out dark:bg-zinc-800',
     content: 'duration-500 ease-in-out',
     trigger:
-      'group/trigger absolute z-10 overflow-hidden rounded border-zinc-200 bg-white ',
+      'group/trigger absolute z-10 overflow-hidden rounded border border-zinc-200 hover:border-zinc-300 dark:hover:border-zinc-600 bg-white',
     triggerButton:
       'flex items-center justify-center rounded-none border-0 bg-transparent p-1 shadow-md hover:bg-current group-hover/trigger:bg-black/10 dark:group-hover/trigger:bg-white/10',
   },
@@ -51,7 +51,7 @@ const drawer = tv({
         content:
           "h-full w-80 overflow-y-auto data-[open='false']:-translate-x-full data-[open='true']:translate-x-0",
         trigger:
-          'h-10 w-6 -right-8 top-[calc(50%-24px)] rounded-l-none border-l-0 dark:bg-zinc-800 dark:border-zinc-700',
+          'h-10 w-6 -right-8 top-[calc(50%-24px)] rounded-l-none dark:bg-zinc-800 dark:border-zinc-700',
         triggerButton: 'h-10 w-full',
       },
       tray: {
@@ -60,7 +60,7 @@ const drawer = tv({
         content:
           "overflow-x-auto data-[open='false']:h-0 data-[open='true']:h-80 data-[open='true']:translate-y-0 data-[open='false']:overflow-hidden",
         trigger:
-          'w-10 h-6 -top-6 bg-zinc-50 -top-6 left-[calc(50%-24px)] rounded-b-none border-b-0 dark:bg-zinc-700 dark:border-zinc-800',
+          'w-10 h-6 -top-6 bg-zinc-50 -top-[1.4rem] left-[calc(50%-24px)] rounded-b-none dark:bg-zinc-700 dark:border-zinc-800',
         triggerButton: 'h-6 w-10',
       },
     },
