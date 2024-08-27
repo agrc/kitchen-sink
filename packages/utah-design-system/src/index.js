@@ -13,3 +13,4 @@ export * from './components/Sherlock.jsx';
 export * from './components/SocialMedia.jsx';
 export * from './components/Spinner.jsx';
 export * from './components/TextField.tsx';
+export * from './components/UtahIdLogin.tsx';
