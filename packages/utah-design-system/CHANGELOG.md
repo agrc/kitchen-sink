@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.5.1...utah-design-system-v1.5.2) (2024-08-27)
+
+
+### Bug Fixes
+
+* **monorepo:** typescript types during build ([b94ae6b](https://github.com/agrc/kitchen-sink/commit/b94ae6b516ed85ac41656b8c10ca5775692c9e49)), closes [#278](https://github.com/agrc/kitchen-sink/issues/278) [#277](https://github.com/agrc/kitchen-sink/issues/277)
+
 ## [1.5.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.5.0...utah-design-system-v1.5.1) (2024-08-27)
 
 
