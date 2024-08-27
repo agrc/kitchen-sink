@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.5.0...utah-design-system-v1.5.1) (2024-08-27)
+
+
+### Bug Fixes
+
+* update typescript type path ([0533a21](https://github.com/agrc/kitchen-sink/commit/0533a210bb6b1311a16493e2b6dd2bc691d4854c))
+
 ## [1.5.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.4.1...utah-design-system-v1.5.0) (2024-08-27)
 
 
