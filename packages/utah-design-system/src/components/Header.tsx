@@ -12,11 +12,10 @@ import {
   MenuTrigger,
 } from 'react-aria-components';
 import { useModalOverlay, useOverlayTrigger } from 'react-aria';
-import PropTypes from 'prop-types';
-import { useRef } from 'react';
-import { useOverlayTriggerState } from 'react-stately';
+import { KeyboardEvent, ReactNode, useRef } from 'react';
+import { OverlayTriggerState, useOverlayTriggerState } from 'react-stately';
 
-const dismiss = (e, action) => {
+const dismiss = (e: KeyboardEvent, action: Function): void => {
   if (e.key !== 'Escape') {
     return;
   }
@@ -24,7 +23,21 @@ const dismiss = (e, action) => {
   action();
 };
 
-export const Header = (props) => {
+export type HeaderLink = {
+  key: string;
+  action: {
+    url: string;
+  };
+};
+
+export const Header = ({
+  children,
+  links,
+  ...props
+}: {
+  children: ReactNode;
+  links: HeaderLink[];
+}) => {
   let state = useOverlayTriggerState(props);
   let { triggerProps, overlayProps } = useOverlayTrigger(
     { type: 'dialog' },
@@ -58,10 +71,10 @@ export const Header = (props) => {
             </Button>
           </div>
           <div className="flex flex-1 basis-full justify-start pl-4 text-zinc-900 dark:text-zinc-100 sm:pl-5 md:pl-8">
-            {props.children}
+            {children}
           </div>
         </div>
-        {props.links && (
+        {links && (
           <MenuTrigger>
             <div className="flex items-center justify-self-end lg:mr-10">
               <Button
@@ -72,7 +85,7 @@ export const Header = (props) => {
               </Button>
               <Popover>
                 <Menu
-                  items={props.links}
+                  items={links}
                   className="grid min-w-32 grid-cols-1 divide-y whitespace-nowrap rounded-md border border-transparent bg-white px-3 py-2 shadow outline-none ring-1 ring-zinc-900/5 transition-shadow ease-in-out focus:ring-2 focus:ring-primary-900 focus:ring-offset-2 dark:border-zinc-200/20 dark:bg-zinc-700 dark:ring-offset-transparent dark:focus:ring-secondary-600"
                 >
                   {(link) => (
@@ -100,12 +113,8 @@ export const Header = (props) => {
     </header>
   );
 };
-Header.propTypes = {
-  children: PropTypes.node,
-  links: PropTypes.arrayOf(PropTypes.object),
-};
 
-const Flyout = ({ state, ...props }) => {
+const Flyout = ({ state, ...props }: { state: OverlayTriggerState }) => {
   let ref = useRef(null);
   let { modalProps } = useModalOverlay(
     { ...props, isKeyboardDismissDisabled: false, isDismissable: true },
@@ -162,9 +171,6 @@ const Flyout = ({ state, ...props }) => {
     </>
   );
 };
-Flyout.propTypes = {
-  state: PropTypes.object,
-};
 
 export const UgrcLogo = () => (
   <svg
@@ -216,7 +222,8 @@ export const UgrcLogo = () => (
     />
   </svg>
 );
-const UtahLogo = ({ className }) => (
+
+const UtahLogo = ({ className }: { className: string }) => (
   <svg viewBox="0 0 105.9496 47.6226" role="img" className={className}>
     <g>
       <g>
@@ -230,6 +237,3 @@ const UtahLogo = ({ className }) => (
     </g>
   </svg>
 );
-UtahLogo.propTypes = {
-  className: PropTypes.string,
-};

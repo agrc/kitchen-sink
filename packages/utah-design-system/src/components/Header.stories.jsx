@@ -1,4 +1,4 @@
-import { Header as Component } from './Header.jsx';
+import { Header as Component } from './Header.tsx';
 
 export default {
   component: Component,
