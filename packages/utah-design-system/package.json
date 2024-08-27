@@ -33,9 +33,12 @@
     }
   ],
   "type": "module",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.esm.js"
+      "import": "./dist/index.esm.js",
+      "types": "./dist/index.d.ts"
     },
     "./src": {
       "import": "./src/index.js"
@@ -51,7 +54,6 @@
     "test": "vitest --config ../../vite.config.js"
   },
   "dependencies": {
-    "@arcgis/core": "^4.30.9",
     "@heroicons/react": "^2.1.5",
     "@ugrc/utilities": "2.2.5",
     "lodash-es": "^4.17.21",
@@ -62,6 +64,7 @@
     "tailwind-variants": "^0.2.1"
   },
   "peerDependencies": {
+    "@arcgis/core": "^4.30.9",
     "firebase": ">=10.0.0",
     "prop-types": "^15.8.1",
     "react": ">=16.8.0",

@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { basename, resolve } from 'path';
 import { readPackage } from 'read-pkg';
+import dts from 'vite-plugin-dts';
 
 const directory = process.cwd();
 const packageName = basename(directory);
@@ -14,6 +15,13 @@ const rollupOptions = {
     /@arcgis\/core\/.*/,
     'react/jsx-runtime',
   ],
+  output: {
+    globals: {
+      react: 'React',
+      'react-dom': 'ReactDOM',
+      tailwindcss: 'tailwindcss',
+    },
+  },
 };
 
 if (packageName === 'utilities') {
@@ -24,7 +32,7 @@ if (packageName === 'utilities') {
 }
 
 const config = defineConfig({
-  plugins: [react()],
+  plugins: [react(), dts({ rollupTypes: true })],
   build: {
     lib: {
       entry: resolve(directory, 'src/index.js'),
@@ -35,6 +43,7 @@ const config = defineConfig({
       },
     },
     sourcemap: true,
+    emptyOutDir: false,
     rollupOptions,
   },
   test: {
