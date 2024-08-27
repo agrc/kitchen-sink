@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.4.1...utah-design-system-v1.5.0) (2024-08-27)
+
+
+### Features
+
+* create types for package ([7b176eb](https://github.com/agrc/kitchen-sink/commit/7b176eb241dd5d6bf494f751f47b57c820d1db9f))
+* **utahid:** add utahid login button ([ce51a50](https://github.com/agrc/kitchen-sink/commit/ce51a504b2b0c3e068d89504af913cab58ee9fb6))
+
 ## [1.4.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.4.0...utah-design-system-v1.4.1) (2024-08-14)
 
 
