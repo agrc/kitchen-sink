@@ -32,7 +32,7 @@ if (packageName === 'utilities') {
 }
 
 const config = defineConfig({
-  plugins: [react(), dts({ rollupTypes: true })],
+  plugins: [react(), dts({ include: ['src'] })],
   build: {
     lib: {
       entry: resolve(directory, 'src/index.js'),
@@ -43,7 +43,7 @@ const config = defineConfig({
       },
     },
     sourcemap: true,
-    emptyOutDir: false,
+    emptyOutDir: true,
     rollupOptions,
   },
   test: {
