@@ -34,11 +34,11 @@
   ],
   "type": "module",
   "module": "./dist/index.esm.js",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/index.esm.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.esm.js",
-      "types": "./dist/index.d.ts"
+      "types": "./dist/index.esm.d.ts"
     },
     "./src": {
       "import": "./src/index.js"
