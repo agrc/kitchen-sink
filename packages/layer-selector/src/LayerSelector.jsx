@@ -309,7 +309,7 @@ const LayerSelector = (props) => {
         copyright: 'UGRC',
       },
       'Color IR': {
-        urlPattern: `https://discover.agrc.utah.gov/login/path/${props.quadWord}/tiles/naip_2018_nrg/{level}/{col}/{row}`,
+        urlPattern: `https://discover.agrc.utah.gov/login/path/${props.quadWord}/tiles/naip_2021_nrg/{level}/{col}/{row}`,
         copyright: 'UGRC',
       },
       Hybrid: {
