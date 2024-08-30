@@ -1,10 +1,6 @@
 import Graphic from '@arcgis/core/Graphic';
 import { escapeRegExp } from 'lodash-es';
-import {
-  MagnifyingGlassIcon,
-  ChevronUpDownIcon,
-  CheckIcon,
-} from '@heroicons/react/24/solid';
+import { SearchIcon, ChevronsUpDownIcon, CheckIcon } from 'lucide-react';
 import { Spinner } from './Spinner.jsx';
 import {
   Input,
@@ -247,7 +243,7 @@ export const Sherlock = (props) => {
       {props.label && <Label>{props.label}</Label>}
       <div className="group mt-1 grow-[9999] basis-64 rounded-md transition-shadow ease-in-out">
         <Group aria-hidden className={inputStyles}>
-          <MagnifyingGlassIcon
+          <SearchIcon
             aria-hidden
             className="pointer-events-none absolute inset-y-0 left-2 h-full w-5 text-zinc-400 group-focus-within:text-primary-900 dark:group-focus-within:text-zinc-300"
           />
@@ -266,7 +262,7 @@ export const Sherlock = (props) => {
             </span>
           )}
           <Button>
-            <ChevronUpDownIcon
+            <ChevronsUpDownIcon
               aria-hidden
               className="h-full w-5 shrink-0 text-zinc-500 dark:text-zinc-400"
             />

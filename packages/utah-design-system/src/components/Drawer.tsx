@@ -1,11 +1,7 @@
 import { AriaButtonProps, FocusScope, useOverlayTrigger } from 'react-aria';
 import { DOMProps } from '@react-types/shared';
 import { Button } from './Button';
-import {
-  ChevronLeftIcon,
-  ChevronDownIcon,
-  ArrowsPointingOutIcon,
-} from '@heroicons/react/24/solid';
+import { ChevronLeftIcon, ChevronDownIcon, FullscreenIcon } from 'lucide-react';
 import { twJoin, twMerge } from 'tailwind-merge';
 import { tv } from 'tailwind-variants';
 import { useState } from 'react';
@@ -147,7 +143,7 @@ export const Drawer = ({
                 setSize(size === 'normal' ? 'fullscreen' : 'normal')
               }
             >
-              <ArrowsPointingOutIcon className="h-full w-6 shrink-0 fill-zinc-900 dark:fill-white" />
+              <FullscreenIcon className="h-full w-6 shrink-0 text-zinc-900 dark:text-white" />
             </Button>
           )}
           {children}
@@ -189,7 +185,6 @@ const DefaultDrawerTrigger = ({
       >
         <Icon
           className={twJoin(
-            'size-full shrink-0 fill-zinc-900 transition-transform duration-500 dark:fill-white',
             !state.isOpen ? '-rotate-180' : '',
           )}
         />
