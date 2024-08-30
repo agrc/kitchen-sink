@@ -16,13 +16,13 @@ interface LinkProps extends AriaLinkProps {
 
 const styles = tv({
   extend: focusRing,
-  base: 'underline disabled:no-underline disabled:cursor-default transition rounded',
+  base: 'rounded underline transition disabled:cursor-default disabled:no-underline',
   variants: {
     variant: {
       primary:
-        'text-secondary-800 dark:text-accent-500 decoration-secondary-800/60 hover:decoration-secondary-800 dark:decoration-accent-500/60 dark:hover:decoration-accent-500',
+        'text-secondary-800 decoration-secondary-800/60 hover:decoration-secondary-800 dark:text-accent-500 dark:decoration-accent-500/60 dark:hover:decoration-accent-500',
       secondary:
-        'text-primary-900 dark:text-primary-500 decoration-primary-900/50 hover:decoration-primary-900 dark:decoration-primary-500/60 dark:hover:decoration-primary-500',
+        'text-primary-900 decoration-primary-900/50 hover:decoration-primary-900 dark:text-primary-500 dark:decoration-primary-500/60 dark:hover:decoration-primary-500',
     },
     quiet: {
       true: '',
@@ -37,7 +37,7 @@ const styles = tv({
       variant: ['primary', 'secondary'],
       quiet: true,
       className:
-        'text-zinc-100 dark:text-zinc-100 dark:decoration-zinc-100/50 decoration-zinc-100/50 hover:decoration-zinc-100',
+        'text-zinc-100 decoration-zinc-100/50 hover:decoration-zinc-100 dark:text-zinc-100 dark:decoration-zinc-100/50',
     },
   ],
 });
@@ -63,7 +63,7 @@ export const ExternalLink = (props: LinkProps) => (
     {...props}
     target="_blank"
     rel="noopener noreferrer nofollow"
-    className="m-0 inline-flex cursor-pointer flex-wrap items-center gap-x-1"
+    className="m-0 inline-flex cursor-pointer flex-wrap items-center gap-x-0.5"
   >
     {props.children}
     <span aria-hidden="true">
