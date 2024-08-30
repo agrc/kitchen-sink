@@ -260,7 +260,7 @@ export const Sherlock = (props) => {
               <Spinner ariaLabel="searching" />
             </span>
           )}
-          <Button>
+          <Button className="pr-2">
             <ChevronsUpDownIcon
               aria-hidden
               className="h-full w-5 shrink-0 text-zinc-500 dark:text-zinc-400"
