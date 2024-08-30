@@ -1,9 +1,10 @@
 import {
-  CheckBadgeIcon,
-  LockClosedIcon,
-  ArrowTopRightOnSquareIcon,
-} from '@heroicons/react/24/outline';
-import { XMarkIcon, Squares2X2Icon } from '@heroicons/react/24/solid';
+  ShieldCheckIcon,
+  LockIcon,
+  SquareArrowOutUpRightIcon,
+  XIcon,
+  GripIcon,
+} from 'lucide-react';
 import {
   Button,
   Popover,
@@ -85,7 +86,7 @@ export const Header = ({
                   aria-label="secondary menu"
                   className="cursor-default rounded-md outline-none transition-shadow ease-in-out focus:ring-2 focus:ring-primary-900 focus:ring-offset-2 dark:ring-offset-transparent dark:focus:ring-secondary-600"
                 >
-                  <Squares2X2Icon className="h-full w-8 text-primary-900 dark:text-zinc-300" />
+                  <GripIcon className="h-full w-8 text-primary-900 dark:text-zinc-300" />
                 </Button>
                 <Popover>
                   <Menu
@@ -101,7 +102,7 @@ export const Header = ({
                           {link.key}
                           {link.action.url.toLowerCase().startsWith('https') ? (
                             <>
-                              <ArrowTopRightOnSquareIcon className="ml-1 h-full w-4 text-zinc-500 dark:text-zinc-300" />
+                              <SquareArrowOutUpRightIcon className="ml-1 h-full w-4 text-zinc-500 dark:text-zinc-300" />
                             </>
                           ) : null}
                         </span>
@@ -147,7 +148,7 @@ const Flyout = ({ state, ...props }: { state: OverlayTriggerState }) => {
         </p>
         <div className="mx-auto flex max-w-screen-lg flex-col justify-around gap-10 lg:flex-row">
           <div className="flex items-center gap-2 lg:w-96 lg:items-start">
-            <CheckBadgeIcon className="w-16 text-zinc-50" />
+            <ShieldCheckIcon className="w-16 text-zinc-50" />
             <p className="text-zinc-50">
               <span className="block font-bold">
                 Official Utah websites use utah.gov in the browser&apos;s
@@ -158,7 +159,7 @@ const Flyout = ({ state, ...props }: { state: OverlayTriggerState }) => {
             </p>
           </div>
           <div className="flex items-center gap-2 lg:w-96 lg:items-start">
-            <LockClosedIcon className="w-16 text-zinc-50" />
+            <LockIcon className="w-16 text-zinc-50" />
             <div className="text-zinc-50">
               <span className="block font-bold">
                 Be careful when sharing sensitive information.
@@ -176,7 +177,7 @@ const Flyout = ({ state, ...props }: { state: OverlayTriggerState }) => {
           onPress={state.close}
           className="absolute right-2 top-2 cursor-default rounded-full p-1 text-zinc-50 outline-none ring-offset-transparent transition-shadow ease-in-out hover:bg-black/10 focus:ring-2 focus:ring-secondary-600 focus:ring-offset-2"
         >
-          <XMarkIcon className="w-7" />
+          <XIcon className="w-7" />
           <span className="sr-only">Close official website popup</span>
         </Button>
       </div>

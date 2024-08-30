@@ -1,4 +1,4 @@
-import { CheckIcon, MinusIcon } from '@heroicons/react/24/solid';
+import { CheckIcon, MinusIcon } from 'lucide-react';
 import { ReactNode } from 'react';
 import {
   Checkbox as AriaCheckbox,

@@ -34,7 +34,9 @@
     "singleQuote": true,
     "tailwindFunctions": [
       "clsx",
-      "tv"
+      "tv",
+      "twJoin",
+      "twMerge"
     ]
   },
   "eslintConfig": {
@@ -75,6 +77,7 @@
   },
   "dependencies": {
     "@arcgis/core": "^4.30.9",
+    "lucide-react": "^0.436.0",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0",
     "react-hook-form": "^7.52.1",
