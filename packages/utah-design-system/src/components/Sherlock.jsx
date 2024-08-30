@@ -12,12 +12,11 @@ import {
   Button,
   Group,
 } from 'react-aria-components';
-import { Label } from './Field';
 import { useAsyncList } from 'react-stately';
 import { search } from '@ugrc/utilities';
 import { tv } from 'tailwind-variants';
-import { focusRing } from './utils';
-import { fieldBorderStyles } from './Field';
+import { focusRing } from './utils.ts';
+import { Label, fieldBorderStyles } from './Field.tsx';
 
 const defaultSymbols = {
   polygon: {
