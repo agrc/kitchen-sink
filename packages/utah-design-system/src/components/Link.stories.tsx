@@ -13,7 +13,11 @@ const meta: Meta<typeof Link> = {
 
 export default meta;
 
-export const Example = (args: any) => <Link {...args}>The missing link</Link>;
+export const Example = (args: any) => (
+  <p>
+    The <Link {...args}>missing</Link> link
+  </p>
+);
 
 Example.args = {
   href: 'https://www.imdb.com/title/tt6348138/',
@@ -21,7 +25,9 @@ Example.args = {
 };
 
 export const ExternalExample = (args: any) => (
-  <ExternalLink {...args}>The missing link</ExternalLink>
+  <p>
+    The <ExternalLink {...args}>missing</ExternalLink> link
+  </p>
 );
 
 ExternalExample.args = {
