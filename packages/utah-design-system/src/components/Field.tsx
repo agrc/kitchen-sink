@@ -93,7 +93,7 @@ export const Input = forwardRef(function Input(
       ref={ref}
       className={composeTailwindRenderProps(
         props.className,
-        'min-w-0 flex-1 bg-white px-2 py-1.5 text-sm text-zinc-800 shadow ring-1 ring-zinc-900/5 disabled:text-gray-200 dark:border-zinc-200/40 dark:bg-zinc-700/50 dark:bg-zinc-900 dark:text-zinc-200 dark:disabled:text-zinc-600',
+        'min-w-0 flex-1 bg-white px-2 py-1.5 text-sm text-zinc-800 shadow ring-1 ring-zinc-900/5 disabled:text-gray-200 dark:border-zinc-200/40 dark:bg-zinc-900 dark:text-zinc-200 dark:disabled:text-zinc-600',
       )}
     />
   );
