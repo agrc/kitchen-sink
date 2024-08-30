@@ -31,7 +31,11 @@
       "prettier-plugin-tailwindcss"
     ],
     "semi": true,
-    "singleQuote": true
+    "singleQuote": true,
+    "tailwindFunctions": [
+      "clsx",
+      "tv"
+    ]
   },
   "eslintConfig": {
     "env": {
