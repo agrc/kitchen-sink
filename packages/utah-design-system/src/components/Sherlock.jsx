@@ -45,7 +45,7 @@ const defaultSymbols = {
 
 const inputStyles = tv({
   extend: focusRing,
-  base: 'border border-transparent bg-white py-1.5 shadow ring-1 ring-zinc-900/5 rounded-md flex relative py-1.5 dark:bg-zinc-900',
+  base: 'relative flex rounded-md border border-transparent bg-white py-1.5 shadow ring-1 ring-zinc-900/5 dark:bg-zinc-900',
   variants: {
     isFocused: fieldBorderStyles.variants.isFocusWithin,
   },

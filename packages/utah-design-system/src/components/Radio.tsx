@@ -38,15 +38,15 @@ export function RadioGroup(props: RadioGroupProps) {
 
 const styles = tv({
   extend: focusRing,
-  base: 'size-5 rounded-full border-2 bg-white dark:bg-zinc-900 transition-all',
+  base: 'size-5 rounded-full border-2 bg-white transition-all dark:bg-zinc-900',
   variants: {
     isSelected: {
       false:
-        'border-[--color] [--color:theme(colors.secondary.800)] dark:[--color:theme(colors.secondary.400)] group-pressed:[--color:theme(colors.secondary.600)] dark:group-pressed:[--color:theme(colors.secondary.600)]',
+        'border-[--color] [--color:theme(colors.secondary.800)] group-pressed:[--color:theme(colors.secondary.600)] dark:[--color:theme(colors.secondary.400)] dark:group-pressed:[--color:theme(colors.secondary.600)]',
       true: 'border-[7px] border-[--color] [--color:theme(colors.secondary.800)] group-pressed:[--color:theme(colors.secondary.700)] dark:[--color:theme(colors.secondary.500)] dark:group-pressed:[--color:theme(colors.secondary.800)]',
     },
     isInvalid: {
-      true: 'border-red-700 dark:border-red-600 group-pressed:border-red-800 dark:group-pressed:border-red-700 forced-colors:!border-[Mark]',
+      true: 'border-red-700 group-pressed:border-red-800 dark:border-red-600 dark:group-pressed:border-red-700 forced-colors:!border-[Mark]',
     },
     isDisabled: {
       true: 'border-gray-200 dark:border-zinc-700 forced-colors:!border-[GrayText]',
