@@ -1,5 +1,8 @@
 import './tailwind.css';
 import { withThemeByClassName } from '@storybook/addon-themes';
+import { initialize, mswLoader } from 'msw-storybook-addon';
+
+initialize();
 
 export const preview = {
   decorators: [
@@ -11,6 +14,7 @@ export const preview = {
       defaultTheme: 'light',
     }),
   ],
+  loaders: [mswLoader],
   parameters: {
     controls: {
       matchers: {

@@ -16,7 +16,7 @@ const excludedProps = new Set([
 
 export default {
   stories: ['../packages/*/src/**/*.stories.{jsx,tsx}'],
-
+  staticDirs: ['../public'],
   addons: [
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-essentials'),
