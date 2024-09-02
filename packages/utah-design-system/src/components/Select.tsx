@@ -17,7 +17,7 @@ import { ReactNode } from 'react';
 
 const styles = tv({
   extend: focusRing,
-  base: 'relative flex w-full min-w-44 cursor-default items-center gap-4 rounded-md border border-transparent bg-white py-1.5 pl-3 pr-2 text-start text-zinc-800 shadow ring-1 ring-zinc-900/5 transition dark:border-zinc-200/40 dark:bg-zinc-900 dark:text-zinc-200',
+  base: 'relative flex w-full cursor-default items-center gap-4 rounded-md border border-transparent bg-white py-1.5 pl-3 pr-2 text-start text-zinc-800 shadow ring-1 ring-zinc-900/5 transition dark:border-zinc-200/40 dark:bg-zinc-900 dark:text-zinc-200',
   variants: {
     isDisabled: {
       false:
