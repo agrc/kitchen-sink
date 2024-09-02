@@ -295,6 +295,12 @@ const useGeocoding = (userProps = {}) => {
       if (!response.ok) {
         setFound(false);
 
+        if (response.status !== 404) {
+          setStatus('error');
+        } else {
+          setStatus('success');
+        }
+
         return props.events.error(await response.json());
       }
 
@@ -365,8 +371,6 @@ const useGeocoding = (userProps = {}) => {
       setStatus('success');
       return props.events.success(location);
     }
-
-    setStatus('success');
   }, [firstInput, secondInput, validate, props.events, get, extractResponse]);
 
   const handleKeyUp = useCallback(
