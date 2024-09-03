@@ -5,7 +5,7 @@ export * from './components/Drawer.tsx';
 export * from './components/Field.tsx';
 export * from './components/Footer.jsx';
 export * from './components/Form.jsx';
-export * from './components/Geocode.jsx';
+export * from './components/Geocode.tsx';
 export * from './components/Header.tsx';
 export * from './components/Link.tsx';
 export * from './components/Radio.tsx';

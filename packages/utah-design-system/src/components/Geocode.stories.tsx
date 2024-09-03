@@ -1,6 +1,6 @@
-import { Geocode } from './Geocode.jsx';
-import { fn, userEvent, within, expect } from '@storybook/test';
-import { http, HttpResponse, delay } from 'msw';
+import { Geocode } from './Geocode.js';
+import { fn, waitFor, userEvent, within, expect } from '@storybook/test';
+import { http, HttpResponse } from 'msw';
 
 export default {
   component: Geocode,
@@ -31,30 +31,15 @@ export default {
   },
 };
 
-export const ExampleAddress = {
-  render: (args) => {
-    console.log('args', args);
-    return <Geocode {...args} />;
-  },
+export const Default = {
+  args: {},
 };
 
-export const ExampleMilepost = {
-  render: (args) => <Geocode {...args} type="route-milepost" />,
+export const Milepost = {
+  args: { type: 'route-milepost' },
 };
 
-export const MilepostWithArguments = {
-  render: (args) => (
-    <Geocode
-      {...args}
-      milepost={{ side: 'decreasing' }}
-      wkid={26912}
-      format="geojson"
-      type="route-milepost"
-    />
-  ),
-};
-
-const geocode = async (canvas, step) => {
+const geocode = async (canvas: any, step: any) => {
   await step('Enter address', async () => {
     await userEvent.type(
       canvas.getByLabelText('Street address'),
@@ -98,13 +83,20 @@ export const SuccessfulRequest = {
       ],
     },
   },
-  play: async ({ canvasElement, step }) => {
+  play: async ({ canvasElement, step }: { canvasElement: any; step: any }) => {
     const canvas = within(canvasElement);
 
     await geocode(canvas, step);
 
-    // this is a half second longer than the spinner delay
-    await delay(1000);
+    const button = canvas.getByRole('button') as HTMLButtonElement;
+    await waitFor(
+      () => {
+        if (button.disabled) {
+          throw new Error('Button is still disabled');
+        }
+      },
+      { timeout: 5000 },
+    );
 
     await expect(canvas.getByText('Match found', {})).toBeInTheDocument();
   },
@@ -129,13 +121,20 @@ export const InvalidApiKey = {
       ],
     },
   },
-  play: async ({ canvasElement, step }) => {
+  play: async ({ canvasElement, step }: { canvasElement: any; step: any }) => {
     const canvas = within(canvasElement);
 
     await geocode(canvas, step);
 
-    // this is a half second longer than the spinner delay
-    await delay(1000);
+    const button = canvas.getByRole('button') as HTMLButtonElement;
+    await waitFor(
+      () => {
+        if (button.disabled) {
+          throw new Error('Button is still disabled');
+        }
+      },
+      { timeout: 5000 },
+    );
 
     await expect(canvas.getByText('Error', {})).toBeInTheDocument();
   },
@@ -160,13 +159,20 @@ export const NoMatchFound = {
       ],
     },
   },
-  play: async ({ canvasElement, step }) => {
+  play: async ({ canvasElement, step }: { canvasElement: any; step: any }) => {
     const canvas = within(canvasElement);
 
     await geocode(canvas, step);
 
-    // this is a half second longer than the spinner delay
-    await delay(1000);
+    const button = canvas.getByRole('button') as HTMLButtonElement;
+    await waitFor(
+      () => {
+        if (button.disabled) {
+          throw new Error('Button is still disabled');
+        }
+      },
+      { timeout: 5000 },
+    );
 
     await expect(canvas.getByText('No match', {})).toBeInTheDocument();
   },
