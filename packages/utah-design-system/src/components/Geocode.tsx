@@ -1,15 +1,70 @@
 import { useState, useCallback } from 'react';
-import PropTypes from 'prop-types';
 import { toQueryString } from '@ugrc/utilities';
 import { Button } from './Button';
 import { TextField } from './TextField';
 import { Spinner } from './Spinner';
-import { Group } from 'react-aria-components';
+import { Group, PressEvent } from 'react-aria-components';
 
 const ADDRESS_TYPE = 'single-address';
-const MILEPOST_TYPE = 'route-milepost';
 
-const defaultProps = {
+type GeocodeComponentType = 'single-address' | 'route-milepost';
+type GeocodeProps = {
+  apiKey: string;
+  type: GeocodeComponentType | undefined;
+  address:
+    | {
+        acceptScore: number;
+        suggest: number;
+        locators: 'all' | 'addressPoints' | 'roadCenterlines';
+        poBox: boolean;
+        scoreDifference: boolean;
+      }
+    | undefined;
+  milepost:
+    | {
+        side: 'increasing' | 'decreasing';
+        fullRoute: boolean;
+      }
+    | undefined;
+  wkid: number | undefined;
+  callback: string | undefined;
+  format: 'geojson' | 'esrijson' | undefined;
+  pointSymbol:
+    | {
+        style: 'diamond' | 'circle';
+        color: [number, number, number, number];
+      }
+    | undefined;
+  events:
+    | {
+        success: (result: any) => void;
+        error: (error: any) => void;
+      }
+    | undefined;
+};
+type Point = {
+  x: number;
+  y: number;
+};
+
+type Location = Point & {
+  type: 'point';
+  spatialReference: {
+    wkid: number;
+  };
+};
+type AddressResult = {
+  location: Location;
+  score: number;
+  locator: string;
+  source: string;
+  matchAddress: string;
+  matchRoute: string;
+  inputAddress: string;
+  standardizedAddress: string;
+  addressGrid: string;
+};
+const defaultProps: Omit<GeocodeProps, 'apiKey'> = {
   type: ADDRESS_TYPE,
   address: {
     acceptScore: 70,
@@ -23,8 +78,8 @@ const defaultProps = {
     fullRoute: false,
   },
   wkid: 3857,
-  callback: null,
-  format: null,
+  callback: undefined,
+  format: undefined,
   pointSymbol: {
     style: 'diamond',
     color: [255, 0, 0, 0.5],
@@ -35,15 +90,18 @@ const defaultProps = {
   },
 };
 
-const sanitize = (attributes = {}) => {
+const sanitize = (attributes: any = {}) => {
   const customProps = ['beforeClick', 'beforeKeyUp'];
 
   return Object.keys(attributes)
     .filter((key) => customProps.indexOf(key) === -1)
-    .reduce((res, key) => ((res[key] = attributes[key]), res), {});
+    .reduce(
+      (result: any, key: string) => ((result[key] = attributes[key]), result),
+      {},
+    );
 };
 
-const Geocode = (props) => {
+const Geocode = (props: GeocodeProps) => {
   const {
     getFirstFieldProps,
     getSecondFieldProps,
@@ -53,7 +111,7 @@ const Geocode = (props) => {
   } = useGeocoding(props);
 
   return (
-    <Group className="grid gap-4" name="Geocoding component">
+    <Group className="grid gap-4" aria-label="Geocoding component">
       <TextField {...getFirstFieldProps()} />
       <TextField {...getSecondFieldProps()} />
       <div>
@@ -122,25 +180,28 @@ const Geocode = (props) => {
   );
 };
 
-const useGeocoding = (userProps = {}) => {
+const useGeocoding = (userProps: GeocodeProps) => {
   const props = {
     ...defaultProps,
     ...userProps,
   };
 
-  const [firstInput, setFirstInput] = useState();
-  const [secondInput, setSecondInput] = useState();
-  const [firstIsValid, setFirstIsValid] = useState(true);
-  const [secondIsValid, setSecondIsValid] = useState(true);
+  const [firstInput, setFirstInput] = useState<string>('');
+  const [secondInput, setSecondInput] = useState<string>('');
+  const [firstIsValid, setFirstIsValid] = useState<boolean>(true);
+  const [secondIsValid, setSecondIsValid] = useState<boolean>(true);
   const [status, setStatus] = useState('idle');
-  const [found, setFound] = useState(undefined);
+  const [found, setFound] = useState<boolean | undefined>(undefined);
 
   let baseUrl = 'https://api.mapserv.utah.gov/api/v1/geocode';
   if (props.type !== ADDRESS_TYPE) {
     baseUrl += '/milepost';
   }
 
-  const getFirstFieldProps = (inputProps) => ({
+  const getFirstFieldProps = (inputProps?: {
+    beforeClick: Function;
+    beforeKeyUp: Function;
+  }) => ({
     label: props.type === ADDRESS_TYPE ? 'Street address' : 'Route',
     errorMessage:
       props.type === ADDRESS_TYPE
@@ -148,15 +209,16 @@ const useGeocoding = (userProps = {}) => {
         : 'A highway route number is required',
     isRequired: true,
     isInvalid: !firstIsValid,
-    onChange: (event) => {
+    onChange: (data: string) => {
+      console.log('onchange data', data);
       setStatus('idle');
-      setFirstInput(event);
+      setFirstInput(data);
     },
     name:
       props.type === ADDRESS_TYPE
         ? 'dartboard_street_input'
         : 'dartboard_milepost_input',
-    onKeyUp: (e) => {
+    onKeyUp: (e: KeyboardEvent) => {
       inputProps?.beforeKeyUp(e);
       handleKeyUp(e);
     },
@@ -164,7 +226,10 @@ const useGeocoding = (userProps = {}) => {
     ...sanitize(inputProps),
   });
 
-  const getSecondFieldProps = (inputProps) => ({
+  const getSecondFieldProps = (inputProps?: {
+    beforeClick: Function;
+    beforeKeyUp: Function;
+  }) => ({
     label: props.type === ADDRESS_TYPE ? 'City or Zip code' : 'Milepost',
     errorMessage:
       props.type === ADDRESS_TYPE
@@ -172,15 +237,15 @@ const useGeocoding = (userProps = {}) => {
         : 'A milepost number is required',
     isRequired: true,
     isInvalid: !secondIsValid,
-    onChange: (event) => {
+    onChange: (data: string) => {
       setStatus('idle');
-      setSecondInput(event);
+      setSecondInput(data);
     },
     name:
       props.type === ADDRESS_TYPE
         ? 'dartboard_zone_input'
         : 'dartboard_route_input',
-    onKeyUp: (e) => {
+    onKeyUp: (e: KeyboardEvent) => {
       inputProps?.beforeKeyUp(e);
       handleKeyUp(e);
     },
@@ -188,10 +253,13 @@ const useGeocoding = (userProps = {}) => {
     ...sanitize(inputProps),
   });
 
-  const getButtonProps = (buttonProps) => ({
-    onPress: (e) => {
+  const getButtonProps = (buttonProps?: {
+    beforeClick: Function;
+    beforeKeyUp: Function;
+  }) => ({
+    onPress: (e: PressEvent) => {
       buttonProps?.beforeClick(e);
-      find(e);
+      find();
     },
     type: 'button',
     variant: 'secondary',
@@ -200,8 +268,8 @@ const useGeocoding = (userProps = {}) => {
   });
 
   const validate = useCallback(() => {
-    const firstValidity = firstInput?.trim()?.length > 0;
-    const secondValidity = secondInput?.trim()?.length > 0;
+    const firstValidity = (firstInput?.trim() ?? '').length > 0;
+    const secondValidity = (secondInput?.trim() ?? '').length > 0;
 
     setFirstIsValid(firstValidity);
     setSecondIsValid(secondValidity);
@@ -214,7 +282,7 @@ const useGeocoding = (userProps = {}) => {
   }, [firstInput, secondInput]);
 
   const get = useCallback(
-    (options) => {
+    (options: { firstInput: string; secondInput: string }) => {
       const url = `${baseUrl}/${options.firstInput}/${options.secondInput}?`;
 
       let query = {
@@ -253,7 +321,7 @@ const useGeocoding = (userProps = {}) => {
   );
 
   const outputTransform = useCallback(
-    (result, point) => {
+    (result: AddressResult, point: Point) => {
       let attributes = {
         address: result.inputAddress,
         addressSystem: result.addressGrid,
@@ -263,13 +331,13 @@ const useGeocoding = (userProps = {}) => {
             : 'road centerline',
         score: result.score,
         matchAddress: result.matchAddress,
-      };
+      } as any;
       let popupTemplate = {
         title: 'dartboard geocoding match',
         content:
           'The input address <strong>{address}</strong> matched against <strong>{matchAddress}</strong> using {locator} data.<br><br>The confidence score is {score}.<br><br>This address belongs to the {addressSystem} address system.',
         overwriteActions: true,
-      };
+      } as any;
 
       if (props.type !== ADDRESS_TYPE) {
         attributes = {
@@ -291,7 +359,7 @@ const useGeocoding = (userProps = {}) => {
   );
 
   const extractResponse = useCallback(
-    async (response) => {
+    async (response: Response) => {
       if (!response.ok) {
         setFound(false);
 
@@ -301,7 +369,7 @@ const useGeocoding = (userProps = {}) => {
           setStatus('success');
         }
 
-        return props.events.error(await response.json());
+        return props.events?.error(await response.json());
       }
 
       let result = await response.json();
@@ -309,7 +377,7 @@ const useGeocoding = (userProps = {}) => {
       if (result.status !== 200) {
         setFound(false);
 
-        return props.events.error(response);
+        return props.events?.error(response);
       }
 
       setFound(true);
@@ -326,7 +394,7 @@ const useGeocoding = (userProps = {}) => {
         spatialReference: {
           wkid: props.wkid,
         },
-      };
+      } as Point;
 
       if (props.format?.toLowerCase() === 'esrijson') {
         point.x = result?.geometry?.x;
@@ -353,13 +421,13 @@ const useGeocoding = (userProps = {}) => {
         firstInput,
         secondInput,
       });
-    } catch (err) {
+    } catch (err: any) {
       setStatus('error');
       setFound(false);
 
-      return props.events.error(
+      return props.events?.error(
         response?.text() || {
-          message: err.message,
+          message: err?.message,
           status: 400,
         },
       );
@@ -369,12 +437,13 @@ const useGeocoding = (userProps = {}) => {
 
     if (location) {
       setStatus('success');
-      return props.events.success(location);
+
+      return props.events?.success(location);
     }
   }, [firstInput, secondInput, validate, props.events, get, extractResponse]);
 
   const handleKeyUp = useCallback(
-    (event) => {
+    (event: KeyboardEvent) => {
       if (event.key !== 'Enter') {
         return;
       }
