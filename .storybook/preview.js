@@ -2,7 +2,7 @@ import './tailwind.css';
 import { withThemeByClassName } from '@storybook/addon-themes';
 import { initialize, mswLoader } from 'msw-storybook-addon';
 
-initialize();
+initialize({ onUnhandledRequest: 'bypass' });
 
 export const preview = {
   decorators: [
