@@ -22,7 +22,7 @@ export const Avatar = ({
   anonymous: Boolean;
   user: User | undefined;
 }) => {
-  if ((user?.email.length ?? 0) < 2) {
+  if ((user?.email?.length ?? 0) < 2) {
     return null;
   }
 
