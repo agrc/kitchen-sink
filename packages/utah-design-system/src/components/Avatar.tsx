@@ -17,13 +17,12 @@ const GravatarIcon = () => (
 );
 
 export const Avatar = ({
-  anonymous = true,
   user = { email: '', displayName: '' } as User,
 }: {
   anonymous: Boolean;
   user: User | undefined;
 }) => {
-  if (anonymous || anonymous === undefined || anonymous === null) {
+  if ((user?.email.length ?? 0) < 2) {
     return null;
   }
 
