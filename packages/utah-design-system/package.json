@@ -65,7 +65,7 @@
   },
   "peerDependencies": {
     "@arcgis/core": "4.x",
-    "firebase": "10.x",
+    "firebase": ">=10.x",
     "prop-types": "^15.8.1",
     "react": ">=16.8",
     "react-dom": ">=16.8"

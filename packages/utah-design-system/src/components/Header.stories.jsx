@@ -1,15 +1,28 @@
 import { Header as Component } from './Header.tsx';
+import {
+  FirebaseAppProvider,
+  FirebaseAuthProvider,
+} from '../contexts/index.ts';
+import { OAuthProvider } from 'firebase/auth';
+import { UtahIdLogin } from './UtahIdLogin.tsx';
+import { firebaseConfig } from '../../firebase.ts';
+
+const provider = new OAuthProvider('oidc.utahid');
 
 export default {
   component: Component,
   decorators: [
     (Story) => (
-      <div className="h-dvh">
-        <Story />
-        <p className="h-full bg-zinc-100 p-6" id="main-content">
-          Main content
-        </p>
-      </div>
+      <FirebaseAppProvider config={firebaseConfig}>
+        <FirebaseAuthProvider provider={provider}>
+          <div className="h-dvh">
+            <Story />
+            <p className="h-full bg-zinc-100 p-6" id="main-content">
+              Main content
+            </p>
+          </div>
+        </FirebaseAuthProvider>
+      </FirebaseAppProvider>
     ),
   ],
 };
@@ -92,8 +105,11 @@ export const HasMenu = {
 
 export const HasAll = {
   render: (args) => (
-    <Component {...args} links={links}>
-      <Logo />
-    </Component>
+    <>
+      <Component {...args} links={links}>
+        <Logo />
+      </Component>
+      <UtahIdLogin />
+    </>
   ),
 };
