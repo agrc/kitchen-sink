@@ -1,5 +1,16 @@
+# NPM
 node_modules
+
+# Built packages
 dist
+
+# Secrets
 .env.development
-.DS_Store
 .env.local
+
+# MacOS
+.DS_Store
+
+# Firebase
+firebase-debug.log
+ui-debug.log

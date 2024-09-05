@@ -19,7 +19,10 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --quiet --fix",
     "npm-check": "npx npm-check-updates --color --interactive --format group,repo --workspaces --root",
-    "storybook": "storybook dev --port 6006",
+    "storybook": "run-p storybook:*",
+    "storybook:dev": "storybook dev --port 6006",
+    "storybook:firebase": "firebase emulators:start --import ./data/firebase --only auth",
+    "firebase:save-state": "firebase emulators:start --import ./data/firebase --export-on-exit --only auth",
     "test": "vitest"
   },
   "prettier": {
@@ -99,6 +102,7 @@
     "jsdom": "^24.1.1",
     "msw": "^2.4.1",
     "msw-storybook-addon": "^2.0.3",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.4.40",
     "prettier": "^3.3.3",
     "prettier-plugin-packagejson": "^2.5.1",
