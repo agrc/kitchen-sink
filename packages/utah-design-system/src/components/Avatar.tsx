@@ -1,11 +1,10 @@
 import { User } from 'firebase/auth';
 import md5 from 'md5';
-import { Button } from './Button';
 import { twJoin } from 'tailwind-merge';
 
 const size = 120;
 
-const gravatarIcon = (
+const GravatarIcon = () => (
   <svg
     className="absolute bottom-1 right-1 h-3 w-3 fill-current text-slate-800/20 dark:text-slate-100/20"
     xmlns="http://www.w3.org/2000/svg"
@@ -19,48 +18,24 @@ const gravatarIcon = (
 
 export const Avatar = ({
   anonymous = true,
-  user = { email: '', displayName: '' },
-  logout,
+  user = { email: '', displayName: '' } as User,
 }: {
   anonymous: Boolean;
-  user: User;
-  logout: () => Promise<void>;
+  user: User | undefined;
 }) => {
   if (anonymous || anonymous === undefined || anonymous === null) {
     return null;
   }
 
   return (
-    // <Popover
-    //   trigger={
     <div className="flex flex-col items-end gap-6">
       <span className="relative">
-        <span className="border-wavy-500 bg-wavy-500 mr-2 inline-block h-16 w-16 overflow-hidden rounded-full border-2 shadow-lg">
+        <span className="mr-2 inline-block h-16 w-16 overflow-hidden rounded-full border-2 border-primary-800 bg-primary-800">
           <Gravatar email={user.email} name={user.displayName} />
         </span>
-        {/* <Popover trigger={gravatarIcon} delayDuration={300}>
-              Update your profile image on{' '}
-              <a href="https://gravatar.com">Gravatar</a>.
-            </Popover> */}
+        <GravatarIcon />
       </span>
     </div>
-    //   }
-    // >
-    // <div className="grid grid-cols-1 divide-y whitespace-nowrap">
-    //   <a
-    //     href="https://id.utah.gov"
-    //     className="flex items-center justify-between p-1 text-sm text-slate-500 hover:text-slate-600 dark:text-slate-300"
-    //   >
-    //     UtahID Profile
-    //   </a>
-    //   <Button
-    //     className="flex items-center justify-between p-1 text-sm text-slate-500 hover:text-slate-600 dark:text-slate-300"
-    //     onPress={logout}
-    //   >
-    //     Sign out
-    //   </Button>
-    // </div>
-    // </Popover>
   );
 };
 
