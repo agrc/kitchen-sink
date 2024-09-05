@@ -14,6 +14,8 @@ import {
 import { useModalOverlay, useOverlayTrigger } from 'react-aria';
 import { KeyboardEvent, ReactNode, useRef } from 'react';
 import { OverlayTriggerState, useOverlayTriggerState } from 'react-stately';
+import { useFirebaseAuth } from '../contexts';
+import { Avatar } from './Avatar';
 
 const dismiss = (e: KeyboardEvent, action: Function): void => {
   if (e.key !== 'Escape') {
@@ -38,6 +40,7 @@ export const Header = ({
   children: ReactNode;
   links: HeaderLink[];
 }) => {
+  const { currentUser, logout } = useFirebaseAuth() || {};
   let state = useOverlayTriggerState(props);
   let { triggerProps, overlayProps } = useOverlayTrigger(
     { type: 'dialog' },
@@ -74,40 +77,49 @@ export const Header = ({
             {children}
           </div>
         </div>
-        {links && (
-          <MenuTrigger>
-            <div className="flex items-center justify-self-end lg:mr-10">
-              <Button
-                aria-label="secondary menu"
-                className="cursor-default rounded-md outline-none transition-shadow ease-in-out focus:ring-2 focus:ring-primary-900 focus:ring-offset-2 dark:ring-offset-transparent dark:focus:ring-secondary-600"
-              >
-                <Squares2X2Icon className="h-full w-8 text-primary-900 dark:text-zinc-300" />
-              </Button>
-              <Popover>
-                <Menu
-                  items={links}
-                  className="grid min-w-32 grid-cols-1 divide-y whitespace-nowrap rounded-md border border-transparent bg-white px-3 py-2 shadow outline-none ring-1 ring-zinc-900/5 transition-shadow ease-in-out focus:ring-2 focus:ring-primary-900 focus:ring-offset-2 dark:border-zinc-200/20 dark:bg-zinc-700 dark:ring-offset-transparent dark:focus:ring-secondary-600"
+        <div className="flex flex-1 items-center justify-end gap-6 lg:mr-10">
+          {links && (
+            <MenuTrigger>
+              <div className="flex items-center justify-self-end">
+                <Button
+                  aria-label="secondary menu"
+                  className="cursor-default rounded-md outline-none transition-shadow ease-in-out focus:ring-2 focus:ring-primary-900 focus:ring-offset-2 dark:ring-offset-transparent dark:focus:ring-secondary-600"
                 >
-                  {(link) => (
-                    <MenuItem
-                      className="px-3 outline-none ring-secondary-400 hover:bg-zinc-300/50 focus-visible:ring dark:text-white dark:ring-offset-zinc-950 dark:hover:bg-zinc-300/20"
-                      href={link.action.url}
-                    >
-                      <span className="flex items-center justify-between rounded-md p-1 text-sm text-zinc-500 hover:text-zinc-600 dark:text-zinc-300">
-                        {link.key}
-                        {link.action.url.toLowerCase().startsWith('https') ? (
-                          <>
-                            <ArrowTopRightOnSquareIcon className="ml-1 h-full w-4 text-zinc-500 dark:text-zinc-300" />
-                          </>
-                        ) : null}
-                      </span>
-                    </MenuItem>
-                  )}
-                </Menu>
-              </Popover>
-            </div>
-          </MenuTrigger>
-        )}
+                  <Squares2X2Icon className="h-full w-8 text-primary-900 dark:text-zinc-300" />
+                </Button>
+                <Popover>
+                  <Menu
+                    items={links}
+                    className="grid min-w-32 grid-cols-1 divide-y whitespace-nowrap rounded-md border border-transparent bg-white px-3 py-2 shadow outline-none ring-1 ring-zinc-900/5 transition-shadow ease-in-out focus:ring-2 focus:ring-primary-900 focus:ring-offset-2 dark:border-zinc-200/20 dark:bg-zinc-700 dark:ring-offset-transparent dark:focus:ring-secondary-600"
+                  >
+                    {(link) => (
+                      <MenuItem
+                        className="px-3 outline-none ring-secondary-400 hover:bg-zinc-300/50 focus-visible:ring dark:text-white dark:ring-offset-zinc-950 dark:hover:bg-zinc-300/20"
+                        href={link.action.url}
+                      >
+                        <span className="flex items-center justify-between rounded-md p-1 text-sm text-zinc-500 hover:text-zinc-600 dark:text-zinc-300">
+                          {link.key}
+                          {link.action.url.toLowerCase().startsWith('https') ? (
+                            <>
+                              <ArrowTopRightOnSquareIcon className="ml-1 h-full w-4 text-zinc-500 dark:text-zinc-300" />
+                            </>
+                          ) : null}
+                        </span>
+                      </MenuItem>
+                    )}
+                  </Menu>
+                </Popover>
+              </div>
+            </MenuTrigger>
+          )}
+          {currentUser && (
+            <Avatar
+              anonymous={!(currentUser ?? false)}
+              user={currentUser}
+              logout={logout}
+            />
+          )}
+        </div>
       </div>
       {state.isOpen && <Flyout {...props} {...overlayProps} state={state} />}
     </header>
