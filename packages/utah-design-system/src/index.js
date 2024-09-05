@@ -15,3 +15,4 @@ export * from './components/Spinner.jsx';
 export * from './components/TextField.tsx';
 export * from './components/UtahIdLogin.tsx';
 export * from './contexts/FirebaseAnalyticsProvider.tsx';
+export * from './contexts/FirebaseAppProvider.tsx';
