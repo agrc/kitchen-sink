@@ -1,16 +1,15 @@
-import { Auth, OAuthProvider, signInWithPopup } from 'firebase/auth';
-import { Button } from './Button';
+import { signInWithPopup } from 'firebase/auth';
 import { useCallback } from 'react';
+import { useFirebaseAuth } from '../contexts';
+import { Button } from './Button';
 
-export const UtahIdLogin = ({ auth }: { auth: Auth }) => {
+export const UtahIdLogin = () => {
+  const { auth, provider } = useFirebaseAuth() || {};
+
   const handlePress = useCallback(() => {
-    const provider = new OAuthProvider('oidc.utah-id');
-    provider.addScope('profile');
-    provider.addScope('email');
-
-    if (!auth) {
+    if (!auth || !provider) {
       console.warn(
-        'You must initialize Firebase Auth before using this component',
+        'You must initialize Firebase Auth with an identity provider before using this component',
       );
 
       return;
@@ -20,19 +19,13 @@ export const UtahIdLogin = ({ auth }: { auth: Auth }) => {
     signInWithPopup(auth, provider);
   }, [auth]);
 
-  if (!auth) {
-    console.warn('Firebase Auth is not initialized');
-  }
-
   return (
     <Button onPress={handlePress}>
-      <span className="sr-only">Log in with Utah id</span>
+      <span className="sr-only">Log in with Utahid</span>
       <svg
         className="h-auto w-20 fill-current"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
-        // width="638.43"
-        // height="197"
         viewBox="0 0 638.43 197"
       >
         <g>
