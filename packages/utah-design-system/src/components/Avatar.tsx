@@ -1,5 +1,5 @@
 import { User } from 'firebase/auth';
-import md5 from 'md5';
+import { Md5 } from 'ts-md5';
 import { twJoin } from 'tailwind-merge';
 
 const size = 120;
@@ -30,7 +30,7 @@ export const Avatar = ({
   return (
     <div className="flex flex-col items-end gap-6">
       <span className="relative">
-        <span className="mr-2 inline-block h-16 w-16 overflow-hidden rounded-full border-2 border-primary-800 bg-primary-800">
+        <span className="mr-2 inline-block size-14 overflow-hidden rounded-full border-2 border-primary-800 bg-primary-800">
           <Gravatar email={user.email} name={user.displayName} />
         </span>
         <GravatarIcon />
@@ -49,7 +49,7 @@ const Gravatar = ({
   email = email || '';
   name = name || 'Anonymous Coward';
 
-  const gravatar = `https://www.gravatar.com/avatar/${md5(
+  const gravatar = `https://www.gravatar.com/avatar/${Md5.hashAsciiStr(
     email.toLowerCase(),
   )}?size=${size}&default=blank`;
 
