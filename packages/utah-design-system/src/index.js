@@ -16,3 +16,4 @@ export * from './components/TextField.tsx';
 export * from './components/UtahIdLogin.tsx';
 export * from './contexts/FirebaseAnalyticsProvider.tsx';
 export * from './contexts/FirebaseAppProvider.tsx';
+export * from './contexts/FirebaseAuthProvider.tsx';
