@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.6.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.5.2...utah-design-system-v1.6.0) (2024-09-06)
+
+
+### Features
+
+* **avatar:** add avatar component ([2e1ef37](https://github.com/agrc/kitchen-sink/commit/2e1ef3798c98d3ed47e53937c5bb705280f6c122))
+* **firebase-analytics:** create provider for firebase analytics ([a72affa](https://github.com/agrc/kitchen-sink/commit/a72affad8c29340503187ccf15f3ce1b03f4d79f))
+* **firebase-app:** create provider for firebase apps ([21e691f](https://github.com/agrc/kitchen-sink/commit/21e691fd8a76ed3ff2cd7f0842e5aa7a8d33aa8f))
+* **firebase-auth:** create provider for firebase authentication ([8ba6dce](https://github.com/agrc/kitchen-sink/commit/8ba6dce4b22eb297168a5ae9676245043fb2f1cb))
+* **header:** add utahid avatar to header ([701bf42](https://github.com/agrc/kitchen-sink/commit/701bf4212272b11b81c76a435205819333a64c6d))
+* **select:** create select component ([51568e8](https://github.com/agrc/kitchen-sink/commit/51568e807031570f13e389b99aa0394a0492baa1))
+
+
+### Bug Fixes
+
+* **geocode:** correct states for invalid requests ([30c0918](https://github.com/agrc/kitchen-sink/commit/30c091821dcad58e36bd165e6f5029cf9549342b))
+
 ## [1.5.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.5.1...utah-design-system-v1.5.2) (2024-08-27)
 
 
