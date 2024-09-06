@@ -1,3 +1,4 @@
+export * from './components/Avatar.jsx';
 export * from './components/Banner.jsx';
 export * from './components/Button.tsx';
 export * from './components/Checkbox.tsx';
