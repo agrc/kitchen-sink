@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.6.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.6.0...utah-design-system-v1.6.1) (2024-09-06)
+
+
+### Bug Fixes
+
+* **design-system:** add missing export for Avatar component ([9ce0cff](https://github.com/agrc/kitchen-sink/commit/9ce0cff088de7786a009b47e8b5bd1d0bab5f67a))
+* **design-system:** fix file type ([1655aad](https://github.com/agrc/kitchen-sink/commit/1655aadd502686f41d5a8a542efb877b0d062888))
+
 ## [1.6.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.5.2...utah-design-system-v1.6.0) (2024-09-06)
 
 
