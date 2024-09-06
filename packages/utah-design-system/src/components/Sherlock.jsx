@@ -204,15 +204,112 @@ export const masqueradeProvider = (url, wkid) => {
   };
 };
 
+export const featureServiceProvider = (
+  url,
+  searchField,
+  contextField = null,
+) => {
+  let oidField;
+  const init = async (signal) => {
+    // get oid field name, and validate searchField and contextField
+    const serviceResponse = await fetch(`${url}?f=json`, { signal });
+    const serviceJson = await serviceResponse.json();
+
+    let searchFieldValidated = false;
+    let contextFieldValidated = false;
+    for (const field of serviceJson.fields) {
+      if (field.type === 'esriFieldTypeOID') {
+        oidField = field.name;
+      }
+
+      if (field.name === searchField) {
+        searchFieldValidated = true;
+      }
+
+      if (contextField && field.name === contextField) {
+        contextFieldValidated = true;
+      }
+    }
+
+    if (!oidField) {
+      throw new Error('OID field not found');
+    }
+
+    const fieldsList = serviceJson.fields.map((f) => f.name).join(', ');
+    if (!searchFieldValidated) {
+      throw new Error(
+        `Field: ${searchField} not found in service fields: ${fieldsList}`,
+      );
+    }
+
+    if (contextField && !contextFieldValidated) {
+      throw new Error(
+        `Field: ${contextField} not found in service fields: ${fieldsList}`,
+      );
+    }
+  };
+
+  return {
+    load: async ({ signal, filterText, maxResults = 10 }) => {
+      if (!oidField) {
+        await init(signal);
+      }
+
+      if ((filterText?.length ?? 0) < 3) {
+        return { items: [] };
+      }
+
+      const searchParams = new URLSearchParams({
+        f: 'json',
+        where: `UPPER(${searchField}) LIKE UPPER('%${filterText}%')`,
+        outFields: [oidField, searchField, contextField].join(','),
+        returnGeometry: false,
+        resultRecordCount: maxResults,
+      });
+
+      const response = await fetch(`${url}/query?${searchParams.toString()}`, {
+        signal,
+      });
+      const responseJson = await response.json();
+
+      const suggestions = responseJson.features.map((feature) => {
+        return {
+          name: feature.attributes[searchField],
+          context: contextField ? feature.attributes[contextField] : null,
+          key: feature.attributes[oidField],
+        };
+      });
+
+      return { items: suggestions };
+    },
+    getFeature: async (key) => {
+      const searchParams = new URLSearchParams({
+        f: 'json',
+        where: `${oidField}=${key}`,
+        outFields: '*',
+        returnGeometry: true,
+      });
+
+      const response = await fetch(`${url}/query?${searchParams.toString()}`);
+      const responseJson = await response.json();
+      const feature = responseJson.features[0];
+      feature.geometry.type = {
+        esriGeometryPolyline: 'polyline',
+        esriGeometryPoint: 'point',
+        esriGeometryPolygon: 'polygon',
+      }[responseJson.geometryType];
+
+      return { items: [feature] };
+    },
+  };
+};
+
 export const Sherlock = (props) => {
   let list = useAsyncList({ ...props.provider });
   const selectionChanged = async (key) => {
     if (typeof props?.onSherlockMatch !== 'function') {
       return;
     }
-
-    // at one point this was the index of the feature in the list
-    // let magicKey = list.items[key].key;
 
     const response = await props.provider.getFeature(key);
 
