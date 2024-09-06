@@ -1,5 +1,6 @@
 import {
   Sherlock as Component,
+  featureServiceProvider,
   masqueradeProvider,
   ugrcApiProvider,
 } from './Sherlock.jsx';
@@ -45,6 +46,22 @@ export const HasAPIProvider = {
         'location.gnis_place_names',
         'name',
         'county',
+      )}
+      onSherlockMatch={console.log}
+    />
+  ),
+};
+
+export const HasFeatureServiceProvider = {
+  render: (args) => (
+    <Component
+      {...args}
+      label="Select a road"
+      placeholder="Search the roads map service"
+      provider={featureServiceProvider(
+        'https://services1.arcgis.com/99lidPhWCzftIe9K/arcgis/rest/services/UtahRoads/FeatureServer/0',
+        'FULLNAME',
+        'COUNTY_L',
       )}
       onSherlockMatch={console.log}
     />
