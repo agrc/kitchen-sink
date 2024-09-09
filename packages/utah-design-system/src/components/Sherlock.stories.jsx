@@ -2,6 +2,7 @@ import {
   Sherlock as Component,
   featureServiceProvider,
   masqueradeProvider,
+  multiProvider,
   ugrcApiProvider,
 } from './Sherlock.jsx';
 
@@ -63,6 +64,25 @@ export const HasFeatureServiceProvider = {
         'FULLNAME',
         'COUNTY_L',
       )}
+      onSherlockMatch={console.log}
+    />
+  ),
+};
+
+export const HasMultiProvider = {
+  render: (args) => (
+    <Component
+      {...args}
+      label="Select a location"
+      placeholder="Search roads and masquerade"
+      provider={multiProvider([
+        featureServiceProvider(
+          'https://services1.arcgis.com/99lidPhWCzftIe9K/arcgis/rest/services/UtahRoads/FeatureServer/0',
+          'FULLNAME',
+          'COUNTY_L',
+        ),
+        masqueradeProvider(url, srid),
+      ])}
       onSherlockMatch={console.log}
     />
   ),
