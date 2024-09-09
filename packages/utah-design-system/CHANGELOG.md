@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.6.1...utah-design-system-v1.6.2) (2024-09-09)
+
+
+### Bug Fixes
+
+* **design:** correct type location ([9cd3fea](https://github.com/agrc/kitchen-sink/commit/9cd3fea37dc020c7bcc68a5b269f2fc7bde93413)), closes [#294](https://github.com/agrc/kitchen-sink/issues/294)
+
 ## [1.6.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.6.0...utah-design-system-v1.6.1) (2024-09-06)
 
 
