@@ -14,6 +14,8 @@ const rollupOptions = {
     ...Object.keys(packageJson?.peerDependencies ?? {}),
     /@arcgis\/core\/.*/,
     'react/jsx-runtime',
+    /@firebase\/.*/,
+    /firebase\/.*/,
   ],
   output: {
     globals: {
