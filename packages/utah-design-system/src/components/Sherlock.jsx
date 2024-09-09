@@ -304,6 +304,40 @@ export const featureServiceProvider = (
   };
 };
 
+export const multiProvider = (providers) => {
+  const separator = '||';
+  return {
+    load: async ({ signal, filterText, maxResults = 10 }) => {
+      const promises = providers.map((provider) =>
+        provider.load({ signal, filterText, maxResults }),
+      );
+      const results = await Promise.all(promises);
+
+      const items = results.flatMap((result, index) =>
+        result.items.map(
+          // prepend index to key so that we can look up the provider in getFeature
+          (item) => {
+            item.key = `${index}${separator}${item.key}`;
+
+            return item;
+          },
+        ),
+      );
+
+      return { items: items.slice(0, maxResults) };
+    },
+    getFeature: async (keyValue) => {
+      const [providerIndex, key] = keyValue.split(separator);
+
+      const provider = providers[providerIndex];
+
+      const response = await provider.getFeature(key);
+
+      return response;
+    },
+  };
+};
+
 export const Sherlock = (props) => {
   let list = useAsyncList({ ...props.provider });
   const selectionChanged = async (key) => {
