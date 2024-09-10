@@ -87,3 +87,19 @@ export const HasMultiProvider = {
     />
   ),
 };
+
+export const HasError = {
+  render: (args) => (
+    <Component
+      {...args}
+      label="Select a road"
+      placeholder="Search the roads map service"
+      provider={featureServiceProvider(
+        'https://services1.arcgis.com/99lidPhWCzftIe9K/arcgis/rest/services/UtahRoads/FeatureServer/0',
+        'asdf', // bad field name
+        'COUNTY_L',
+      )}
+      onSherlockMatch={console.log}
+    />
+  ),
+};
