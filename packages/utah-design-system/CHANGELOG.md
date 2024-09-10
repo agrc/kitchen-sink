@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.7.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.6.2...utah-design-system-v1.7.0) (2024-09-10)
+
+
+### Features
+
+* **design-system:** add multi-provider to sherlock ([172a6b3](https://github.com/agrc/kitchen-sink/commit/172a6b3521816e22f601d035fa8bbe0716ed868c))
+* **design-system:** implement feature service provider for Sherlock ([39a87d0](https://github.com/agrc/kitchen-sink/commit/39a87d0c6e650446bc89c259365e04d5dc5166f9))
+
 ## [1.6.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.6.1...utah-design-system-v1.6.2) (2024-09-09)
 
 
