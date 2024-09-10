@@ -8,15 +8,15 @@ import {
   ListBoxItem,
   Popover,
   ComboBox,
-  FieldError,
   Button,
   Group,
+  Form,
 } from 'react-aria-components';
 import { useAsyncList } from 'react-stately';
 import { search } from '@ugrc/utilities';
 import { tv } from 'tailwind-variants';
 import { focusRing } from './utils.ts';
-import { Label, fieldBorderStyles } from './Field.tsx';
+import { FieldError, Label, fieldBorderStyles } from './Field.tsx';
 
 const defaultSymbols = {
   polygon: {
@@ -58,6 +58,30 @@ let defaultItems = [
   { id: 4, name: 'Bald Eagle Spring' },
   { id: 5, name: '84111' },
 ];
+
+async function safeFetch(url, options) {
+  let responseJson;
+  try {
+    const response = await fetch(url, options);
+
+    if (!response.ok) {
+      throw new Error(
+        `non-200 status code returned from ${url}: ${response.status} - ${response.statusText}`,
+      );
+    }
+
+    responseJson = await response.json();
+  } catch (error) {
+    throw new Error(`error thrown during fetch to ${url}: ${error.message}`);
+  }
+
+  // handle esri response errors which return a 200 status code
+  if (responseJson.error) {
+    throw new Error(`${url} returned an error: ${responseJson.error.message}`);
+  }
+
+  return responseJson;
+}
 
 export const ugrcApiProvider = (
   apiKey,
@@ -169,8 +193,7 @@ export const masqueradeProvider = (url, wkid) => {
       }
 
       const suggestUrl = `${url}/suggest?text=${filterText}&maxSuggestions=${maxResults}`;
-      let response = await fetch(suggestUrl, { signal });
-      const responseJson = await response.json();
+      const responseJson = await safeFetch(suggestUrl, { signal });
 
       const features = responseJson.suggestions.map((suggestion) => {
         return { name: suggestion.text, key: suggestion.magicKey };
@@ -181,8 +204,8 @@ export const masqueradeProvider = (url, wkid) => {
     getFeature: async (magicKey) => {
       const getFeatureUrl = `${url}/findAddressCandidates?magicKey=${magicKey}&outSR={"wkid":${wkid}}`;
 
-      const response = await fetch(getFeatureUrl);
-      const responseJson = await response.json();
+      const responseJson = await safeFetch(getFeatureUrl);
+
       const candidate = responseJson.candidates[0];
       candidate.geometry = {
         ...candidate.location,
@@ -212,8 +235,7 @@ export const featureServiceProvider = (
   let oidField;
   const init = async (signal) => {
     // get oid field name, and validate searchField and contextField
-    const serviceResponse = await fetch(`${url}?f=json`, { signal });
-    const serviceJson = await serviceResponse.json();
+    const serviceJson = await safeFetch(`${url}?f=json`, { signal });
 
     let searchFieldValidated = false;
     let contextFieldValidated = false;
@@ -267,10 +289,12 @@ export const featureServiceProvider = (
         resultRecordCount: maxResults,
       });
 
-      const response = await fetch(`${url}/query?${searchParams.toString()}`, {
-        signal,
-      });
-      const responseJson = await response.json();
+      const responseJson = await safeFetch(
+        `${url}/query?${searchParams.toString()}`,
+        {
+          signal,
+        },
+      );
 
       const suggestions = responseJson.features.map((feature) => {
         return {
@@ -290,8 +314,10 @@ export const featureServiceProvider = (
         returnGeometry: true,
       });
 
-      const response = await fetch(`${url}/query?${searchParams.toString()}`);
-      const responseJson = await response.json();
+      const responseJson = await safeFetch(
+        `${url}/query?${searchParams.toString()}`,
+      );
+
       const feature = responseJson.features[0];
       feature.geometry.type = {
         esriGeometryPolyline: 'polyline',
@@ -361,91 +387,102 @@ export const Sherlock = (props) => {
     props.onSherlockMatch(graphics);
   };
 
+  if (list.error) {
+    // send this to the console since we are displaying a generic error message in the UI
+    console.error(list.error);
+  }
+
   return (
-    <ComboBox
-      items={list.items}
-      inputValue={list.inputValue}
-      isLoading={list.isLoading}
-      shouldFocusWrap={true}
-      allowsEmptyCollection={true}
-      onSelectionChange={selectionChanged}
-    >
-      {props.label && <Label>{props.label}</Label>}
-      <div className="group mt-1 grow-[9999] basis-64 rounded-md transition-shadow ease-in-out">
-        <Group aria-hidden className={inputStyles}>
-          <SearchIcon
-            aria-hidden
-            className="pointer-events-none absolute inset-y-0 left-2 h-full w-5 text-zinc-400 group-focus-within:text-primary-900 dark:group-focus-within:text-zinc-300"
-          />
-          <Input
-            placeholder={props.placeholder}
-            onChange={(event) => list.setFilterText(event.target.value)}
-            className="block w-full appearance-none bg-transparent pl-9 pr-3 leading-5 text-zinc-900 caret-primary-800 placeholder:text-zinc-400 focus:outline-none dark:text-white dark:caret-accent-500 dark:ring-zinc-200/20 dark:placeholder:text-zinc-300 dark:focus:ring-accent-700 sm:text-sm"
-          />
-          {(list.loadingState === 'loading' ||
-            list.loadingState === 'filtering') && (
-            <span
+    <Form>
+      <ComboBox
+        items={list.items}
+        inputValue={list.inputValue}
+        isLoading={list.isLoading}
+        shouldFocusWrap={true}
+        allowsEmptyCollection={true}
+        onSelectionChange={selectionChanged}
+        isInvalid={!!list.error}
+      >
+        {props.label && <Label>{props.label}</Label>}
+        <div className="group mt-1 grow-[9999] basis-64 rounded-md transition-shadow ease-in-out">
+          <Group aria-hidden className={inputStyles}>
+            <SearchIcon
               aria-hidden
-              className="pointer-events-none text-zinc-400 group-focus-within:text-primary-900 dark:group-focus-within:text-zinc-300"
-            >
-              <Spinner ariaLabel="searching" />
-            </span>
-          )}
-          <Button className="pr-2">
-            <ChevronsUpDownIcon
-              aria-hidden
-              className="h-full w-5 shrink-0 text-zinc-500 dark:text-zinc-400"
+              className="pointer-events-none absolute inset-y-0 left-2 h-full w-5 text-zinc-400 group-focus-within:text-primary-900 dark:group-focus-within:text-zinc-300"
             />
-          </Button>
-        </Group>
-      </div>
-      <FieldError>{list.error}</FieldError>
-      <Popover className="w-[--trigger-width] py-1">
-        <ListBox
-          className="group mt-1 grow-[9999] basis-64 overflow-hidden rounded-md border border-transparent bg-white shadow ring-1 ring-zinc-900/5 dark:border-zinc-200/20 dark:bg-zinc-700"
-          renderEmptyState={(event) => {
-            if (
-              event.state.inputValue.length >= 3 &&
-              list.loadingState === 'idle'
-            ) {
-              return (
-                <div className="bg-rose-100 py-2 text-center dark:bg-rose-700">
-                  No items found matching your search
-                </div>
-              );
-            }
-            return (
-              <div className="bg-sky-100 py-2 text-center dark:bg-sky-700">
-                Type 2 or more characters to begin searching
-              </div>
-            );
-          }}
-        >
-          {(item) => (
-            <ListBoxItem
-              textValue={item.name}
-              className="relative flex cursor-default select-none items-center justify-between gap-2 rounded px-2 py-1 text-sm outline-none ring-secondary-400 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:bg-zinc-300/50 focus-visible:ring selected:bg-secondary-600 selected:text-white selected:ring-offset-2 dark:text-white dark:ring-offset-zinc-950 dark:hover:bg-zinc-300/20"
+            <Input
+              placeholder={props.placeholder}
+              onChange={(event) => list.setFilterText(event.target.value)}
+              className="block w-full appearance-none bg-transparent pl-9 pr-3 leading-5 text-zinc-900 caret-primary-800 placeholder:text-zinc-400 focus:outline-none dark:text-white dark:caret-accent-500 dark:ring-zinc-200/20 dark:placeholder:text-zinc-300 dark:focus:ring-accent-700 sm:text-sm"
+            />
+            {(list.loadingState === 'loading' ||
+              list.loadingState === 'filtering') && (
+              <span
+                aria-hidden
+                className="pointer-events-none text-zinc-400 group-focus-within:text-primary-900 dark:group-focus-within:text-zinc-300"
+              >
+                <Spinner ariaLabel="searching" />
+              </span>
+            )}
+            <Button className="pr-2">
+              <ChevronsUpDownIcon
+                aria-hidden
+                className="h-full w-5 shrink-0 text-zinc-500 dark:text-zinc-400"
+              />
+            </Button>
+          </Group>
+        </div>
+        {list.error ? (
+          <FieldError>There was an error with the search process</FieldError>
+        ) : (
+          <Popover className="w-[--trigger-width] py-1">
+            <ListBox
+              className="group mt-1 grow-[9999] basis-64 overflow-hidden rounded-md border border-transparent bg-white shadow ring-1 ring-zinc-900/5 dark:border-zinc-200/20 dark:bg-zinc-700"
+              renderEmptyState={(event) => {
+                if (
+                  event.state.inputValue.length >= 3 &&
+                  list.loadingState === 'idle'
+                ) {
+                  return (
+                    <div className="bg-rose-100 py-2 text-center dark:bg-rose-700">
+                      No items found matching your search
+                    </div>
+                  );
+                }
+                return (
+                  <div className="bg-sky-100 py-2 text-center dark:bg-sky-700">
+                    Type 2 or more characters to begin searching
+                  </div>
+                );
+              }}
             >
-              {({ isSelected }) => (
-                <>
-                  <span slot="label" className="flex items-center gap-2">
-                    {isSelected && <CheckIcon className="h-full w-4" />}
-                    <Highlighted
-                      className={isSelected ? undefined : 'ml-6'}
-                      text={item.name}
-                      highlight={list.filterText}
-                    />
-                  </span>
-                  {item.context && (
-                    <span slot="description">{item.context}</span>
+              {(item) => (
+                <ListBoxItem
+                  textValue={item.name}
+                  className="relative flex cursor-default select-none items-center justify-between gap-2 rounded px-2 py-1 text-sm outline-none ring-secondary-400 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:bg-zinc-300/50 focus-visible:ring selected:bg-secondary-600 selected:text-white selected:ring-offset-2 dark:text-white dark:ring-offset-zinc-950 dark:hover:bg-zinc-300/20"
+                >
+                  {({ isSelected }) => (
+                    <>
+                      <span slot="label" className="flex items-center gap-2">
+                        {isSelected && <CheckIcon className="h-full w-4" />}
+                        <Highlighted
+                          className={isSelected ? undefined : 'ml-6'}
+                          text={item.name}
+                          highlight={list.filterText}
+                        />
+                      </span>
+                      {item.context && (
+                        <span slot="description">{item.context}</span>
+                      )}
+                    </>
                   )}
-                </>
+                </ListBoxItem>
               )}
-            </ListBoxItem>
-          )}
-        </ListBox>
-      </Popover>
-    </ComboBox>
+            </ListBox>
+          </Popover>
+        )}
+      </ComboBox>
+    </Form>
   );
 };
 
