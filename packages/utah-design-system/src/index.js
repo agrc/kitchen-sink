@@ -10,6 +10,7 @@ export * from './components/Geocode.tsx';
 export * from './components/Header.tsx';
 export * from './components/Link.tsx';
 export * from './components/ListBox.tsx';
+export * from './components/Menu.tsx';
 export * from './components/Popover.tsx';
 export * from './components/Radio.tsx';
 export * from './components/Select.tsx';
