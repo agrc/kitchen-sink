@@ -5,13 +5,13 @@ import {
   XIcon,
   GripIcon,
 } from 'lucide-react';
-import { Button, Menu, MenuItem, MenuTrigger } from 'react-aria-components';
+import { Button, MenuTrigger } from 'react-aria-components';
 import { useModalOverlay, useOverlayTrigger } from 'react-aria';
 import { KeyboardEvent, ReactNode, useRef } from 'react';
 import { OverlayTriggerState, useOverlayTriggerState } from 'react-stately';
 import { useFirebaseAuth } from '../contexts';
 import { Avatar } from './Avatar';
-import { Popover } from './Popover';
+import { Menu, MenuItem, MenuSeparator } from './Menu';
 
 const dismiss = (e: KeyboardEvent, action: Function): void => {
   if (e.key !== 'Escape') {
@@ -83,28 +83,20 @@ export const Header = ({
                 >
                   <GripIcon className="h-full w-8 text-primary-900 dark:text-zinc-300" />
                 </Button>
-                <Popover>
-                  <Menu
-                    items={links}
-                    className="grid min-w-32 grid-cols-1 divide-y whitespace-nowrap rounded-md border border-transparent bg-white px-3 py-2 shadow outline-none ring-1 ring-zinc-900/5 transition-shadow ease-in-out focus:ring-2 focus:ring-primary-900 focus:ring-offset-2 dark:border-zinc-200/20 dark:bg-zinc-700 dark:ring-offset-transparent dark:focus:ring-secondary-600"
-                  >
-                    {(link) => (
-                      <MenuItem
-                        className="px-3 outline-none ring-secondary-400 hover:bg-zinc-300/50 focus-visible:ring dark:text-white dark:ring-offset-zinc-950 dark:hover:bg-zinc-300/20"
-                        href={link.action.url}
-                      >
-                        <span className="flex items-center justify-between rounded-md p-1 text-sm text-zinc-500 hover:text-zinc-600 dark:text-zinc-300">
-                          {link.key}
-                          {link.action.url.toLowerCase().startsWith('https') ? (
-                            <>
-                              <SquareArrowOutUpRightIcon className="ml-1 h-full w-4 text-zinc-500 dark:text-zinc-300" />
-                            </>
-                          ) : null}
-                        </span>
-                      </MenuItem>
-                    )}
-                  </Menu>
-                </Popover>
+                <Menu items={links}>
+                  {(link) => (
+                    <MenuItem href={link.action.url}>
+                      <span className="flex items-center justify-between rounded-md p-1 text-sm">
+                        {link.key}
+                        {link.action.url.toLowerCase().startsWith('https') ? (
+                          <>
+                            <SquareArrowOutUpRightIcon className="ml-1 h-full w-4" />
+                          </>
+                        ) : null}
+                      </span>
+                    </MenuItem>
+                  )}
+                </Menu>
               </div>
             </MenuTrigger>
           )}
@@ -119,45 +111,22 @@ export const Header = ({
                   user={currentUser}
                 />
               </Button>
-              <Popover>
-                <Menu
-                  items={[
-                    {
-                      key: 'Utahid profile',
-                      action: { url: 'https://id.utah.gov' },
-                    },
-                    {
-                      key: 'Gravatar profile',
-                      action: { url: 'https://gravatar.com' },
-                    },
-                    {
-                      key: 'Sign out',
-                      action: {
-                        function: logout,
-                      },
-                    },
-                  ]}
-                  className="grid min-w-32 grid-cols-1 divide-y whitespace-nowrap rounded-md border border-transparent bg-white px-3 py-2 shadow outline-none ring-1 ring-zinc-900/5 transition-shadow ease-in-out focus:ring-2 focus:ring-primary-900 focus:ring-offset-2 dark:border-zinc-200/20 dark:bg-zinc-700 dark:ring-offset-transparent dark:focus:ring-secondary-600"
-                >
-                  {(link) => (
-                    <MenuItem
-                      className="px-3 outline-none ring-secondary-400 hover:bg-zinc-300/50 focus-visible:ring dark:text-white dark:ring-offset-zinc-950 dark:hover:bg-zinc-300/20"
-                      href={link.action?.url}
-                      onAction={link.action?.function}
-                    >
-                      <span className="flex items-center justify-between rounded-md p-1 text-sm text-zinc-500 hover:text-zinc-600 dark:text-zinc-300">
-                        {link.key}
-                        {link.action.url &&
-                        link.action.url.toLowerCase().startsWith('https') ? (
-                          <>
-                            <SquareArrowOutUpRightIcon className="ml-1 h-full w-4 text-zinc-500 dark:text-zinc-300" />
-                          </>
-                        ) : null}
-                      </span>
-                    </MenuItem>
-                  )}
-                </Menu>
-              </Popover>
+              <Menu>
+                <MenuItem href="https://id.utah.gov">
+                  <span className="flex items-center justify-between">
+                    Utahid account
+                    <SquareArrowOutUpRightIcon className="ml-1 h-full w-4" />
+                  </span>
+                </MenuItem>
+                <MenuItem href="https://gravatar.com">
+                  <span className="flex items-center justify-between">
+                    Gravatar account
+                    <SquareArrowOutUpRightIcon className="ml-1 h-full w-4" />
+                  </span>
+                </MenuItem>
+                <MenuSeparator />
+                <MenuItem onAction={logout}>Sign out</MenuItem>
+              </Menu>
             </MenuTrigger>
           )}
         </div>
