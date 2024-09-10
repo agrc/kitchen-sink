@@ -16,7 +16,7 @@ for i in packages/*; do
   # here.  So we use pushd/popd instead.
   set -e
   pushd "$i"
-  npm publish --access public
+  npm publish --access public --provenance
   popd
   set +e
 done
