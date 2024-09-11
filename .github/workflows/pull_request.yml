@@ -68,6 +68,8 @@ jobs:
     name: 📚 Deploy documentation
     runs-on: ubuntu-latest
     needs: [lint, test-unit]
+    permissions:
+      id-token: write
     environment:
       name: dev
 

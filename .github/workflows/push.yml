@@ -55,6 +55,8 @@ jobs:
   deploy-storybook:
     name: 📚 Deploy documentation
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     environment:
       name: prod
 
