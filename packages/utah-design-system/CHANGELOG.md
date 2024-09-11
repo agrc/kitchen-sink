@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.8.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.7.0...utah-design-system-v1.8.0) (2024-09-11)
+
+
+### Features
+
+* **menu:** introduce a menu component ([531e18f](https://github.com/agrc/kitchen-sink/commit/531e18f2def8593917b9cc55903d7c4a6251e120))
+* **tags:** introduce a tag group component ([2da8446](https://github.com/agrc/kitchen-sink/commit/2da8446225892ec1ee7e2f0bc06e21592cb38ecd)), closes [#287](https://github.com/agrc/kitchen-sink/issues/287)
+
 ## [1.7.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.6.2...utah-design-system-v1.7.0) (2024-09-10)
 
 
