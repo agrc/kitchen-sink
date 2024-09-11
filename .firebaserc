@@ -1,5 +1,5 @@
 {
   "projects": {
-    "default": "ut-dts-agrc-kitchen-sink-prod"
+    "default": "ut-dts-agrc-kitchen-sink-dev"
   }
 }
