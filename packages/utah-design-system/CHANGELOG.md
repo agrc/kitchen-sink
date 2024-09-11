@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.8.0...utah-design-system-v1.8.1) (2024-09-11)
+
+
+### Bug Fixes
+
+* **sherlock:** make error message visible and guard against fetch errors ([8b40960](https://github.com/agrc/kitchen-sink/commit/8b40960fec09e21db732ec9ea01f3cc431b4bcc5))
+
 ## [1.8.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.7.0...utah-design-system-v1.8.0) (2024-09-11)
 
 
