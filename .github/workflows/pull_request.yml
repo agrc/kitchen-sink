@@ -85,6 +85,9 @@ jobs:
           node-version: lts/*
           cache: npm
 
+      - name: 📥 Download dependencies
+        run: npm ci
+
       - name: 🏗️ Build
         run: npm run build --workspace @ugrc/utilities
 
