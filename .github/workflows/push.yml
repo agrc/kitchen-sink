@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: 🛠️ Create releases
         id: release
-        uses: google-github-actions/release-please-action@v4
+        uses: googleapis/release-please-action@v4
 
   deploy:
     name: Create and publish packages
