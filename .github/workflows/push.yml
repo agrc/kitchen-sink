@@ -73,9 +73,6 @@ jobs:
       - name: 📥 Download dependencies
         run: npm ci
 
-      - name: 🏗️ Build
-        run: npm run build-storybook
-
       - name: 🚀 Deploy
         uses: agrc/firebase-website-deploy-composite-action@v1
         with:
