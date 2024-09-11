@@ -21,7 +21,6 @@ export const Example = (args: any) => (
 
 Example.args = {
   href: 'https://www.imdb.com/title/tt6348138/',
-  quiet: true,
 };
 
 export const ExternalExample = (args: any) => (
