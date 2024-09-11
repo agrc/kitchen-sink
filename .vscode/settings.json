@@ -24,6 +24,7 @@
     "maxresults",
     "oidc",
     "packagejson",
+    "prebuild",
     "SGID",
     "SRID",
     "storyshots",
@@ -33,6 +34,7 @@
     "TSQL",
     "ugrc",
     "uniqwith",
+    "VITE",
     "webm",
     "webp",
     "wkid"
