@@ -13,7 +13,7 @@ jobs:
     name: Create releases
     runs-on: ubuntu-latest
     outputs:
-      releases_created: ${{ steps.release.outputs.releases_created }}
+      releases_created: ${{ steps.release.outputs.release_created }}
     steps:
       - name: 🛠️ Create releases
         id: release
