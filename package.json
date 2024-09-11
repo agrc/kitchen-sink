@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "build": "npm run build --workspaces",
-    "build:storybook": "storybook build --docs --output-dir ./dist",
+    "build:storybook": "storybook build --docs --output-dir ./dist --disable-telemetry",
     "format": "prettier . --write",
     "lint": "eslint .",
     "lint:fix": "eslint . --quiet --fix",
