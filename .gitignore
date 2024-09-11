@@ -14,3 +14,4 @@ dist
 # Firebase
 firebase-debug.log
 ui-debug.log
+.firebase/
