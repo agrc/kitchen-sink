@@ -13,7 +13,7 @@ jobs:
     name: Create releases
     runs-on: ubuntu-latest
     outputs:
-      releases_created: ${{ steps.release.outputs.release_created }}
+      releases_created: ${{ steps.release.outputs.releases_created }}
     steps:
       - name: 🛠️ Create releases
         id: release
@@ -26,7 +26,7 @@ jobs:
       contents: read
       id-token: write
     needs: release
-    if: needs.release.outputs.releases_created
+    if: needs.release.outputs.releases_created == 'true'
     steps:
       - name: ⬇️ Set up code
         uses: actions/checkout@v4
