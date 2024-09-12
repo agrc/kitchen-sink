@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.9.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.8.1...utah-design-system-v1.9.0) (2024-09-12)
+
+
+### Features
+
+* **sherlock:** make sure that fields are of type string for feature service provider ([72d1940](https://github.com/agrc/kitchen-sink/commit/72d19407ed08f83560a5e50dd0947d74305d09f2))
+
+
+### Bug Fixes
+
+* **design-system:** add missing exports ([e178534](https://github.com/agrc/kitchen-sink/commit/e178534fc4db95cb72449d789d3d93f73f144238))
+* **sherlock:** eliminate duplicate results for feature service provider ([4860e0a](https://github.com/agrc/kitchen-sink/commit/4860e0a1b161f8b997e9f6ff22a240e570aefcf7))
+
 ## [1.8.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.8.0...utah-design-system-v1.8.1) (2024-09-11)
 
 
