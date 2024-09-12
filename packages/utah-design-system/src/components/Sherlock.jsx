@@ -50,15 +50,6 @@ const inputStyles = tv({
   },
 });
 
-// todo: use or lose these
-let defaultItems = [
-  { id: 1, name: '326 East South Temple Street, Salt Lake City' },
-  { id: 2, name: 'Farmington' },
-  { id: 3, name: 'Utah House District 15' },
-  { id: 4, name: 'Bald Eagle Spring' },
-  { id: 5, name: '84111' },
-];
-
 async function safeFetch(url, options) {
   let responseJson;
   try {
