@@ -231,12 +231,21 @@ export const featureServiceProvider = (
     let searchFieldValidated = false;
     let contextFieldValidated = false;
     for (const field of serviceJson.fields) {
-      // todo: validate that field types are string
       if (field.name === searchField) {
+        if (field.type !== 'esriFieldTypeString') {
+          throw new Error(
+            `Field: ${searchField} must be of type "esriFieldTypeString"`,
+          );
+        }
         searchFieldValidated = true;
       }
 
       if (contextField && field.name === contextField) {
+        if (field.type !== 'esriFieldTypeString') {
+          throw new Error(
+            `Field: ${contextField} must be of type "esriFieldTypeString"`,
+          );
+        }
         contextFieldValidated = true;
       }
     }
