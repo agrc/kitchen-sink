@@ -232,18 +232,15 @@ export const featureServiceProvider = (
   searchField,
   contextField = null,
 ) => {
-  let oidField;
+  let initialized = false;
   const init = async (signal) => {
-    // get oid field name, and validate searchField and contextField
+    // validate searchField and contextField
     const serviceJson = await safeFetch(`${url}?f=json`, { signal });
 
     let searchFieldValidated = false;
     let contextFieldValidated = false;
     for (const field of serviceJson.fields) {
-      if (field.type === 'esriFieldTypeOID') {
-        oidField = field.name;
-      }
-
+      // todo: validate that field types are string
       if (field.name === searchField) {
         searchFieldValidated = true;
       }
@@ -251,10 +248,6 @@ export const featureServiceProvider = (
       if (contextField && field.name === contextField) {
         contextFieldValidated = true;
       }
-    }
-
-    if (!oidField) {
-      throw new Error('OID field not found');
     }
 
     const fieldsList = serviceJson.fields.map((f) => f.name).join(', ');
@@ -269,11 +262,13 @@ export const featureServiceProvider = (
         `Field: ${contextField} not found in service fields: ${fieldsList}`,
       );
     }
+
+    initialized = true;
   };
 
   return {
     load: async ({ signal, filterText, maxResults = 10 }) => {
-      if (!oidField) {
+      if (!initialized) {
         await init(signal);
       }
 
@@ -284,9 +279,10 @@ export const featureServiceProvider = (
       const searchParams = new URLSearchParams({
         f: 'json',
         where: `UPPER(${searchField}) LIKE UPPER('%${filterText}%')`,
-        outFields: [oidField, searchField, contextField].join(','),
+        outFields: [searchField, contextField].join(','),
         returnGeometry: false,
         resultRecordCount: maxResults,
+        returnDistinctValues: true,
       });
 
       const responseJson = await safeFetch(
@@ -297,10 +293,15 @@ export const featureServiceProvider = (
       );
 
       const suggestions = responseJson.features.map((feature) => {
+        let where = `${searchField} = '${feature.attributes[searchField]}'`;
+        if (contextField) {
+          where += ` AND ${contextField} = '${feature.attributes[contextField]}'`;
+        }
+
         return {
           name: feature.attributes[searchField],
           context: contextField ? feature.attributes[contextField] : null,
-          key: feature.attributes[oidField],
+          key: where,
         };
       });
 
@@ -309,9 +310,10 @@ export const featureServiceProvider = (
     getFeature: async (key) => {
       const searchParams = new URLSearchParams({
         f: 'json',
-        where: `${oidField}=${key}`,
+        where: key,
         outFields: '*',
         returnGeometry: true,
+        resultRecordCount: 1,
       });
 
       const responseJson = await safeFetch(
