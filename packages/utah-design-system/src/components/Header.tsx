@@ -37,8 +37,8 @@ export const Header = ({
 }: {
   children: ReactNode;
   links: HeaderLink[];
-  currentUser: User;
-  logout: () => void;
+  currentUser: User | undefined;
+  logout: () => void | undefined;
 }) => {
   let state = useOverlayTriggerState(props);
   let { triggerProps, overlayProps } = useOverlayTrigger(
