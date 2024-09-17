@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.9.0...utah-design-system-v1.9.1) (2024-09-17)
+
+
+### Bug Fixes
+
+* **header:** move auth out of header and accept as a parameter ([6fd21c3](https://github.com/agrc/kitchen-sink/commit/6fd21c3f50e3b98ddcbade07d470a189b99af2a9))
+
 ## [1.9.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.8.1...utah-design-system-v1.9.0) (2024-09-12)
 
 
