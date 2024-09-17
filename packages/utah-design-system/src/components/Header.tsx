@@ -9,9 +9,9 @@ import { Button, MenuTrigger } from 'react-aria-components';
 import { useModalOverlay, useOverlayTrigger } from 'react-aria';
 import { KeyboardEvent, ReactNode, useRef } from 'react';
 import { OverlayTriggerState, useOverlayTriggerState } from 'react-stately';
-import { useFirebaseAuth } from '../contexts';
 import { Avatar } from './Avatar';
 import { Menu, MenuItem, MenuSeparator } from './Menu';
+import { User } from 'firebase/auth';
 
 const dismiss = (e: KeyboardEvent, action: Function): void => {
   if (e.key !== 'Escape') {
@@ -31,12 +31,15 @@ export type HeaderLink = {
 export const Header = ({
   children,
   links,
+  currentUser,
+  logout,
   ...props
 }: {
   children: ReactNode;
   links: HeaderLink[];
+  currentUser: User;
+  logout: () => void;
 }) => {
-  const { currentUser, logout } = useFirebaseAuth() || {};
   let state = useOverlayTriggerState(props);
   let { triggerProps, overlayProps } = useOverlayTrigger(
     { type: 'dialog' },

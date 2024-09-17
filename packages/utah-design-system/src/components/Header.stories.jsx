@@ -2,6 +2,7 @@ import { Header as Component } from './Header.tsx';
 import {
   FirebaseAppProvider,
   FirebaseAuthProvider,
+  useFirebaseAuth,
 } from '../contexts/index.ts';
 import { OAuthProvider } from 'firebase/auth';
 import { UtahIdLogin } from './UtahIdLogin.tsx';
@@ -104,12 +105,22 @@ export const HasMenu = {
 };
 
 export const HasAll = {
-  render: (args) => (
-    <>
-      <Component {...args} links={links}>
-        <Logo />
-      </Component>
-      <UtahIdLogin />
-    </>
-  ),
+  render: (args) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const { currentUser, logout } = useFirebaseAuth();
+
+    return (
+      <>
+        <Component
+          {...args}
+          links={links}
+          currentUser={currentUser}
+          logout={logout}
+        >
+          <Logo />
+        </Component>
+        <UtahIdLogin />
+      </>
+    );
+  },
 };
