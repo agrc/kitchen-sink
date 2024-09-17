@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.9.1...utah-design-system-v1.9.2) (2024-09-17)
+
+
+### Bug Fixes
+
+* **header:** allow auth props to be undefined ([a2634ad](https://github.com/agrc/kitchen-sink/commit/a2634ad445d3c9c34a677cda37c8b2a22688652f))
+
 ## [1.9.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.9.0...utah-design-system-v1.9.1) (2024-09-17)
 
 
