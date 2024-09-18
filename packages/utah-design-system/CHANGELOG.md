@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.4](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.9.3...utah-design-system-v1.9.4) (2024-09-18)
+
+
+### Bug Fixes
+
+* **header:** correct typescript syntax ([18a1d1e](https://github.com/agrc/kitchen-sink/commit/18a1d1ed3314270582ad08b5f3335025290f0613))
+
 ## [1.9.3](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.9.2...utah-design-system-v1.9.3) (2024-09-18)
 
 
