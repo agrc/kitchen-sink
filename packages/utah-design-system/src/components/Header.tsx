@@ -27,24 +27,24 @@ export type HeaderLink = {
     url: string;
   };
 };
+export type HeaderProps = {
+  children: ReactNode;
+  links: HeaderLink[] | undefined;
+  currentUser: User | undefined;
+  logout: () => void | undefined;
+};
 
 export const Header = ({
   children,
   links,
-  currentUser,
-  logout,
   ...props
-}: {
-  children: ReactNode;
-  links: HeaderLink[];
-  currentUser: User | undefined;
-  logout: () => void | undefined;
-}) => {
+}: HeaderProps & OverlayTriggerState) => {
   let state = useOverlayTriggerState(props);
   let { triggerProps, overlayProps } = useOverlayTrigger(
     { type: 'dialog' },
     state,
   );
+  const { currentUser, logout } = props;
 
   return (
     <header className="w-full">
