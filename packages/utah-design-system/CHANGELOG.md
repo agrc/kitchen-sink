@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.3](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.9.2...utah-design-system-v1.9.3) (2024-09-18)
+
+
+### Bug Fixes
+
+* **header:** update types since authentication is optional and overlay state is a prop ([9b1d380](https://github.com/agrc/kitchen-sink/commit/9b1d380ce67957ce2d58007a14a698945c9e1905))
+
 ## [1.9.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.9.1...utah-design-system-v1.9.2) (2024-09-17)
 
 
