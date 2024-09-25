@@ -18,11 +18,11 @@ import {
 import { useFirebaseApp } from './FirebaseAppProvider';
 
 type AuthContextValue = {
-  currentUser: User | null;
+  auth: Auth;
+  provider: OAuthProvider;
+  currentUser?: User;
   login: () => Promise<UserCredential>;
   logout: () => Promise<void>;
-  provider: OAuthProvider;
-  auth: Auth;
 };
 
 type FirebaseAuthProviderProps = {
@@ -37,7 +37,7 @@ export const FirebaseAuthProvider = (props: FirebaseAuthProviderProps) => {
 
   const app = useFirebaseApp();
   const sdk = getAuth(app);
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [currentUser, setCurrentUser] = useState<User | undefined>();
 
   if (!app) {
     throw new Error(
@@ -47,7 +47,7 @@ export const FirebaseAuthProvider = (props: FirebaseAuthProviderProps) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(sdk, (user) => {
-      setCurrentUser(user);
+      setCurrentUser(user ?? undefined);
     });
 
     return () => unsubscribe();
