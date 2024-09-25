@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.9.5](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.9.4...utah-design-system-v1.9.5) (2024-09-25)
+
+
+### Bug Fixes
+
+* **contexts:** align type with header ([75dedde](https://github.com/agrc/kitchen-sink/commit/75dedde607b48071026aafc16a9943e2e453cfa4))
+* **header:** align type with auth provider ([a95b077](https://github.com/agrc/kitchen-sink/commit/a95b07702c31c3ce7443ad89b95cad98608a76ae))
+
 ## [1.9.4](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.9.3...utah-design-system-v1.9.4) (2024-09-18)
 
 
