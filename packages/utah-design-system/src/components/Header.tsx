@@ -30,7 +30,7 @@ export type HeaderLink = {
 export type HeaderProps = {
   children: ReactNode;
   links?: HeaderLink[];
-  currentUser?: User | undefined;
+  currentUser?: User;
   logout?: () => void;
 };
 
