@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.6](https://github.com/agrc/kitchen-sink/compare/utilities-v2.2.5...utilities-v2.2.6) (2024-09-30)
+
+
+### Bug Fixes
+
+* **url:** remove undefined values from the query string ([b96699d](https://github.com/agrc/kitchen-sink/commit/b96699d1dfdd4e63816f32850efd28d9e3a34cb1))
+
 ## [2.2.5](https://github.com/agrc/kitchen-sink/compare/utilities-v2.2.4...utilities-v2.2.5) (2024-08-09)
 
 
