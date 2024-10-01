@@ -53,7 +53,7 @@
   "dependencies": {
     "@ugrc/utilities": "^2.2.6",
     "clsx": "^2.1.1",
-    "reactstrap": "^9.2.2"
+    "reactstrap": "^9.2.3"
   },
   "peerDependencies": {
     "@arcgis/core": "^4.20.0",

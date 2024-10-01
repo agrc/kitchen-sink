@@ -35,6 +35,6 @@
   ],
   "scripts": {},
   "dependencies": {
-    "tailwindcss-react-aria-components": "^1.1.4"
+    "tailwindcss-react-aria-components": "^1.1.6"
   }
 }
