@@ -39,11 +39,11 @@ const Popover = (props: PopoverProps) => {
       className={({ isEntering, isExiting }) =>
         `group min-w-48 max-w-sm overflow-y-auto rounded-lg bg-white px-3 py-2 ring-1 ring-black/10 drop-shadow-lg dark:bg-zinc-800 dark:ring-white/10 ${
           isEntering
-            ? 'duration-500 ease-out animate-in fade-in placement-top:slide-in-from-bottom-1 placement-bottom:slide-in-from-top-1'
+            ? 'animate-in fade-in placement-top:slide-in-from-bottom-1 placement-bottom:slide-in-from-top-1 duration-500 ease-out'
             : ''
         } ${
           isExiting
-            ? 'duration-150 ease-in animate-out fade-out placement-top:slide-out-to-bottom-1 placement-bottom:slide-out-to-top-1'
+            ? 'animate-out fade-out placement-top:slide-out-to-bottom-1 placement-bottom:slide-out-to-top-1 duration-150 ease-in'
             : ''
         } `
       }
