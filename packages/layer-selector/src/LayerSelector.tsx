@@ -14,6 +14,23 @@ import {
   CheckboxGroup,
   Checkbox,
 } from '@ugrc/utah-design-system/src';
+import MapView from '@arcgis/core/views/MapView';
+
+type LayerFactory = {
+  Factory: new () => __esri.Layer;
+  url: string;
+  id: string;
+  opacity: number;
+};
+type SelectorOptions = {
+  view: MapView;
+  quadWord: string;
+  baseLayers: Array<
+    string | { token: string; selected: boolean } | LayerFactory
+  >;
+  overlays?: Array<string | LayerFactory>;
+  position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+};
 
 const Popover = (props: PopoverProps) => {
   return (
@@ -34,7 +51,12 @@ const Popover = (props: PopoverProps) => {
   );
 };
 
-export function LayerSelector<T extends object>({ children, ...props }) {
+export function LayerSelector({
+  options,
+  ...props
+}: {
+  options: SelectorOptions;
+}) {
   return (
     <DialogTrigger {...props}>
       <div className="inline-flex max-w-fit border border-black bg-white dark:border-zinc-500 dark:bg-zinc-900">
@@ -50,7 +72,7 @@ export function LayerSelector<T extends object>({ children, ...props }) {
         <Dialog className="outline-none">
           <Header className="font-bold dark:text-white">Base maps</Header>
           <RadioGroup className="flex-1">
-            <Collection items={props.options.baseLayers}>
+            <Collection items={options.baseLayers}>
               {(item) => (
                 <Radio className="pl-2" value={item.name}>
                   {item.name}
