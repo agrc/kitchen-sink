@@ -5,6 +5,7 @@ import {
   Popover as RACPopover,
   Header,
 } from 'react-aria-components';
+import { LayersIcon } from 'lucide-react';
 import type { PopoverProps } from 'react-aria-components';
 import {
   Button,
@@ -42,24 +43,7 @@ export function LayerSelector<T extends object>({ children, ...props }) {
           className="px-1.5 outline-none focus-visible:ring-2 focus-visible:ring-white/75"
           variant="icon"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="26"
-            height="26"
-            viewBox="0 0 26 26"
-          >
-            <g
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="3"
-              strokeMiterlimit="9"
-            >
-              <path
-                transform="matrix(.95342 .30165 -.95342 .30165 0 -1026)"
-                d="M1715 1701h10v10h-10zM1734 1709v11.2h-11.2M1744 1719v11.2h-11.2"
-              />
-            </g>
-          </svg>
+          <LayersIcon className="block size-8 p-1" />
         </Button>
       </div>
       <Popover>
