@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.10.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.9.7...utah-design-system-v1.10.0) (2024-10-03)
+
+
+### Features
+
+* **alert-dialog:** introduce a modal window ([8b78305](https://github.com/agrc/kitchen-sink/commit/8b78305640726478eb4e5da030e3821e16404ffa))
+
+
+### Bug Fixes
+
+* don't build the package ([4562da0](https://github.com/agrc/kitchen-sink/commit/4562da0dac36154726595aee14699d0027b163dc))
+
 ## [1.9.7](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.9.6...utah-design-system-v1.9.7) (2024-10-03)
 
 
