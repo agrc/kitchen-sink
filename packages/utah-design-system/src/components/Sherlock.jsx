@@ -320,12 +320,18 @@ export const featureServiceProvider = (
         `${url}/query?${searchParams.toString()}`,
       );
 
-      const feature = responseJson.features[0];
-      feature.geometry.type = {
-        esriGeometryPolyline: 'polyline',
-        esriGeometryPoint: 'point',
-        esriGeometryPolygon: 'polygon',
-      }[responseJson.geometryType];
+      const feature = {
+        ...responseJson.features[0],
+        geometry: {
+          ...responseJson.features[0].geometry,
+          type: {
+            esriGeometryPolyline: 'polyline',
+            esriGeometryPoint: 'point',
+            esriGeometryPolygon: 'polygon',
+          }[responseJson.geometryType],
+        },
+        spatialReference: responseJson.spatialReference,
+      };
 
       return { items: [feature] };
     },
