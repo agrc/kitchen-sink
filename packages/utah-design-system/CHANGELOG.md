@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.10.1...utah-design-system-v1.10.2) (2024-10-03)
+
+
+### Bug Fixes
+
+* point to the built package ([414dc9a](https://github.com/agrc/kitchen-sink/commit/414dc9a9be6a63612b65bcea4ae7a95607be5a68))
+
 ## [1.10.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.10.0...utah-design-system-v1.10.1) (2024-10-03)
 
 
