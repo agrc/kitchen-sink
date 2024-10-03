@@ -1,3 +1,4 @@
+export * from './components/AlertDialog.tsx';
 export * from './components/Avatar.tsx';
 export * from './components/Banner.jsx';
 export * from './components/Button.tsx';
@@ -12,6 +13,7 @@ export * from './components/Header.tsx';
 export * from './components/Link.tsx';
 export * from './components/ListBox.tsx';
 export * from './components/Menu.tsx';
+export * from './components/Modal.tsx';
 export * from './components/Popover.tsx';
 export * from './components/Radio.tsx';
 export * from './components/Select.tsx';
