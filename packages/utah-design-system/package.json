@@ -35,15 +35,10 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/index.esm.js",
-      "types": "./dist/src/index.d.ts"
-    },
-    "./src": {
       "import": "./src/index.js"
     }
   },
   "files": [
-    "dist",
     "src",
     "LICENSE-Adobe"
   ],
