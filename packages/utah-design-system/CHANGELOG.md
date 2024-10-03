@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.7](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.9.6...utah-design-system-v1.9.7) (2024-10-03)
+
+
+### Bug Fixes
+
+* **sherlock:** add service default spatial reference to features ([517a93b](https://github.com/agrc/kitchen-sink/commit/517a93b6a725d90490a6f3eb287158d98d6df88b))
+
 ## [1.9.6](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.9.5...utah-design-system-v1.9.6) (2024-09-30)
 
 
