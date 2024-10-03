@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.10.0...utah-design-system-v1.10.1) (2024-10-03)
+
+
+### Bug Fixes
+
+* **uds:** reorder and remove react-dom ([9557eab](https://github.com/agrc/kitchen-sink/commit/9557eab91297306db2bdb6c46ca14df0105b624a))
+
 ## [1.10.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.9.7...utah-design-system-v1.10.0) (2024-10-03)
 
 
