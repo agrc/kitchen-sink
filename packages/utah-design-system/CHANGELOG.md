@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.11.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.11.0...utah-design-system-v1.11.1) (2024-10-17)
+
+
+### Bug Fixes
+
+* **sherlock:** order search results for map service provider ([5ce5bda](https://github.com/agrc/kitchen-sink/commit/5ce5bdadca61a98357a87b718eb22469146c1d71))
+
 ## [1.11.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.10.2...utah-design-system-v1.11.0) (2024-10-17)
 
 
