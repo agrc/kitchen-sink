@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.11.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.10.2...utah-design-system-v1.11.0) (2024-10-17)
+
+
+### Features
+
+* **uds:** add ky options to sherlock feature service provider ([2c61b76](https://github.com/agrc/kitchen-sink/commit/2c61b76f19ca7f16e48168ff052ebc42b74fb2c1))
+
 ## [1.10.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.10.1...utah-design-system-v1.10.2) (2024-10-03)
 
 
