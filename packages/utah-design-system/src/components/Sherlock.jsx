@@ -275,6 +275,7 @@ export const featureServiceProvider = (
         returnGeometry: false,
         resultRecordCount: maxResults,
         returnDistinctValues: true,
+        orderByFields: searchField,
       });
 
       const responseJson = await safeFetch(
