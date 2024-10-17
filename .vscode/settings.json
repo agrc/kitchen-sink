@@ -25,6 +25,7 @@
     "oidc",
     "packagejson",
     "prebuild",
+    "safelisted",
     "SGID",
     "SRID",
     "storyshots",
