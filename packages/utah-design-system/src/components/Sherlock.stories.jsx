@@ -69,6 +69,37 @@ export const HasFeatureServiceProvider = {
   ),
 };
 
+export const HasFeatureServiceProviderWithKyOptions = {
+  render: (args) => (
+    <Component
+      {...args}
+      label="Select a road"
+      placeholder="Search the roads map service"
+      provider={featureServiceProvider(
+        'https://services1.arcgis.com/99lidPhWCzftIe9K/arcgis/rest/services/UtahRoads/FeatureServer/0',
+        'FULLNAME',
+        'COUNTY_L',
+        {
+          hooks: {
+            beforeRequest: [
+              async (request) => {
+                request.headers.set(
+                  // must use a CORS-safelisted request header or the request will fail
+                  'Accept-Language',
+                  await new Promise((resolve) =>
+                    setTimeout(() => resolve('es'), 10),
+                  ),
+                );
+              },
+            ],
+          },
+        },
+      )}
+      onSherlockMatch={console.log}
+    />
+  ),
+};
+
 export const HasMultiProvider = {
   render: (args) => (
     <Component

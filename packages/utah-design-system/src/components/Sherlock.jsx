@@ -17,6 +17,7 @@ import { search } from '@ugrc/utilities';
 import { tv } from 'tailwind-variants';
 import { focusRing } from './utils.ts';
 import { FieldError, Label, fieldBorderStyles } from './Field.tsx';
+import ky from 'ky';
 
 const defaultSymbols = {
   polygon: {
@@ -51,27 +52,14 @@ const inputStyles = tv({
 });
 
 async function safeFetch(url, options) {
-  let responseJson;
-  try {
-    const response = await fetch(url, options);
-
-    if (!response.ok) {
-      throw new Error(
-        `non-200 status code returned from ${url}: ${response.status} - ${response.statusText}`,
-      );
-    }
-
-    responseJson = await response.json();
-  } catch (error) {
-    throw new Error(`error thrown during fetch to ${url}: ${error.message}`);
-  }
+  const response = await ky(url, options).json();
 
   // handle esri response errors which return a 200 status code
-  if (responseJson.error) {
-    throw new Error(`${url} returned an error: ${responseJson.error.message}`);
+  if (response.error) {
+    throw new Error(`${url} returned an error: ${response.error.message}`);
   }
 
-  return responseJson;
+  return response;
 }
 
 export const ugrcApiProvider = (
@@ -222,11 +210,15 @@ export const featureServiceProvider = (
   url,
   searchField,
   contextField = null,
+  kyOptions = {},
 ) => {
   let initialized = false;
   const init = async (signal) => {
     // validate searchField and contextField
-    const serviceJson = await safeFetch(`${url}?f=json`, { signal });
+    const serviceJson = await safeFetch(`${url}?f=json`, {
+      signal,
+      ...kyOptions,
+    });
 
     let searchFieldValidated = false;
     let contextFieldValidated = false;
@@ -289,6 +281,7 @@ export const featureServiceProvider = (
         `${url}/query?${searchParams.toString()}`,
         {
           signal,
+          ...kyOptions,
         },
       );
 
@@ -318,6 +311,7 @@ export const featureServiceProvider = (
 
       const responseJson = await safeFetch(
         `${url}/query?${searchParams.toString()}`,
+        kyOptions,
       );
 
       const feature = {
