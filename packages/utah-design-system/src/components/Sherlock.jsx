@@ -324,8 +324,8 @@ export const featureServiceProvider = (
             esriGeometryPoint: 'point',
             esriGeometryPolygon: 'polygon',
           }[responseJson.geometryType],
+          spatialReference: responseJson.spatialReference,
         },
-        spatialReference: responseJson.spatialReference,
       };
 
       return { items: [feature] };
