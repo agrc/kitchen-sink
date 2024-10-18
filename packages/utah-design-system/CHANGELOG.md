@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.11.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.11.1...utah-design-system-v1.11.2) (2024-10-18)
+
+
+### Bug Fixes
+
+* **sherlock:** spatial reference is a prop of geometry, not graphic ([e90946c](https://github.com/agrc/kitchen-sink/commit/e90946c3d20986387a9eeb9014fc7dc1deaa4150))
+
 ## [1.11.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.11.0...utah-design-system-v1.11.1) (2024-10-17)
 
 
