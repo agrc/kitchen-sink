@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.11.3](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.11.2...utah-design-system-v1.11.3) (2024-10-23)
+
+
+### Bug Fixes
+
+* **TagGroup:** add disabled to compound variant ([fba13db](https://github.com/agrc/kitchen-sink/commit/fba13dbfd51b877b6570bed1b5e3b71f3b137d6d))
+
 ## [1.11.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.11.1...utah-design-system-v1.11.2) (2024-10-18)
 
 
