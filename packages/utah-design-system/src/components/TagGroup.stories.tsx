@@ -12,7 +12,7 @@ export default meta;
 
 export const Example = (args: any) => (
   <TagGroup {...args}>
-    <Tag>Chocolate</Tag>
+    <Tag isDisabled>Chocolate</Tag>
     <Tag>Mint</Tag>
     <Tag>Strawberry</Tag>
     <Tag>Vanilla</Tag>
