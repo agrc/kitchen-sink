@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.11.3...utah-design-system-v1.12.0) (2024-10-24)
+
+
+### Features
+
+* **switch:** introduce switch component ([3fb6c76](https://github.com/agrc/kitchen-sink/commit/3fb6c767012ca9623f732003004c5c91ba5b7f2f))
+
 ## [1.11.3](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.11.2...utah-design-system-v1.11.3) (2024-10-23)
 
 
