@@ -2,6 +2,7 @@ __mocks__
 __snapshots__
 node_modules
 dist
+data/firebase/
 package-lock.json
 .vscode
 CHANGELOG.md
