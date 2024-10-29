@@ -1,4 +1,4 @@
-import Graphic from '@arcgis/core/Graphic';
+import Graphic from '@arcgis/core/Graphic.js';
 import { escapeRegExp } from 'lodash-es';
 import { SearchIcon, ChevronsUpDownIcon, CheckIcon } from 'lucide-react';
 import { Spinner } from './Spinner.jsx';
