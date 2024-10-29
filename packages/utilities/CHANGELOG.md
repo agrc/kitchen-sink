@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.7](https://github.com/agrc/kitchen-sink/compare/utilities-v2.2.6...utilities-v2.2.7) (2024-10-29)
+
+
+### Bug Fixes
+
+* **hooks:** add extensions to [@arcgis](https://github.com/arcgis) imports ([94e2e13](https://github.com/agrc/kitchen-sink/commit/94e2e13a2a2530de5bd9b6ce94e629162cdbe94e))
+
 ## [2.2.6](https://github.com/agrc/kitchen-sink/compare/utilities-v2.2.5...utilities-v2.2.6) (2024-09-30)
 
 

@@ -17,6 +17,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **sherlock:** add extent ([a01e94f](https://github.com/agrc/kitchen-sink/commit/a01e94fcdc62c64fa385e0fd2f984357102fbab9))
 - add LocatorSuggestProvider to sherlock ([0bd35a7](https://github.com/agrc/kitchen-sink/commit/0bd35a7ac9a06a580482f1e18a63da53cdeac820))
 
+## [4.0.9](https://github.com/agrc/kitchen-sink/compare/sherlock-v4.0.8...sherlock-v4.0.9) (2024-10-29)
+
+
+### Bug Fixes
+
+* **sherlock:** add extensions to [@arcgis](https://github.com/arcgis) imports ([59e4f8f](https://github.com/agrc/kitchen-sink/commit/59e4f8fe7723859099a12cca1b1371172e49cae7))
+
 ## [4.0.8](https://github.com/agrc/kitchen-sink/compare/sherlock-v4.0.7...sherlock-v4.0.8) (2024-08-09)
 
 

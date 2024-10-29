@@ -21,6 +21,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @ugrc/utilities bumped from ^2.2.0 to ^2.2.1
 
+## [2.0.12](https://github.com/agrc/kitchen-sink/compare/mouse-trap-v2.0.11...mouse-trap-v2.0.12) (2024-10-29)
+
+
+### Bug Fixes
+
+* **mouse-trap:** add extensions to [@arcgis](https://github.com/arcgis) imports ([707644e](https://github.com/agrc/kitchen-sink/commit/707644e7933d2863c593509a1ed1f91cb9af13ef))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ugrc/utilities bumped from ^2.2.6 to ^2.2.7
+
 ## [2.0.11](https://github.com/agrc/kitchen-sink/compare/mouse-trap-v2.0.10...mouse-trap-v2.0.11) (2024-09-30)
 
 
