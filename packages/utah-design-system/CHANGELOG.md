@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.12.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.12.0...utah-design-system-v1.12.1) (2024-10-29)
+
+
+### Bug Fixes
+
+* **sherlock:** add extensions to [@arcgis](https://github.com/arcgis) imports ([f3d03a4](https://github.com/agrc/kitchen-sink/commit/f3d03a40b3f6407f9d7024ee37dda751121aea35))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ugrc/utilities bumped from 2.2.6 to 2.2.7
+
 ## [1.12.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.11.3...utah-design-system-v1.12.0) (2024-10-24)
 
 
