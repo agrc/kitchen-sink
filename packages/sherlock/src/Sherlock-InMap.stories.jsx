@@ -1,11 +1,12 @@
 import { useEffect, useState, useRef } from 'react';
 import Sherlock, { MapServiceProvider } from './';
-import Map from '@arcgis/core/Map';
-import MapView from '@arcgis/core/views/MapView';
-import '@arcgis/core/assets/esri/themes/light/main.css';
-import * as reactiveUtils from '@arcgis/core/core/reactiveUtils';
+import Map from '@arcgis/core/Map.js';
+import MapView from '@arcgis/core/views/MapView.js';
+import * as reactiveUtils from '@arcgis/core/core/reactiveUtils.js';
 import PropTypes from 'prop-types';
+
 import './Sherlock.css';
+import '@arcgis/core/assets/esri/themes/light/main.css';
 
 export default {
   component: Sherlock,

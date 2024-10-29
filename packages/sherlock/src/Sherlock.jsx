@@ -1,6 +1,6 @@
-import Graphic from '@arcgis/core/Graphic';
-import { executeQueryJSON } from '@arcgis/core/rest/query';
-import Query from '@arcgis/core/rest/support/Query';
+import Graphic from '@arcgis/core/Graphic.js';
+import { executeQueryJSON } from '@arcgis/core/rest/query.js';
+import Query from '@arcgis/core/rest/support/Query.js';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Downshift from 'downshift';
