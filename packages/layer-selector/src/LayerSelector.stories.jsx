@@ -1,6 +1,7 @@
 import LayerSelector from './';
+import Collection from '@arcgis/core/core/Collection.js';
+
 import './LayerSelector.css';
-import Collection from '@arcgis/core/core/Collection';
 
 export default {
   component: LayerSelector,

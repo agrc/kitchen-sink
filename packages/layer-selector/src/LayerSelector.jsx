@@ -3,13 +3,14 @@ import classNames from 'clsx';
 import PropTypes from 'prop-types';
 import { createDefaultTileInfo } from './TileInfo';
 import { setTileInfosForApplianceLayers } from './Discover';
+import Basemap from '@arcgis/core/Basemap.js';
+import LOD from '@arcgis/core/layers/support/LOD.js';
+import TileInfo from '@arcgis/core/layers/support/TileInfo.js';
+import WebTileLayer from '@arcgis/core/layers/WebTileLayer.js';
+import FeatureLayer from '@arcgis/core/layers/FeatureLayer.js';
+import TileLayer from '@arcgis/core/layers/TileLayer.js';
+
 import icon from './layers.svg';
-import Basemap from '@arcgis/core/Basemap';
-import LOD from '@arcgis/core/layers/support/LOD';
-import TileInfo from '@arcgis/core/layers/support/TileInfo';
-import WebTileLayer from '@arcgis/core/layers/WebTileLayer';
-import FeatureLayer from '@arcgis/core/layers/FeatureLayer';
-import TileLayer from '@arcgis/core/layers/TileLayer';
 
 const commonFactories = {
   FeatureLayer,
