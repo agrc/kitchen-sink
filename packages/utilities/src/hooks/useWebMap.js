@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
-import MapView from '@arcgis/core/views/MapView';
-import WebMap from '@arcgis/core/WebMap';
+import MapView from '@arcgis/core/views/MapView.js';
+import WebMap from '@arcgis/core/WebMap.js';
 
 export default function useWebMap(div, id) {
   const webMap = useRef(null);
