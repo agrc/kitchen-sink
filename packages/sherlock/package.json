@@ -58,7 +58,7 @@
     "downshift": "^9.0.6",
     "lodash-es": "^4.17.21",
     "react-fast-compare": "^3.2.2",
-    "reactstrap": "^9.2.2"
+    "reactstrap": "^9.2.3"
   },
   "peerDependencies": {
     "@arcgis/core": "^4.20.0",
