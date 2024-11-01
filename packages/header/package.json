@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.1.5",
-    "@radix-ui/react-collapsible": "^1.1.0",
+    "@radix-ui/react-collapsible": "^1.1.1",
     "@ugrc/popover": "^1.1.0"
   },
   "peerDependencies": {
