@@ -1,4 +1,4 @@
-import { Footer as Component } from './Footer.jsx';
+import { Footer as Component } from './Footer.tsx';
 
 export default {
   component: Component,
