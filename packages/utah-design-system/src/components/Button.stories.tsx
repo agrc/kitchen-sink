@@ -1,6 +1,7 @@
+import { Meta } from '@storybook/react';
 import { Button } from './Button';
 
-export default {
+const meta: Meta<typeof Button> = {
   component: Button,
   parameters: {
     layout: 'centered',
@@ -10,12 +11,18 @@ export default {
       control: 'select',
       options: ['primary', 'secondary', 'accent', 'destructive'],
     },
+    size: {
+      control: 'inline-radio',
+      options: ['extraSmall', 'small', 'medium', 'large', 'extraLarge'],
+    },
   },
   args: {
     isDisabled: false,
     children: 'Button',
   },
 };
+
+export default meta;
 
 export const Primary = {
   args: {
