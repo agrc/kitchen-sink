@@ -21,6 +21,7 @@ export * from './components/Sherlock.jsx';
 export * from './components/SocialMedia.jsx';
 export * from './components/Spinner.jsx';
 export * from './components/Switch.tsx';
+export * from './components/Tabs.tsx';
 export * from './components/TagGroup.tsx';
 export * from './components/TextField.tsx';
 export * from './components/UtahIdLogin.tsx';
