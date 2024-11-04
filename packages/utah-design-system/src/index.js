@@ -6,7 +6,7 @@ export * from './components/Checkbox.tsx';
 export * from './components/Dialog.tsx';
 export * from './components/Drawer.tsx';
 export * from './components/Field.tsx';
-export * from './components/Footer.jsx';
+export * from './components/Footer.tsx';
 export * from './components/Form.jsx';
 export * from './components/Geocode.tsx';
 export * from './components/Header.tsx';
