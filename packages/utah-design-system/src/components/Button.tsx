@@ -34,7 +34,7 @@ let button = tv({
       extraLarge: 'min-h-[3.125rem] px-10 text-xl',
     },
     isDisabled: {
-      true: 'border-black/20 bg-zinc-100 text-zinc-500 dark:border-white/20 dark:bg-zinc-500 dark:text-zinc-100',
+      true: 'hover:none border-black/20 bg-zinc-100 text-zinc-500 dark:border-white/20 dark:bg-zinc-500 dark:text-zinc-100',
     },
   },
   defaultVariants: {
