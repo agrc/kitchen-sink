@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.13.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.12.1...utah-design-system-v1.13.0) (2024-11-05)
+
+
+### Features
+
+* **button:** add 4 more button sizes ([f40204e](https://github.com/agrc/kitchen-sink/commit/f40204e97b6ed5a9d37c4f539d6633e3d639d834)), closes [#346](https://github.com/agrc/kitchen-sink/issues/346)
+* **footer:** allow footer to be customized ([05388c9](https://github.com/agrc/kitchen-sink/commit/05388c9596442c092f679b1d6d43c7a85a4ba585)), closes [#344](https://github.com/agrc/kitchen-sink/issues/344)
+* **tabs:** introduce new tabs component ([f05231a](https://github.com/agrc/kitchen-sink/commit/f05231aa79956edc2f595dc7159af96e24962f6c)), closes [#347](https://github.com/agrc/kitchen-sink/issues/347)
+
 ## [1.12.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.12.0...utah-design-system-v1.12.1) (2024-10-29)
 
 
