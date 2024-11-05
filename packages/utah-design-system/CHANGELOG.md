@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.13.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.13.0...utah-design-system-v1.13.1) (2024-11-05)
+
+
+### Bug Fixes
+
+* **button:** remove hover states when disabled ([2c2b01f](https://github.com/agrc/kitchen-sink/commit/2c2b01f944376451ca41da3249ce23cdbe6eef36))
+
 ## [1.13.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.12.1...utah-design-system-v1.13.0) (2024-11-05)
 
 
