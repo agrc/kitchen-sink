@@ -1,6 +1,6 @@
 {
   "name": "@ugrc/utah-design-system",
-  "version": "1.13.0",
+  "version": "1.13.1",
   "private": false,
   "description": "This is a collection of react components for implementing the [Utah Design System](https://designsystem.utah.gov).",
   "keywords": [
