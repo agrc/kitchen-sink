@@ -1,5 +1,5 @@
-import { Meta } from '@storybook/react';
-import { Checkbox as Component } from './Checkbox';
+import type { Meta } from '@storybook/react';
+import { Spinner as Component } from './Spinner';
 
 const meta: Meta<typeof Component> = {
   component: Component,
@@ -8,10 +8,7 @@ const meta: Meta<typeof Component> = {
   },
   tags: ['autodocs'],
   argTypes: {},
-  args: {
-    isDisabled: false,
-    children: 'Checkbox',
-  },
+  args: {},
 };
 
 export default meta;

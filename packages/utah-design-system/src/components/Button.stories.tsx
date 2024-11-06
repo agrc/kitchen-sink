@@ -1,11 +1,12 @@
 import { Meta } from '@storybook/react';
-import { Button } from './Button';
+import { Button as Component } from './Button';
 
-const meta: Meta<typeof Button> = {
-  component: Button,
+const meta: Meta<typeof Component> = {
+  component: Component,
   parameters: {
     layout: 'centered',
   },
+  tags: ['autodocs'],
   argTypes: {
     variant: {
       control: 'select',

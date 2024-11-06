@@ -1,4 +1,4 @@
-import { Header as Component } from './Header.tsx';
+import { Header as Component, HeaderProps } from './Header.tsx';
 import {
   FirebaseAppProvider,
   FirebaseAuthProvider,
@@ -7,11 +7,16 @@ import {
 import { OAuthProvider } from 'firebase/auth';
 import { UtahIdLogin } from './UtahIdLogin.tsx';
 import { firebaseConfig } from '../../firebase.ts';
+import { Meta } from '@storybook/react';
 
 const provider = new OAuthProvider('oidc.utahid');
 
-export default {
+const meta: Meta<typeof Component> = {
   component: Component,
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['autodocs'],
   decorators: [
     (Story) => (
       <FirebaseAppProvider config={firebaseConfig}>
@@ -26,7 +31,11 @@ export default {
       </FirebaseAppProvider>
     ),
   ],
+  argTypes: {},
+  args: {},
 };
+
+export default meta;
 
 const Logo = () => (
   <svg
@@ -83,16 +92,12 @@ const Logo = () => (
   </svg>
 );
 
-export const Default = {
-  render: (args) => <Component {...args} />,
-};
+export const Example = {};
 
 export const HasLogo = {
-  render: (args) => (
-    <Component {...args}>
-      <Logo />
-    </Component>
-  ),
+  args: {
+    children: <Logo />,
+  },
 };
 
 const links = [
@@ -101,11 +106,13 @@ const links = [
 ];
 
 export const HasMenu = {
-  render: (args) => <Component {...args} links={links} />,
+  args: {
+    links: links,
+  },
 };
 
 export const HasAll = {
-  render: (args) => {
+  render: (args: HeaderProps) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { currentUser, logout } = useFirebaseAuth();
 

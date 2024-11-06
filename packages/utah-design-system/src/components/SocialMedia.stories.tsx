@@ -1,17 +1,14 @@
 import { Meta } from '@storybook/react';
-import { Checkbox as Component } from './Checkbox';
+import { SocialMedia as Component } from './SocialMedia.tsx';
 
 const meta: Meta<typeof Component> = {
   component: Component,
   parameters: {
-    layout: 'centered',
+    layout: 'fullscreen',
   },
   tags: ['autodocs'],
   argTypes: {},
-  args: {
-    isDisabled: false,
-    children: 'Checkbox',
-  },
+  args: {},
 };
 
 export default meta;

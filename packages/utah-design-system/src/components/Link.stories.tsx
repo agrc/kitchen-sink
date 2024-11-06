@@ -1,34 +1,33 @@
 import type { Meta } from '@storybook/react';
-import { Link, ExternalLink } from './Link';
+import { Link as Component, ExternalLink } from './Link';
 
-const meta: Meta<typeof Link> = {
-  component: Link,
+const meta: Meta<typeof Component> = {
+  component: Component,
   parameters: {
     layout: 'centered',
   },
+  tags: ['autodocs'],
+  decorators: [
+    (Story) => (
+      <p>
+        <Story />
+      </p>
+    ),
+  ],
+  argTypes: {},
   args: {
     quiet: false,
+    href: 'https://www.imdb.com/title/tt6348138/',
+    children: 'The Missing Link',
   },
 };
 
 export default meta;
 
-export const Example = (args: any) => (
-  <p>
-    The <Link {...args}>missing</Link> link
-  </p>
-);
-
-Example.args = {
-  href: 'https://www.imdb.com/title/tt6348138/',
-};
+export const Example = {};
 
 export const ExternalExample = (args: any) => (
-  <p>
+  <>
     The <ExternalLink {...args}>missing</ExternalLink> link
-  </p>
+  </>
 );
-
-ExternalExample.args = {
-  href: 'https://www.imdb.com/title/tt6348138/',
-};

@@ -1,14 +1,15 @@
 import type { Meta } from '@storybook/react';
-import { Form } from 'react-aria-components';
 import { Button } from './Button';
-import { TextField } from './TextField';
+import { TextField as Component } from './TextField';
 import { Controller, useForm } from 'react-hook-form';
 
-const meta: Meta<typeof TextField> = {
-  component: TextField,
+const meta: Meta<typeof Component> = {
+  component: Component,
   parameters: {
     layout: 'centered',
   },
+  tags: ['autodocs'],
+  argTypes: {},
   args: {
     label: 'Name',
   },
@@ -16,15 +17,20 @@ const meta: Meta<typeof TextField> = {
 
 export default meta;
 
-export const Example = (args: any) => <TextField {...args} />;
+export const Example = {};
 
 export const HtmlValidation = (args: any) => (
-  <Form className="flex flex-col items-start gap-4">
-    <TextField {...args} />
+  <form
+    onSubmit={(event) => {
+      event.preventDefault();
+    }}
+    className="flex flex-col items-start gap-2"
+  >
+    <Component {...args} />
     <Button type="submit" variant="secondary">
       Submit
     </Button>
-  </Form>
+  </form>
 );
 
 export const ReactHookFormValidation = (args: any) => {
@@ -44,7 +50,7 @@ export const ReactHookFormValidation = (args: any) => {
         name="name"
         rules={{ required: 'Name is required' }}
         render={({ field, fieldState }) => (
-          <TextField
+          <Component
             errorMessage={fieldState.error?.message}
             isInvalid={fieldState.invalid}
             validationBehavior="aria"

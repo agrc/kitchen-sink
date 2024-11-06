@@ -1,11 +1,13 @@
+import { Meta } from '@storybook/react';
 import { Button } from './Button.tsx';
-import { Radio, RadioGroup } from './Radio.tsx';
+import { Radio, RadioGroup as Component } from './Radio.tsx';
 
-export default {
-  component: RadioGroup,
+const meta: Meta<typeof Component> = {
+  component: Component,
   parameters: {
     layout: 'centered',
   },
+  tags: ['autodocs'],
   argTypes: {},
   args: {
     label: 'Favorite sport',
@@ -15,16 +17,18 @@ export default {
     children: (
       <>
         <Radio value="soccer">Soccer</Radio>
-        <Radio value="baseball">Baseball</Radio>
+        <Radio isDisabled value="baseball">
+          Baseball
+        </Radio>
         <Radio value="basketball">Basketball</Radio>
       </>
     ),
   },
 };
 
-export const Default = {
-  args: {},
-};
+export default meta;
+
+export const Default = {};
 
 export const Validation = (args: any) => (
   <form
@@ -33,7 +37,7 @@ export const Validation = (args: any) => (
     }}
     className="flex flex-col items-start gap-2"
   >
-    <RadioGroup {...args} />
+    <Component {...args} />
     <Button type="submit" variant="secondary">
       Submit
     </Button>

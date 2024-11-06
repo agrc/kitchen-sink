@@ -1,17 +1,3 @@
-// import { twMerge } from 'tailwind-merge';
-
-// const SIZES = {
-//   xs: 'h-3 w-3',
-//   sm: 'h-3.5 w-3.5',
-//   base: 'h-4 w-4',
-//   lg: 'h-[1.125rem] w-[1.125rem]',
-//   xl: 'h-5 w-5',
-//   custom: null,
-// };
-
-/**
- * @returns {JSX.Element}
- */
 export const Spinner = () => {
   return (
     <svg
@@ -43,8 +29,10 @@ export const Spinner = () => {
   );
 };
 
-Spinner.sleep = async (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-Spinner.minDelay = async (promise, ms = 2500) => {
+Spinner.sleep = async (ms: number) =>
+  new Promise((resolve) => setTimeout(resolve, ms));
+
+Spinner.minDelay = async (promise: Promise<any>, ms = 2500) => {
   await Promise.allSettled([promise, Spinner.sleep(ms)]);
 
   return promise;

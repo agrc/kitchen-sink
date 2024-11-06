@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react';
-import { Switch as Component } from './Switch';
+import { FormErrors as Component } from './FormErrors.tsx';
 
 const meta: Meta<typeof Component> = {
   component: Component,
@@ -9,7 +9,10 @@ const meta: Meta<typeof Component> = {
   tags: ['autodocs'],
   argTypes: {},
   args: {
-    children: 'Wi-Fi',
+    errors: {
+      email: new Error('Email is required'),
+      password: new Error('Password is required'),
+    },
   },
 };
 

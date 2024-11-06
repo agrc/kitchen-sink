@@ -1,13 +1,14 @@
 import type { Meta } from '@storybook/react';
-import { Form } from 'react-aria-components';
 import { Button } from './Button';
-import { Select, SelectItem, SelectSection } from './Select';
+import { Select as Component, SelectItem, SelectSection } from './Select';
 
-const meta: Meta<typeof Select> = {
-  component: Select,
+const meta: Meta<typeof Component> = {
+  component: Component,
   parameters: {
     layout: 'centered',
   },
+  tags: ['autodocs'],
+  argTypes: {},
   args: {
     label: 'Ice cream flavor',
   },
@@ -16,21 +17,16 @@ const meta: Meta<typeof Select> = {
 export default meta;
 
 export const Example = (args: any) => (
-  <Select {...args}>
+  <Component {...args}>
     <SelectItem>Chocolate</SelectItem>
-    <SelectItem id="mint">Mint</SelectItem>
+    <SelectItem isDisabled>Mint</SelectItem>
     <SelectItem>Strawberry</SelectItem>
     <SelectItem>Vanilla</SelectItem>
-  </Select>
+  </Component>
 );
 
-export const DisabledItems = (args: any) => <Example {...args} />;
-DisabledItems.args = {
-  disabledKeys: ['mint'],
-};
-
 export const Sections = (args: any) => (
-  <Select {...args}>
+  <Component {...args}>
     <SelectSection title="Fruit">
       <SelectItem id="Apple">Apple</SelectItem>
       <SelectItem id="Banana">Banana</SelectItem>
@@ -51,7 +47,7 @@ export const Sections = (args: any) => (
       <SelectItem id="Cauliflower">Cauliflower</SelectItem>
       <SelectItem id="Potatoes">Potatoes</SelectItem>
     </SelectSection>
-  </Select>
+  </Component>
 );
 
 Sections.args = {
@@ -59,12 +55,17 @@ Sections.args = {
 };
 
 export const Validation = (args: any) => (
-  <Form className="flex flex-col items-start gap-2">
+  <form
+    onSubmit={(event) => {
+      event.preventDefault();
+    }}
+    className="flex flex-col items-start gap-2"
+  >
     <Example {...args} />
     <Button type="submit" variant="secondary">
       Submit
     </Button>
-  </Form>
+  </form>
 );
 
 Validation.args = {

@@ -1,16 +1,17 @@
 import type { Meta } from '@storybook/react';
-import { UtahIdLogin } from './UtahIdLogin';
+import { UtahIdLogin as Component } from './UtahIdLogin';
 import { FirebaseAppProvider, FirebaseAuthProvider } from '../contexts';
 import { OAuthProvider } from 'firebase/auth';
 import { firebaseConfig } from '../../firebase.ts';
 
 const provider = new OAuthProvider('oidc.utah-id');
 
-const meta: Meta<typeof UtahIdLogin> = {
-  component: UtahIdLogin,
+const meta: Meta<typeof Component> = {
+  component: Component,
   parameters: {
     layout: 'centered',
   },
+  tags: ['autodocs'],
   decorators: [
     (Story) => (
       <FirebaseAppProvider config={firebaseConfig}>
@@ -20,8 +21,10 @@ const meta: Meta<typeof UtahIdLogin> = {
       </FirebaseAppProvider>
     ),
   ],
+  argTypes: {},
+  args: {},
 };
 
 export default meta;
 
-export const Example = (args: any) => <UtahIdLogin {...args} />;
+export const Example = {};

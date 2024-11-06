@@ -10,8 +10,9 @@ import type { FooterProps } from './Footer.tsx';
 const meta: Meta<typeof Component> = {
   component: Component,
   parameters: {
-    layout: 'centered',
+    layout: 'fullscreen',
   },
+  tags: ['autodocs'],
   argTypes: {},
   args: {},
 };

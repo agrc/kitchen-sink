@@ -1,26 +1,27 @@
 import type { Meta } from '@storybook/react';
-import { Tag, TagGroup } from './TagGroup';
+import { Tag, TagGroup as Component } from './TagGroup';
 
-const meta: Meta<typeof Example> = {
-  component: TagGroup,
+const meta: Meta<typeof Component> = {
+  component: Component,
   parameters: {
     layout: 'centered',
+    actions: { argTypesRegex: '^on.*' },
+  },
+  tags: ['autodocs'],
+  argTypes: {},
+  args: {
+    label: 'Ice cream flavor',
+    selectionMode: 'single',
   },
 };
 
 export default meta;
 
 export const Example = (args: any) => (
-  <TagGroup {...args}>
+  <Component {...args}>
     <Tag isDisabled>Chocolate</Tag>
-    <Tag>Mint</Tag>
+    <Tag id="mint">Mint</Tag>
     <Tag>Strawberry</Tag>
     <Tag>Vanilla</Tag>
-  </TagGroup>
+  </Component>
 );
-
-Example.args = {
-  label: 'Ice cream flavor',
-  selectionMode: 'single',
-  onRemove: (key: string) => console.log('Removed:', key),
-};

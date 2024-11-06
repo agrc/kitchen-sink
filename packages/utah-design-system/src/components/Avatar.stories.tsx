@@ -1,20 +1,44 @@
-import { Avatar } from './Avatar';
+import { Meta } from '@storybook/react';
+import { Avatar as Component } from './Avatar';
 
-export default {
-  component: Avatar,
+const meta: Meta<typeof Component> = {
+  component: Component,
   parameters: {
     layout: 'centered',
   },
+  tags: ['autodocs'],
+  argTypes: {},
+  args: {
+    user: {
+      email: 'ugrc-developers@utah.gov',
+      displayName: 'UGRC Developers',
+      emailVerified: true,
+      isAnonymous: false,
+      metadata: {},
+      providerData: [],
+      refreshToken: '',
+      tenantId: '',
+      getIdToken: () => Promise.resolve(''),
+      getIdTokenResult: () => Promise.resolve({} as any),
+      reload: () => Promise.resolve(),
+      toJSON: () => ({}),
+      delete: () => Promise.resolve(),
+      phoneNumber: null,
+      photoURL: null,
+      providerId: '',
+      uid: '',
+    },
+  },
 };
 
-export const Example = (args: any) => <Avatar {...args} />;
-Example.args = {
-  user: { email: 'ugrc-developers@utah.gov', displayName: 'UGRC Developers' },
+export default meta;
+
+export const Example = {};
+export const Anonymous = (args: any) => <Component {...args} />;
+Anonymous.args = {
+  user: undefined,
 };
-
-export const Anonymous = (args: any) => <Avatar {...args} />;
-
-export const NoGravatar = (args: any) => <Avatar {...args} />;
+export const NoGravatar = (args: any) => <Component {...args} />;
 NoGravatar.args = {
   user: { email: 'test@test.com', displayName: 'Test User' },
 };

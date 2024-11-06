@@ -1,50 +1,51 @@
 import type { Meta } from '@storybook/react';
-import { Tab, TabList, TabPanel, Tabs } from './Tabs';
+import { Tab, TabList, TabPanel, Tabs as Component } from './Tabs';
 
-const meta: Meta<typeof Tabs> = {
-  component: Tabs,
+const meta: Meta<typeof Component> = {
+  component: Component,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  decorators: [
+    (Story) => (
+      <div className="max-w-[800px]">
+        <Story />
+      </div>
+    ),
+  ],
+  argTypes: {},
+  args: {},
 };
 
 export default meta;
 
 export const Example = (args: any) => (
-  <div className="min-w-[800px]">
-    <Tabs {...args}>
-      <TabList aria-label="History of Ancient Rome">
-        <Tab id="FoR">Founding of Rome</Tab>
-        <Tab id="MaR">Monarchy and Republic</Tab>
-        <Tab id="Emp" isDisabled>
-          Empire
-        </Tab>
-      </TabList>
-      <TabPanel id="FoR">
-        Arma virumque cano, Troiae qui primus ab oris.
-      </TabPanel>
-      <TabPanel id="MaR">Senatus Populusque Romanus.</TabPanel>
-      <TabPanel id="Emp">Alea jacta est.</TabPanel>
-    </Tabs>
-  </div>
+  <Component {...args}>
+    <TabList aria-label="History of Ancient Rome">
+      <Tab id="FoR">Founding of Rome</Tab>
+      <Tab id="MaR">Monarchy and Republic</Tab>
+      <Tab id="Emp" isDisabled>
+        Empire
+      </Tab>
+    </TabList>
+    <TabPanel id="FoR">Arma virumque cano, Troiae qui primus ab oris.</TabPanel>
+    <TabPanel id="MaR">Senatus Populusque Romanus.</TabPanel>
+    <TabPanel id="Emp">Alea jacta est.</TabPanel>
+  </Component>
 );
 
 export const Vertical = (args: any) => (
-  <div className="min-w-[800px]">
-    <Tabs {...args} orientation="vertical">
-      <TabList aria-label="History of Ancient Rome">
-        <Tab id="FoR">Founding of Rome</Tab>
-        <Tab id="MaR">Monarchy and Republic</Tab>
-        <Tab id="Emp" isDisabled>
-          Empire
-        </Tab>
-      </TabList>
-      <TabPanel id="FoR">
-        Arma virumque cano, Troiae qui primus ab oris.
-      </TabPanel>
-      <TabPanel id="MaR">Senatus Populusque Romanus.</TabPanel>
-      <TabPanel id="Emp">Alea jacta est.</TabPanel>
-    </Tabs>
-  </div>
+  <Component {...args} orientation="vertical">
+    <TabList aria-label="History of Ancient Rome">
+      <Tab id="FoR">Founding of Rome</Tab>
+      <Tab id="MaR">Monarchy and Republic</Tab>
+      <Tab id="Emp" isDisabled>
+        Empire
+      </Tab>
+    </TabList>
+    <TabPanel id="FoR">Arma virumque cano, Troiae qui primus ab oris.</TabPanel>
+    <TabPanel id="MaR">Senatus Populusque Romanus.</TabPanel>
+    <TabPanel id="Emp">Alea jacta est.</TabPanel>
+  </Component>
 );

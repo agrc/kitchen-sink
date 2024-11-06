@@ -1,7 +1,6 @@
-import PropTypes from 'prop-types';
-import { Banner } from './Banner';
+import { Banner } from './Banner.tsx';
 
-export const FormErrors = ({ errors }) => {
+export const FormErrors = ({ errors }: { errors: Record<string, Error> }) => {
   const entries = Object.entries(errors);
 
   if (entries.length === 0) {
@@ -27,12 +26,9 @@ export const FormErrors = ({ errors }) => {
     </Banner>
   );
 };
-FormErrors.propTypes = {
-  errors: PropTypes.object.isRequired,
-};
 
-export const FormError = ({ children }) => {
-  if (children?.length === 0) {
+export const FormError = ({ children }: { children: React.ReactNode }) => {
+  if (!children) {
     return null;
   }
 
@@ -41,7 +37,4 @@ export const FormError = ({ children }) => {
       <div className="self-center px-3 py-2 font-bold">{children}</div>
     </Banner>
   );
-};
-FormError.propTypes = {
-  children: PropTypes.node,
 };

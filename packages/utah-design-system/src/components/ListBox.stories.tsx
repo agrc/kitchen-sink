@@ -1,31 +1,28 @@
 import type { Meta } from '@storybook/react';
-import { ListBox, ListBoxItem } from './ListBox';
+import { ListBox as Component, ListBoxItem } from './ListBox';
 
-const meta: Meta<typeof ListBox> = {
-  component: ListBox,
+const meta: Meta<typeof Component> = {
+  component: Component,
   parameters: {
     layout: 'centered',
+  },
+  tags: ['autodocs'],
+  argTypes: {},
+  args: {
+    onAction: undefined,
+    selectionMode: 'multiple',
   },
 };
 
 export default meta;
 
 export const Example = (args: any) => (
-  <ListBox aria-label="Ice cream flavor" {...args}>
+  <Component aria-label="Ice cream flavor" {...args}>
     <ListBoxItem id="chocolate">Chocolate</ListBoxItem>
-    <ListBoxItem id="mint">Mint</ListBoxItem>
+    <ListBoxItem isDisabled id="mint">
+      Mint
+    </ListBoxItem>
     <ListBoxItem id="strawberry">Strawberry</ListBoxItem>
     <ListBoxItem id="vanilla">Vanilla</ListBoxItem>
-  </ListBox>
+  </Component>
 );
-
-Example.args = {
-  onAction: null,
-  selectionMode: 'multiple',
-};
-
-export const DisabledItems = (args: any) => <Example {...args} />;
-DisabledItems.args = {
-  ...Example.args,
-  disabledKeys: ['mint'],
-};

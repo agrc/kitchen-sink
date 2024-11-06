@@ -1,12 +1,14 @@
-import { Geocode } from './Geocode.js';
+import { Meta } from '@storybook/react';
+import { Geocode as Component } from './Geocode.js';
 import { fn, waitFor, userEvent, within, expect } from '@storybook/test';
 import { http, HttpResponse } from 'msw';
 
-export default {
-  component: Geocode,
+const meta: Meta<typeof Component> = {
+  component: Component,
   parameters: {
     layout: 'centered',
   },
+  tags: ['autodocs'],
   argTypes: {
     format: {
       control: {
@@ -31,9 +33,9 @@ export default {
   },
 };
 
-export const Default = {
-  args: {},
-};
+export default meta;
+
+export const Example = {};
 
 export const Milepost = {
   args: { type: 'route-milepost' },

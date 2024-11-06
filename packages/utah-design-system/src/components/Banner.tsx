@@ -1,8 +1,7 @@
 import { TriangleAlertIcon } from 'lucide-react';
+import { ReactNode } from 'react';
 
-import PropTypes from 'prop-types';
-
-export const Banner = ({ children }) => {
+export const Banner = ({ children }: { children: ReactNode }) => {
   return (
     <div className="m-6 mx-auto flex min-h-[75px] max-w-lg flex-row gap-2 rounded border border-rose-500 bg-rose-50 dark:bg-rose-900/10">
       <div className="inline-flex min-w-[75px] items-center justify-center rounded-l bg-rose-200 text-rose-500/70 dark:bg-rose-800/50">
@@ -13,7 +12,4 @@ export const Banner = ({ children }) => {
       </div>
     </div>
   );
-};
-Banner.propTypes = {
-  children: PropTypes.node,
 };
