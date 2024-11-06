@@ -5,6 +5,7 @@
   "packages/mouse-trap": "2.0.12",
   "packages/popover": "1.1.0",
   "packages/sherlock": "4.0.9",
-  "packages/utilities": "2.2.7",
-  "packages/utah-design-system": "1.14.0"
+  "packages/tailwind-preset": "1.0.0",
+  "packages/utah-design-system": "1.14.0",
+  "packages/utilities": "2.2.7"
 }
