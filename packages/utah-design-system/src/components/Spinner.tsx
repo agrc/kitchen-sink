@@ -1,12 +1,16 @@
+import { useProgressBar } from 'react-aria';
+
 export const Spinner = () => {
+  const { progressBarProps } = useProgressBar({
+    isIndeterminate: true,
+  });
+
   return (
     <svg
+      {...progressBarProps}
       className="h-full shrink-0 motion-safe:animate-spin"
       fill="none"
-      role="progressbar"
-      aria-live="polite"
-      aria-hidden="false"
-      aria-valuetext="loading"
+      aria-label="Loading…"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       width="18"
@@ -36,4 +40,22 @@ Spinner.minDelay = async (promise: Promise<any>, ms = 2500) => {
   await Promise.allSettled([promise, Spinner.sleep(ms)]);
 
   return promise;
+};
+
+export const BusyBar = ({ busy }: { busy?: boolean }) => {
+  const { progressBarProps } = useProgressBar({
+    isIndeterminate: true,
+  });
+
+  if (!busy) {
+    return null;
+  }
+
+  return (
+    <div
+      {...progressBarProps}
+      aria-label="Loading…"
+      className="absolute inset-x-0 top-0 z-[1] h-2 w-full min-w-full animate-gradient-x bg-gradient-to-r from-secondary-700/90 from-30% via-accent-400/90 to-primary-800/90 to-70% transition-all duration-700 ease-in-out"
+    ></div>
+  );
 };
