@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.13.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.13.1...utah-design-system-v1.13.2) (2024-11-06)
+
+
+### Bug Fixes
+
+* **uds:** remove no longer necessary prop types ([b0a8dbf](https://github.com/agrc/kitchen-sink/commit/b0a8dbf6cd9d1f3349e7e122339d9eb7f7547ac8))
+
 ## [1.13.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.13.0...utah-design-system-v1.13.1) (2024-11-05)
 
 
