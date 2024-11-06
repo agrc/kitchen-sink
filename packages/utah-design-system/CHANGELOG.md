@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.13.2...utah-design-system-v1.14.0) (2024-11-06)
+
+
+### Features
+
+* **spinner:** introduce a busy bar ([8f98ea0](https://github.com/agrc/kitchen-sink/commit/8f98ea0ca717d77271bbc787c8daf942dd59f70d))
+
 ## [1.13.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.13.1...utah-design-system-v1.13.2) (2024-11-06)
 
 
