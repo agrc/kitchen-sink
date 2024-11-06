@@ -33,6 +33,8 @@
     }
   ],
   "type": "module",
+  "main": "./dist/index.esm.js",
+  "types": "./dist/src/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.esm.js",
