@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.14.0...utah-design-system-v1.14.1) (2024-11-07)
+
+
+### Bug Fixes
+
+* **uds:** pass aria labels to hooks to prevent warnings in console ([3f12588](https://github.com/agrc/kitchen-sink/commit/3f12588433594df57a82e82b663605bf91e87db5))
+
 ## [1.14.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.13.2...utah-design-system-v1.14.0) (2024-11-06)
 
 
