@@ -89,7 +89,7 @@ jobs:
           identity-provider: ${{ secrets.IDENTITY_PROVIDER }}
           service-account-email: ${{ secrets.SERVICE_ACCOUNT_EMAIL }}
           project-id: ${{ secrets.PROJECT_ID }}
-          prerelease: 'yes'
+          preview: 'yes'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           prebuild-command: npm run build --workspace @ugrc/utilities && npm run build
           build-command: npm run build:storybook
