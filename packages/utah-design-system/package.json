@@ -58,7 +58,7 @@
   "dependencies": {
     "@arcgis/core": "4.x",
     "@ugrc/utilities": "2.2.7",
-    "firebase": ">=10.x",
+    "firebase": ">=11.x",
     "ky": "^1.7.2",
     "lodash-es": "^4.17.21",
     "lucide-react": "^0.454.0",
