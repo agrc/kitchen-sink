@@ -94,9 +94,9 @@ export type DrawerProps = {
   children: React.ReactNode;
   className?: string;
   main?: boolean;
-  overlayProps?: DOMProps;
+  overlayProps: DOMProps;
   state: OverlayTriggerState;
-  triggerProps?: AriaButtonProps;
+  triggerProps: AriaButtonProps;
   type?: 'sidebar' | 'tray';
 };
 
