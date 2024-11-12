@@ -7,11 +7,14 @@ import {
 } from 'lucide-react';
 import { Button, MenuTrigger } from 'react-aria-components';
 import { useModalOverlay, useOverlayTrigger } from 'react-aria';
-import { KeyboardEvent, ReactNode, useRef } from 'react';
-import { OverlayTriggerState, useOverlayTriggerState } from 'react-stately';
+import { type KeyboardEvent, type ReactNode, useRef } from 'react';
+import {
+  type OverlayTriggerState,
+  useOverlayTriggerState,
+} from 'react-stately';
 import { Avatar } from './Avatar';
 import { Menu, MenuItem, MenuSeparator } from './Menu';
-import { User } from 'firebase/auth';
+import type { User } from 'firebase/auth';
 
 const dismiss = (e: KeyboardEvent, action: Function): void => {
   if (e.key !== 'Escape') {

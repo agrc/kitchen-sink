@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { Geocode as Component } from './Geocode.js';
 import { fn, waitFor, userEvent, within, expect } from '@storybook/test';
 import { http, HttpResponse } from 'msw';

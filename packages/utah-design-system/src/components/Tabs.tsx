@@ -3,10 +3,10 @@ import {
   TabList as RACTabList,
   TabPanel as RACTabPanel,
   Tabs as RACTabs,
-  TabListProps,
-  TabPanelProps,
-  TabProps,
-  TabsProps,
+  type TabListProps,
+  type TabPanelProps,
+  type TabProps,
+  type TabsProps,
   composeRenderProps,
 } from 'react-aria-components';
 import { tv } from 'tailwind-variants';

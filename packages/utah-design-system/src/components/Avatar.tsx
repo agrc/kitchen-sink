@@ -1,4 +1,4 @@
-import { User } from 'firebase/auth';
+import type { User } from 'firebase/auth';
 import { Md5 } from 'ts-md5';
 import { twJoin } from 'tailwind-merge';
 

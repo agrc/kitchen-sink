@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { Button } from './Button.tsx';
 import { Radio, RadioGroup as Component } from './Radio.tsx';
 

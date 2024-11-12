@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { SocialMedia as Component } from './SocialMedia.tsx';
 
 const meta: Meta<typeof Component> = {

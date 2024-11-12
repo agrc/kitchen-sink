@@ -1,10 +1,16 @@
 import {
-  FirebaseApp,
-  FirebaseOptions,
+  type FirebaseApp,
+  type FirebaseOptions,
   initializeApp,
   registerVersion,
 } from 'firebase/app';
-import { createContext, ReactNode, useContext, useMemo, version } from 'react';
+import {
+  createContext,
+  type ReactNode,
+  useContext,
+  useMemo,
+  version,
+} from 'react';
 
 const FirebaseAppContext = createContext<FirebaseApp | null>(null);
 

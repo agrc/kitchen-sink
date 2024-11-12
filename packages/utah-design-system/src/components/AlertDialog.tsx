@@ -1,7 +1,7 @@
 import { AlertCircleIcon, InfoIcon } from 'lucide-react';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { chain } from 'react-aria';
-import { DialogProps, Heading } from 'react-aria-components';
+import { type DialogProps, Heading } from 'react-aria-components';
 import { Button } from './Button';
 import { Dialog } from './Dialog';
 

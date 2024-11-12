@@ -3,7 +3,7 @@ import { toQueryString } from '@ugrc/utilities';
 import { Button } from './Button';
 import { TextField } from './TextField';
 import { Spinner } from './Spinner';
-import { Group, PressEvent } from 'react-aria-components';
+import { Group, type PressEvent } from 'react-aria-components';
 import { TriangleAlertIcon } from 'lucide-react';
 
 const ADDRESS_TYPE = 'single-address';
