@@ -72,10 +72,18 @@ const drawer = tv({
   compoundVariants: [
     {
       type: 'tray',
+      size: 'normal',
+      class: {
+        content: "data-[open='true']:h-80",
+      },
+    },
+    {
+      type: 'tray',
       size: 'fullscreen',
       class: {
         container:
           'data-[open="true"]:fixed data-[open="true"]:z-30 data-[open="true"]:h-full',
+        content: 'data-[open="true"]:h-full',
       },
     },
     {
