@@ -1,5 +1,5 @@
 import { TriangleAlertIcon } from 'lucide-react';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 export const Banner = ({ children }: { children: ReactNode }) => {
   return (

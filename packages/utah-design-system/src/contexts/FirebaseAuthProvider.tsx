@@ -1,16 +1,16 @@
 import {
-  Auth,
+  type Auth,
   getAuth,
   OAuthProvider,
   onAuthStateChanged,
   signInWithPopup,
   signOut,
-  User,
-  UserCredential,
+  type User,
+  type UserCredential,
 } from 'firebase/auth';
 import {
   createContext,
-  ReactNode,
+  type ReactNode,
   useContext,
   useEffect,
   useState,

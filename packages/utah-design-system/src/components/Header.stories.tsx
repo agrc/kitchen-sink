@@ -1,4 +1,4 @@
-import { Header as Component, HeaderProps } from './Header.tsx';
+import { Header as Component, type HeaderProps } from './Header.tsx';
 import {
   FirebaseAppProvider,
   FirebaseAuthProvider,
@@ -7,7 +7,7 @@ import {
 import { OAuthProvider } from 'firebase/auth';
 import { UtahIdLogin } from './UtahIdLogin.tsx';
 import { firebaseConfig } from '../../firebase.ts';
-import { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 
 const provider = new OAuthProvider('oidc.utahid');
 

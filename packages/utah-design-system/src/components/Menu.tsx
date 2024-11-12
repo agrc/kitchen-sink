@@ -2,18 +2,18 @@ import { Check, ChevronRight } from 'lucide-react';
 import {
   Menu as AriaMenu,
   MenuItem as AriaMenuItem,
-  MenuProps as AriaMenuProps,
-  MenuItemProps,
+  type MenuProps as AriaMenuProps,
+  type MenuItemProps,
   Separator,
-  SeparatorProps,
+  type SeparatorProps,
   composeRenderProps,
 } from 'react-aria-components';
 import {
   DropdownSection,
-  DropdownSectionProps,
+  type DropdownSectionProps,
   dropdownItemStyles,
 } from './ListBox';
-import { Popover, PopoverProps } from './Popover';
+import { Popover, type PopoverProps } from './Popover';
 
 interface MenuProps<T> extends AriaMenuProps<T> {
   placement?: PopoverProps['placement'];

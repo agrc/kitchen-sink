@@ -1,11 +1,15 @@
-import { AriaButtonProps, FocusScope, useOverlayTrigger } from 'react-aria';
-import { DOMProps } from '@react-types/shared';
-import { Button } from './Button';
-import { ChevronLeftIcon, ChevronDownIcon, FullscreenIcon } from 'lucide-react';
+import type { DOMProps } from '@react-types/shared';
+import { ChevronDownIcon, ChevronLeftIcon, FullscreenIcon } from 'lucide-react';
+import { useState } from 'react';
+import {
+  type AriaButtonProps,
+  FocusScope,
+  useOverlayTrigger,
+} from 'react-aria';
+import type { OverlayTriggerState } from 'react-stately';
 import { twJoin, twMerge } from 'tailwind-merge';
 import { tv } from 'tailwind-variants';
-import { useState } from 'react';
-import { OverlayTriggerState } from 'react-stately';
+import { Button } from './Button';
 
 /*
 Getting Started

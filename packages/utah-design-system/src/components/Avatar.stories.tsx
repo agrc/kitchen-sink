@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { Avatar as Component } from './Avatar';
 
 const meta: Meta<typeof Component> = {

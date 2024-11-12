@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { Checkbox as Component } from './Checkbox';
 
 const meta: Meta<typeof Component> = {

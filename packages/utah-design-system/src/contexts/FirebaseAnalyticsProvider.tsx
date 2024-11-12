@@ -1,5 +1,5 @@
 import { logEvent as firebaseLogEvent, getAnalytics } from 'firebase/analytics';
-import { createContext, ReactNode, useContext } from 'react';
+import { createContext, type ReactNode, useContext } from 'react';
 import { useFirebaseApp } from './FirebaseAppProvider';
 
 const FirebaseAnalyticsContext = createContext<
