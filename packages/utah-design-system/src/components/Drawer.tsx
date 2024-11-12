@@ -36,12 +36,10 @@ const drawerTriggerProps = useOverlayTrigger(
 
 const drawer = tv({
   slots: {
-    container: 'shrink-0 bg-white duration-500 ease-in-out dark:bg-zinc-800',
-    content: 'duration-500 ease-in-out',
-    trigger:
-      'group/trigger absolute z-10 overflow-hidden rounded border border-zinc-200 bg-white hover:border-zinc-300 dark:hover:border-zinc-600',
+    container: 'shrink-0 duration-500 ease-in-out',
+    content: 'bg-white duration-500 ease-in-out dark:bg-zinc-800',
     triggerButton:
-      'flex items-center justify-center rounded-none border-0 bg-transparent p-1 shadow-md hover:bg-current group-hover/trigger:bg-black/10 dark:group-hover/trigger:bg-white/10',
+      'absolute z-10 flex justify-center overflow-hidden rounded border border-zinc-200 bg-white p-1 hover:border-zinc-300 hover:bg-slate-200 pressed:bg-slate-300 dark:hover:border-zinc-600 dark:hover:bg-zinc-900 dark:pressed:bg-slate-100',
   },
   variants: {
     type: {
@@ -50,18 +48,16 @@ const drawer = tv({
           "relative h-full w-80 transition-[width] data-[open='false']:w-0",
         content:
           "h-full w-80 overflow-y-auto data-[open='false']:-translate-x-full data-[open='true']:translate-x-0",
-        trigger:
-          '-right-8 top-[calc(50%-24px)] h-10 w-6 rounded-l-none dark:border-zinc-700 dark:bg-zinc-800',
-        triggerButton: 'h-10 w-full',
+        triggerButton:
+          '-right-[25px] top-[calc(50%-24px)] h-10 flex-col rounded-l-none border-l-0 dark:border-zinc-700 dark:bg-zinc-800',
       },
       tray: {
         container:
-          'absolute inset-x-0 bottom-0 h-80 bg-zinc-50 transition-[height] data-[open="false"]:h-0 data-[open="true"]:h-80 dark:bg-zinc-700',
+          'absolute inset-x-0 bottom-0 h-80 transition-[height] data-[open="false"]:h-0 data-[open="true"]:h-80',
         content:
-          "overflow-x-auto data-[open='false']:h-0 data-[open='true']:h-80 data-[open='true']:translate-y-0 data-[open='false']:overflow-hidden",
-        trigger:
-          '-top-6 -top-[1.4rem] left-[calc(50%-24px)] h-6 w-10 rounded-b-none bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-700',
-        triggerButton: 'h-6 w-10',
+          "overflow-x-auto border-t bg-zinc-50 data-[open='false']:h-0 data-[open='true']:translate-y-0 data-[open='false']:overflow-hidden dark:bg-zinc-700",
+        triggerButton:
+          '-top-6 bottom-[calc(100%)] left-[calc(50%-24px)] min-h-[25px] w-10 rounded-b-none border-b-0 bg-zinc-50 py-0 dark:border-zinc-800 dark:bg-zinc-700',
       },
     },
     size: {
@@ -157,7 +153,6 @@ export const Drawer = ({
         triggerProps={triggerProps || internalTriggerProps}
         state={state}
         Icon={type === 'sidebar' ? ChevronLeftIcon : ChevronDownIcon}
-        className={css.trigger()}
         buttonClassName={css.triggerButton()}
       />
     </div>
@@ -168,7 +163,6 @@ export type DefaultDrawerTriggerProps = {
   triggerProps: AriaButtonProps;
   Icon: React.ElementType;
   state: OverlayTriggerState;
-  className?: string;
   buttonClassName?: string;
 };
 
@@ -176,24 +170,22 @@ const DefaultDrawerTrigger = ({
   triggerProps,
   Icon,
   state,
-  className,
   buttonClassName,
 }: DefaultDrawerTriggerProps) => {
   return (
-    <div className={className}>
-      <Button
-        className={buttonClassName}
-        {...triggerProps}
-        onPress={state.toggle}
-        aria-label="Close the drawer"
-      >
-        <Icon
-          className={twJoin(
-            'h-full w-4 shrink-0 text-zinc-900 transition-transform duration-500 dark:text-white',
-            !state.isOpen ? '-rotate-180' : '',
-          )}
-        />
-      </Button>
-    </div>
+    <Button
+      className={buttonClassName}
+      {...triggerProps}
+      variant="icon"
+      onPress={state.toggle}
+      aria-label="Close the drawer"
+    >
+      <Icon
+        className={twJoin(
+          'w-4 text-zinc-900 transition-transform duration-500 dark:text-white',
+          !state.isOpen ? '-rotate-180' : '',
+        )}
+      />
+    </Button>
   );
 };
