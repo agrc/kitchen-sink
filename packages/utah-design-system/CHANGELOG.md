@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.14.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.14.1...utah-design-system-v1.14.2) (2024-11-13)
+
+
+### Bug Fixes
+
+* **drawer:** fix layout for full screen tray ([ffc0e7e](https://github.com/agrc/kitchen-sink/commit/ffc0e7e3a40e718181cd22d3125185022836fc21)), closes [#343](https://github.com/agrc/kitchen-sink/issues/343)
+* **drawer:** simplify and fix draw trigger alignment ([6b8d0c1](https://github.com/agrc/kitchen-sink/commit/6b8d0c15f316712a6e46e78e5a01871ef5431943))
+* **uds:** make prop types match check ([b0c5553](https://github.com/agrc/kitchen-sink/commit/b0c55531ca4be40638bd137aab69f4794266bab9))
+
 ## [1.14.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.14.0...utah-design-system-v1.14.1) (2024-11-07)
 
 
