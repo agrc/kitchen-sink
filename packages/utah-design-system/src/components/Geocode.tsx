@@ -1,10 +1,10 @@
-import { useState, useCallback } from 'react';
 import { toQueryString } from '@ugrc/utilities';
-import { Button } from './Button';
-import { TextField } from './TextField';
-import { Spinner } from './Spinner';
-import { Group, type PressEvent } from 'react-aria-components';
 import { TriangleAlertIcon } from 'lucide-react';
+import { useCallback, useState } from 'react';
+import { Group, type PressEvent } from 'react-aria-components';
+import { Button } from './Button';
+import { Spinner } from './Spinner';
+import { TextField } from './TextField';
 
 const ADDRESS_TYPE = 'single-address';
 
@@ -457,4 +457,4 @@ const useGeocoding = (userProps: GeocodeProps) => {
   };
 };
 
-export { useGeocoding, Geocode };
+export { Geocode, useGeocoding };

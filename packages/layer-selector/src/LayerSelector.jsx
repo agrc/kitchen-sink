@@ -1,14 +1,14 @@
-import { useState, useEffect, useRef } from 'react';
-import classNames from 'clsx';
-import PropTypes from 'prop-types';
-import { createDefaultTileInfo } from './TileInfo';
-import { setTileInfosForApplianceLayers } from './Discover';
 import Basemap from '@arcgis/core/Basemap.js';
+import FeatureLayer from '@arcgis/core/layers/FeatureLayer.js';
 import LOD from '@arcgis/core/layers/support/LOD.js';
 import TileInfo from '@arcgis/core/layers/support/TileInfo.js';
-import WebTileLayer from '@arcgis/core/layers/WebTileLayer.js';
-import FeatureLayer from '@arcgis/core/layers/FeatureLayer.js';
 import TileLayer from '@arcgis/core/layers/TileLayer.js';
+import WebTileLayer from '@arcgis/core/layers/WebTileLayer.js';
+import classNames from 'clsx';
+import PropTypes from 'prop-types';
+import { useEffect, useRef, useState } from 'react';
+import { setTileInfosForApplianceLayers } from './Discover';
+import { createDefaultTileInfo } from './TileInfo';
 
 import icon from './layers.svg';
 

@@ -1,5 +1,5 @@
 export {
-  default,
   ExpandableContainer,
   LayerSelectorItem,
+  default,
 } from './LayerSelector.jsx';

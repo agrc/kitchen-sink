@@ -1,17 +1,9 @@
 import Graphic from '@arcgis/core/Graphic.js';
-import { escapeRegExp } from 'lodash-es';
-import { SearchIcon, ChevronsUpDownIcon, CheckIcon } from 'lucide-react';
-import { Spinner } from './Spinner';
-import {
-  Input,
-  ListBox,
-  ListBoxItem,
-  Popover,
-  ComboBox,
-  Button,
-  Group,
-} from 'react-aria-components';
-import { useAsyncList, type Key } from 'react-stately';
+import type {
+  IGeocodeResponse,
+  ISuggestResponse,
+} from '@esri/arcgis-rest-geocoding';
+import type { IFeatureSet } from '@esri/arcgis-rest-request';
 import {
   type AsyncListData,
   type AsyncListLoadOptions,
@@ -22,16 +14,24 @@ import {
   type ApiErrorResponse,
   type SearchResponse,
 } from '@ugrc/utilities';
-import { tv } from 'tailwind-variants';
-import { focusRing } from './utils';
-import { FieldError, Label, fieldBorderStyles } from './Field';
 import ky, { type Input as KyInput, type Options as KyOptions } from 'ky';
-import type { IFeatureSet } from '@esri/arcgis-rest-request';
-import type {
-  IGeocodeResponse,
-  ISuggestResponse,
-} from '@esri/arcgis-rest-geocoding';
+import { escapeRegExp } from 'lodash-es';
+import { CheckIcon, ChevronsUpDownIcon, SearchIcon } from 'lucide-react';
 import type { ReactNode } from 'react';
+import {
+  Button,
+  ComboBox,
+  Group,
+  Input,
+  ListBox,
+  ListBoxItem,
+  Popover,
+} from 'react-aria-components';
+import { useAsyncList, type Key } from 'react-stately';
+import { tv } from 'tailwind-variants';
+import { FieldError, Label, fieldBorderStyles } from './Field';
+import { Spinner } from './Spinner';
+import { focusRing } from './utils';
 
 const yellow = [255, 255, 0];
 const polygon = {

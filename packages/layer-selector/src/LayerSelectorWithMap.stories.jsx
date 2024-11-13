@@ -1,13 +1,13 @@
-import { useRef, useEffect, useState } from 'react';
-import LayerSelector from './';
+import FeatureLayer from '@arcgis/core/layers/FeatureLayer.js';
+import TileInfo from '@arcgis/core/layers/support/TileInfo.js';
+import TileLayer from '@arcgis/core/layers/TileLayer.js';
+import VectorTileLayer from '@arcgis/core/layers/VectorTileLayer.js';
+import WebTileLayer from '@arcgis/core/layers/WebTileLayer.js';
 import Map from '@arcgis/core/Map.js';
 import MapView from '@arcgis/core/views/MapView.js';
-import FeatureLayer from '@arcgis/core/layers/FeatureLayer.js';
-import VectorTileLayer from '@arcgis/core/layers/VectorTileLayer.js';
-import TileInfo from '@arcgis/core/layers/support/TileInfo.js';
-import WebTileLayer from '@arcgis/core/layers/WebTileLayer.js';
-import TileLayer from '@arcgis/core/layers/TileLayer.js';
 import PropTypes from 'prop-types';
+import { useEffect, useRef, useState } from 'react';
+import LayerSelector from './';
 
 import '@arcgis/core/assets/esri/themes/light/main.css';
 import './LayerSelector.css';

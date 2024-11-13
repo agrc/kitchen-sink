@@ -1,5 +1,5 @@
+import { describe, expect, it } from 'vitest';
 import { toQueryString } from './url';
-import { describe, it, expect } from 'vitest';
 
 describe('toQueryString', () => {
   it('should not include null and undefined values in the query string', () => {

@@ -1,9 +1,9 @@
-import './tailwind.css';
 import { withThemeByClassName } from '@storybook/addon-themes';
-import { initialize, mswLoader } from 'msw-storybook-addon';
-import { getAuth, connectAuthEmulator } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
+import { connectAuthEmulator, getAuth } from 'firebase/auth';
+import { initialize, mswLoader } from 'msw-storybook-addon';
 import { firebaseConfig } from '../packages/utah-design-system/firebase';
+import './tailwind.css';
 
 initialize({ onUnhandledRequest: 'bypass' });
 const app = initializeApp(firebaseConfig);

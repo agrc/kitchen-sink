@@ -1,11 +1,11 @@
 import type { Meta } from '@storybook/react';
+import type { FooterProps } from './Footer.tsx';
 import {
   Footer as Component,
-  GovOpsAddress,
   dnrStandardLinks,
+  GovOpsAddress,
   NaturalResourcesAddress,
 } from './Footer.tsx';
-import type { FooterProps } from './Footer.tsx';
 
 const meta: Meta<typeof Component> = {
   component: Component,

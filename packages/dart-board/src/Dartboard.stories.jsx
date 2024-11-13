@@ -1,5 +1,5 @@
-import Dartboard, { TailwindDartboard, useDartboard } from './index';
 import './Dartboard.css';
+import Dartboard, { TailwindDartboard, useDartboard } from './index';
 
 export default {
   component: Dartboard,

@@ -1,5 +1,5 @@
-import LayerSelector from './';
 import Collection from '@arcgis/core/core/Collection.js';
+import LayerSelector from './';
 
 import './LayerSelector.css';
 
