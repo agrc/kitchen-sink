@@ -1,3 +1,4 @@
+import '@arcgis/core/interfaces.d.ts';
 import ky from 'ky';
 
 const SPACE = ' ';
