@@ -1,16 +1,18 @@
+import type { Meta } from '@storybook/react';
 import {
   Sherlock as Component,
   featureServiceProvider,
   masqueradeProvider,
   multiProvider,
   ugrcApiProvider,
-} from './Sherlock.jsx';
+} from './Sherlock';
 
-export default {
+const meta: Meta<typeof Component> = {
   component: Component,
   parameters: {
     layout: 'centered',
   },
+  tags: ['autodocs'],
   decorators: [
     (Story) => (
       <div className="w-96">
@@ -18,7 +20,11 @@ export default {
       </div>
     ),
   ],
+  argTypes: {},
+  args: {},
 };
+
+export default meta;
 
 const url =
   'https://masquerade.ugrc.utah.gov/arcgis/rest/services/UtahLocator/GeocodeServer';
