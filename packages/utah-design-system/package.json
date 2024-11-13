@@ -40,8 +40,7 @@
   ],
   "scripts": {
     "build": "echo 'This package does not have a build process.'",
-    "check-types": "tsc",
-    "check-types-watch": "tsc --watch",
+    "check": "tsc",
     "prepublish": "cp ../../LICENSE /",
     "test": "vitest --config ../../vite.config.js"
   },
