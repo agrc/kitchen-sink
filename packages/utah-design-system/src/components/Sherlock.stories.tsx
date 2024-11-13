@@ -1,4 +1,6 @@
+import type Graphic from '@arcgis/core/Graphic';
 import type { Meta } from '@storybook/react';
+import type { AsyncListData } from 'react-stately';
 import {
   Sherlock as Component,
   featureServiceProvider,
@@ -7,8 +9,6 @@ import {
   ugrcApiProvider,
   type AsyncListItem,
 } from './Sherlock';
-import type Graphic from '@arcgis/core/Graphic';
-import type { AsyncListData } from 'react-stately';
 
 const meta: Meta<typeof Component> = {
   component: Component,

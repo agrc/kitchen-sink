@@ -1,5 +1,5 @@
-import type { ReactNode } from 'react';
 import { SquareArrowOutUpRightIcon } from 'lucide-react';
+import type { ReactNode } from 'react';
 import {
   Link as AriaLink,
   type LinkProps as AriaLinkProps,

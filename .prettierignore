@@ -6,3 +6,4 @@ data/firebase/
 package-lock.json
 .vscode
 CHANGELOG.md
+public/

@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react';
 import { Button } from './Button.tsx';
-import { Radio, RadioGroup as Component } from './Radio.tsx';
+import { RadioGroup as Component, Radio } from './Radio.tsx';
 
 const meta: Meta<typeof Component> = {
   component: Component,

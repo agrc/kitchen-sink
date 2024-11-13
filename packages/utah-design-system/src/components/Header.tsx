@@ -1,20 +1,20 @@
+import type { User } from 'firebase/auth';
 import {
-  ShieldCheckIcon,
+  GripIcon,
   LockIcon,
+  ShieldCheckIcon,
   SquareArrowOutUpRightIcon,
   XIcon,
-  GripIcon,
 } from 'lucide-react';
-import { Button, MenuTrigger } from 'react-aria-components';
-import { useModalOverlay, useOverlayTrigger } from 'react-aria';
 import { type KeyboardEvent, type ReactNode, useRef } from 'react';
+import { useModalOverlay, useOverlayTrigger } from 'react-aria';
+import { Button, MenuTrigger } from 'react-aria-components';
 import {
   type OverlayTriggerState,
   useOverlayTriggerState,
 } from 'react-stately';
 import { Avatar } from './Avatar';
 import { Menu, MenuItem, MenuSeparator } from './Menu';
-import type { User } from 'firebase/auth';
 
 const dismiss = (e: KeyboardEvent, action: Function): void => {
   if (e.key !== 'Escape') {

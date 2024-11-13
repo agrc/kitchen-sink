@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react';
+import { Controller, useForm } from 'react-hook-form';
 import { Button } from './Button';
 import { TextField as Component } from './TextField';
-import { Controller, useForm } from 'react-hook-form';
 
 const meta: Meta<typeof Component> = {
   component: Component,

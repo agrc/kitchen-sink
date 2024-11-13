@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { basename, resolve } from 'path';
 import { readPackage } from 'read-pkg';
+import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
 const directory = process.cwd();

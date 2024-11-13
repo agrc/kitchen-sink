@@ -1,6 +1,6 @@
 export {
-  default,
-  WebApiProvider,
-  MapServiceProvider,
   LocatorSuggestProvider,
+  MapServiceProvider,
+  WebApiProvider,
+  default,
 } from './Sherlock.jsx';

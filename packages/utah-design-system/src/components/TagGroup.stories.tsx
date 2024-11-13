@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react';
-import { Tag, TagGroup as Component } from './TagGroup';
+import { TagGroup as Component, Tag } from './TagGroup';
 
 const meta: Meta<typeof Component> = {
   component: Component,

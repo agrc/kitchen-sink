@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react';
-import { Geocode as Component } from './Geocode.js';
-import { fn, waitFor, userEvent, within, expect } from '@storybook/test';
+import { expect, fn, userEvent, waitFor, within } from '@storybook/test';
 import { http, HttpResponse } from 'msw';
+import { Geocode as Component } from './Geocode.js';
 
 const meta: Meta<typeof Component> = {
   component: Component,

@@ -1,13 +1,13 @@
-import { Header as Component, type HeaderProps } from './Header.tsx';
+import type { Meta } from '@storybook/react';
+import { OAuthProvider } from 'firebase/auth';
+import { firebaseConfig } from '../../firebase.ts';
 import {
   FirebaseAppProvider,
   FirebaseAuthProvider,
   useFirebaseAuth,
 } from '../contexts/index.ts';
-import { OAuthProvider } from 'firebase/auth';
+import { Header as Component, type HeaderProps } from './Header.tsx';
 import { UtahIdLogin } from './UtahIdLogin.tsx';
-import { firebaseConfig } from '../../firebase.ts';
-import type { Meta } from '@storybook/react';
 
 const provider = new OAuthProvider('oidc.utahid');
 

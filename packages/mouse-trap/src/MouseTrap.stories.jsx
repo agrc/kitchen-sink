@@ -1,8 +1,8 @@
-import { useRef, useEffect, useState } from 'react';
-import MouseTrap from './';
 import EsriMap from '@arcgis/core/Map.js';
 import MapView from '@arcgis/core/views/MapView.js';
 import { useMapReady } from '@ugrc/utilities/hooks';
+import { useEffect, useRef, useState } from 'react';
+import MouseTrap from './';
 
 import '@arcgis/core/assets/esri/themes/light/main.css';
 

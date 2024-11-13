@@ -1,7 +1,7 @@
-import { useState, useCallback } from 'react';
-import PropTypes from 'prop-types';
 import { toQueryString } from '@ugrc/utilities';
 import { clsx } from 'clsx';
+import PropTypes from 'prop-types';
+import { useCallback, useState } from 'react';
 
 const ADDRESS_TYPE = 'single-address';
 const MILEPOST_TYPE = 'route-milepost';
@@ -450,4 +450,4 @@ BootstrapDartboard.propTypes = TailwindDartboard.propTypes = {
 };
 
 export default TailwindDartboard;
-export { useDartboard, BootstrapDartboard, TailwindDartboard };
+export { BootstrapDartboard, TailwindDartboard, useDartboard };

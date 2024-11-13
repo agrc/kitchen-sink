@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { load, project } from '@arcgis/core/geometry/projection.js';
 import { throttle } from 'lodash-es';
-import { project, load } from '@arcgis/core/geometry/projection.js';
+import { useEffect, useState } from 'react';
 
 const projectPoint = (
   viewPoint,

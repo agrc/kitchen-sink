@@ -1,4 +1,5 @@
 import { ChevronDown } from 'lucide-react';
+import type { ReactNode } from 'react';
 import {
   Select as AriaSelect,
   type SelectProps as AriaSelectProps,
@@ -17,7 +18,6 @@ import {
 } from './ListBox';
 import { Popover } from './Popover';
 import { composeTailwindRenderProps, focusRing } from './utils';
-import type { ReactNode } from 'react';
 
 const styles = tv({
   extend: focusRing,
