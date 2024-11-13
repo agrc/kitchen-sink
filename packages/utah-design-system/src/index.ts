@@ -17,7 +17,7 @@ export * from './components/Modal';
 export * from './components/Popover';
 export * from './components/Radio';
 export * from './components/Select';
-export * from './components/Sherlock.jsx';
+export * from './components/Sherlock';
 export * from './components/SocialMedia';
 export * from './components/Spinner';
 export * from './components/Switch';

@@ -17,7 +17,8 @@ import { search } from '@ugrc/utilities';
 import { tv } from 'tailwind-variants';
 import { focusRing } from './utils.ts';
 import { FieldError, Label, fieldBorderStyles } from './Field.tsx';
-import ky from 'ky';
+import ky, { type Input as KyInput, type Options as KyOptions } from 'ky';
+import FeatureSet from '@arcgis/core/rest/support/FeatureSet';
 
 const defaultSymbols = {
   polygon: {
@@ -51,8 +52,31 @@ const inputStyles = tv({
   },
 });
 
-async function safeFetch(url, options) {
-  const response = await ky(url, options).json();
+type EsriRestError = {
+  error?: __esri.Error;
+};
+type MasqueradeResults = {
+  suggestions: MasqueradeResult[];
+};
+type MasqueradeResult = {
+  magicKey: string;
+  text: string;
+  key: string;
+};
+type LocatorResult = {
+  candidates: __esri.AddressCandidate[];
+};
+type Provider = {
+  load: (params: {
+    signal: AbortSignal;
+    filterText: string;
+    maxResults: number;
+  }) => Promise<{ items: { name: string; context?: string; key: string }[] }>;
+  getFeature: (key: string) => Promise<{ items: __esri.Graphic[] }>;
+};
+
+async function safeFetch<T>(url: KyInput, options?: KyOptions) {
+  const response = (await ky(url, options).json()) as T & EsriRestError;
 
   // handle esri response errors which return a 200 status code
   if (response.error) {
@@ -63,14 +87,22 @@ async function safeFetch(url, options) {
 }
 
 export const ugrcApiProvider = (
-  apiKey,
-  table,
-  field,
-  contextField,
-  options,
+  apiKey: string,
+  table: string,
+  field: string,
+  contextField: string,
+  options: { wkid?: number } = {},
 ) => {
   return {
-    load: async ({ signal, filterText, maxResults = 10 }) => {
+    load: async ({
+      signal,
+      filterText,
+      maxResults = 10,
+    }: {
+      signal: AbortSignal;
+      filterText: string;
+      maxResults: number;
+    }) => {
       if ((filterText?.length ?? 0) < 3) {
         return { items: [] };
       }
@@ -87,7 +119,7 @@ export const ugrcApiProvider = (
         signal,
       );
 
-      response.sort((a, b) => {
+      response.sort((a: __esri.Graphic, b: __esri.Graphic) => {
         if (a.attributes[field] < b.attributes[field]) {
           return -1;
         } else if (a.attributes[field] > b.attributes[field]) {
@@ -110,7 +142,7 @@ export const ugrcApiProvider = (
 
       const uniqueKeys = new Set();
       const uniqueFeatures = response
-        .filter((feature) => {
+        .filter((feature: __esri.Graphic) => {
           const key = `${feature.attributes[field]}||${feature.attributes[contextField]}`;
           if (!uniqueKeys.has(key)) {
             uniqueKeys.add(key);
@@ -118,7 +150,7 @@ export const ugrcApiProvider = (
           }
           return false;
         })
-        .map((feature) => {
+        .map((feature: __esri.Graphic) => {
           return {
             name: feature.attributes[field],
             context: feature.attributes[contextField],
@@ -130,7 +162,7 @@ export const ugrcApiProvider = (
         items: uniqueFeatures.slice(0, maxResults),
       };
     },
-    getFeature: async (searchValue) => {
+    getFeature: async (searchValue: string) => {
       console.log('getFeature', searchValue);
       const [value, qualifier] = searchValue.split('||');
       const searchOptions = {
@@ -151,7 +183,7 @@ export const ugrcApiProvider = (
         searchOptions,
       );
 
-      const features = response.map((feature) => {
+      const features = response.map((feature: __esri.Graphic) => {
         return {
           ...feature.attributes,
           key: feature.attributes[field],
@@ -164,15 +196,25 @@ export const ugrcApiProvider = (
   };
 };
 
-export const masqueradeProvider = (url, wkid) => {
+export const masqueradeProvider = (url: string, wkid: number) => {
   return {
-    load: async ({ signal, filterText, maxResults = 10 }) => {
+    load: async ({
+      signal,
+      filterText,
+      maxResults = 10,
+    }: {
+      signal: AbortSignal;
+      filterText: string;
+      maxResults: number;
+    }) => {
       if ((filterText?.length ?? 0) < 3) {
         return { items: [] };
       }
 
       const suggestUrl = `${url}/suggest?text=${filterText}&maxSuggestions=${maxResults}`;
-      const responseJson = await safeFetch(suggestUrl, { signal });
+      const responseJson = await safeFetch<MasqueradeResults>(suggestUrl, {
+        signal,
+      });
 
       const features = responseJson.suggestions.map((suggestion) => {
         return { name: suggestion.text, key: suggestion.magicKey };
@@ -180,42 +222,46 @@ export const masqueradeProvider = (url, wkid) => {
 
       return { items: features.slice(0, maxResults) };
     },
-    getFeature: async (magicKey) => {
+    getFeature: async (magicKey: string) => {
       const getFeatureUrl = `${url}/findAddressCandidates?magicKey=${magicKey}&outSR={"wkid":${wkid}}`;
 
-      const responseJson = await safeFetch(getFeatureUrl);
+      const responseJson = await safeFetch<LocatorResult>(getFeatureUrl);
 
       const candidate = responseJson.candidates[0];
-      candidate.geometry = {
-        ...candidate.location,
-        type: 'point',
-        spatialReference: {
-          wkid: wkid,
+      const graphic = {
+        geometry: {
+          ...candidate.location,
+          type: 'point',
+          spatialReference: {
+            wkid: wkid,
+          },
+          attributes: {
+            ...candidate.attributes,
+            extent: {
+              ...candidate.extent,
+              spatialReference: {
+                wkid: wkid,
+              },
+            },
+          },
         },
-      };
-      // used to zoom to result
-      candidate.attributes.extent = {
-        ...candidate.extent,
-        spatialReference: {
-          wkid: wkid,
-        },
-      };
+      } as __esri.GraphicProperties;
 
-      return { items: [candidate] };
+      return { items: [graphic] };
     },
   };
 };
 
 export const featureServiceProvider = (
-  url,
-  searchField,
-  contextField = null,
-  kyOptions = {},
+  url: KyInput,
+  searchField: string,
+  contextField?: string,
+  kyOptions: KyOptions = {},
 ) => {
   let initialized = false;
-  const init = async (signal) => {
+  const init = async (signal: AbortSignal) => {
     // validate searchField and contextField
-    const serviceJson = await safeFetch(`${url}?f=json`, {
+    const serviceJson = await safeFetch<FeatureSet>(`${url}?f=json`, {
       signal,
       ...kyOptions,
     });
@@ -224,7 +270,7 @@ export const featureServiceProvider = (
     let contextFieldValidated = false;
     for (const field of serviceJson.fields) {
       if (field.name === searchField) {
-        if (field.type !== 'esriFieldTypeString') {
+        if (field.type !== 'string') {
           throw new Error(
             `Field: ${searchField} must be of type "esriFieldTypeString"`,
           );
@@ -233,7 +279,7 @@ export const featureServiceProvider = (
       }
 
       if (contextField && field.name === contextField) {
-        if (field.type !== 'esriFieldTypeString') {
+        if (field.type !== 'string') {
           throw new Error(
             `Field: ${contextField} must be of type "esriFieldTypeString"`,
           );
@@ -259,7 +305,15 @@ export const featureServiceProvider = (
   };
 
   return {
-    load: async ({ signal, filterText, maxResults = 10 }) => {
+    load: async ({
+      signal,
+      filterText,
+      maxResults = 10,
+    }: {
+      signal: AbortSignal;
+      filterText: string;
+      maxResults: number;
+    }) => {
       if (!initialized) {
         await init(signal);
       }
@@ -272,13 +326,13 @@ export const featureServiceProvider = (
         f: 'json',
         where: `UPPER(${searchField}) LIKE UPPER('%${filterText}%')`,
         outFields: [searchField, contextField].join(','),
-        returnGeometry: false,
-        resultRecordCount: maxResults,
-        returnDistinctValues: true,
+        returnGeometry: 'false',
+        resultRecordCount: maxResults.toString(),
+        returnDistinctValues: 'true',
         orderByFields: searchField,
       });
 
-      const responseJson = await safeFetch(
+      const responseJson = await safeFetch<FeatureSet>(
         `${url}/query?${searchParams.toString()}`,
         {
           signal,
@@ -301,16 +355,16 @@ export const featureServiceProvider = (
 
       return { items: suggestions };
     },
-    getFeature: async (key) => {
+    getFeature: async (key: string) => {
       const searchParams = new URLSearchParams({
         f: 'json',
         where: key,
         outFields: '*',
-        returnGeometry: true,
-        resultRecordCount: 1,
+        returnGeometry: 'true',
+        resultRecordCount: '1',
       });
 
-      const responseJson = await safeFetch(
+      const responseJson: FeatureSet = await safeFetch(
         `${url}/query?${searchParams.toString()}`,
         kyOptions,
       );
@@ -333,10 +387,18 @@ export const featureServiceProvider = (
   };
 };
 
-export const multiProvider = (providers) => {
+export const multiProvider = (providers: Provider[]) => {
   const separator = '||';
   return {
-    load: async ({ signal, filterText, maxResults = 10 }) => {
+    load: async ({
+      signal,
+      filterText,
+      maxResults = 10,
+    }: {
+      signal: AbortSignal;
+      filterText: string;
+      maxResults: number;
+    }) => {
       const promises = providers.map((provider) =>
         provider.load({ signal, filterText, maxResults }),
       );
@@ -355,10 +417,10 @@ export const multiProvider = (providers) => {
 
       return { items: items.slice(0, maxResults) };
     },
-    getFeature: async (keyValue) => {
+    getFeature: async (keyValue: string) => {
       const [providerIndex, key] = keyValue.split(separator);
 
-      const provider = providers[providerIndex];
+      const provider = providers[Number(providerIndex)];
 
       const response = await provider.getFeature(key);
 
@@ -369,7 +431,7 @@ export const multiProvider = (providers) => {
 
 export const Sherlock = (props) => {
   let list = useAsyncList({ ...props.provider });
-  const selectionChanged = async (key) => {
+  const selectionChanged = async (key: string) => {
     if (typeof props?.onSherlockMatch !== 'function') {
       return;
     }
@@ -379,7 +441,7 @@ export const Sherlock = (props) => {
     const results = response.items;
 
     const graphics = results.map(
-      (result) =>
+      (result: __esri.Graphic) =>
         new Graphic({
           geometry: result.geometry,
           attributes: result.attributes,
@@ -424,7 +486,7 @@ export const Sherlock = (props) => {
                 aria-hidden
                 className="pointer-events-none text-zinc-400 group-focus-within:text-primary-900 dark:group-focus-within:text-zinc-300"
               >
-                <Spinner ariaLabel="searching" />
+                <Spinner aria-label="searching" />
               </span>
             )}
             <Button className="pr-2">
@@ -496,7 +558,15 @@ export const Sherlock = (props) => {
  * @param {string} [props.className]
  * @returns {JSX.Element}
  */
-const Highlighted = ({ text = '', highlight = '', className }) => {
+const Highlighted = ({
+  text = '',
+  highlight = '',
+  className,
+}: {
+  text: string;
+  highlight: string;
+  className: string;
+}) => {
   if (!highlight.trim()) {
     return <div>{text}</div>;
   }
