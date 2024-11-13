@@ -13,7 +13,7 @@ const trimSpaces = (data: string): string => data.replace(SPACES, SPACE).trim();
 
 const cleanseStreet = (data: string): string => {
   // & -> and
-  let street = trimSpaces(removeInvalidChars(data)).replace('&', 'and');
+  let street = trimSpaces(removeInvalidChars(data)).replace(/&/g, 'and');
 
   return street.trim();
 };
