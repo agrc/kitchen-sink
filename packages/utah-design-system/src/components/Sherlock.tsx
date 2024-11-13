@@ -1,7 +1,7 @@
 import Graphic from '@arcgis/core/Graphic.js';
 import { escapeRegExp } from 'lodash-es';
 import { SearchIcon, ChevronsUpDownIcon, CheckIcon } from 'lucide-react';
-import { Spinner } from './Spinner.tsx';
+import { Spinner } from './Spinner';
 import {
   Input,
   ListBox,
@@ -10,38 +10,58 @@ import {
   ComboBox,
   Button,
   Group,
-  Form,
 } from 'react-aria-components';
-import { useAsyncList } from 'react-stately';
-import { search } from '@ugrc/utilities';
+import { useAsyncList, type Key } from 'react-stately';
+import {
+  type AsyncListData,
+  type AsyncListLoadOptions,
+  type AsyncListStateUpdate,
+} from '@react-stately/data';
+import {
+  search,
+  type ApiErrorResponse,
+  type SearchResponse,
+} from '@ugrc/utilities';
 import { tv } from 'tailwind-variants';
-import { focusRing } from './utils.ts';
-import { FieldError, Label, fieldBorderStyles } from './Field.tsx';
+import { focusRing } from './utils';
+import { FieldError, Label, fieldBorderStyles } from './Field';
 import ky, { type Input as KyInput, type Options as KyOptions } from 'ky';
-import FeatureSet from '@arcgis/core/rest/support/FeatureSet';
+import type { IFeatureSet } from '@esri/arcgis-rest-request';
+import type {
+  IGeocodeResponse,
+  ISuggestResponse,
+} from '@esri/arcgis-rest-geocoding';
+import type { ReactNode } from 'react';
+
+const yellow = [255, 255, 0];
+const polygon = {
+  type: 'simple-fill',
+  color: [240, 240, 240, 0.5],
+  outline: {
+    style: 'solid',
+    color: [...yellow, 0.5],
+    width: 2.5,
+  },
+};
+const point = {
+  type: 'simple-marker',
+  style: 'circle',
+  color: [...yellow, 0.5],
+  size: 10,
+};
 
 const defaultSymbols = {
-  polygon: {
-    type: 'simple-fill',
-    color: [240, 240, 240, 0.5],
-    outline: {
-      style: 'solid',
-      color: [255, 255, 0, 0.5],
-      width: 2.5,
-    },
-  },
+  polygon,
+  extent: polygon,
   polyline: {
     type: 'simple-line',
     style: 'solid',
-    color: [255, 255, 0],
+    color: yellow,
     width: 5,
   },
-  point: {
-    type: 'simple-marker',
-    style: 'circle',
-    color: [255, 255, 0, 0.5],
-    size: 10,
-  },
+  point,
+  multipoint: point,
+  mesh: polygon,
 };
 
 const inputStyles = tv({
@@ -55,24 +75,19 @@ const inputStyles = tv({
 type EsriRestError = {
   error?: __esri.Error;
 };
-type MasqueradeResults = {
-  suggestions: MasqueradeResult[];
+export type AsyncListItem = { name: string; context?: string; key?: string };
+type LoaderOptions<T, C> = { maxResults?: number } & AsyncListLoadOptions<T, C>;
+type AsyncListLoadFunction<T, C> = (
+  state: LoaderOptions<T, C>,
+) => AsyncListStateUpdate<T, C> | Promise<AsyncListStateUpdate<T, C>>;
+type SherlockProvider = {
+  load: AsyncListLoadFunction<AsyncListItem, any>;
+  getFeature: (key: string) => Promise<{ items: AccessorGraphicProperties[] }>;
 };
-type MasqueradeResult = {
-  magicKey: string;
-  text: string;
-  key: string;
-};
-type LocatorResult = {
-  candidates: __esri.AddressCandidate[];
-};
-type Provider = {
-  load: (params: {
-    signal: AbortSignal;
-    filterText: string;
-    maxResults: number;
-  }) => Promise<{ items: { name: string; context?: string; key: string }[] }>;
-  getFeature: (key: string) => Promise<{ items: __esri.Graphic[] }>;
+type AccessorGraphicProperties = __esri.GraphicProperties & {
+  geometry?: __esri.GeometryProperties & {
+    type: __esri.Geometry['type'];
+  };
 };
 
 async function safeFetch<T>(url: KyInput, options?: KyOptions) {
@@ -92,17 +107,9 @@ export const ugrcApiProvider = (
   field: string,
   contextField: string,
   options: { wkid?: number } = {},
-) => {
+): SherlockProvider => {
   return {
-    load: async ({
-      signal,
-      filterText,
-      maxResults = 10,
-    }: {
-      signal: AbortSignal;
-      filterText: string;
-      maxResults: number;
-    }) => {
+    load: async ({ signal, filterText, maxResults = 10 }) => {
       if ((filterText?.length ?? 0) < 3) {
         return { items: [] };
       }
@@ -119,7 +126,13 @@ export const ugrcApiProvider = (
         signal,
       );
 
-      response.sort((a: __esri.Graphic, b: __esri.Graphic) => {
+      if ((response as ApiErrorResponse)?.message) {
+        return { items: [] };
+      }
+
+      const result = response as SearchResponse['result'];
+
+      result.sort((a, b) => {
         if (a.attributes[field] < b.attributes[field]) {
           return -1;
         } else if (a.attributes[field] > b.attributes[field]) {
@@ -141,8 +154,8 @@ export const ugrcApiProvider = (
       });
 
       const uniqueKeys = new Set();
-      const uniqueFeatures = response
-        .filter((feature: __esri.Graphic) => {
+      const uniqueFeatures = result
+        .filter((feature) => {
           const key = `${feature.attributes[field]}||${feature.attributes[contextField]}`;
           if (!uniqueKeys.has(key)) {
             uniqueKeys.add(key);
@@ -150,7 +163,7 @@ export const ugrcApiProvider = (
           }
           return false;
         })
-        .map((feature: __esri.Graphic) => {
+        .map((feature) => {
           return {
             name: feature.attributes[field],
             context: feature.attributes[contextField],
@@ -183,36 +196,29 @@ export const ugrcApiProvider = (
         searchOptions,
       );
 
-      const features = response.map((feature: __esri.Graphic) => {
-        return {
-          ...feature.attributes,
-          key: feature.attributes[field],
-          geometry: feature?.geometry,
-        };
-      });
+      if ((response as ApiErrorResponse)?.message) {
+        return { items: [] };
+      }
 
-      return { items: features };
+      const result = response as SearchResponse['result'];
+
+      return { items: result };
     },
   };
 };
 
-export const masqueradeProvider = (url: string, wkid: number) => {
+export const masqueradeProvider = (
+  url: string,
+  wkid: number,
+): SherlockProvider => {
   return {
-    load: async ({
-      signal,
-      filterText,
-      maxResults = 10,
-    }: {
-      signal: AbortSignal;
-      filterText: string;
-      maxResults: number;
-    }) => {
+    load: async ({ signal, filterText, maxResults = 10 }) => {
       if ((filterText?.length ?? 0) < 3) {
         return { items: [] };
       }
 
       const suggestUrl = `${url}/suggest?text=${filterText}&maxSuggestions=${maxResults}`;
-      const responseJson = await safeFetch<MasqueradeResults>(suggestUrl, {
+      const responseJson = await safeFetch<ISuggestResponse>(suggestUrl, {
         signal,
       });
 
@@ -225,9 +231,10 @@ export const masqueradeProvider = (url: string, wkid: number) => {
     getFeature: async (magicKey: string) => {
       const getFeatureUrl = `${url}/findAddressCandidates?magicKey=${magicKey}&outSR={"wkid":${wkid}}`;
 
-      const responseJson = await safeFetch<LocatorResult>(getFeatureUrl);
+      const responseJson = await safeFetch<IGeocodeResponse>(getFeatureUrl);
 
       const candidate = responseJson.candidates[0];
+
       const graphic = {
         geometry: {
           ...candidate.location,
@@ -245,7 +252,7 @@ export const masqueradeProvider = (url: string, wkid: number) => {
             },
           },
         },
-      } as __esri.GraphicProperties;
+      } as AccessorGraphicProperties;
 
       return { items: [graphic] };
     },
@@ -257,20 +264,25 @@ export const featureServiceProvider = (
   searchField: string,
   contextField?: string,
   kyOptions: KyOptions = {},
-) => {
+): SherlockProvider => {
   let initialized = false;
   const init = async (signal: AbortSignal) => {
     // validate searchField and contextField
-    const serviceJson = await safeFetch<FeatureSet>(`${url}?f=json`, {
+    const serviceJson = await safeFetch<IFeatureSet>(`${url}?f=json`, {
       signal,
       ...kyOptions,
     });
 
     let searchFieldValidated = false;
     let contextFieldValidated = false;
+
+    if (serviceJson.fields === undefined) {
+      throw new Error('No fields found in service');
+    }
+
     for (const field of serviceJson.fields) {
       if (field.name === searchField) {
-        if (field.type !== 'string') {
+        if (field.type !== 'esriFieldTypeString') {
           throw new Error(
             `Field: ${searchField} must be of type "esriFieldTypeString"`,
           );
@@ -279,7 +291,7 @@ export const featureServiceProvider = (
       }
 
       if (contextField && field.name === contextField) {
-        if (field.type !== 'string') {
+        if (field.type !== 'esriFieldTypeString') {
           throw new Error(
             `Field: ${contextField} must be of type "esriFieldTypeString"`,
           );
@@ -305,15 +317,7 @@ export const featureServiceProvider = (
   };
 
   return {
-    load: async ({
-      signal,
-      filterText,
-      maxResults = 10,
-    }: {
-      signal: AbortSignal;
-      filterText: string;
-      maxResults: number;
-    }) => {
+    load: async ({ signal, filterText, maxResults = 10 }) => {
       if (!initialized) {
         await init(signal);
       }
@@ -332,7 +336,7 @@ export const featureServiceProvider = (
         orderByFields: searchField,
       });
 
-      const responseJson = await safeFetch<FeatureSet>(
+      const responseJson = await safeFetch<IFeatureSet>(
         `${url}/query?${searchParams.toString()}`,
         {
           signal,
@@ -364,7 +368,7 @@ export const featureServiceProvider = (
         resultRecordCount: '1',
       });
 
-      const responseJson: FeatureSet = await safeFetch(
+      const responseJson = await safeFetch<IFeatureSet>(
         `${url}/query?${searchParams.toString()}`,
         kyOptions,
       );
@@ -377,35 +381,43 @@ export const featureServiceProvider = (
             esriGeometryPolyline: 'polyline',
             esriGeometryPoint: 'point',
             esriGeometryPolygon: 'polygon',
-          }[responseJson.geometryType],
+            esriGeometryMultipoint: 'multipoint',
+            esriGeometryEnvelope: 'extent',
+            esriGeometryMultiPatch: 'multipatch',
+          }[responseJson.geometryType!],
           spatialReference: responseJson.spatialReference,
         },
-      };
+      } as AccessorGraphicProperties;
 
       return { items: [feature] };
     },
   };
 };
 
-export const multiProvider = (providers: Provider[]) => {
+export const multiProvider = (
+  providers: SherlockProvider[],
+): SherlockProvider => {
   const separator = '||';
   return {
     load: async ({
       signal,
       filterText,
       maxResults = 10,
-    }: {
-      signal: AbortSignal;
-      filterText: string;
-      maxResults: number;
-    }) => {
+    }: LoaderOptions<AsyncListItem, string>) => {
       const promises = providers.map((provider) =>
-        provider.load({ signal, filterText, maxResults }),
+        provider.load({
+          signal,
+          filterText,
+          maxResults,
+          items: [],
+          selectedKeys: new Set(),
+          sortDescriptor: { column: 'name', direction: 'ascending' },
+        }),
       );
       const results = await Promise.all(promises);
 
       const items = results.flatMap((result, index) =>
-        result.items.map(
+        Array.from(result.items).map(
           // prepend index to key so that we can look up the provider in getFeature
           (item) => {
             item.key = `${index}${separator}${item.key}`;
@@ -429,27 +441,37 @@ export const multiProvider = (providers: Provider[]) => {
   };
 };
 
-export const Sherlock = (props) => {
-  let list = useAsyncList({ ...props.provider });
-  const selectionChanged = async (key: string) => {
-    if (typeof props?.onSherlockMatch !== 'function') {
+export type SherlockProps = {
+  provider: SherlockProvider;
+  onSherlockMatch?: (
+    match: Graphic[],
+    context: { list: AsyncListData<AsyncListItem> },
+  ) => void;
+  label?: ReactNode;
+  placeholder?: string;
+};
+
+export const Sherlock = (props: SherlockProps) => {
+  let list = useAsyncList({ load: props.provider.load });
+  const selectionChanged = async (key: Key | null) => {
+    if (key === null) {
       return;
     }
 
-    const response = await props.provider.getFeature(key);
+    const response = await props.provider.getFeature(key.toString());
 
     const results = response.items;
 
     const graphics = results.map(
-      (result: __esri.Graphic) =>
+      (result) =>
         new Graphic({
           geometry: result.geometry,
           attributes: result.attributes,
-          symbol: defaultSymbols[result.geometry.type],
+          symbol: result.geometry && defaultSymbols[result.geometry.type],
         }),
     );
 
-    props.onSherlockMatch(graphics);
+    props.onSherlockMatch && props.onSherlockMatch(graphics, { list });
   };
 
   if (list.error) {
@@ -458,106 +480,94 @@ export const Sherlock = (props) => {
   }
 
   return (
-    <Form>
-      <ComboBox
-        items={list.items}
-        inputValue={list.inputValue}
-        isLoading={list.isLoading}
-        shouldFocusWrap={true}
-        allowsEmptyCollection={true}
-        onSelectionChange={selectionChanged}
-        isInvalid={!!list.error}
-      >
-        {props.label && <Label>{props.label}</Label>}
-        <div className="group mt-1 grow-[9999] basis-64 rounded-md transition-shadow ease-in-out">
-          <Group aria-hidden className={inputStyles}>
-            <SearchIcon
+    <ComboBox
+      items={list.items}
+      shouldFocusWrap={true}
+      inputValue={list.filterText}
+      onInputChange={list.setFilterText}
+      allowsEmptyCollection={true}
+      onSelectionChange={selectionChanged}
+      isInvalid={!!list.error}
+    >
+      {props.label && <Label>{props.label}</Label>}
+      <div className="group mt-1 grow-[9999] basis-64 rounded-md transition-shadow ease-in-out">
+        <Group aria-hidden className={inputStyles}>
+          <SearchIcon
+            aria-hidden
+            className="pointer-events-none absolute inset-y-0 left-2 h-full w-5 text-zinc-400 group-focus-within:text-primary-900 dark:group-focus-within:text-zinc-300"
+          />
+          <Input
+            placeholder={props.placeholder}
+            onChange={(event) => list.setFilterText(event.target.value)}
+            className="block w-full appearance-none bg-transparent pl-9 pr-3 leading-5 text-zinc-900 caret-primary-800 placeholder:text-zinc-400 focus:outline-none dark:text-white dark:caret-accent-500 dark:ring-zinc-200/20 dark:placeholder:text-zinc-300 dark:focus:ring-accent-700 sm:text-sm"
+          />
+          {(list.loadingState === 'loading' ||
+            list.loadingState === 'filtering') && (
+            <span
               aria-hidden
-              className="pointer-events-none absolute inset-y-0 left-2 h-full w-5 text-zinc-400 group-focus-within:text-primary-900 dark:group-focus-within:text-zinc-300"
+              className="pointer-events-none text-zinc-400 group-focus-within:text-primary-900 dark:group-focus-within:text-zinc-300"
+            >
+              <Spinner aria-label="searching" />
+            </span>
+          )}
+          <Button className="pr-2">
+            <ChevronsUpDownIcon
+              aria-hidden
+              className="h-full w-5 shrink-0 text-zinc-500 dark:text-zinc-400"
             />
-            <Input
-              placeholder={props.placeholder}
-              onChange={(event) => list.setFilterText(event.target.value)}
-              className="block w-full appearance-none bg-transparent pl-9 pr-3 leading-5 text-zinc-900 caret-primary-800 placeholder:text-zinc-400 focus:outline-none dark:text-white dark:caret-accent-500 dark:ring-zinc-200/20 dark:placeholder:text-zinc-300 dark:focus:ring-accent-700 sm:text-sm"
-            />
-            {(list.loadingState === 'loading' ||
-              list.loadingState === 'filtering') && (
-              <span
-                aria-hidden
-                className="pointer-events-none text-zinc-400 group-focus-within:text-primary-900 dark:group-focus-within:text-zinc-300"
-              >
-                <Spinner aria-label="searching" />
-              </span>
-            )}
-            <Button className="pr-2">
-              <ChevronsUpDownIcon
-                aria-hidden
-                className="h-full w-5 shrink-0 text-zinc-500 dark:text-zinc-400"
-              />
-            </Button>
-          </Group>
-        </div>
-        {list.error ? (
-          <FieldError>There was an error with the search process</FieldError>
-        ) : (
-          <Popover className="w-[--trigger-width] py-1">
-            <ListBox
-              className="group mt-1 grow-[9999] basis-64 overflow-hidden rounded-md border border-transparent bg-white shadow ring-1 ring-zinc-900/5 dark:border-zinc-200/20 dark:bg-zinc-700"
-              renderEmptyState={(event) => {
-                if (
-                  event.state.inputValue.length >= 3 &&
-                  list.loadingState === 'idle'
-                ) {
-                  return (
-                    <div className="bg-rose-100 py-2 text-center dark:bg-rose-700">
-                      No items found matching your search
-                    </div>
-                  );
-                }
+          </Button>
+        </Group>
+      </div>
+      {list.error ? (
+        <FieldError>There was an error with the search process</FieldError>
+      ) : (
+        <Popover className="w-[--trigger-width] py-1">
+          <ListBox
+            className="group mt-1 grow-[9999] basis-64 overflow-hidden rounded-md border border-transparent bg-white shadow ring-1 ring-zinc-900/5 dark:border-zinc-200/20 dark:bg-zinc-700"
+            renderEmptyState={() => {
+              if (list.filterText.length >= 3 && list.loadingState === 'idle') {
                 return (
-                  <div className="bg-sky-100 py-2 text-center dark:bg-sky-700">
-                    Type 2 or more characters to begin searching
+                  <div className="bg-rose-100 py-2 text-center dark:bg-rose-700">
+                    No items found matching your search
                   </div>
                 );
-              }}
-            >
-              {(item) => (
-                <ListBoxItem
-                  textValue={item.name}
-                  className="relative flex cursor-default select-none items-center justify-between gap-2 rounded px-2 py-1 text-sm outline-none ring-secondary-400 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:bg-zinc-300/50 focus-visible:ring selected:bg-secondary-600 selected:text-white selected:ring-offset-2 dark:text-white dark:ring-offset-zinc-950 dark:hover:bg-zinc-300/20"
-                >
-                  {({ isSelected }) => (
-                    <>
-                      <span slot="label" className="flex items-center gap-2">
-                        {isSelected && <CheckIcon className="h-full w-4" />}
-                        <Highlighted
-                          className={isSelected ? undefined : 'ml-6'}
-                          text={item.name}
-                          highlight={list.filterText}
-                        />
-                      </span>
-                      {item.context && (
-                        <span slot="description">{item.context}</span>
-                      )}
-                    </>
-                  )}
-                </ListBoxItem>
-              )}
-            </ListBox>
-          </Popover>
-        )}
-      </ComboBox>
-    </Form>
+              }
+              return (
+                <div className="bg-sky-100 py-2 text-center dark:bg-sky-700">
+                  Type 2 or more characters to begin searching
+                </div>
+              );
+            }}
+          >
+            {(item: AsyncListItem) => (
+              <ListBoxItem
+                textValue={item.name}
+                className="relative flex cursor-default select-none items-center justify-between gap-2 rounded px-2 py-1 text-sm outline-none ring-secondary-400 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:bg-zinc-300/50 focus-visible:ring selected:bg-secondary-600 selected:text-white selected:ring-offset-2 dark:text-white dark:ring-offset-zinc-950 dark:hover:bg-zinc-300/20"
+              >
+                {({ isSelected }) => (
+                  <>
+                    <span slot="label" className="flex items-center gap-2">
+                      {isSelected && <CheckIcon className="h-full w-4" />}
+                      <Highlighted
+                        className={isSelected ? undefined : 'ml-6'}
+                        text={item.name}
+                        highlight={list.filterText}
+                      />
+                    </span>
+                    {item.context && (
+                      <span slot="description">{item.context}</span>
+                    )}
+                  </>
+                )}
+              </ListBoxItem>
+            )}
+          </ListBox>
+        </Popover>
+      )}
+    </ComboBox>
   );
 };
 
-/**
- * @param {Object} props
- * @param {string} [props.text]
- * @param {string} [props.highlight]
- * @param {string} [props.className]
- * @returns {JSX.Element}
- */
 const Highlighted = ({
   text = '',
   highlight = '',
@@ -565,7 +575,7 @@ const Highlighted = ({
 }: {
   text: string;
   highlight: string;
-  className: string;
+  className?: string;
 }) => {
   if (!highlight.trim()) {
     return <div>{text}</div>;
