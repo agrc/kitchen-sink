@@ -2,18 +2,22 @@ import Graphic from '@arcgis/core/Graphic.js';
 import MapView from '@arcgis/core/views/MapView.js';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+export type GraphicOptions = Graphic | Graphic[] | null;
+
 export type useGraphicManagerResult = {
-  graphic: Graphic | Graphic[] | undefined;
-  setGraphic: (graphic: Graphic | Graphic[] | undefined) => void;
+  graphic: GraphicOptions;
+  setGraphic: (graphic: GraphicOptions) => void;
 };
 
-const useGraphicManager = (mapView: MapView): useGraphicManagerResult => {
-  const [graphic, setGraphic] = useState<Graphic | Graphic[]>();
-  const previousGraphic = useRef<Graphic | Graphic[]>();
+const useGraphicManager = (
+  mapView: MapView | null,
+): useGraphicManagerResult => {
+  const [graphic, setGraphic] = useState<GraphicOptions>(null);
+  const previousGraphic = useRef<GraphicOptions>(null);
 
   const removeGraphics = useCallback(
     (graphics: Graphic | Graphic[] | undefined) => {
-      if (!graphics) {
+      if (!graphics || !mapView) {
         return;
       }
 
@@ -34,6 +38,10 @@ const useGraphicManager = (mapView: MapView): useGraphicManagerResult => {
   );
 
   useEffect(() => {
+    if (!mapView) {
+      return;
+    }
+
     if (previousGraphic.current) {
       removeGraphics(previousGraphic.current);
     }
