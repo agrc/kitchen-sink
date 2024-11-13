@@ -39,7 +39,7 @@
     "LICENSE-Adobe"
   ],
   "scripts": {
-    "build": "echo 'This package does not have a build process.'",
+    "build": "npm run check",
     "check": "tsc",
     "prepublish": "cp ../../LICENSE /",
     "test": "vitest --config ../../vite.config.js"
