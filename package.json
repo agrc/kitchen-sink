@@ -13,7 +13,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "npm run build --workspace @ugrc/dart-board --workspace @ugrc/layer-selector --workspace @ugrc/mousetrap --workspace @ugrc/sherlock --workspace @ugrc/popover --workspace @ugrc/header",
+    "build": "npm run build --workspaces",
     "build:storybook": "storybook build --docs --output-dir ./dist --disable-telemetry",
     "check": "tsc",
     "format": "prettier . --write",
