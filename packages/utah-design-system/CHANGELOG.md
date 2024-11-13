@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.15.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.14.2...utah-design-system-v1.15.0) (2024-11-13)
+
+
+### Features
+
+* **sherlock:** convert to typescript ([12fe17d](https://github.com/agrc/kitchen-sink/commit/12fe17def4fa3c3458de5f9866f16715d90d7bbd))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ugrc/utilities bumped from 2.2.7 to 2.3.0
+
 ## [1.14.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.14.1...utah-design-system-v1.14.2) (2024-11-13)
 
 

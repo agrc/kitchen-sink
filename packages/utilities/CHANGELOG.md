@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.0](https://github.com/agrc/kitchen-sink/compare/utilities-v2.2.7...utilities-v2.3.0) (2024-11-13)
+
+
+### Features
+
+* **sherlock:** convert to typescript ([12fe17d](https://github.com/agrc/kitchen-sink/commit/12fe17def4fa3c3458de5f9866f16715d90d7bbd))
+* **utilities:** convert JS modules to TS ([e8703e5](https://github.com/agrc/kitchen-sink/commit/e8703e583f6b707ac9579b03432ef50a5e21b3d0)), closes [#367](https://github.com/agrc/kitchen-sink/issues/367)
+
 ## [2.2.7](https://github.com/agrc/kitchen-sink/compare/utilities-v2.2.6...utilities-v2.2.7) (2024-10-29)
 
 
