@@ -116,7 +116,9 @@ export type SearchResponse = {
   status: number;
   result: {
     attributes: Record<string, any>;
-    geometry?: __esri.GeometryProperties & { type: __esri.Geometry['type'] };
+    geometry?: __esri.GeometryProperties & {
+      type: 'point' | 'multipoint' | 'polyline' | 'polygon' | 'extent' | 'mesh';
+    };
   }[];
 };
 
