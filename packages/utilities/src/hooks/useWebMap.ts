@@ -2,9 +2,12 @@ import { useEffect, useRef } from 'react';
 import MapView from '@arcgis/core/views/MapView.js';
 import WebMap from '@arcgis/core/WebMap.js';
 
-export default function useWebMap(div, id) {
-  const webMap = useRef(null);
-  const mapView = useRef(null);
+export default function useWebMap(
+  div: React.RefObject<HTMLDivElement>,
+  id: string,
+) {
+  const webMap = useRef<WebMap | null>(null);
+  const mapView = useRef<MapView | null>(null);
 
   useEffect(() => {
     if (div.current) {
@@ -21,8 +24,8 @@ export default function useWebMap(div, id) {
     }
 
     return () => {
-      mapView.current.destroy();
-      webMap.current.destroy();
+      mapView.current?.destroy();
+      webMap.current?.destroy();
     };
   }, [div, id]);
 

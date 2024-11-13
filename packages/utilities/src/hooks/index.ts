@@ -1,4 +1,4 @@
-export { default as useGraphicManager } from './useGraphicManager.ts';
+export { default as useGraphicManager } from './useGraphicManager';
 export { default as useInterval } from './useInterval';
 export { default as useLocalStorage } from './useLocalStorage';
 export { default as useMapReady } from './useMapReady';

@@ -1,6 +1,12 @@
 import { useState, useMemo } from 'react';
 
-export default function useOpenClosed(initial = false) {
+type Handlers = {
+  open: () => void;
+  close: () => void;
+  toggle: () => void;
+};
+
+export default function useOpenClosed(initial = false): [boolean, Handlers] {
   const [state, setState] = useState(initial);
 
   const handlers = useMemo(
@@ -12,7 +18,7 @@ export default function useOpenClosed(initial = false) {
         setState(false);
       },
       toggle: () => {
-        setState((s) => (s ? false : true));
+        setState((s) => !s);
       },
     }),
     [],

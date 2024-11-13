@@ -3,7 +3,7 @@ import { describe, it, expect } from 'vitest';
 
 describe('toQueryString', () => {
   it('should not include null and undefined values in the query string', () => {
-    const params = {
+    const params: Record<string, any> = {
       name: 'John',
       age: null,
       city: undefined,
