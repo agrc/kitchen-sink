@@ -24,6 +24,8 @@
     "lods",
     "lucide",
     "maxresults",
+    "multipatch",
+    "multipoint",
     "oidc",
     "packagejson",
     "prebuild",
