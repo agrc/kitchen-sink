@@ -11,37 +11,29 @@ const ADDRESS_TYPE = 'single-address';
 type GeocodeComponentType = 'single-address' | 'route-milepost';
 type GeocodeProps = {
   apiKey: string;
-  type: GeocodeComponentType | undefined;
-  address:
-    | {
-        acceptScore: number;
-        suggest: number;
-        locators: 'all' | 'addressPoints' | 'roadCenterlines';
-        poBox: boolean;
-        scoreDifference: boolean;
-      }
-    | undefined;
-  milepost:
-    | {
-        side: 'increasing' | 'decreasing';
-        fullRoute: boolean;
-      }
-    | undefined;
-  wkid: number | undefined;
-  callback: string | undefined;
-  format: 'geojson' | 'esrijson' | undefined;
-  pointSymbol:
-    | {
-        style: 'diamond' | 'circle';
-        color: [number, number, number, number];
-      }
-    | undefined;
-  events:
-    | {
-        success: (result: any) => void;
-        error: (error: any) => void;
-      }
-    | undefined;
+  type?: GeocodeComponentType;
+  address?: {
+    acceptScore: number;
+    suggest: number;
+    locators: 'all' | 'addressPoints' | 'roadCenterlines';
+    poBox: boolean;
+    scoreDifference: boolean;
+  };
+  milepost?: {
+    side: 'increasing' | 'decreasing';
+    fullRoute: boolean;
+  };
+  wkid?: number;
+  callback?: string;
+  format?: 'geojson' | 'esrijson';
+  pointSymbol?: {
+    style: 'diamond' | 'circle';
+    color: [number, number, number, number];
+  };
+  events?: {
+    success: (result: any) => void;
+    error: (error: any) => void;
+  };
 };
 type Point = {
   x: number;
