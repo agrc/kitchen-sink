@@ -42,6 +42,7 @@ export const preview = {
         date: /Date$/,
       },
     },
+    actions: { argTypesRegex: '^on.*' },
   },
   tags: ['autodocs'],
 };
