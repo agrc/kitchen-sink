@@ -11,6 +11,13 @@ const meta: Meta<typeof Component> = {
     layout: 'fullscreen',
   },
   tags: ['autodocs'],
+  decorators: [
+    (Story) => (
+      <div className="min-h-96">
+        <Story />
+      </div>
+    ),
+  ],
   argTypes: {},
   args: {},
 };
