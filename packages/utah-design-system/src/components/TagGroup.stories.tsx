@@ -5,7 +5,6 @@ const meta: Meta<typeof Component> = {
   component: Component,
   parameters: {
     layout: 'centered',
-    actions: { argTypesRegex: '^on.*' },
   },
   tags: ['autodocs'],
   argTypes: {},
