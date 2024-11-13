@@ -5,7 +5,10 @@ import {
   masqueradeProvider,
   multiProvider,
   ugrcApiProvider,
+  type AsyncListItem,
 } from './Sherlock';
+import type Graphic from '@arcgis/core/Graphic';
+import type { AsyncListData } from 'react-stately';
 
 const meta: Meta<typeof Component> = {
   component: Component,
@@ -35,6 +38,20 @@ export const Example = {
     label: 'Select a location',
     placeholder: 'Search with masquerade',
     provider: masqueradeProvider(url, srid),
+  },
+};
+
+export const Clear = {
+  args: {
+    label: 'Select a location',
+    placeholder: 'Search with masquerade',
+    provider: masqueradeProvider(url, srid),
+    onSherlockMatch: (
+      _: Graphic[],
+      context: { list: AsyncListData<AsyncListItem> },
+    ): void => {
+      context.list.setFilterText('');
+    },
   },
 };
 
