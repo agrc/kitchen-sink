@@ -28,7 +28,7 @@ const cleanseZone = (data: string): string => {
   return zone;
 };
 
-interface GeocodeOptions {
+type GeocodeOptions = {
   spatialReference?: string;
   format?: string;
   callback?: string;
@@ -37,22 +37,22 @@ interface GeocodeOptions {
   locators?: string;
   poBox?: boolean;
   scoreDifference?: number;
-}
+};
 
-interface SearchOptions {
+type SearchOptions = {
   predicate?: string;
   geometry?: string;
-  spatialReference?: string;
+  spatialReference?: number;
   buffer?: number;
   attributeStyle?: string;
-}
+};
 
-type ErrorResponse = {
+export type ApiErrorResponse = {
   status?: number;
   message: string;
 };
 
-type GeocodeResponse = {
+export type ApiGeocodeResponse = {
   status: number;
   result: {
     location: {
@@ -74,7 +74,7 @@ export const geocode = async (
   zone: string,
   options: GeocodeOptions = {},
   signal?: AbortSignal,
-): Promise<GeocodeResponse['result'] | ErrorResponse> => {
+): Promise<ApiGeocodeResponse['result'] | ApiErrorResponse> => {
   street = cleanseStreet(street);
   zone = cleanseZone(zone);
 
@@ -95,7 +95,7 @@ export const geocode = async (
         },
         signal,
       })
-      .json()) as GeocodeResponse;
+      .json()) as ApiGeocodeResponse;
   } catch (error: any) {
     try {
       response = await error.response.json();
@@ -112,10 +112,11 @@ export const geocode = async (
   return response.result;
 };
 
-type SearchResponse = {
+export type SearchResponse = {
   status: number;
   result: {
     attributes: Record<string, any>;
+    geometry?: __esri.GeometryProperties & { type: __esri.Geometry['type'] };
   }[];
 };
 
@@ -125,7 +126,7 @@ export const search = async (
   fields: string[],
   options: SearchOptions = {},
   signal?: AbortSignal,
-): Promise<SearchResponse['result'] | ErrorResponse> => {
+): Promise<SearchResponse['result'] | ApiErrorResponse> => {
   // validate table and fields
   if (!table || !fields || !fields.length) {
     return {
