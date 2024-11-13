@@ -83,7 +83,7 @@ const drawer = tv({
       class: {
         container:
           'data-[open="true"]:fixed data-[open="true"]:z-30 data-[open="true"]:h-full',
-        content: 'data-[open="true"]:h-full',
+        content: 'duration-0 data-[open="true"]:h-full',
       },
     },
     {
