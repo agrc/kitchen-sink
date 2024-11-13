@@ -1,12 +1,21 @@
+import type { Meta } from '@storybook/react';
 import { useOverlayTrigger } from 'react-aria';
 import { LoremIpsum } from 'react-lorem-ipsum';
 import { useOverlayTriggerState } from 'react-stately';
 import { Button } from './Button';
-import { Drawer } from './Drawer';
+import { Drawer as Component } from './Drawer';
 
-export default {
-  component: Drawer,
+const meta: Meta<typeof Component> = {
+  component: Component,
+  parameters: {
+    layout: 'fullscreen',
+  },
+  tags: ['autodocs'],
+  argTypes: {},
+  args: {},
 };
+
+export default meta;
 
 export const Bottom = {
   render: () => {
@@ -19,9 +28,9 @@ export const Bottom = {
     );
 
     return (
-      <Drawer type="tray" state={state} {...overlayTriggerProps}>
+      <Component type="tray" state={state} {...overlayTriggerProps}>
         <LoremIpsum p={1} />
-      </Drawer>
+      </Component>
     );
   },
 };
@@ -37,14 +46,14 @@ export const AllowFullScreen = {
     );
 
     return (
-      <Drawer
+      <Component
         type="tray"
         state={state}
         {...overlayTriggerProps}
         allowFullScreen
       >
         <LoremIpsum p={10} />
-      </Drawer>
+      </Component>
     );
   },
 };
@@ -60,11 +69,11 @@ export const Side = {
     );
 
     return (
-      <Drawer state={state} {...overlayTriggerProps}>
+      <Component state={state} {...overlayTriggerProps}>
         <div className="bg-green-200">
           <LoremIpsum p={1} />
         </div>
-      </Drawer>
+      </Component>
     );
   },
 };
@@ -81,12 +90,12 @@ export const ScrollingBehavior = {
 
     return (
       <div className="h-96">
-        <Drawer state={state} {...overlayTriggerProps}>
+        <Component state={state} {...overlayTriggerProps}>
           <div className="flex flex-col gap-4 p-4">
             <h2 className="text-2xl font-bold">Drawer</h2>
             <LoremIpsum p={4} />
           </div>
-        </Drawer>
+        </Component>
       </div>
     );
   },
@@ -103,7 +112,7 @@ export const WithMultipleTriggers = {
     );
 
     return (
-      <Drawer state={state} {...overlayTriggerProps}>
+      <Component state={state} {...overlayTriggerProps}>
         <LoremIpsum p={2} />
         <Button
           {...overlayTriggerProps.triggerProps}
@@ -115,7 +124,7 @@ export const WithMultipleTriggers = {
         >
           Close
         </Button>
-      </Drawer>
+      </Component>
     );
   },
 };
@@ -142,13 +151,13 @@ export const AtlasFlexing = {
       <main className="flex h-[600px] flex-col gap-2">
         <div id="header" className="h-20 bg-gray-400"></div>
         <section className="relative mr-2 flex min-h-0 flex-1 overflow-x-hidden">
-          <Drawer main state={sideBarState} {...sideBarTriggerProps}>
+          <Component main state={sideBarState} {...sideBarTriggerProps}>
             <LoremIpsum p={10} />
-          </Drawer>
-          <div className="mb-2 relative flex flex-1 flex-col overflow-hidden rounded border border-zinc-200 dark:border-0 dark:border-zinc-700">
+          </Component>
+          <div className="relative mb-2 flex flex-1 flex-col overflow-hidden rounded border border-zinc-200 dark:border-0 dark:border-zinc-700">
             <div className="relative flex-1 overflow-hidden dark:rounded">
-              <div id="map" className="bg-blue-400 size-full"></div>
-              <Drawer
+              <div id="map" className="size-full bg-blue-400"></div>
+              <Component
                 type="tray"
                 className="shadow-inner dark:shadow-white/20"
                 allowFullScreen
@@ -156,7 +165,7 @@ export const AtlasFlexing = {
                 {...trayTriggerProps}
               >
                 <LoremIpsum p={5} />
-              </Drawer>
+              </Component>
             </div>
           </div>
         </section>
