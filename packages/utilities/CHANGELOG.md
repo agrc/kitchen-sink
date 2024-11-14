@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.1](https://github.com/agrc/kitchen-sink/compare/utilities-v2.3.0...utilities-v2.3.1) (2024-11-14)
+
+
+### Bug Fixes
+
+* **useGraphicManager:** update types ([13366e9](https://github.com/agrc/kitchen-sink/commit/13366e9316693b46f15f268860ba85e564ef7121))
+
 ## [2.3.0](https://github.com/agrc/kitchen-sink/compare/utilities-v2.2.7...utilities-v2.3.0) (2024-11-13)
 
 

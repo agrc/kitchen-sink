@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.15.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.15.0...utah-design-system-v1.15.1) (2024-11-14)
+
+
+### Bug Fixes
+
+* **geocode:** update types ([fb496f1](https://github.com/agrc/kitchen-sink/commit/fb496f16351369c9ea39787162db6ce0f278e5fc))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ugrc/utilities bumped from 2.3.0 to 2.3.1
+
 ## [1.15.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.14.2...utah-design-system-v1.15.0) (2024-11-13)
 
 
