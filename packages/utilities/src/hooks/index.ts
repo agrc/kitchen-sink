@@ -1,3 +1,4 @@
+export * from './useDefaultExtent';
 export { default as useGraphicManager } from './useGraphicManager';
 export { default as useInterval } from './useInterval';
 export { default as useLocalStorage } from './useLocalStorage';
