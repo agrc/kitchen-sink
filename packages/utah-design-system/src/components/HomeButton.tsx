@@ -9,7 +9,7 @@ export const HomeButton = ({
   initialExtent,
 }: {
   view: __esri.MapView;
-  position: __esri.UIAddComponent['position'];
+  position?: __esri.UIAddComponent['position'];
   initialExtent?: __esri.Extent;
 }) => {
   const goHome = useDefaultExtent(view, initialExtent);
