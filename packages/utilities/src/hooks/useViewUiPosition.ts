@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 
 export default function useViewUiPosition(
   view: __esri.MapView | null,
-  position: __esri.UIAddPosition,
+  position: __esri.UIAddComponent['position'],
 ) {
   const me = useRef<HTMLDivElement | null>(null);
 
