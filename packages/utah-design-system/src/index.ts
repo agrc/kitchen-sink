@@ -10,6 +10,7 @@ export * from './components/Footer';
 export * from './components/FormErrors';
 export * from './components/Geocode';
 export * from './components/Header';
+export * from './components/HomeButton';
 export * from './components/Link';
 export * from './components/ListBox';
 export * from './components/Menu';
