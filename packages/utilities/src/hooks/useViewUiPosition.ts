@@ -7,8 +7,12 @@ export default function useViewUiPosition(
   const me = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    view?.ui.add(me.current!, position);
-  }, [position, view]);
+    if (!me.current || !view) {
+      return;
+    }
+
+    view.ui.add(me.current, position);
+  }, [position, view, me]);
 
   return me;
 }
