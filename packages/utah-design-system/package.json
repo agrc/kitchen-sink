@@ -1,6 +1,6 @@
 {
   "name": "@ugrc/utah-design-system",
-  "version": "1.15.1",
+  "version": "1.16.0",
   "private": false,
   "description": "This is a collection of react components for implementing the [Utah Design System](https://designsystem.utah.gov).",
   "keywords": [
@@ -49,7 +49,7 @@
     "@esri/arcgis-rest-geocoding": "^4.0.3",
     "@esri/arcgis-rest-request": "^4.2.3",
     "@types/lodash-es": "^4.17.12",
-    "@ugrc/utilities": "2.3.1",
+    "@ugrc/utilities": "2.4.0",
     "firebase": ">=10.x",
     "ky": "^1.7.2",
     "lodash-es": "^4.17.21",
