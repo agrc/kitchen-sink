@@ -1,4 +1,5 @@
 import { useProgressBar } from 'react-aria';
+import { twJoin } from 'tailwind-merge';
 
 export const Spinner = () => {
   const { progressBarProps } = useProgressBar({
@@ -48,14 +49,13 @@ export const BusyBar = ({ busy }: { busy?: boolean }) => {
     isIndeterminate: true,
   });
 
-  if (!busy) {
-    return null;
-  }
-
   return (
     <div
       {...progressBarProps}
-      className="absolute inset-x-0 top-0 z-[1] h-2 w-full min-w-full animate-gradient-x bg-gradient-to-r from-secondary-700/90 from-30% via-accent-400/90 to-primary-800/90 to-70% transition-all duration-700 ease-in-out"
+      className={twJoin(
+        [busy ? 'opacity-100' : 'opacity-0'],
+        'will-change absolute inset-x-0 top-0 z-[1] h-2 w-full min-w-full animate-gradient-x bg-gradient-to-r from-secondary-700/90 from-30% via-accent-400/90 to-primary-800/90 to-70% transition-all duration-700 ease-in-out',
+      )}
     ></div>
   );
 };
