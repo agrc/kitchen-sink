@@ -1,16 +1,34 @@
 import { useEffect, useState } from 'react';
 
-export default function useViewLoading(view: __esri.MapView | null) {
+let timeoutId: NodeJS.Timeout | null = null;
+
+export default function useViewLoading(
+  view: __esri.MapView | null,
+  debounceDuration = 500,
+) {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const init = () => {
-      view?.watch('updating', (updating: boolean) => setIsLoading(updating));
-    };
-
-    if (view) {
-      init();
+    if (!view) {
+      return;
     }
+
+    view.when(() => {
+      view.watch('updating', (updating: boolean) => {
+        if (timeoutId) {
+          return;
+        }
+
+        if (updating) {
+          setIsLoading(true);
+        } else {
+          timeoutId = setTimeout(() => {
+            setIsLoading(false);
+            timeoutId = null;
+          }, debounceDuration);
+        }
+      });
+    });
   }, [view]);
 
   return isLoading;
