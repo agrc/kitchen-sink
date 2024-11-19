@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.16.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.15.1...utah-design-system-v1.16.0) (2024-11-19)
+
+
+### Features
+
+* **home-button:** introduce a button to go to a default extent ([c7ee996](https://github.com/agrc/kitchen-sink/commit/c7ee9963a08d75133452be2c33e94e26ea52b7df))
+
+
+### Bug Fixes
+
+* **button:** move hover to enabled status to remove hover on disabled buttons ([291308b](https://github.com/agrc/kitchen-sink/commit/291308bbcfe4e686158a0c913225031be2ab756c))
+* **hooks:** correct position type on useViewUiPosition ([d75aed8](https://github.com/agrc/kitchen-sink/commit/d75aed8eb0d060b2d85a274238f2b226ece7f47d))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ugrc/utilities bumped from 2.3.1 to 2.4.0
+
 ## [1.15.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.15.0...utah-design-system-v1.15.1) (2024-11-14)
 
 

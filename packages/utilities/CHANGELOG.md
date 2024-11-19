@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.0](https://github.com/agrc/kitchen-sink/compare/utilities-v2.3.1...utilities-v2.4.0) (2024-11-19)
+
+
+### Features
+
+* **hooks:** create useDefaultExtent hook ([283dc48](https://github.com/agrc/kitchen-sink/commit/283dc4893a09ef3e72d0c848cf3c0a92df8246e1))
+
+
+### Bug Fixes
+
+* **hooks:** correct hook logic on useViewUiPosition ([c519108](https://github.com/agrc/kitchen-sink/commit/c51910838b35f15fde11dc1fde7498048b7cdfe8))
+* **hooks:** correct position type on useViewUiPosition ([d75aed8](https://github.com/agrc/kitchen-sink/commit/d75aed8eb0d060b2d85a274238f2b226ece7f47d))
+
 ## [2.3.1](https://github.com/agrc/kitchen-sink/compare/utilities-v2.3.0...utilities-v2.3.1) (2024-11-14)
 
 
