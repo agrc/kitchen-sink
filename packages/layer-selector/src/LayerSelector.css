@@ -30,6 +30,9 @@
   background: #fff;
   pointer-events: auto;
 }
+.layer-selector.esri-component.esri-widget {
+  margin-bottom: 0;
+}
 .layer-selector--width {
   width: 8em;
 }

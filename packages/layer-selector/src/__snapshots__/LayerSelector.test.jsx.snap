@@ -5,7 +5,7 @@ exports[`LayerSelector tests > LayerSelector snapshot 1`] = `
   <div>
     <div
       aria-haspopup="true"
-      class="layer-selector"
+      class="layer-selector esri-component esri-widget"
     >
       <input
         alt="layers"
