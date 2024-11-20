@@ -30,7 +30,7 @@ const ExpandableContainer = (props) => {
   return (
     // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
     <div
-      className="layer-selector"
+      className="layer-selector esri-component esri-widget"
       // onFocus={() => setExpanded(true)}
       // onBlur={() => setExpanded(false)}
       onMouseOver={() => setExpanded(true)}
