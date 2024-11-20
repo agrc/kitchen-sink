@@ -15,15 +15,19 @@ export default function useViewLoading(
 
     view.when(() => {
       view.watch('updating', (updating: boolean) => {
-        if (timeoutId) {
+        if (updating && timeoutId) {
           return;
         }
 
-        if (updating) {
-          setIsLoading(true);
+        if (!updating) {
+          if (timeoutId) {
+            clearTimeout(timeoutId);
+            timeoutId = null;
+          }
+          setIsLoading(false);
         } else {
           timeoutId = setTimeout(() => {
-            setIsLoading(false);
+            setIsLoading(true);
             timeoutId = null;
           }, debounceDuration);
         }
