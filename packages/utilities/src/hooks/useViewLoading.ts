@@ -1,12 +1,11 @@
-import { useEffect, useState } from 'react';
-
-let timeoutId: NodeJS.Timeout | null = null;
+import { useEffect, useRef, useState } from 'react';
 
 export default function useViewLoading(
   view: __esri.MapView | null,
   debounceDuration = 500,
 ) {
   const [isLoading, setIsLoading] = useState(false);
+  const timeoutId = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (!view) {
@@ -15,20 +14,20 @@ export default function useViewLoading(
 
     view.when(() => {
       view.watch('updating', (updating: boolean) => {
-        if (updating && timeoutId) {
+        if (updating && timeoutId.current) {
           return;
         }
 
         if (!updating) {
-          if (timeoutId) {
-            clearTimeout(timeoutId);
-            timeoutId = null;
+          if (timeoutId.current) {
+            clearTimeout(timeoutId.current);
+            timeoutId.current = null;
           }
           setIsLoading(false);
         } else {
-          timeoutId = setTimeout(() => {
+          timeoutId.current = setTimeout(() => {
             setIsLoading(true);
-            timeoutId = null;
+            timeoutId.current = null;
           }, debounceDuration);
         }
       });
