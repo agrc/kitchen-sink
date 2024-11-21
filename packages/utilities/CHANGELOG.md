@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.1](https://github.com/agrc/kitchen-sink/compare/utilities-v2.4.0...utilities-v2.4.1) (2024-11-21)
+
+
+### Bug Fixes
+
+* **hooks:** debounce useViewLoading ([41f4cc3](https://github.com/agrc/kitchen-sink/commit/41f4cc36adef5ebf05a00012054fb3839dafde90))
+
 ## [2.4.0](https://github.com/agrc/kitchen-sink/compare/utilities-v2.3.1...utilities-v2.4.0) (2024-11-19)
 
 
