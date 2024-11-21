@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.10](https://github.com/agrc/kitchen-sink/compare/layer-selector-v6.2.9...layer-selector-v6.2.10) (2024-11-21)
+
+
+### Bug Fixes
+
+* **layer-selector:** add drop shadow to match other esri map widgets ([98931f3](https://github.com/agrc/kitchen-sink/commit/98931f3341757bc4d21e46cb636296b06de34508))
+
 ## [6.2.9](https://github.com/agrc/kitchen-sink/compare/layer-selector-v6.2.8...layer-selector-v6.2.9) (2024-10-29)
 
 

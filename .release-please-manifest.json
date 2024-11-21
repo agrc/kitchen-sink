@@ -1,11 +1,11 @@
 {
-  "packages/dart-board": "5.0.17",
+  "packages/dart-board": "5.0.18",
   "packages/header": "1.1.2",
-  "packages/layer-selector": "6.2.9",
-  "packages/mouse-trap": "2.0.15",
+  "packages/layer-selector": "6.2.10",
+  "packages/mouse-trap": "2.0.16",
   "packages/popover": "1.1.0",
   "packages/sherlock": "4.0.9",
   "packages/tailwind-preset": "1.1.0",
-  "packages/utah-design-system": "1.16.0",
-  "packages/utilities": "2.4.0"
+  "packages/utah-design-system": "1.16.1",
+  "packages/utilities": "2.4.1"
 }
