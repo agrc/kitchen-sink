@@ -1,5 +1,9 @@
 # Kitchen Sink
 
+## Preview
+
+The [storybook files](https://ut-dts-agrc-kitchen-sink-prod.web.app/) are published to the web to view and learn about the components.
+
 ## Development
 
 1. Build the packages
@@ -19,6 +23,16 @@ Please use [conventional commits](https://www.conventionalcommits.org) with the 
 - `popover`
 - `sherlock`
 - `utilities`
+
+Within the utah design system use the lower snake case component name
+
+- `button`
+- `tag-group`
+- `hooks`
+
+or if general package updates use
+
+- `uds`
 
 ### NPM Linking
 
