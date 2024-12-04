@@ -1,4 +1,5 @@
 import type { Meta } from '@storybook/react';
+import { BotIcon } from 'lucide-react';
 import { Button as Component } from './Button';
 
 const meta: Meta<typeof Component> = {
@@ -46,5 +47,12 @@ export const Accent = {
 export const Destructive = {
   args: {
     variant: 'destructive',
+  },
+};
+
+export const Icon = {
+  args: {
+    variant: 'icon',
+    children: <BotIcon />,
   },
 };
