@@ -47,7 +47,7 @@ export const Example = {
       <>
         <div
           ref={viewDivRef}
-          className="border rounded-lg size-96 overflow-hidden"
+          className="size-96 overflow-hidden rounded-lg border"
         >
           {ready && <Component view={view.current!} />}
         </div>
