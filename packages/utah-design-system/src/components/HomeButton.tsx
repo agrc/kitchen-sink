@@ -18,16 +18,16 @@ export const HomeButton = ({
   return (
     <div
       ref={uiPosition}
-      className="group flex items-center justify-center size-[32px] bg-white shadow-[0_1px_2px_#0000004d]"
+      className="group flex size-[32px] items-center justify-center bg-white shadow-[0_1px_2px_#0000004d]"
     >
       <Button
         variant="icon"
-        className="focus:min-h-0 focus:outline-offset-[-2px] will-change-transform transition-colors duration-150 ease-in-out p-0 size-full stroke-[4] group-hover:bg-[#f3f3f3]"
+        className="size-full stroke-[4] p-0 transition-colors duration-150 ease-in-out will-change-transform group-hover:bg-[#f3f3f3] focus:min-h-0 focus:outline-offset-[-2px]"
         aria-label="Default extent"
         onPress={() => goHome()}
       >
         <HomeIcon
-          className="will-change-transform transition-colors duration-150 ease-in-out size-5 text-[#6e6e6e] group-hover:text-[#151515] stroke-[1.5]"
+          className="size-5 stroke-[1.5] text-[#6e6e6e] transition-colors duration-150 ease-in-out will-change-transform group-hover:text-[#151515]"
           aria-hidden
         />
         <span className="sr-only">Go Home</span>
