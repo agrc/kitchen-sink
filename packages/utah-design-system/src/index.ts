@@ -25,6 +25,7 @@ export * from './components/Switch';
 export * from './components/Tabs';
 export * from './components/TagGroup';
 export * from './components/TextField';
+export * from './components/ToggleButton';
 export * from './components/UtahIdLogin';
 export * from './contexts/FirebaseAnalyticsProvider';
 export * from './contexts/FirebaseAppProvider';
