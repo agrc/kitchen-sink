@@ -141,7 +141,7 @@ export const search = async (
 
   try {
     response = (await client
-      .get(`search/${table}/${fields.join(',')}/`, {
+      .get(`search/${table}/${fields.filter(Boolean).join(',')}/`, {
         searchParams: {
           ...options,
           apiKey,
