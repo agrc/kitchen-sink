@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.17.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.16.1...utah-design-system-v1.17.0) (2024-12-05)
+
+
+### Features
+
+* **toggle-button:** introduce a toggle button ([4f0997e](https://github.com/agrc/kitchen-sink/commit/4f0997ef1b26f82990ebac6d9a4c9d98a4011dc9))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ugrc/utilities bumped from 2.4.1 to 2.4.2
+
 ## [1.16.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.16.0...utah-design-system-v1.16.1) (2024-11-21)
 
 
