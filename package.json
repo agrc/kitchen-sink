@@ -15,7 +15,7 @@
   "scripts": {
     "build": "npm run build --workspaces",
     "build:storybook": "storybook build --docs --output-dir ./dist --disable-telemetry",
-    "check": "tsc",
+    "check": "tsc -b",
     "format": "prettier . --write",
     "lint": "eslint .",
     "lint:fix": "eslint . --quiet --fix",
@@ -98,6 +98,7 @@
     "@storybook/test": "8.2.9",
     "@testing-library/react": "^16.0.1",
     "@types/node": "^22.8.7",
+    "@ugrc/tsconfigs": "^1.0.2",
     "@vitejs/plugin-react": "^4.3.3",
     "autoprefixer": "^10.4.20",
     "chokidar-cli": "^3.0.0",

@@ -1,14 +1,15 @@
 import react from '@vitejs/plugin-react';
 import { basename, resolve } from 'path';
 import { readPackage } from 'read-pkg';
-import { defineConfig } from 'vite';
+import { type RollupOptions } from 'rollup';
 import dts from 'vite-plugin-dts';
+import { defineConfig } from 'vitest/config';
 
 const directory = process.cwd();
 const packageName = basename(directory);
 const packageJson = await readPackage({ cwd: directory });
 
-const rollupOptions = {
+const rollupOptions: RollupOptions = {
   external: [
     ...Object.keys(packageJson?.dependencies ?? {}),
     ...Object.keys(packageJson?.peerDependencies ?? {}),
@@ -38,7 +39,7 @@ const config = defineConfig({
   build: {
     lib: {
       entry: resolve(directory, 'src/index.js'),
-      formats: ['esm'],
+      formats: ['es'],
       name: `@ugrc/${packageName}`,
       fileName: (format) => {
         return `index.${format}.js`;
