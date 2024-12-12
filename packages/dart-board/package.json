@@ -35,7 +35,7 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/index.esm.js"
+      "import": "./dist/index.es.js"
     },
     "./src": {
       "import": "./src/index.js"
