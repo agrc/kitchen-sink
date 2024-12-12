@@ -49,7 +49,7 @@ const drawer = tv({
         content:
           "h-full w-80 overflow-y-auto data-[open='false']:-translate-x-full data-[open='true']:translate-x-0",
         triggerButton:
-          '-right-[25px] top-[calc(50%-24px)] h-10 flex-col rounded-l-none border-l-0 dark:border-zinc-700 dark:bg-zinc-800',
+          '-right-[25px] top-[calc(50%-24px)] h-10 flex-col rounded-l-none border-l-0 !p-1 dark:border-zinc-700 dark:bg-zinc-800',
       },
       tray: {
         container:
