@@ -233,6 +233,10 @@ export const masqueradeProvider = (
 
       const responseJson = await safeFetch<IGeocodeResponse>(getFeatureUrl);
 
+      if (responseJson.candidates.length === 0 || !responseJson.candidates[0]) {
+        return { items: [] };
+      }
+
       const candidate = responseJson.candidates[0];
 
       const graphic = {
@@ -373,6 +377,10 @@ export const featureServiceProvider = (
         kyOptions,
       );
 
+      if (responseJson.features.length === 0 || !responseJson.features[0]) {
+        return { items: [] };
+      }
+
       const feature = {
         ...responseJson.features[0],
         geometry: {
@@ -433,6 +441,14 @@ export const multiProvider = (
       const [providerIndex, key] = keyValue.split(separator);
 
       const provider = providers[Number(providerIndex)];
+
+      if (!provider) {
+        throw new Error(`Provider not found for keyValue: ${keyValue}`);
+      }
+
+      if (!key) {
+        throw new Error(`Key not found for keyValue: ${keyValue}`);
+      }
 
       const response = await provider.getFeature(key);
 
