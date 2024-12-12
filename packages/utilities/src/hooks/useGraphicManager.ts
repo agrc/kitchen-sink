@@ -49,7 +49,11 @@ const useGraphicManager = (
     previousGraphic.current = graphic;
 
     if (Array.isArray(graphic)) {
-      if (graphic && graphic[0].declaredClass !== 'esri.Graphic') {
+      if (
+        graphic &&
+        graphic[0] &&
+        graphic[0].declaredClass !== 'esri.Graphic'
+      ) {
         console.warn(
           'graphic is not an esri.Graphic and will not be removed from the map. Remove any auto-casting of the graphic.',
         );
