@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.17.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.17.1...utah-design-system-v1.17.2) (2024-12-13)
+
+
+### Bug Fixes
+
+* **uds:** fix type errors that are only showing up in project checks ([9876b84](https://github.com/agrc/kitchen-sink/commit/9876b848fc9e7d796548313e2b7308bfb96762e2))
+
 ## [1.17.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.17.0...utah-design-system-v1.17.1) (2024-12-13)
 
 
