@@ -1,15 +1,15 @@
 import { XIcon } from 'lucide-react';
-import { createContext, useContext } from 'react';
+import { createContext, type ReactNode, useContext } from 'react';
 import {
   Tag as AriaTag,
   TagGroup as AriaTagGroup,
   type TagGroupProps as AriaTagGroupProps,
   type TagProps as AriaTagProps,
   Button,
+  composeRenderProps,
   TagList,
   type TagListProps,
   Text,
-  composeRenderProps,
 } from 'react-aria-components';
 import { twMerge } from 'tailwind-merge';
 import { tv } from 'tailwind-variants';
@@ -122,7 +122,7 @@ export function Tag({ children, color, ...props }: TagProps) {
     >
       {({ allowsRemoving }) => (
         <>
-          {children}
+          {children as ReactNode}
           {allowsRemoving && (
             <Button slot="remove" className={removeButtonStyles}>
               <XIcon aria-hidden className="h-auto w-3" />

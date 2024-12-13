@@ -90,7 +90,7 @@ export function Checkbox(props: CheckboxProps) {
               <CheckIcon aria-hidden className={iconStyles} />
             ) : null}
           </div>
-          {props.children}
+          {props.children as ReactNode}
         </>
       )}
     </AriaCheckbox>

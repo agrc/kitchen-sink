@@ -66,7 +66,7 @@ export function Radio(props: RadioProps) {
       {(renderProps) => (
         <>
           <div className={styles(renderProps)} />
-          {props.children}
+          {props.children as ReactNode}
         </>
       )}
     </RACRadio>
