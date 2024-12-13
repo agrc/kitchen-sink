@@ -21,6 +21,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @ugrc/utilities bumped from ^2.2.0 to ^2.2.1
 
+## [5.0.20](https://github.com/agrc/kitchen-sink/compare/dart-board-v5.0.19...dart-board-v5.0.20) (2024-12-13)
+
+
+### Bug Fixes
+
+* make exports match build artifact names ([93d8735](https://github.com/agrc/kitchen-sink/commit/93d87352e81e4af59189b131ef5574f52dbde018))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ugrc/utilities bumped from ^2.4.2 to ^2.4.3
+
 ## [5.0.19](https://github.com/agrc/kitchen-sink/compare/dart-board-v5.0.18...dart-board-v5.0.19) (2024-12-05)
 
 

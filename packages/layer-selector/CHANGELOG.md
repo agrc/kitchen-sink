@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.11](https://github.com/agrc/kitchen-sink/compare/layer-selector-v6.2.10...layer-selector-v6.2.11) (2024-12-13)
+
+
+### Bug Fixes
+
+* make exports match build artifact names ([93d8735](https://github.com/agrc/kitchen-sink/commit/93d87352e81e4af59189b131ef5574f52dbde018))
+
 ## [6.2.10](https://github.com/agrc/kitchen-sink/compare/layer-selector-v6.2.9...layer-selector-v6.2.10) (2024-11-21)
 
 
