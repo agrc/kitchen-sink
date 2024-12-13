@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/agrc/kitchen-sink/compare/popover-v1.1.0...popover-v1.1.1) (2024-12-13)
+
+
+### Bug Fixes
+
+* make exports match build artifact names ([93d8735](https://github.com/agrc/kitchen-sink/commit/93d87352e81e4af59189b131ef5574f52dbde018))
+
 ## [1.1.0](https://github.com/agrc/kitchen-sink/compare/popover-v1.0.0...popover-v1.1.0) (2024-05-13)
 
 

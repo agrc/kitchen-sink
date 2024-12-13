@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.3](https://github.com/agrc/kitchen-sink/compare/header-v1.1.2...header-v1.1.3) (2024-12-13)
+
+
+### Bug Fixes
+
+* make exports match build artifact names ([93d8735](https://github.com/agrc/kitchen-sink/commit/93d87352e81e4af59189b131ef5574f52dbde018))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ugrc/popover bumped from ^1.1.0 to ^1.1.1
+
 ## [1.1.2](https://github.com/agrc/kitchen-sink/compare/header-v1.1.1...header-v1.1.2) (2024-05-21)
 
 

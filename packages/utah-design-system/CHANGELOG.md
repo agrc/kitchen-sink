@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.17.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.17.0...utah-design-system-v1.17.1) (2024-12-13)
+
+
+### Bug Fixes
+
+* **uds:** fix sidebar toggle button alignment ([c64f6e3](https://github.com/agrc/kitchen-sink/commit/c64f6e3e2ff1ec62d1f966c9044c3d3aafc7b30b))
+* **uds:** fix typescript check errors after applying new tsconfig ([afc8703](https://github.com/agrc/kitchen-sink/commit/afc8703c2d5924e163b380f3a0b54fb131d438af))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ugrc/utilities bumped from 2.4.2 to 2.4.3
+
 ## [1.17.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.16.1...utah-design-system-v1.17.0) (2024-12-05)
 
 
