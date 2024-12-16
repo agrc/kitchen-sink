@@ -1,5 +1,6 @@
 import {
   type Auth,
+  connectAuthEmulator,
   getAuth,
   OAuthProvider,
   onAuthStateChanged,
@@ -56,6 +57,18 @@ export const FirebaseAuthProvider = (props: FirebaseAuthProviderProps) => {
   // @see https://firebase.google.com/docs/auth/web/google-signin
   const login = () => signInWithPopup(sdk, provider);
   const logout = () => signOut(sdk);
+
+  useEffect(() => {
+    if (app && import.meta.env.DEV) {
+      const auth = getAuth(app);
+      if (!auth.emulatorConfig) {
+        console.log('connecting to auth emulator');
+        connectAuthEmulator(auth, 'http://127.0.0.1:9099', {
+          disableWarnings: true,
+        });
+      }
+    }
+  }, [app]);
 
   return (
     <FirebaseAuthContext.Provider
