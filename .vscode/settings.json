@@ -11,6 +11,7 @@
     "docgen",
     "escaperegexp",
     "esrijson",
+    "Firestore",
     "fontawesome",
     "fortawesome",
     "FULLNAME",

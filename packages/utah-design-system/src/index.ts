@@ -30,3 +30,5 @@ export * from './components/UtahIdLogin';
 export * from './contexts/FirebaseAnalyticsProvider';
 export * from './contexts/FirebaseAppProvider';
 export * from './contexts/FirebaseAuthProvider';
+export * from './contexts/FirebaseFunctionsProvider';
+export * from './contexts/FirestoreProvider';
