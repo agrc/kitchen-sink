@@ -6,7 +6,7 @@ const size = 120;
 
 const GravatarIcon = () => (
   <svg
-    className="absolute bottom-1 right-1 h-3 w-3 fill-current text-slate-800/20 dark:text-slate-100/20"
+    className="absolute bottom-1 right-1 size-3 fill-current text-slate-800/20 dark:text-slate-100/20"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 27 27"
     role="presentation"
