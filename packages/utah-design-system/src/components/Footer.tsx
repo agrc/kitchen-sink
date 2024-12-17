@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import govOpsLogo from '../assets/govops-logo.webp';
 import dnrLogo from '../assets/natural-resources-logo.webp';
 import { Link } from './Link.tsx';
@@ -8,7 +9,7 @@ type FooterLinkColumn = {
   links: FooterLink[];
 };
 export type FooterProps = {
-  renderAddress?: () => JSX.Element;
+  renderAddress?: () => ReactNode;
   columnOne?: FooterLinkColumn;
   columnTwo?: FooterLinkColumn;
   columnThree?: FooterLinkColumn;
