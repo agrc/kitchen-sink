@@ -6,6 +6,6 @@
   "packages/popover": "1.1.1",
   "packages/sherlock": "4.0.10",
   "packages/tailwind-preset": "1.1.0",
-  "packages/utah-design-system": "1.18.0",
+  "packages/utah-design-system": "1.18.1",
   "packages/utilities": "2.4.3"
 }
