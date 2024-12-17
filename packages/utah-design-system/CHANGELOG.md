@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.18.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.18.0...utah-design-system-v1.18.1) (2024-12-17)
+
+
+### Bug Fixes
+
+* **footer:** upgrade deprecated type ([496431e](https://github.com/agrc/kitchen-sink/commit/496431e7c7eb7b990ee35bdf1205f0ae23cc909d))
+
 ## [1.18.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.17.2...utah-design-system-v1.18.0) (2024-12-17)
 
 
