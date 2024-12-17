@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.18.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.17.2...utah-design-system-v1.18.0) (2024-12-17)
+
+
+### Features
+
+* **slider:** introduce a slider component ([7b3d1d2](https://github.com/agrc/kitchen-sink/commit/7b3d1d234eb39ee9fcdaab29d72da9f41bb0f796))
+* **uds:** add firebase functions and firestore providers ([39f8004](https://github.com/agrc/kitchen-sink/commit/39f80045641509573d103622bfb425d5b7ff0e5d))
+* **uds:** auto-connect to firebase auth emulators in dev ([eb79861](https://github.com/agrc/kitchen-sink/commit/eb7986164f2072e13237116659144a87d83fe87c))
+
 ## [1.17.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.17.1...utah-design-system-v1.17.2) (2024-12-13)
 
 
