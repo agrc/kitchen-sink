@@ -2,6 +2,7 @@ import { type ForwardedRef, forwardRef } from 'react';
 import {
   TextField as AriaTextField,
   type TextFieldProps as AriaTextFieldProps,
+  type InputProps,
   type ValidationResult,
 } from 'react-aria-components';
 import { tv } from 'tailwind-variants';
@@ -27,10 +28,11 @@ export interface TextFieldProps extends AriaTextFieldProps {
   label?: string;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
+  inputProps?: InputProps;
 }
 
 export const TextField = forwardRef(function TextField(
-  { label, description, errorMessage, ...props }: TextFieldProps,
+  { label, description, errorMessage, inputProps, ...props }: TextFieldProps,
   ref: ForwardedRef<HTMLInputElement>,
 ) {
   return (
@@ -42,7 +44,7 @@ export const TextField = forwardRef(function TextField(
       )}
     >
       {label && <Label>{label}</Label>}
-      <Input ref={ref} className={inputStyles} />
+      <Input ref={ref} {...inputProps} className={inputStyles} />
       {description && <Description>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>
     </AriaTextField>
