@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.18.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.18.1...utah-design-system-v1.18.2) (2024-12-18)
+
+
+### Bug Fixes
+
+* **textfield:** allow input props to be passed through ([df03c1f](https://github.com/agrc/kitchen-sink/commit/df03c1f7f4a8ff0bb8a350e5960c13aac65516ee)), closes [#396](https://github.com/agrc/kitchen-sink/issues/396)
+
 ## [1.18.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.18.0...utah-design-system-v1.18.1) (2024-12-17)
 
 
