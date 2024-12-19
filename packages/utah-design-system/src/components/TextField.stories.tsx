@@ -19,6 +19,14 @@ export default meta;
 
 export const Example = {};
 
+export const Large = {
+  args: {
+    inputProps: {
+      className: 'text-2xl',
+    },
+  },
+};
+
 export const HtmlValidation = (args: any) => (
   <form
     onSubmit={(event) => {

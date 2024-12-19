@@ -5,6 +5,7 @@ import {
   type InputProps,
   type ValidationResult,
 } from 'react-aria-components';
+import { twJoin } from 'tailwind-merge';
 import { tv } from 'tailwind-variants';
 import {
   Description,
@@ -35,6 +36,12 @@ export const TextField = forwardRef(function TextField(
   { label, description, errorMessage, inputProps, ...props }: TextFieldProps,
   ref: ForwardedRef<HTMLInputElement>,
 ) {
+  // mix in input classes if necessary
+  let inputClasses = inputStyles();
+  if (inputProps?.className) {
+    inputClasses = twJoin(inputStyles(), inputProps.className as string);
+  }
+
   return (
     <AriaTextField
       {...props}
@@ -44,7 +51,7 @@ export const TextField = forwardRef(function TextField(
       )}
     >
       {label && <Label>{label}</Label>}
-      <Input ref={ref} {...inputProps} className={inputStyles} />
+      <Input ref={ref} {...inputProps} className={inputClasses} />
       {description && <Description>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>
     </AriaTextField>
