@@ -310,7 +310,7 @@ const useGeocoding = (userProps: GeocodeProps) => {
         matchAddress: result.matchAddress,
       } as any;
       let popupTemplate = {
-        title: 'dartboard geocoding match',
+        title: 'UGRC API geocoding match',
         content:
           'The input address <strong>{address}</strong> matched against <strong>{matchAddress}</strong> using {locator} data.<br><br>The confidence score is {score}.<br><br>This address belongs to the {addressSystem} address system.',
         overwriteActions: true,
