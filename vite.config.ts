@@ -21,7 +21,6 @@ const rollupOptions: RollupOptions = {
   output: {
     globals: {
       react: 'React',
-      'react-dom': 'ReactDOM',
       tailwindcss: 'tailwindcss',
     },
   },

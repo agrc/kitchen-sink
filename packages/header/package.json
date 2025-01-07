@@ -49,8 +49,8 @@
     "test": "vitest --config ../../vite.config.js"
   },
   "dependencies": {
-    "@heroicons/react": "^2.1.5",
-    "@radix-ui/react-collapsible": "^1.1.1",
+    "@heroicons/react": "^2.2.0",
+    "@radix-ui/react-collapsible": "^1.1.2",
     "@ugrc/popover": "^1.1.1"
   },
   "peerDependencies": {
