@@ -1,0 +1,86 @@
+name: Release Events
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  id-token: write
+  deployments: write
+
+jobs:
+  deploy:
+    name: Create and publish package
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: 🏷️ Extract package name from tag
+        uses: MeilCli/regex-match@v2
+        id: folder
+        with:
+          regex_pattern: '.*(?=-v*)'
+          search_string: ${{ github.ref_name }}
+
+      - name: 🛑 Fail if no package name found
+        run: exit 1
+        if: !steps.folder.outputs.matched
+
+      - name: ⬇️ Set up code
+        uses: actions/checkout@v4
+        with:
+          show-progress: false
+
+      - name: ⎔ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          check-latest: true
+          cache: npm
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: 📥 Download dependencies
+        run: npm ci
+
+      - name: 🏗 Run build script
+        run: npm run build
+
+      - name: 🚢 Publish package
+        run: npm publish --access public --provenance --workspace @ugrc/${{ steps.folder.outputs.matched_first }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  deploy-storybook:
+    name: 📚 Deploy documentation
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    environment:
+      name: prod
+    concurrency:
+      group: ${{ github.workflow }}
+      cancel-in-progress: true
+
+    steps:
+      - name: ⬇️ Set up code
+        uses: actions/checkout@v4
+        with:
+          show-progress: false
+
+      - name: ⎔ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: 🚀 Deploy
+        uses: agrc/firebase-website-deploy-composite-action@v1
+        with:
+          identity-provider: ${{ secrets.IDENTITY_PROVIDER }}
+          service-account-email: ${{ secrets.SERVICE_ACCOUNT_EMAIL }}
+          project-id: ${{ secrets.PROJECT_ID }}
+          prebuild-command: npm run build --workspace @ugrc/utilities && npm run build
+          build-command: npm run build:storybook
+        env:
+          VITE_QUAD_WORD: ${{ secrets.DISCOVER_QUAD_WORD }}

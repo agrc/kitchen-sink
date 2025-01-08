@@ -5,80 +5,13 @@ on:
       - main
 
 concurrency:
-  group: '${{ github.head_ref || github.ref }}'
+  group: ${{ github.head_ref || github.ref }}
   cancel-in-progress: true
 
 jobs:
   release:
     name: Create releases
     runs-on: ubuntu-latest
-    outputs:
-      releases_created: ${{ steps.release.outputs.releases_created }}
     steps:
       - name: 🛠️ Create releases
-        id: release
         uses: googleapis/release-please-action@v4
-
-  deploy:
-    name: Create and publish packages
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
-    needs: release
-    if: needs.release.outputs.releases_created == 'true'
-    steps:
-      - name: ⬇️ Set up code
-        uses: actions/checkout@v4
-        with:
-          show-progress: false
-
-      - name: ⎔ Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-          check-latest: true
-          cache: npm
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: 📥 Download dependencies
-        run: npm ci
-
-      - name: 🏗 Run build script
-        run: npm run build
-
-      - name: 🚢 Publish packages
-        run: ./scripts/publish.sh
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-  deploy-storybook:
-    name: 📚 Deploy documentation
-    runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-    environment:
-      name: prod
-
-    steps:
-      - name: ⬇️ Set up code
-        uses: actions/checkout@v4
-        with:
-          show-progress: false
-
-      - name: ⎔ Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-          cache: npm
-
-      - name: 🚀 Deploy
-        uses: agrc/firebase-website-deploy-composite-action@v1
-        with:
-          identity-provider: ${{ secrets.IDENTITY_PROVIDER }}
-          service-account-email: ${{ secrets.SERVICE_ACCOUNT_EMAIL }}
-          project-id: ${{ secrets.PROJECT_ID }}
-          prebuild-command: npm run build --workspace @ugrc/utilities && npm run build
-          build-command: npm run build:storybook
-        env:
-          VITE_QUAD_WORD: ${{ secrets.DISCOVER_QUAD_WORD }}
