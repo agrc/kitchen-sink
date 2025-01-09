@@ -62,7 +62,7 @@ export const FirebaseAuthProvider = (props: FirebaseAuthProviderProps) => {
     if (app && import.meta.env.DEV) {
       const auth = getAuth(app);
       if (!auth.emulatorConfig) {
-        console.log('connecting to auth emulator');
+        console.log('Connecting to Firebase Authentication emulator');
         connectAuthEmulator(auth, 'http://127.0.0.1:9099', {
           disableWarnings: true,
         });
