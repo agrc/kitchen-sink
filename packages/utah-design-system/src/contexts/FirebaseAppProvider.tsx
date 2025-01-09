@@ -28,12 +28,8 @@ export function FirebaseAppProvider(props: FirebaseProviderProps) {
     registerVersion('react', version || 'unknown');
     registerVersion('app', appVersion || 'unknown');
 
-    console.log('initializing firebase app with config:', config);
-
     return initializeApp(config);
   }, [config]);
-
-  console.log('FirebaseAppProvider', initializedApp);
 
   return <FirebaseAppContext.Provider value={initializedApp} {...props} />;
 }
