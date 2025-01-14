@@ -1,16 +1,18 @@
-import { type ForwardedRef, forwardRef } from 'react';
+import { forwardRef, type ForwardedRef } from 'react';
 import {
-  type FieldErrorProps,
-  Group,
-  type GroupProps,
-  type InputProps,
-  type LabelProps,
+  composeRenderProps,
   FieldError as RACFieldError,
+  Group,
   Input as RACInput,
   Label as RACLabel,
   Text,
+  TextArea as RACTextArea,
+  type FieldErrorProps,
+  type GroupProps,
+  type InputProps,
+  type LabelProps,
+  type TextAreaProps,
   type TextProps,
-  composeRenderProps,
 } from 'react-aria-components';
 import { twMerge } from 'tailwind-merge';
 import { tv } from 'tailwind-variants';
@@ -89,6 +91,22 @@ export const Input = forwardRef(function Input(
 ) {
   return (
     <RACInput
+      {...props}
+      ref={ref}
+      className={composeTailwindRenderProps(
+        props.className,
+        'min-w-0 flex-1 bg-white px-2 py-1.5 text-sm text-zinc-800 shadow ring-1 ring-zinc-900/5 disabled:text-gray-200 dark:border-zinc-200/40 dark:bg-zinc-900 dark:text-zinc-200 dark:disabled:text-zinc-600',
+      )}
+    />
+  );
+});
+
+export const TextAreaInput = forwardRef(function TextAreaInput(
+  props: TextAreaProps,
+  ref: ForwardedRef<HTMLTextAreaElement>,
+) {
+  return (
+    <RACTextArea
       {...props}
       ref={ref}
       className={composeTailwindRenderProps(
