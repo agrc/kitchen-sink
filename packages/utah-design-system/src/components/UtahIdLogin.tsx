@@ -1,9 +1,13 @@
 import { signInWithPopup } from 'firebase/auth';
 import { useCallback } from 'react';
 import { useFirebaseAuth } from '../contexts';
-import { Button } from './Button';
+import { Button, type ButtonProps } from './Button';
 
-export const UtahIdLogin = () => {
+export const UtahIdLogin = ({
+  size = 'medium',
+}: {
+  size: ButtonProps['size'];
+}) => {
   const { auth, provider } = useFirebaseAuth() || {};
 
   const handlePress = useCallback(() => {
@@ -19,11 +23,24 @@ export const UtahIdLogin = () => {
     signInWithPopup(auth, provider);
   }, [auth]);
 
+  let height = 'h-6';
+  if (size === 'extraSmall') {
+    height = 'h-4';
+  } else if (size === 'small') {
+    height = 'h-5';
+  } else if (size === 'medium') {
+    height = 'h-6';
+  } else if (size === 'large') {
+    height = 'h-7';
+  } else if (size === 'extraLarge') {
+    height = 'h-9';
+  }
+
   return (
-    <Button onPress={handlePress}>
+    <Button onPress={handlePress} size={size}>
       <span className="sr-only">Log in with Utahid</span>
       <svg
-        className="h-auto w-20 fill-current"
+        className={`${height} w-auto fill-current`}
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 638.43 197"
