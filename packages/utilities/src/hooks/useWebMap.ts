@@ -2,15 +2,12 @@ import MapView from '@arcgis/core/views/MapView.js';
 import WebMap from '@arcgis/core/WebMap.js';
 import { useEffect, useRef } from 'react';
 
-export default function useWebMap(
-  div: React.RefObject<HTMLDivElement>,
-  id: string,
-) {
+export default function useWebMap(div: HTMLDivElement, id: string) {
   const webMap = useRef<WebMap | null>(null);
   const mapView = useRef<MapView | null>(null);
 
   useEffect(() => {
-    if (div.current) {
+    if (div) {
       webMap.current = new WebMap({
         portalItem: {
           id,
@@ -18,7 +15,7 @@ export default function useWebMap(
       });
 
       mapView.current = new MapView({
-        container: div.current,
+        container: div,
         map: webMap.current,
       });
     }
