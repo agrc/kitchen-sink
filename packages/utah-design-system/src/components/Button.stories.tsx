@@ -20,6 +20,7 @@ const meta: Meta<typeof Component> = {
   },
   args: {
     isDisabled: false,
+    isPending: false,
     children: 'Button',
   },
 };
