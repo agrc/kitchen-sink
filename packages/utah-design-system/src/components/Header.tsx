@@ -87,7 +87,14 @@ export const Header = ({ children, links, ...props }: HeaderProps) => {
                 </Button>
                 <Menu items={links}>
                   {(link) => (
-                    <MenuItem href={link.action.url}>
+                    <MenuItem
+                      href={link.action.url}
+                      target={
+                        link.action.url.toLowerCase().startsWith('https')
+                          ? '_blank'
+                          : undefined
+                      }
+                    >
                       <span className="flex items-center justify-between rounded-md p-1 text-sm">
                         {link.key}
                         {link.action.url.toLowerCase().startsWith('https') ? (
