@@ -5,6 +5,7 @@ import {
   type InputProps,
   type ValidationResult,
 } from 'react-aria-components';
+import { twJoin } from 'tailwind-merge';
 import { tv } from 'tailwind-variants';
 import {
   Description,
@@ -43,7 +44,16 @@ export const TextField = forwardRef(function TextField(
         'flex flex-col gap-1',
       )}
     >
-      {label && <Label>{label}</Label>}
+      {label && (
+        <Label
+          className={twJoin(
+            props.isRequired &&
+              "after:ml-0.5 after:text-rose-500 after:content-['*'] after:dark:text-rose-300",
+          )}
+        >
+          {label}
+        </Label>
+      )}
       <Input ref={ref} {...inputProps} className={inputStyles} />
       {description && <Description>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>
