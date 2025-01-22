@@ -12,6 +12,16 @@ jobs:
   release:
     name: Create releases
     runs-on: ubuntu-latest
+
     steps:
+      - name: 🪙 Convert token
+        uses: actions/create-github-app-token@v1
+        id: generate-token
+        with:
+          app-id: ${{ secrets.UGRC_RELEASE_BOT_APP_ID }}
+          private-key: ${{ secrets.UGRC_RELEASE_BOT_APP_KEY }}
+
       - name: 🛠️ Create releases
         uses: googleapis/release-please-action@v4
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
