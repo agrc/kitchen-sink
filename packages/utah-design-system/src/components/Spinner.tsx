@@ -10,7 +10,7 @@ export const Spinner = () => {
   return (
     <svg
       {...progressBarProps}
-      className="h-full shrink-0 motion-safe:animate-spin"
+      className="size-full shrink-0 motion-safe:animate-spin"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
