@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.0](https://github.com/agrc/kitchen-sink/compare/utilities-v2.4.3...utilities-v3.0.0) (2025-01-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* **useWebMap:** accepts a div instead of a ref of a div
+* **useViewPointZooming:** accepts a MapView instead of a ref of a MapView
+
+### Features
+
+* **useViewPointZooming:** accepts a MapView instead of a ref of a MapView ([ff77bc6](https://github.com/agrc/kitchen-sink/commit/ff77bc62ff175c63d9c2a7a8af8b91ad99142902))
+* **useWebMap:** accepts a div instead of a ref of a div ([b2c10c7](https://github.com/agrc/kitchen-sink/commit/b2c10c7a48243ecb45903413ce7175d299c32b18))
+
 ## [2.4.3](https://github.com/agrc/kitchen-sink/compare/utilities-v2.4.2...utilities-v2.4.3) (2024-12-13)
 
 
