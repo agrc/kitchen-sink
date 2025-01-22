@@ -60,12 +60,16 @@ export function Button(props: ButtonProps) {
         }),
       )}
     >
-      {props.children}
-      {props.isPending && (
-        <span className="ml-2">
-          <Spinner />
-        </span>
-      )}
+      {composeRenderProps(props.children, (children) => (
+        <>
+          {children}
+          {props.isPending && (
+            <span className="ml-2">
+              <Spinner />
+            </span>
+          )}
+        </>
+      ))}
     </RACButton>
   );
 }

@@ -6,7 +6,7 @@ import { Button, type ButtonProps } from './Button';
 export const UtahIdLogin = ({
   size = 'medium',
 }: {
-  size: ButtonProps['size'];
+  size?: ButtonProps['size'];
 }) => {
   const { auth, provider } = useFirebaseAuth() || {};
 
