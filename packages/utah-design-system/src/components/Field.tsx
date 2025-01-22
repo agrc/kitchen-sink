@@ -1,12 +1,12 @@
 import { forwardRef, type ForwardedRef } from 'react';
 import {
   composeRenderProps,
-  FieldError as RACFieldError,
   Group,
+  FieldError as RACFieldError,
   Input as RACInput,
   Label as RACLabel,
-  Text,
   TextArea as RACTextArea,
+  Text,
   type FieldErrorProps,
   type GroupProps,
   type InputProps,
@@ -46,7 +46,7 @@ export function FieldError(props: FieldErrorProps) {
       {...props}
       className={composeTailwindRenderProps(
         props.className,
-        'text-sm text-rose-600 forced-colors:text-[Mark]',
+        'text-warning-600 text-sm forced-colors:text-[Mark]',
       )}
     />
   );
@@ -60,7 +60,7 @@ export const fieldBorderStyles = tv({
       true: 'border-primary-900 dark:border-zinc-500 forced-colors:border-[Highlight]',
     },
     isInvalid: {
-      true: 'border-rose-600 dark:border-rose-600 forced-colors:border-[Mark]',
+      true: 'border-warning-600 dark:border-warning-600 forced-colors:border-[Mark]',
     },
     isDisabled: {
       true: 'border-gray-200 dark:border-zinc-700 forced-colors:border-[GrayText]',

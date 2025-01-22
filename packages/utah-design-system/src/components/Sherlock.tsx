@@ -543,7 +543,7 @@ export const Sherlock = (props: SherlockProps) => {
             renderEmptyState={() => {
               if (list.filterText.length >= 3 && list.loadingState === 'idle') {
                 return (
-                  <div className="bg-rose-100 py-2 text-center dark:bg-rose-700">
+                  <div className="bg-warning-100 dark:bg-warning-700 py-2 text-center">
                     No items found matching your search
                   </div>
                 );
