@@ -11,3 +11,5 @@ The primary colors are generated from the deep purple in our logo `#4d2a54` and 
 The secondary colors are generated from the deep blue in our logo `#33505d` and is `secondary-800`.
 
 The accent colors are generated from the light yellow in our logo `#eaca00` and is `accent-500`.
+
+The warning colors default to the standard tailwind rose color pallette and are used for required inputs, warning, and error components.
