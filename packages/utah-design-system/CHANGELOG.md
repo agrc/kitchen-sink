@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.19.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.18.2...utah-design-system-v1.19.0) (2025-01-22)
+
+
+### Features
+
+* **button:** add pending state ([2155342](https://github.com/agrc/kitchen-sink/commit/21553425b2bd9f2c5b652ce15a2a50cd53e9e3c3))
+* **textarea:** create text area component ([2d8673c](https://github.com/agrc/kitchen-sink/commit/2d8673c82634e69b8870b7d43b4a963285123be1))
+* **textfield:** add required * when isRequired ([51152cf](https://github.com/agrc/kitchen-sink/commit/51152cfc7d0463b151634ddb89ac3026d9e2edd7))
+* **utahid:** allow size to be passed through to the button ([9d6ad92](https://github.com/agrc/kitchen-sink/commit/9d6ad92651585c69ba2505f708479a2d7583ff78))
+
+
+### Bug Fixes
+
+* **header:** set target _blank for external links ([82c465f](https://github.com/agrc/kitchen-sink/commit/82c465fbe213dda9aa9de3565e5ac8f16b204d6c))
+* **utahid:** optimize svg ([3c7d72c](https://github.com/agrc/kitchen-sink/commit/3c7d72c8d48457e11a49c10aa70177d41233e8be))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ugrc/utilities bumped from 2.4.3 to 3.0.0
+
 ## [1.18.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.18.1...utah-design-system-v1.18.2) (2024-12-18)
 
 
