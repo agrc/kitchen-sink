@@ -1,4 +1,4 @@
-name: 'create reminder'
+name: Issue Comment Events
 
 on:
   issue_comment:
