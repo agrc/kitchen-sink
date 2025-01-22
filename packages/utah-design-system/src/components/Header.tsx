@@ -57,8 +57,8 @@ export const Header = ({ children, links, ...props }: HeaderProps) => {
           </a>
         </div>
       </div>
-      <div className="flex items-center justify-between border-b border-b-primary-900/30 bg-white py-2 pr-3 dark:border-black/30 dark:bg-zinc-700/20">
-        <div className="flex h-16 space-x-4 divide-x divide-primary-950 pl-3 dark:divide-zinc-600 sm:space-x-6">
+      <div className="flex items-center border-b border-b-primary-900/30 bg-white py-2 pr-3 dark:border-black/30 dark:bg-zinc-700/20">
+        <div className="flex h-16 grow space-x-4 divide-x divide-primary-950 pl-3 dark:divide-zinc-600 sm:space-x-6">
           <div className="flex items-center rounded-md px-3 transition-shadow ease-in-out focus-within:ring-2 focus-within:ring-primary-900 focus-within:ring-offset-2 dark:ring-offset-transparent dark:focus-within:ring-secondary-600">
             <Button
               {...triggerProps}
@@ -75,7 +75,7 @@ export const Header = ({ children, links, ...props }: HeaderProps) => {
             {children}
           </div>
         </div>
-        <div className="flex flex-1 items-center justify-end gap-6 lg:mr-10">
+        <div className="flex shrink items-center justify-end gap-6 lg:mr-10">
           {links && (
             <MenuTrigger>
               <div className="flex items-center justify-self-end">
