@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   theme: {
@@ -44,6 +46,7 @@ module.exports = {
           800: '#5e5100',
           900: '#2f2800',
         },
+        warning: colors.rose,
       },
       fontFamily: {
         utah: [
