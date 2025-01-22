@@ -25,7 +25,7 @@ jobs:
 
       - name: 🛑 Fail if no package name found
         run: exit 1
-        if: !steps.folder.outputs.matched
+        if: ${{ !steps.folder.outputs.matched }}
 
       - name: ⬇️ Set up code
         uses: actions/checkout@v4
