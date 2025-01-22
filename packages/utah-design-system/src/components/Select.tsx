@@ -25,7 +25,7 @@ const styles = tv({
   variants: {
     isDisabled: {
       false:
-        'text-gray-800 group-invalid:border-rose-600 hover:bg-gray-100 pressed:bg-gray-200 dark:text-zinc-300 dark:hover:bg-zinc-600 dark:pressed:bg-zinc-500 forced-colors:group-invalid:border-[Mark]',
+        'group-invalid:border-warning-600 text-gray-800 hover:bg-gray-100 pressed:bg-gray-200 dark:text-zinc-300 dark:hover:bg-zinc-600 dark:pressed:bg-zinc-500 forced-colors:group-invalid:border-[Mark]',
       true: 'border-gray-200 text-gray-200 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-600',
     },
   },
