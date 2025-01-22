@@ -21,6 +21,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @ugrc/utilities bumped from ^2.2.0 to ^2.2.1
 
+## [2.0.19](https://github.com/agrc/kitchen-sink/compare/mouse-trap-v2.0.18...mouse-trap-v2.0.19) (2025-01-22)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ugrc/utilities bumped from ^2.4.3 to ^3.0.0
+
 ## [2.0.18](https://github.com/agrc/kitchen-sink/compare/mouse-trap-v2.0.17...mouse-trap-v2.0.18) (2024-12-13)
 
 
