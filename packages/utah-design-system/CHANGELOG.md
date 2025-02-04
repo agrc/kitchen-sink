@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.19.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.19.0...utah-design-system-v1.19.1) (2025-02-04)
+
+
+### Bug Fixes
+
+* **drawer:** update css to remove extra scrollbars ([ce4673e](https://github.com/agrc/kitchen-sink/commit/ce4673e90cd08908ea9f81c07836af9dc8ffdd17))
+
 ## [1.19.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.18.2...utah-design-system-v1.19.0) (2025-01-22)
 
 
