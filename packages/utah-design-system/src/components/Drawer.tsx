@@ -36,8 +36,8 @@ const drawerTriggerProps = useOverlayTrigger(
 
 const drawer = tv({
   slots: {
-    container: 'shrink-0 duration-500 ease-in-out',
-    content: 'bg-white duration-500 ease-in-out dark:bg-zinc-800',
+    container: 'shrink-0 duration-[525ms] ease-in-out',
+    content: 'relative bg-white duration-500 ease-in-out dark:bg-zinc-800',
     triggerButton:
       'absolute z-10 flex justify-center overflow-hidden rounded border border-zinc-200 bg-white p-1 hover:border-zinc-300 hover:bg-slate-200 pressed:bg-slate-300 dark:hover:border-zinc-600 dark:hover:bg-zinc-900 dark:pressed:bg-slate-100',
   },
@@ -55,7 +55,7 @@ const drawer = tv({
         container:
           'absolute inset-x-0 bottom-0 h-80 transition-[height] data-[open="false"]:h-0 data-[open="true"]:h-80',
         content:
-          "overflow-x-auto border-t bg-zinc-50 data-[open='false']:h-0 data-[open='true']:translate-y-0 data-[open='false']:overflow-hidden dark:bg-zinc-700",
+          "overflow-x-auto border-t bg-zinc-50 data-[open='false']:h-0 data-[open='true']:translate-y-0 data-[open='false']:overflow-hidden data-[open='false']:border-0 dark:bg-zinc-700",
         triggerButton:
           '-top-6 bottom-[calc(100%)] left-[calc(50%-24px)] min-h-[25px] w-10 rounded-b-none border-b-0 bg-zinc-50 py-0 dark:border-zinc-800 dark:bg-zinc-700',
       },
