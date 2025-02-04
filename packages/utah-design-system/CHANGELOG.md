@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.20.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.19.1...utah-design-system-v1.20.0) (2025-02-04)
+
+
+### Features
+
+* **homebutton:** allow custom actions when pressed ([d9c94bd](https://github.com/agrc/kitchen-sink/commit/d9c94bd76ba1a98975aad57e423b758424120ddf))
+
 ## [1.19.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.19.0...utah-design-system-v1.19.1) (2025-02-04)
 
 
