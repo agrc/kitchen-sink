@@ -2,7 +2,6 @@ import react from '@vitejs/plugin-react';
 import { basename, resolve } from 'path';
 import { readPackage } from 'read-pkg';
 import { type RollupOptions } from 'rollup';
-import dts from 'vite-plugin-dts';
 import { defineConfig } from 'vitest/config';
 
 const directory = process.cwd();
@@ -34,7 +33,7 @@ if (packageName === 'utilities') {
 }
 
 const config = defineConfig({
-  plugins: [react(), dts({ include: ['src'] })],
+  plugins: [react()],
   build: {
     lib: {
       entry: resolve(directory, 'src/index.js'),
