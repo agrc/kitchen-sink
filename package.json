@@ -15,7 +15,7 @@
   "scripts": {
     "build": "npm run build --workspaces",
     "build:storybook": "storybook build --docs --output-dir ./dist --disable-telemetry",
-    "check": "tsc -b",
+    "check": "tsc -b && prettier . --check",
     "format": "prettier . --write",
     "lint": "eslint .",
     "lint:fix": "eslint . --quiet --fix",
@@ -71,7 +71,6 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.3",
     "eslint-plugin-react-hooks": "^5.1.0",
     "globals": "^15.15.0",
