@@ -1,4 +1,7 @@
 {
   "extends": "@ugrc/tsconfigs/browser",
-  "include": ["packages", "src"]
+  "include": ["packages/**/src/"],
+  "compilerOptions": {
+    "jsxImportSource": "react"
+  }
 }
