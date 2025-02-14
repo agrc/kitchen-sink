@@ -6,7 +6,7 @@ import {
 import { tv } from 'tailwind-variants';
 import { focusRing } from './utils';
 
-let styles = tv({
+const styles = tv({
   extend: focusRing,
   base: 'min-h-9 cursor-default rounded-full border border-black/10 px-8 text-center text-base shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] transition dark:border-white/10 dark:shadow-none [&:has(svg:only-child)]:min-h-0 [&:has(svg:only-child)]:p-0.5',
   variants: {

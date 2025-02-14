@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import './Dartboard.css';
 import Dartboard, { TailwindDartboard, useDartboard } from './index';
 

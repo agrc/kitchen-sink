@@ -16,6 +16,7 @@ export default tseslint.config(
       '**/dist',
       '**/package-lock.json',
       '**/.vscode',
+      'public/mockServiceWorker.js',
     ],
   },
   importPlugin.flatConfigs.recommended,

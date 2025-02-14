@@ -1,8 +1,9 @@
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { PenLineIcon } from 'lucide-react';
-import { ToggleButton as Component } from './ToggleButton';
-const meta: Meta<typeof Component> = {
-  component: Component,
+import { ToggleButton } from './ToggleButton';
+
+const meta: Meta<typeof ToggleButton> = {
+  component: ToggleButton,
   parameters: {
     layout: 'centered',
   },
@@ -12,9 +13,15 @@ const meta: Meta<typeof Component> = {
 
 export default meta;
 
-export const Example = (args: any) => <Component {...args}>Pin</Component>;
-export const Icon = (args: any) => (
-  <Component {...args}>
-    <PenLineIcon />
-  </Component>
-);
+type Story = StoryObj<typeof ToggleButton>;
+
+export const Example: Story = {
+  args: {
+    children: 'Pin',
+  },
+};
+export const Icon: Story = {
+  args: {
+    children: <PenLineIcon />,
+  },
+};

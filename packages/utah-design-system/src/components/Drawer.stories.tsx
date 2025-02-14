@@ -1,12 +1,13 @@
-import type { Meta } from '@storybook/react';
+/* eslint-disable react-hooks/rules-of-hooks */
+import type { Meta, StoryObj } from '@storybook/react';
 import { useOverlayTrigger } from 'react-aria';
 import { LoremIpsum } from 'react-lorem-ipsum';
 import { useOverlayTriggerState } from 'react-stately';
 import { Button } from './Button';
-import { Drawer as Component } from './Drawer';
+import { Drawer } from './Drawer';
 
-const meta: Meta<typeof Component> = {
-  component: Component,
+const meta: Meta<typeof Drawer> = {
+  component: Drawer,
   parameters: {
     layout: 'fullscreen',
   },
@@ -24,7 +25,9 @@ const meta: Meta<typeof Component> = {
 
 export default meta;
 
-export const Bottom = {
+type Story = StoryObj<typeof Drawer>;
+
+export const Bottom: Story = {
   render: () => {
     const state = useOverlayTriggerState({});
     const overlayTriggerProps = useOverlayTrigger(
@@ -35,14 +38,14 @@ export const Bottom = {
     );
 
     return (
-      <Component type="tray" state={state} {...overlayTriggerProps}>
+      <Drawer type="tray" state={state} {...overlayTriggerProps}>
         <LoremIpsum p={1} />
-      </Component>
+      </Drawer>
     );
   },
 };
 
-export const AllowFullScreen = {
+export const AllowFullScreen: Story = {
   render: () => {
     const state = useOverlayTriggerState({});
     const overlayTriggerProps = useOverlayTrigger(
@@ -53,19 +56,19 @@ export const AllowFullScreen = {
     );
 
     return (
-      <Component
+      <Drawer
         type="tray"
         state={state}
         {...overlayTriggerProps}
         allowFullScreen
       >
         <LoremIpsum p={10} />
-      </Component>
+      </Drawer>
     );
   },
 };
 
-export const Side = {
+export const Side: Story = {
   render: () => {
     const state = useOverlayTriggerState({});
     const overlayTriggerProps = useOverlayTrigger(
@@ -76,16 +79,16 @@ export const Side = {
     );
 
     return (
-      <Component state={state} {...overlayTriggerProps}>
+      <Drawer state={state} {...overlayTriggerProps}>
         <div className="bg-green-200">
           <LoremIpsum p={1} />
         </div>
-      </Component>
+      </Drawer>
     );
   },
 };
 
-export const ScrollingBehavior = {
+export const ScrollingBehavior: Story = {
   render: () => {
     const state = useOverlayTriggerState({ defaultOpen: true });
     const overlayTriggerProps = useOverlayTrigger(
@@ -97,18 +100,18 @@ export const ScrollingBehavior = {
 
     return (
       <div className="h-96">
-        <Component state={state} {...overlayTriggerProps}>
+        <Drawer state={state} {...overlayTriggerProps}>
           <div className="flex flex-col gap-4 p-4">
             <h2 className="text-2xl font-bold">Drawer</h2>
             <LoremIpsum p={4} />
           </div>
-        </Component>
+        </Drawer>
       </div>
     );
   },
 };
 
-export const WithMultipleTriggers = {
+export const WithMultipleTriggers: Story = {
   render: () => {
     const state = useOverlayTriggerState({});
     const overlayTriggerProps = useOverlayTrigger(
@@ -119,7 +122,7 @@ export const WithMultipleTriggers = {
     );
 
     return (
-      <Component state={state} {...overlayTriggerProps}>
+      <Drawer state={state} {...overlayTriggerProps}>
         <LoremIpsum p={2} />
         <Button
           {...overlayTriggerProps.triggerProps}
@@ -131,12 +134,12 @@ export const WithMultipleTriggers = {
         >
           Close
         </Button>
-      </Component>
+      </Drawer>
     );
   },
 };
 
-export const AtlasFlexing = {
+export const AtlasFlexing: Story = {
   render: () => {
     const sideBarState = useOverlayTriggerState({ defaultOpen: true });
     const sideBarTriggerProps = useOverlayTrigger(
@@ -158,13 +161,13 @@ export const AtlasFlexing = {
       <main className="flex h-[600px] flex-col gap-2">
         <div id="header" className="h-20 bg-gray-400"></div>
         <section className="relative mr-2 flex min-h-0 flex-1 overflow-x-hidden">
-          <Component main state={sideBarState} {...sideBarTriggerProps}>
+          <Drawer main state={sideBarState} {...sideBarTriggerProps}>
             <LoremIpsum p={10} />
-          </Component>
+          </Drawer>
           <div className="relative mb-2 flex flex-1 flex-col overflow-hidden rounded border border-zinc-200 dark:border-0 dark:border-zinc-700">
             <div className="relative flex-1 overflow-hidden dark:rounded">
               <div id="map" className="size-full bg-blue-400"></div>
-              <Component
+              <Drawer
                 type="tray"
                 className="shadow-inner dark:shadow-white/20"
                 allowFullScreen
@@ -172,7 +175,7 @@ export const AtlasFlexing = {
                 {...trayTriggerProps}
               >
                 <LoremIpsum p={5} />
-              </Component>
+              </Drawer>
             </div>
           </div>
         </section>

@@ -1,8 +1,8 @@
-import type { Meta } from '@storybook/react';
-import { Link as Component, ExternalLink } from './Link';
+import type { Meta, StoryObj } from '@storybook/react';
+import { ExternalLink, Link } from './Link';
 
-const meta: Meta<typeof Component> = {
-  component: Component,
+const meta: Meta<typeof Link> = {
+  component: Link,
   parameters: {
     layout: 'centered',
   },
@@ -24,10 +24,14 @@ const meta: Meta<typeof Component> = {
 
 export default meta;
 
-export const Example = {};
+type Story = StoryObj<typeof Link>;
 
-export const ExternalExample = (args: any) => (
-  <>
-    The <ExternalLink {...args}>missing</ExternalLink> link
-  </>
-);
+export const Example: Story = {};
+
+export const ExternalExample: Story = {
+  render: (args) => (
+    <>
+      The <ExternalLink {...args}>missing</ExternalLink> link
+    </>
+  ),
+};

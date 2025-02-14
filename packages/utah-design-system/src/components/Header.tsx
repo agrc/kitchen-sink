@@ -16,7 +16,7 @@ import {
 import { Avatar } from './Avatar';
 import { Menu, MenuItem, MenuSeparator } from './Menu';
 
-const dismiss = (e: KeyboardEvent, action: Function): void => {
+const dismiss = (e: KeyboardEvent, action: () => void): void => {
   if (e.key !== 'Escape') {
     return;
   }
@@ -38,8 +38,8 @@ export type HeaderProps = {
 };
 
 export const Header = ({ children, links, ...props }: HeaderProps) => {
-  let state = useOverlayTriggerState(props as OverlayTriggerState);
-  let { triggerProps, overlayProps } = useOverlayTrigger(
+  const state = useOverlayTriggerState(props as OverlayTriggerState);
+  const { triggerProps, overlayProps } = useOverlayTrigger(
     { type: 'dialog' },
     state,
   );
@@ -146,8 +146,8 @@ export const Header = ({ children, links, ...props }: HeaderProps) => {
 };
 
 const Flyout = ({ state, ...props }: { state: OverlayTriggerState }) => {
-  let ref = useRef(null);
-  let { modalProps } = useModalOverlay(
+  const ref = useRef(null);
+  const { modalProps } = useModalOverlay(
     { ...props, isKeyboardDismissDisabled: false, isDismissable: true },
     state,
     ref,

@@ -36,7 +36,7 @@ const drawerTriggerProps = useOverlayTrigger(
 
 const drawer = tv({
   slots: {
-    container: 'shrink-0 duration-[525ms] ease-in-out',
+    container: 'duration-[525ms] shrink-0 ease-in-out',
     content: 'relative bg-white duration-500 ease-in-out dark:bg-zinc-800',
     triggerButton:
       'absolute z-10 flex justify-center overflow-hidden rounded border border-zinc-200 bg-white p-1 hover:border-zinc-300 hover:bg-slate-200 pressed:bg-slate-300 dark:hover:border-zinc-600 dark:hover:bg-zinc-900 dark:pressed:bg-slate-100',
@@ -123,7 +123,7 @@ export const Drawer = ({
     throw new Error('You must provide both triggerProps and overlayProps');
   }
 
-  let {
+  const {
     triggerProps: internalTriggerProps,
     overlayProps: internalOverlayProps,
   } = useOverlayTrigger({ type: 'dialog' }, state);

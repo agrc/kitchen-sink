@@ -1,8 +1,8 @@
-import type { Meta } from '@storybook/react';
-import { Slider as Component } from './Slider.tsx';
+import type { Meta, StoryObj } from '@storybook/react';
+import { Slider } from './Slider.tsx';
 
-const meta: Meta<typeof Component> = {
-  component: Component,
+const meta: Meta<typeof Slider> = {
+  component: Slider,
   parameters: {
     layout: 'centered',
   },
@@ -13,26 +13,22 @@ const meta: Meta<typeof Component> = {
 
 export default meta;
 
-export const Example = (args: any) => (
-  <Component
-    {...args}
-    className="orientation-horizontal:w-64 orientation-vertical:h-64"
-  />
-);
-Example.args = {
-  label: 'Opacity',
-  defaultValue: [60],
-  thumbLabels: ['value'],
+type Story = StoryObj<typeof Slider>;
+
+export const Example: Story = {
+  args: {
+    className: 'orientation-horizontal:w-64 orientation-vertical:h-64',
+    label: 'Opacity',
+    defaultValue: [60],
+    thumbLabels: ['value'],
+  },
 };
 
-export const Range = (args: any) => (
-  <Component
-    {...args}
-    className="orientation-horizontal:w-64 orientation-vertical:h-64"
-  />
-);
-Range.args = {
-  label: 'Range',
-  defaultValue: [30, 60],
-  thumbLabels: ['start', 'end'],
+export const Range: Story = {
+  args: {
+    className: 'orientation-horizontal:w-64 orientation-vertical:h-64',
+    label: 'Range',
+    defaultValue: [30, 60],
+    thumbLabels: ['start', 'end'],
+  },
 };

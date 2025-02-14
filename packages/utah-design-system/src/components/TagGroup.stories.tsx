@@ -1,8 +1,8 @@
-import type { Meta } from '@storybook/react';
-import { TagGroup as Component, Tag } from './TagGroup';
+import type { Meta, StoryObj } from '@storybook/react';
+import { Tag, TagGroup } from './TagGroup';
 
-const meta: Meta<typeof Component> = {
-  component: Component,
+const meta: Meta<typeof TagGroup> = {
+  component: TagGroup,
   parameters: {
     layout: 'centered',
   },
@@ -16,11 +16,15 @@ const meta: Meta<typeof Component> = {
 
 export default meta;
 
-export const Example = (args: any) => (
-  <Component {...args}>
-    <Tag isDisabled>Chocolate</Tag>
-    <Tag id="mint">Mint</Tag>
-    <Tag>Strawberry</Tag>
-    <Tag>Vanilla</Tag>
-  </Component>
-);
+type Story = StoryObj<typeof TagGroup>;
+
+export const Example: Story = {
+  render: (args) => (
+    <TagGroup {...args}>
+      <Tag isDisabled>Chocolate</Tag>
+      <Tag id="mint">Mint</Tag>
+      <Tag>Strawberry</Tag>
+      <Tag>Vanilla</Tag>
+    </TagGroup>
+  ),
+};

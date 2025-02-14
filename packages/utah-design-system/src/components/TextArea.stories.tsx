@@ -1,10 +1,10 @@
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { Controller, useForm } from 'react-hook-form';
 import { Button } from './Button';
-import { TextArea as Component } from './TextArea';
+import { TextArea } from './TextArea';
 
-const meta: Meta<typeof Component> = {
-  component: Component,
+const meta: Meta<typeof TextArea> = {
+  component: TextArea,
   parameters: {
     layout: 'centered',
   },
@@ -17,53 +17,60 @@ const meta: Meta<typeof Component> = {
 
 export default meta;
 
-export const Example = {};
+type Story = StoryObj<typeof TextArea>;
 
-export const HtmlValidation = (args: any) => (
-  <form
-    onSubmit={(event) => {
-      event.preventDefault();
-    }}
-    className="flex flex-col items-start gap-2"
-  >
-    <Component {...args} />
-    <Button type="submit" variant="secondary">
-      Submit
-    </Button>
-  </form>
-);
+export const Example: Story = {};
 
-export const ReactHookFormValidation = (args: any) => {
-  const { control, handleSubmit } = useForm({
-    defaultValues: {
-      name: '',
-    },
-  });
-
-  return (
+export const HtmlValidation: Story = {
+  render: (args) => (
     <form
-      className="flex flex-col items-start gap-4"
-      onSubmit={handleSubmit(console.log)}
+      onSubmit={(event) => {
+        event.preventDefault();
+      }}
+      className="flex flex-col items-start gap-2"
     >
-      <Controller
-        control={control}
-        name="name"
-        rules={{ required: 'Name is required' }}
-        render={({ field, fieldState }) => (
-          <Component
-            errorMessage={fieldState.error?.message}
-            isInvalid={fieldState.invalid}
-            validationBehavior="aria"
-            {...field}
-            {...args}
-          />
-        )}
-      />
+      <TextArea {...args} />
       <Button type="submit" variant="secondary">
         Submit
       </Button>
     </form>
-  );
+  ),
+};
+
+export const ReactHookFormValidation: Story = {
+  render: (args) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const { control, handleSubmit } = useForm({
+      defaultValues: {
+        name: '',
+      },
+    });
+
+    return (
+      <form
+        className="flex flex-col items-start gap-4"
+        onSubmit={handleSubmit(console.log)}
+      >
+        <Controller
+          control={control}
+          name="name"
+          rules={{ required: 'Name is required' }}
+          render={({ field, fieldState }) => (
+            <TextArea
+              errorMessage={fieldState.error?.message}
+              isInvalid={fieldState.invalid}
+              validationBehavior="aria"
+              {...field}
+              {...args}
+            />
+          )}
+        />
+        <Button type="submit" variant="secondary">
+          Submit
+        </Button>
+      </form>
+    );
+  },
 };
 
 HtmlValidation.args = {

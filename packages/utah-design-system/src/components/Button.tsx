@@ -12,7 +12,7 @@ export interface ButtonProps extends RACButtonProps {
   size?: 'extraSmall' | 'small' | 'medium' | 'large' | 'extraLarge';
 }
 
-let button = tv({
+const button = tv({
   extend: focusRing,
   base: 'flex w-fit cursor-default select-none items-center justify-center border border-black/10 text-center text-sm shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] transition-all duration-200 ease-in-out forced-color-adjust-none dark:border-white/10 dark:shadow-none forced-colors:border-[ButtonBorder]',
   variants: {

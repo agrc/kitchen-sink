@@ -96,7 +96,7 @@ export function TagGroup<T extends object>({
       </ColorContext.Provider>
       {description && <Description>{description}</Description>}
       {errorMessage && (
-        <Text slot="errorMessage" className="text-warning-600 text-sm">
+        <Text slot="errorMessage" className="text-sm text-warning-600">
           {errorMessage}
         </Text>
       )}
@@ -110,8 +110,8 @@ const removeButtonStyles = tv({
 });
 
 export function Tag({ children, color, ...props }: TagProps) {
-  let textValue = typeof children === 'string' ? children : undefined;
-  let groupColor = useContext(ColorContext);
+  const textValue = typeof children === 'string' ? children : undefined;
+  const groupColor = useContext(ColorContext);
   return (
     <AriaTag
       textValue={textValue}

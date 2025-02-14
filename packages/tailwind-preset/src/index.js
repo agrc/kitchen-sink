@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const colors = require('tailwindcss/colors');
 
 /** @type {import('tailwindcss').Config} */

@@ -32,7 +32,7 @@ export default function useViewLoading(
         }
       });
     });
-  }, [view]);
+  }, [debounceDuration, view]);
 
   return isLoading;
 }

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { toQueryString } from '@ugrc/utilities';
 import { clsx } from 'clsx';
 import PropTypes from 'prop-types';
@@ -447,6 +448,7 @@ BootstrapDartboard.propTypes = TailwindDartboard.propTypes = {
   }),
   format: PropTypes.oneOf([null, 'esrijson', 'geojson']),
   callback: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default TailwindDartboard;

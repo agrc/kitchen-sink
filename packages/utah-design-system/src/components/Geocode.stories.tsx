@@ -1,10 +1,11 @@
 import type { Meta } from '@storybook/react';
 import { expect, fn, userEvent, waitFor, within } from '@storybook/test';
 import { http, HttpResponse } from 'msw';
-import { Geocode as Component } from './Geocode.js';
+import type { Canvas, StepFunction } from 'storybook/internal/types';
+import { Geocode } from './Geocode.js';
 
-const meta: Meta<typeof Component> = {
-  component: Component,
+const meta: Meta<typeof Geocode> = {
+  component: Geocode,
   parameters: {
     layout: 'centered',
   },
@@ -41,7 +42,7 @@ export const Milepost = {
   args: { type: 'route-milepost' },
 };
 
-const geocode = async (canvas: any, step: any) => {
+const geocode = async (canvas: Canvas, step: StepFunction) => {
   await step('Enter address', async () => {
     await userEvent.type(
       canvas.getByLabelText('Street address'),
@@ -85,7 +86,13 @@ export const SuccessfulRequest = {
       ],
     },
   },
-  play: async ({ canvasElement, step }: { canvasElement: any; step: any }) => {
+  play: async ({
+    canvasElement,
+    step,
+  }: {
+    canvasElement: HTMLElement;
+    step: StepFunction;
+  }) => {
     const canvas = within(canvasElement);
 
     await geocode(canvas, step);
@@ -123,7 +130,13 @@ export const InvalidApiKey = {
       ],
     },
   },
-  play: async ({ canvasElement, step }: { canvasElement: any; step: any }) => {
+  play: async ({
+    canvasElement,
+    step,
+  }: {
+    canvasElement: HTMLElement;
+    step: StepFunction;
+  }) => {
     const canvas = within(canvasElement);
 
     await geocode(canvas, step);
@@ -161,7 +174,13 @@ export const NoMatchFound = {
       ],
     },
   },
-  play: async ({ canvasElement, step }: { canvasElement: any; step: any }) => {
+  play: async ({
+    canvasElement,
+    step,
+  }: {
+    canvasElement: HTMLElement;
+    step: StepFunction;
+  }) => {
     const canvas = within(canvasElement);
 
     await geocode(canvas, step);
