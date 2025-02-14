@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react';
 import { OAuthProvider } from 'firebase/auth';
-import { firebaseConfig } from '../../firebase';
+import { firebaseConfig } from '../../tests/firebase';
 import { FirebaseAppProvider, FirebaseAuthProvider } from '../contexts';
 import { UtahIdLogin as Component } from './UtahIdLogin';
 

@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react';
 import { OAuthProvider } from 'firebase/auth';
-import { firebaseConfig } from '../../firebase.ts';
+import { firebaseConfig } from '../../tests/firebase.ts';
 import {
   FirebaseAppProvider,
   FirebaseAuthProvider,

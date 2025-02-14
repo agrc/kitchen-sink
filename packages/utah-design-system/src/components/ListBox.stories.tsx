@@ -1,8 +1,8 @@
-import type { Meta } from '@storybook/react';
-import { ListBox as Component, ListBoxItem } from './ListBox';
+import type { Meta, StoryObj } from '@storybook/react';
+import { ListBox, ListBoxItem } from './ListBox';
 
-const meta: Meta<typeof Component> = {
-  component: Component,
+const meta: Meta<typeof ListBox> = {
+  component: ListBox,
   parameters: {
     layout: 'centered',
   },
@@ -16,13 +16,15 @@ const meta: Meta<typeof Component> = {
 
 export default meta;
 
-export const Example = (args: any) => (
-  <Component aria-label="Ice cream flavor" {...args}>
-    <ListBoxItem id="chocolate">Chocolate</ListBoxItem>
-    <ListBoxItem isDisabled id="mint">
-      Mint
-    </ListBoxItem>
-    <ListBoxItem id="strawberry">Strawberry</ListBoxItem>
-    <ListBoxItem id="vanilla">Vanilla</ListBoxItem>
-  </Component>
-);
+type Story = StoryObj<typeof ListBox>;
+
+export const Example: Story = {
+  render: (args) => (
+    <ListBox aria-label="Ice cream flavor" {...args}>
+      <ListBoxItem id="chocolate">Chocolate</ListBoxItem>
+      <ListBoxItem id="mint">Mint</ListBoxItem>
+      <ListBoxItem id="strawberry">Strawberry</ListBoxItem>
+      <ListBoxItem id="vanilla">Vanilla</ListBoxItem>
+    </ListBox>
+  ),
+};

@@ -13,13 +13,10 @@ import {
 import { tv } from 'tailwind-variants';
 import { composeTailwindRenderProps, focusRing } from './utils';
 
-interface ListBoxProps<T>
-  extends Omit<AriaListBoxProps<T>, 'layout' | 'orientation'> {}
-
 export function ListBox<T extends object>({
   children,
   ...props
-}: ListBoxProps<T>) {
+}: Omit<AriaListBoxProps<T>, 'layout' | 'orientation'>) {
   return (
     <AriaListBox
       {...props}
@@ -49,7 +46,7 @@ export const itemStyles = tv({
 });
 
 export function ListBoxItem(props: ListBoxItemProps) {
-  let textValue =
+  const textValue =
     props.textValue ||
     (typeof props.children === 'string' ? props.children : undefined);
   return (
@@ -85,7 +82,7 @@ export const dropdownItemStyles = tv({
 });
 
 export function DropdownItem(props: ListBoxItemProps) {
-  let textValue =
+  const textValue =
     props.textValue ||
     (typeof props.children === 'string' ? props.children : undefined);
   return (

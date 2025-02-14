@@ -63,7 +63,7 @@ export function WithMap({
             Factory: TileLayer,
             url: 'https://gis.wfrc.org/arcgis/rest/services/WC2050Vision/2023_Vision_Refresh_Basemap/MapServer',
             // url: 'https://services.arcgisonline.com/arcgis/rest/services/World_Terrain_Base/MapServer',
-            // opacity: 0.25,
+            opacity: 0.25,
           },
           'Lite',
           'Terrain',
@@ -101,8 +101,8 @@ export const customLOD = () => {
 
   const lods = [];
   for (let zoom = 0; zoom <= 20; zoom++) {
-    let resolution = initialResolution / Math.pow(2, zoom);
-    let scale = resolution * 96 * inchesPerMeter;
+    const resolution = initialResolution / Math.pow(2, zoom);
+    const scale = resolution * 96 * inchesPerMeter;
     lods.push({
       level: zoom,
       scale: scale,

@@ -1,9 +1,9 @@
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './Button.tsx';
-import { RadioGroup as Component, Radio } from './Radio.tsx';
+import { Radio, RadioGroup } from './Radio.tsx';
 
-const meta: Meta<typeof Component> = {
-  component: Component,
+const meta: Meta<typeof RadioGroup> = {
+  component: RadioGroup,
   parameters: {
     layout: 'centered',
   },
@@ -28,22 +28,25 @@ const meta: Meta<typeof Component> = {
 
 export default meta;
 
-export const Default = {};
+type Story = StoryObj<typeof RadioGroup>;
 
-export const Validation = (args: any) => (
-  <form
-    onSubmit={(event) => {
-      event.preventDefault();
-    }}
-    className="flex flex-col items-start gap-2"
-  >
-    <Component {...args} />
-    <Button type="submit" variant="secondary">
-      Submit
-    </Button>
-  </form>
-);
+export const Default: Story = {};
 
-Validation.args = {
-  isRequired: true,
+export const Validation: Story = {
+  args: {
+    isRequired: true,
+  },
+  render: (args) => (
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+      }}
+      className="flex flex-col items-start gap-2"
+    >
+      <RadioGroup {...args} />
+      <Button type="submit" variant="secondary">
+        Submit
+      </Button>
+    </form>
+  ),
 };

@@ -2,7 +2,7 @@ import { withThemeByClassName } from '@storybook/addon-themes';
 import { initializeApp } from 'firebase/app';
 import { connectAuthEmulator, getAuth } from 'firebase/auth';
 import { initialize, mswLoader } from 'msw-storybook-addon';
-import { firebaseConfig } from '../packages/utah-design-system/firebase';
+import { firebaseConfig } from '../packages/utah-design-system/tests/firebase';
 import './tailwind.css';
 
 initialize({ onUnhandledRequest: 'bypass' });

@@ -3,7 +3,7 @@ import { toQueryString } from './url';
 
 describe('toQueryString', () => {
   it('should not include null and undefined values in the query string', () => {
-    const params: Record<string, any> = {
+    const params = {
       name: 'John',
       age: null,
       city: undefined,

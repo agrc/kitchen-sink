@@ -1,11 +1,11 @@
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { DialogTrigger } from 'react-aria-components';
-import { AlertDialog as Component } from './AlertDialog';
+import { AlertDialog } from './AlertDialog';
 import { Button } from './Button';
 import { Modal } from './Modal';
 
-const meta: Meta<typeof Component> = {
-  component: Component,
+const meta: Meta<typeof AlertDialog> = {
+  component: AlertDialog,
   parameters: {
     layout: 'centered',
   },
@@ -32,4 +32,6 @@ const meta: Meta<typeof Component> = {
 
 export default meta;
 
-export const Example = {};
+type Story = StoryObj<typeof AlertDialog>;
+
+export const Example: Story = {};

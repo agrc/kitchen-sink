@@ -21,7 +21,7 @@ export const UtahIdLogin = ({
 
     // @see https://firebase.google.com/docs/auth/web/google-signin
     signInWithPopup(auth, provider);
-  }, [auth]);
+  }, [auth, provider]);
 
   let height = 'h-6';
   if (size === 'extraSmall') {

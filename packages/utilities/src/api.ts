@@ -1,5 +1,5 @@
 import '@arcgis/core/interfaces.d.ts';
-import ky from 'ky';
+import ky, { HTTPError } from 'ky';
 
 const SPACE = ' ';
 const SPACES = / +/;
@@ -14,7 +14,7 @@ const trimSpaces = (data: string): string => data.replace(SPACES, SPACE).trim();
 
 const cleanseStreet = (data: string): string => {
   // & -> and
-  let street = trimSpaces(removeInvalidChars(data)).replace(/&/g, 'and');
+  const street = trimSpaces(removeInvalidChars(data)).replace(/&/g, 'and');
 
   return street.trim();
 };
@@ -50,7 +50,7 @@ type SearchOptions = {
 
 export type ApiErrorResponse = {
   status?: number;
-  message: string;
+  message?: string;
 };
 
 export type ApiGeocodeResponse = {
@@ -97,17 +97,23 @@ export const geocode = async (
         signal,
       })
       .json()) as ApiGeocodeResponse;
-  } catch (error: any) {
+  } catch (error: unknown) {
     try {
-      response = await error.response.json();
-    } catch {
-      response = { error: error.message };
-    }
+      const httpError: {
+        error?: string;
+        message?: string;
+      } = await (error as HTTPError).response.json();
 
-    return {
-      status: error.response?.status,
-      message: response?.error ?? response?.message,
-    };
+      return {
+        status: (error as HTTPError).response.status,
+        message: httpError.message,
+      };
+    } catch {
+      return {
+        status: (error as HTTPError).response.status,
+        message: (error as HTTPError).message,
+      };
+    }
   }
 
   return response.result;
@@ -116,7 +122,7 @@ export const geocode = async (
 export type SearchResponse = {
   status: number;
   result: {
-    attributes: Record<string, any>;
+    attributes: Record<string, unknown>;
     geometry?: __esri.GeometryProperties & {
       type: 'point' | 'multipoint' | 'polyline' | 'polygon' | 'extent' | 'mesh';
     };
@@ -149,17 +155,23 @@ export const search = async (
         signal,
       })
       .json()) as SearchResponse;
-  } catch (error: any) {
+  } catch (error: unknown) {
     try {
-      response = await error.response.json();
-    } catch {
-      response = { error: error.message };
-    }
+      const httpError: {
+        error?: string;
+        message?: string;
+      } = await (error as HTTPError).response.json();
 
-    return {
-      status: error.response?.status,
-      message: response?.error ?? response?.message,
-    };
+      return {
+        status: (error as HTTPError).response.status,
+        message: httpError.message,
+      };
+    } catch {
+      return {
+        status: (error as HTTPError).response.status,
+        message: (error as HTTPError).message,
+      };
+    }
   }
 
   return response.result;

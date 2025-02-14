@@ -81,7 +81,7 @@ type AsyncListLoadFunction<T, C> = (
   state: LoaderOptions<T, C>,
 ) => AsyncListStateUpdate<T, C> | Promise<AsyncListStateUpdate<T, C>>;
 type SherlockProvider = {
-  load: AsyncListLoadFunction<AsyncListItem, any>;
+  load: AsyncListLoadFunction<AsyncListItem, unknown>;
   getFeature: (key: string) => Promise<{ items: AccessorGraphicProperties[] }>;
 };
 type AccessorGraphicProperties = __esri.GraphicProperties & {
@@ -468,7 +468,7 @@ export type SherlockProps = {
 };
 
 export const Sherlock = (props: SherlockProps) => {
-  let list = useAsyncList({ load: props.provider.load });
+  const list = useAsyncList({ load: props.provider.load });
   const selectionChanged = async (key: Key | null) => {
     if (key === null) {
       return;
@@ -487,7 +487,9 @@ export const Sherlock = (props: SherlockProps) => {
         }),
     );
 
-    props.onSherlockMatch && props.onSherlockMatch(graphics, { list });
+    if (props.onSherlockMatch) {
+      props.onSherlockMatch(graphics, { list });
+    }
   };
 
   if (list.error) {
@@ -543,7 +545,7 @@ export const Sherlock = (props: SherlockProps) => {
             renderEmptyState={() => {
               if (list.filterText.length >= 3 && list.loadingState === 'idle') {
                 return (
-                  <div className="bg-warning-100 dark:bg-warning-700 py-2 text-center">
+                  <div className="bg-warning-100 py-2 text-center dark:bg-warning-700">
                     No items found matching your search
                   </div>
                 );

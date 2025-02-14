@@ -1,13 +1,14 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import Map from '@arcgis/core/Map';
 import MapView from '@arcgis/core/views/MapView';
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { useEffect, useRef, useState } from 'react';
-import { HomeButton as Component } from './HomeButton';
+import { HomeButton } from './HomeButton';
 
 import '@arcgis/core/assets/esri/themes/light/main.css';
 
-const meta: Meta<typeof Component> = {
-  component: Component,
+const meta: Meta<typeof HomeButton> = {
+  component: HomeButton,
   parameters: {
     layout: 'centered',
   },
@@ -18,7 +19,9 @@ const meta: Meta<typeof Component> = {
 
 export default meta;
 
-export const Example = {
+type Story = StoryObj<typeof HomeButton>;
+
+export const Example: Story = {
   render: () => {
     const viewDivRef = useRef<HTMLDivElement | null>(null);
     const view = useRef<__esri.MapView | null>(null);
@@ -41,7 +44,7 @@ export const Example = {
       view.current.when(() => {
         setReady(true);
       });
-    }, [view.current, viewDivRef.current]);
+    }, []);
 
     return (
       <>
@@ -49,7 +52,7 @@ export const Example = {
           ref={viewDivRef}
           className="size-96 overflow-hidden rounded-lg border"
         >
-          {ready && <Component view={view.current!} />}
+          {ready && <HomeButton view={view.current!} />}
         </div>
       </>
     );

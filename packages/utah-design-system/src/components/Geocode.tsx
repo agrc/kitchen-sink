@@ -1,14 +1,21 @@
 import { toQueryString } from '@ugrc/utilities';
 import { TriangleAlertIcon } from 'lucide-react';
+import type { KeyboardEvent } from 'react';
 import { useCallback, useState } from 'react';
 import { Group, type PressEvent } from 'react-aria-components';
-import { Button } from './Button';
+import { Button, type ButtonProps } from './Button';
 import { Spinner } from './Spinner';
 import { TextField } from './TextField';
 
 const ADDRESS_TYPE = 'single-address';
 
 type GeocodeComponentType = 'single-address' | 'route-milepost';
+type OutputResult = {
+  geometry: Point;
+  symbol: GeocodeProps['pointSymbol'];
+  attributes: Record<string, string | number>;
+  popupTemplate: __esri.PopupTemplateProperties;
+};
 type GeocodeProps = {
   apiKey: string;
   type?: GeocodeComponentType;
@@ -31,8 +38,8 @@ type GeocodeProps = {
     color: [number, number, number, number];
   };
   events?: {
-    success: (result: any) => void;
-    error: (error: any) => void;
+    success: (result: OutputResult) => void;
+    error: (error: object) => void;
   };
 };
 type Point = {
@@ -46,6 +53,7 @@ type Location = Point & {
     wkid: number;
   };
 };
+
 type AddressResult = {
   location: Location;
   score: number;
@@ -57,6 +65,7 @@ type AddressResult = {
   standardizedAddress: string;
   addressGrid: string;
 };
+
 const defaultProps: Omit<GeocodeProps, 'apiKey'> = {
   type: ADDRESS_TYPE,
   address: {
@@ -83,13 +92,15 @@ const defaultProps: Omit<GeocodeProps, 'apiKey'> = {
   },
 };
 
-const sanitize = (attributes: any = {}) => {
+const sanitize = (attributes: Record<string, unknown> = {}) => {
   const customProps = ['beforeClick', 'beforeKeyUp'];
 
   return Object.keys(attributes)
     .filter((key) => customProps.indexOf(key) === -1)
     .reduce(
-      (result: any, key: string) => ((result[key] = attributes[key]), result),
+      (result: Record<string, unknown>, key: string) => (
+        (result[key] = attributes[key]), result
+      ),
       {},
     );
 };
@@ -175,9 +186,9 @@ const useGeocoding = (userProps: GeocodeProps) => {
     baseUrl += '/milepost';
   }
 
+  type KeyboardEventHandler = (e: KeyboardEvent) => void;
   const getFirstFieldProps = (inputProps?: {
-    beforeClick: Function;
-    beforeKeyUp: Function;
+    beforeKeyUp: KeyboardEventHandler;
   }) => ({
     label: props.type === ADDRESS_TYPE ? 'Street address' : 'Route',
     errorMessage:
@@ -204,8 +215,7 @@ const useGeocoding = (userProps: GeocodeProps) => {
   });
 
   const getSecondFieldProps = (inputProps?: {
-    beforeClick: Function;
-    beforeKeyUp: Function;
+    beforeKeyUp: KeyboardEventHandler;
   }) => ({
     label: props.type === ADDRESS_TYPE ? 'City or Zip code' : 'Milepost',
     errorMessage:
@@ -230,10 +240,10 @@ const useGeocoding = (userProps: GeocodeProps) => {
     ...sanitize(inputProps),
   });
 
+  type ClickHandler = (e: PressEvent) => void;
   const getButtonProps = (buttonProps?: {
-    beforeClick: Function;
-    beforeKeyUp: Function;
-  }) => ({
+    beforeClick: ClickHandler;
+  }): ButtonProps => ({
     onPress: (e: PressEvent) => {
       buttonProps?.beforeClick(e);
       find();
@@ -258,8 +268,10 @@ const useGeocoding = (userProps: GeocodeProps) => {
     return firstValidity && secondValidity;
   }, [firstInput, secondInput]);
 
-  const get = useCallback(
-    (options: { firstInput: string; secondInput: string }) => {
+  const get = useCallback<
+    (options: { firstInput: string; secondInput: string }) => Promise<Response>
+  >(
+    async (options) => {
       const url = `${baseUrl}/${options.firstInput}/${options.secondInput}?`;
 
       let query = {
@@ -283,7 +295,7 @@ const useGeocoding = (userProps: GeocodeProps) => {
           mode: 'cors',
         }),
         500,
-      );
+      ) as Promise<Response>;
     },
     [
       props.apiKey,
@@ -297,9 +309,11 @@ const useGeocoding = (userProps: GeocodeProps) => {
     ],
   );
 
-  const outputTransform = useCallback(
-    (result: AddressResult, point: Point) => {
-      let attributes = {
+  const outputTransform = useCallback<
+    (result: AddressResult, point: Point) => OutputResult
+  >(
+    (result, point) => {
+      let attributes: OutputResult['attributes'] = {
         address: result.inputAddress,
         addressSystem: result.addressGrid,
         locator:
@@ -308,13 +322,13 @@ const useGeocoding = (userProps: GeocodeProps) => {
             : 'road centerline',
         score: result.score,
         matchAddress: result.matchAddress,
-      } as any;
-      let popupTemplate = {
+      };
+      let popupTemplate: __esri.PopupTemplateProperties = {
         title: 'UGRC API geocoding match',
         content:
           'The input address <strong>{address}</strong> matched against <strong>{matchAddress}</strong> using {locator} data.<br><br>The confidence score is {score}.<br><br>This address belongs to the {addressSystem} address system.',
         overwriteActions: true,
-      } as any;
+      };
 
       if (props.type !== ADDRESS_TYPE) {
         attributes = {
@@ -335,8 +349,10 @@ const useGeocoding = (userProps: GeocodeProps) => {
     [props.pointSymbol, props.type],
   );
 
-  const extractResponse = useCallback(
-    async (response: Response) => {
+  const extractResponse = useCallback<
+    (response: Response) => Promise<OutputResult | void>
+  >(
+    async (response) => {
       if (!response.ok) {
         setFound(false);
 
@@ -354,7 +370,7 @@ const useGeocoding = (userProps: GeocodeProps) => {
       if (result.status !== 200) {
         setFound(false);
 
-        return props.events?.error(response);
+        return props.events?.error(result);
       }
 
       setFound(true);
@@ -398,13 +414,13 @@ const useGeocoding = (userProps: GeocodeProps) => {
         firstInput,
         secondInput,
       });
-    } catch (err: any) {
+    } catch (err: unknown) {
       setStatus('error');
       setFound(false);
 
       return props.events?.error(
         response?.text() || {
-          message: err?.message,
+          message: (err as Error)?.message,
           status: 400,
         },
       );

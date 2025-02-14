@@ -1,12 +1,12 @@
-import type { Meta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { HelpCircle } from 'lucide-react';
 import { DialogTrigger, Heading } from 'react-aria-components';
 import { Button } from './Button';
 import { Dialog } from './Dialog';
-import { Popover as Component } from './Popover';
+import { Popover } from './Popover';
 
-const meta: Meta<typeof Component> = {
-  component: Component,
+const meta: Meta<typeof Popover> = {
+  component: Popover,
   parameters: {
     layout: 'centered',
   },
@@ -29,15 +29,20 @@ const meta: Meta<typeof Component> = {
 
 export default meta;
 
-export const Example = (args: any) => (
-  <Component {...args} className="max-w-[250px]">
-    <Dialog>
-      <Heading slot="title" className="mb-2 text-lg font-semibold">
-        Help
-      </Heading>
-      <p className="text-sm">
-        For help accessing your account, please contact support.
-      </p>
-    </Dialog>
-  </Component>
-);
+type Story = StoryObj<typeof Popover>;
+
+export const Example: Story = {
+  args: {
+    className: 'max-w-[250px]',
+    children: (
+      <Dialog>
+        <Heading slot="title" className="mb-2 text-lg font-semibold">
+          Help
+        </Heading>
+        <p className="text-sm">
+          For help accessing your account, please contact support.
+        </p>
+      </Dialog>
+    ),
+  },
+};
