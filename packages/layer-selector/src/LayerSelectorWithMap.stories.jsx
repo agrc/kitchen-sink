@@ -1,80 +1,69 @@
-import FeatureLayer from '@arcgis/core/layers/FeatureLayer';
-import TileInfo from '@arcgis/core/layers/support/TileInfo';
-import TileLayer from '@arcgis/core/layers/TileLayer';
-import VectorTileLayer from '@arcgis/core/layers/VectorTileLayer';
-import WebTileLayer from '@arcgis/core/layers/WebTileLayer';
-import Map from '@arcgis/core/Map';
-import MapView from '@arcgis/core/views/MapView';
+import FeatureLayer from '@arcgis/core/layers/FeatureLayer.js';
+import TileInfo from '@arcgis/core/layers/support/TileInfo.js';
+import TileLayer from '@arcgis/core/layers/TileLayer.js';
+import VectorTileLayer from '@arcgis/core/layers/VectorTileLayer.js';
+import WebTileLayer from '@arcgis/core/layers/WebTileLayer.js';
+import Map from '@arcgis/core/Map.js';
+import MapView from '@arcgis/core/views/MapView.js';
+import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
-import { LayerSelector } from './LayerSelector';
+import LayerSelector from './';
 
 import '@arcgis/core/assets/esri/themes/light/main.css';
-import type { LayerSelectorProps } from './LayerSelector';
-import type { LayerConfig } from './shared.types';
+import './LayerSelector.css';
 
 export default {
   component: LayerSelector,
 };
 
-type WithMapProps = {
-  center?: number[];
-  zoom?: number;
-  scale?: number;
-  baseLayers?: LayerConfig[];
-  overlays?: LayerConfig[];
-  showOpacitySlider?: boolean;
-};
-
-export function WithMap({
+const WithMap = ({
   center,
   zoom,
   scale,
   baseLayers,
   overlays,
   showOpacitySlider,
-}: WithMapProps) {
-  const mapDiv = useRef<HTMLDivElement>(null);
-  const [layerSelectorOptions, setLayerSelectorOptions] =
-    useState<LayerSelectorProps>();
+}) => {
+  const mapDiv = useRef();
+  const [layerSelectorOptions, setLayerSelectorOptions] = useState();
 
   useEffect(() => {
-    if (!mapDiv.current) {
-      return;
-    }
+    const initMap = () => {
+      console.log('init');
+      const map = new Map();
+      const view = new MapView({
+        container: mapDiv.current,
+        map,
+        center: center ? center : [-112, 40],
+        zoom,
+        scale,
+      });
 
-    console.log('init map');
-    const map = new Map();
-    const view = new MapView({
-      container: mapDiv.current,
-      map,
-      center: center ? center : [-112, 40],
-      zoom,
-      scale,
-    });
-
-    setLayerSelectorOptions({
-      options: {
-        view,
+      setLayerSelectorOptions({
+        view: view,
         quadWord: import.meta.env.VITE_QUAD_WORD,
-        baseLayers: baseLayers || [
-          'Hybrid',
-          {
-            id: 'Vision Refresh Basemap',
-            Factory: TileLayer,
-            url: 'https://gis.wfrc.org/arcgis/rest/services/WC2050Vision/2023_Vision_Refresh_Basemap/MapServer',
-            // url: 'https://services.arcgisonline.com/arcgis/rest/services/World_Terrain_Base/MapServer',
-            opacity: 0.25,
-          },
-          'Lite',
-          'Terrain',
-          'Topo',
-          'Color IR',
-        ],
-        overlays: overlays || ['Address Points'],
+        baseLayers: baseLayers
+          ? baseLayers
+          : [
+              'Hybrid',
+              'Lite',
+              'Terrain',
+              'Topo',
+              'Color IR',
+              {
+                id: 'Vision Refresh Basemap',
+                Factory: 'TileLayer',
+                url: 'https://gis.wfrc.org/arcgis/rest/services/WC2050Vision/2023_Vision_Refresh_Basemap/MapServer/',
+                opacity: 0.25,
+              },
+            ],
+        overlays: overlays ? overlays : ['Address Points'],
         position: 'top-right',
         showOpacitySlider,
-      },
-    });
+      });
+    };
+
+    initMap();
   }, [zoom, center, scale, baseLayers, overlays, showOpacitySlider]);
 
   return (
@@ -87,7 +76,15 @@ export function WithMap({
       ) : null}
     </div>
   );
-}
+};
+WithMap.propTypes = {
+  center: PropTypes.arrayOf(PropTypes.number),
+  zoom: PropTypes.number,
+  scale: PropTypes.number,
+  baseLayers: PropTypes.array,
+  overlays: PropTypes.array,
+  showOpacitySlider: PropTypes.bool,
+};
 
 export const zoom = () => <WithMap zoom={6} />;
 export const scale = () => <WithMap scale={12000} />;
@@ -101,8 +98,8 @@ export const customLOD = () => {
 
   const lods = [];
   for (let zoom = 0; zoom <= 20; zoom++) {
-    const resolution = initialResolution / Math.pow(2, zoom);
-    const scale = resolution * 96 * inchesPerMeter;
+    let resolution = initialResolution / Math.pow(2, zoom);
+    let scale = resolution * 96 * inchesPerMeter;
     lods.push({
       level: zoom,
       scale: scale,
@@ -120,7 +117,8 @@ export const customLOD = () => {
       selected: true,
       tileInfo: new TileInfo({
         dpi: 96,
-        size: [256, 256],
+        rows: 256,
+        cols: 256,
         origin: {
           x: -20037508.342787,
           y: 20037508.342787,
