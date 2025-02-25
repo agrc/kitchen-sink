@@ -32,8 +32,8 @@ jobs:
       - name: 🏗️ Build
         run: npm run build
 
-      - name: ✔ Check Typescript
-        run: npx tsc
+      - name: ✔ Check Types and Formatting
+        run: npm run check
 
   test-unit:
     name: Unit tests
