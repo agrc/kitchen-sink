@@ -239,17 +239,15 @@ export function LayerSelector({ options, ...props }: LayerSelectorProps) {
   ]);
 
   return (
-    <div ref={node}>
+    <div ref={node} className="esri-widget">
       <DialogTrigger {...props}>
-        <div className="inline-flex max-w-fit border border-black bg-white dark:border-zinc-500 dark:bg-zinc-900">
-          <Button
-            aria-label="Map layers"
-            className="px-1.5 outline-none focus-visible:ring-2 focus-visible:ring-white/75"
-            variant="icon"
-          >
-            <LayersIcon className="block size-8 p-1" />
-          </Button>
-        </div>
+        <Button
+          aria-label="Map layers"
+          className="esri-widget--button size-8 text-[#6e6e6e] outline-none focus-visible:ring-2 focus-visible:ring-white/75 dark:text-white"
+          variant="icon"
+        >
+          <LayersIcon className="block size-8 p-1" />
+        </Button>
         <Popover>
           <Dialog className="outline-none">
             <Header className="font-bold dark:text-white">Base maps</Header>

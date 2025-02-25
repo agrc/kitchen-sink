@@ -5,10 +5,11 @@ import TileLayer from '@arcgis/core/layers/TileLayer';
 import WebTileLayer from '@arcgis/core/layers/WebTileLayer';
 import Map from '@arcgis/core/Map';
 import MapView from '@arcgis/core/views/MapView';
+import Fullscreen from '@arcgis/core/widgets/Fullscreen';
+import HomeButton from '@arcgis/core/widgets/Home';
 import { useEffect, useRef, useState } from 'react';
 import { LayerSelector, type LayerSelectorProps } from './LayerSelector';
 
-import '@arcgis/core/assets/esri/themes/light/main.css';
 import LOD from '@arcgis/core/layers/support/LOD';
 import type {
   BaseLayerConfigOrToken,
@@ -60,6 +61,9 @@ export function Default({
       (zoom) => Number.isInteger(zoom) && console.log('map zoom', zoom),
     );
 
+    view.ui.add(new HomeButton({ view }), 'top-right');
+    view.ui.add(new Fullscreen({ view }), 'top-right');
+
     setLayerSelectorOptions({
       options: {
         view,
@@ -80,7 +84,6 @@ export function Default({
         ],
         referenceLayers: referenceLayers || ['Address Points'],
         operationalLayers: operationalLayers || ['Land Ownership'],
-        position: 'top-right',
       },
     });
   }, [zoom, center, scale, baseLayers, referenceLayers, operationalLayers]);
