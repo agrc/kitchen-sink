@@ -5,8 +5,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useEffect, useRef, useState } from 'react';
 import { HomeButton } from './HomeButton';
 
-import '@arcgis/core/assets/esri/themes/light/main.css';
-
 const meta: Meta<typeof HomeButton> = {
   component: HomeButton,
   parameters: {
