@@ -46,7 +46,7 @@ export function FieldError(props: FieldErrorProps) {
       {...props}
       className={composeTailwindRenderProps(
         props.className,
-        'text-warning-600 text-sm forced-colors:text-[Mark]',
+        'text-sm text-warning-600 forced-colors:text-[Mark]',
       )}
     />
   );

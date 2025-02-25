@@ -1,5 +1,9 @@
 import { useFirebaseApp } from '@ugrc/utah-design-system';
-import { connectFunctionsEmulator, type Functions, getFunctions } from 'firebase/functions';
+import {
+  connectFunctionsEmulator,
+  type Functions,
+  getFunctions,
+} from 'firebase/functions';
 import { createContext, type ReactNode, useContext } from 'react';
 
 type FunctionsContextValue = {
@@ -22,7 +26,9 @@ export const FirebaseFunctionsProvider = (props: FunctionsProviderProps) => {
   }
 
   if (!app) {
-    throw new Error('You cannot use the FirebaseFunctionsProvider outside of a <FirebaseAppProvider />');
+    throw new Error(
+      'You cannot use the FirebaseFunctionsProvider outside of a <FirebaseAppProvider />',
+    );
   }
 
   return <FunctionsContext.Provider value={{ functions: sdk }} {...props} />;
@@ -32,7 +38,9 @@ export const useFirebaseFunctions = () => {
   const value = useContext(FunctionsContext);
 
   if (value === null) {
-    throw new Error('useFirebaseFunctions must be used within a FirebaseFunctionsProvider');
+    throw new Error(
+      'useFirebaseFunctions must be used within a FirebaseFunctionsProvider',
+    );
   }
 
   return value;

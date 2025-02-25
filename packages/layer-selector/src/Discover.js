@@ -5,9 +5,9 @@
  */
 const setTileInfosForApplianceLayers = (layers, defaultTileInfo, TileInfo) => {
   const lods = defaultTileInfo.lods;
-  const fiveToNineteen = lods.slice(0, 20); // eslint-disable-line no-magic-numbers
-  const fiveToSeventeen = lods.slice(0, 18); // eslint-disable-line no-magic-numbers
-  const zeroToEighteen = lods.slice(0, 19); // eslint-disable-line no-magic-numbers
+  const fiveToNineteen = lods.slice(0, 20);
+  const fiveToSeventeen = lods.slice(0, 18);
+  const zeroToEighteen = lods.slice(0, 19);
 
   layers.Imagery.tileInfo = new TileInfo(defaultTileInfo);
   layers.Hybrid.tileInfo = new TileInfo(defaultTileInfo);
