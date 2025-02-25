@@ -10,7 +10,7 @@ exports[`LayerSelector tests > LayerSelector snapshot 1`] = `
       <input
         alt="layers"
         class="layer-selector__toggle"
-        src="/packages/layer-selector/src/layers.svg"
+        src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='26'%20height='26'%20viewBox='0%200%2026%2026'%3e%3cg%20fill='none'%20stroke='%23555'%20stroke-width='3'%20stroke-miterlimit='9'%3e%3cpath%20transform='matrix(.95342%20.30165%20-.95342%20.30165%200%20-1026)'%20d='M1715%201701h10v10h-10zM1734%201709v11.2h-11.2M1744%201719v11.2h-11.2'/%3e%3c/g%3e%3c/svg%3e"
         type="image"
       />
       <form
