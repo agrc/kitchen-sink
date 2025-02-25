@@ -1,5 +1,9 @@
 import { useFirebaseApp } from '@ugrc/utah-design-system';
-import { connectFirestoreEmulator, Firestore, getFirestore } from 'firebase/firestore';
+import {
+  connectFirestoreEmulator,
+  Firestore,
+  getFirestore,
+} from 'firebase/firestore';
 import { createContext, type ReactNode, useContext } from 'react';
 
 type StoreContextValue = {
@@ -22,7 +26,9 @@ export const FirestoreProvider = (props: FirestoreProviderProps) => {
   }
 
   if (!app) {
-    throw new Error('You cannot use the FirestoreProvider outside of a <FirebaseAppProvider />');
+    throw new Error(
+      'You cannot use the FirestoreProvider outside of a <FirebaseAppProvider />',
+    );
   }
 
   return <FirestoreContext.Provider value={{ firestore: sdk }} {...props} />;

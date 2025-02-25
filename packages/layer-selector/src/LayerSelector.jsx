@@ -28,12 +28,13 @@ const ExpandableContainer = (props) => {
   const fromClasses = classNames({ 'layer-selector--hidden': !expanded });
 
   return (
-    // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
     <div
       className="layer-selector esri-component esri-widget"
       // onFocus={() => setExpanded(true)}
       // onBlur={() => setExpanded(false)}
+      // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
       onMouseOver={() => setExpanded(true)}
+      // eslint-disable-next-line jsx-a11y/mouse-events-have-key-events
       onMouseOut={() => setExpanded(false)}
       aria-haspopup="true"
     >
@@ -341,7 +342,7 @@ const LayerSelector = (props) => {
 
     try {
       props.view.map.basemap = new Basemap();
-    } catch (e) {
+    } catch {
       console.warn(
         'layer-selector::You must pass a view with a map to the constructor of this widget.',
       );

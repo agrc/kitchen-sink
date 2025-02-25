@@ -48,7 +48,7 @@ export const TextField = forwardRef(function TextField(
         <Label
           className={twJoin(
             props.isRequired &&
-              "after:text-warning-500 after:dark:text-warning-300 after:ml-0.5 after:content-['*']",
+              "after:ml-0.5 after:text-warning-500 after:content-['*'] after:dark:text-warning-300",
           )}
         >
           {label}
