@@ -69,6 +69,45 @@ function getLabel(configOrToken: LayerConfigOrToken) {
     : configOrToken.label;
 }
 
+async function toggleLayer(
+  configOrToken: LayerConfigOrToken,
+  label: string,
+  visible: boolean,
+  container: __esri.Collection<__esri.Layer>,
+  managedLayers: Record<string, __esri.Layer>,
+  view: MapView,
+  quadWord: string,
+) {
+  let layer = managedLayers[label];
+  if (!layer && visible) {
+    if (typeof configOrToken === 'string') {
+      layer = getLayerFromToken(configOrToken, quadWord);
+    } else {
+      layer = configOrToken.function();
+    }
+    managedLayers[label] = layer;
+    container.add(layer);
+  } else if (layer) {
+    layer.visible = visible;
+  }
+
+  if (
+    visible &&
+    container === view.map.basemap!.baseLayers &&
+    'tileInfo' in layer! &&
+    layer.tileInfo instanceof TileInfo &&
+    view.ready
+  ) {
+    const newMaxZoomLevel =
+      layer.tileInfo.lods[layer.tileInfo.lods.length - 1]!.level;
+    if (view.zoom > newMaxZoomLevel) {
+      await view.goTo({ zoom: newMaxZoomLevel });
+    }
+
+    view.constraints.maxZoom = newMaxZoomLevel;
+  }
+}
+
 export type LayerSelectorProps = Omit<DialogTriggerProps, 'children'> & {
   options: SelectorOptions;
 };
@@ -147,41 +186,6 @@ export function LayerSelector({
   // toggle layer visibility
   useEffect(() => {
     const map = options.view.map;
-    const toggleLayer = async (
-      configOrToken: LayerConfigOrToken,
-      label: string,
-      visible: boolean,
-      container: __esri.Collection<__esri.Layer>,
-    ) => {
-      let layer = managedLayers.current[label];
-      if (!layer && visible) {
-        if (typeof configOrToken === 'string') {
-          layer = getLayerFromToken(configOrToken, options.quadWord!);
-        } else {
-          layer = configOrToken.function();
-        }
-        managedLayers.current[label] = layer;
-        container.add(layer);
-      } else if (layer) {
-        layer.visible = visible;
-      }
-
-      if (
-        visible &&
-        container === map.basemap!.baseLayers &&
-        'tileInfo' in layer! &&
-        layer.tileInfo instanceof TileInfo &&
-        options.view.ready
-      ) {
-        const newMaxZoomLevel =
-          layer.tileInfo.lods[layer.tileInfo.lods.length - 1]!.level;
-        if (options.view.zoom > newMaxZoomLevel) {
-          await options.view.goTo({ zoom: newMaxZoomLevel });
-        }
-
-        options.view.constraints.maxZoom = newMaxZoomLevel;
-      }
-    };
 
     for (const configOrToken of options.baseLayers) {
       const label = getLabel(configOrToken);
@@ -190,6 +194,9 @@ export function LayerSelector({
         label,
         label === selectedRadioBtnLabel,
         map.basemap!.baseLayers,
+        managedLayers.current,
+        options.view,
+        options.quadWord!,
       );
       if (label === 'Hybrid') {
         toggleLayer(
@@ -197,6 +204,9 @@ export function LayerSelector({
           'Overlay',
           label === selectedRadioBtnLabel,
           map.basemap!.referenceLayers,
+          managedLayers.current,
+          options.view,
+          options.quadWord!,
         );
       }
     }
@@ -209,6 +219,9 @@ export function LayerSelector({
         label,
         selectedCheckboxLabels.includes(label),
         map.basemap!.referenceLayers,
+        managedLayers.current,
+        options.view,
+        options.quadWord!,
       );
     }
 
@@ -220,6 +233,9 @@ export function LayerSelector({
         label,
         selectedCheckboxLabels.includes(label),
         map.layers,
+        managedLayers.current,
+        options.view,
+        options.quadWord!,
       );
     }
   }, [
