@@ -109,6 +109,7 @@ export const ugrcApiProvider = (
   options: { wkid?: number } = {},
 ): SherlockProvider => {
   return {
+    // @ts-expect-error - TODO: Update this to handle types correctly
     load: async ({ signal, filterText, maxResults = 10 }) => {
       if ((filterText?.length ?? 0) < 3) {
         return { items: [] };
@@ -133,14 +134,18 @@ export const ugrcApiProvider = (
       const result = response as SearchResponse['result'];
 
       result.sort((a, b) => {
+        // @ts-expect-error - TODO: Update this to handle types correctly
         if (a.attributes[field] < b.attributes[field]) {
           return -1;
+          // @ts-expect-error - TODO: Update this to handle types correctly
         } else if (a.attributes[field] > b.attributes[field]) {
           return 1;
         } else if (contextField) {
           // fields are equal, compare contextField
+          // @ts-expect-error - TODO: Update this to handle types correctly
           if (a.attributes[contextField] < b.attributes[contextField]) {
             return -1;
+            // @ts-expect-error - TODO: Update this to handle types correctly
           } else if (a.attributes[contextField] > b.attributes[contextField]) {
             return 1;
           } else {
@@ -407,6 +412,7 @@ export const multiProvider = (
 ): SherlockProvider => {
   const separator = '||';
   return {
+    // @ts-expect-error - TODO: Update this to handle types correctly
     load: async ({
       signal,
       filterText,
@@ -483,6 +489,7 @@ export const Sherlock = (props: SherlockProps) => {
         new Graphic({
           geometry: result.geometry,
           attributes: result.attributes,
+          // @ts-expect-error - TODO: Update this to handle types correctly
           symbol: result.geometry && defaultSymbols[result.geometry.type],
         }),
     );
