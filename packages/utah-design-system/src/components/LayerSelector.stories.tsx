@@ -1,5 +1,6 @@
 import { watch } from '@arcgis/core/core/reactiveUtils';
 import FeatureLayer from '@arcgis/core/layers/FeatureLayer';
+import LOD from '@arcgis/core/layers/support/LOD';
 import TileInfo from '@arcgis/core/layers/support/TileInfo';
 import TileLayer from '@arcgis/core/layers/TileLayer';
 import WebTileLayer from '@arcgis/core/layers/WebTileLayer';
@@ -7,18 +8,26 @@ import Map from '@arcgis/core/Map';
 import MapView from '@arcgis/core/views/MapView';
 import Fullscreen from '@arcgis/core/widgets/Fullscreen';
 import HomeButton from '@arcgis/core/widgets/Home';
+import type { Meta } from '@storybook/react';
 import { useEffect, useRef, useState } from 'react';
 import { LayerSelector, type LayerSelectorProps } from './LayerSelector';
-
-import LOD from '@arcgis/core/layers/support/LOD';
 import type {
   BaseLayerConfigOrToken,
   LayerConfigOrToken,
 } from './LayerSelector.types';
 
-export default {
+const meta: Meta<typeof LayerSelector> = {
   component: LayerSelector,
+  decorators: [
+    (Story) => (
+      <div className="min-h-96">
+        <Story />
+      </div>
+    ),
+  ],
 };
+
+export default meta;
 
 type DefaultProps = {
   center?: number[];
