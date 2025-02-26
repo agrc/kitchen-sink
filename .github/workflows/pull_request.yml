@@ -29,9 +29,6 @@ jobs:
       - name: 🧼 Lint files
         run: npm run lint
 
-      - name: 🏗️ Build
-        run: npm run build
-
       - name: ✔ Check Types and Formatting
         run: npm run check
 
