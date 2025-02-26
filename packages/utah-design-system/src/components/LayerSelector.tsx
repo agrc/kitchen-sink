@@ -113,7 +113,12 @@ export type LayerSelectorProps = Omit<DialogTriggerProps, 'children'> & {
 };
 
 export function LayerSelector({
-  options: { position = 'top-right', ...options },
+  options: {
+    position = 'top-right',
+    referenceLayers = [],
+    operationalLayers = [],
+    ...options
+  },
   ...props
 }: LayerSelectorProps) {
   const node = useRef<HTMLDivElement>(null);
@@ -130,9 +135,9 @@ export function LayerSelector({
     }
 
     for (const configOrToken of [
-      ...(options.baseLayers || []),
-      ...(options.referenceLayers || []),
-      ...(options.operationalLayers || []),
+      ...options.baseLayers,
+      ...referenceLayers,
+      ...operationalLayers,
     ]) {
       if (typeof configOrToken === 'string') {
         if (!Object.values(layerTokens).includes(configOrToken)) {
@@ -149,15 +154,15 @@ export function LayerSelector({
         }
       }
     }
-  }, [options]);
+  }, [operationalLayers, options, referenceLayers]);
 
   const [selectedRadioBtnLabel, setSelectedRadioBtnLabel] = useState<string>(
     getLabel(options.baseLayers[0]!),
   );
 
   const referenceAndOperationalConfigsOrTokens = [
-    ...(options?.referenceLayers || []),
-    ...(options?.operationalLayers || []),
+    ...operationalLayers,
+    ...referenceLayers,
   ];
   const [selectedCheckboxLabels, setSelectedCheckboxLabels] = useState<
     string[]
@@ -211,7 +216,7 @@ export function LayerSelector({
       }
     }
 
-    for (const configOrToken of options.referenceLayers || []) {
+    for (const configOrToken of referenceLayers) {
       // todo: handle layer ordering (I *think* that esri might already make sure that polygons are under line are under points...)
       const label = getLabel(configOrToken);
       toggleLayer(
@@ -225,7 +230,7 @@ export function LayerSelector({
       );
     }
 
-    for (const configOrToken of options.operationalLayers || []) {
+    for (const configOrToken of operationalLayers) {
       // todo: handle layer ordering (I *think* that esri might already make sure that polygons are under line are under points...)
       const label = getLabel(configOrToken);
       toggleLayer(
@@ -240,9 +245,9 @@ export function LayerSelector({
     }
   }, [
     options.baseLayers,
-    options.operationalLayers,
+    operationalLayers,
     options.quadWord,
-    options.referenceLayers,
+    referenceLayers,
     options.view,
     options.view.map,
     selectedCheckboxLabels,
