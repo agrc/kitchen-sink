@@ -73,7 +73,10 @@ export type LayerSelectorProps = Omit<DialogTriggerProps, 'children'> & {
   options: SelectorOptions;
 };
 
-export function LayerSelector({ options, ...props }: LayerSelectorProps) {
+export function LayerSelector({
+  options: { position = 'top-right', ...options },
+  ...props
+}: LayerSelectorProps) {
   const node = useRef<HTMLDivElement>(null);
   const managedLayers = useRef<Record<string, __esri.Layer>>({});
 
@@ -138,8 +141,8 @@ export function LayerSelector({ options, ...props }: LayerSelectorProps) {
       id: basemapId,
     });
 
-    options.view.ui.add(node.current, options.position || 'top-right');
-  }, [options.position, options.view.map, options.view.ui]);
+    options.view.ui.add(node.current, position);
+  }, [position, options.view.map, options.view.ui]);
 
   // toggle layer visibility
   useEffect(() => {
