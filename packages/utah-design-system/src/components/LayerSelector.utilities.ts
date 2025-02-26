@@ -130,38 +130,30 @@ function createDefaultTileInfo() {
 }
 
 function getTileInfo(token: Omit<LayerToken, 'Land Ownership'>) {
-  const lods = defaultTileInfo.lods;
-  const fiveToNineteen = lods.slice(0, 20);
-  const fiveToSeventeen = lods.slice(0, 18);
-  const zeroToEighteen = lods.slice(0, 19);
-
   switch (token) {
-    case 'Address Points':
-    case 'Imagery':
-    case 'Hybrid': {
+    case 'Color IR':
+    case 'Imagery': {
+      // default lods is 0 to 20
       return defaultTileInfo;
     }
 
-    case 'Color IR': {
-      return new TileInfo({
-        ...defaultTileInfo,
-        lods: zeroToEighteen,
-      });
-    }
-
+    // max level is 17
     case 'Topo': {
       return new TileInfo({
         ...defaultTileInfo,
-        lods: fiveToSeventeen,
+        lods: defaultTileInfo.lods.slice(0, 18),
       });
     }
 
+    // cached via honeycomb on a regular schedule (max level is 19 but only for a specific extent)
+    case 'Hybrid':
+    case 'Address Points':
     case 'Terrain':
     case 'Lite':
     case 'Overlay': {
       return new TileInfo({
         ...defaultTileInfo,
-        lods: fiveToNineteen,
+        lods: defaultTileInfo.lods.slice(0, 20),
       });
     }
 
