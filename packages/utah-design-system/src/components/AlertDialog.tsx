@@ -52,6 +52,8 @@ export function AlertDialog({
             )}
             <Button
               variant={variant === 'destructive' ? 'destructive' : 'primary'}
+              // eslint-disable-next-line jsx-a11y/no-autofocus
+              autoFocus
               onPress={chain(onAction, close)}
             >
               {actionLabel}
