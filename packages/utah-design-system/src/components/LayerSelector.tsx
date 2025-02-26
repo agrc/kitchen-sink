@@ -261,22 +261,28 @@ export function LayerSelector({
                 );
               })}
             </RadioGroup>
-            <Header className="font-bold dark:text-white">Overlays</Header>
-            <CheckboxGroup
-              className="mb-2 flex-1"
-              value={selectedCheckboxLabels}
-              onChange={setSelectedCheckboxLabels}
-            >
-              {referenceAndOperationalConfigsOrTokens.map((configOrToken) => {
-                const label = getLabel(configOrToken);
+            {referenceAndOperationalConfigsOrTokens.length > 0 && (
+              <>
+                <Header className="font-bold dark:text-white">Overlays</Header>
+                <CheckboxGroup
+                  className="mb-2 flex-1"
+                  value={selectedCheckboxLabels}
+                  onChange={setSelectedCheckboxLabels}
+                >
+                  {referenceAndOperationalConfigsOrTokens.map(
+                    (configOrToken) => {
+                      const label = getLabel(configOrToken);
 
-                return (
-                  <Checkbox className="pl-2" value={label} key={label}>
-                    {label}
-                  </Checkbox>
-                );
-              })}
-            </CheckboxGroup>
+                      return (
+                        <Checkbox className="pl-2" value={label} key={label}>
+                          {label}
+                        </Checkbox>
+                      );
+                    },
+                  )}
+                </CheckboxGroup>
+              </>
+            )}
           </Dialog>
         </Popover>
       </DialogTrigger>
