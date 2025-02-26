@@ -31,7 +31,7 @@ export default {
   },
 
   docs: {
-    autodocs: true
+    autodocs: true,
   },
 
   typescript: {
