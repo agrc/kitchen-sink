@@ -12,8 +12,7 @@ export const HomeButton = ({
   view: __esri.MapView;
   position?: __esri.UIAddComponent['position'];
   initialExtent?: __esri.Extent;
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
-  actions?: Function[];
+  actions?: (() => void)[];
 }) => {
   const goHome = useDefaultExtent(view, initialExtent);
   const uiPosition = useViewUiPosition(view, position ?? 'top-left');
