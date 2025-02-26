@@ -34,8 +34,8 @@ type SelectorOptions = {
   operationalLayers?: LayerConfigOrToken[];
   /** layers added to map.basemap.referenceLayers */
   referenceLayers?: LayerConfigOrToken[];
-  /** option passed to view.ui.add() */
-  position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+  /** option passed to view.ui.add(), defaults to top-right */
+  position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 };
 
 const Popover = (props: PopoverProps) => {
@@ -130,24 +130,16 @@ export function LayerSelector({ options, ...props }: LayerSelectorProps) {
 
   // set up map
   useEffect(() => {
+    const basemapId = 'layer-selector';
+
+    if (!node.current || options.view.map.basemap?.id === basemapId) return;
+
     options.view.map.basemap = new Basemap({
-      id: 'layer-selector',
+      id: basemapId,
     });
-  }, [options.view.map]);
 
-  // add this component to the map view
-  useEffect(() => {
-    const cleanupNode = node.current;
-    if (node.current) {
-      options.view.ui.add(node.current, options.position);
-    }
-
-    return () => {
-      if (cleanupNode) {
-        options.view.ui.remove(cleanupNode);
-      }
-    };
-  }, [options.view, options.position]);
+    options.view.ui.add(node.current, options.position || 'top-right');
+  }, [options.position, options.view.map, options.view.ui]);
 
   // toggle layer visibility
   useEffect(() => {
