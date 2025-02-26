@@ -39,7 +39,7 @@
     "LICENSE-Adobe"
   ],
   "scripts": {
-    "build": "npm run check",
+    "build": "echo 'No build necessary'",
     "check": "tsc",
     "prepublish": "cp ../../LICENSE /",
     "test": "vitest --config ../../vite.config.js"
