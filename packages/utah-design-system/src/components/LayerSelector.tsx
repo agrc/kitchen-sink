@@ -259,7 +259,7 @@ export function LayerSelector({
       <DialogTrigger {...props}>
         <Button
           aria-label="Map layers"
-          className="esri-widget--button size-8 text-[#6e6e6e] outline-none focus-visible:ring-2 focus-visible:ring-white/75"
+          className="esri-widget--button size-8 text-[#6e6e6e] -outline-offset-2 outline-[#007ac2] focus:bg-[#f3f3f3]"
           variant="icon"
         >
           <LayersIcon className="block size-8 p-1" />
