@@ -5,8 +5,7 @@ describe('useLocalStorage', () => {
   beforeEach(() => {
     vi.mock('react', () => {
       return {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        useState: (initialValue: any) => [initialValue(), () => {}],
+        useState: (initialValue: () => unknown) => [initialValue(), () => {}],
       };
     });
   });
