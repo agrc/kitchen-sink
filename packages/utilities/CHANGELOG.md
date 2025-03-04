@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.2](https://github.com/agrc/kitchen-sink/compare/utilities-v3.0.1...utilities-v3.0.2) (2025-03-04)
+
+
+### Bug Fixes
+
+* **utilities:** fix type error ([78796b8](https://github.com/agrc/kitchen-sink/commit/78796b8f267f17ed533e899f4d07ebf4f979ec15))
+
 ## [3.0.1](https://github.com/agrc/kitchen-sink/compare/utilities-v3.0.0...utilities-v3.0.1) (2025-03-04)
 
 

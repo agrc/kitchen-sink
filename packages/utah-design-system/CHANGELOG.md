@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.20.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.20.1...utah-design-system-v1.20.2) (2025-03-04)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ugrc/utilities bumped from 3.0.1 to 3.0.2
+
 ## [1.20.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.20.0...utah-design-system-v1.20.1) (2025-03-04)
 
 
