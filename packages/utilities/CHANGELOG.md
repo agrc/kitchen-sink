@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.1](https://github.com/agrc/kitchen-sink/compare/utilities-v3.0.0...utilities-v3.0.1) (2025-03-04)
+
+
+### Bug Fixes
+
+* **useViewLoading:** replace deprecated watch method ([2a058f7](https://github.com/agrc/kitchen-sink/commit/2a058f7f792f6591fed3b3e69ac07e42f9bf1c1b))
+
 ## [3.0.0](https://github.com/agrc/kitchen-sink/compare/utilities-v2.4.3...utilities-v3.0.0) (2025-01-22)
 
 

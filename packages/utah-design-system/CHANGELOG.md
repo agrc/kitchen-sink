@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.20.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.20.0...utah-design-system-v1.20.1) (2025-03-04)
+
+
+### Bug Fixes
+
+* **layer-selector:** fix lods to better reflect the current situation ([208247b](https://github.com/agrc/kitchen-sink/commit/208247be47fb29b5fe9fca92aac5213e6bb3d72a))
+* **layer-selector:** give position prop a default value and better map init ([eb25d5e](https://github.com/agrc/kitchen-sink/commit/eb25d5ed3b01f50c88cf9982d5c52e54dd6f0998))
+* **layer-selector:** hide overlays header if none are defined ([fe18c0c](https://github.com/agrc/kitchen-sink/commit/fe18c0c39b6ec5923422b560b101781c75d46bc2))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ugrc/utilities bumped from 3.0.0 to 3.0.1
+
 ## [1.20.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.19.1...utah-design-system-v1.20.0) (2025-02-04)
 
 
