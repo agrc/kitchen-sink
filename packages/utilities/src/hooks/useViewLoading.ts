@@ -1,3 +1,4 @@
+import { watch } from '@arcgis/core/core/reactiveUtils';
 import { useEffect, useRef, useState } from 'react';
 
 export default function useViewLoading(
@@ -13,24 +14,27 @@ export default function useViewLoading(
     }
 
     view.when(() => {
-      view.watch('updating', (updating: boolean) => {
-        if (updating && timeoutId.current) {
-          return;
-        }
-
-        if (!updating) {
-          if (timeoutId.current) {
-            clearTimeout(timeoutId.current);
-            timeoutId.current = null;
+      watch(
+        () => view.updating,
+        (updating: boolean) => {
+          if (updating && timeoutId.current) {
+            return;
           }
-          setIsLoading(false);
-        } else {
-          timeoutId.current = setTimeout(() => {
-            setIsLoading(true);
-            timeoutId.current = null;
-          }, debounceDuration);
-        }
-      });
+
+          if (!updating) {
+            if (timeoutId.current) {
+              clearTimeout(timeoutId.current);
+              timeoutId.current = null;
+            }
+            setIsLoading(false);
+          } else {
+            timeoutId.current = setTimeout(() => {
+              setIsLoading(true);
+              timeoutId.current = null;
+            }, debounceDuration);
+          }
+        },
+      );
     });
   }, [debounceDuration, view]);
 
