@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.0](https://github.com/agrc/kitchen-sink/compare/layer-selector-v6.2.12...layer-selector-v6.3.0) (2025-03-04)
+
+
+### Features
+
+* **layer-selector:** wire up buttons to map layers and fix a bunch of types ([dceb201](https://github.com/agrc/kitchen-sink/commit/dceb201708ae70b18ae1e81e523d857182e4e69c))
+
 ## [6.2.12](https://github.com/agrc/kitchen-sink/compare/layer-selector-v6.2.11...layer-selector-v6.2.12) (2025-01-08)
 
 
