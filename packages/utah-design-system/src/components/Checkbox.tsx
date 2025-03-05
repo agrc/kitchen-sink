@@ -38,7 +38,7 @@ export function CheckboxGroup(props: CheckboxGroupProps) {
 }
 
 const checkboxStyles = tv({
-  base: 'group flex items-center gap-2 text-sm transition pressed:bg-blue-100',
+  base: 'group flex items-center gap-2 text-sm transition pressed:bg-zinc-100 dark:pressed:bg-zinc-800',
   variants: {
     isDisabled: {
       false: 'text-gray-800 dark:text-zinc-200',
