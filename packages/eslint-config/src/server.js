@@ -20,7 +20,7 @@ export const react = tseslint.config(
   tseslint.configs.recommended,
   prettier,
   {
-    files: ['**/*.{js,ts}'],
+    files: ['**/*.{js,ts,cjs,mjs}'],
     languageOptions: {
       globals: {
         ...globals.node,
