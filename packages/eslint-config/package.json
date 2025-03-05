@@ -2,7 +2,7 @@
   "name": "@ugrc/eslint-config",
   "version": "1.1.0",
   "private": false,
-  "description": "ESLint configurations for UGRC applications.",
+  "description": "ESLint configurations for UGRC projects",
   "keywords": [
     "ugrc",
     "eslint",
@@ -36,6 +36,7 @@
   "scripts": {
     "build": "echo 'No build necessary'",
     "check": "echo 'No check necessary'",
+    "prepublish": "cp ../../LICENSE /",
     "test": "echo 'No test necessary'"
   },
   "dependencies": {
