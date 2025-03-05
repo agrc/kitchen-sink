@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": ["@total-typescript/tsconfig/bundler/dom/app", "./base.json"],
+
+  "compilerOptions": {
+    /* Project */
+    "composite": true, // required for project references in tsconfig.json
+
+    /* Language and Environment */
+    "useDefineForClassFields": true,
+    "jsx": "react-jsx",
+
+    /* Modules */
+    "moduleResolution": "bundler",
+
+    /* Interop Constraints */
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}
