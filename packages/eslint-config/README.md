@@ -8,7 +8,23 @@ This is UGRC's eslint configuration for JavaScript and TypeScript projects. Ther
 ## Usage
 
 ```js
+// eslint.config.js
 import { browser } from '@ugrc/eslint-config';
 
 export default browser;
+```
+
+If you want to extend the configuration, you can do so like this:
+
+```js
+// eslint.config.js
+import { browser } from '@ugrc/eslint-config';
+
+export default {
+  ...browser,
+  rules: {
+    ...browser.rules,
+    'no-console': 'off',
+  },
+};
 ```
