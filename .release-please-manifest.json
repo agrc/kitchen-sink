@@ -6,6 +6,7 @@
   "packages/mouse-trap": "2.0.21",
   "packages/popover": "1.1.1",
   "packages/tailwind-preset": "1.2.0",
+  "packages/tsconfigs": "1.0.3",
   "packages/utah-design-system": "1.20.2",
   "packages/utilities": "3.0.2"
 }

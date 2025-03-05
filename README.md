@@ -24,6 +24,7 @@ Please use [conventional commits](https://www.conventionalcommits.org) with the 
 - `mouse-trap`
 - `popover`
 - `tailwind`
+- `tsconfigs`
 - `utilities`
 
 Within the utah design system use the lower snake case component name

@@ -7,10 +7,11 @@
     "packages/header": {},
     "packages/layer-selector": {},
     "packages/mouse-trap": {},
-    "packages/tailwind-preset": {},
-    "packages/utilities": {},
     "packages/popover": {},
-    "packages/utah-design-system": {}
+    "packages/tailwind-preset": {},
+    "packages/tsconfigs": {},
+    "packages/utah-design-system": {},
+    "packages/utilities": {}
   },
   "include-component-in-tag": true
 }

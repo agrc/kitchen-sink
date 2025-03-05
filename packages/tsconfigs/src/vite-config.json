@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": ["@total-typescript/tsconfig/bundler/no-dom", "./base.json"],
+
+  /* this comes from the vite typescript react template: https://github.com/vitejs/vite/blob/main/packages/create-vite/template-react-ts/tsconfig.node.json */
+  "compilerOptions": {
+    /* Project */
+    "composite": true, // required for project references in tsconfig.json
+
+    /* Modules */
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+
+    /* Linting */
+    "noUncheckedSideEffectImports": true
+  },
+  "include": ["vite.config.ts"]
+}
