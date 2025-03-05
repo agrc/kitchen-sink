@@ -2,12 +2,11 @@
   "bootstrap-sha": "2919caa28eb25ef926ca9db1276d22e8f5170f10",
   "plugins": ["node-workspace"],
   "packages": {
-    "packages/eslint-config": {},
     "packages/dart-board": {},
+    "packages/eslint-config": {},
     "packages/header": {},
     "packages/layer-selector": {},
     "packages/mouse-trap": {},
-    "packages/sherlock": {},
     "packages/tailwind-preset": {},
     "packages/utilities": {},
     "packages/popover": {},
