@@ -1,4 +1,4 @@
-# UGRC Eslint Config
+# UGRC ESLint Config
 
 This is UGRC's eslint configuration for JavaScript and TypeScript projects. There are two exports available:
 
