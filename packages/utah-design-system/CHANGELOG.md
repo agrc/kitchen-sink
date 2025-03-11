@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.20.3](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.20.2...utah-design-system-v1.20.3) (2025-03-11)
+
+
+### Bug Fixes
+
+* **modal:** handling scrolling on smaller devices ([bdfd196](https://github.com/agrc/kitchen-sink/commit/bdfd1967562aa63dcf7dff8c2e8fd456f597b0a3))
+
 ## [1.20.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.20.1...utah-design-system-v1.20.2) (2025-03-04)
 
 
