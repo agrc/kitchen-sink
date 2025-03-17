@@ -4,6 +4,7 @@
   "packages": {
     "packages/dart-board": {},
     "packages/eslint-config": {},
+    "packages/esri-theme-toggle": {},
     "packages/header": {},
     "packages/layer-selector": {},
     "packages/mouse-trap": {},
