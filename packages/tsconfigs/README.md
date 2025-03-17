@@ -31,4 +31,14 @@ Shareable tsconfigs for UGRC projects based on [`@total-typescripts/tsconfig`](h
   "extends": "@ugrc/tsconfigs/vite-config",
   "include": ["vite.config.ts"]
 }
+
+// functions/tsconfig.json - (Firebase Functions)
+{
+  "extends": "@total-typescript/tsconfig/tsc/no-dom/app",
+  "compilerOptions": {
+    "outDir": "lib"
+  },
+  "compileOnSave": true,
+  "include": ["src", "../shared"]
+}
 ```
