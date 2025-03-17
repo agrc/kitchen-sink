@@ -1,6 +1,6 @@
 {
   "name": "@ugrc/esri-theme-toggle",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": false,
   "description": "Automatically switch between Esri CSS themes based on the browser's preferred color scheme.",
   "keywords": [
