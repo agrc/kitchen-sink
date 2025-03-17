@@ -7,7 +7,7 @@ Note that this package uses the [`assetsPath`](https://developers.arcgis.com/jav
 ## Usage
 
 ```js
-import { initializeTheme } from 'esri-theme-toggle';
+import { initializeTheme } from '@ugrc/esri-theme-toggle';
 
 initializeTheme();
 ```
@@ -16,7 +16,7 @@ Using a non-default path to assets:
 
 ```js
 import esriConfig from '@arcgis/core/config';
-import { initializeTheme } from 'esri-theme-toggle';
+import { initializeTheme } from '@ugrc/esri-theme-toggle';
 
 esriConfig.assetsPath = '/assets';
 initializeTheme();
