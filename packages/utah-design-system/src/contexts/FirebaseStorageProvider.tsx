@@ -39,11 +39,13 @@ export const FirebaseStorageProvider = (
   );
 };
 
-export const useStorage = () => {
+export const useFirebaseStorage = () => {
   const value = useContext(FirebaseStorageContext);
 
   if (value === null) {
-    throw new Error('useStorage must be used within a FirebaseStorageProvider');
+    throw new Error(
+      'useFirebaseStorage must be used within a FirebaseStorageProvider',
+    );
   }
 
   return value;
