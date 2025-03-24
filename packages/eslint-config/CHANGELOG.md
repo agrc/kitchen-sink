@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/agrc/kitchen-sink/compare/eslint-config-v1.1.0...eslint-config-v1.1.1) (2025-03-24)
+
+
+### Bug Fixes
+
+* **eslint:** ignore coverage files ([1727d36](https://github.com/agrc/kitchen-sink/commit/1727d360c3065c1ef22b97ecdb7a091189d7ab4f))
+
 ## [1.1.0](https://github.com/agrc/kitchen-sink/compare/eslint-config-v1.0.0...eslint-config-v1.1.0) (2025-03-05)
 
 
