@@ -8,6 +8,6 @@
   "packages/popover": "1.1.1",
   "packages/tailwind-preset": "1.2.0",
   "packages/tsconfigs": "1.0.3",
-  "packages/utah-design-system": "1.20.3",
+  "packages/utah-design-system": "1.21.0",
   "packages/utilities": "3.0.2"
 }
