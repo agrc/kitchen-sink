@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.21.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.21.0...utah-design-system-v1.21.1) (2025-03-24)
+
+
+### Bug Fixes
+
+* **uds:** export firebase storage context ([83fa31d](https://github.com/agrc/kitchen-sink/commit/83fa31d7c01c1c297513dffd36cf01fb3fe7c55d))
+
 ## [1.21.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.20.3...utah-design-system-v1.21.0) (2025-03-24)
 
 
