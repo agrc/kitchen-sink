@@ -18,6 +18,7 @@ export const browser = tseslint.config(
       '**/pnpm-lock.yaml',
       '**/.vscode',
       'public/*',
+      '**/coverage',
     ],
   },
   importPlugin.flatConfigs.recommended,
