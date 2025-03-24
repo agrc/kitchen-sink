@@ -34,4 +34,5 @@ export * from './contexts/FirebaseAnalyticsProvider';
 export * from './contexts/FirebaseAppProvider';
 export * from './contexts/FirebaseAuthProvider';
 export * from './contexts/FirebaseFunctionsProvider';
+export * from './contexts/FirebaseStorageProvider';
 export * from './contexts/FirestoreProvider';
