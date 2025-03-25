@@ -8,7 +8,7 @@
     "tailwindcss",
     "preset"
   ],
-  "homepage": "https://github.com/agrc/kitchen-sink/tree/main/packages/tailwind/README.md",
+  "homepage": "https://github.com/agrc/kitchen-sink/blob/main/packages/tailwind-preset/README.md",
   "bugs": {
     "url": "https://github.com/agrc/kitchen-sink/issues"
   },
