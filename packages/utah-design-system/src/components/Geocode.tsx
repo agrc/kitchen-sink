@@ -10,12 +10,6 @@ import { TextField } from './TextField';
 const ADDRESS_TYPE = 'single-address';
 
 type GeocodeComponentType = 'single-address' | 'route-milepost';
-type OutputResult = {
-  geometry: Point;
-  symbol: GeocodeProps['pointSymbol'];
-  attributes: Record<string, string | number>;
-  popupTemplate: __esri.PopupTemplateProperties;
-};
 type GeocodeProps = {
   apiKey: string;
   type?: GeocodeComponentType;
@@ -33,29 +27,15 @@ type GeocodeProps = {
   wkid?: number;
   callback?: string;
   format?: 'geojson' | 'esrijson';
-  pointSymbol?: {
-    style: 'diamond' | 'circle';
-    color: [number, number, number, number];
-  };
+  pointSymbol?: __esri.SymbolProperties | nullish;
   events?: {
-    success: (result: OutputResult) => void;
+    success: (result: __esri.GraphicProperties) => void;
     error: (error: object) => void;
-  };
-};
-type Point = {
-  x: number;
-  y: number;
-};
-
-type Location = Point & {
-  type: 'point';
-  spatialReference: {
-    wkid: number;
   };
 };
 
 type AddressResult = {
-  location: Location;
+  location: __esri.PointProperties;
   score: number;
   locator: string;
   source: string;
@@ -85,7 +65,7 @@ const defaultProps: Omit<GeocodeProps, 'apiKey'> = {
   pointSymbol: {
     style: 'diamond',
     color: [255, 0, 0, 0.5],
-  },
+  } as __esri.SymbolProperties,
   events: {
     success: console.log,
     error: console.error,
@@ -311,10 +291,13 @@ const useGeocoding = (userProps: GeocodeProps) => {
   );
 
   const outputTransform = useCallback<
-    (result: AddressResult, point: Point) => OutputResult
+    (
+      result: AddressResult,
+      point: __esri.PointProperties,
+    ) => __esri.GraphicProperties
   >(
     (result, point) => {
-      let attributes: OutputResult['attributes'] = {
+      let attributes: __esri.GraphicProperties['attributes'] = {
         address: result.inputAddress,
         addressSystem: result.addressGrid,
         locator:
@@ -345,13 +328,13 @@ const useGeocoding = (userProps: GeocodeProps) => {
         symbol: props.pointSymbol,
         attributes,
         popupTemplate,
-      };
+      } as __esri.GraphicProperties;
     },
     [props.pointSymbol, props.type],
   );
 
   const extractResponse = useCallback<
-    (response: Response) => Promise<OutputResult | void>
+    (response: Response) => Promise<__esri.GraphicProperties | void>
   >(
     async (response) => {
       if (!response.ok) {
@@ -388,7 +371,7 @@ const useGeocoding = (userProps: GeocodeProps) => {
         spatialReference: {
           wkid: props.wkid,
         },
-      } as Point;
+      } as __esri.PointProperties;
 
       if (props.format?.toLowerCase() === 'esrijson') {
         point.x = result?.geometry?.x;
