@@ -198,7 +198,6 @@ const useGeocoding = (userProps: GeocodeProps) => {
     isRequired: true,
     isInvalid: !firstIsValid,
     onChange: (data: string) => {
-      console.log('onchange data', data);
       setStatus('idle');
       setFirstInput(data);
     },
