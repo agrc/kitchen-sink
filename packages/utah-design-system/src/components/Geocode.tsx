@@ -126,7 +126,9 @@ const Geocode = (props: GeocodeProps) => {
             } else if (status === 'pending') {
               return (
                 <span className="flex items-center gap-2">
-                  <Spinner />
+                  <span className="size-4">
+                    <Spinner />
+                  </span>
                   <span>Geocoding</span>
                 </span>
               );
