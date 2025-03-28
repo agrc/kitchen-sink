@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.21.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.21.1...utah-design-system-v1.21.2) (2025-03-28)
+
+
+### Bug Fixes
+
+* **geocode:** improve typescript types ([9ae5b92](https://github.com/agrc/kitchen-sink/commit/9ae5b92c19ac1b196b3107ac6413d6e537b263d2))
+* **geocode:** remove console.log ([4419c24](https://github.com/agrc/kitchen-sink/commit/4419c2445b078fdb61e391cbe4b82713f8b0d796))
+
 ## [1.21.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.21.0...utah-design-system-v1.21.1) (2025-03-24)
 
 
