@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.22.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.21.3...utah-design-system-v1.22.0) (2025-03-31)
+
+
+### Features
+
+* **social-media:** add instagram icon ([ad774e1](https://github.com/agrc/kitchen-sink/commit/ad774e11591311379dfa81db199724942baf132b))
+
 ## [1.21.3](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.21.2...utah-design-system-v1.21.3) (2025-03-31)
 
 
