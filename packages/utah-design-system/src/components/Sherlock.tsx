@@ -532,7 +532,7 @@ export const Sherlock = (props: SherlockProps) => {
     >
       {props.label && <Label>{props.label}</Label>}
       <div className="group mt-1 grow-[9999] basis-64 rounded-md transition-shadow ease-in-out">
-        <Group aria-hidden className={inputStyles}>
+        <Group className={inputStyles}>
           <SearchIcon
             aria-hidden
             className="pointer-events-none absolute inset-y-0 left-2 h-full w-5 text-zinc-400 group-focus-within:text-primary-900 dark:group-focus-within:text-zinc-300"
