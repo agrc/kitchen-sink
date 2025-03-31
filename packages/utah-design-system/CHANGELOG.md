@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.21.3](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.21.2...utah-design-system-v1.21.3) (2025-03-31)
+
+
+### Bug Fixes
+
+* **sherlock:** allow contextField to be optional on the ugrcApiProvider ([29f5026](https://github.com/agrc/kitchen-sink/commit/29f5026cda38bccf70c44a7b7f47ece772bc58e9))
+* **sherlock:** remove aria hidden from group element ([5f4a2a9](https://github.com/agrc/kitchen-sink/commit/5f4a2a9707f732f4d12b5bb1feb76f386c5087ce))
+
 ## [1.21.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.21.1...utah-design-system-v1.21.2) (2025-03-28)
 
 
