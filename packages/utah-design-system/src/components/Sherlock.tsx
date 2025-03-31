@@ -105,7 +105,7 @@ export const ugrcApiProvider = (
   apiKey: string,
   table: string,
   field: string,
-  contextField: string,
+  contextField?: string,
   options: { wkid?: number } = {},
 ): SherlockProvider => {
   return {
@@ -115,10 +115,14 @@ export const ugrcApiProvider = (
         return { items: [] };
       }
 
+      const fields = [field];
+      if (contextField) {
+        fields.push(contextField);
+      }
       const response = await search(
         apiKey,
         table,
-        [field, contextField],
+        fields,
         {
           predicate: `UPPER(${field}) LIKE UPPER('%${filterText}%')`,
           spatialReference: options?.wkid,
@@ -161,7 +165,10 @@ export const ugrcApiProvider = (
       const uniqueKeys = new Set();
       const uniqueFeatures = result
         .filter((feature) => {
-          const key = `${feature.attributes[field]}||${feature.attributes[contextField]}`;
+          let key = `${feature.attributes[field]}`;
+          if (contextField) {
+            key += `||${feature.attributes[contextField]}`;
+          }
           if (!uniqueKeys.has(key)) {
             uniqueKeys.add(key);
             return true;
@@ -169,10 +176,20 @@ export const ugrcApiProvider = (
           return false;
         })
         .map((feature) => {
+          let key = `${feature.attributes[field]}`;
+          if (contextField) {
+            key += `||${feature.attributes[contextField]}`;
+          }
+
+          let context = null;
+          if (contextField) {
+            context = feature.attributes[contextField];
+          }
+
           return {
             name: feature.attributes[field],
-            context: feature.attributes[contextField],
-            key: `${feature.attributes[field]}||${feature.attributes[contextField]}`,
+            context,
+            key,
           };
         });
 
@@ -181,7 +198,6 @@ export const ugrcApiProvider = (
       };
     },
     getFeature: async (searchValue: string) => {
-      console.log('getFeature', searchValue);
       const [value, qualifier] = searchValue.split('||');
       const searchOptions = {
         ...options,
@@ -338,7 +354,7 @@ export const featureServiceProvider = (
       const searchParams = new URLSearchParams({
         f: 'json',
         where: `UPPER(${searchField}) LIKE UPPER('%${filterText}%')`,
-        outFields: [searchField, contextField].join(','),
+        outFields: [searchField, contextField].join(','), // trailing commas are ignored in feature service queries
         returnGeometry: 'false',
         resultRecordCount: maxResults.toString(),
         returnDistinctValues: 'true',

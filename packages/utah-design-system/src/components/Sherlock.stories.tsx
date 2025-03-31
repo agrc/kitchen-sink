@@ -1,5 +1,6 @@
 import type Graphic from '@arcgis/core/Graphic';
 import type { Meta } from '@storybook/react';
+import { fn } from '@storybook/test';
 import type { AsyncListData } from 'react-stately';
 import {
   Sherlock as Component,
@@ -24,7 +25,9 @@ const meta: Meta<typeof Component> = {
     ),
   ],
   argTypes: {},
-  args: {},
+  args: {
+    onSherlockMatch: fn(),
+  },
 };
 
 export default meta;
@@ -60,7 +63,7 @@ export const APIProvider = {
     label: 'Select a place',
     placeholder: 'Search with the UGRC API',
     provider: ugrcApiProvider(
-      'agrc-dev',
+      'ugrc-storybook',
       'location.gnis_place_names',
       'name',
       'county',
