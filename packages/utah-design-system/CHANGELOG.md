@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.22.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.22.0...utah-design-system-v1.22.1) (2025-04-01)
+
+
+### Bug Fixes
+
+* **sherlock:** correct get feature query ([e82d184](https://github.com/agrc/kitchen-sink/commit/e82d1841534c295a788d16e6c17a7de0052d1e9e))
+
 ## [1.22.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.21.3...utah-design-system-v1.22.0) (2025-03-31)
 
 

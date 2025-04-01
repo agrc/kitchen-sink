@@ -6,6 +6,6 @@
   "packages/mouse-trap": "2.0.21",
   "packages/tailwind-preset": "1.2.0",
   "packages/tsconfigs": "1.0.3",
-  "packages/utah-design-system": "1.22.0",
+  "packages/utah-design-system": "1.22.1",
   "packages/utilities": "3.0.2"
 }
