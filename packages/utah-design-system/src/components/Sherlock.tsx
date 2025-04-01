@@ -201,13 +201,13 @@ export const ugrcApiProvider = (
       const [value, qualifier] = searchValue.split('||');
       const searchOptions = {
         ...options,
-        predicate: `UPPER(${field}) LIKE UPPER('%${value}%')`,
+        predicate: `UPPER(${field}) = UPPER('${value}')`,
         spatialReference: options?.wkid ?? 26912,
         attributeStyle: 'input',
       };
 
       if (qualifier) {
-        searchOptions.predicate += ` AND UPPER(${contextField}) LIKE UPPER('%${qualifier}%')`;
+        searchOptions.predicate += ` AND UPPER(${contextField}) = UPPER('${qualifier}')`;
       }
 
       const response = await search(
