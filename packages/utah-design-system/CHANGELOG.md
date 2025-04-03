@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.23.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.22.1...utah-design-system-v1.23.0) (2025-04-03)
+
+
+### Features
+
+* **utahidlogin:** add continue with treatment to login button and display errors ([2ac79df](https://github.com/agrc/kitchen-sink/commit/2ac79df028e233266f5da07e90fa8df6257bdb4a))
+
 ## [1.22.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.22.0...utah-design-system-v1.22.1) (2025-04-01)
 
 
