@@ -58,8 +58,8 @@ export const Header = ({ children, links, ...props }: HeaderProps) => {
         </div>
       </div>
       <div className="flex items-center border-b border-b-primary-900/30 bg-white py-2 pr-3 dark:border-black/30 dark:bg-zinc-700/20">
-        <div className="flex h-16 grow space-x-4 divide-x divide-primary-950 pl-3 dark:divide-zinc-600 sm:space-x-6">
-          <div className="flex items-center rounded-md px-3 transition-shadow ease-in-out focus-within:ring-2 focus-within:ring-primary-900 focus-within:ring-offset-2 dark:ring-offset-transparent dark:focus-within:ring-secondary-600">
+        <div className="flex h-12 grow space-x-4 divide-x divide-primary-950 pl-3 dark:divide-zinc-600 sm:space-x-6 md:h-16">
+          <div className="flex items-center rounded-md transition-shadow ease-in-out focus-within:ring-2 focus-within:ring-primary-900 focus-within:ring-offset-2 dark:ring-offset-transparent dark:focus-within:ring-secondary-600 md:px-3">
             <Button
               {...triggerProps}
               onKeyDown={(event) => dismiss(event, state.close)}
@@ -68,7 +68,7 @@ export const Header = ({ children, links, ...props }: HeaderProps) => {
               <span className="sr-only">
                 An official website of the State of Utah. Click to learn more.
               </span>
-              <UtahLogo className="h-[53px] w-[118px] fill-primary-900 font-utah text-sm dark:fill-white" />
+              <UtahLogo className="h-[45px] fill-primary-900 font-utah text-sm dark:fill-white md:h-[53px] md:w-[118px]" />
             </Button>
           </div>
           <div className="flex flex-1 basis-full justify-start pl-4 text-zinc-900 dark:text-zinc-100 sm:pl-5 md:pl-8">
