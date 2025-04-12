@@ -5,7 +5,7 @@ export default {
   component: ExpandableContainer,
 };
 
-export const closed = () => (
+export const Closed = () => (
   <ExpandableContainer>
     <div style={{ width: '200px', height: '200px', border: '1px solid black' }}>
       peek-a-boo
@@ -13,7 +13,7 @@ export const closed = () => (
   </ExpandableContainer>
 );
 
-export const open = () => (
+export const Open = () => (
   <ExpandableContainer expanded={true}>
     <div style={{ width: '200px', height: '200px', border: '1px solid black' }}>
       peek-a-boo

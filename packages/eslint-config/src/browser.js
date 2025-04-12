@@ -4,6 +4,7 @@ import importPlugin from 'eslint-plugin-import';
 import jsxA11Y from 'eslint-plugin-jsx-a11y';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
+import storybook from 'eslint-plugin-storybook';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
@@ -19,8 +20,10 @@ export const browser = tseslint.config(
       '**/.vscode',
       'public/*',
       '**/coverage',
+      '!.storybook',
     ],
   },
+  ...storybook.configs['flat/recommended'],
   importPlugin.flatConfigs.recommended,
   jsxA11Y.flatConfigs.recommended,
   eslint.configs.recommended,

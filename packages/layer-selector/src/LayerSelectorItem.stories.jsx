@@ -5,7 +5,7 @@ export default {
   component: LayerSelectorItem,
 };
 
-export const defaultBaseLayer = () => (
+export const DefaultBaseLayer = () => (
   <LayerSelectorItem
     layerType="baselayer"
     selected={false}
@@ -13,7 +13,7 @@ export const defaultBaseLayer = () => (
     id="Base Layer"
   />
 );
-export const checkedBaseLayer = () => (
+export const CheckedBaseLayer = () => (
   <LayerSelectorItem
     layerType="baselayer"
     selected={true}
@@ -21,7 +21,7 @@ export const checkedBaseLayer = () => (
     id="Base Layer"
   />
 );
-export const defaultOverlay = () => (
+export const DefaultOverlay = () => (
   <LayerSelectorItem
     layerType="overlay"
     selected={false}
@@ -29,7 +29,7 @@ export const defaultOverlay = () => (
     id="Overlay Layer"
   />
 );
-export const checkedOverlay = () => (
+export const CheckedOverlay = () => (
   <LayerSelectorItem
     layerType="overlay"
     selected={true}
@@ -37,7 +37,7 @@ export const checkedOverlay = () => (
     id="Overlay Layer"
   />
 );
-export const longLabel = () => (
+export const LongLabel = () => (
   <LayerSelectorItem
     layerType="overlay"
     selected={true}

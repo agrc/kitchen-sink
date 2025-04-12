@@ -19,7 +19,7 @@ const mapViewMock = {
   },
 };
 
-export const basic = {
+export const Basic = {
   render: () => (
     <LayerSelector
       baseLayers={['Lite', 'Terrain', 'Topo', 'Color IR']}
@@ -29,7 +29,7 @@ export const basic = {
   ),
 };
 
-export const withoutExpandableContainer = {
+export const WithoutExpandableContainer = {
   render: () => (
     <LayerSelector
       baseLayers={['Lite', 'Terrain', 'Topo', 'Color IR']}
@@ -41,7 +41,7 @@ export const withoutExpandableContainer = {
   ),
 };
 
-export const defaultSelection = {
+export const DefaultSelection = {
   render: () => (
     <LayerSelector
       baseLayers={[
