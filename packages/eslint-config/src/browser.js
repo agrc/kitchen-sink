@@ -1,4 +1,5 @@
 import eslint from '@eslint/js';
+import tanstack from '@tanstack/eslint-plugin-query';
 import prettier from 'eslint-config-prettier';
 import importPlugin from 'eslint-plugin-import';
 import jsxA11Y from 'eslint-plugin-jsx-a11y';
@@ -24,6 +25,7 @@ export const browser = tseslint.config(
     ],
   },
   ...storybook.configs['flat/recommended'],
+  ...tanstack.configs['flat/recommended'],
   importPlugin.flatConfigs.recommended,
   jsxA11Y.flatConfigs.recommended,
   eslint.configs.recommended,
