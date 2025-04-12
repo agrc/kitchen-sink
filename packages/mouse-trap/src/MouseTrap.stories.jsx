@@ -52,4 +52,4 @@ const WithMap = () => {
   );
 };
 
-export const defaultMouseTrap = () => <WithMap></WithMap>;
+export const DefaultMouseTrap = () => <WithMap></WithMap>;

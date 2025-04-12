@@ -86,11 +86,11 @@ WithMap.propTypes = {
   showOpacitySlider: PropTypes.bool,
 };
 
-export const zoom = () => <WithMap zoom={6} />;
-export const scale = () => <WithMap scale={12000} />;
-export const noZoomOrScale = () => <WithMap />;
-export const zoomAndScale = () => <WithMap zoom={6} scale={12000} />;
-export const customLOD = () => {
+export const Zoom = () => <WithMap zoom={6} />;
+export const Scale = () => <WithMap scale={12000} />;
+export const NoZoomOrScale = () => <WithMap />;
+export const ZoomAndScale = () => <WithMap zoom={6} scale={12000} />;
+export const CustomLOD = () => {
   const tileSize = 256;
   const earthCircumference = 40075016.685568;
   const inchesPerMeter = 39.37;
@@ -134,7 +134,7 @@ export const customLOD = () => {
   return <WithMap zoom={6} baseLayers={baseLayers} />;
 };
 
-export const linkedOverlays = () => {
+export const LinkedOverlays = () => {
   const baseLayers = [
     {
       Factory: TileLayer,
@@ -166,7 +166,7 @@ export const linkedOverlays = () => {
   return <WithMap zoom={6} baseLayers={baseLayers} overlays={overlays} />;
 };
 
-export const defaultSelection = () => {
+export const DefaultSelection = () => {
   const baseLayers = [
     {
       Factory: TileLayer,
@@ -197,7 +197,7 @@ export const defaultSelection = () => {
 
   return <WithMap zoom={6} baseLayers={baseLayers} overlays={overlays} />;
 };
-export const landOwnership = () => {
+export const LandOwnership = () => {
   const landOwnershipOptions = {
     overlays: [
       'Address Points',
@@ -214,4 +214,4 @@ export const landOwnership = () => {
   return <WithMap {...landOwnershipOptions} />;
 };
 
-export const opacitySlider = () => <WithMap showOpacitySlider zoom={6} />;
+export const OpacitySlider = () => <WithMap showOpacitySlider zoom={6} />;

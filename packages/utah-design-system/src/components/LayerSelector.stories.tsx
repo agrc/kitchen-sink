@@ -109,11 +109,11 @@ export function Default({
   );
 }
 
-export const zoom = () => <Default zoom={6} />;
-export const scale = () => <Default scale={12000} />;
-export const noZoomOrScale = () => <Default />;
-export const zoomAndScale = () => <Default zoom={6} scale={12000} />;
-export const customLOD = () => {
+export const Zoom = () => <Default zoom={6} />;
+export const Scale = () => <Default scale={12000} />;
+export const NoZoomOrScale = () => <Default />;
+export const ZoomAndScale = () => <Default zoom={6} scale={12000} />;
+export const CustomLOD = () => {
   const tileSize = 256;
   const earthCircumference = 40075016.685568;
   const inchesPerMeter = 39.37;
@@ -159,7 +159,7 @@ export const customLOD = () => {
   return <Default zoom={6} baseLayers={baseLayers} />;
 };
 
-export const defaultSelection = () => {
+export const DefaultSelection = () => {
   const baseLayers: BaseLayerConfigOrToken[] = [
     {
       label: 'Esri Topo',
