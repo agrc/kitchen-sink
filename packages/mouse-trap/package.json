@@ -1,6 +1,6 @@
 {
   "name": "@ugrc/mouse-trap",
-  "version": "2.0.21",
+  "version": "2.1.0",
   "private": false,
   "description": "A react component to display cursor coordinates while hovering over an arcgis map",
   "keywords": [

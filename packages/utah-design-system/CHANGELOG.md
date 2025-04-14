@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.24.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.23.0...utah-design-system-v1.24.0) (2025-04-14)
+
+
+### Features
+
+* **eslint-config:** implement eslint-plugin-storybook and associated fixes ([537c760](https://github.com/agrc/kitchen-sink/commit/537c760daba5dc43dd07ed70688a0f052c6716ad)), closes [#476](https://github.com/agrc/kitchen-sink/issues/476)
+
+
+### Bug Fixes
+
+* **header:** make layout more friendly for smaller screens ([594b8c2](https://github.com/agrc/kitchen-sink/commit/594b8c254c99de1d50bcf36e476befc46f459051))
+
 ## [1.23.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.22.1...utah-design-system-v1.23.0) (2025-04-03)
 
 
