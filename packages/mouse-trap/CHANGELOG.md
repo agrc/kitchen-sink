@@ -21,6 +21,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
   * dependencies
     * @ugrc/utilities bumped from ^2.2.0 to ^2.2.1
 
+## [2.1.0](https://github.com/agrc/kitchen-sink/compare/mouse-trap-v2.0.21...mouse-trap-v2.1.0) (2025-04-14)
+
+
+### Features
+
+* **eslint-config:** implement eslint-plugin-storybook and associated fixes ([537c760](https://github.com/agrc/kitchen-sink/commit/537c760daba5dc43dd07ed70688a0f052c6716ad)), closes [#476](https://github.com/agrc/kitchen-sink/issues/476)
+
 ## [2.0.21](https://github.com/agrc/kitchen-sink/compare/mouse-trap-v2.0.20...mouse-trap-v2.0.21) (2025-03-04)
 
 

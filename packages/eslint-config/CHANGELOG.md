@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0](https://github.com/agrc/kitchen-sink/compare/eslint-config-v1.1.1...eslint-config-v1.2.0) (2025-04-14)
+
+
+### Features
+
+* **eslint-config:** implement @tanstack/eslint-plugin-query ([b433d60](https://github.com/agrc/kitchen-sink/commit/b433d6031d052e5ab825af36245ee0ea43655c9e)), closes [#476](https://github.com/agrc/kitchen-sink/issues/476)
+* **eslint-config:** implement eslint-plugin-storybook and associated fixes ([537c760](https://github.com/agrc/kitchen-sink/commit/537c760daba5dc43dd07ed70688a0f052c6716ad)), closes [#476](https://github.com/agrc/kitchen-sink/issues/476)
+
 ## [1.1.1](https://github.com/agrc/kitchen-sink/compare/eslint-config-v1.1.0...eslint-config-v1.1.1) (2025-03-24)
 
 

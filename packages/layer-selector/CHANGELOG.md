@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.4.0](https://github.com/agrc/kitchen-sink/compare/layer-selector-v6.3.0...layer-selector-v6.4.0) (2025-04-14)
+
+
+### Features
+
+* **eslint-config:** implement eslint-plugin-storybook and associated fixes ([537c760](https://github.com/agrc/kitchen-sink/commit/537c760daba5dc43dd07ed70688a0f052c6716ad)), closes [#476](https://github.com/agrc/kitchen-sink/issues/476)
+
 ## [6.3.0](https://github.com/agrc/kitchen-sink/compare/layer-selector-v6.2.12...layer-selector-v6.3.0) (2025-03-04)
 
 
