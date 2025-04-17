@@ -37,7 +37,7 @@ export const Spinner = () => {
 Spinner.sleep = async (ms: number) =>
   new Promise((resolve) => setTimeout(resolve, ms));
 
-Spinner.minDelay = async function minDelay<T>(promise: Promise<T>, ms = 2500) {
+Spinner.minDelay = async function minDelay<T>(promise: Promise<T>, ms = 700) {
   await Promise.allSettled([promise, Spinner.sleep(ms)]);
 
   return promise;
