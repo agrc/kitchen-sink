@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.25.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.24.0...utah-design-system-v1.25.0) (2025-04-17)
+
+
+### Features
+
+* **FirebaseAuthProvider:** add a ready boolean to notify auth is settled ([1383a52](https://github.com/agrc/kitchen-sink/commit/1383a520bf3e275b31bd24353a8ee8aa6fa2dba4))
+
+
+### Bug Fixes
+
+* **spinner:** add a shorter default delay ([dda6c20](https://github.com/agrc/kitchen-sink/commit/dda6c2092b55cc9effc33bff0890a14e68a263b4))
+* **spinner:** make minDelay generic ([5002607](https://github.com/agrc/kitchen-sink/commit/5002607e6b78d40c131358754fbaf35c4b6348f2))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @ugrc/utilities bumped from 3.0.2 to 3.0.3
+
 ## [1.24.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.23.0...utah-design-system-v1.24.0) (2025-04-14)
 
 
