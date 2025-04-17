@@ -1,3 +1,4 @@
+import { whenOnce } from '@arcgis/core/core/reactiveUtils';
 import Extent from '@arcgis/core/geometry/Extent';
 import { useState } from 'react';
 
@@ -20,9 +21,7 @@ export const useDefaultExtent = (
       return;
     }
 
-    view.when(() => {
-      view.goTo(extent);
-    });
+    whenOnce(() => view.ready).then(() => view.goTo(extent));
   };
 
   return goHome;

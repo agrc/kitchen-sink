@@ -1,13 +1,11 @@
+import { whenOnce } from '@arcgis/core/core/reactiveUtils';
 import { useState } from 'react';
 
 export default function useMapReady(view: __esri.MapView | null) {
   const [ready, setReady] = useState(false);
-  const [callbackRegistered, setCallbackRegistered] = useState(false);
 
-  if (view && !callbackRegistered) {
-    view.when(() => setReady(true));
-
-    setCallbackRegistered(true);
+  if (view) {
+    whenOnce(() => view.ready).then(() => setReady(true));
   }
 
   return ready;
