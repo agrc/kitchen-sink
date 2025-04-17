@@ -22,8 +22,9 @@ type AuthContextValue = {
   auth: Auth;
   provider: OAuthProvider;
   currentUser?: User;
-  login: () => Promise<UserCredential>;
-  logout: () => Promise<void>;
+  login(): Promise<UserCredential>;
+  logout(): Promise<void>;
+  ready: boolean;
 };
 
 type FirebaseAuthProviderProps = {
@@ -39,6 +40,7 @@ export const FirebaseAuthProvider = (props: FirebaseAuthProviderProps) => {
   const app = useFirebaseApp();
   const sdk = getAuth(app);
   const [currentUser, setCurrentUser] = useState<User | undefined>();
+  const [ready, setReady] = useState(false);
 
   if (!app) {
     throw new Error(
@@ -50,6 +52,8 @@ export const FirebaseAuthProvider = (props: FirebaseAuthProviderProps) => {
     const unsubscribe = onAuthStateChanged(sdk, (user) => {
       setCurrentUser(user ?? undefined);
     });
+
+    sdk.authStateReady().finally(() => setReady(true));
 
     return () => unsubscribe();
   }, [sdk]);
@@ -72,7 +76,14 @@ export const FirebaseAuthProvider = (props: FirebaseAuthProviderProps) => {
 
   return (
     <FirebaseAuthContext.Provider
-      value={{ currentUser, login, logout, provider, auth: sdk }}
+      value={{
+        currentUser,
+        login,
+        logout,
+        provider,
+        auth: sdk,
+        ready,
+      }}
       {...props}
     />
   );
