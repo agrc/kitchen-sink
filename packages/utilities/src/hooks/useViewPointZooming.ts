@@ -1,3 +1,4 @@
+import { whenOnce } from '@arcgis/core/core/reactiveUtils';
 import { useEffect, useState } from 'react';
 
 export default function useViewPointZooming(mapView: __esri.MapView) {
@@ -5,7 +6,9 @@ export default function useViewPointZooming(mapView: __esri.MapView) {
 
   useEffect(() => {
     if (viewPoint) {
-      mapView.when(() => mapView.goTo(viewPoint).catch(() => {}));
+      whenOnce(() => mapView.ready).then(() =>
+        mapView.goTo(viewPoint).catch(() => {}),
+      );
     }
   }, [viewPoint, mapView]);
 

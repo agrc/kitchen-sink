@@ -1,4 +1,4 @@
-import { watch } from '@arcgis/core/core/reactiveUtils';
+import { watch, whenOnce } from '@arcgis/core/core/reactiveUtils';
 import { useEffect, useRef, useState } from 'react';
 
 export default function useViewLoading(
@@ -13,7 +13,7 @@ export default function useViewLoading(
       return;
     }
 
-    view.when(() => {
+    whenOnce(() => view.ready).then(() => {
       watch(
         () => view.updating,
         (updating: boolean) => {

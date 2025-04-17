@@ -1,3 +1,4 @@
+import { whenOnce } from '@arcgis/core/core/reactiveUtils';
 import Graphic from '@arcgis/core/Graphic.js';
 import MapView from '@arcgis/core/views/MapView.js';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -59,9 +60,9 @@ const useGraphicManager = (
         );
       }
 
-      mapView?.when(() => {
-        mapView.graphics.addMany(graphic);
-      });
+      whenOnce(() => mapView.ready).then(() =>
+        mapView.graphics.addMany(graphic),
+      );
     } else {
       if (graphic && graphic.declaredClass !== 'esri.Graphic') {
         console.warn(
@@ -69,7 +70,7 @@ const useGraphicManager = (
         );
       }
 
-      mapView?.when(() => {
+      whenOnce(() => mapView.ready).then(() => {
         if (graphic) {
           mapView.graphics.add(graphic);
         }
