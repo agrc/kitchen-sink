@@ -21,7 +21,11 @@ export const useDefaultExtent = (
       return;
     }
 
-    whenOnce(() => view.ready).then(() => view.goTo(extent));
+    whenOnce(() => view.ready)
+      .then(() => view.goTo(extent))
+      .catch((error) => {
+        console.error('Failed to navigate to the extent:', error);
+      });
   };
 
   return goHome;
