@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/agrc/kitchen-sink/compare/eslint-config-v1.2.0...eslint-config-v1.2.1) (2025-04-21)
+
+
+### Bug Fixes
+
+* **eslint-config:** move react plugin settings to it's own config ([09edd5b](https://github.com/agrc/kitchen-sink/commit/09edd5b0e1658c60eaac30e7197c6ddc69e6670b)), closes [#481](https://github.com/agrc/kitchen-sink/issues/481)
+
 ## [1.2.0](https://github.com/agrc/kitchen-sink/compare/eslint-config-v1.1.1...eslint-config-v1.2.0) (2025-04-14)
 
 
