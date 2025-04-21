@@ -49,11 +49,6 @@ export const browser = tseslint.config(
         },
       },
     },
-    settings: {
-      react: {
-        version: 'detect',
-      },
-    },
     plugins: {
       'react-hooks': reactHooks,
     },
@@ -67,6 +62,14 @@ export const browser = tseslint.config(
       'import/default': 'off',
       'import/no-named-as-default-member': 'off',
       'import/no-unresolved': 'off',
+    },
+  },
+  // ref: https://github.com/jsx-eslint/eslint-plugin-react/issues/3862#issuecomment-2553313433
+  {
+    settings: {
+      react: {
+        version: 'detect',
+      },
     },
   },
 );
