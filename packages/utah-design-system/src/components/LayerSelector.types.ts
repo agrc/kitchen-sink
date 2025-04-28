@@ -1,15 +1,37 @@
 export type LayerConfig = {
-  /** label that shows up next to the radio button or checkbox */
+  /** Label that shows up next to the radio button or checkbox */
   label: string;
-  /** function that creates the layer, not called until the layer is toggled on */
+  /** Function that creates the layer, not called until the layer is toggled on */
   function: () => __esri.Layer;
-  /** whether the layer is selected by default on load, only relevant for operationalLayers and referenceLayers, the first baseLayer is always selected by default */
+  /**
+   * Controls whether the layer is initially selected.
+   * - For operationalLayers and referenceLayers: this determines if the layer is on by default
+   * - For basemaps: the first basemap is always selected by default
+   * - If no basemap configs exist, the first baseLayer is selected by default
+   */
   defaultSelected?: boolean;
 };
+
+export type BasemapConfig = {
+  function: () => __esri.Basemap;
+} & Omit<LayerConfig, 'function'>;
+export type BasemapConfigOrToken = BasemapConfig | BasemapToken;
+
 export type LayerConfigOrToken = LayerConfig | LayerToken;
 export type BaseLayerConfigOrToken =
   | Omit<LayerConfig, 'defaultSelected'>
   | LayerToken;
+
+export const basemapTokens = {
+  imagery: 'Imagery',
+  topo: 'Topo',
+  terrain: 'Terrain',
+  lite: 'Lite',
+  colorIR: 'Color IR',
+  hybrid: 'Hybrid',
+} as const;
+
+export type BasemapToken = (typeof basemapTokens)[keyof typeof basemapTokens];
 
 export const layerTokens = {
   imagery: 'Imagery',

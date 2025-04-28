@@ -20,16 +20,18 @@ import {
 import {
   layerTokens,
   type BaseLayerConfigOrToken,
+  type BasemapConfigOrToken,
   type LayerConfigOrToken,
 } from './LayerSelector.types';
-import { getLayerFromToken } from './LayerSelector.utilities';
+import {
+  getHappyPathBasemapProperties,
+  getLayerFromToken,
+} from './LayerSelector.utilities';
 
-type SelectorOptions = {
+type BaseOptions = {
   view: MapView;
   /** discover quad word, required if using appliance tokens */
   quadWord?: string;
-  /** layers added to map.basemap.baseLayers */
-  baseLayers: BaseLayerConfigOrToken[];
   /** layers added to map.operationalLayers */
   operationalLayers?: LayerConfigOrToken[];
   /** layers added to map.basemap.referenceLayers */
@@ -37,6 +39,22 @@ type SelectorOptions = {
   /** option passed to view.ui.add(), defaults to top-right */
   position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 };
+
+type WithBasemaps = BaseOptions & {
+  /** basemaps whose layers are mixed into baseLayers & referenceLayers and toggles by a single radio button */
+  basemaps: BasemapConfigOrToken[];
+  /** layers added to map.basemap.baseLayers */
+  baseLayers?: BaseLayerConfigOrToken[];
+};
+
+type WithBaseLayers = BaseOptions & {
+  /** basemaps whose layers are mixed into baseLayers & referenceLayers and toggles by a single radio button */
+  basemaps?: BasemapConfigOrToken[];
+  /** layers added to map.basemap.baseLayers */
+  baseLayers: BaseLayerConfigOrToken[];
+};
+
+type SelectorOptions = WithBasemaps | WithBaseLayers;
 
 const Popover = (props: PopoverProps) => {
   return (
@@ -63,7 +81,7 @@ const Popover = (props: PopoverProps) => {
   );
 };
 
-function getLabel(configOrToken: LayerConfigOrToken) {
+function getLabel(configOrToken: LayerConfigOrToken | BasemapConfigOrToken) {
   return typeof configOrToken === 'string'
     ? configOrToken
     : configOrToken.label;
@@ -74,18 +92,18 @@ async function toggleLayer(
   label: string,
   visible: boolean,
   container: __esri.Collection<__esri.Layer>,
-  managedLayers: Record<string, __esri.Layer>,
+  managedObjects: Record<string, __esri.Layer | __esri.Basemap>,
   view: MapView,
   quadWord: string,
 ) {
-  let layer = managedLayers[label];
+  let layer = managedObjects[label] as __esri.Layer | undefined;
   if (!layer && visible) {
     if (typeof configOrToken === 'string') {
       layer = getLayerFromToken(configOrToken, quadWord);
     } else {
       layer = configOrToken.function();
     }
-    managedLayers[label] = layer;
+    managedObjects[label] = layer;
     container.add(layer);
   } else if (layer) {
     layer.visible = visible;
@@ -98,13 +116,58 @@ async function toggleLayer(
     layer.tileInfo instanceof TileInfo &&
     view.ready
   ) {
-    const newMaxZoomLevel =
-      layer.tileInfo.lods[layer.tileInfo.lods.length - 1]!.level;
-    if (view.zoom > newMaxZoomLevel) {
-      await view.goTo({ zoom: newMaxZoomLevel });
+    await updateViewMaxZoom(view, layer.tileInfo);
+  }
+}
+
+async function updateViewMaxZoom(view: MapView, tileInfo: __esri.TileInfo) {
+  const newMaxZoomLevel = tileInfo.lods[tileInfo.lods.length - 1]!.level;
+  if (view.zoom > newMaxZoomLevel) {
+    await view.goTo({ zoom: newMaxZoomLevel });
+  }
+
+  view.constraints.maxZoom = newMaxZoomLevel;
+}
+
+async function toggleBasemap(
+  configOrToken: BasemapConfigOrToken,
+  label: string,
+  visible: boolean,
+  managedLayers: Record<string, __esri.Basemap | __esri.Layer>,
+  view: MapView,
+  quadWord?: string,
+) {
+  let basemap = managedLayers[label] as __esri.Basemap | undefined;
+  if (!basemap && visible) {
+    if (typeof configOrToken === 'string') {
+      basemap = new Basemap(
+        getHappyPathBasemapProperties(configOrToken, quadWord),
+      );
+    } else {
+      basemap = configOrToken.function();
     }
 
-    view.constraints.maxZoom = newMaxZoomLevel;
+    // this line needs to be before the await load call below so that if this is called twice, it doesn't try to add the same layers twice
+    managedLayers[label] = basemap;
+    await basemap.load();
+
+    if (basemap.baseLayers.length > 0) {
+      view.map.basemap!.baseLayers.addMany(basemap.baseLayers);
+    }
+    if (basemap.referenceLayers.length > 0) {
+      view.map.basemap!.referenceLayers.addMany(basemap.referenceLayers);
+    }
+  } else if (basemap) {
+    basemap.baseLayers.forEach((layer) => (layer.visible = visible));
+    basemap.referenceLayers.forEach((layer) => (layer.visible = visible));
+  }
+
+  if (basemap && visible && view.ready) {
+    for (const layer of basemap.baseLayers) {
+      if ('tileInfo' in layer! && layer.tileInfo instanceof TileInfo) {
+        await updateViewMaxZoom(view, layer.tileInfo);
+      }
+    }
   }
 }
 
@@ -117,25 +180,33 @@ export function LayerSelector({
     position = 'top-right',
     referenceLayers = [],
     operationalLayers = [],
+    basemaps = [],
+    baseLayers = [],
     ...options
   },
   ...props
 }: LayerSelectorProps) {
   const node = useRef<HTMLDivElement>(null);
-  const managedLayers = useRef<Record<string, __esri.Layer>>({});
+  const managedLayers = useRef<Record<string, __esri.Layer | __esri.Basemap>>(
+    {},
+  );
 
   // validate options
   useEffect(() => {
-    if (options.baseLayers.length < 1) {
-      throw new Error('`options.baseLayers` must have at least one layer');
+    if (basemaps.length < 1 && baseLayers.length < 1) {
+      throw new Error(
+        '`options.basemaps` or `options.baseLayers` must have at least one config or token',
+      );
     }
 
     if (!options.view.map) {
       throw new Error('`options.view` must have a map');
     }
 
+    // basemaps prop tokens are validated in the getHappyPathBasemapProperties function
+
     for (const configOrToken of [
-      ...options.baseLayers,
+      ...baseLayers,
       ...referenceLayers,
       ...operationalLayers,
     ]) {
@@ -154,10 +225,17 @@ export function LayerSelector({
         }
       }
     }
-  }, [operationalLayers, options, referenceLayers]);
+  }, [
+    baseLayers,
+    basemaps.length,
+    operationalLayers,
+    options.quadWord,
+    options.view.map,
+    referenceLayers,
+  ]);
 
   const [selectedRadioBtnLabel, setSelectedRadioBtnLabel] = useState<string>(
-    getLabel(options.baseLayers[0]!),
+    getLabel(basemaps.length ? basemaps[0]! : baseLayers[0]!),
   );
 
   const referenceAndOperationalConfigsOrTokens = [
@@ -192,7 +270,19 @@ export function LayerSelector({
   useEffect(() => {
     const map = options.view.map;
 
-    for (const configOrToken of options.baseLayers) {
+    for (const configOrToken of basemaps) {
+      const label = getLabel(configOrToken);
+      toggleBasemap(
+        configOrToken,
+        label,
+        label === selectedRadioBtnLabel,
+        managedLayers.current,
+        options.view,
+        options.quadWord,
+      );
+    }
+
+    for (const configOrToken of baseLayers) {
       const label = getLabel(configOrToken);
       toggleLayer(
         configOrToken,
@@ -244,7 +334,7 @@ export function LayerSelector({
       );
     }
   }, [
-    options.baseLayers,
+    baseLayers,
     operationalLayers,
     options.quadWord,
     referenceLayers,
@@ -252,6 +342,7 @@ export function LayerSelector({
     options.view.map,
     selectedCheckboxLabels,
     selectedRadioBtnLabel,
+    basemaps,
   ]);
 
   return (
@@ -272,7 +363,16 @@ export function LayerSelector({
               value={selectedRadioBtnLabel}
               onChange={setSelectedRadioBtnLabel}
             >
-              {options.baseLayers.map((configOrToken) => {
+              {basemaps.map((configOrToken) => {
+                const value = getLabel(configOrToken);
+
+                return (
+                  <Radio className="pl-2" value={value} key={value}>
+                    {value}
+                  </Radio>
+                );
+              })}
+              {baseLayers.map((configOrToken) => {
                 const value = getLabel(configOrToken);
 
                 return (

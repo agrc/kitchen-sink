@@ -4,7 +4,12 @@ import TileInfo from '@arcgis/core/layers/support/TileInfo';
 import TileLayer from '@arcgis/core/layers/TileLayer';
 import VectorTileLayer from '@arcgis/core/layers/VectorTileLayer';
 import WebTileLayer from '@arcgis/core/layers/WebTileLayer';
-import { layerTokens, type LayerToken } from './LayerSelector.types';
+import {
+  basemapTokens,
+  layerTokens,
+  type BasemapToken,
+  type LayerToken,
+} from './LayerSelector.types';
 
 export const commonFactories = {
   FeatureLayer,
@@ -16,40 +21,42 @@ type ApplianceLayerConfig = {
   urlPattern: string;
   copyright?: string;
 };
+
+const quadWordToken = '{quadWord}';
 export const happyPathConfigs: Record<
   LayerToken,
   __esri.VectorTileLayerProperties | ApplianceLayerConfig
 > = {
   Imagery: {
-    urlPattern: `https://discover.agrc.utah.gov/login/path/{quadWord}/tiles/utah/{level}/{col}/{row}`,
+    urlPattern: `https://discover.agrc.utah.gov/login/path/${quadWordToken}/tiles/utah/{level}/{col}/{row}`,
     copyright: 'Hexagon',
   },
   Topo: {
-    urlPattern: `https://discover.agrc.utah.gov/login/path/{quadWord}/tiles/topo_basemap/{level}/{col}/{row}`,
+    urlPattern: `https://discover.agrc.utah.gov/login/path/${quadWordToken}/tiles/topo_basemap/{level}/{col}/{row}`,
     copyright: 'UGRC',
   },
   Terrain: {
-    urlPattern: `https://discover.agrc.utah.gov/login/path/{quadWord}/tiles/terrain_basemap/{level}/{col}/{row}`,
+    urlPattern: `https://discover.agrc.utah.gov/login/path/${quadWordToken}/tiles/terrain_basemap/{level}/{col}/{row}`,
     copyright: 'UGRC',
   },
   Lite: {
-    urlPattern: `https://discover.agrc.utah.gov/login/path/{quadWord}/tiles/lite_basemap/{level}/{col}/{row}`,
+    urlPattern: `https://discover.agrc.utah.gov/login/path/${quadWordToken}/tiles/lite_basemap/{level}/{col}/{row}`,
     copyright: 'UGRC',
   },
   'Color IR': {
-    urlPattern: `https://discover.agrc.utah.gov/login/path/{quadWord}/tiles/naip_2021_nrg/{level}/{col}/{row}`,
+    urlPattern: `https://discover.agrc.utah.gov/login/path/${quadWordToken}/tiles/naip_2021_nrg/{level}/{col}/{row}`,
     copyright: 'UGRC',
   },
   Hybrid: {
-    urlPattern: `https://discover.agrc.utah.gov/login/path/{quadWord}/tiles/utah/{level}/{col}/{row}`,
+    urlPattern: `https://discover.agrc.utah.gov/login/path/${quadWordToken}/tiles/utah/{level}/{col}/{row}`,
     copyright: 'Hexagon, UGRC',
   },
   Overlay: {
-    urlPattern: `https://discover.agrc.utah.gov/login/path/{quadWord}/tiles/overlay_basemap/{level}/{col}/{row}`,
+    urlPattern: `https://discover.agrc.utah.gov/login/path/${quadWordToken}/tiles/overlay_basemap/{level}/{col}/{row}`,
     // no attribution for overlay layers since it just duplicates the base map attribution
   },
   'Address Points': {
-    urlPattern: `https://discover.agrc.utah.gov/login/path/{quadWord}/tiles/address_points_basemap/{level}/{col}/{row}`,
+    urlPattern: `https://discover.agrc.utah.gov/login/path/${quadWordToken}/tiles/address_points_basemap/{level}/{col}/{row}`,
     // no attribution for overlay layers since it just duplicates the base map attribution
   },
   'Land Ownership': {
@@ -57,6 +64,120 @@ export const happyPathConfigs: Record<
     opacity: 0.5,
   },
 };
+
+export function getHappyPathBasemapProperties(
+  token: BasemapToken,
+  quadWord?: string,
+): __esri.BasemapProperties {
+  const checkForQuadWord = () => {
+    if (!quadWord) {
+      throw new Error(
+        `layer-selector::You chose to use a basemaps token ('${token}') without setting your 'quadWord' from Discover. The requests for tiles will fail to authenticate. Pass 'quadWord' into the options parameter.`,
+      );
+    }
+  };
+
+  switch (token) {
+    case 'Imagery': {
+      checkForQuadWord();
+
+      return {
+        baseLayers: [
+          new WebTileLayer({
+            urlTemplate:
+              `https://discover.agrc.utah.gov/login/path/${quadWordToken}/tiles/utah/{level}/{col}/{row}`.replace(
+                quadWordToken,
+                quadWord!,
+              ),
+            copyright: 'Hexagon',
+            tileInfo: getTileInfo(token),
+          }),
+        ],
+      };
+    }
+    case 'Topo': {
+      checkForQuadWord();
+
+      return {
+        baseLayers: [
+          new WebTileLayer({
+            urlTemplate:
+              `https://discover.agrc.utah.gov/login/path/${quadWordToken}/tiles/topo_basemap/{level}/{col}/{row}`.replace(
+                quadWordToken,
+                quadWord!,
+              ),
+            copyright: 'Hexagon',
+            tileInfo: getTileInfo(token),
+          }),
+        ],
+      };
+    }
+    case 'Terrain': {
+      return {
+        portalItem: {
+          id: '38a765a1306e4ba3804c0faaeede95e0',
+        },
+      };
+    }
+    case 'Lite': {
+      return {
+        portalItem: {
+          id: '98104c602b7c44419c0a952f28c65815',
+        },
+      };
+    }
+    case 'Color IR': {
+      checkForQuadWord();
+
+      return {
+        baseLayers: [
+          new WebTileLayer({
+            urlTemplate:
+              `https://discover.agrc.utah.gov/login/path/${quadWordToken}/tiles/naip_2021_nrg/{level}/{col}/{row}`.replace(
+                quadWordToken,
+                quadWord!,
+              ),
+            copyright: 'UGRC',
+            tileInfo: getTileInfo(token),
+          }),
+        ],
+      };
+    }
+    case 'Hybrid': {
+      checkForQuadWord();
+
+      return {
+        baseLayers: [
+          new WebTileLayer({
+            urlTemplate:
+              `https://discover.agrc.utah.gov/login/path/${quadWordToken}/tiles/utah/{level}/{col}/{row}`.replace(
+                quadWordToken,
+                quadWord!,
+              ),
+            copyright: 'Hexagon',
+            tileInfo: getTileInfo('Imagery'),
+          }),
+        ],
+        referenceLayers: [
+          new WebTileLayer({
+            urlTemplate:
+              `https://discover.agrc.utah.gov/login/path/${quadWordToken}/tiles/overlay_basemap/{level}/{col}/{row}`.replace(
+                quadWordToken,
+                quadWord!,
+              ),
+            copyright: 'UGRC',
+            tileInfo: getTileInfo('Overlay'),
+          }),
+        ],
+      };
+    }
+    default: {
+      throw new Error(
+        `layer-selector::The basemap token '${token}' was not found. Please use one of the supported tokens (${Object.values(basemapTokens).join(', ')}) or pass in a Basemap object.`,
+      );
+    }
+  }
+}
 
 const defaultTileInfo = createDefaultTileInfo();
 
@@ -129,7 +250,7 @@ function createDefaultTileInfo() {
   };
 }
 
-function getTileInfo(token: Omit<LayerToken, 'Land Ownership'>) {
+function getTileInfo(token: Exclude<LayerToken, 'Land Ownership'>) {
   switch (token) {
     case 'Color IR':
     case 'Imagery': {
