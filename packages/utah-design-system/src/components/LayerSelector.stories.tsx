@@ -1,3 +1,4 @@
+import Basemap from '@arcgis/core/Basemap';
 import { watch } from '@arcgis/core/core/reactiveUtils';
 import FeatureLayer from '@arcgis/core/layers/FeatureLayer';
 import LOD from '@arcgis/core/layers/support/LOD';
@@ -77,6 +78,18 @@ export function Default({
       options: {
         view,
         quadWord: import.meta.env.VITE_QUAD_WORD,
+        basemaps: [
+          {
+            label: 'Vector Lite',
+            function: () =>
+              new Basemap({
+                portalItem: {
+                  id: '98104c602b7c44419c0a952f28c65815',
+                },
+              }),
+          },
+          'Lite', // this is for testing the happy path tokens
+        ],
         baseLayers: baseLayers || [
           'Hybrid',
           {
@@ -86,7 +99,6 @@ export function Default({
                 url: 'https://gis.wfrc.org/arcgis/rest/services/WC2050Vision/2023_Vision_Refresh_Basemap/MapServer',
               }),
           },
-          'Lite',
           'Terrain',
           'Topo',
           'Color IR',
