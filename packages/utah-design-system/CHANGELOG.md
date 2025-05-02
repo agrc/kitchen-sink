@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.26.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.25.0...utah-design-system-v1.26.0) (2025-05-02)
+
+
+### Features
+
+* **layer-selector:** add support for basemap configs ([4215005](https://github.com/agrc/kitchen-sink/commit/42150052e22b0ed7c25a010e99935bb019ec0d6f))
+
 ## [1.25.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.24.0...utah-design-system-v1.25.0) (2025-04-17)
 
 
