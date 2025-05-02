@@ -20,11 +20,12 @@ If you want to extend the configuration, you can do so like this:
 // eslint.config.js
 import { browser } from '@ugrc/eslint-config';
 
-export default {
+export default [
   ...browser,
-  rules: {
-    ...browser.rules,
-    'no-console': 'off',
+  {
+    rules: {
+      'no-console': 'off',
+    },
   },
-};
+];
 ```
