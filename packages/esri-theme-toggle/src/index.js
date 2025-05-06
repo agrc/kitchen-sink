@@ -19,7 +19,7 @@ function addLink(path, id) {
   document.head.appendChild(linkElement);
 }
 
-function applyCss() {
+function toggleStylesheet() {
   const isDarkMode = media.matches;
   const darkLink = document.getElementById(DARK_ID);
   const lightLink = document.getElementById(LIGHT_ID);
@@ -45,8 +45,34 @@ function applyCss() {
   }
 }
 
+function updateEsriUiElements() {
+  const isDarkMode = media.matches;
+
+  // Toggle ArcGIS Maps SDK widgets mode
+  // ref: https://developers.arcgis.com/calcite-design-system/tutorials/build-a-dark-mode-switch/
+  const widgets = document.getElementsByClassName('esri-ui');
+  for (const widget of widgets) {
+    if (isDarkMode) {
+      widget.classList.add('calcite-mode-dark');
+      widget.classList.remove('calcite-mode-light');
+    } else {
+      widget.classList.remove('calcite-mode-dark');
+      widget.classList.add('calcite-mode-light');
+    }
+  }
+}
+
 export default function initializeTheme() {
   media = window.matchMedia(DARK_QUERY);
-  media.addEventListener('change', applyCss);
-  applyCss();
+  toggleStylesheet();
+
+  media.addEventListener('change', () => {
+    toggleStylesheet();
+    updateEsriUiElements();
+  });
+
+  // wait until the esri api has had a chance to create all of its elements
+  window.addEventListener('load', () => {
+    updateEsriUiElements();
+  });
 }
