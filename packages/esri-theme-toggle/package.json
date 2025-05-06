@@ -38,6 +38,7 @@
     "build": "echo 'No build necessary'",
     "check": "echo 'No check necessary'",
     "prepublish": "cp ../../LICENSE /",
+    "start": "npx serve",
     "test": "echo 'No test necessary'"
   },
   "dependencies": {

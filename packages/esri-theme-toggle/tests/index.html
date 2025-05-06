@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title>ESRI Theme Toggle Test</title>
+    <script
+      src="https://js.arcgis.com/calcite-components/3.1.0/calcite.esm.js"
+      type="module"
+    ></script>
+    <script src="https://js.arcgis.com/4.32/"></script>
+    <script
+      type="module"
+      src="https://js.arcgis.com/map-components/4.32/arcgis-map-components.esm.js"
+    ></script>
+  </head>
+
+  <body>
+    Toggle your preferred color scheme using your OS or browser settings.
+    <arcgis-map
+      item-id="98104c602b7c44419c0a952f28c65815"
+      style="height: 600px"
+    >
+      <arcgis-zoom></arcgis-zoom>
+      <arcgis-home></arcgis-home>
+      <arcgis-legend position="bottom-left"></arcgis-legend>
+    </arcgis-map>
+    <script type="importmap">
+      {
+        "imports": {
+          "esri-theme-toggle": "../src/index.js",
+          "@arcgis/core/config": "https://js.arcgis.com/4.32/@arcgis/core/config.js"
+        }
+      }
+    </script>
+    <script type="module">
+      import initializeTheme from 'esri-theme-toggle';
+
+      initializeTheme();
+
+      const map = document.querySelector('arcgis-map');
+      await map.componentOnReady();
+      console.log('Map component is ready');
+      map.openPopup({
+        title: 'Hello World',
+        content: 'This is a test of the esri-theme-toggle package.',
+        location: {
+          spatialReference: {
+            wkid: 102100,
+          },
+          x: -12454973.989585515,
+          y: 4967942.757743905,
+        },
+      });
+      map.addEventListener('arcgisViewClick', (event) => {
+        console.log('Map clicked at:', event);
+      });
+    </script>
+  </body>
+</html>
