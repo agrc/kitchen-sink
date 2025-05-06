@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.1](https://github.com/agrc/kitchen-sink/compare/esri-theme-toggle-v1.1.0...esri-theme-toggle-v1.1.1) (2025-05-06)
+
+
+### Bug Fixes
+
+* **esri-theme-toggle:** fix bug preventing some esri ui elements from being set to the correct theme ([18008f8](https://github.com/agrc/kitchen-sink/commit/18008f8f2cfc2440c7fb359431a7582d20097afe))
+* **esri-theme-toggle:** simplify css class toggling ([9dbce8d](https://github.com/agrc/kitchen-sink/commit/9dbce8db2dea1211564f258f05e066d7ed78c9de))
+
 ## [1.1.0](https://github.com/agrc/kitchen-sink/compare/esri-theme-toggle-v1.0.0...esri-theme-toggle-v1.1.0) (2025-03-17)
 
 

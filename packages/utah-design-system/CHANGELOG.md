@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.27.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.26.0...utah-design-system-v1.27.0) (2025-05-06)
+
+
+### Features
+
+* **disclosure:** create disclosure implementation from utah design system ([5fd500d](https://github.com/agrc/kitchen-sink/commit/5fd500df47ab9da6f61d0719e4f56854cc7678e5))
+
 ## [1.26.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.25.0...utah-design-system-v1.26.0) (2025-05-02)
 
 
