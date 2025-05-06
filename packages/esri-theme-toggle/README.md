@@ -21,3 +21,7 @@ import { initializeTheme } from '@ugrc/esri-theme-toggle';
 esriConfig.assetsPath = '/assets';
 initializeTheme();
 ```
+
+## Development
+
+Run `npm start` and open `http://localhost:3000/tests` to test this package.
