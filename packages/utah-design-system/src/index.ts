@@ -4,6 +4,7 @@ export * from './components/Banner';
 export * from './components/Button';
 export * from './components/Checkbox';
 export * from './components/Dialog';
+export * from './components/Disclosure';
 export * from './components/Drawer';
 export * from './components/Field';
 export * from './components/Footer';
