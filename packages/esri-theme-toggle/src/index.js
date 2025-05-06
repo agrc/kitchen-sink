@@ -53,11 +53,9 @@ function updateEsriUiElements() {
   const widgets = document.getElementsByClassName('esri-ui');
   for (const widget of widgets) {
     if (isDarkMode) {
-      widget.classList.add('calcite-mode-dark');
-      widget.classList.remove('calcite-mode-light');
+      widget.classList.replace('calcite-mode-light', 'calcite-mode-dark');
     } else {
-      widget.classList.remove('calcite-mode-dark');
-      widget.classList.add('calcite-mode-light');
+      widget.classList.replace('calcite-mode-dark', 'calcite-mode-light');
     }
   }
 }
