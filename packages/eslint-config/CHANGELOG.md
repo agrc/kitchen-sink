@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/agrc/kitchen-sink/compare/eslint-config-v1.2.1...eslint-config-v1.2.2) (2025-05-08)
+
+
+### Bug Fixes
+
+* **eslint-config:** correct server export name ([e723e4d](https://github.com/agrc/kitchen-sink/commit/e723e4d103279932f7816492fb2b0b792de73fe6))
+
 ## [1.2.1](https://github.com/agrc/kitchen-sink/compare/eslint-config-v1.2.0...eslint-config-v1.2.1) (2025-04-21)
 
 
