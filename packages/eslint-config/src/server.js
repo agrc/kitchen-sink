@@ -4,7 +4,7 @@ import importPlugin from 'eslint-plugin-import';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
-export const react = tseslint.config(
+export const server = tseslint.config(
   {
     ignores: [
       '**/__mocks__',
