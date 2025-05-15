@@ -10,36 +10,34 @@ export type useGraphicManagerResult = {
   setGraphic: (graphic: GraphicOptions) => void;
 };
 
-const useGraphicManager = (
-  mapView: MapView | null,
-): useGraphicManagerResult => {
+const useGraphicManager = (view: MapView | null): useGraphicManagerResult => {
   const [graphic, setGraphic] = useState<GraphicOptions>(null);
   const previousGraphic = useRef<GraphicOptions>(null);
 
   const removeGraphics = useCallback(
     (graphics: Graphic | Graphic[] | undefined) => {
-      if (!graphics || !mapView) {
+      if (!graphics || !view) {
         return;
       }
 
       if (Array.isArray(graphics)) {
-        graphics.forEach((x) => mapView.graphics.remove(x));
+        graphics.forEach((x) => view.graphics.remove(x));
       } else {
-        const count = mapView.graphics.length;
-        mapView.graphics.remove(graphics);
+        const count = view.graphics.length;
+        view.graphics.remove(graphics);
 
-        if (count === mapView.graphics.length) {
+        if (count === view.graphics.length) {
           console.warn(
             'Graphic not found in map view. Is the graphic auto-casted?',
           );
         }
       }
     },
-    [mapView],
+    [view],
   );
 
   useEffect(() => {
-    if (!mapView) {
+    if (!view) {
       return;
     }
 
@@ -60,9 +58,7 @@ const useGraphicManager = (
         );
       }
 
-      whenOnce(() => mapView.ready).then(() =>
-        mapView.graphics.addMany(graphic),
-      );
+      whenOnce(() => view.ready).then(() => view.graphics.addMany(graphic));
     } else {
       if (graphic && graphic.declaredClass !== 'esri.Graphic') {
         console.warn(
@@ -70,13 +66,13 @@ const useGraphicManager = (
         );
       }
 
-      whenOnce(() => mapView.ready).then(() => {
+      whenOnce(() => view.ready).then(() => {
         if (graphic) {
-          mapView.graphics.add(graphic);
+          view.graphics.add(graphic);
         }
       });
     }
-  }, [graphic, removeGraphics, mapView]);
+  }, [graphic, removeGraphics, view]);
 
   return { graphic, setGraphic };
 };
