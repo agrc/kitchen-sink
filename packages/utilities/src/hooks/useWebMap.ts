@@ -1,30 +1,33 @@
 import MapView from '@arcgis/core/views/MapView.js';
 import WebMap from '@arcgis/core/WebMap.js';
-import { useEffect, useRef } from 'react';
+import { type RefObject, useEffect, useRef } from 'react';
 
-export default function useWebMap(div: HTMLDivElement, id: string) {
-  const webMap = useRef<WebMap | null>(null);
-  const mapView = useRef<MapView | null>(null);
+export default function useWebMap(
+  divRef: RefObject<HTMLDivElement>,
+  id: string,
+) {
+  const mapRef = useRef<__esri.WebMap | null>(null);
+  const viewRef = useRef<__esri.MapView | null>(null);
 
   useEffect(() => {
-    if (div) {
-      webMap.current = new WebMap({
+    if (divRef.current) {
+      mapRef.current = new WebMap({
         portalItem: {
           id,
         },
       });
 
-      mapView.current = new MapView({
-        container: div,
-        map: webMap.current,
+      viewRef.current = new MapView({
+        container: divRef.current,
+        map: mapRef.current,
       });
     }
 
     return () => {
-      mapView.current?.destroy();
-      webMap.current?.destroy();
+      viewRef.current?.destroy();
+      mapRef.current?.destroy();
     };
-  }, [div, id]);
+  }, [divRef, id]);
 
-  return { webMap, mapView };
+  return { mapRef, viewRef };
 }
