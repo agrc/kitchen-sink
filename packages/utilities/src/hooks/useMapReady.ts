@@ -4,9 +4,11 @@ import { useState } from 'react';
 export default function useMapReady(view: __esri.MapView | null) {
   const [ready, setReady] = useState(false);
 
-  if (view) {
-    whenOnce(() => view.ready).then(() => setReady(true));
+  if (!view) {
+    return;
   }
+
+  whenOnce(() => view.ready).then(() => setReady(true));
 
   return ready;
 }

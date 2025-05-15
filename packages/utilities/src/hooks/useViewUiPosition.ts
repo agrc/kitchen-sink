@@ -1,3 +1,4 @@
+import { whenOnce } from '@arcgis/core/core/reactiveUtils';
 import { useEffect, useRef } from 'react';
 
 export default function useViewUiPosition(
@@ -11,7 +12,7 @@ export default function useViewUiPosition(
       return;
     }
 
-    view.ui.add(me.current, position);
+    whenOnce(() => view.ready).then(() => view.ui.add(me.current!, position));
   }, [position, view, me]);
 
   return me;
