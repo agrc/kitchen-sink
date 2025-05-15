@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.4](https://github.com/agrc/kitchen-sink/compare/utilities-v3.0.3...utilities-v3.0.4) (2025-05-15)
+
+
+### Bug Fixes
+
+* **hooks:** protect hooks from mapview not being ready ([1e3e199](https://github.com/agrc/kitchen-sink/commit/1e3e19911c83ddf1fbead995d0bea6498b00a563))
+* **useWebMap:** div must be a ref ([9d15135](https://github.com/agrc/kitchen-sink/commit/9d15135774677f5e2d5b8c6735569e177bf72bec))
+
 ## [3.0.3](https://github.com/agrc/kitchen-sink/compare/utilities-v3.0.2...utilities-v3.0.3) (2025-04-17)
 
 
