@@ -79,7 +79,8 @@ const sanitize = (attributes: Record<string, unknown> = {}) => {
     .filter((key) => customProps.indexOf(key) === -1)
     .reduce(
       (result: Record<string, unknown>, key: string) => (
-        (result[key] = attributes[key]), result
+        (result[key] = attributes[key]),
+        result
       ),
       {},
     );
