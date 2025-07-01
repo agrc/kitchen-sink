@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.3](https://github.com/agrc/kitchen-sink/compare/eslint-config-v1.2.2...eslint-config-v1.2.3) (2025-07-01)
+
+
+### Bug Fixes
+
+* **eslint-config:** update packages to work with storybook 9 ([726b0f3](https://github.com/agrc/kitchen-sink/commit/726b0f334870796e056571d5566b1119fbf195ff))
+
 ## [1.2.2](https://github.com/agrc/kitchen-sink/compare/eslint-config-v1.2.1...eslint-config-v1.2.2) (2025-05-08)
 
 
