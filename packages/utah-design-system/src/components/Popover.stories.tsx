@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { HelpCircle } from 'lucide-react';
 import { DialogTrigger, Heading } from 'react-aria-components';
 import { Button } from './Button';

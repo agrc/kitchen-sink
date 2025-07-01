@@ -1,6 +1,6 @@
 import type Graphic from '@arcgis/core/Graphic';
-import type { Meta } from '@storybook/react';
-import { fn } from '@storybook/test';
+import type { Meta } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
 import type { AsyncListData } from 'react-stately';
 import {
   Sherlock as Component,

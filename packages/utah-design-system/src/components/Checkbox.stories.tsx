@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-vite';
 import { Checkbox as Component } from './Checkbox';
 
 const meta: Meta<typeof Component> = {

@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-vite';
 import { OAuthProvider } from 'firebase/auth';
 import { firebaseConfig } from '../../tests/firebase';
 import { FirebaseAppProvider, FirebaseAuthProvider } from '../contexts';

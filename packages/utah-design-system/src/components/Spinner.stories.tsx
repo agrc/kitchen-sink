@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-vite';
 import { BusyBar, Spinner as Component } from './Spinner.tsx';
 
 const meta: Meta<typeof Component> = {

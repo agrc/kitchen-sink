@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { User } from 'firebase/auth';
 import { Avatar } from './Avatar';
 

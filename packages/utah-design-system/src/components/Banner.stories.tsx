@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-vite';
 import { Banner as Component } from './Banner.tsx';
 
 const meta: Meta<typeof Component> = {
