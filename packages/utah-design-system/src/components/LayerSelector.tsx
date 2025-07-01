@@ -111,7 +111,7 @@ async function toggleLayer(
 
   if (
     visible &&
-    container === view.map.basemap!.baseLayers &&
+    container === view.map?.basemap!.baseLayers &&
     'tileInfo' in layer! &&
     layer.tileInfo instanceof TileInfo &&
     view.ready
@@ -152,10 +152,10 @@ async function toggleBasemap(
     await basemap.load();
 
     if (basemap.baseLayers.length > 0) {
-      view.map.basemap!.baseLayers.addMany(basemap.baseLayers);
+      view.map?.basemap!.baseLayers.addMany(basemap.baseLayers);
     }
     if (basemap.referenceLayers.length > 0) {
-      view.map.basemap!.referenceLayers.addMany(basemap.referenceLayers);
+      view.map?.basemap!.referenceLayers.addMany(basemap.referenceLayers);
     }
   } else if (basemap) {
     basemap.baseLayers.forEach((layer) => (layer.visible = visible));
@@ -257,9 +257,9 @@ export function LayerSelector({
   useEffect(() => {
     const basemapId = 'layer-selector';
 
-    if (!node.current || options.view.map.basemap?.id === basemapId) return;
+    if (!node.current || options.view.map?.basemap?.id === basemapId) return;
 
-    options.view.map.basemap = new Basemap({
+    options.view.map!.basemap = new Basemap({
       id: basemapId,
     });
 
@@ -269,6 +269,9 @@ export function LayerSelector({
   // toggle layer visibility
   useEffect(() => {
     const map = options.view.map;
+    if (!map || !map.basemap) {
+      return;
+    }
 
     for (const configOrToken of basemaps) {
       const label = getLabel(configOrToken);
