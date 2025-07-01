@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-vite';
 import type { FooterProps } from './Footer.tsx';
 import {
   Footer as Component,

@@ -9,7 +9,7 @@ import Map from '@arcgis/core/Map';
 import MapView from '@arcgis/core/views/MapView';
 import Fullscreen from '@arcgis/core/widgets/Fullscreen';
 import HomeButton from '@arcgis/core/widgets/Home';
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-vite';
 import { useEffect, useRef, useState } from 'react';
 import { LayerSelector, type LayerSelectorProps } from './LayerSelector';
 import type {

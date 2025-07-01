@@ -1,5 +1,5 @@
-import type { Meta } from '@storybook/react';
-import { expect, fn, userEvent, waitFor, within } from '@storybook/test';
+import type { Meta } from '@storybook/react-vite';
+import { expect, fn, userEvent, waitFor, within } from 'storybook/test';
 import { http, HttpResponse } from 'msw';
 import type { Canvas, StepFunction } from 'storybook/internal/types';
 import { Geocode } from './Geocode.js';

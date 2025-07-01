@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-vite';
 import { FormErrors as Component } from './FormErrors.tsx';
 
 const meta: Meta<typeof Component> = {

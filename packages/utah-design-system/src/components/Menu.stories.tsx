@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { MoreHorizontal } from 'lucide-react';
 import { MenuTrigger, Popover, SubmenuTrigger } from 'react-aria-components';
 import { Button } from './Button';

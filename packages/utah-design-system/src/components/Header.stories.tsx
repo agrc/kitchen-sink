@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { OAuthProvider } from 'firebase/auth';
 import type { ReactNode } from 'react';
 import { firebaseConfig } from '../../tests/firebase.ts';
