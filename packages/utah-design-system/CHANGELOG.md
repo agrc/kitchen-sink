@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.27.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.27.1...utah-design-system-v1.27.2) (2025-07-01)
+
+
+### Bug Fixes
+
+* **layer-selector:** handle view.map becoming nullish ([1878770](https://github.com/agrc/kitchen-sink/commit/187877074b95e5b56298d453b4f0a94207d50da8))
+
 ## [1.27.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.27.0...utah-design-system-v1.27.1) (2025-05-15)
 
 
