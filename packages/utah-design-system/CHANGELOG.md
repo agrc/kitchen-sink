@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.27.3](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.27.2...utah-design-system-v1.27.3) (2025-07-30)
+
+
+### Bug Fixes
+
+* **social-media:** remove buzzsprout ([be6433a](https://github.com/agrc/kitchen-sink/commit/be6433aa1cc1950beb30e3b3d06e5f38e02ca4a7))
+
 ## [1.27.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.27.1...utah-design-system-v1.27.2) (2025-07-01)
 
 
