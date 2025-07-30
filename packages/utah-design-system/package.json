@@ -51,7 +51,7 @@
     "@types/lodash-es": "^4.17.12",
     "@ugrc/utilities": "3.0.4",
     "firebase": ">=11.x",
-    "ky": "^1.8.1",
+    "ky": "^1.8.2",
     "lodash-es": "^4.17.21",
     "lucide-react": ">=0.525.0",
     "react-aria": "^3.41.1",
