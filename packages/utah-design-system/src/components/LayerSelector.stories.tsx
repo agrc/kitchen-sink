@@ -14,7 +14,10 @@ import { useEffect, useRef, useState } from 'react';
 import { LayerSelector, type LayerSelectorProps } from './LayerSelector';
 import type {
   BaseLayerConfigOrToken,
+  BasemapConfig,
+  BasemapToken,
   LayerConfigOrToken,
+  LayerToken,
 } from './LayerSelector.types';
 
 const meta: Meta<typeof LayerSelector> = {
@@ -35,8 +38,10 @@ type DefaultProps = {
   zoom?: number;
   scale?: number;
   baseLayers?: BaseLayerConfigOrToken[];
+  basemaps?: (BasemapConfig | BasemapToken)[];
   referenceLayers?: LayerConfigOrToken[];
   operationalLayers?: LayerConfigOrToken[];
+  note?: string;
 };
 
 export function Default({
@@ -44,12 +49,19 @@ export function Default({
   zoom = 10,
   scale,
   baseLayers,
+  basemaps,
   referenceLayers,
   operationalLayers,
+  note,
 }: DefaultProps) {
   const mapDiv = useRef<HTMLDivElement>(null);
   const [layerSelectorOptions, setLayerSelectorOptions] =
     useState<LayerSelectorProps>();
+  const [zoomLevel, setZoomLevel] = useState<number>(zoom);
+  const [maxZoomLevel, setMaxZoomLevel] = useState<number>();
+  const [minZoomLevel, setMinZoomLevel] = useState<number>();
+  const zoomDiv = useRef<HTMLDivElement>(null);
+  const noteDiv = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!mapDiv.current) {
@@ -61,24 +73,38 @@ export function Default({
     const view = new MapView({
       container: mapDiv.current,
       map,
-      center: center ? center : [-112, 40],
+      center: center ? center : [-111.83, 39.71],
       zoom,
       scale,
     });
 
     watch(
       () => view.zoom,
-      (zoom) => Number.isInteger(zoom) && console.log('map zoom', zoom),
+      (zoom) => Number.isInteger(zoom) && setZoomLevel(zoom),
+    );
+
+    watch(
+      () => view.constraints.effectiveMaxZoom,
+      (maxZoom) => Number.isInteger(maxZoom) && setMaxZoomLevel(maxZoom),
+    );
+
+    watch(
+      () => view.constraints.effectiveMinZoom,
+      (minZoom) => Number.isInteger(minZoom) && setMinZoomLevel(minZoom),
     );
 
     view.ui.add(new HomeButton({ view }), 'top-right');
     view.ui.add(new Fullscreen({ view }), 'top-right');
+    view.ui.add(zoomDiv.current!, 'top-left');
+    if (note) {
+      view.ui.add(noteDiv.current!, 'top-left');
+    }
 
     setLayerSelectorOptions({
       options: {
         view,
         quadWord: import.meta.env.VITE_QUAD_WORD,
-        basemaps: [
+        basemaps: basemaps || [
           {
             label: 'Vector Lite',
             function: () =>
@@ -107,17 +133,40 @@ export function Default({
         operationalLayers: operationalLayers || ['Land Ownership'],
       },
     });
-  }, [zoom, center, scale, baseLayers, referenceLayers, operationalLayers]);
+  }, [
+    zoom,
+    center,
+    scale,
+    baseLayers,
+    referenceLayers,
+    operationalLayers,
+    basemaps,
+    note,
+  ]);
 
   return (
-    <div
-      ref={mapDiv}
-      style={{ position: 'absolute', top: 0, left: 0, bottom: 0, right: 0 }}
-    >
-      {layerSelectorOptions ? (
-        <LayerSelector {...layerSelectorOptions}></LayerSelector>
+    <>
+      {note ? (
+        <div className="border border-zinc-300 bg-white p-2" ref={noteDiv}>
+          {note}
+        </div>
       ) : null}
-    </div>
+      <div className="border border-zinc-300 bg-white p-2" ref={zoomDiv}>
+        Zoom Level: <b>{zoomLevel}</b>
+        <br />
+        Effective Max Zoom: <b>{maxZoomLevel}</b>
+        <br />
+        Effective Min Zoom: <b>{minZoomLevel}</b>
+      </div>
+      <div
+        ref={mapDiv}
+        style={{ position: 'absolute', top: 0, left: 0, bottom: 0, right: 0 }}
+      >
+        {layerSelectorOptions ? (
+          <LayerSelector {...layerSelectorOptions}></LayerSelector>
+        ) : null}
+      </div>
+    </>
   );
 }
 
@@ -170,7 +219,6 @@ export const CustomLOD = () => {
 
   return <Default zoom={6} baseLayers={baseLayers} />;
 };
-
 export const DefaultSelection = () => {
   const baseLayers: BaseLayerConfigOrToken[] = [
     {
@@ -212,6 +260,44 @@ export const DefaultSelection = () => {
       zoom={8}
       baseLayers={baseLayers}
       referenceLayers={referenceLayers}
+    />
+  );
+};
+export const DifferingLODBaseLayers = () => {
+  const baseLayers = ['Topo', 'Imagery', 'Lite'] as LayerToken[];
+  const note = `
+Topo:
+  0-17
+Imagery:
+  0-20
+Lite:
+  0-19
+  `;
+
+  return (
+    <Default zoom={17} baseLayers={baseLayers} basemaps={[]} note={note} />
+  );
+};
+export const DifferingLODBasemaps = () => {
+  // Topo 0-17
+  // Lite 0-19
+  // Imagery 0-20
+  const baseLayers = ['Topo', 'Imagery'] as LayerToken[];
+  const note = `
+Topo:
+  0-17
+Imagery:
+  0-20
+Lite:
+  0-19
+  `;
+
+  return (
+    <Default
+      zoom={19}
+      baseLayers={baseLayers}
+      basemaps={['Lite']}
+      note={note}
     />
   );
 };
