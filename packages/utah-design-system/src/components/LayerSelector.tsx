@@ -104,9 +104,12 @@ async function toggleLayer(
       layer = configOrToken.function();
     }
     managedObjects[label] = layer;
+  }
+
+  if (visible && layer) {
     container.add(layer);
   } else if (layer) {
-    layer.visible = visible;
+    container.remove(layer);
   }
 
   if (
@@ -150,7 +153,9 @@ async function toggleBasemap(
     // this line needs to be before the await load call below so that if this is called twice, it doesn't try to add the same layers twice
     managedLayers[label] = basemap;
     await basemap.load();
+  }
 
+  if (visible && basemap) {
     if (basemap.baseLayers.length > 0) {
       view.map?.basemap!.baseLayers.addMany(basemap.baseLayers);
     }
@@ -158,8 +163,8 @@ async function toggleBasemap(
       view.map?.basemap!.referenceLayers.addMany(basemap.referenceLayers);
     }
   } else if (basemap) {
-    basemap.baseLayers.forEach((layer) => (layer.visible = visible));
-    basemap.referenceLayers.forEach((layer) => (layer.visible = visible));
+    view.map?.basemap!.baseLayers.removeMany(basemap.baseLayers);
+    view.map?.basemap!.referenceLayers.removeMany(basemap.referenceLayers);
   }
 
   if (basemap && visible && view.ready) {
@@ -273,18 +278,6 @@ export function LayerSelector({
       return;
     }
 
-    for (const configOrToken of basemaps) {
-      const label = getLabel(configOrToken);
-      toggleBasemap(
-        configOrToken,
-        label,
-        label === selectedRadioBtnLabel,
-        managedLayers.current,
-        options.view,
-        options.quadWord,
-      );
-    }
-
     for (const configOrToken of baseLayers) {
       const label = getLabel(configOrToken);
       toggleLayer(
@@ -307,6 +300,18 @@ export function LayerSelector({
           options.quadWord!,
         );
       }
+    }
+
+    for (const configOrToken of basemaps) {
+      const label = getLabel(configOrToken);
+      toggleBasemap(
+        configOrToken,
+        label,
+        label === selectedRadioBtnLabel,
+        managedLayers.current,
+        options.view,
+        options.quadWord,
+      );
     }
 
     for (const configOrToken of referenceLayers) {
