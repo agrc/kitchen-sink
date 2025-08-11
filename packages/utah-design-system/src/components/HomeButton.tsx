@@ -20,11 +20,11 @@ export const HomeButton = ({
   return (
     <div
       ref={uiPosition}
-      className="group flex size-[32px] items-center justify-center bg-white shadow-[0_1px_2px_#0000004d]"
+      className="group/icon flex size-[32px] items-center justify-center bg-white shadow-[0_1px_2px_#0000004d] dark:bg-zinc-800 dark:ring-white/10"
     >
       <Button
         variant="icon"
-        className="size-full stroke-[4] p-0 transition-colors duration-150 ease-in-out will-change-transform group-hover:bg-[#f3f3f3] focus:min-h-0 focus:outline-offset-[-2px]"
+        className="group/button group/icon-hover:bg-[#f3f3f3] size-full stroke-[4] p-0 transition-colors duration-150 ease-in-out will-change-transform focus:min-h-0 focus:outline-offset-[-2px]"
         aria-label="Default extent"
         onPress={() => {
           goHome();
@@ -32,7 +32,7 @@ export const HomeButton = ({
         }}
       >
         <HomeIcon
-          className="size-5 stroke-[1.5] text-[#6e6e6e] transition-colors duration-150 ease-in-out will-change-transform group-hover:text-[#151515]"
+          className="group-enabled/button:[#6e6e6e] group-disabled/button:[#cfcfcf] size-5 stroke-[1.5] transition-colors duration-150 ease-in-out will-change-transform group-enabled/button:group-hover/button:text-[#151515] group-disabled/button:opacity-50 dark:text-[#9e9e9e] dark:group-enabled/button:group-hover/button:text-white"
           aria-hidden
         />
         <span className="sr-only">Go Home</span>
