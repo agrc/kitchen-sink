@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.27.4](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.27.3...utah-design-system-v1.27.4) (2025-08-11)
+
+
+### Bug Fixes
+
+* **layer-selector:** switch from toggling visibility to add/remove ([086dae9](https://github.com/agrc/kitchen-sink/commit/086dae9eead0d1d0b2f97f57af42bb0fb1518393))
+
 ## [1.27.3](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.27.2...utah-design-system-v1.27.3) (2025-07-30)
 
 
