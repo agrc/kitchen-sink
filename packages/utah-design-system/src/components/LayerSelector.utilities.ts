@@ -252,10 +252,17 @@ function createDefaultTileInfo() {
 
 function getTileInfo(token: Exclude<LayerToken, 'Land Ownership'>) {
   switch (token) {
-    case 'Color IR':
     case 'Imagery': {
       // default lods is 0 to 20
       return defaultTileInfo;
+    }
+
+    // max level is 18
+    case 'Color IR': {
+      return new TileInfo({
+        ...defaultTileInfo,
+        lods: defaultTileInfo.lods.slice(0, 19),
+      });
     }
 
     // max level is 17
