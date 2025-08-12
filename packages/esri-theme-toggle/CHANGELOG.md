@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/agrc/kitchen-sink/compare/esri-theme-toggle-v1.1.1...esri-theme-toggle-v1.1.2) (2025-08-12)
+
+
+### Bug Fixes
+
+* **theme-toggle:** add calcite class toggle to body ([59a4908](https://github.com/agrc/kitchen-sink/commit/59a4908ebd290402a7ad0c7586142ab43c6af13c))
+
 ## [1.1.1](https://github.com/agrc/kitchen-sink/compare/esri-theme-toggle-v1.1.0...esri-theme-toggle-v1.1.1) (2025-05-06)
 
 

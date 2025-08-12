@@ -1,6 +1,6 @@
 {
   "packages/eslint-config": "1.2.3",
-  "packages/esri-theme-toggle": "1.1.1",
+  "packages/esri-theme-toggle": "1.1.2",
   "packages/layer-selector": "6.4.0",
   "packages/mouse-trap": "2.1.2",
   "packages/tailwind-preset": "1.2.0",
