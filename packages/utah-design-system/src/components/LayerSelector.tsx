@@ -86,7 +86,7 @@ function getLabel(configOrToken: LayerConfigOrToken | BasemapConfigOrToken) {
     : configOrToken.label;
 }
 
-async function toggleLayer(
+export async function toggleLayer(
   configOrToken: LayerConfigOrToken,
   label: string,
   visible: boolean,
@@ -95,24 +95,28 @@ async function toggleLayer(
   quadWord: string,
 ) {
   let layer = managedObjects[label] as __esri.Layer | undefined;
-  if (!layer && visible) {
-    if (typeof configOrToken === 'string') {
-      layer = getLayerFromToken(configOrToken, quadWord);
-    } else {
-      layer = configOrToken.function();
+  if (visible) {
+    // add layer
+    if (!layer) {
+      if (typeof configOrToken === 'string') {
+        layer = getLayerFromToken(configOrToken, quadWord);
+      } else {
+        layer = configOrToken.function();
+      }
+      managedObjects[label] = layer;
     }
-    managedObjects[label] = layer;
-  }
 
-  if (!visible && layer) {
-    // we need to remove rather than set visible to false so that the map view resets it's max & min scale levels
-    container.remove(layer);
-  } else if (layer && !container.includes(layer)) {
     container.add(layer);
+  } else {
+    // remove layer if it exists
+    if (layer) {
+      // we need to remove rather than set visible to false so that the map view resets it's max & min scale levels
+      container.remove(layer);
+    }
   }
 }
 
-async function toggleBasemap(
+export async function toggleBasemap(
   configOrToken: BasemapConfigOrToken,
   label: string,
   visible: boolean,
@@ -121,29 +125,21 @@ async function toggleBasemap(
   quadWord?: string,
 ) {
   let basemap = managedLayers[label] as __esri.Basemap | undefined;
-  if (!basemap && visible) {
-    if (typeof configOrToken === 'string') {
-      basemap = new Basemap(
-        getHappyPathBasemapProperties(configOrToken, quadWord),
-      );
-    } else {
-      basemap = configOrToken.function();
+  if (visible) {
+    if (!basemap) {
+      if (typeof configOrToken === 'string') {
+        basemap = new Basemap(
+          getHappyPathBasemapProperties(configOrToken, quadWord),
+        );
+      } else {
+        basemap = configOrToken.function();
+      }
+
+      // this line needs to be before the await load call below so that if this is called twice, it doesn't try to add the same layers twice
+      managedLayers[label] = basemap;
+      await basemap.load();
     }
 
-    // this line needs to be before the await load call below so that if this is called twice, it doesn't try to add the same layers twice
-    managedLayers[label] = basemap;
-    await basemap.load();
-  }
-
-  if (!visible && basemap) {
-    // we need to remove rather than set visible to false so that the map view resets it's max & min scale levels
-    if (basemap.baseLayers.length > 0) {
-      view.map?.basemap!.baseLayers.removeMany(basemap.baseLayers);
-    }
-    if (basemap.referenceLayers.length > 0) {
-      view.map?.basemap!.referenceLayers.removeMany(basemap.referenceLayers);
-    }
-  } else if (basemap) {
     if (basemap.baseLayers.length > 0) {
       for (const baseLayer of basemap.baseLayers) {
         if (!view.map?.basemap?.baseLayers.includes(baseLayer)) {
@@ -156,6 +152,17 @@ async function toggleBasemap(
         if (!view.map?.basemap?.referenceLayers.includes(referenceLayer)) {
           view.map?.basemap!.referenceLayers.add(referenceLayer);
         }
+      }
+    }
+  } else {
+    // remove layer if it exists
+    if (basemap) {
+      // we need to remove rather than set visible to false so that the map view resets it's max & min scale levels
+      if (basemap.baseLayers.length > 0) {
+        view.map?.basemap!.baseLayers.removeMany(basemap.baseLayers);
+      }
+      if (basemap.referenceLayers.length > 0) {
+        view.map?.basemap!.referenceLayers.removeMany(basemap.referenceLayers);
       }
     }
   }
