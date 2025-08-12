@@ -92,7 +92,6 @@ async function toggleLayer(
   visible: boolean,
   container: __esri.Collection<__esri.Layer>,
   managedObjects: Record<string, __esri.Layer | __esri.Basemap>,
-  view: MapView,
   quadWord: string,
 ) {
   let layer = managedObjects[label] as __esri.Layer | undefined;
@@ -105,10 +104,11 @@ async function toggleLayer(
     managedObjects[label] = layer;
   }
 
-  if (visible && layer) {
-    container.add(layer);
-  } else if (layer) {
+  if (!visible && layer) {
+    // we need to remove rather than set visible to false so that the map view resets it's max & min scale levels
     container.remove(layer);
+  } else if (layer && !container.includes(layer)) {
+    container.add(layer);
   }
 }
 
@@ -135,16 +135,29 @@ async function toggleBasemap(
     await basemap.load();
   }
 
-  if (visible && basemap) {
+  if (!visible && basemap) {
+    // we need to remove rather than set visible to false so that the map view resets it's max & min scale levels
     if (basemap.baseLayers.length > 0) {
-      view.map?.basemap!.baseLayers.addMany(basemap.baseLayers);
+      view.map?.basemap!.baseLayers.removeMany(basemap.baseLayers);
     }
     if (basemap.referenceLayers.length > 0) {
-      view.map?.basemap!.referenceLayers.addMany(basemap.referenceLayers);
+      view.map?.basemap!.referenceLayers.removeMany(basemap.referenceLayers);
     }
   } else if (basemap) {
-    view.map?.basemap!.baseLayers.removeMany(basemap.baseLayers);
-    view.map?.basemap!.referenceLayers.removeMany(basemap.referenceLayers);
+    if (basemap.baseLayers.length > 0) {
+      for (const baseLayer of basemap.baseLayers) {
+        if (!view.map?.basemap?.baseLayers.includes(baseLayer)) {
+          view.map?.basemap!.baseLayers.add(baseLayer);
+        }
+      }
+    }
+    if (basemap.referenceLayers.length > 0) {
+      for (const referenceLayer of basemap.referenceLayers) {
+        if (!view.map?.basemap?.referenceLayers.includes(referenceLayer)) {
+          view.map?.basemap!.referenceLayers.add(referenceLayer);
+        }
+      }
+    }
   }
 }
 
@@ -258,7 +271,6 @@ export function LayerSelector({
         label === selectedRadioBtnLabel,
         map.basemap!.baseLayers,
         managedLayers.current,
-        options.view,
         options.quadWord!,
       );
       if (label === 'Hybrid') {
@@ -268,7 +280,6 @@ export function LayerSelector({
           label === selectedRadioBtnLabel,
           map.basemap!.referenceLayers,
           managedLayers.current,
-          options.view,
           options.quadWord!,
         );
       }
@@ -287,7 +298,6 @@ export function LayerSelector({
     }
 
     for (const configOrToken of referenceLayers) {
-      // todo: handle layer ordering (I *think* that esri might already make sure that polygons are under line are under points...)
       const label = getLabel(configOrToken);
       toggleLayer(
         configOrToken,
@@ -295,7 +305,6 @@ export function LayerSelector({
         selectedCheckboxLabels.includes(label),
         map.basemap!.referenceLayers,
         managedLayers.current,
-        options.view,
         options.quadWord!,
       );
     }
@@ -309,7 +318,6 @@ export function LayerSelector({
         selectedCheckboxLabels.includes(label),
         map.layers,
         managedLayers.current,
-        options.view,
         options.quadWord!,
       );
     }
