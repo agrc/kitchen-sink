@@ -82,41 +82,19 @@ export function getHappyPathBasemapProperties(
       checkForQuadWord();
 
       return {
-        baseLayers: [
-          new WebTileLayer({
-            urlTemplate:
-              `https://discover.agrc.utah.gov/login/path/${quadWordToken}/tiles/utah/{level}/{col}/{row}`.replace(
-                quadWordToken,
-                quadWord!,
-              ),
-            copyright: 'Hexagon',
-            tileInfo: getTileInfo(token),
-          }),
-        ],
+        baseLayers: [getLayerFromToken('Hybrid', quadWord!)],
       };
     }
     case 'Topo': {
       checkForQuadWord();
 
       return {
-        baseLayers: [
-          new WebTileLayer({
-            urlTemplate:
-              `https://discover.agrc.utah.gov/login/path/${quadWordToken}/tiles/topo_basemap/{level}/{col}/{row}`.replace(
-                quadWordToken,
-                quadWord!,
-              ),
-            copyright: 'Hexagon',
-            tileInfo: getTileInfo(token),
-          }),
-        ],
+        baseLayers: [getLayerFromToken('Topo', quadWord!)],
       };
     }
     case 'Terrain': {
       return {
-        portalItem: {
-          id: '38a765a1306e4ba3804c0faaeede95e0',
-        },
+        baseLayers: [getLayerFromToken('Terrain', quadWord!)],
       };
     }
     case 'Lite': {
@@ -130,17 +108,7 @@ export function getHappyPathBasemapProperties(
       checkForQuadWord();
 
       return {
-        baseLayers: [
-          new WebTileLayer({
-            urlTemplate:
-              `https://discover.agrc.utah.gov/login/path/${quadWordToken}/tiles/naip_2021_nrg/{level}/{col}/{row}`.replace(
-                quadWordToken,
-                quadWord!,
-              ),
-            copyright: 'UGRC',
-            tileInfo: getTileInfo(token),
-          }),
-        ],
+        baseLayers: [getLayerFromToken('Color IR', quadWord!)],
       };
     }
     case 'Hybrid': {
