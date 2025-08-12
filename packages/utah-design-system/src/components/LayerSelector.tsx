@@ -37,6 +37,8 @@ type BaseOptions = {
   referenceLayers?: LayerConfigOrToken[];
   /** option passed to view.ui.add(), defaults to top-right */
   position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+  /** callback fired when the basemap is changed */
+  onBasemapChange?: (label: string) => void;
 };
 
 type WithBasemaps = BaseOptions & {
@@ -179,6 +181,7 @@ export function LayerSelector({
     operationalLayers = [],
     basemaps = [],
     baseLayers = [],
+    onBasemapChange = () => {},
     ...options
   },
   ...props
@@ -356,7 +359,10 @@ export function LayerSelector({
             <RadioGroup
               className="mb-2 flex-1"
               value={selectedRadioBtnLabel}
-              onChange={setSelectedRadioBtnLabel}
+              onChange={(label) => {
+                setSelectedRadioBtnLabel(label);
+                onBasemapChange(label);
+              }}
             >
               {basemaps.map((configOrToken) => {
                 const value = getLabel(configOrToken);
