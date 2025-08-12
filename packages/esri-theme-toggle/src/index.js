@@ -48,15 +48,17 @@ function toggleStylesheet() {
 function updateEsriUiElements() {
   const isDarkMode = media.matches;
 
+  const toggleClass = (node) => {
+    node.classList.toggle('calcite-mode-dark', isDarkMode);
+  };
+
+  toggleClass(document.body);
+
   // Toggle ArcGIS Maps SDK widgets mode
   // ref: https://developers.arcgis.com/calcite-design-system/tutorials/build-a-dark-mode-switch/
   const widgets = document.getElementsByClassName('esri-ui');
   for (const widget of widgets) {
-    if (isDarkMode) {
-      widget.classList.replace('calcite-mode-light', 'calcite-mode-dark');
-    } else {
-      widget.classList.replace('calcite-mode-dark', 'calcite-mode-light');
-    }
+    toggleClass(widget);
   }
 }
 
