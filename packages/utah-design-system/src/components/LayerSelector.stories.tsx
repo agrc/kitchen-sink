@@ -278,7 +278,7 @@ Lite:
     <Default zoom={17} baseLayers={baseLayers} basemaps={[]} note={note} />
   );
 };
-export const DifferingLODBasemaps = () => {
+export const DifferingLODMix = () => {
   // Topo 0-17
   // Lite 0-19
   // Imagery 0-20
@@ -297,6 +297,28 @@ Lite:
       zoom={19}
       baseLayers={baseLayers}
       basemaps={['Lite']}
+      note={note}
+    />
+  );
+};
+export const DifferingLODBasemaps = () => {
+  // Topo 0-17
+  // Lite 0-19
+  // Imagery 0-20
+  const note = `
+Topo:
+  0-17
+Imagery:
+  0-20
+Lite:
+  0-19
+  `;
+
+  return (
+    <Default
+      zoom={19}
+      baseLayers={[]}
+      basemaps={['Topo', 'Lite', 'Hybrid', 'Terrain', 'Color IR']}
       note={note}
     />
   );
