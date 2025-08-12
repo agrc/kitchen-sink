@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.28.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.27.4...utah-design-system-v1.28.0) (2025-08-12)
+
+
+### Features
+
+* **layer-selector:** implement onBasemapChange prop ([5fa9528](https://github.com/agrc/kitchen-sink/commit/5fa952829d99812f6d205de2402d4fe948c1aa2c))
+
+
+### Bug Fixes
+
+* **layer-selector:** add guards against adding duplicate layers ([2aee0a0](https://github.com/agrc/kitchen-sink/commit/2aee0a0b2024110bd0dad76a88b1d68198b26a44))
+* **layer-selector:** color ir only goes through level 18 ([77b0880](https://github.com/agrc/kitchen-sink/commit/77b0880a3543333838c51c71eaf243d432c4e859))
+* **layer-selector:** remove unnecessary zoom when changing layers ([0cd9473](https://github.com/agrc/kitchen-sink/commit/0cd947326a70c43e617338ad7e9e242e783bf810))
+* **layer-selector:** switch from webmap to directly layer create for Terrain token in basemap prop ([f8e4f44](https://github.com/agrc/kitchen-sink/commit/f8e4f449d3281f59a24bc898bce4765ee8e20f5e))
+
 ## [1.27.4](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.27.3...utah-design-system-v1.27.4) (2025-08-11)
 
 
