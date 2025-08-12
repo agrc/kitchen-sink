@@ -48,7 +48,7 @@ const config = defineConfig({
     rollupOptions,
   },
   test: {
-    environment: 'jsdom',
+    environment: 'happy-dom',
     globals: true,
   },
 });
