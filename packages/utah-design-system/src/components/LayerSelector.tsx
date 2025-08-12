@@ -1,5 +1,4 @@
 import Basemap from '@arcgis/core/Basemap';
-import TileInfo from '@arcgis/core/layers/support/TileInfo';
 import MapView from '@arcgis/core/views/MapView';
 import {
   Button,
@@ -111,25 +110,6 @@ async function toggleLayer(
   } else if (layer) {
     container.remove(layer);
   }
-
-  if (
-    visible &&
-    container === view.map?.basemap!.baseLayers &&
-    'tileInfo' in layer! &&
-    layer.tileInfo instanceof TileInfo &&
-    view.ready
-  ) {
-    await updateViewMaxZoom(view, layer.tileInfo);
-  }
-}
-
-async function updateViewMaxZoom(view: MapView, tileInfo: __esri.TileInfo) {
-  const newMaxZoomLevel = tileInfo.lods[tileInfo.lods.length - 1]!.level;
-  if (view.zoom > newMaxZoomLevel) {
-    await view.goTo({ zoom: newMaxZoomLevel });
-  }
-
-  view.constraints.maxZoom = newMaxZoomLevel;
 }
 
 async function toggleBasemap(
@@ -165,14 +145,6 @@ async function toggleBasemap(
   } else if (basemap) {
     view.map?.basemap!.baseLayers.removeMany(basemap.baseLayers);
     view.map?.basemap!.referenceLayers.removeMany(basemap.referenceLayers);
-  }
-
-  if (basemap && visible && view.ready) {
-    for (const layer of basemap.baseLayers) {
-      if ('tileInfo' in layer! && layer.tileInfo instanceof TileInfo) {
-        await updateViewMaxZoom(view, layer.tileInfo);
-      }
-    }
   }
 }
 
