@@ -108,7 +108,9 @@ export async function toggleLayer(
       managedObjects[label] = layer;
     }
 
-    container.add(layer);
+    if (!container.includes(layer)) {
+      container.add(layer);
+    }
   } else {
     // remove layer if it exists
     if (layer) {
