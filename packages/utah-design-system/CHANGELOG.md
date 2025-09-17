@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.28.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.28.1...utah-design-system-v1.28.2) (2025-09-17)
+
+
+### Bug Fixes
+
+* **layer-selector:** prevent duplicate layers from being added to the map ([a597673](https://github.com/agrc/kitchen-sink/commit/a597673ad7c37f8c5a10bc4870887984b118f4b7))
+
 ## [1.28.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.28.0...utah-design-system-v1.28.1) (2025-08-18)
 
 
