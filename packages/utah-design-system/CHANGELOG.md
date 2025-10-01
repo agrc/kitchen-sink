@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.29.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.28.2...utah-design-system-v1.29.0) (2025-10-01)
+
+
+### Features
+
+* **uds:** create ToggleButtonGroup component ([7d023f5](https://github.com/agrc/kitchen-sink/commit/7d023f5263e2cf0f58d5916c32c0519e295f9bb6))
+
+
+### Bug Fixes
+
+* **uds:** add missing import to barrel file ([471c31a](https://github.com/agrc/kitchen-sink/commit/471c31ac62fd3254e86990391d4e1321de17a5d3))
+
 ## [1.28.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.28.1...utah-design-system-v1.28.2) (2025-09-17)
 
 
