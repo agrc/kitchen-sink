@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "@arcgis/core": "4.x",
-    "ky": "^1.8.2"
+    "ky": "^1.10.0"
   },
   "peerDependencies": {
     "react": ">=16.8.0"
