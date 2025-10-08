@@ -31,6 +31,7 @@ export * from './components/TextArea';
 export * from './components/TextField';
 export * from './components/ToggleButton';
 export * from './components/ToggleButtonGroup';
+export * from './components/Tooltip';
 export * from './components/UtahIdLogin';
 export * from './contexts/FirebaseAnalyticsProvider';
 export * from './contexts/FirebaseAppProvider';
