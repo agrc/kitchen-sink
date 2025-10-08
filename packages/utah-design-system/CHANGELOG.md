@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.30.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.29.0...utah-design-system-v1.30.0) (2025-10-08)
+
+
+### Features
+
+* **uds:** introduce a tooltip component ([ceedbed](https://github.com/agrc/kitchen-sink/commit/ceedbed6024b6caf9444e8b15284772ecb2551f6))
+
 ## [1.29.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.28.2...utah-design-system-v1.29.0) (2025-10-01)
 
 
