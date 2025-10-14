@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.1](https://github.com/agrc/kitchen-sink/compare/utilities-v3.1.0...utilities-v3.1.1) (2025-10-14)
+
+
+### Bug Fixes
+
+* **uds:** make view input param type more permissive ([cdf5b90](https://github.com/agrc/kitchen-sink/commit/cdf5b9052283304edac4299ec48ee486c744c07a))
+
 ## [3.1.0](https://github.com/agrc/kitchen-sink/compare/utilities-v3.0.4...utilities-v3.1.0) (2025-08-18)
 
 
