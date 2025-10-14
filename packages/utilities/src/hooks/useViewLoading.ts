@@ -2,7 +2,7 @@ import { watch, whenOnce } from '@arcgis/core/core/reactiveUtils';
 import { useEffect, useRef, useState } from 'react';
 
 export default function useViewLoading(
-  view: __esri.MapView | null,
+  view: __esri.MapView | null | undefined,
   debounceDuration = 500,
 ) {
   const [isLoading, setIsLoading] = useState(false);
