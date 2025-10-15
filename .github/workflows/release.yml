@@ -47,9 +47,7 @@ jobs:
         run: npm run build
 
       - name: 🚢 Publish package
-        run: npm publish --access public --provenance --workspace @ugrc/${{ steps.folder.outputs.matched_first }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public --workspace @ugrc/${{ steps.folder.outputs.matched_first }}
 
   deploy-storybook:
     name: 📚 Deploy documentation
