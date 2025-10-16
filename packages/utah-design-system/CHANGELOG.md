@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.30.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.30.1...utah-design-system-v1.30.2) (2025-10-16)
+
+
+### Bug Fixes
+
+* **uds:** allow custom styles for Banner ([8a3b333](https://github.com/agrc/kitchen-sink/commit/8a3b333df99bf3089132fc2abf720d09f0466cc4))
+
 ## [1.30.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.30.0...utah-design-system-v1.30.1) (2025-10-14)
 
 
