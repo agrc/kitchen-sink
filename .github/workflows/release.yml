@@ -12,6 +12,8 @@ jobs:
   deploy:
     name: Create and publish package
     runs-on: ubuntu-latest
+    environment:
+      name: prod
     permissions:
       contents: read
       id-token: write
