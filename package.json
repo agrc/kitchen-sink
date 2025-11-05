@@ -58,7 +58,7 @@
     "@storybook/react-vite": "^9.1.13",
     "@testing-library/react": "^16.3.0",
     "@types/node": "^24.9.1",
-    "@vitejs/plugin-react": "^4.7.0",
+    "@vitejs/plugin-react": "^5.0.2",
     "autoprefixer": "^10.4.21",
     "chokidar-cli": "^3.0.0",
     "eslint": "^9.30.1",
@@ -78,7 +78,7 @@
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-react-aria-components": "^1.2.0",
     "typescript": "^5.9.3",
-    "vite": "^6.3.4",
+    "vite": "^7.1.4",
     "vitest": "^3.2.4"
   },
   "msw": {
