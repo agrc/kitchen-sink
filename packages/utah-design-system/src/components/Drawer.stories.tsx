@@ -45,6 +45,29 @@ export const Bottom: Story = {
   },
 };
 
+export const BottomExtraLarge: Story = {
+  render: () => {
+    const state = useOverlayTriggerState({});
+    const overlayTriggerProps = useOverlayTrigger(
+      {
+        type: 'dialog',
+      },
+      state,
+    );
+
+    return (
+      <Drawer
+        type="tray"
+        state={state}
+        {...overlayTriggerProps}
+        size="extraLarge"
+      >
+        <LoremIpsum p={1} />
+      </Drawer>
+    );
+  },
+};
+
 export const AllowFullScreen: Story = {
   render: () => {
     const state = useOverlayTriggerState({});
@@ -80,6 +103,26 @@ export const Side: Story = {
 
     return (
       <Drawer state={state} {...overlayTriggerProps}>
+        <div className="bg-green-200">
+          <LoremIpsum p={1} />
+        </div>
+      </Drawer>
+    );
+  },
+};
+
+export const SideLarge: Story = {
+  render: () => {
+    const state = useOverlayTriggerState({});
+    const overlayTriggerProps = useOverlayTrigger(
+      {
+        type: 'dialog',
+      },
+      state,
+    );
+
+    return (
+      <Drawer state={state} {...overlayTriggerProps} size="large">
         <div className="bg-green-200">
           <LoremIpsum p={1} />
         </div>
