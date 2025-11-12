@@ -44,7 +44,7 @@ const drawer = tv({
   variants: {
     type: {
       sidebar: {
-        container: "relative h-full transition-[width] data-[open='false']:w-0",
+        container: 'relative h-full transition-[width] data-[open="false"]:w-0',
         content:
           "h-full overflow-y-auto data-[open='false']:-translate-x-full data-[open='true']:translate-x-0",
         triggerButton:
@@ -118,32 +118,32 @@ const drawer = tv({
       type: 'tray',
       size: 'small',
       class: {
-        container: "data-[open='true']:h-64",
-        content: "data-[open='true']:h-64",
+        container: 'data-[open="true"]:h-64',
+        content: 'data-[open="true"]:h-64',
       },
     },
     {
       type: 'tray',
       size: 'medium',
       class: {
-        container: "data-[open='true']:h-80",
-        content: "data-[open='true']:h-80",
+        container: 'data-[open="true"]:h-80',
+        content: 'data-[open="true"]:h-80',
       },
     },
     {
       type: 'tray',
       size: 'large',
       class: {
-        container: "data-[open='true']:h-96",
-        content: "data-[open='true']:h-96",
+        container: 'data-[open="true"]:h-96',
+        content: 'data-[open="true"]:h-96',
       },
     },
     {
       type: 'tray',
       size: 'extraLarge',
       class: {
-        container: "data-[open='true']:h-[28rem]",
-        content: "data-[open='true']:h-[28rem]",
+        container: 'data-[open="true"]:h-[28rem]',
+        content: 'data-[open="true"]:h-[28rem]',
       },
     },
     {
