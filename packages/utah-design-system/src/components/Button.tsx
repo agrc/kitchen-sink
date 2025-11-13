@@ -4,12 +4,13 @@ import {
   type ButtonProps as RACButtonProps,
 } from 'react-aria-components';
 import { tv } from 'tailwind-variants';
+import type { ComponentSize } from '../types';
 import { Spinner } from './Spinner';
 import { focusRing } from './utils';
 
 export interface ButtonProps extends RACButtonProps {
   variant?: 'primary' | 'secondary' | 'accent' | 'destructive' | 'icon';
-  size?: 'extraSmall' | 'small' | 'medium' | 'large' | 'extraLarge';
+  size?: ComponentSize;
 }
 
 const button = tv({
