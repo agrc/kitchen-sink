@@ -9,6 +9,7 @@ import {
 import type { OverlayTriggerState } from 'react-stately';
 import { twJoin, twMerge } from 'tailwind-merge';
 import { tv } from 'tailwind-variants';
+import type { ComponentSize } from '../types';
 import { Button } from './Button';
 
 /*
@@ -60,6 +61,7 @@ const drawer = tv({
       },
     },
     size: {
+      extraSmall: null,
       small: null,
       medium: null,
       large: null,
@@ -73,6 +75,14 @@ const drawer = tv({
   },
   compoundVariants: [
     // Sidebar sizes
+    {
+      type: 'sidebar',
+      size: 'extraSmall',
+      class: {
+        container: 'w-48',
+        content: 'w-48',
+      },
+    },
     {
       type: 'sidebar',
       size: 'small',
@@ -114,6 +124,14 @@ const drawer = tv({
       },
     },
     // Tray sizes
+    {
+      type: 'tray',
+      size: 'extraSmall',
+      class: {
+        container: 'data-[open="true"]:h-48',
+        content: 'data-[open="true"]:h-48',
+      },
+    },
     {
       type: 'tray',
       size: 'small',
@@ -164,7 +182,7 @@ export type DrawerProps = {
   className?: string;
   main?: boolean;
   overlayProps: DOMProps;
-  size?: 'small' | 'medium' | 'large' | 'extraLarge';
+  size?: ComponentSize;
   state: OverlayTriggerState;
   triggerProps: AriaButtonProps;
   type?: 'sidebar' | 'tray';
