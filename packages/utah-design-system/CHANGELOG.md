@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.32.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.31.0...utah-design-system-v1.32.0) (2025-11-13)
+
+
+### Features
+
+* **uds:** implement size prop for Drawer ([475d95d](https://github.com/agrc/kitchen-sink/commit/475d95d3544cf2a864465f2180f81b46c145b729))
+
 ## [1.31.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.30.2...utah-design-system-v1.31.0) (2025-11-05)
 
 
