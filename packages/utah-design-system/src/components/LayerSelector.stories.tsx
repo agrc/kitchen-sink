@@ -9,6 +9,8 @@ import Map from '@arcgis/core/Map';
 import MapView from '@arcgis/core/views/MapView';
 import Fullscreen from '@arcgis/core/widgets/Fullscreen';
 import HomeButton from '@arcgis/core/widgets/Home';
+import '@arcgis/map-components/components/arcgis-home';
+import '@arcgis/map-components/components/arcgis-map';
 import type { Meta } from '@storybook/react-vite';
 import { useEffect, useRef, useState } from 'react';
 import { LayerSelector, type LayerSelectorProps } from './LayerSelector';
@@ -219,6 +221,7 @@ export const CustomLOD = () => {
 
   return <Default zoom={6} baseLayers={baseLayers} />;
 };
+
 export const DefaultSelection = () => {
   const baseLayers: BaseLayerConfigOrToken[] = [
     {
@@ -263,6 +266,7 @@ export const DefaultSelection = () => {
     />
   );
 };
+
 export const DifferingLODBaseLayers = () => {
   const baseLayers = ['Topo', 'Imagery', 'Lite'] as LayerToken[];
   const note = `
@@ -278,6 +282,7 @@ Lite:
     <Default zoom={17} baseLayers={baseLayers} basemaps={[]} note={note} />
   );
 };
+
 export const DifferingLODMix = () => {
   // Topo 0-17
   // Lite 0-19
@@ -301,6 +306,7 @@ Lite:
     />
   );
 };
+
 export const DifferingLODBasemaps = () => {
   // Topo 0-17
   // Lite 0-19
@@ -321,5 +327,42 @@ Lite:
       basemaps={['Topo', 'Lite', 'Hybrid', 'Terrain', 'Color IR']}
       note={note}
     />
+  );
+};
+
+export const MapComponent = () => {
+  const [selectorOptions, setSelectorOptions] =
+    useState<LayerSelectorProps | null>(null);
+  const mapRef = useRef<HTMLArcgisMapElement>(null);
+
+  const init = () => {
+    if (!mapRef.current?.view) {
+      console.error('Map view is not available yet');
+      return;
+    }
+
+    const selectorOptions: LayerSelectorProps = {
+      options: {
+        view: mapRef.current.view,
+        quadWord: import.meta.env.VITE_QUAD_WORD,
+        basemaps: ['Lite', 'Imagery', 'Topo'],
+      },
+    };
+
+    setSelectorOptions(selectorOptions);
+  };
+
+  return (
+    <arcgis-map
+      ref={mapRef}
+      basemap="topo" // required to get the map to load before passing as an option to LayerSelector
+      className="h-96 w-full"
+      center={[-111.83, 39.71]}
+      zoom={10}
+      onarcgisViewReadyChange={init}
+    >
+      <arcgis-home slot="top-left"></arcgis-home>
+      {selectorOptions ? <LayerSelector {...selectorOptions} /> : null}
+    </arcgis-map>
   );
 };
