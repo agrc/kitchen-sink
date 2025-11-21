@@ -86,14 +86,18 @@ export function FileInput({
   };
 
   const removeFile = (index: number) => {
-    setSelectedFiles((prev) => {
-      const updated = prev.filter((_, i) => i !== index);
-      // Create a new FileList-like object and notify parent
+    const updated = selectedFiles.filter((_, i) => i !== index);
+    setSelectedFiles(updated);
+
+    // Create a new FileList-like object and notify parent
+    try {
       const dataTransfer = new DataTransfer();
       updated.forEach((file) => dataTransfer.items.add(file));
       onSelect?.(dataTransfer.files);
-      return updated;
-    });
+    } catch (error) {
+      // DataTransfer not available in this environment
+      console.warn('DataTransfer API not available:', error);
+    }
   };
 
   const clearFiles = () => {
@@ -171,7 +175,10 @@ export function FileInput({
           </div>
           <div className="space-y-1">
             {selectedFiles.map((file, index) => (
-              <div key={index} className={fileItemStyles()}>
+              <div
+                key={`${file.name}-${file.size}-${file.lastModified}`}
+                className={fileItemStyles()}
+              >
                 <div className="flex min-w-0 flex-1 flex-col">
                   <div className="truncate font-medium text-zinc-800 dark:text-zinc-200">
                     {file.name}
