@@ -3,7 +3,6 @@ import { useState } from 'react';
 import {
   FileTrigger as AriaFileTrigger,
   type FileTriggerProps as AriaFileTriggerProps,
-  type ValidationResult,
 } from 'react-aria-components';
 import { twJoin, twMerge } from 'tailwind-merge';
 import { tv } from 'tailwind-variants';
@@ -14,7 +13,7 @@ import { focusRing } from './utils';
 export interface FileInputProps extends Omit<AriaFileTriggerProps, 'children'> {
   label?: string;
   description?: string;
-  errorMessage?: string | ((validation: ValidationResult) => string);
+  errorMessage?: string;
   isRequired?: boolean;
   isDisabled?: boolean;
   isInvalid?: boolean;
@@ -60,26 +59,6 @@ function formatFileSize(bytes: number): string {
   const sizes = ['Bytes', 'KB', 'MB', 'GB'];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
   return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + ' ' + sizes[i];
-}
-
-function createDefaultValidationResult(): ValidationResult {
-  return {
-    isInvalid: true,
-    validationErrors: [],
-    validationDetails: {
-      badInput: false,
-      customError: false,
-      patternMismatch: false,
-      rangeOverflow: false,
-      rangeUnderflow: false,
-      stepMismatch: false,
-      tooLong: false,
-      tooShort: false,
-      typeMismatch: false,
-      valueMissing: false,
-      valid: false,
-    },
-  };
 }
 
 export function FileInput({
@@ -221,13 +200,7 @@ export function FileInput({
       )}
 
       {description && <Description>{description}</Description>}
-      {isInvalid && errorMessage && (
-        <FieldError>
-          {typeof errorMessage === 'string'
-            ? errorMessage
-            : errorMessage(createDefaultValidationResult())}
-        </FieldError>
-      )}
+      {isInvalid && errorMessage && <FieldError>{errorMessage}</FieldError>}
     </div>
   );
 }
