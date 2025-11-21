@@ -1,6 +1,7 @@
 import { UploadIcon, XIcon } from 'lucide-react';
 import { useState } from 'react';
 import {
+  Button as AriaButton,
   FileTrigger as AriaFileTrigger,
   type FileTriggerProps as AriaFileTriggerProps,
 } from 'react-aria-components';
@@ -125,7 +126,8 @@ export function FileInput({
         acceptedFileTypes={acceptedFileTypes}
         onSelect={handleSelect}
       >
-        <div
+        <AriaButton
+          isDisabled={isDisabled}
           className={dropZoneStyles({
             isDisabled,
             isInvalid,
@@ -154,7 +156,7 @@ export function FileInput({
               Accepted types: {acceptedFileTypes.join(', ')}
             </div>
           )}
-        </div>
+        </AriaButton>
       </AriaFileTrigger>
 
       {selectedFiles.length > 0 && (
