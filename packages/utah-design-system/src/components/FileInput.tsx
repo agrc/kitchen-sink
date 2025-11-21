@@ -2,6 +2,7 @@ import { UploadIcon, XIcon } from 'lucide-react';
 import { useState } from 'react';
 import {
   Button as AriaButton,
+  DropZone as AriaDropZone,
   FileTrigger as AriaFileTrigger,
   type FileTriggerProps as AriaFileTriggerProps,
 } from 'react-aria-components';
@@ -41,6 +42,9 @@ const dropZoneStyles = tv({
     },
     isInvalid: {
       true: 'border-warning-600 hover:border-warning-700 dark:border-warning-600 dark:hover:border-warning-500',
+    },
+    isDropTarget: {
+      true: 'border-primary-900 bg-primary-50 dark:border-secondary-600 dark:bg-secondary-900/20',
     },
   },
 });
@@ -86,6 +90,47 @@ export function FileInput({
     }
   };
 
+  const handleDrop = async (e: {
+    items: Array<{
+      kind: string;
+      types: Set<string>;
+      getText: (type: string) => Promise<string>;
+      getFile?: () => Promise<File>;
+    }>;
+  }) => {
+    // Filter for files only
+    const filePromises = e.items
+      .filter((item) => item.kind === 'file')
+      .map((item) => item.getFile?.());
+
+    const files = (await Promise.all(filePromises)).filter(
+      (file): file is File => file !== undefined,
+    );
+
+    if (files.length > 0) {
+      // If not allowing multiple, only take the first file
+      const filesToAdd = allowsMultiple ? files : [files[0]];
+
+      // Filter by accepted file types if specified
+      const filteredFiles = acceptedFileTypes
+        ? filesToAdd.filter((file) => acceptedFileTypes.includes(file.type))
+        : filesToAdd;
+
+      if (filteredFiles.length > 0) {
+        setSelectedFiles(filteredFiles);
+
+        // Create FileList from files
+        try {
+          const dataTransfer = new DataTransfer();
+          filteredFiles.forEach((file) => dataTransfer.items.add(file));
+          onSelect?.(dataTransfer.files);
+        } catch (error) {
+          console.warn('DataTransfer API not available:', error);
+        }
+      }
+    }
+  };
+
   const removeFile = (index: number) => {
     const updated = selectedFiles.filter((_, i) => i !== index);
     setSelectedFiles(updated);
@@ -120,44 +165,49 @@ export function FileInput({
         </Label>
       )}
 
-      <AriaFileTrigger
-        {...props}
-        allowsMultiple={allowsMultiple}
-        acceptedFileTypes={acceptedFileTypes}
-        onSelect={handleSelect}
-      >
-        <AriaButton
-          isDisabled={isDisabled}
-          className={dropZoneStyles({
+      <AriaDropZone
+        onDrop={handleDrop}
+        className={({ isDropTarget }) =>
+          dropZoneStyles({
             isDisabled,
             isInvalid,
-          })}
+            isDropTarget,
+          })
+        }
+      >
+        <AriaFileTrigger
+          {...props}
+          allowsMultiple={allowsMultiple}
+          acceptedFileTypes={acceptedFileTypes}
+          onSelect={handleSelect}
         >
-          <UploadIcon
-            className={twJoin(
-              'h-8 w-8',
-              isDisabled
-                ? 'text-gray-300 dark:text-zinc-600'
-                : 'text-zinc-400 dark:text-zinc-500',
-            )}
-          />
-          <div
-            className={twJoin(
-              'text-sm',
-              isDisabled
-                ? 'text-gray-400 dark:text-zinc-600'
-                : 'text-zinc-600 dark:text-zinc-400',
-            )}
-          >
-            {placeholder}
-          </div>
-          {acceptedFileTypes && acceptedFileTypes.length > 0 && (
-            <div className="text-xs text-zinc-500 dark:text-zinc-500">
-              Accepted types: {acceptedFileTypes.join(', ')}
+          <AriaButton isDisabled={isDisabled} className="w-full">
+            <UploadIcon
+              className={twJoin(
+                'h-8 w-8',
+                isDisabled
+                  ? 'text-gray-300 dark:text-zinc-600'
+                  : 'text-zinc-400 dark:text-zinc-500',
+              )}
+            />
+            <div
+              className={twJoin(
+                'text-sm',
+                isDisabled
+                  ? 'text-gray-400 dark:text-zinc-600'
+                  : 'text-zinc-600 dark:text-zinc-400',
+              )}
+            >
+              {placeholder}
             </div>
-          )}
-        </AriaButton>
-      </AriaFileTrigger>
+            {acceptedFileTypes && acceptedFileTypes.length > 0 && (
+              <div className="text-xs text-zinc-500 dark:text-zinc-500">
+                Accepted types: {acceptedFileTypes.join(', ')}
+              </div>
+            )}
+          </AriaButton>
+        </AriaFileTrigger>
+      </AriaDropZone>
 
       {selectedFiles.length > 0 && (
         <div className={fileListStyles()}>
