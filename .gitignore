@@ -4,6 +4,13 @@ node_modules
 # Built packages
 dist
 *.tsbuildinfo
+vite.config.js
+
+# TypeScript compiled output (ignore .js files in packages with TypeScript source)
+packages/utah-design-system/**/*.js
+!packages/utah-design-system/src/**/*.jsx
+packages/utilities/**/*.js
+!packages/utilities/**/*.jsx
 
 # Secrets
 .env.development
