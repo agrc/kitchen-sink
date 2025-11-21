@@ -62,6 +62,26 @@ function formatFileSize(bytes: number): string {
   return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + ' ' + sizes[i];
 }
 
+function createDefaultValidationResult(): ValidationResult {
+  return {
+    isInvalid: true,
+    validationErrors: [],
+    validationDetails: {
+      badInput: false,
+      customError: false,
+      patternMismatch: false,
+      rangeOverflow: false,
+      rangeUnderflow: false,
+      stepMismatch: false,
+      tooLong: false,
+      tooShort: false,
+      typeMismatch: false,
+      valueMissing: false,
+      valid: false,
+    },
+  };
+}
+
 export function FileInput({
   label,
   description,
@@ -88,11 +108,20 @@ export function FileInput({
   };
 
   const removeFile = (index: number) => {
-    setSelectedFiles((prev) => prev.filter((_, i) => i !== index));
+    setSelectedFiles((prev) => {
+      const updated = prev.filter((_, i) => i !== index);
+      // Create a new FileList-like object and notify parent
+      const dataTransfer = new DataTransfer();
+      updated.forEach((file) => dataTransfer.items.add(file));
+      onSelect?.(dataTransfer.files);
+      return updated;
+    });
   };
 
   const clearFiles = () => {
     setSelectedFiles([]);
+    // Notify parent that files have been cleared
+    onSelect?.(null);
   };
 
   return (
@@ -196,23 +225,7 @@ export function FileInput({
         <FieldError>
           {typeof errorMessage === 'string'
             ? errorMessage
-            : errorMessage({
-                isInvalid: true,
-                validationErrors: [],
-                validationDetails: {
-                  badInput: false,
-                  customError: false,
-                  patternMismatch: false,
-                  rangeOverflow: false,
-                  rangeUnderflow: false,
-                  stepMismatch: false,
-                  tooLong: false,
-                  tooShort: false,
-                  typeMismatch: false,
-                  valueMissing: false,
-                  valid: false,
-                },
-              })}
+            : errorMessage(createDefaultValidationResult())}
         </FieldError>
       )}
     </div>
