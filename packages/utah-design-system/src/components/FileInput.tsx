@@ -6,7 +6,6 @@ import {
 } from 'react-aria-components';
 import { twJoin, twMerge } from 'tailwind-merge';
 import { tv } from 'tailwind-variants';
-import { Button } from './Button';
 import { Description, FieldError, Label } from './Field';
 import { focusRing } from './utils';
 
@@ -122,8 +121,7 @@ export function FileInput({
         acceptedFileTypes={acceptedFileTypes}
         onSelect={handleSelect}
       >
-        <Button
-          isDisabled={isDisabled}
+        <div
           className={dropZoneStyles({
             isDisabled,
             isInvalid,
@@ -152,7 +150,7 @@ export function FileInput({
               Accepted types: {acceptedFileTypes.join(', ')}
             </div>
           )}
-        </Button>
+        </div>
       </AriaFileTrigger>
 
       {selectedFiles.length > 0 && (
@@ -173,7 +171,7 @@ export function FileInput({
           </div>
           <div className="space-y-1">
             {selectedFiles.map((file, index) => (
-              <div key={`${file.name}-${index}`} className={fileItemStyles()}>
+              <div key={index} className={fileItemStyles()}>
                 <div className="flex min-w-0 flex-1 flex-col">
                   <div className="truncate font-medium text-zinc-800 dark:text-zinc-200">
                     {file.name}
