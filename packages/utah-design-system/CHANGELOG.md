@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.32.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.32.0...utah-design-system-v1.32.1) (2025-11-21)
+
+
+### Bug Fixes
+
+* **uds:** use correct dependency versions for tailwind 3 ([03691e5](https://github.com/agrc/kitchen-sink/commit/03691e52b94fda119755e8a12a57fd9ce3299863))
+
 ## [1.32.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.31.0...utah-design-system-v1.32.0) (2025-11-13)
 
 
