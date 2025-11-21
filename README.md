@@ -39,3 +39,10 @@ or if general package updates use
 To test these packages in other local projects, first run `npm link -workspaces` from the root of this project. Then run `npm link @ugrc/utah-design-system` from the root of your test project. Please note that you need to run `npm link` for all of the packages at the same time or previous ones will be removed.
 
 Then run `npm run build:watch --workspace packages/sherlock` to automatically build the package any time a file is saved.
+
+## Dependencies
+
+To continue with tailwind version 3 support
+
+- tailwind-merge is pinned at version 2.6.1 and
+- tailwind-variants is pinned at version 0.3.1
