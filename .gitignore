@@ -3,6 +3,7 @@ node_modules
 
 # Built packages
 dist
+*.tsbuildinfo
 
 # Secrets
 .env.development
