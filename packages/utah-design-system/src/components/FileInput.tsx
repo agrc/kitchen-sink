@@ -1,3 +1,4 @@
+import type { DropEvent, FileDropItem } from '@react-types/shared';
 import { UploadIcon, XIcon } from 'lucide-react';
 import { useState } from 'react';
 import {
@@ -8,7 +9,7 @@ import {
 } from 'react-aria-components';
 import { twJoin, twMerge } from 'tailwind-merge';
 import { tv } from 'tailwind-variants';
-import { Description, FieldError, Label } from './Field';
+import { Description, Label } from './Field';
 import { focusRing } from './utils';
 
 export interface FileInputProps extends Omit<AriaFileTriggerProps, 'children'> {
@@ -34,7 +35,7 @@ export interface FileInputProps extends Omit<AriaFileTriggerProps, 'children'> {
 
 const dropZoneStyles = tv({
   extend: focusRing,
-  base: 'group flex min-h-32 cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed bg-white p-6 text-center transition-colors hover:border-primary-900 hover:bg-zinc-50 dark:bg-zinc-900 dark:hover:border-secondary-600 dark:hover:bg-zinc-800',
+  base: 'group flex cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed bg-white p-4 text-center transition-colors hover:border-primary-900 hover:bg-zinc-50 dark:bg-zinc-900 dark:hover:border-secondary-600 dark:hover:bg-zinc-800',
   variants: {
     isDisabled: {
       true: 'cursor-not-allowed border-gray-200 bg-gray-50 hover:border-gray-200 hover:bg-gray-50 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:border-zinc-700 dark:hover:bg-zinc-800',
@@ -90,26 +91,17 @@ export function FileInput({
     }
   };
 
-  const handleDrop = async (e: {
-    items: Array<{
-      kind: string;
-      types: Set<string>;
-      getText: (type: string) => Promise<string>;
-      getFile?: () => Promise<File>;
-    }>;
-  }) => {
+  const handleDrop = async (e: DropEvent) => {
     // Filter for files only
     const filePromises = e.items
-      .filter((item) => item.kind === 'file')
-      .map((item) => item.getFile?.());
+      .filter((item): item is FileDropItem => item.kind === 'file')
+      .map((item) => item.getFile());
 
-    const files = (await Promise.all(filePromises)).filter(
-      (file): file is File => file !== undefined,
-    );
+    const files = await Promise.all(filePromises);
 
     if (files.length > 0) {
       // If not allowing multiple, only take the first file
-      const filesToAdd = allowsMultiple ? files : [files[0]];
+      const filesToAdd = allowsMultiple ? files : files.slice(0, 1);
 
       // Filter by accepted file types if specified
       const filteredFiles = acceptedFileTypes
@@ -181,7 +173,10 @@ export function FileInput({
           acceptedFileTypes={acceptedFileTypes}
           onSelect={handleSelect}
         >
-          <AriaButton isDisabled={isDisabled} className="w-full">
+          <AriaButton
+            isDisabled={isDisabled}
+            className="flex w-full flex-col items-center justify-center gap-2"
+          >
             <UploadIcon
               className={twJoin(
                 'h-8 w-8',
@@ -256,8 +251,13 @@ export function FileInput({
         </div>
       )}
 
+      {errorMessage && (
+        <div className="text-sm text-warning-600 dark:text-warning-500">
+          {errorMessage}
+        </div>
+      )}
+
       {description && <Description>{description}</Description>}
-      {isInvalid && errorMessage && <FieldError>{errorMessage}</FieldError>}
     </div>
   );
 }

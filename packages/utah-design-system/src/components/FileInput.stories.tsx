@@ -87,27 +87,6 @@ export const WithoutFileSize: Story = {
   },
 };
 
-export const HtmlValidation: Story = {
-  render: (args) => (
-    <form
-      onSubmit={(event) => {
-        event.preventDefault();
-        console.log('Form submitted');
-      }}
-      className="flex flex-col items-start gap-2"
-    >
-      <FileInput {...args} />
-      <Button type="submit" variant="secondary">
-        Submit
-      </Button>
-    </form>
-  ),
-  args: {
-    isRequired: true,
-    placeholder: 'Drag a file here or click to upload',
-  },
-};
-
 export const ReactHookFormValidation: Story = {
   render: (args) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
