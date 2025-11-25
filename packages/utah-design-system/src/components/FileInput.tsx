@@ -195,11 +195,6 @@ export function FileInput({
             >
               {placeholder}
             </div>
-            {acceptedFileTypes && acceptedFileTypes.length > 0 && (
-              <div className="text-xs text-zinc-500 dark:text-zinc-500">
-                Accepted types: {acceptedFileTypes.join(', ')}
-              </div>
-            )}
           </AriaButton>
         </AriaFileTrigger>
       </AriaDropZone>
