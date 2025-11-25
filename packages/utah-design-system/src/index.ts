@@ -7,6 +7,7 @@ export * from './components/Dialog';
 export * from './components/Disclosure';
 export * from './components/Drawer';
 export * from './components/Field';
+export * from './components/FileInput';
 export * from './components/Footer';
 export * from './components/FormErrors';
 export * from './components/Geocode';
