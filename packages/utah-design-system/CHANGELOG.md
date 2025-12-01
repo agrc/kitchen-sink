@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.33.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.32.1...utah-design-system-v1.33.0) (2025-12-01)
+
+
+### Features
+
+* **fileinput:** Add FileInput component to utah-design-system ([#562](https://github.com/agrc/kitchen-sink/issues/562)) ([deaeb8e](https://github.com/agrc/kitchen-sink/commit/deaeb8eb57c5365238a0aaabf0870320e045c1b4))
+
 ## [1.32.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.32.0...utah-design-system-v1.32.1) (2025-11-21)
 
 
