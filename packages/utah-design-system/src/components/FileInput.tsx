@@ -9,6 +9,7 @@ import {
   GridList,
   GridListItem,
   TooltipTrigger,
+  type ValidationResult,
 } from 'react-aria-components';
 import { twJoin, twMerge } from 'tailwind-merge';
 import { tv } from 'tailwind-variants';
@@ -20,7 +21,7 @@ import { focusRing } from './utils';
 export interface FileInputProps extends Omit<AriaFileTriggerProps, 'children'> {
   label?: string;
   description?: string;
-  errorMessage?: string;
+  errorMessage?: string | ((validation: ValidationResult) => string);
   isRequired?: boolean;
   isDisabled?: boolean;
   isInvalid?: boolean;
@@ -109,6 +110,19 @@ function formatFileSize(bytes: number): string {
   return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + ' ' + sizes[i];
 }
 
+function matchesAcceptedType(
+  fileType: string,
+  acceptedTypes: string[],
+): boolean {
+  return acceptedTypes.some((accepted) => {
+    if (accepted.endsWith('/*')) {
+      const prefix = accepted.slice(0, -2);
+      return fileType.startsWith(prefix + '/');
+    }
+    return fileType === accepted;
+  });
+}
+
 export function FileInput({
   label,
   description,
@@ -148,7 +162,9 @@ export function FileInput({
 
       // Filter by accepted file types if specified
       const filteredFiles = acceptedFileTypes
-        ? filesToAdd.filter((file) => acceptedFileTypes.includes(file.type))
+        ? filesToAdd.filter((file) =>
+            matchesAcceptedType(file.type, acceptedFileTypes),
+          )
         : filesToAdd;
 
       if (filteredFiles.length > 0) {
@@ -276,7 +292,25 @@ export function FileInput({
 
       {errorMessage && (
         <div className="text-sm text-warning-600 dark:text-warning-500">
-          {errorMessage}
+          {typeof errorMessage === 'function'
+            ? errorMessage({
+                isInvalid: isInvalid ?? false,
+                validationErrors: [],
+                validationDetails: {
+                  badInput: false,
+                  customError: false,
+                  patternMismatch: false,
+                  rangeOverflow: false,
+                  rangeUnderflow: false,
+                  stepMismatch: false,
+                  tooLong: false,
+                  tooShort: false,
+                  typeMismatch: false,
+                  valueMissing: false,
+                  valid: !isInvalid,
+                },
+              })
+            : errorMessage}
         </div>
       )}
     </div>
