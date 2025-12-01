@@ -218,7 +218,7 @@ export function FileInput({
         >
           <AriaButton
             isDisabled={isDisabled}
-            className={(renderProps) => buttonStyles(renderProps)}
+            className={buttonStyles}
           >
             <UploadIcon className={iconStyles({ isDisabled })} />
             <div className={textStyles({ isDisabled })}>{placeholder}</div>
