@@ -112,7 +112,7 @@ function formatFileSize(bytes: number): string {
 
 function matchesAcceptedType(
   fileType: string,
-  acceptedTypes: string[],
+  acceptedTypes: readonly string[],
 ): boolean {
   return acceptedTypes.some((accepted) => {
     if (accepted.endsWith('/*')) {
