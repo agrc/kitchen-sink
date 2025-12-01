@@ -216,10 +216,7 @@ export function FileInput({
           acceptedFileTypes={acceptedFileTypes}
           onSelect={handleSelect}
         >
-          <AriaButton
-            isDisabled={isDisabled}
-            className={buttonStyles}
-          >
+          <AriaButton isDisabled={isDisabled} className={buttonStyles}>
             <UploadIcon className={iconStyles({ isDisabled })} />
             <div className={textStyles({ isDisabled })}>{placeholder}</div>
           </AriaButton>
