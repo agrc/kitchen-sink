@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { Button } from './Button';
 import { FileInput } from './FileInput';
@@ -138,5 +139,31 @@ export const MultipleFilesWithTypeRestriction: Story = {
     acceptedFileTypes: ['image/png', 'image/jpeg', 'image/webp'],
     placeholder: 'Drag multiple images here or click to upload',
     description: 'Only PNG, JPEG, and WebP images are accepted',
+  },
+};
+
+export const HtmlValidation: Story = {
+  render: (args) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [error, setError] = useState<string>();
+    return (
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          setError('test error');
+        }}
+        className="flex flex-col items-start gap-2"
+      >
+        <FileInput {...args} isInvalid={!!error} errorMessage={error} />
+        <Button type="submit" variant="secondary">
+          Submit
+        </Button>
+      </form>
+    );
+  },
+  args: {
+    label: 'Upload document',
+    placeholder: 'Drag a file here or click to upload',
+    isRequired: true,
   },
 };

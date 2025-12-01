@@ -186,6 +186,11 @@ export function FileInput({
     const updated = selectedFiles.filter((_, i) => i !== index);
     setSelectedFiles(updated);
 
+    if (updated.length === 0) {
+      onSelect?.(null);
+      return;
+    }
+
     // Create a new FileList-like object and notify parent
     try {
       const dataTransfer = new DataTransfer();
