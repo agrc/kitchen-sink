@@ -11,7 +11,7 @@ import {
   TooltipTrigger,
   type ValidationResult,
 } from 'react-aria-components';
-import { twJoin, twMerge } from 'tailwind-merge';
+import { twMerge } from 'tailwind-merge';
 import { tv } from 'tailwind-variants';
 import { Button } from './Button';
 import { Description, Label } from './Field';
@@ -39,6 +39,14 @@ export interface FileInputProps extends Omit<AriaFileTriggerProps, 'children'> {
   className?: string;
 }
 
+const labelStyles = tv({
+  variants: {
+    isRequired: {
+      true: "after:ml-0.5 after:text-warning-500 after:content-['*'] after:dark:text-warning-300",
+    },
+  },
+});
+
 const dropZoneStyles = tv({
   base: 'group flex cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed bg-white p-4 text-center outline-none transition-colors hover:border-primary-900 hover:bg-zinc-50 dark:bg-zinc-900 dark:hover:border-secondary-600 dark:hover:bg-zinc-800',
   variants: {
@@ -57,7 +65,7 @@ const dropZoneStyles = tv({
 
 const buttonStyles = tv({
   extend: focusRing,
-  base: 'flex w-full flex-col items-center justify-center gap-2 rounded-md',
+  base: 'flex w-full flex-col items-center justify-center gap-2 rounded-md font-normal',
 });
 
 const iconStyles = tv({
@@ -210,39 +218,39 @@ export function FileInput({
 
   return (
     <div className={twMerge('flex flex-col gap-1', className)}>
-      {label && (
-        <Label
-          className={twJoin(
-            isRequired &&
-              "after:ml-0.5 after:text-warning-500 after:content-['*'] after:dark:text-warning-300",
-          )}
+      {/* We wrap the file trigger in a label to make sure that the label is associated with it's hidden input for a11y */}
+      <Label className="flex flex-col gap-1">
+        {label && (
+          <p className={labelStyles({ isRequired: Boolean(isRequired) })}>
+            {label}
+          </p>
+        )}
+        {description && (
+          <Description className="font-normal">{description}</Description>
+        )}
+        <AriaDropZone
+          onDrop={handleDrop}
+          className={(renderProps) =>
+            dropZoneStyles({
+              ...renderProps,
+              isDisabled,
+              isInvalid,
+            })
+          }
         >
-          {label}
-        </Label>
-      )}
-      {description && <Description>{description}</Description>}
-      <AriaDropZone
-        onDrop={handleDrop}
-        className={(renderProps) =>
-          dropZoneStyles({
-            ...renderProps,
-            isDisabled,
-            isInvalid,
-          })
-        }
-      >
-        <AriaFileTrigger
-          {...props}
-          allowsMultiple={allowsMultiple}
-          acceptedFileTypes={acceptedFileTypes}
-          onSelect={handleSelect}
-        >
-          <AriaButton isDisabled={isDisabled} className={buttonStyles}>
-            <UploadIcon className={iconStyles({ isDisabled })} />
-            <div className={textStyles({ isDisabled })}>{placeholder}</div>
-          </AriaButton>
-        </AriaFileTrigger>
-      </AriaDropZone>
+          <AriaFileTrigger
+            {...props}
+            allowsMultiple={allowsMultiple}
+            acceptedFileTypes={acceptedFileTypes}
+            onSelect={handleSelect}
+          >
+            <AriaButton isDisabled={isDisabled} className={buttonStyles}>
+              <UploadIcon className={iconStyles({ isDisabled })} />
+              <div className={textStyles({ isDisabled })}>{placeholder}</div>
+            </AriaButton>
+          </AriaFileTrigger>
+        </AriaDropZone>
+      </Label>
 
       {selectedFiles.length > 0 && !isDisabled && (
         <div className="mt-2 space-y-2">
