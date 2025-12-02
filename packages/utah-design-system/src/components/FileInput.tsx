@@ -218,12 +218,12 @@ export function FileInput({
 
   return (
     <div className={twMerge('flex flex-col gap-1', className)}>
-      {/* We wrap the file trigger in a label to make sure that the label is associated with it's hidden input for a11y */}
+      {/* We wrap the file trigger in a label to make sure that the label is associated with its hidden input for a11y */}
       <Label className="flex flex-col gap-1">
         {label && (
-          <p className={labelStyles({ isRequired: Boolean(isRequired) })}>
+          <span className={labelStyles({ isRequired: Boolean(isRequired) })}>
             {label}
-          </p>
+          </span>
         )}
         {description && (
           <Description className="font-normal">{description}</Description>
