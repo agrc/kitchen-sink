@@ -35,7 +35,10 @@ export function Description(props: TextProps) {
     <Text
       {...props}
       slot="description"
-      className={twMerge('text-sm text-gray-600', props.className)}
+      className={twMerge(
+        'text-sm text-gray-600 dark:text-zinc-400',
+        props.className,
+      )}
     />
   );
 }
