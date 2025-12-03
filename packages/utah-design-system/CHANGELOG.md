@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.33.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.33.0...utah-design-system-v1.33.1) (2025-12-03)
+
+
+### Bug Fixes
+
+* **fileinput:** fix a11y issue with a disconnect between the label and hidden input ([e3f7234](https://github.com/agrc/kitchen-sink/commit/e3f723420f9c37a41f292d05306d6785411a09a1))
+* **fileinput:** fix description contrast in dark mode ([2280834](https://github.com/agrc/kitchen-sink/commit/228083410f55780ac62a39b7b92d700ba3c05d8d))
+
 ## [1.33.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.32.1...utah-design-system-v1.33.0) (2025-12-01)
 
 
