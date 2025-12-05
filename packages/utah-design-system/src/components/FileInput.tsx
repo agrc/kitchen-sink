@@ -18,7 +18,8 @@ import { Description, Label } from './Field';
 import { Tooltip } from './Tooltip';
 import { focusRing } from './utils';
 
-export interface FileInputProps extends Omit<AriaFileTriggerProps, 'children'> {
+export interface FileInputProps
+  extends Omit<AriaFileTriggerProps, 'children' | 'onSelect'> {
   label?: string;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
@@ -37,6 +38,16 @@ export interface FileInputProps extends Omit<AriaFileTriggerProps, 'children'> {
    * Custom class for the drop zone container
    */
   className?: string;
+  /**
+   * Controlled value - the current files selected.
+   * When provided, the component becomes controlled.
+   */
+  value?: File[] | null;
+  /**
+   * Callback when files change.
+   * We use onChange rather than onSelect to make it clear that we are diverting from AriaFileTrigger which doesn't support being controlled
+   */
+  onChange?: (files: File[] | null) => void;
 }
 
 const labelStyles = tv({
@@ -143,16 +154,28 @@ export function FileInput({
   className,
   allowsMultiple,
   acceptedFileTypes,
-  onSelect,
+  value,
+  onChange,
   ...props
 }: FileInputProps) {
-  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const isControlled = value !== undefined;
+
+  const [internalFiles, setInternalFiles] = useState<File[]>([]);
+
+  // Use controlled value if provided, otherwise use internal state
+  const selectedFiles = isControlled ? (value ?? []) : internalFiles;
+
+  const updateFiles = (files: File[] | null) => {
+    if (!isControlled) {
+      setInternalFiles(files ?? []);
+    }
+    onChange?.(files);
+  };
 
   const handleSelect = (fileList: FileList | null) => {
     if (fileList) {
       const files = Array.from(fileList);
-      setSelectedFiles(files);
-      onSelect?.(fileList);
+      updateFiles(files);
     }
   };
 
@@ -176,44 +199,18 @@ export function FileInput({
         : filesToAdd;
 
       if (filteredFiles.length > 0) {
-        setSelectedFiles(filteredFiles);
-
-        // Create FileList from files
-        try {
-          const dataTransfer = new DataTransfer();
-          filteredFiles.forEach((file) => dataTransfer.items.add(file));
-          onSelect?.(dataTransfer.files);
-        } catch (error) {
-          console.warn('DataTransfer API not available:', error);
-        }
+        updateFiles(filteredFiles);
       }
     }
   };
 
   const removeFile = (index: number) => {
     const updated = selectedFiles.filter((_, i) => i !== index);
-    setSelectedFiles(updated);
-
-    if (updated.length === 0) {
-      onSelect?.(null);
-      return;
-    }
-
-    // Create a new FileList-like object and notify parent
-    try {
-      const dataTransfer = new DataTransfer();
-      updated.forEach((file) => dataTransfer.items.add(file));
-      onSelect?.(dataTransfer.files);
-    } catch (error) {
-      // DataTransfer not available in this environment
-      console.warn('DataTransfer API not available:', error);
-    }
+    updateFiles(updated.length === 0 ? null : updated);
   };
 
   const clearFiles = () => {
-    setSelectedFiles([]);
-    // Notify parent that files have been cleared
-    onSelect?.(null);
+    updateFiles(null);
   };
 
   return (
