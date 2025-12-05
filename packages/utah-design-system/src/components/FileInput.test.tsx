@@ -4,11 +4,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { FileInput } from './FileInput';
 
 // Helper function to create mock File objects
-function createMockFile(
-  name: string,
-  size: number,
-  type: string,
-): File {
+function createMockFile(name: string, _size: number, type: string): File {
   const blob = new Blob([''], { type });
   return new File([blob], name, { type, lastModified: Date.now() });
 }
@@ -35,7 +31,7 @@ describe('FileInput', () => {
 
       const file = createMockFile('test.txt', 1024, 'text/plain');
       const input = getFileInput();
-      
+
       // Simulate file selection
       fireEvent.change(input, { target: { files: [file] } });
 
@@ -52,7 +48,7 @@ describe('FileInput', () => {
 
       const file = createMockFile('test.txt', 1024, 'text/plain');
       const input = getFileInput();
-      
+
       fireEvent.change(input, { target: { files: [file] } });
 
       expect(screen.getByText('test.txt')).toBeTruthy();
@@ -73,13 +69,13 @@ describe('FileInput', () => {
     it('should display files from value prop in controlled mode', () => {
       const file1 = createMockFile('document.pdf', 2048, 'application/pdf');
       const file2 = createMockFile('image.png', 4096, 'image/png');
-      
+
       render(
-        <FileInput 
-          value={[file1, file2]} 
-          label="Upload files" 
-          allowsMultiple 
-        />
+        <FileInput
+          value={[file1, file2]}
+          label="Upload files"
+          allowsMultiple
+        />,
       );
 
       expect(screen.getByText('document.pdf')).toBeTruthy();
@@ -88,41 +84,25 @@ describe('FileInput', () => {
     });
 
     it('should display no files when value is null in controlled mode', () => {
-      render(
-        <FileInput 
-          value={null} 
-          label="Upload file" 
-        />
-      );
+      render(<FileInput value={null} label="Upload file" />);
 
       expect(screen.queryByText(/files? selected/)).toBeNull();
     });
 
     it('should display no files when value is empty array in controlled mode', () => {
-      render(
-        <FileInput 
-          value={[]} 
-          label="Upload file" 
-        />
-      );
+      render(<FileInput value={[]} label="Upload file" />);
 
       expect(screen.queryByText(/files? selected/)).toBeNull();
     });
 
     it('should call onChange with new files when files are selected in controlled mode', async () => {
       const onChange = vi.fn();
-      
-      render(
-        <FileInput 
-          value={[]} 
-          onChange={onChange} 
-          label="Upload file" 
-        />
-      );
+
+      render(<FileInput value={[]} onChange={onChange} label="Upload file" />);
 
       const file = createMockFile('new-file.txt', 1024, 'text/plain');
       const input = getFileInput();
-      
+
       fireEvent.change(input, { target: { files: [file] } });
 
       expect(onChange).toHaveBeenCalledWith([file]);
@@ -131,14 +111,14 @@ describe('FileInput', () => {
     it('should not update internal state when in controlled mode (parent controls value)', async () => {
       const onChange = vi.fn();
       const initialFile = createMockFile('initial.txt', 1024, 'text/plain');
-      
+
       // Render with initial value
       const { rerender } = render(
-        <FileInput 
-          value={[initialFile]} 
-          onChange={onChange} 
-          label="Upload file" 
-        />
+        <FileInput
+          value={[initialFile]}
+          onChange={onChange}
+          label="Upload file"
+        />,
       );
 
       expect(screen.getByText('initial.txt')).toBeTruthy();
@@ -151,18 +131,14 @@ describe('FileInput', () => {
       // onChange should be called, but in controlled mode the displayed file
       // should still be the initial file until parent updates the value prop
       expect(onChange).toHaveBeenCalledWith([newFile]);
-      
+
       // Without parent updating value, the display should still show original file
       expect(screen.getByText('initial.txt')).toBeTruthy();
       expect(screen.queryByText('new-file.txt')).toBeNull();
 
       // Now parent updates the value
       rerender(
-        <FileInput 
-          value={[newFile]} 
-          onChange={onChange} 
-          label="Upload file" 
-        />
+        <FileInput value={[newFile]} onChange={onChange} label="Upload file" />,
       );
 
       // Now the new file should be displayed
@@ -173,13 +149,9 @@ describe('FileInput', () => {
     it('should call onChange with null when clear button is clicked in controlled mode', async () => {
       const onChange = vi.fn();
       const file = createMockFile('test.pdf', 1024, 'application/pdf');
-      
+
       render(
-        <FileInput 
-          value={[file]} 
-          onChange={onChange} 
-          label="Upload file" 
-        />
+        <FileInput value={[file]} onChange={onChange} label="Upload file" />,
       );
 
       expect(screen.getByText('test.pdf')).toBeTruthy();
@@ -194,19 +166,21 @@ describe('FileInput', () => {
       const onChange = vi.fn();
       const file1 = createMockFile('file1.txt', 1024, 'text/plain');
       const file2 = createMockFile('file2.txt', 2048, 'text/plain');
-      
+
       render(
-        <FileInput 
-          value={[file1, file2]} 
-          onChange={onChange} 
-          label="Upload files" 
+        <FileInput
+          value={[file1, file2]}
+          onChange={onChange}
+          label="Upload files"
           allowsMultiple
-        />
+        />,
       );
 
       // Find and click the remove button for the first file
       const removeButtons = screen.getAllByRole('button', { name: /Remove/ });
-      await userEvent.click(removeButtons[0]);
+      const firstRemoveButton = removeButtons[0];
+      expect(firstRemoveButton).toBeTruthy();
+      await userEvent.click(firstRemoveButton!);
 
       // Should be called with remaining file
       expect(onChange).toHaveBeenCalledWith([file2]);
@@ -215,13 +189,9 @@ describe('FileInput', () => {
     it('should call onChange with null when last file is removed in controlled mode', async () => {
       const onChange = vi.fn();
       const file = createMockFile('only-file.txt', 1024, 'text/plain');
-      
+
       render(
-        <FileInput 
-          value={[file]} 
-          onChange={onChange} 
-          label="Upload file" 
-        />
+        <FileInput value={[file]} onChange={onChange} label="Upload file" />,
       );
 
       const removeButton = screen.getByRole('button', { name: /Remove/ });
@@ -234,14 +204,10 @@ describe('FileInput', () => {
   describe('controlled vs uncontrolled detection', () => {
     it('should be controlled when value prop is provided (including null)', () => {
       const onChange = vi.fn();
-      
+
       // With value={null}, component is controlled
       render(
-        <FileInput 
-          value={null} 
-          onChange={onChange} 
-          label="Upload file" 
-        />
+        <FileInput value={null} onChange={onChange} label="Upload file" />,
       );
 
       const file = createMockFile('test.txt', 1024, 'text/plain');
@@ -256,13 +222,8 @@ describe('FileInput', () => {
 
     it('should be uncontrolled when value prop is undefined', async () => {
       const onChange = vi.fn();
-      
-      render(
-        <FileInput 
-          onChange={onChange} 
-          label="Upload file" 
-        />
-      );
+
+      render(<FileInput onChange={onChange} label="Upload file" />);
 
       const file = createMockFile('test.txt', 1024, 'text/plain');
       const input = getFileInput();
@@ -277,7 +238,7 @@ describe('FileInput', () => {
   describe('onChange callback', () => {
     it('should receive File[] when files are selected', () => {
       const onChange = vi.fn();
-      
+
       render(<FileInput onChange={onChange} label="Upload file" />);
 
       const file = createMockFile('test.txt', 1024, 'text/plain');
@@ -286,12 +247,12 @@ describe('FileInput', () => {
 
       expect(onChange).toHaveBeenCalledTimes(1);
       expect(onChange).toHaveBeenCalledWith([file]);
-      expect(Array.isArray(onChange.mock.calls[0][0])).toBe(true);
+      expect(Array.isArray(onChange.mock.calls[0]?.[0])).toBe(true);
     });
 
     it('should receive null when files are cleared', async () => {
       const onChange = vi.fn();
-      
+
       render(<FileInput onChange={onChange} label="Upload file" />);
 
       // First add a file
@@ -308,19 +269,15 @@ describe('FileInput', () => {
 
     it('should handle multiple files when allowsMultiple is true', () => {
       const onChange = vi.fn();
-      
+
       render(
-        <FileInput 
-          onChange={onChange} 
-          label="Upload files" 
-          allowsMultiple 
-        />
+        <FileInput onChange={onChange} label="Upload files" allowsMultiple />,
       );
 
       const file1 = createMockFile('file1.txt', 1024, 'text/plain');
       const file2 = createMockFile('file2.txt', 2048, 'text/plain');
       const input = getFileInput();
-      
+
       fireEvent.change(input, { target: { files: [file1, file2] } });
 
       expect(onChange).toHaveBeenCalledWith([file1, file2]);
