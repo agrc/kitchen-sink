@@ -93,7 +93,7 @@ export const ReactHookFormValidation: Story = {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { control, handleSubmit } = useForm({
       defaultValues: {
-        files: null,
+        files: null as File[] | null,
       },
     });
 
@@ -108,13 +108,12 @@ export const ReactHookFormValidation: Story = {
           control={control}
           name="files"
           rules={{ required: 'Please select at least one file' }}
-          render={({ field: { onChange, ...field }, fieldState }) => (
+          render={({ field: { onChange, value, ...field }, fieldState }) => (
             <FileInput
               errorMessage={fieldState.error?.message}
               isInvalid={fieldState.invalid}
-              onSelect={(fileList) => {
-                onChange(fileList);
-              }}
+              value={value}
+              onChange={onChange}
               {...field}
               {...args}
             />
@@ -165,5 +164,38 @@ export const HtmlValidation: Story = {
     label: 'Upload document',
     placeholder: 'Drag a file here or click to upload',
     isRequired: true,
+  },
+};
+
+export const Controlled: Story = {
+  render: (args) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [files, setFiles] = useState<File[] | null>(null);
+
+    return (
+      <div className="flex flex-col items-start gap-4">
+        <FileInput {...args} value={files} onChange={setFiles} />
+        <div className="flex gap-2">
+          <Button
+            onPress={() => setFiles(null)}
+            variant="secondary"
+            isDisabled={!files || files.length === 0}
+          >
+            Reset
+          </Button>
+        </div>
+        {files && files.length > 0 && (
+          <div className="text-sm text-zinc-600 dark:text-zinc-400">
+            Parent state: {files.map((f) => f.name).join(', ')}
+          </div>
+        )}
+      </div>
+    );
+  },
+  args: {
+    label: 'Upload document (controlled)',
+    placeholder: 'Drag a file here or click to upload',
+    description:
+      'This input is controlled. Click Reset to clear files from parent state.',
   },
 };
