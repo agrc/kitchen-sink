@@ -13,6 +13,16 @@ function createMockFile(
   return new File([blob], name, { type, lastModified: Date.now() });
 }
 
+// Helper function to get the hidden file input element
+// Note: File inputs are typically hidden and controlled via file trigger UI
+function getFileInput(): HTMLInputElement {
+  const input = document.querySelector('input[type="file"]');
+  if (!input) {
+    throw new Error('File input not found');
+  }
+  return input as HTMLInputElement;
+}
+
 describe('FileInput', () => {
   beforeEach(() => {
     vi.clearAllMocks();
@@ -24,7 +34,7 @@ describe('FileInput', () => {
       render(<FileInput onChange={onChange} label="Upload file" />);
 
       const file = createMockFile('test.txt', 1024, 'text/plain');
-      const input = document.querySelector('input[type="file"]') as HTMLInputElement;
+      const input = getFileInput();
       
       // Simulate file selection
       fireEvent.change(input, { target: { files: [file] } });
@@ -41,7 +51,7 @@ describe('FileInput', () => {
       render(<FileInput onChange={onChange} label="Upload file" />);
 
       const file = createMockFile('test.txt', 1024, 'text/plain');
-      const input = document.querySelector('input[type="file"]') as HTMLInputElement;
+      const input = getFileInput();
       
       fireEvent.change(input, { target: { files: [file] } });
 
@@ -111,7 +121,7 @@ describe('FileInput', () => {
       );
 
       const file = createMockFile('new-file.txt', 1024, 'text/plain');
-      const input = document.querySelector('input[type="file"]') as HTMLInputElement;
+      const input = getFileInput();
       
       fireEvent.change(input, { target: { files: [file] } });
 
@@ -135,7 +145,7 @@ describe('FileInput', () => {
 
       // Simulate file selection
       const newFile = createMockFile('new-file.txt', 2048, 'text/plain');
-      const input = document.querySelector('input[type="file"]') as HTMLInputElement;
+      const input = getFileInput();
       fireEvent.change(input, { target: { files: [newFile] } });
 
       // onChange should be called, but in controlled mode the displayed file
@@ -235,7 +245,7 @@ describe('FileInput', () => {
       );
 
       const file = createMockFile('test.txt', 1024, 'text/plain');
-      const input = document.querySelector('input[type="file"]') as HTMLInputElement;
+      const input = getFileInput();
       fireEvent.change(input, { target: { files: [file] } });
 
       // onChange should be called but file should not be displayed (controlled mode)
@@ -255,7 +265,7 @@ describe('FileInput', () => {
       );
 
       const file = createMockFile('test.txt', 1024, 'text/plain');
-      const input = document.querySelector('input[type="file"]') as HTMLInputElement;
+      const input = getFileInput();
       fireEvent.change(input, { target: { files: [file] } });
 
       // In uncontrolled mode, file should be displayed immediately
@@ -271,7 +281,7 @@ describe('FileInput', () => {
       render(<FileInput onChange={onChange} label="Upload file" />);
 
       const file = createMockFile('test.txt', 1024, 'text/plain');
-      const input = document.querySelector('input[type="file"]') as HTMLInputElement;
+      const input = getFileInput();
       fireEvent.change(input, { target: { files: [file] } });
 
       expect(onChange).toHaveBeenCalledTimes(1);
@@ -286,7 +296,7 @@ describe('FileInput', () => {
 
       // First add a file
       const file = createMockFile('test.txt', 1024, 'text/plain');
-      const input = document.querySelector('input[type="file"]') as HTMLInputElement;
+      const input = getFileInput();
       fireEvent.change(input, { target: { files: [file] } });
 
       // Clear files
@@ -309,7 +319,7 @@ describe('FileInput', () => {
 
       const file1 = createMockFile('file1.txt', 1024, 'text/plain');
       const file2 = createMockFile('file2.txt', 2048, 'text/plain');
-      const input = document.querySelector('input[type="file"]') as HTMLInputElement;
+      const input = getFileInput();
       
       fireEvent.change(input, { target: { files: [file1, file2] } });
 
