@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.34.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.33.1...utah-design-system-v1.34.0) (2025-12-05)
+
+
+### Features
+
+* **fileinput:** implement controlled file input with onChange callback ([0bcf66a](https://github.com/agrc/kitchen-sink/commit/0bcf66aca61a64de1838c4e36d934e18dd1f98b3))
+
 ## [1.33.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.33.0...utah-design-system-v1.33.1) (2025-12-03)
 
 
