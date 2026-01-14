@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.34.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.34.0...utah-design-system-v1.34.1) (2026-01-14)
+
+
+### Bug Fixes
+
+* **social-media:** replace link component with native anchor tag ([1dcd020](https://github.com/agrc/kitchen-sink/commit/1dcd02046ead9ac2fc80150fbe6cf2838ead6de9))
+
 ## [1.34.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.33.1...utah-design-system-v1.34.0) (2025-12-05)
 
 
