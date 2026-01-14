@@ -52,7 +52,7 @@
   },
   "dependencies": {
     "@ugrc/utilities": "^3.1.1",
-    "lodash-es": "^4.17.21"
+    "lodash-es": "^4.17.22"
   },
   "peerDependencies": {
     "@arcgis/core": "^4.20.0",
