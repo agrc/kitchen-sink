@@ -52,7 +52,7 @@
     "@ugrc/utilities": "3.1.1",
     "firebase": ">=12.x",
     "ky": "^1.13.0",
-    "lodash-es": "^4.17.21",
+    "lodash-es": "^4.17.23",
     "lucide-react": ">=0.546.0",
     "react-aria": "^3.44.0",
     "react-aria-components": "^1.13.0",
