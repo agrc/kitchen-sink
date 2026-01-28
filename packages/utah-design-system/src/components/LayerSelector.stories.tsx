@@ -5,15 +5,11 @@ import LOD from '@arcgis/core/layers/support/LOD';
 import TileInfo from '@arcgis/core/layers/support/TileInfo';
 import TileLayer from '@arcgis/core/layers/TileLayer';
 import WebTileLayer from '@arcgis/core/layers/WebTileLayer';
-import Map from '@arcgis/core/Map';
-import MapView from '@arcgis/core/views/MapView';
-import Fullscreen from '@arcgis/core/widgets/Fullscreen';
-import HomeButton from '@arcgis/core/widgets/Home';
 import '@arcgis/map-components/components/arcgis-home';
 import '@arcgis/map-components/components/arcgis-map';
 import type { Meta } from '@storybook/react-vite';
-import { useEffect, useRef, useState } from 'react';
-import { LayerSelector, type LayerSelectorProps } from './LayerSelector';
+import { useRef, useState } from 'react';
+import { LayerSelector } from './LayerSelector';
 import type {
   BaseLayerConfigOrToken,
   BasemapConfig,
@@ -35,50 +31,24 @@ const meta: Meta<typeof LayerSelector> = {
 
 export default meta;
 
-type DefaultProps = {
-  center?: number[];
-  zoom?: number;
-  scale?: number;
-  baseLayers?: BaseLayerConfigOrToken[];
-  basemaps?: (BasemapConfig | BasemapToken)[];
-  referenceLayers?: LayerConfigOrToken[];
-  operationalLayers?: LayerConfigOrToken[];
-  note?: string;
-};
-
-export function Default({
-  center,
-  zoom = 10,
-  scale,
-  baseLayers,
-  basemaps,
-  referenceLayers,
-  operationalLayers,
-  note,
-}: DefaultProps) {
-  const mapDiv = useRef<HTMLDivElement>(null);
-  const [layerSelectorOptions, setLayerSelectorOptions] =
-    useState<LayerSelectorProps>();
-  const [zoomLevel, setZoomLevel] = useState<number>(zoom);
+/**
+ * Default story demonstrating LayerSelector with zoom level tracking.
+ * This story shows how to set up LayerSelector with basemaps, baseLayers,
+ * referenceLayers, and operationalLayers, along with displaying current
+ * zoom constraints.
+ */
+export function Default() {
+  const mapRef = useRef<HTMLArcgisMapElement>(null);
+  const [zoomLevel, setZoomLevel] = useState<number>(10);
   const [maxZoomLevel, setMaxZoomLevel] = useState<number>();
   const [minZoomLevel, setMinZoomLevel] = useState<number>();
-  const zoomDiv = useRef<HTMLDivElement>(null);
-  const noteDiv = useRef<HTMLDivElement>(null);
+  const [isReady, setIsReady] = useState(false);
 
-  useEffect(() => {
-    if (!mapDiv.current) {
-      return;
-    }
+  const handleViewReady = () => {
+    const view = mapRef.current?.view;
+    if (!view) return;
 
-    console.log('init map');
-    const map = new Map();
-    const view = new MapView({
-      container: mapDiv.current,
-      map,
-      center: center ? center : [-111.83, 39.71],
-      zoom,
-      scale,
-    });
+    setIsReady(true);
 
     watch(
       () => view.zoom,
@@ -94,88 +64,96 @@ export function Default({
       () => view.constraints.effectiveMinZoom,
       (minZoom) => Number.isInteger(minZoom) && setMinZoomLevel(minZoom),
     );
+  };
 
-    view.ui.add(new HomeButton({ view }), 'top-right');
-    view.ui.add(new Fullscreen({ view }), 'top-right');
-    view.ui.add(zoomDiv.current!, 'top-left');
-    if (note) {
-      view.ui.add(noteDiv.current!, 'top-left');
-    }
+  const basemaps: (BasemapConfig | BasemapToken)[] = [
+    {
+      label: 'Vector Lite',
+      function: () =>
+        new Basemap({
+          portalItem: {
+            id: '98104c602b7c44419c0a952f28c65815',
+          },
+        }),
+    },
+    'Lite',
+  ];
 
-    setLayerSelectorOptions({
-      options: {
-        view,
-        quadWord: import.meta.env.VITE_QUAD_WORD,
-        basemaps: basemaps || [
-          {
-            label: 'Vector Lite',
-            function: () =>
-              new Basemap({
-                portalItem: {
-                  id: '98104c602b7c44419c0a952f28c65815',
-                },
-              }),
-          },
-          'Lite', // this is for testing the happy path tokens
-        ],
-        baseLayers: baseLayers || [
-          'Hybrid',
-          {
-            label: 'Vision Refresh Basemap',
-            function: () =>
-              new TileLayer({
-                url: 'https://gis.wfrc.org/arcgis/rest/services/WC2050Vision/2023_Vision_Refresh_Basemap/MapServer',
-              }),
-          },
-          'Terrain',
-          'Topo',
-          'Color IR',
-        ],
-        referenceLayers: referenceLayers || ['Address Points'],
-        operationalLayers: operationalLayers || ['Land Ownership'],
-      },
-    });
-  }, [
-    zoom,
-    center,
-    scale,
-    baseLayers,
-    referenceLayers,
-    operationalLayers,
-    basemaps,
-    note,
-  ]);
+  const baseLayers: BaseLayerConfigOrToken[] = [
+    'Hybrid',
+    {
+      label: 'Vision Refresh Basemap',
+      function: () =>
+        new TileLayer({
+          url: 'https://gis.wfrc.org/arcgis/rest/services/WC2050Vision/2023_Vision_Refresh_Basemap/MapServer',
+        }),
+    },
+    'Terrain',
+    'Topo',
+    'Color IR',
+  ];
+
+  const referenceLayers: LayerConfigOrToken[] = ['Address Points'];
+  const operationalLayers: LayerConfigOrToken[] = ['Land Ownership'];
 
   return (
-    <>
-      {note ? (
-        <div className="border border-zinc-300 bg-white p-2" ref={noteDiv}>
-          {note}
-        </div>
-      ) : null}
-      <div className="border border-zinc-300 bg-white p-2" ref={zoomDiv}>
+    <arcgis-map
+      ref={mapRef}
+      basemap="topo"
+      className="absolute inset-0"
+      center={[-111.83, 39.71]}
+      zoom={10}
+      onarcgisViewReadyChange={handleViewReady}
+    >
+      <div slot="top-left" className="border border-zinc-300 bg-white p-2">
         Zoom Level: <b>{zoomLevel}</b>
         <br />
         Effective Max Zoom: <b>{maxZoomLevel}</b>
         <br />
         Effective Min Zoom: <b>{minZoomLevel}</b>
       </div>
-      <div
-        ref={mapDiv}
-        style={{ position: 'absolute', top: 0, left: 0, bottom: 0, right: 0 }}
-      >
-        {layerSelectorOptions ? (
-          <LayerSelector {...layerSelectorOptions}></LayerSelector>
-        ) : null}
-      </div>
-    </>
+      {isReady ? (
+        <LayerSelector
+          quadWord={import.meta.env.VITE_QUAD_WORD}
+          basemaps={basemaps}
+          baseLayers={baseLayers}
+          referenceLayers={referenceLayers}
+          operationalLayers={operationalLayers}
+        />
+      ) : null}
+    </arcgis-map>
   );
 }
 
-export const Zoom = () => <Default zoom={6} />;
-export const Scale = () => <Default scale={12000} />;
-export const NoZoomOrScale = () => <Default />;
-export const ZoomAndScale = () => <Default zoom={6} scale={12000} />;
+export const Zoom = () => (
+  <arcgis-map
+    basemap="streets"
+    className="h-96 w-full border"
+    center={[-111.83, 39.71]}
+    zoom={6}
+  >
+    <LayerSelector
+      quadWord={import.meta.env.VITE_QUAD_WORD}
+      basemaps={['Lite', 'Imagery', 'Topo']}
+    />
+  </arcgis-map>
+);
+
+export const AlternativeSlot = () => (
+  <arcgis-map
+    basemap="streets"
+    className="h-96 w-full border"
+    center={[-111.83, 39.71]}
+    zoom={6}
+  >
+    <LayerSelector
+      quadWord={import.meta.env.VITE_QUAD_WORD}
+      basemaps={['Lite', 'Imagery', 'Topo']}
+      slot="top-left"
+    />
+  </arcgis-map>
+);
+
 export const CustomLOD = () => {
   const tileSize = 256;
   const earthCircumference = 40075016.685568;
@@ -197,7 +175,7 @@ export const CustomLOD = () => {
 
   const baseLayers = [
     {
-      label: 'Imagery',
+      label: 'Open Street Map',
       function: () =>
         new WebTileLayer({
           urlTemplate:
@@ -219,7 +197,19 @@ export const CustomLOD = () => {
     },
   ];
 
-  return <Default zoom={6} baseLayers={baseLayers} />;
+  return (
+    <arcgis-map
+      basemap="streets"
+      className="h-96 w-full border"
+      center={[-111.83, 39.71]}
+      zoom={6}
+    >
+      <LayerSelector
+        quadWord={import.meta.env.VITE_QUAD_WORD}
+        baseLayers={baseLayers}
+      />
+    </arcgis-map>
+  );
 };
 
 export const DefaultSelection = () => {
@@ -259,110 +249,126 @@ export const DefaultSelection = () => {
   ];
 
   return (
-    <Default
+    <arcgis-map
+      basemap="streets"
+      className="h-96 w-full border"
+      center={[-111.83, 39.71]}
       zoom={8}
-      baseLayers={baseLayers}
-      referenceLayers={referenceLayers}
-    />
+    >
+      <LayerSelector
+        quadWord={import.meta.env.VITE_QUAD_WORD}
+        baseLayers={baseLayers}
+        referenceLayers={referenceLayers}
+      />
+    </arcgis-map>
   );
 };
 
 export const DifferingLODBaseLayers = () => {
   const baseLayers = ['Topo', 'Imagery', 'Lite'] as LayerToken[];
-  const note = `
-Topo:
-  0-17
-Imagery:
-  0-20
-Lite:
-  0-19
-  `;
 
   return (
-    <Default zoom={17} baseLayers={baseLayers} basemaps={[]} note={note} />
+    <arcgis-map
+      basemap="streets"
+      className="h-96 w-full border"
+      center={[-111.83, 39.71]}
+      zoom={17}
+    >
+      <div slot="top-left" className="border border-zinc-300 bg-white p-2">
+        Topo: 0-17
+        <br />
+        Imagery: 0-20
+        <br />
+        Lite: 0-19
+      </div>
+      <LayerSelector
+        quadWord={import.meta.env.VITE_QUAD_WORD}
+        baseLayers={baseLayers}
+      />
+    </arcgis-map>
   );
 };
 
 export const DifferingLODMix = () => {
-  // Topo 0-17
-  // Lite 0-19
-  // Imagery 0-20
   const baseLayers = ['Topo', 'Imagery'] as LayerToken[];
-  const note = `
-Topo:
-  0-17
-Imagery:
-  0-20
-Lite:
-  0-19
-  `;
-
-  return (
-    <Default
-      zoom={19}
-      baseLayers={baseLayers}
-      basemaps={['Lite']}
-      note={note}
-    />
-  );
-};
-
-export const DifferingLODBasemaps = () => {
-  // Topo 0-17
-  // Lite 0-19
-  // Imagery 0-20
-  const note = `
-Topo:
-  0-17
-Imagery:
-  0-20
-Lite:
-  0-19
-  `;
-
-  return (
-    <Default
-      zoom={19}
-      baseLayers={[]}
-      basemaps={['Topo', 'Lite', 'Hybrid', 'Terrain', 'Color IR']}
-      note={note}
-    />
-  );
-};
-
-export const MapComponent = () => {
-  const [selectorOptions, setSelectorOptions] =
-    useState<LayerSelectorProps | null>(null);
-  const mapRef = useRef<HTMLArcgisMapElement>(null);
-
-  const init = () => {
-    if (!mapRef.current?.view) {
-      console.error('Map view is not available yet');
-      return;
-    }
-
-    const selectorOptions: LayerSelectorProps = {
-      options: {
-        view: mapRef.current.view,
-        quadWord: import.meta.env.VITE_QUAD_WORD,
-        basemaps: ['Lite', 'Imagery', 'Topo'],
-      },
-    };
-
-    setSelectorOptions(selectorOptions);
-  };
 
   return (
     <arcgis-map
-      ref={mapRef}
-      basemap="topo" // required to get the map to load before passing as an option to LayerSelector
-      className="h-96 w-full"
+      basemap="streets"
+      className="h-96 w-full border"
+      center={[-111.83, 39.71]}
+      zoom={19}
+    >
+      <div slot="top-left" className="border border-zinc-300 bg-white p-2">
+        Topo: 0-17
+        <br />
+        Imagery: 0-20
+        <br />
+        Lite: 0-19
+      </div>
+      <LayerSelector
+        quadWord={import.meta.env.VITE_QUAD_WORD}
+        baseLayers={baseLayers}
+        basemaps={['Lite']}
+      />
+    </arcgis-map>
+  );
+};
+
+export const DifferingLODBasemaps = () => (
+  <arcgis-map
+    basemap="streets"
+    className="h-96 w-full border"
+    center={[-111.83, 39.71]}
+    zoom={19}
+  >
+    <div slot="top-left" className="border border-zinc-300 bg-white p-2">
+      Topo: 0-17
+      <br />
+      Imagery: 0-20
+      <br />
+      Lite: 0-19
+    </div>
+    <LayerSelector
+      quadWord={import.meta.env.VITE_QUAD_WORD}
+      basemaps={['Topo', 'Lite', 'Hybrid', 'Terrain', 'Color IR']}
+    />
+  </arcgis-map>
+);
+
+export const WithReferenceLayers = () => {
+  const referenceLayers: LayerConfigOrToken[] = [
+    {
+      label: 'Cities',
+      function: () =>
+        new FeatureLayer({
+          url: 'https://services1.arcgis.com/99lidPhWCzftIe9K/arcgis/rest/services/UtahMunicipalBoundaries/FeatureServer/0',
+        }),
+      defaultSelected: true,
+    },
+    {
+      label: 'Counties',
+      function: () =>
+        new FeatureLayer({
+          url: 'https://services1.arcgis.com/99lidPhWCzftIe9K/arcgis/rest/services/UtahCountyBoundaries/FeatureServer/0',
+        }),
+    },
+  ];
+
+  return (
+    <arcgis-map
+      basemap="streets"
+      className="h-96 w-full border"
       center={[-111.83, 39.71]}
       zoom={10}
-      onarcgisViewReadyChange={init}
     >
       <arcgis-home slot="top-left"></arcgis-home>
-      {selectorOptions ? <LayerSelector {...selectorOptions} /> : null}
+      <LayerSelector
+        quadWord={import.meta.env.VITE_QUAD_WORD}
+        basemaps={['Lite', 'Imagery', 'Topo']}
+        referenceLayers={referenceLayers}
+        expanded
+      />
     </arcgis-map>
   );
 };
