@@ -33,6 +33,7 @@
     "multipoint",
     "oidc",
     "onarcgis",
+    "oncalcite",
     "packagejson",
     "prebuild",
     "safelisted",
@@ -61,5 +62,14 @@
   ],
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "json.validate.enable": false
+  "json.validate.enable": false,
+  "html.customData": [
+    "./node_modules/@arcgis/map-components/dist/docs/vscode.html-custom-data.json",
+    "./node_modules/@arcgis/charts-components/dist/docs/vscode.html-custom-data.json",
+    "./node_modules/@esri/calcite-components/dist/docs/vscode.html-custom-data.json"
+  ],
+  "css.customData": [
+    "./node_modules/@arcgis/map-components/dist/docs/vscode.css-custom-data.json",
+    "./node_modules/@esri/calcite-components/dist/docs/vscode.css-custom-data.json"
+  ]
 }
