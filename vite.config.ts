@@ -50,6 +50,12 @@ const config = defineConfig({
   test: {
     environment: 'happy-dom',
     globals: true,
+    server: {
+      deps: {
+        inline: ['@arcgis/map-components', '@esri/calcite-components'],
+      },
+    },
+    css: false,
   },
 });
 
