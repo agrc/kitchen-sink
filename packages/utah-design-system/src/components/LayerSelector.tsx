@@ -204,8 +204,22 @@ export function LayerSelector({
       );
     }
 
-    // basemaps prop tokens are validated in the getHappyPathBasemapProperties function
+    const hasBasemapToken = basemaps.some(
+      (configOrToken) => typeof configOrToken === 'string',
+    );
+    const hasLayerToken = [
+      ...baseLayers,
+      ...referenceLayers,
+      ...operationalLayers,
+    ].some((configOrToken) => typeof configOrToken === 'string');
 
+    if ((hasBasemapToken || hasLayerToken) && !quadWord) {
+      throw new Error(
+        "layer-selector::You chose to use a token without setting your 'quadWord' from Discover. The requests for tiles will fail to authenticate. Pass 'quadWord' prop.",
+      );
+    }
+
+    // basemaps prop tokens are validated in the getHappyPathBasemapProperties function
     for (const configOrToken of [
       ...baseLayers,
       ...referenceLayers,
@@ -219,20 +233,9 @@ export function LayerSelector({
             ).join(', ')}) or pass in a LayerConfig object.`,
           );
         }
-        if (!quadWord) {
-          throw new Error(
-            `layer-selector::You chose to use a layer token '${configOrToken}' without setting your 'quadWord' from Discover. The requests for tiles will fail to authenticate. Pass 'quadWord' prop.`,
-          );
-        }
       }
     }
-  }, [
-    baseLayers,
-    basemaps.length,
-    operationalLayers,
-    quadWord,
-    referenceLayers,
-  ]);
+  }, [baseLayers, basemaps, operationalLayers, quadWord, referenceLayers]);
 
   const [selectedRadioBtnLabel, setSelectedRadioBtnLabel] = useState<string>(
     getLabel(basemaps.length ? basemaps[0]! : baseLayers[0]!),
@@ -257,14 +260,14 @@ export function LayerSelector({
 
   // toggle layer visibility
   useEffect(() => {
-    async function updateAllLayerVisibility() {
+    function updateAllLayerVisibility() {
       for (const configOrToken of baseLayers) {
         const label = getLabel(configOrToken);
         toggleLayer(
           configOrToken,
           label,
           label === selectedRadioBtnLabel,
-          map.basemap!.baseLayers,
+          map!.basemap!.baseLayers,
           managedLayers.current,
           quadWord!,
         );
@@ -273,7 +276,7 @@ export function LayerSelector({
             'Overlay',
             'Overlay',
             label === selectedRadioBtnLabel,
-            map.basemap!.referenceLayers,
+            map!.basemap!.referenceLayers,
             managedLayers.current,
             quadWord!,
           );
@@ -319,7 +322,7 @@ export function LayerSelector({
           configOrToken,
           label,
           selectedCheckboxLabels.includes(label),
-          map.basemap!.referenceLayers,
+          map!.basemap!.referenceLayers,
           managedLayers.current,
           quadWord!,
         );
@@ -332,7 +335,7 @@ export function LayerSelector({
           configOrToken,
           label,
           selectedCheckboxLabels.includes(label),
-          map.layers,
+          map!.layers,
           managedLayers.current,
           quadWord!,
         );
@@ -364,9 +367,9 @@ export function LayerSelector({
       }
 
       return;
+    } else {
+      updateAllLayerVisibility();
     }
-
-    updateAllLayerVisibility();
   }, [
     baseLayers,
     operationalLayers,
@@ -392,7 +395,7 @@ export function LayerSelector({
       expandIcon={icon}
       mode={mode}
       group={group}
-      expanded={expanded || undefined}
+      expanded={expanded}
       label="Map layers"
       onarcgisReady={handleExpandReady}
     >
@@ -428,7 +431,7 @@ export function LayerSelector({
               <calcite-label key={value} layout="inline">
                 <calcite-radio-button
                   value={value}
-                  checked={value === selectedRadioBtnLabel || undefined}
+                  checked={value === selectedRadioBtnLabel}
                 />
                 {value}
               </calcite-label>
@@ -441,7 +444,7 @@ export function LayerSelector({
               <calcite-label key={value} layout="inline">
                 <calcite-radio-button
                   value={value}
-                  checked={value === selectedRadioBtnLabel || undefined}
+                  checked={value === selectedRadioBtnLabel}
                 />
                 {value}
               </calcite-label>
@@ -472,9 +475,7 @@ export function LayerSelector({
                 return (
                   <calcite-label key={label} layout="inline">
                     <calcite-checkbox
-                      checked={
-                        selectedCheckboxLabels.includes(label) || undefined
-                      }
+                      checked={selectedCheckboxLabels.includes(label)}
                       oncalciteCheckboxChange={(
                         e: CustomEvent<void> & {
                           target: HTMLCalciteCheckboxElement;

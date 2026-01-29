@@ -7,6 +7,7 @@ import TileLayer from '@arcgis/core/layers/TileLayer';
 import WebTileLayer from '@arcgis/core/layers/WebTileLayer';
 import '@arcgis/map-components/components/arcgis-home';
 import '@arcgis/map-components/components/arcgis-map';
+import '@arcgis/map-components/components/arcgis-zoom';
 import type { Meta } from '@storybook/react-vite';
 import { useRef, useState } from 'react';
 import { LayerSelector } from './LayerSelector';
@@ -132,6 +133,26 @@ export const Zoom = () => (
     center={[-111.83, 39.71]}
     zoom={6}
   >
+    <LayerSelector
+      quadWord={import.meta.env.VITE_QUAD_WORD}
+      basemaps={['Lite', 'Imagery', 'Topo']}
+    />
+  </arcgis-map>
+);
+
+export const SmoothZoom = () => (
+  <arcgis-map
+    basemap="streets"
+    className="h-96 w-full border"
+    center={[-111.83, 39.71]}
+    zoom={6}
+    constraints={
+      {
+        snapToZoom: false,
+      } as __esri.View2DConstraints
+    }
+  >
+    <arcgis-zoom slot="top-left"></arcgis-zoom>
     <LayerSelector
       quadWord={import.meta.env.VITE_QUAD_WORD}
       basemaps={['Lite', 'Imagery', 'Topo']}
