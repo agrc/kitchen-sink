@@ -6,6 +6,17 @@ This is UGRC's [React Aria](https://react-spectrum.adobe.com/react-aria/) plus [
 
 This design system expects Tailwind CSS primary, secondary, and accent colors ranging from 50-950. The UGRC default presets can be used for this from [@ugrc/tailwind-preset](https://www.npmjs.com/package/@ugrc/tailwind-preset).
 
+## TypeScript Configuration
+
+When using spatial components that integrate with ArcGIS and Calcite web components (such as `LayerSelector`), you need to include type references in your project's TypeScript configuration. Add the following to your `vite-env.d.ts` or a similar type declaration file:
+
+```typescript
+/// <reference types="@arcgis/map-components/types/react" />
+/// <reference types="@esri/calcite-components/types/react" />
+```
+
+This ensures TypeScript recognizes the global types for ArcGIS and Calcite elements (e.g., `HTMLArcgisMapElement`, `HTMLCalciteCheckboxElement`) used by these components.
+
 ## Header
 
 The Header component requires a custom font for the SVG text.
