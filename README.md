@@ -141,3 +141,7 @@ To continue with tailwind version 3 support
 
 - tailwind-merge is pinned at version 2.6.1 and
 - tailwind-variants is pinned at version 0.3.1
+
+## Attribution
+
+This project was developed with the assistance of [GitHub Copilot](https://github.com/features/copilot).
