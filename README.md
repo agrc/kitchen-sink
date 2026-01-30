@@ -139,8 +139,8 @@ Then run `npm run build:watch --workspace packages/sherlock` to automatically bu
 
 To continue with tailwind version 3 support
 
-- tailwind-merge is pinned at version 2.6.1 and
-- tailwind-variants is pinned at version 0.3.1
+- tailwind-merge is pinned at version `2.6.*`
+- tailwind-variants is pinned at version `0.3.*`
 
 ## Attribution
 
