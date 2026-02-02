@@ -31,8 +31,10 @@ const styles = tv({
   },
 });
 
-export interface SelectProps<T extends object>
-  extends Omit<AriaSelectProps<T>, 'children'> {
+export interface SelectProps<T extends object> extends Omit<
+  AriaSelectProps<T>,
+  'children'
+> {
   label?: string;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
