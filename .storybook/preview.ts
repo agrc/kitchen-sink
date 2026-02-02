@@ -27,7 +27,7 @@ if (import.meta.env.DEV) {
       console.log('auth emulator already connected', error);
     }
     if (typeof window !== 'undefined') {
-      (window as any)['_firebase_auth_emulator'] = true;
+      window['_firebase_auth_emulator'] = true;
     }
   }
 }
