@@ -64,7 +64,7 @@ const tabProps = tv({
       true: 'text-secondary-500 after:absolute after:block after:rounded-full after:bg-secondary-400 group-data-[orientation="horizontal"]:after:bottom-[-0.8em] group-data-[orientation="horizontal"]:after:left-0 group-data-[orientation=vertical]:after:left-[-0.78em] group-data-[orientation="horizontal"]:after:h-2 group-data-[orientation=vertical]:after:h-full group-data-[orientation="horizontal"]:after:w-full group-data-[orientation=vertical]:after:w-2 dark:text-secondary-300 forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]',
     },
     isDisabled: {
-      true: 'text-zinc-200 selected:bg-zinc-200 selected:text-zinc-300 dark:text-zinc-600 dark:selected:bg-zinc-600 dark:selected:text-zinc-500 forced-colors:text-[GrayText] forced-colors:selected:bg-[GrayText] forced-colors:selected:text-[HighlightText]',
+      true: 'hidden',
     },
   },
 });
