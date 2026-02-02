@@ -56,12 +56,12 @@ export function TabList<T extends object>(props: TabListProps<T>) {
 
 const tabProps = tv({
   extend: focusRing,
-  base: 'relative flex cursor-default items-center rounded-full px-4 py-1.5 font-bold transition forced-color-adjust-none hover:bg-zinc-200 hover:text-zinc-700',
+  base: 'relative flex cursor-default items-center rounded-full px-4 py-1.5 font-bold transition forced-color-adjust-none hover:bg-zinc-200 hover:text-zinc-700 dark:hover:text-zinc-800',
   variants: {
     isSelected: {
       false:
-        'text-zinc-500 after:bottom-1 after:h-px after:bg-slate-400 pressed:bg-zinc-200 pressed:text-zinc-700 dark:text-secondary-400 dark:text-slate-200 dark:text-zinc-300 after:dark:bg-secondary-400 after:dark:bg-slate-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-200 dark:pressed:bg-zinc-800 dark:pressed:text-zinc-200',
-      true: 'text-secondary-500 after:absolute after:block after:rounded-full after:bg-secondary-400 group-data-[orientation="horizontal"]:after:bottom-[-0.8em] group-data-[orientation="horizontal"]:after:left-0 group-data-[orientation=vertical]:after:left-[-0.78em] group-data-[orientation="horizontal"]:after:h-2 group-data-[orientation=vertical]:after:h-full group-data-[orientation="horizontal"]:after:w-full group-data-[orientation=vertical]:after:w-2 dark:text-secondary-400 forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]',
+        'text-zinc-500 after:bottom-1 after:h-px after:bg-slate-400 pressed:bg-zinc-200 pressed:text-zinc-700 dark:text-zinc-300 after:dark:bg-slate-400 dark:hover:text-zinc-800 dark:pressed:bg-zinc-800 dark:pressed:text-zinc-200',
+      true: 'text-secondary-500 after:absolute after:block after:rounded-full after:bg-secondary-400 group-data-[orientation="horizontal"]:after:bottom-[-0.8em] group-data-[orientation="horizontal"]:after:left-0 group-data-[orientation=vertical]:after:left-[-0.78em] group-data-[orientation="horizontal"]:after:h-2 group-data-[orientation=vertical]:after:h-full group-data-[orientation="horizontal"]:after:w-full group-data-[orientation=vertical]:after:w-2 dark:text-secondary-300 forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]',
     },
     isDisabled: {
       true: 'text-zinc-200 selected:bg-zinc-200 selected:text-zinc-300 dark:text-zinc-600 dark:selected:bg-zinc-600 dark:selected:text-zinc-500 forced-colors:text-[GrayText] forced-colors:selected:bg-[GrayText] forced-colors:selected:text-[HighlightText]',
