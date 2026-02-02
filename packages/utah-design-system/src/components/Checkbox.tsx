@@ -12,8 +12,10 @@ import { tv } from 'tailwind-variants';
 import { Description, FieldError, Label } from './Field';
 import { composeTailwindRenderProps, focusRing } from './utils';
 
-export interface CheckboxGroupProps
-  extends Omit<AriaCheckboxGroupProps, 'children'> {
+export interface CheckboxGroupProps extends Omit<
+  AriaCheckboxGroupProps,
+  'children'
+> {
   label?: string;
   children?: ReactNode;
   description?: string;

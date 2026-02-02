@@ -18,8 +18,10 @@ import { Description, Label } from './Field';
 import { Tooltip } from './Tooltip';
 import { focusRing } from './utils';
 
-export interface FileInputProps
-  extends Omit<AriaFileTriggerProps, 'children' | 'onSelect'> {
+export interface FileInputProps extends Omit<
+  AriaFileTriggerProps,
+  'children' | 'onSelect'
+> {
   label?: string;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
