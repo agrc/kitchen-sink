@@ -1,8 +1,4 @@
-// This file has been automatically migrated to valid ESM format by Storybook.
-import { createRequire } from 'node:module';
-import path from 'node:path';
-
-const require = createRequire(import.meta.url);
+import type { StorybookConfig } from '@storybook/react-vite';
 
 const excludedProps = new Set([
   'id',
@@ -18,19 +14,19 @@ const excludedProps = new Set([
   'onInput',
 ]);
 
-export default {
+const config: StorybookConfig = {
   stories: ['../packages/*/src/**/*.stories.{jsx,tsx}'],
   staticDirs: ['../public'],
 
   addons: [
-    getAbsolutePath('@storybook/addon-links'),
-    getAbsolutePath('@chromatic-com/storybook'),
-    getAbsolutePath('@storybook/addon-themes'),
-    getAbsolutePath('@storybook/addon-docs'),
+    '@storybook/addon-links',
+    '@chromatic-com/storybook',
+    '@storybook/addon-themes',
+    '@storybook/addon-docs',
   ],
 
   framework: {
-    name: getAbsolutePath('@storybook/react-vite'),
+    name: '@storybook/react-vite',
     options: {},
   },
 
@@ -48,6 +44,4 @@ export default {
   },
 };
 
-function getAbsolutePath(value) {
-  return path.dirname(require.resolve(path.join(value, 'package.json')));
-}
+export default config;

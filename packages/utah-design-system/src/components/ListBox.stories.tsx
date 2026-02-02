@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
 import { ListBox, ListBoxItem } from './ListBox';
 
 const meta: Meta<typeof ListBox> = {
@@ -9,7 +10,7 @@ const meta: Meta<typeof ListBox> = {
   tags: ['autodocs'],
   argTypes: {},
   args: {
-    onAction: undefined,
+    onAction: fn(),
     selectionMode: 'multiple',
   },
 };
