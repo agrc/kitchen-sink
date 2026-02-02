@@ -47,7 +47,7 @@ npm run storybook     # Dev server + Firebase emulator for auth stories
 npm run build         # Build all packages
 npm run check         # TypeScript + Prettier check
 npm run lint:fix      # ESLint with auto-fix
-npm test              # Vitest (uses happy-dom)
+npm test -- --run     # Vitest (uses happy-dom)
 ```
 
 ## Commit Conventions

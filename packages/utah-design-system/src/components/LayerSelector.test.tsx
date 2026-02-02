@@ -14,29 +14,29 @@ import type {
 
 // Mock the MapView class
 vi.mock('@arcgis/core/views/MapView', () => {
+  class MockMapView {
+    map: Map | null;
+    container: HTMLElement | string | null;
+    ready = true;
+    destroyed = false;
+    extent = null;
+    center = null;
+    zoom = 10;
+    scale = 1000000;
+    when = vi.fn().mockResolvedValue(undefined);
+    destroy = vi.fn();
+    goTo = vi.fn().mockResolvedValue(undefined);
+
+    constructor(
+      properties: { map?: Map; container?: HTMLElement | string } = {},
+    ) {
+      this.map = properties?.map || null;
+      this.container = properties?.container || null;
+    }
+  }
+
   return {
-    default: vi
-      .fn()
-      .mockImplementation(
-        (properties: { map?: Map; container?: HTMLElement | string } = {}) => {
-          const mockMapView = {
-            map: properties?.map || null,
-            container: properties?.container || null,
-            ready: true,
-            destroyed: false,
-            // Add any other properties your code might access
-            extent: null,
-            center: null,
-            zoom: 10,
-            scale: 1000000,
-            // Add methods if needed
-            when: vi.fn().mockResolvedValue(undefined),
-            destroy: vi.fn(),
-            goTo: vi.fn().mockResolvedValue(undefined),
-          };
-          return mockMapView;
-        },
-      ),
+    default: MockMapView,
   };
 });
 
@@ -132,6 +132,25 @@ describe('LayerSelector utility functions', () => {
       expect(mockManagedObjects[label]).toBe(existingLayer);
     });
 
+    it('should not add duplicate layers when layer already exists in container', async () => {
+      const label = 'Duplicate Layer';
+      const existingLayer = new WebTileLayer({ id: 'duplicate-layer' });
+      mockManagedObjects[label] = existingLayer;
+      mockCollection.add(existingLayer);
+
+      await toggleLayer(
+        'Imagery' as const,
+        label,
+        true,
+        mockCollection,
+        mockManagedObjects,
+        'testQuadWord',
+      );
+
+      expect(mockCollection.length).toBe(1);
+      expect(mockCollection.getItemAt(0)).toBe(existingLayer);
+    });
+
     it('should remove layer when visible is false and layer exists', async () => {
       const label = 'Layer to Remove';
       const layer = new WebTileLayer({ id: 'to-remove' });
@@ -169,6 +188,25 @@ describe('LayerSelector utility functions', () => {
   });
 
   describe('toggleBasemap', () => {
+    it('should warn and return when view basemap is not available', async () => {
+      const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+      const viewWithoutBasemap = { map: {} } as MapView;
+
+      await toggleBasemap(
+        'Imagery' as const,
+        'Missing Basemap',
+        true,
+        mockManagedObjects,
+        viewWithoutBasemap,
+        'testQuadWord',
+      );
+
+      expect(warnSpy).toHaveBeenCalledWith(
+        'toggleBasemap: view.map.basemap is not available',
+      );
+      warnSpy.mockRestore();
+    });
+
     it('should add basemap layers when visible is true and basemap does not exist (string token)', async () => {
       const label = 'Test Basemap';
       const token = 'Imagery' as const;
