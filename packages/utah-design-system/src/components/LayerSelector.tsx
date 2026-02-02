@@ -4,7 +4,7 @@ import '@esri/calcite-components/components/calcite-checkbox';
 import '@esri/calcite-components/components/calcite-label';
 import '@esri/calcite-components/components/calcite-radio-button';
 import '@esri/calcite-components/components/calcite-radio-button-group';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import {
   layerTokens,
   type BaseLayerConfigOrToken,
@@ -179,6 +179,8 @@ export function LayerSelector({
   const managedLayers = useRef<Record<string, __esri.Layer | __esri.Basemap>>(
     {},
   );
+
+  const id = useId();
 
   // validate props
   useEffect(() => {
@@ -408,7 +410,7 @@ export function LayerSelector({
       <div style={{ padding: 'var(--calcite-spacing-lg)', minWidth: '150px' }}>
         <h3>Base maps</h3>
         <calcite-radio-button-group
-          name="basemap-selector"
+          name={`basemap-selector-${id}`}
           layout="vertical"
           oncalciteRadioButtonGroupChange={(
             e: CustomEvent<void> & {
