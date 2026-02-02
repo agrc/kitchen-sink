@@ -44,7 +44,7 @@
   "dependencies": {
     "@arcgis/core": "^4.34.8",
     "@arcgis/map-components": "^4.34.9",
-    "lucide-react": "^0.546.0",
+    "lucide-react": "^0.563.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.71.1",
@@ -69,7 +69,7 @@
     "msw-storybook-addon": "^2.0.6",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.5.6",
-    "prettier": "^3.6.2",
+    "prettier": "^3.8.1",
     "prettier-plugin-organize-imports": "^4.3.0",
     "prettier-plugin-packagejson": "^3.0.0",
     "prettier-plugin-tailwindcss": "^0.7.2",
@@ -83,7 +83,7 @@
     "tailwindcss-react-aria-components": "^1.2.0",
     "typescript": "^5.9.3",
     "vite": "^7.3.1",
-    "vitest": "^3.2.4"
+    "vitest": "^4.0.18"
   },
   "msw": {
     "workerDirectory": [
