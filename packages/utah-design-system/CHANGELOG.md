@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.34.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.34.1...utah-design-system-v1.34.2) (2026-02-03)
+
+
+### Bug Fixes
+
+* **layer-selector:** fix incorrect default focus ([40c597a](https://github.com/agrc/kitchen-sink/commit/40c597af4f4ff0a801ebc696668b302482106217))
+* **tabs:** disabled tabs should be hidden ([bf23a84](https://github.com/agrc/kitchen-sink/commit/bf23a84b846f5436bc4abf02d433e350dcea19da))
+
 ## [1.34.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.34.0...utah-design-system-v1.34.1) (2026-01-14)
 
 
