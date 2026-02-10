@@ -1,12 +1,16 @@
 # Changelog
 
-## [1.34.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.34.1...utah-design-system-v1.34.2) (2026-02-03)
+## [2.0.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.34.1...utah-design-system-v2.0.0) (2026-02-03)
 
 
 ### Bug Fixes
 
 * **layer-selector:** fix incorrect default focus ([40c597a](https://github.com/agrc/kitchen-sink/commit/40c597af4f4ff0a801ebc696668b302482106217))
 * **tabs:** disabled tabs should be hidden ([bf23a84](https://github.com/agrc/kitchen-sink/commit/bf23a84b846f5436bc4abf02d433e350dcea19da))
+
+### BREAKING CHANGES
+
+* **layer-selector:** this component now can only be used with the arcgis-map component, it no longer works with the core MapView class ([c6df241](https://github.com/agrc/kitchen-sink/commit/c6df2412c4e45db518a00df0099253966e2e2ce9))
 
 ## [1.34.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.34.0...utah-design-system-v1.34.1) (2026-01-14)
 
