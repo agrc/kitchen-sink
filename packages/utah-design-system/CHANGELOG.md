@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.34.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.34.1...utah-design-system-v1.34.2) (2026-02-03)
+## [2.0.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.34.1...utah-design-system-v2.0.0) (2026-02-03)
 
 
 ### Bug Fixes
