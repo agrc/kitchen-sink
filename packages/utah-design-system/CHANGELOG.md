@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v2.0.0...utah-design-system-v2.1.0) (2026-03-25)
+
+
+### Features
+
+* **layer-selector:** add high contrast base map token ([0717244](https://github.com/agrc/kitchen-sink/commit/0717244e70acb1c7876efe15b9d92a4fc25e1344))
+
 ## [2.0.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.34.1...utah-design-system-v2.0.0) (2026-02-03)
 
 
