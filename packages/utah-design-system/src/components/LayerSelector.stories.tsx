@@ -78,6 +78,7 @@ export function Default() {
         }),
     },
     'Lite',
+    'High Contrast',
   ];
 
   const baseLayers: BaseLayerConfigOrToken[] = [

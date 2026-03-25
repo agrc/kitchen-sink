@@ -139,6 +139,13 @@ export function getHappyPathBasemapProperties(
         ],
       };
     }
+    case 'High Contrast': {
+      return {
+        portalItem: {
+          id: '2ce710cbb88f4981bb517c255f638ff4',
+        },
+      };
+    }
     default: {
       throw new Error(
         `layer-selector::The basemap token '${token}' was not found. Please use one of the supported tokens (${Object.values(basemapTokens).join(', ')}) or pass in a Basemap object.`,
