@@ -117,6 +117,7 @@ export function Default({
               }),
           },
           'Lite', // this is for testing the happy path tokens
+          'High Contrast',
         ],
         baseLayers: baseLayers || [
           'Hybrid',

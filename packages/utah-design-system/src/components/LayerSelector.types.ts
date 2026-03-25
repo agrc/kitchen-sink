@@ -29,6 +29,7 @@ export const basemapTokens = {
   lite: 'Lite',
   colorIR: 'Color IR',
   hybrid: 'Hybrid',
+  highContrast: 'High Contrast',
 } as const;
 
 export type BasemapToken = (typeof basemapTokens)[keyof typeof basemapTokens];
