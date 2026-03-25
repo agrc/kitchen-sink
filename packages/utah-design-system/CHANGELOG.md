@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.35.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.34.1...utah-design-system-v1.35.0) (2026-03-25)
+
+
+### Features
+
+* **layer-selector:** add High Contrast basemap option ([2ce710c](https://github.com/agrc/kitchen-sink/commit/2ce710cbb88f4981bb517c255f638ff4))
+
 ## [1.34.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v1.34.0...utah-design-system-v1.34.1) (2026-01-14)
 
 
