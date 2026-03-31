@@ -1,8 +1,8 @@
 import {
-  composeRenderProps,
   ToggleButtonGroup as RACToggleButtonGroup,
   type ToggleButtonGroupProps,
-} from 'react-aria-components';
+} from 'react-aria-components/ToggleButtonGroup';
+import { composeRenderProps } from 'react-aria-components/composeRenderProps';
 import { tv } from 'tailwind-variants';
 
 const styles = tv({
@@ -10,9 +10,9 @@ const styles = tv({
   variants: {
     orientation: {
       horizontal:
-        'flex-row [&>button:first-child]:rounded-l-md [&>button:last-child]:rounded-r-md [&>button]:rounded-none',
+        'flex-row [&>button]:rounded-none [&>button:first-child]:rounded-l-md [&>button:last-child]:rounded-r-md',
       vertical:
-        'flex-col [&>button:first-child]:rounded-t-md [&>button:last-child]:rounded-b-md [&>button]:rounded-none',
+        'flex-col [&>button]:rounded-none [&>button:first-child]:rounded-t-md [&>button:last-child]:rounded-b-md',
     },
   },
 });

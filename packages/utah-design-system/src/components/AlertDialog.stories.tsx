@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { DialogTrigger } from 'react-aria-components';
+import { DialogTrigger } from 'react-aria-components/Dialog';
 import { AlertDialog } from './AlertDialog';
 import { Button } from './Button';
 import { Modal } from './Modal';

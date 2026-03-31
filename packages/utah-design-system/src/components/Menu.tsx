@@ -1,4 +1,5 @@
 import { Check, ChevronRight } from 'lucide-react';
+import { composeRenderProps } from 'react-aria-components/composeRenderProps';
 import {
   Menu as AriaMenu,
   MenuItem as AriaMenuItem,
@@ -6,8 +7,7 @@ import {
   type MenuItemProps,
   Separator,
   type SeparatorProps,
-  composeRenderProps,
-} from 'react-aria-components';
+} from 'react-aria-components/Menu';
 import {
   DropdownSection,
   type DropdownSectionProps,
@@ -42,7 +42,7 @@ export function MenuItem(props: MenuItemProps) {
                 {isSelected && <Check aria-hidden className="h-auto w-4" />}
               </span>
             )}
-            <span className="flex flex-1 items-center gap-2 truncate font-normal group-selected:font-semibold">
+            <span className="group-selected:font-semibold flex flex-1 items-center gap-2 truncate font-normal">
               {children}
             </span>
             {hasSubmenu && (

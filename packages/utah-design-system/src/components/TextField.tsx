@@ -1,10 +1,10 @@
 import { type ForwardedRef, forwardRef } from 'react';
+import type { ValidationResult } from 'react-aria-components';
 import {
   TextField as AriaTextField,
   type TextFieldProps as AriaTextFieldProps,
   type InputProps,
-  type ValidationResult,
-} from 'react-aria-components';
+} from 'react-aria-components/TextField';
 import { twJoin } from 'tailwind-merge';
 import { tv } from 'tailwind-variants';
 import {
@@ -48,7 +48,7 @@ export const TextField = forwardRef(function TextField(
         <Label
           className={twJoin(
             props.isRequired &&
-              "after:ml-0.5 after:text-warning-500 after:content-['*'] after:dark:text-warning-300",
+              "after:text-warning-500 after:dark:text-warning-300 after:ml-0.5 after:content-['*']",
           )}
         >
           {label}

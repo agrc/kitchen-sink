@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Switch as AriaSwitch,
   type SwitchProps as AriaSwitchProps,
-} from 'react-aria-components';
+} from 'react-aria-components/Switch';
 import { tv } from 'tailwind-variants';
 import { composeTailwindRenderProps, focusRing } from './utils';
 
@@ -16,11 +16,11 @@ const track = tv({
   variants: {
     isSelected: {
       false:
-        'bg-gray-400 group-pressed:bg-gray-500 dark:bg-zinc-400 dark:group-pressed:bg-zinc-300',
-      true: 'bg-gray-700 group-pressed:bg-gray-800 dark:bg-zinc-300 dark:group-pressed:bg-zinc-200 forced-colors:!bg-[Highlight]',
+        'group-pressed:bg-gray-500 dark:group-pressed:bg-zinc-300 bg-gray-400 dark:bg-zinc-400',
+      true: 'group-pressed:bg-gray-800 dark:group-pressed:bg-zinc-200 bg-gray-700 dark:bg-zinc-300 forced-colors:!bg-[Highlight]',
     },
     isDisabled: {
-      true: 'bg-gray-200 dark:bg-zinc-700 forced-colors:border-[GrayText] forced-colors:group-selected:!bg-[GrayText]',
+      true: 'forced-colors:group-selected:!bg-[GrayText] bg-gray-200 dark:bg-zinc-700 forced-colors:border-[GrayText]',
     },
   },
 });

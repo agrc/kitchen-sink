@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { MoreHorizontal } from 'lucide-react';
-import { MenuTrigger, Popover, SubmenuTrigger } from 'react-aria-components';
+import { MenuTrigger, SubmenuTrigger } from 'react-aria-components/Menu';
+import { Popover } from 'react-aria-components/Popover';
 import { Button } from './Button';
 import { Menu, MenuItem, MenuSection, MenuSeparator } from './Menu';
 

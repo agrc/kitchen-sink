@@ -1,12 +1,12 @@
 export const SocialMedia = () => (
-  <div className="flex flex-col items-center gap-1 bg-primary-900 py-2 text-zinc-50 dark:bg-zinc-800 sm:flex-row sm:gap-4 sm:py-0 md:px-8">
+  <div className="bg-primary-900 flex flex-col items-center gap-1 py-2 text-zinc-50 sm:flex-row sm:gap-4 sm:py-0 md:px-8 dark:bg-zinc-800">
     <div className="order-last text-sm font-medium uppercase sm:order-first">
       Connect with us
     </div>
     <div className="flex items-center gap-1 sm:flex-none">
       <a
         href="mailto:ugrc@utah.gov"
-        className="flex grow items-center justify-center rounded-full p-2 transition-all ease-in-out hover:bg-white/20 focus:outline-none focus:ring-4 focus:ring-accent-500 dark:focus:outline-none"
+        className="focus:ring-accent-500 flex grow items-center justify-center rounded-full p-2 transition-all ease-in-out hover:bg-white/20 focus:ring-4 focus:outline-none dark:focus:outline-none"
         target="_blank"
         rel="noreferrer"
       >
@@ -21,7 +21,7 @@ export const SocialMedia = () => (
       </a>
       <a
         href="https://github.com/agrc"
-        className="flex grow items-center justify-center rounded-full p-2 transition-all ease-in-out hover:bg-white/20 focus:outline-none focus:ring-4 focus:ring-accent-500 dark:focus:outline-none"
+        className="focus:ring-accent-500 flex grow items-center justify-center rounded-full p-2 transition-all ease-in-out hover:bg-white/20 focus:ring-4 focus:outline-none dark:focus:outline-none"
         target="_blank"
         rel="noreferrer"
       >
@@ -36,7 +36,7 @@ export const SocialMedia = () => (
       </a>
       <a
         href="https://twitter.com/MapUtah"
-        className="flex grow items-center justify-center rounded-full p-2 transition-all ease-in-out hover:bg-white/20 focus:outline-none focus:ring-4 focus:ring-accent-500 dark:focus:outline-none"
+        className="focus:ring-accent-500 flex grow items-center justify-center rounded-full p-2 transition-all ease-in-out hover:bg-white/20 focus:ring-4 focus:outline-none dark:focus:outline-none"
         target="_blank"
         rel="noreferrer"
       >
@@ -51,7 +51,7 @@ export const SocialMedia = () => (
       </a>
       <a
         href="https://facebook.com/UtahAGRC"
-        className="flex grow items-center justify-center rounded-full p-2 transition-all ease-in-out hover:bg-white/20 focus:outline-none focus:ring-4 focus:ring-accent-500 dark:focus:outline-none"
+        className="focus:ring-accent-500 flex grow items-center justify-center rounded-full p-2 transition-all ease-in-out hover:bg-white/20 focus:ring-4 focus:outline-none dark:focus:outline-none"
         target="_blank"
         rel="noreferrer"
       >
@@ -66,7 +66,7 @@ export const SocialMedia = () => (
       </a>
       <a
         href="https://instagram.com/ugrc.gis"
-        className="flex grow items-center justify-center rounded-full p-2 transition-all ease-in-out hover:bg-white/20 focus:outline-none focus:ring-4 focus:ring-accent-500 dark:focus:outline-none"
+        className="focus:ring-accent-500 flex grow items-center justify-center rounded-full p-2 transition-all ease-in-out hover:bg-white/20 focus:ring-4 focus:outline-none dark:focus:outline-none"
         target="_blank"
         rel="noreferrer"
       >
@@ -81,7 +81,7 @@ export const SocialMedia = () => (
       </a>
       <a
         href="https://www.youtube.com/@therealUGRC"
-        className="flex grow items-center justify-center rounded-full p-2 transition-all ease-in-out hover:bg-white/20 focus:outline-none focus:ring-4 focus:ring-accent-500 dark:focus:outline-none"
+        className="focus:ring-accent-500 flex grow items-center justify-center rounded-full p-2 transition-all ease-in-out hover:bg-white/20 focus:ring-4 focus:outline-none dark:focus:outline-none"
         target="_blank"
         rel="noreferrer"
       >
@@ -96,7 +96,7 @@ export const SocialMedia = () => (
       </a>
       <a
         href="https://gis.utah.gov/rss.xml"
-        className="flex grow items-center justify-center rounded-full p-2 transition-all ease-in-out hover:bg-white/20 focus:outline-none focus:ring-4 focus:ring-accent-500 dark:focus:outline-none"
+        className="focus:ring-accent-500 flex grow items-center justify-center rounded-full p-2 transition-all ease-in-out hover:bg-white/20 focus:ring-4 focus:outline-none dark:focus:outline-none"
         target="_blank"
         rel="noreferrer"
       >

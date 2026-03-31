@@ -3,7 +3,7 @@ __snapshots__
 node_modules
 dist
 data/firebase/
-package-lock.json
+pnpm-lock.yaml
 .vscode
 CHANGELOG.md
 public/

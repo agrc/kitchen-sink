@@ -1,10 +1,10 @@
 import { forwardRef, type ForwardedRef } from 'react';
+import type { ValidationResult } from 'react-aria-components';
+import { type TextAreaProps as AriaTextAreaProps } from 'react-aria-components/TextArea';
 import {
   TextField as AriaTextField,
-  type TextAreaProps as AriaTextAreaProps,
   type TextFieldProps as AriaTextFieldProps,
-  type ValidationResult,
-} from 'react-aria-components';
+} from 'react-aria-components/TextField';
 import { tv } from 'tailwind-variants';
 import {
   Description,

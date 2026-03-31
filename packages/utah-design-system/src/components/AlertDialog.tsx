@@ -1,7 +1,7 @@
 import { AlertCircleIcon, InfoIcon } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { chain } from 'react-aria';
-import { type DialogProps, Heading } from 'react-aria-components';
+import { type DialogProps, Heading } from 'react-aria-components/Dialog';
 import { Button } from './Button';
 import { Dialog } from './Dialog';
 
@@ -33,7 +33,7 @@ export function AlertDialog({
             {title}
           </Heading>
           <div
-            className={`absolute right-6 top-6 size-6 stroke-2 ${variant === 'destructive' ? 'text-warning-500' : 'text-sky-500'}`}
+            className={`absolute top-6 right-6 size-6 stroke-2 ${variant === 'destructive' ? 'text-warning-500' : 'text-sky-500'}`}
           >
             {variant === 'destructive' ? (
               <AlertCircleIcon aria-hidden />

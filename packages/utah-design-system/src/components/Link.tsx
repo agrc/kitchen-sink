@@ -1,10 +1,10 @@
 import { SquareArrowOutUpRightIcon } from 'lucide-react';
 import type { ReactNode } from 'react';
+import { composeRenderProps } from 'react-aria-components/composeRenderProps';
 import {
   Link as AriaLink,
   type LinkProps as AriaLinkProps,
-  composeRenderProps,
-} from 'react-aria-components';
+} from 'react-aria-components/Link';
 import { tv } from 'tailwind-variants';
 import { focusRing } from './utils';
 
