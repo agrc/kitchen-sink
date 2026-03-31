@@ -40,7 +40,7 @@ export function CheckboxGroup(props: CheckboxGroupProps) {
 }
 
 const checkboxStyles = tv({
-  base: 'group flex items-center gap-2 text-sm transition pressed:bg-zinc-100 dark:pressed:bg-zinc-800',
+  base: 'group pressed:bg-zinc-100 dark:pressed:bg-zinc-800 flex items-center gap-2 text-sm transition',
   variants: {
     isDisabled: {
       false: 'text-gray-800 dark:text-zinc-200',
@@ -55,14 +55,14 @@ const boxStyles = tv({
   variants: {
     isSelected: {
       false:
-        'border-[--color] bg-white [--color:theme(colors.secondary.800)] group-pressed:[--color:theme(colors.secondary.600)] dark:bg-zinc-900 dark:[--color:theme(colors.secondary.400)] dark:group-pressed:[--color:theme(colors.secondary.600)]',
-      true: 'border-[--color] bg-[--color] [--color:theme(colors.secondary.800)] group-pressed:[--color:theme(colors.secondary.700)] dark:[--color:theme(colors.secondary.500)] dark:group-pressed:[--color:theme(colors.secondary.800)]',
+        'group-pressed:[--color:var(--color-secondary-600)] dark:group-pressed:[--color:var(--color-secondary-600)] border-[--color] bg-white [--color:var(--color-secondary-800)] dark:bg-zinc-900 dark:[--color:var(--color-secondary-400)]',
+      true: 'group-pressed:[--color:var(--color-secondary-700)] dark:group-pressed:[--color:var(--color-secondary-800)] border-[--color] bg-[--color] [--color:var(--color-secondary-800)] dark:[--color:var(--color-secondary-500)]',
     },
     isInvalid: {
-      true: '[--color:theme(colors.warning.700)] group-pressed:[--color:theme(colors.warning.800)] dark:[--color:theme(colors.warning.600)] dark:group-pressed:[--color:theme(colors.warning.700)] forced-colors:![--color:Mark]',
+      true: 'group-pressed:[--color:var(--color-warning-800)] dark:group-pressed:[--color:var(--color-warning-700)] [--color:var(--color-warning-700)] dark:[--color:var(--color-warning-600)] forced-colors:![--color:Mark]',
     },
     isDisabled: {
-      true: '[--color:theme(colors.gray.200)] dark:[--color:theme(colors.zinc.700)] forced-colors:![--color:GrayText]',
+      true: '[--color:var(--color-gray-200)] dark:[--color:var(--color-zinc-700)] forced-colors:![--color:GrayText]',
     },
   },
 });

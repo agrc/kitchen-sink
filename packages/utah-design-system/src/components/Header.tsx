@@ -51,15 +51,15 @@ export const Header = ({ children, links, ...props }: HeaderProps) => {
         <div className="pointer-events-none translate-y-[-150%] rounded-b border border-t-0 bg-zinc-200 leading-6 transition-all duration-500 ease-in-out focus-within:translate-y-0 focus-within:border-black/30 focus-within:shadow-lg dark:bg-zinc-700">
           <a
             href="#main-content"
-            className="relative mx-6 my-2 flex cursor-pointer items-center justify-center rounded-full border-2 border-primary-800 bg-primary-800 px-8 py-2 text-white"
+            className="border-primary-800 bg-primary-800 relative mx-6 my-2 flex cursor-pointer items-center justify-center rounded-full border-2 px-8 py-2 text-white"
           >
             skip to main content
           </a>
         </div>
       </div>
-      <div className="flex items-center border-b border-b-primary-900/30 bg-white py-2 pr-3 dark:border-black/30 dark:bg-zinc-700/20">
-        <div className="flex h-12 grow space-x-4 divide-x divide-primary-950 pl-3 dark:divide-zinc-600 sm:space-x-6 md:h-16">
-          <div className="flex items-center rounded-md transition-shadow ease-in-out focus-within:ring-2 focus-within:ring-primary-900 focus-within:ring-offset-2 dark:ring-offset-transparent dark:focus-within:ring-secondary-600 md:px-3">
+      <div className="border-b-primary-900/30 flex items-center border-b bg-white py-2 pr-3 dark:border-black/30 dark:bg-zinc-700/20">
+        <div className="divide-primary-950 flex h-12 grow space-x-4 divide-x pl-3 sm:space-x-6 md:h-16 dark:divide-zinc-600">
+          <div className="focus-within:ring-primary-900 dark:focus-within:ring-secondary-600 flex items-center rounded-md transition-shadow ease-in-out focus-within:ring-2 focus-within:ring-offset-2 md:px-3 dark:ring-offset-transparent">
             <Button
               {...triggerProps}
               onKeyDown={(event) => dismiss(event, state.close)}
@@ -68,10 +68,10 @@ export const Header = ({ children, links, ...props }: HeaderProps) => {
               <span className="sr-only">
                 An official website of the State of Utah. Click to learn more.
               </span>
-              <UtahLogo className="h-[45px] fill-primary-900 font-utah text-sm dark:fill-white md:h-[53px] md:w-[118px]" />
+              <UtahLogo className="fill-primary-900 font-utah h-[45px] text-sm md:h-[53px] md:w-[118px] dark:fill-white" />
             </Button>
           </div>
-          <div className="flex flex-1 basis-full justify-start pl-4 text-zinc-900 dark:text-zinc-100 sm:pl-5 md:pl-8">
+          <div className="flex flex-1 basis-full justify-start pl-4 text-zinc-900 sm:pl-5 md:pl-8 dark:text-zinc-100">
             {children}
           </div>
         </div>
@@ -81,9 +81,9 @@ export const Header = ({ children, links, ...props }: HeaderProps) => {
               <div className="flex items-center justify-self-end">
                 <Button
                   aria-label="user menu"
-                  className="cursor-default rounded-md outline-none transition-shadow ease-in-out focus:ring-2 focus:ring-primary-900 focus:ring-offset-2 dark:ring-offset-transparent dark:focus:ring-secondary-600"
+                  className="focus:ring-primary-900 dark:focus:ring-secondary-600 cursor-default rounded-md transition-shadow ease-in-out outline-none focus:ring-2 focus:ring-offset-2 dark:ring-offset-transparent"
                 >
-                  <GripIcon className="h-full w-8 text-primary-900 dark:text-zinc-300" />
+                  <GripIcon className="text-primary-900 h-full w-8 dark:text-zinc-300" />
                 </Button>
                 <Menu items={links}>
                   {(link) => (
@@ -113,7 +113,7 @@ export const Header = ({ children, links, ...props }: HeaderProps) => {
             <MenuTrigger>
               <Button
                 aria-label="secondary menu"
-                className="cursor-default rounded-md outline-none transition-shadow ease-in-out focus:ring-2 focus:ring-primary-900 focus:ring-offset-2 dark:ring-offset-transparent dark:focus:ring-secondary-600"
+                className="focus:ring-primary-900 dark:focus:ring-secondary-600 cursor-default rounded-md transition-shadow ease-in-out outline-none focus:ring-2 focus:ring-offset-2 dark:ring-offset-transparent"
               >
                 <Avatar
                   anonymous={!(currentUser ?? false)}
@@ -158,7 +158,7 @@ const Flyout = ({ state, ...props }: { state: OverlayTriggerState }) => {
       <div
         {...modalProps}
         ref={ref}
-        className="relative z-10 bg-zinc-700 px-6 pb-6 pt-2 shadow-lg"
+        className="relative z-10 bg-zinc-700 px-6 pt-2 pb-6 shadow-lg"
       >
         <p className="mb-8 text-xl font-bold text-zinc-50 md:text-2xl lg:mb-4">
           This is an official website of the State of Utah. Here&apos;s how you
@@ -187,13 +187,13 @@ const Flyout = ({ state, ...props }: { state: OverlayTriggerState }) => {
             </div>
           </div>
           <div className="flex items-center gap-4 text-zinc-50 sm:flex-col sm:gap-0">
-            <UtahLogo className="w-36 fill-current font-utah text-sm" />
+            <UtahLogo className="font-utah w-36 fill-current text-sm" />
             <div className="text-sm">© State of Utah</div>
           </div>
         </div>
         <Button
           onPress={state.close}
-          className="absolute right-2 top-2 cursor-default rounded-full p-1 text-zinc-50 outline-none ring-offset-transparent transition-shadow ease-in-out hover:bg-black/10 focus:ring-2 focus:ring-secondary-600 focus:ring-offset-2"
+          className="focus:ring-secondary-600 absolute top-2 right-2 cursor-default rounded-full p-1 text-zinc-50 ring-offset-transparent transition-shadow ease-in-out outline-none hover:bg-black/10 focus:ring-2 focus:ring-offset-2"
         >
           <XIcon className="w-7" />
           <span className="sr-only">Close official website popup</span>

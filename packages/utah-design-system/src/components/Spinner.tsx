@@ -54,7 +54,7 @@ export const BusyBar = ({ busy }: { busy?: boolean }) => {
       {...progressBarProps}
       className={twJoin(
         [busy ? 'opacity-100' : 'opacity-0'],
-        'will-change absolute inset-x-0 top-0 z-[1] h-2 w-full min-w-full animate-gradient-x bg-gradient-to-r from-secondary-700/90 from-30% via-accent-400/90 to-primary-800/90 to-70% transition-all duration-700 ease-in-out',
+        'will-change animate-gradient-x from-secondary-700/90 via-accent-400/90 to-primary-800/90 absolute inset-x-0 top-0 z-[1] h-2 w-full min-w-full bg-gradient-to-r from-30% to-70% transition-all duration-700 ease-in-out',
       )}
     ></div>
   );

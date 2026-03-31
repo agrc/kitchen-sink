@@ -37,10 +37,10 @@ const drawerTriggerProps = useOverlayTrigger(
 
 const drawer = tv({
   slots: {
-    container: 'duration-[time:525ms] shrink-0 ease-in-out',
+    container: 'shrink-0 duration-[time:525ms] ease-in-out',
     content: 'relative bg-white duration-500 ease-in-out dark:bg-zinc-800',
     triggerButton:
-      'absolute z-10 flex justify-center overflow-hidden rounded border border-zinc-200 bg-white p-1 hover:border-zinc-300 hover:bg-slate-200 pressed:bg-slate-300 dark:hover:border-zinc-600 dark:hover:bg-zinc-900 dark:pressed:bg-slate-100',
+      'pressed:bg-slate-300 dark:pressed:bg-slate-100 absolute z-10 flex justify-center overflow-hidden rounded border border-zinc-200 bg-white p-1 hover:border-zinc-300 hover:bg-slate-200 dark:hover:border-zinc-600 dark:hover:bg-zinc-900',
   },
   variants: {
     type: {
@@ -49,13 +49,13 @@ const drawer = tv({
         content:
           "h-full overflow-y-auto data-[open='false']:-translate-x-full data-[open='true']:translate-x-0",
         triggerButton:
-          '-right-[25px] top-[calc(50%-24px)] h-10 flex-col rounded-l-none border-l-0 !p-1 dark:border-zinc-700 dark:bg-zinc-800',
+          'top-[calc(50%-24px)] -right-[25px] h-10 flex-col rounded-l-none border-l-0 !p-1 dark:border-zinc-700 dark:bg-zinc-800',
       },
       tray: {
         container:
           'absolute inset-x-0 bottom-0 transition-[height] data-[open="false"]:h-0',
         content:
-          "overflow-x-auto border-t bg-zinc-50 data-[open='false']:h-0 data-[open='true']:translate-y-0 data-[open='false']:overflow-hidden data-[open='false']:border-0 dark:bg-zinc-700",
+          "overflow-x-auto border-t bg-zinc-50 data-[open='false']:h-0 data-[open='false']:overflow-hidden data-[open='false']:border-0 data-[open='true']:translate-y-0 dark:bg-zinc-700",
         triggerButton:
           '-top-6 bottom-[calc(100%)] left-[calc(50%-24px)] min-h-[25px] w-10 rounded-b-none border-b-0 bg-zinc-50 py-0 dark:border-zinc-800 dark:bg-zinc-700',
       },
@@ -227,7 +227,7 @@ export const Drawer = ({
           {allowFullScreen && (
             <Button
               aria-label="Toggle full-screen"
-              className="absolute right-0 top-0 p-2"
+              className="absolute top-0 right-0 p-2"
               variant="icon"
               onPress={() => setIsFullscreen(!isFullscreen)}
             >

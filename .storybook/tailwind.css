@@ -1,7 +1,8 @@
 @import '@arcgis/core/assets/esri/themes/light/main.css';
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@import '@ugrc/tailwind-preset';
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 html,
 body {

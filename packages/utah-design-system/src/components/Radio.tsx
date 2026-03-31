@@ -27,7 +27,7 @@ export function RadioGroup(props: RadioGroupProps) {
       )}
     >
       <Label>{props.label}</Label>
-      <div className="flex gap-2 group-orientation-horizontal:gap-4 group-orientation-vertical:flex-col">
+      <div className="group-orientation-horizontal:gap-4 group-orientation-vertical:flex-col flex gap-2">
         {props.children}
       </div>
       {props.description && <Description>{props.description}</Description>}
@@ -42,11 +42,11 @@ const styles = tv({
   variants: {
     isSelected: {
       false:
-        'border-[--color] [--color:theme(colors.secondary.800)] group-pressed:[--color:theme(colors.secondary.600)] dark:[--color:theme(colors.secondary.400)] dark:group-pressed:[--color:theme(colors.secondary.600)]',
-      true: 'border-[7px] border-[--color] [--color:theme(colors.secondary.800)] group-pressed:[--color:theme(colors.secondary.700)] dark:[--color:theme(colors.secondary.500)] dark:group-pressed:[--color:theme(colors.secondary.800)]',
+        'group-pressed:[--color:var(--color-secondary-600)] dark:group-pressed:[--color:var(--color-secondary-600)] border-[--color] [--color:var(--color-secondary-800)] dark:[--color:var(--color-secondary-400)]',
+      true: 'group-pressed:[--color:var(--color-secondary-700)] dark:group-pressed:[--color:var(--color-secondary-800)] border-[7px] border-[--color] [--color:var(--color-secondary-800)] dark:[--color:var(--color-secondary-500)]',
     },
     isInvalid: {
-      true: 'border-red-700 group-pressed:border-red-800 dark:border-red-600 dark:group-pressed:border-red-700 forced-colors:!border-[Mark]',
+      true: 'group-pressed:border-red-800 dark:group-pressed:border-red-700 border-red-700 dark:border-red-600 forced-colors:!border-[Mark]',
     },
     isDisabled: {
       true: 'border-gray-200 dark:border-zinc-700 forced-colors:!border-[GrayText]',

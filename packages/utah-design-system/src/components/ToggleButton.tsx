@@ -12,8 +12,8 @@ const styles = tv({
   variants: {
     isSelected: {
       false:
-        'bg-gray-100 text-gray-800 hover:bg-gray-200 pressed:bg-gray-300 dark:bg-zinc-600 dark:text-zinc-100 dark:hover:bg-zinc-500 dark:pressed:bg-zinc-400 forced-colors:!bg-[ButtonFace] forced-colors:!text-[ButtonText]',
-      true: 'bg-gray-700 text-white hover:bg-gray-800 pressed:bg-gray-900 dark:bg-accent-300 dark:text-black dark:hover:bg-accent-200 dark:pressed:bg-accent-100 forced-colors:!bg-[Highlight] forced-colors:!text-[HighlightText]',
+        'pressed:bg-gray-300 dark:pressed:bg-zinc-400 bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-zinc-600 dark:text-zinc-100 dark:hover:bg-zinc-500 forced-colors:!bg-[ButtonFace] forced-colors:!text-[ButtonText]',
+      true: 'pressed:bg-gray-900 dark:bg-accent-300 dark:hover:bg-accent-200 dark:pressed:bg-accent-100 bg-gray-700 text-white hover:bg-gray-800 dark:text-black forced-colors:!bg-[Highlight] forced-colors:!text-[HighlightText]',
     },
     isDisabled: {
       true: 'border-black/5 bg-gray-100 text-gray-300 dark:border-white/5 dark:bg-zinc-800 dark:text-zinc-600 forced-colors:border-[GrayText] forced-colors:!bg-[ButtonFace] forced-colors:!text-[GrayText]',

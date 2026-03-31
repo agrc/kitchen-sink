@@ -32,7 +32,7 @@ export function ListBox<T extends object>({
 
 export const itemStyles = tv({
   extend: focusRing,
-  base: 'group relative flex cursor-default select-none items-center gap-8 rounded-md px-2.5 py-1.5 text-sm will-change-transform forced-color-adjust-none',
+  base: 'group relative flex cursor-default items-center gap-8 rounded-md px-2.5 py-1.5 text-sm will-change-transform forced-color-adjust-none select-none',
   variants: {
     isSelected: {
       false:
@@ -54,7 +54,7 @@ export function ListBoxItem(props: ListBoxItemProps) {
       {composeRenderProps(props.children, (children) => (
         <>
           {children}
-          <div className="absolute bottom-0 left-4 right-4 hidden h-px bg-white/20 forced-colors:bg-[HighlightText] [.group[data-selected]:has(+[data-selected])_&]:block" />
+          <div className="absolute right-4 bottom-0 left-4 hidden h-px bg-white/20 forced-colors:bg-[HighlightText] [.group[data-selected]:has(+[data-selected])_&]:block" />
         </>
       ))}
     </AriaListBoxItem>
@@ -62,7 +62,7 @@ export function ListBoxItem(props: ListBoxItemProps) {
 }
 
 export const dropdownItemStyles = tv({
-  base: 'group flex cursor-default select-none items-center gap-4 rounded-lg py-2 pl-3 pr-1 text-sm outline outline-0 forced-color-adjust-none',
+  base: 'group flex cursor-default items-center gap-4 rounded-lg py-2 pr-1 pl-3 text-sm outline outline-0 forced-color-adjust-none select-none',
   variants: {
     isDisabled: {
       false: 'text-gray-900 dark:text-zinc-100',
@@ -93,7 +93,7 @@ export function DropdownItem(props: ListBoxItemProps) {
     >
       {composeRenderProps(props.children, (children, { isSelected }) => (
         <>
-          <span className="flex flex-1 items-center gap-2 truncate font-normal group-selected:font-semibold">
+          <span className="group-selected:font-semibold flex flex-1 items-center gap-2 truncate font-normal">
             {children}
           </span>
           <span className="flex w-5 items-center">

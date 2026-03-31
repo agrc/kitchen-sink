@@ -43,7 +43,7 @@ const tagStyles = tv({
       true: 'pr-1',
     },
     isSelected: {
-      true: 'border-transparent bg-primary-800 text-white forced-color-adjust-none forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]',
+      true: 'bg-primary-800 border-transparent text-white forced-color-adjust-none forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]',
     },
     isDisabled: {
       true: 'bg-gray-100 text-gray-400 dark:border-white/20 dark:bg-transparent dark:text-zinc-400 forced-colors:text-[GrayText]',
@@ -97,7 +97,7 @@ export function TagGroup<T extends object>({
       </ColorContext.Provider>
       {description && <Description>{description}</Description>}
       {errorMessage && (
-        <Text slot="errorMessage" className="text-sm text-warning-600">
+        <Text slot="errorMessage" className="text-warning-600 text-sm">
           {errorMessage}
         </Text>
       )}
@@ -107,7 +107,7 @@ export function TagGroup<T extends object>({
 
 const removeButtonStyles = tv({
   extend: focusRing,
-  base: 'flex cursor-default items-center justify-center rounded-full p-0.5 transition-[background-color] hover:bg-black/10 pressed:bg-black/20 dark:hover:bg-white/10 dark:pressed:bg-white/20',
+  base: 'pressed:bg-black/20 dark:pressed:bg-white/20 flex cursor-default items-center justify-center rounded-full p-0.5 transition-[background-color] hover:bg-black/10 dark:hover:bg-white/10',
 });
 
 export function Tag({ children, color, ...props }: TagProps) {
