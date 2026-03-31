@@ -1,19 +1,23 @@
 import { forwardRef, type ForwardedRef } from 'react';
+import { composeRenderProps } from 'react-aria-components/composeRenderProps';
 import {
-  composeRenderProps,
-  Group,
   FieldError as RACFieldError,
-  Input as RACInput,
-  Label as RACLabel,
-  TextArea as RACTextArea,
-  Text,
   type FieldErrorProps,
-  type GroupProps,
+} from 'react-aria-components/FieldError';
+import { Group, type GroupProps } from 'react-aria-components/Group';
+import {
+  Input as RACInput,
   type InputProps,
+} from 'react-aria-components/Input';
+import {
+  Label as RACLabel,
   type LabelProps,
+} from 'react-aria-components/Label';
+import { Text, type TextProps } from 'react-aria-components/Text';
+import {
+  TextArea as RACTextArea,
   type TextAreaProps,
-  type TextProps,
-} from 'react-aria-components';
+} from 'react-aria-components/TextArea';
 import { twMerge } from 'tailwind-merge';
 import { tv } from 'tailwind-variants';
 import { composeTailwindRenderProps, focusRing } from './utils';
@@ -49,7 +53,7 @@ export function FieldError(props: FieldErrorProps) {
       {...props}
       className={composeTailwindRenderProps(
         props.className,
-        'text-sm text-warning-600 forced-colors:text-[Mark]',
+        'text-warning-600 text-sm forced-colors:text-[Mark]',
       )}
     />
   );

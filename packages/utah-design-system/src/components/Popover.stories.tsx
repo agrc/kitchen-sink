@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { HelpCircle } from 'lucide-react';
-import { DialogTrigger, Heading } from 'react-aria-components';
+import { DialogTrigger } from 'react-aria-components/Dialog';
+import { Heading } from 'react-aria-components/Heading';
 import { Button } from './Button';
 import { Dialog } from './Dialog';
 import { Popover } from './Popover';

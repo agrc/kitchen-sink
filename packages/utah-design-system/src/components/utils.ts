@@ -1,9 +1,9 @@
-import { composeRenderProps } from 'react-aria-components';
+import { composeRenderProps } from 'react-aria-components/composeRenderProps';
 import { twMerge } from 'tailwind-merge';
 import { tv } from 'tailwind-variants';
 
 export const focusRing = tv({
-  base: 'outline outline-offset-2 outline-primary-900 dark:outline-secondary-600',
+  base: 'outline-primary-900 dark:outline-secondary-600 outline outline-offset-2 forced-colors:outline-[Highlight]',
   variants: {
     isFocusVisible: {
       false: 'outline-0',

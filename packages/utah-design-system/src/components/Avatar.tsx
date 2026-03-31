@@ -6,7 +6,7 @@ const size = 120;
 
 const GravatarIcon = () => (
   <svg
-    className="absolute bottom-1 right-1 size-3 fill-current text-slate-800/20 dark:text-slate-100/20"
+    className="absolute right-1 bottom-1 size-3 fill-current text-slate-800/20 dark:text-slate-100/20"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 27 27"
     role="presentation"
@@ -29,7 +29,7 @@ export const Avatar = ({
   return (
     <div className="flex flex-col items-end gap-6">
       <span className="relative">
-        <span className="mr-2 inline-block size-14 overflow-hidden rounded-full border-2 border-primary-800 bg-primary-800">
+        <span className="border-primary-800 bg-primary-800 mr-2 inline-block size-14 overflow-hidden rounded-full border-2">
           <Gravatar email={user.email} name={user.displayName} />
         </span>
         <GravatarIcon />
@@ -56,11 +56,11 @@ const Gravatar = ({
 
   return (
     <>
-      <div className="relative inline-flex h-full w-full items-center justify-center bg-primary-900">
+      <div className="bg-primary-900 relative inline-flex h-full w-full items-center justify-center">
         <div
           aria-hidden="true"
           className={twJoin(
-            'select-none text-center text-2xl font-extralight text-white opacity-60 dark:text-black',
+            'text-center text-2xl font-extralight text-white opacity-60 select-none dark:text-black',
             initials.length < 3 && 'text-3xl',
             initials.length === 3 && 'text-2xl',
           )}
@@ -69,7 +69,7 @@ const Gravatar = ({
         </div>
         <img
           src={gravatar}
-          className="absolute left-0 top-0"
+          className="absolute top-0 left-0"
           alt={`${name}'s Gravatar`}
         />
       </div>

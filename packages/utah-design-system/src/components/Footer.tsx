@@ -183,7 +183,7 @@ export const Footer = ({
       <div className="grid grid-cols-1 justify-items-center gap-8 bg-zinc-600 p-8 text-center text-zinc-50 sm:grid-cols-3 sm:p-8 sm:text-left md:grid-cols-5">
         {renderAddress()}
         <div>
-          <div className="whitespace-nowrap font-bold">{columnOne.title}</div>
+          <div className="font-bold whitespace-nowrap">{columnOne.title}</div>
           <ul className="grid gap-2 pl-1 text-sm leading-loose md:gap-0">
             {columnOne.links.map((link, index) => (
               <li
@@ -198,7 +198,7 @@ export const Footer = ({
           </ul>
         </div>
         <div>
-          <div className="whitespace-nowrap font-bold">{columnTwo.title}</div>
+          <div className="font-bold whitespace-nowrap">{columnTwo.title}</div>
           <ul className="grid gap-2 pl-1 text-sm leading-loose md:gap-0">
             {columnTwo.links.map((link, index) => (
               <li
@@ -213,7 +213,7 @@ export const Footer = ({
           </ul>
         </div>
         <div>
-          <div className="whitespace-nowrap font-bold">{columnThree.title}</div>
+          <div className="font-bold whitespace-nowrap">{columnThree.title}</div>
           <ul className="grid gap-2 pl-1 text-sm leading-loose md:gap-0">
             {columnThree.links.map((link, index) => (
               <li
@@ -245,10 +245,10 @@ export const GovOpsAddress = () => (
         />
       </div>
       <div className="mt-4 text-lg">
-        <div className="whitespace-nowrap font-semibold">
+        <div className="font-semibold whitespace-nowrap">
           Division of Technology Services
         </div>
-        <div className="whitespace-nowrap font-medium">
+        <div className="font-medium whitespace-nowrap">
           Utah Geospatial Resource Center
         </div>
       </div>
@@ -272,7 +272,7 @@ export const NaturalResourcesAddress = () => (
         />
       </div>
       <div className="mt-4 text-lg">
-        <div className="whitespace-nowrap font-semibold">
+        <div className="font-semibold whitespace-nowrap">
           Department of Natural Resources
         </div>
       </div>

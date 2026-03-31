@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Bold, Italic, Underline } from 'lucide-react';
-import type { ToggleButtonGroupProps } from 'react-aria-components';
+import type { ToggleButtonGroupProps } from 'react-aria-components/ToggleButtonGroup';
 import { ToggleButton } from './ToggleButton';
 import { ToggleButtonGroup } from './ToggleButtonGroup';
 

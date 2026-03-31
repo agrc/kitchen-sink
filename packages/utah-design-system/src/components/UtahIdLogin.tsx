@@ -67,7 +67,7 @@ export const UtahIdLogin = ({
     <>
       <div className="flex items-center justify-self-center text-slate-500">
         <span className="h-px w-60 flex-1 bg-slate-200 dark:bg-slate-600"></span>
-        <span className="mx-3 text-xs uppercase tracking-wide text-gray-700 dark:text-gray-200">
+        <span className="mx-3 text-xs tracking-wide text-gray-700 uppercase dark:text-gray-200">
           continue with
         </span>
         <span className="h-px flex-1 bg-slate-200 dark:bg-slate-600"></span>
