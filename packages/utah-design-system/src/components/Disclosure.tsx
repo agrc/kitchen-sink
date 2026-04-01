@@ -21,10 +21,10 @@ const disclosure = tv({
 
 const disclosureButton = tv({
   extend: focusRing,
-  base: 'flex w-full cursor-default items-center justify-between gap-2 rounded-lg bg-primary-900 p-2 text-start text-white aria-expanded:rounded-b-none hover:bg-primary-700 pressed:bg-primary-800',
+  base: 'bg-primary-900 hover:bg-primary-700 pressed:bg-primary-800 flex w-full cursor-default items-center justify-between gap-2 rounded-lg p-2 text-start text-white aria-expanded:rounded-b-none',
   variants: {
     isDisabled: {
-      true: 'text-gray-300 dark:text-primary-300 forced-colors:text-[GrayText]',
+      true: 'dark:text-primary-300 text-gray-300 forced-colors:text-[GrayText]',
     },
   },
 });
@@ -36,7 +36,7 @@ const chevron = tv({
       true: 'rotate-180 transform',
     },
     isDisabled: {
-      true: 'text-gray-300 dark:text-primary-300 forced-colors:text-[GrayText]',
+      true: 'dark:text-primary-300 text-gray-300 forced-colors:text-[GrayText]',
     },
   },
 });

@@ -21,11 +21,11 @@ import { composeTailwindRenderProps, focusRing } from './utils';
 
 const styles = tv({
   extend: focusRing,
-  base: 'relative flex w-full cursor-default items-center gap-4 rounded-md border border-transparent bg-white py-1.5 pl-3 pr-2 text-start text-zinc-800 shadow ring-1 ring-zinc-900/5 transition dark:border-zinc-200/40 dark:bg-zinc-900 dark:text-zinc-200',
+  base: 'relative flex w-full cursor-default items-center gap-4 rounded-md border border-transparent bg-white py-1.5 pr-2 pl-3 text-start text-zinc-800 shadow ring-1 ring-zinc-900/5 transition dark:border-zinc-200/40 dark:bg-zinc-900 dark:text-zinc-200',
   variants: {
     isDisabled: {
       false:
-        'text-gray-800 group-invalid:border-warning-600 hover:bg-gray-100 pressed:bg-gray-200 dark:text-zinc-300 dark:hover:bg-zinc-600 dark:pressed:bg-zinc-500 forced-colors:group-invalid:border-[Mark]',
+        'group-invalid:border-warning-600 pressed:bg-gray-200 dark:pressed:bg-zinc-500 text-gray-800 hover:bg-gray-100 dark:text-zinc-300 dark:hover:bg-zinc-600 forced-colors:group-invalid:border-[Mark]',
       true: 'border-gray-200 text-gray-200 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-600',
     },
   },
@@ -68,7 +68,7 @@ export function Select<T extends object>({
       </Button>
       {description && <Description>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>
-      <Popover className="min-w-[--trigger-width]">
+      <Popover className="min-w-(--trigger-width)">
         <ListBox
           items={items}
           className="max-h-[inherit] overflow-auto p-1 outline-none [clip-path:inset(0_0_0_0_round_.75rem)]"

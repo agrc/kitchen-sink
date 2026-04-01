@@ -535,18 +535,18 @@ export const Sherlock = (props: SherlockProps) => {
         <Group className={inputStyles}>
           <SearchIcon
             aria-hidden
-            className="pointer-events-none absolute inset-y-0 left-2 h-full w-5 text-zinc-400 group-focus-within:text-primary-900 dark:group-focus-within:text-zinc-300"
+            className="group-focus-within:text-primary-900 pointer-events-none absolute inset-y-0 left-2 h-full w-5 text-zinc-400 dark:group-focus-within:text-zinc-300"
           />
           <Input
             placeholder={props.placeholder}
             onChange={(event) => list.setFilterText(event.target.value)}
-            className="block w-full appearance-none bg-transparent pl-9 pr-3 leading-5 text-zinc-900 caret-primary-800 placeholder:text-zinc-400 focus:outline-none dark:text-white dark:caret-accent-500 dark:ring-zinc-200/20 dark:placeholder:text-zinc-300 dark:focus:ring-accent-700 sm:text-sm"
+            className="caret-primary-800 dark:caret-accent-500 dark:focus:ring-accent-700 block w-full appearance-none bg-transparent pr-3 pl-9 leading-5 text-zinc-900 placeholder:text-zinc-400 focus:outline-none sm:text-sm dark:text-white dark:ring-zinc-200/20 dark:placeholder:text-zinc-300"
           />
           {(list.loadingState === 'loading' ||
             list.loadingState === 'filtering') && (
             <span
               aria-hidden
-              className="pointer-events-none text-zinc-400 group-focus-within:text-primary-900 dark:group-focus-within:text-zinc-300"
+              className="group-focus-within:text-primary-900 pointer-events-none text-zinc-400 dark:group-focus-within:text-zinc-300"
             >
               <Spinner aria-label="searching" />
             </span>
@@ -562,13 +562,13 @@ export const Sherlock = (props: SherlockProps) => {
       {list.error ? (
         <FieldError>There was an error with the search process</FieldError>
       ) : (
-        <Popover className="w-[--trigger-width] py-1">
+        <Popover className="w-(--trigger-width) py-1">
           <ListBox
             className="group mt-1 grow-[9999] basis-64 overflow-hidden rounded-md border border-transparent bg-white shadow ring-1 ring-zinc-900/5 dark:border-zinc-200/20 dark:bg-zinc-700"
             renderEmptyState={() => {
               if (list.filterText.length >= 3 && list.loadingState === 'idle') {
                 return (
-                  <div className="bg-warning-100 py-2 text-center dark:bg-warning-700">
+                  <div className="bg-warning-100 dark:bg-warning-700 py-2 text-center">
                     No items found matching your search
                   </div>
                 );
@@ -583,7 +583,7 @@ export const Sherlock = (props: SherlockProps) => {
             {(item: AsyncListItem) => (
               <ListBoxItem
                 textValue={item.name}
-                className="relative flex cursor-default select-none items-center justify-between gap-2 rounded px-2 py-1 text-sm outline-none ring-secondary-400 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 hover:bg-zinc-300/50 focus-visible:ring selected:bg-secondary-600 selected:text-white selected:ring-offset-2 dark:text-white dark:ring-offset-zinc-950 dark:hover:bg-zinc-300/20"
+                className="ring-secondary-400 selected:bg-secondary-600 selected:text-white selected:ring-offset-2 relative flex cursor-default items-center justify-between gap-2 rounded px-2 py-1 text-sm outline-none select-none hover:bg-zinc-300/50 focus-visible:ring data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 dark:text-white dark:ring-offset-zinc-950 dark:hover:bg-zinc-300/20"
               >
                 {({ isSelected }) => (
                   <>

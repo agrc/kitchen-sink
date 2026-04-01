@@ -28,8 +28,8 @@
       "email": "stdavis@utah.gov"
     }
   ],
-  "type": "commonjs",
-  "main": "src/index.js",
+  "type": "module",
+  "main": "src/index.css",
   "files": [
     "src"
   ],
@@ -37,6 +37,7 @@
     "build": "echo 'No build necessary'"
   },
   "dependencies": {
-    "tailwindcss-react-aria-components": "^1.2.0"
+    "tailwindcss-animate": "^1.0.7",
+    "tailwindcss-react-aria-components": "^2.0.1"
   }
 }

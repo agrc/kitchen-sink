@@ -55,13 +55,13 @@ export interface FileInputProps extends Omit<
 const labelStyles = tv({
   variants: {
     isRequired: {
-      true: "after:ml-0.5 after:text-warning-500 after:content-['*'] after:dark:text-warning-300",
+      true: "after:text-warning-500 after:dark:text-warning-300 after:ml-0.5 after:content-['*']",
     },
   },
 });
 
 const dropZoneStyles = tv({
-  base: 'group flex cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed bg-white p-4 text-center outline-none transition-colors hover:border-primary-900 hover:bg-zinc-50 dark:bg-zinc-900 dark:hover:border-secondary-600 dark:hover:bg-zinc-800',
+  base: 'group hover:border-primary-900 dark:hover:border-secondary-600 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed bg-white p-4 text-center transition-colors outline-none hover:bg-zinc-50 dark:bg-zinc-900 dark:hover:bg-zinc-800',
   variants: {
     isDisabled: {
       true: 'cursor-not-allowed border-gray-200 bg-gray-50 hover:border-gray-200 hover:bg-gray-50 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:border-zinc-700 dark:hover:bg-zinc-800',
@@ -303,7 +303,7 @@ export function FileInput({
       )}
 
       {errorMessage && (
-        <div className="text-sm text-warning-600 dark:text-warning-500">
+        <div className="text-warning-600 dark:text-warning-500 text-sm">
           {typeof errorMessage === 'function'
             ? errorMessage({
                 isInvalid: isInvalid ?? false,

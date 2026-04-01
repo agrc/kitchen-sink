@@ -42,7 +42,7 @@ export function MenuItem(props: MenuItemProps) {
                 {isSelected && <Check aria-hidden className="h-auto w-4" />}
               </span>
             )}
-            <span className="flex flex-1 items-center gap-2 truncate font-normal group-selected:font-semibold">
+            <span className="group-selected:font-semibold flex flex-1 items-center gap-2 truncate font-normal">
               {children}
             </span>
             {hasSubmenu && (

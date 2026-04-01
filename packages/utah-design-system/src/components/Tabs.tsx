@@ -60,8 +60,8 @@ const tabProps = tv({
   variants: {
     isSelected: {
       false:
-        'text-zinc-500 after:bottom-1 after:h-px after:bg-slate-400 pressed:bg-zinc-200 pressed:text-zinc-700 dark:text-zinc-300 after:dark:bg-slate-400 dark:hover:text-zinc-800 dark:pressed:bg-zinc-800 dark:pressed:text-zinc-200',
-      true: 'text-secondary-500 after:absolute after:block after:rounded-full after:bg-secondary-400 group-data-[orientation="horizontal"]:after:bottom-[-0.8em] group-data-[orientation="horizontal"]:after:left-0 group-data-[orientation=vertical]:after:left-[-0.78em] group-data-[orientation="horizontal"]:after:h-2 group-data-[orientation=vertical]:after:h-full group-data-[orientation="horizontal"]:after:w-full group-data-[orientation=vertical]:after:w-2 dark:text-secondary-300 forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]',
+        'pressed:bg-zinc-200 pressed:text-zinc-700 dark:pressed:bg-zinc-800 dark:pressed:text-zinc-200 text-zinc-500 after:bottom-1 after:h-px after:bg-slate-400 dark:text-zinc-300 after:dark:bg-slate-400 dark:hover:text-zinc-800',
+      true: 'text-secondary-500 after:bg-secondary-400 dark:text-secondary-300 after:absolute after:block after:rounded-full group-data-[orientation="horizontal"]:after:bottom-[-0.8em] group-data-[orientation="horizontal"]:after:left-0 group-data-[orientation="horizontal"]:after:h-2 group-data-[orientation="horizontal"]:after:w-full group-data-[orientation=vertical]:after:left-[-0.78em] group-data-[orientation=vertical]:after:h-full group-data-[orientation=vertical]:after:w-2 forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]',
     },
     isDisabled: {
       true: 'hidden',
