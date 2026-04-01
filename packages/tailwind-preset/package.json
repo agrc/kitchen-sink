@@ -37,6 +37,7 @@
     "build": "echo 'No build necessary'"
   },
   "dependencies": {
+    "tailwindcss-animate": "^1.0.7",
     "tailwindcss-react-aria-components": "^2.0.1"
   }
 }

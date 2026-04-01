@@ -42,8 +42,8 @@ const styles = tv({
   variants: {
     isSelected: {
       false:
-        'group-pressed:[--color:var(--color-secondary-600)] dark:group-pressed:[--color:var(--color-secondary-600)] border-[--color] [--color:var(--color-secondary-800)] dark:[--color:var(--color-secondary-400)]',
-      true: 'group-pressed:[--color:var(--color-secondary-700)] dark:group-pressed:[--color:var(--color-secondary-800)] border-[7px] border-[--color] [--color:var(--color-secondary-800)] dark:[--color:var(--color-secondary-500)]',
+        'group-pressed:[--color:var(--color-secondary-600)] dark:group-pressed:[--color:var(--color-secondary-600)] border-(--color) [--color:var(--color-secondary-800)] dark:[--color:var(--color-secondary-400)]',
+      true: 'group-pressed:[--color:var(--color-secondary-700)] dark:group-pressed:[--color:var(--color-secondary-800)] border-[7px] border-(--color) [--color:var(--color-secondary-800)] dark:[--color:var(--color-secondary-500)]',
     },
     isInvalid: {
       true: 'group-pressed:border-red-800 dark:group-pressed:border-red-700 border-red-700 dark:border-red-600 forced-colors:!border-[Mark]',

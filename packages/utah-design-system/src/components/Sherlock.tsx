@@ -562,7 +562,7 @@ export const Sherlock = (props: SherlockProps) => {
       {list.error ? (
         <FieldError>There was an error with the search process</FieldError>
       ) : (
-        <Popover className="w-[--trigger-width] py-1">
+        <Popover className="w-(--trigger-width) py-1">
           <ListBox
             className="group mt-1 grow-[9999] basis-64 overflow-hidden rounded-md border border-transparent bg-white shadow ring-1 ring-zinc-900/5 dark:border-zinc-200/20 dark:bg-zinc-700"
             renderEmptyState={() => {

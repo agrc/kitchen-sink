@@ -55,8 +55,8 @@ const boxStyles = tv({
   variants: {
     isSelected: {
       false:
-        'group-pressed:[--color:var(--color-secondary-600)] dark:group-pressed:[--color:var(--color-secondary-600)] border-[--color] bg-white [--color:var(--color-secondary-800)] dark:bg-zinc-900 dark:[--color:var(--color-secondary-400)]',
-      true: 'group-pressed:[--color:var(--color-secondary-700)] dark:group-pressed:[--color:var(--color-secondary-800)] border-[--color] bg-[--color] [--color:var(--color-secondary-800)] dark:[--color:var(--color-secondary-500)]',
+        'group-pressed:[--color:var(--color-secondary-600)] dark:group-pressed:[--color:var(--color-secondary-600)] border-(--color) bg-white [--color:var(--color-secondary-800)] dark:bg-zinc-900 dark:[--color:var(--color-secondary-400)]',
+      true: 'group-pressed:[--color:var(--color-secondary-700)] dark:group-pressed:[--color:var(--color-secondary-800)] border-(--color) bg-(--color) [--color:var(--color-secondary-800)] dark:[--color:var(--color-secondary-500)]',
     },
     isInvalid: {
       true: 'group-pressed:[--color:var(--color-warning-800)] dark:group-pressed:[--color:var(--color-warning-700)] [--color:var(--color-warning-700)] dark:[--color:var(--color-warning-600)] forced-colors:![--color:Mark]',

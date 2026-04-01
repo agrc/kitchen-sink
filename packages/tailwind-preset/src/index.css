@@ -1,4 +1,5 @@
 @plugin 'tailwindcss-react-aria-components';
+@plugin 'tailwindcss-animate';
 
 @theme {
   --color-primary-50: #faf7fc;
