@@ -40,7 +40,7 @@
     "test": "echo 'No test necessary'"
   },
   "dependencies": {
-    "@eslint/js": "^9.39.2",
+    "@eslint/js": "^9.39.2 || >=10.0.0",
     "@tanstack/eslint-plugin-query": "^5.91.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
@@ -53,5 +53,8 @@
   },
   "peerDependencies": {
     "eslint": ">=9"
+  },
+  "engines": {
+    "node": "^20.19.0 || >=22.13.0"
   }
 }
