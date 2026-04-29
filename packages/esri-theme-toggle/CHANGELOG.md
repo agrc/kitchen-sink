@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/agrc/kitchen-sink/compare/esri-theme-toggle-v1.1.2...esri-theme-toggle-v2.0.0) (2026-04-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* migrate to arcgis/* v5 packages
+
+### Features
+
+* migrate to arcgis/* v5 packages ([1f5eac1](https://github.com/agrc/kitchen-sink/commit/1f5eac1cf0bb1227fe6604424e6595b25b714276))
+
 ## [1.1.2](https://github.com/agrc/kitchen-sink/compare/esri-theme-toggle-v1.1.1...esri-theme-toggle-v1.1.2) (2025-08-12)
 
 
