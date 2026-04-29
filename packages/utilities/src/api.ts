@@ -1,4 +1,4 @@
-import '@arcgis/core/interfaces.d.ts';
+import type { GeometryProperties } from '@arcgis/core/geometry/Geometry';
 import ky, { HTTPError } from 'ky';
 
 const SPACE = ' ';
@@ -123,7 +123,7 @@ export type SearchResponse = {
   status: number;
   result: {
     attributes: Record<string, unknown>;
-    geometry?: __esri.GeometryProperties & {
+    geometry?: GeometryProperties & {
       type: 'point' | 'multipoint' | 'polyline' | 'polygon' | 'extent' | 'mesh';
     };
   }[];

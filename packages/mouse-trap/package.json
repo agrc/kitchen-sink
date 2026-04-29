@@ -55,7 +55,7 @@
     "lodash-es": "^4.17.23"
   },
   "peerDependencies": {
-    "@arcgis/core": "^4.20.0",
+    "@arcgis/core": "^5.0.0",
     "prop-types": "^15.8.1",
     "react": ">=16.8.0"
   }

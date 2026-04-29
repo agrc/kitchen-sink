@@ -1,4 +1,6 @@
-import '@arcgis/core/interfaces.d.ts';
+import type Extent from '@arcgis/core/geometry/Extent';
+import type MapView from '@arcgis/core/views/MapView';
+import type { UIPosition } from '@arcgis/core/views/ui/types';
 import { useDefaultExtent, useViewUiPosition } from '@ugrc/utilities/hooks';
 import { HomeIcon } from 'lucide-react';
 import { Button } from './Button';
@@ -9,9 +11,9 @@ export const HomeButton = ({
   initialExtent,
   actions,
 }: {
-  view: __esri.MapView;
-  position?: __esri.UIAddComponent['position'];
-  initialExtent?: __esri.Extent;
+  view: MapView;
+  position?: UIPosition;
+  initialExtent?: Extent;
   actions?: (() => void)[];
 }) => {
   const goHome = useDefaultExtent(view, initialExtent);

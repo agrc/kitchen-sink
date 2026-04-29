@@ -22,7 +22,7 @@ type Story = StoryObj<typeof HomeButton>;
 export const Example: Story = {
   render: () => {
     const viewDivRef = useRef<HTMLDivElement | null>(null);
-    const view = useRef<__esri.MapView | null>(null);
+    const view = useRef<MapView | null>(null);
     const [ready, setReady] = useState<boolean>(false);
 
     useEffect(() => {

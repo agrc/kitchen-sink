@@ -45,7 +45,7 @@
     "test": "vitest --config ../../vite.config.js"
   },
   "dependencies": {
-    "@arcgis/core": "4.x",
+    "@arcgis/core": "5.x",
     "@esri/arcgis-rest-geocoding": "^4.8.0",
     "@esri/arcgis-rest-request": "^4.8.0",
     "@types/lodash-es": "^4.17.12",
@@ -62,8 +62,8 @@
     "ts-md5": "^2.0.1"
   },
   "peerDependencies": {
-    "@arcgis/map-components": ">=4.28.0",
-    "@esri/calcite-components": ">=2.0.0",
+    "@arcgis/map-components": ">=5.0.0",
+    "@esri/calcite-components": ">=5.0.2",
     "react": ">=19.0.0"
   }
 }

@@ -1,7 +1,8 @@
 import { whenOnce } from '@arcgis/core/core/reactiveUtils';
+import type MapView from '@arcgis/core/views/MapView.js';
 import { useState } from 'react';
 
-export default function useMapReady(view: __esri.MapView | null) {
+export default function useMapReady(view: MapView | null) {
   const [ready, setReady] = useState(false);
 
   if (!view) {

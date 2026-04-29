@@ -1,3 +1,7 @@
+import type { PointProperties } from '@arcgis/core/geometry/Point';
+import type { GraphicProperties } from '@arcgis/core/Graphic';
+import type { PopupTemplateProperties } from '@arcgis/core/PopupTemplate';
+import type { SymbolProperties } from '@arcgis/core/symbols/Symbol';
 import { toQueryString } from '@ugrc/utilities';
 import { TriangleAlertIcon } from 'lucide-react';
 import type { KeyboardEvent } from 'react';
@@ -27,15 +31,15 @@ type GeocodeProps = {
   wkid?: number;
   callback?: string;
   format?: 'geojson' | 'esrijson';
-  pointSymbol?: __esri.SymbolProperties | nullish;
+  pointSymbol?: SymbolProperties | null | undefined;
   events?: {
-    success: (result: __esri.GraphicProperties) => void;
+    success: (result: GraphicProperties) => void;
     error: (error: object) => void;
   };
 };
 
 type AddressResult = {
-  location: __esri.PointProperties;
+  location: PointProperties;
   score: number;
   locator: string;
   source: string;
@@ -65,7 +69,7 @@ const defaultProps: Omit<GeocodeProps, 'apiKey'> = {
   pointSymbol: {
     style: 'diamond',
     color: [255, 0, 0, 0.5],
-  } as __esri.SymbolProperties,
+  } as SymbolProperties,
   events: {
     success: console.log,
     error: console.error,
@@ -292,13 +296,10 @@ const useGeocoding = (userProps: GeocodeProps) => {
   );
 
   const outputTransform = useCallback<
-    (
-      result: AddressResult,
-      point: __esri.PointProperties,
-    ) => __esri.GraphicProperties
+    (result: AddressResult, point: PointProperties) => GraphicProperties
   >(
     (result, point) => {
-      let attributes: __esri.GraphicProperties['attributes'] = {
+      let attributes: GraphicProperties['attributes'] = {
         address: result.inputAddress,
         addressSystem: result.addressGrid,
         locator:
@@ -308,7 +309,7 @@ const useGeocoding = (userProps: GeocodeProps) => {
         score: result.score,
         matchAddress: result.matchAddress,
       };
-      let popupTemplate: __esri.PopupTemplateProperties = {
+      let popupTemplate: PopupTemplateProperties = {
         title: 'UGRC API geocoding match',
         content:
           'The input address <strong>{address}</strong> matched against <strong>{matchAddress}</strong> using {locator} data.<br><br>The confidence score is {score}.<br><br>This address belongs to the {addressSystem} address system.',
@@ -329,13 +330,13 @@ const useGeocoding = (userProps: GeocodeProps) => {
         symbol: props.pointSymbol,
         attributes,
         popupTemplate,
-      } as __esri.GraphicProperties;
+      } as GraphicProperties;
     },
     [props.pointSymbol, props.type],
   );
 
   const extractResponse = useCallback<
-    (response: Response) => Promise<__esri.GraphicProperties | void>
+    (response: Response) => Promise<GraphicProperties | void>
   >(
     async (response) => {
       if (!response.ok) {
@@ -372,7 +373,7 @@ const useGeocoding = (userProps: GeocodeProps) => {
         spatialReference: {
           wkid: props.wkid,
         },
-      } as __esri.PointProperties;
+      } as PointProperties;
 
       if (props.format?.toLowerCase() === 'esrijson') {
         point.x = result?.geometry?.x;

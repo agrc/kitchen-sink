@@ -1,7 +1,9 @@
+import type { BasemapProperties } from '@arcgis/core/Basemap';
 import FeatureLayer from '@arcgis/core/layers/FeatureLayer';
 import LOD from '@arcgis/core/layers/support/LOD';
-import TileInfo from '@arcgis/core/layers/support/TileInfo';
+import type { TileInfoProperties } from '@arcgis/core/layers/support/TileInfo';
 import TileLayer from '@arcgis/core/layers/TileLayer';
+import type { VectorTileLayerProperties } from '@arcgis/core/layers/VectorTileLayer';
 import VectorTileLayer from '@arcgis/core/layers/VectorTileLayer';
 import WebTileLayer from '@arcgis/core/layers/WebTileLayer';
 import {
@@ -23,9 +25,10 @@ type ApplianceLayerConfig = {
 };
 
 const quadWordToken = '{quadWord}';
+
 export const happyPathConfigs: Record<
   LayerToken,
-  __esri.VectorTileLayerProperties | ApplianceLayerConfig
+  VectorTileLayerProperties | ApplianceLayerConfig
 > = {
   Imagery: {
     urlPattern: `https://discover.agrc.utah.gov/login/path/${quadWordToken}/tiles/utah/{level}/{col}/{row}`,
@@ -68,7 +71,7 @@ export const happyPathConfigs: Record<
 export function getHappyPathBasemapProperties(
   token: BasemapToken,
   quadWord?: string,
-): __esri.BasemapProperties {
+): BasemapProperties {
   const checkForQuadWord = () => {
     if (!quadWord) {
       throw new Error(
@@ -171,7 +174,7 @@ export function getLayerFromToken(token: LayerToken, quadWord: string) {
   if (token === 'Land Ownership') {
     return new VectorTileLayer({
       id: token,
-      ...(happyPathConfigs[token] as __esri.VectorTileLayerProperties),
+      ...(happyPathConfigs[token] as VectorTileLayerProperties),
     });
   } else {
     const config = happyPathConfigs[token] as ApplianceLayerConfig;
@@ -192,6 +195,7 @@ function createDefaultTileInfo() {
   const earthCircumference = 40075016.685568;
   const inchesPerMeter = 39.37;
   const initialResolution = earthCircumference / tileSize;
+  const size: [number, number] = [tileSize, tileSize];
 
   const dpi = 96;
   const maxLevel = 20;
@@ -213,7 +217,7 @@ function createDefaultTileInfo() {
 
   return {
     dpi: dpi,
-    size: [tileSize, tileSize],
+    size,
     origin: {
       x: -20037508.342787,
       y: 20037508.342787,
@@ -222,7 +226,7 @@ function createDefaultTileInfo() {
       wkid: 3857,
     },
     lods,
-  };
+  } satisfies TileInfoProperties;
 }
 
 function getTileInfo(token: Exclude<LayerToken, 'Land Ownership'>) {
@@ -234,18 +238,18 @@ function getTileInfo(token: Exclude<LayerToken, 'Land Ownership'>) {
 
     // max level is 18
     case 'Color IR': {
-      return new TileInfo({
+      return {
         ...defaultTileInfo,
         lods: defaultTileInfo.lods.slice(0, 19),
-      });
+      };
     }
 
     // max level is 17
     case 'Topo': {
-      return new TileInfo({
+      return {
         ...defaultTileInfo,
         lods: defaultTileInfo.lods.slice(0, 18),
-      });
+      };
     }
 
     // cached via honeycomb on a regular schedule (max level is 19 but only for a specific extent)
@@ -254,10 +258,10 @@ function getTileInfo(token: Exclude<LayerToken, 'Land Ownership'>) {
     case 'Terrain':
     case 'Lite':
     case 'Overlay': {
-      return new TileInfo({
+      return {
         ...defaultTileInfo,
         lods: defaultTileInfo.lods.slice(0, 20),
-      });
+      };
     }
 
     // todo: figure out how to get typescript to make sure that we aren't missing any switch cases

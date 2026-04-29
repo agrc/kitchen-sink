@@ -42,6 +42,6 @@
     "test": "echo 'No test necessary'"
   },
   "dependencies": {
-    "@arcgis/core": "4.x"
+    "@arcgis/core": "5.x"
   }
 }

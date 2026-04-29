@@ -1,9 +1,11 @@
 import { whenOnce } from '@arcgis/core/core/reactiveUtils';
+import type MapView from '@arcgis/core/views/MapView.js';
+import type { UIPosition } from '@arcgis/core/views/ui/types.js';
 import { useEffect, useRef } from 'react';
 
 export default function useViewUiPosition(
-  view: __esri.MapView | null,
-  position: __esri.UIAddComponent['position'],
+  view: MapView | null,
+  position: UIPosition,
 ) {
   const me = useRef<HTMLDivElement | null>(null);
 

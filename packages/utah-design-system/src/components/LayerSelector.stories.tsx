@@ -5,6 +5,7 @@ import LOD from '@arcgis/core/layers/support/LOD';
 import TileInfo from '@arcgis/core/layers/support/TileInfo';
 import TileLayer from '@arcgis/core/layers/TileLayer';
 import WebTileLayer from '@arcgis/core/layers/WebTileLayer';
+import MapViewConstraints from '@arcgis/core/views/2d/MapViewConstraints';
 import '@arcgis/map-components/components/arcgis-home';
 import '@arcgis/map-components/components/arcgis-map';
 import '@arcgis/map-components/components/arcgis-zoom';
@@ -147,11 +148,7 @@ export const SmoothZoom = () => (
     className="h-96 w-full border"
     center={[-111.83, 39.71]}
     zoom={6}
-    constraints={
-      {
-        snapToZoom: false,
-      } as __esri.View2DConstraints
-    }
+    constraints={new MapViewConstraints({ snapToZoom: false })}
   >
     <arcgis-zoom slot="top-left"></arcgis-zoom>
     <LayerSelector

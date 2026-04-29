@@ -1,5 +1,6 @@
 import { whenOnce } from '@arcgis/core/core/reactiveUtils';
 import Extent from '@arcgis/core/geometry/Extent';
+import type MapView from '@arcgis/core/views/MapView';
 import { useState } from 'react';
 
 export const utahMercatorExtent = new Extent({
@@ -11,7 +12,7 @@ export const utahMercatorExtent = new Extent({
 });
 
 export const useDefaultExtent = (
-  view: __esri.MapView | null,
+  view: MapView | null,
   initialExtent: Extent = utahMercatorExtent,
 ) => {
   const [defaultExtent] = useState(initialExtent);
