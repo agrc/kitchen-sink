@@ -1,15 +1,7 @@
 <html>
   <head>
     <title>ESRI Theme Toggle Test</title>
-    <script
-      src="https://js.arcgis.com/calcite-components/3.1.0/calcite.esm.js"
-      type="module"
-    ></script>
-    <script src="https://js.arcgis.com/4.32/"></script>
-    <script
-      type="module"
-      src="https://js.arcgis.com/map-components/4.32/arcgis-map-components.esm.js"
-    ></script>
+    <script type="module" src="https://js.arcgis.com/5.0/"></script>
   </head>
 
   <body>
@@ -20,13 +12,13 @@
     >
       <arcgis-zoom></arcgis-zoom>
       <arcgis-home></arcgis-home>
-      <arcgis-legend position="bottom-left"></arcgis-legend>
+      <arcgis-legend slot="bottom-left"></arcgis-legend>
     </arcgis-map>
     <script type="importmap">
       {
         "imports": {
           "esri-theme-toggle": "../src/index.js",
-          "@arcgis/core/config": "https://js.arcgis.com/4.32/@arcgis/core/config.js"
+          "@arcgis/core/config": "https://js.arcgis.com/5.0/@arcgis/core/config.js"
         }
       }
     </script>
@@ -36,8 +28,8 @@
       initializeTheme();
 
       const map = document.querySelector('arcgis-map');
-      await map.componentOnReady();
-      console.log('Map component is ready');
+      await map.viewOnReady();
+      console.log('Map view is ready');
       map.openPopup({
         title: 'Hello World',
         content: 'This is a test of the esri-theme-toggle package.',

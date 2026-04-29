@@ -69,7 +69,11 @@ describe('LayerSelector utility functions', () => {
     });
 
     // Mock the load method on basemaps
-    vi.spyOn(Basemap.prototype, 'load').mockResolvedValue(undefined);
+    vi.spyOn(Basemap.prototype, 'load').mockImplementation(function (
+      this: Basemap,
+    ) {
+      return Promise.resolve(this);
+    });
   });
 
   describe('toggleLayer', () => {

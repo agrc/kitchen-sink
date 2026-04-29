@@ -1,8 +1,10 @@
 import { whenOnce } from '@arcgis/core/core/reactiveUtils';
+import type Viewpoint from '@arcgis/core/Viewpoint.js';
+import type MapView from '@arcgis/core/views/MapView.js';
 import { useEffect, useState } from 'react';
 
-export default function useViewPointZooming(view: __esri.MapView) {
-  const [viewPoint, setViewPoint] = useState<__esri.Viewpoint | null>(null);
+export default function useViewPointZooming(view: MapView) {
+  const [viewPoint, setViewPoint] = useState<Viewpoint | null>(null);
 
   useEffect(() => {
     if (!view || !viewPoint) {

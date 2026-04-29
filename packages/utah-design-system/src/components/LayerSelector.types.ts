@@ -1,8 +1,11 @@
+import type Basemap from '@arcgis/core/Basemap';
+import type Layer from '@arcgis/core/layers/Layer';
+
 export type LayerConfig = {
   /** Label that shows up next to the radio button or checkbox */
   label: string;
   /** Function that creates the layer, not called until the layer is toggled on */
-  function: () => __esri.Layer;
+  function: () => Layer;
   /**
    * Controls whether the layer is initially selected.
    * - For operationalLayers and referenceLayers: this determines if the layer is on by default
@@ -13,7 +16,7 @@ export type LayerConfig = {
 };
 
 export type BasemapConfig = {
-  function: () => __esri.Basemap;
+  function: () => Basemap;
 } & Omit<LayerConfig, 'function'>;
 export type BasemapConfigOrToken = BasemapConfig | BasemapToken;
 

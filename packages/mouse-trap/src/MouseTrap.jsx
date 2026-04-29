@@ -1,4 +1,5 @@
-import { load, project } from '@arcgis/core/geometry/projection.js';
+import SpatialReference from '@arcgis/core/geometry/SpatialReference.js';
+import * as projectOperator from '@arcgis/core/geometry/operators/projectOperator.js';
 import { throttle } from 'lodash-es';
 import { useEffect, useState } from 'react';
 
@@ -6,7 +7,10 @@ const projectPoint = (
   viewPoint,
   options = { projectToWkid: 4326, decimals: 3 },
 ) => {
-  const projected = project(viewPoint, { wkid: options.projectToWkid });
+  const projected = projectOperator.execute(
+    viewPoint,
+    new SpatialReference({ wkid: options.projectToWkid }),
+  );
 
   if (!projected) {
     console.log(
@@ -38,7 +42,11 @@ const MouseTrap = ({ render, mapView, options = defaultOptions }) => {
 
     let handle = null;
 
-    load().then(() => {
+    const registerPointerMove = async () => {
+      if (!projectOperator.isLoaded()) {
+        await projectOperator.load();
+      }
+
       handle = mapView.on(
         'pointer-move',
         throttle(
@@ -46,7 +54,9 @@ const MouseTrap = ({ render, mapView, options = defaultOptions }) => {
           options.wait,
         ),
       );
-    });
+    };
+
+    registerPointerMove();
 
     return () => {
       if (handle) {

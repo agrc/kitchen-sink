@@ -1,4 +1,8 @@
+import type { GraphicProperties } from '@arcgis/core/Graphic.js';
 import Graphic from '@arcgis/core/Graphic.js';
+import type ArcGisError from '@arcgis/core/core/Error.js';
+import type Geometry from '@arcgis/core/geometry/Geometry.js';
+import type { GeometryProperties } from '@arcgis/core/geometry/Geometry.js';
 import type {
   IGeocodeResponse,
   ISuggestResponse,
@@ -73,7 +77,7 @@ const inputStyles = tv({
 });
 
 type EsriRestError = {
-  error?: __esri.Error;
+  error?: ArcGisError;
 };
 export type AsyncListItem = { name: string; context?: string; key?: string };
 type LoaderOptions<T, C> = { maxResults?: number } & AsyncListLoadOptions<T, C>;
@@ -84,9 +88,9 @@ type SherlockProvider = {
   load: AsyncListLoadFunction<AsyncListItem, unknown>;
   getFeature: (key: string) => Promise<{ items: AccessorGraphicProperties[] }>;
 };
-type AccessorGraphicProperties = __esri.GraphicProperties & {
-  geometry?: __esri.GeometryProperties & {
-    type: __esri.Geometry['type'];
+type AccessorGraphicProperties = GraphicProperties & {
+  geometry?: GeometryProperties & {
+    type: Geometry['type'];
   };
 };
 

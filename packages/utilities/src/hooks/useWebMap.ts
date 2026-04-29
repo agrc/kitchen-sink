@@ -6,8 +6,8 @@ export default function useWebMap(
   divRef: RefObject<HTMLDivElement>,
   id: string,
 ) {
-  const mapRef = useRef<__esri.WebMap | null>(null);
-  const viewRef = useRef<__esri.MapView | null>(null);
+  const mapRef = useRef<WebMap | null>(null);
+  const viewRef = useRef<MapView | null>(null);
 
   useEffect(() => {
     if (divRef.current) {

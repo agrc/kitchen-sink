@@ -1,4 +1,8 @@
 import Basemap from '@arcgis/core/Basemap';
+import type Collection from '@arcgis/core/core/Collection';
+import type Layer from '@arcgis/core/layers/Layer';
+import type MapView from '@arcgis/core/views/MapView';
+import type SceneView from '@arcgis/core/views/SceneView';
 import '@arcgis/map-components/components/arcgis-expand';
 import '@esri/calcite-components/components/calcite-checkbox';
 import '@esri/calcite-components/components/calcite-label';
@@ -46,7 +50,7 @@ export type LayerSelectorProps = {
   /** Callback fired when the basemap is changed */
   onBasemapChange?: (label: string) => void;
   /** Icon to display in the expand button */
-  icon?: string;
+  icon?: HTMLArcgisExpandElement['expandIcon'];
   /** Mode for the expand component: auto, drawer, or floating */
   mode?: 'auto' | 'drawer' | 'floating';
   /** Group for auto-collapse behavior with other Expand components */
@@ -71,11 +75,11 @@ export async function toggleLayer(
   configOrToken: LayerConfigOrToken,
   label: string,
   visible: boolean,
-  container: __esri.Collection<__esri.Layer>,
-  managedObjects: Record<string, __esri.Layer | __esri.Basemap>,
+  container: Collection<Layer>,
+  managedObjects: Record<string, Layer | Basemap>,
   quadWord: string,
 ) {
-  let layer = managedObjects[label] as __esri.Layer | undefined;
+  let layer = managedObjects[label] as Layer | undefined;
   if (visible) {
     // add layer
     if (!layer) {
@@ -103,8 +107,8 @@ export async function toggleBasemap(
   configOrToken: BasemapConfigOrToken,
   label: string,
   visible: boolean,
-  managedLayers: Record<string, __esri.Basemap | __esri.Layer>,
-  view: __esri.MapView | __esri.SceneView,
+  managedLayers: Record<string, Basemap | Layer>,
+  view: MapView | SceneView,
   quadWord?: string,
 ) {
   // Early return if view or map is not available
@@ -113,7 +117,7 @@ export async function toggleBasemap(
     return;
   }
 
-  let basemap = managedLayers[label] as __esri.Basemap | undefined;
+  let basemap = managedLayers[label] as Basemap | undefined;
   if (visible) {
     if (!basemap) {
       if (typeof configOrToken === 'string') {
@@ -173,12 +177,8 @@ export function LayerSelector({
   expanded = false,
   slot = 'top-right',
 }: LayerSelectorProps) {
-  const [view, setView] = useState<__esri.MapView | __esri.SceneView | null>(
-    null,
-  );
-  const managedLayers = useRef<Record<string, __esri.Layer | __esri.Basemap>>(
-    {},
-  );
+  const [view, setView] = useState<MapView | SceneView | null>(null);
+  const managedLayers = useRef<Record<string, Layer | Basemap>>({});
 
   const id = useId();
 
@@ -285,9 +285,7 @@ export function LayerSelector({
             );
           } else {
             // For non-selected basemaps, only remove if they were previously added
-            const basemap = managedLayers.current[label] as
-              | __esri.Basemap
-              | undefined;
+            const basemap = managedLayers.current[label] as Basemap | undefined;
             if (basemap) {
               toggleBasemap(
                 configOrToken,
@@ -369,8 +367,9 @@ export function LayerSelector({
 
   const handleExpandReady = (event: Event) => {
     const expand = event.target as HTMLArcgisExpandElement;
-    if (expand.view) {
-      setView(expand.view);
+    const view = expand.view;
+    if (view?.type === '2d' || view?.type === '3d') {
+      setView(view as MapView | SceneView);
     } else {
       console.error('LayerSelector: view is not available on expand component');
     }
