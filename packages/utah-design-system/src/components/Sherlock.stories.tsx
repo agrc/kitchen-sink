@@ -94,7 +94,7 @@ export const FeatureServiceProviderWithKyOptions = {
       {
         hooks: {
           beforeRequest: [
-            async (request) => {
+            async ({ request }) => {
               request.headers.set(
                 // must use a CORS-safelisted request header or the request will fail
                 'Accept-Language',
