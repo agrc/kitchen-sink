@@ -1,11 +1,11 @@
 import type { GeometryProperties } from '@arcgis/core/geometry/Geometry';
-import ky, { HTTPError } from 'ky';
+import ky, { isHTTPError } from 'ky';
 
 const SPACE = ' ';
 const SPACES = / +/;
 const INVALID_CHARS = /[^a-zA-Z0-9]/g;
 const client = ky.create({
-  prefixUrl: 'https://api.mapserv.utah.gov/api/v1/',
+  prefix: 'https://api.mapserv.utah.gov/api/v1/',
 });
 
 const removeInvalidChars = (data: string): string =>
@@ -69,6 +69,23 @@ export type ApiGeocodeResponse = {
   };
 };
 
+const getApiErrorResponse = (error: unknown): ApiErrorResponse => {
+  if (!isHTTPError(error)) {
+    return {
+      message: error instanceof Error ? error.message : 'Unknown error',
+    };
+  }
+
+  const httpError = error.data as
+    | { error?: string; message?: string }
+    | undefined;
+
+  return {
+    status: error.response.status,
+    message: httpError?.message ?? error.message,
+  };
+};
+
 export const geocode = async (
   apiKey: string,
   street: string,
@@ -98,22 +115,7 @@ export const geocode = async (
       })
       .json()) as ApiGeocodeResponse;
   } catch (error: unknown) {
-    try {
-      const httpError: {
-        error?: string;
-        message?: string;
-      } = await (error as HTTPError).response.json();
-
-      return {
-        status: (error as HTTPError).response.status,
-        message: httpError.message,
-      };
-    } catch {
-      return {
-        status: (error as HTTPError).response.status,
-        message: (error as HTTPError).message,
-      };
-    }
+    return getApiErrorResponse(error);
   }
 
   return response.result;
@@ -156,22 +158,7 @@ export const search = async (
       })
       .json()) as SearchResponse;
   } catch (error: unknown) {
-    try {
-      const httpError: {
-        error?: string;
-        message?: string;
-      } = await (error as HTTPError).response.json();
-
-      return {
-        status: (error as HTTPError).response.status,
-        message: httpError.message,
-      };
-    } catch {
-      return {
-        status: (error as HTTPError).response.status,
-        message: (error as HTTPError).message,
-      };
-    }
+    return getApiErrorResponse(error);
   }
 
   return response.result;

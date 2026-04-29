@@ -9,11 +9,6 @@ import type {
 } from '@esri/arcgis-rest-geocoding';
 import type { IFeatureSet } from '@esri/arcgis-rest-request';
 import {
-  type AsyncListData,
-  type AsyncListLoadOptions,
-  type AsyncListStateUpdate,
-} from '@react-stately/data';
-import {
   search,
   type ApiErrorResponse,
   type SearchResponse,
@@ -31,7 +26,13 @@ import {
   ListBoxItem,
   Popover,
 } from 'react-aria-components';
-import { useAsyncList, type Key } from 'react-stately';
+import { type Key } from 'react-stately';
+import {
+  useAsyncList,
+  type AsyncListData,
+  type AsyncListLoadOptions,
+  type AsyncListStateUpdate,
+} from 'react-stately/useAsyncList';
 import { tv } from 'tailwind-variants';
 import { FieldError, Label, fieldBorderStyles } from './Field';
 import { Spinner } from './Spinner';
