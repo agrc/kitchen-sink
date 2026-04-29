@@ -1,5 +1,5 @@
-import SpatialReference from '@arcgis/core/geometry/SpatialReference.js';
-import * as projectOperator from '@arcgis/core/geometry/operators/projectOperator.js';
+import SpatialReference from '@arcgis/core/geometry/SpatialReference';
+import * as projectOperator from '@arcgis/core/geometry/operators/projectOperator';
 import { throttle } from 'lodash-es';
 import { useEffect, useState } from 'react';
 

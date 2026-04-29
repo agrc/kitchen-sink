@@ -1,5 +1,5 @@
-import EsriMap from '@arcgis/core/Map.js';
-import MapView from '@arcgis/core/views/MapView.js';
+import EsriMap from '@arcgis/core/Map';
+import MapView from '@arcgis/core/views/MapView';
 import { useMapReady } from '@ugrc/utilities/hooks';
 import { useEffect, useRef, useState } from 'react';
 import MouseTrap from './';

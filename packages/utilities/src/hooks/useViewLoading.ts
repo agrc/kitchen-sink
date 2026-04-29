@@ -1,5 +1,5 @@
 import { watch, whenOnce } from '@arcgis/core/core/reactiveUtils';
-import type MapView from '@arcgis/core/views/MapView.js';
+import type MapView from '@arcgis/core/views/MapView';
 import { useEffect, useRef, useState } from 'react';
 
 export default function useViewLoading(

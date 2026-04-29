@@ -1,8 +1,8 @@
-import type { GraphicProperties } from '@arcgis/core/Graphic.js';
-import Graphic from '@arcgis/core/Graphic.js';
-import type ArcGisError from '@arcgis/core/core/Error.js';
-import type Geometry from '@arcgis/core/geometry/Geometry.js';
-import type { GeometryProperties } from '@arcgis/core/geometry/Geometry.js';
+import type { GraphicProperties } from '@arcgis/core/Graphic';
+import Graphic from '@arcgis/core/Graphic';
+import type ArcGisError from '@arcgis/core/core/Error';
+import type Geometry from '@arcgis/core/geometry/Geometry';
+import type { GeometryProperties } from '@arcgis/core/geometry/Geometry';
 import type {
   IGeocodeResponse,
   ISuggestResponse,

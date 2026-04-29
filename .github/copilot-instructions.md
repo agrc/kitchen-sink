@@ -9,6 +9,7 @@ This is UGRC's "kitchen-sink" monorepo containing shared React components, utili
 - **Monorepo structure**: Uses npm workspaces (`packages/*`). All packages share root-level dev dependencies, build config, and Storybook.
 - **No build for utah-design-system**: Components ship as TypeScript source (`"main": "./src/index.ts"`). Consumers compile them.
 - **Package dependencies**: `utah-design-system` and `mouse-trap` depend on `utilities`. Other packages are standalone.
+- **TypeScript import style**: Prefer imports in TypeScript files without the `.js` extension.
 
 ## Key Technologies
 

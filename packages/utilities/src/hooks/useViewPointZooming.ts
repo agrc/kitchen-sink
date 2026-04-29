@@ -1,6 +1,6 @@
 import { whenOnce } from '@arcgis/core/core/reactiveUtils';
-import type Viewpoint from '@arcgis/core/Viewpoint.js';
-import type MapView from '@arcgis/core/views/MapView.js';
+import type Viewpoint from '@arcgis/core/Viewpoint';
+import type MapView from '@arcgis/core/views/MapView';
 import { useEffect, useState } from 'react';
 
 export default function useViewPointZooming(view: MapView) {

@@ -1,6 +1,6 @@
 import { whenOnce } from '@arcgis/core/core/reactiveUtils';
-import Graphic from '@arcgis/core/Graphic.js';
-import MapView from '@arcgis/core/views/MapView.js';
+import Graphic from '@arcgis/core/Graphic';
+import MapView from '@arcgis/core/views/MapView';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 export type GraphicOptions = Graphic | Graphic[] | null;

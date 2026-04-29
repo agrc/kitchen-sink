@@ -1,5 +1,5 @@
-import MapView from '@arcgis/core/views/MapView.js';
-import WebMap from '@arcgis/core/WebMap.js';
+import MapView from '@arcgis/core/views/MapView';
+import WebMap from '@arcgis/core/WebMap';
 import { type RefObject, useEffect, useRef } from 'react';
 
 export default function useWebMap(
