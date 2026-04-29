@@ -2,7 +2,7 @@ import type { Meta } from '@storybook/react-vite';
 import { http, HttpResponse } from 'msw';
 import type { Canvas, StepFunction } from 'storybook/internal/types';
 import { expect, fn, userEvent, waitFor, within } from 'storybook/test';
-import { Geocode } from './Geocode.js';
+import { Geocode } from './Geocode';
 
 const meta: Meta<typeof Geocode> = {
   component: Geocode,

@@ -1,6 +1,6 @@
 import { whenOnce } from '@arcgis/core/core/reactiveUtils';
-import type MapView from '@arcgis/core/views/MapView.js';
-import type { UIPosition } from '@arcgis/core/views/ui/types.js';
+import type MapView from '@arcgis/core/views/MapView';
+import type { UIPosition } from '@arcgis/core/views/ui/types';
 import { useEffect, useRef } from 'react';
 
 export default function useViewUiPosition(
