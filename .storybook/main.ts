@@ -1,4 +1,6 @@
 import type { StorybookConfig } from '@storybook/react-vite';
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const excludedProps = new Set([
   'id',
@@ -19,14 +21,14 @@ const config: StorybookConfig = {
   staticDirs: ['../public'],
 
   addons: [
-    '@storybook/addon-links',
-    '@chromatic-com/storybook',
-    '@storybook/addon-themes',
-    '@storybook/addon-docs',
+    getAbsolutePath('@storybook/addon-links'),
+    getAbsolutePath('@chromatic-com/storybook'),
+    getAbsolutePath('@storybook/addon-themes'),
+    getAbsolutePath('@storybook/addon-docs'),
   ],
 
   framework: {
-    name: '@storybook/react-vite',
+    name: getAbsolutePath('@storybook/react-vite'),
     options: {},
   },
 
@@ -45,3 +47,7 @@ const config: StorybookConfig = {
 };
 
 export default config;
+
+function getAbsolutePath(value: string): string {
+  return dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)));
+}
