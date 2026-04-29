@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/agrc/kitchen-sink/compare/eslint-config-v1.2.3...eslint-config-v1.3.0) (2026-04-29)
+
+
+### Features
+
+* **eslint-config:** add support for eslint v10 ([f29f49a](https://github.com/agrc/kitchen-sink/commit/f29f49a43c61fc89faac795e2f2cab8df0cc6289))
+
 ## [1.2.3](https://github.com/agrc/kitchen-sink/compare/eslint-config-v1.2.2...eslint-config-v1.2.3) (2025-07-01)
 
 
