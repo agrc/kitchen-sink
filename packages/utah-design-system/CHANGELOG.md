@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v3.0.0...utah-design-system-v3.0.1) (2026-05-20)
+
+
+### Bug Fixes
+
+* **uds:** make firebase a peer dependency and document consumer install requirement ([#625](https://github.com/agrc/kitchen-sink/issues/625)) ([b421185](https://github.com/agrc/kitchen-sink/commit/b4211857ae52376e33f2394c65bfc2f77b07fa83))
+
 ## [3.0.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v2.1.0...utah-design-system-v3.0.0) (2026-04-29)
 
 
