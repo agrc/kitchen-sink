@@ -22,7 +22,7 @@ This ensures TypeScript recognizes the global types for ArcGIS and Calcite eleme
 Components and providers that integrate with Firebase (such as `FirebaseAppProvider`, `FirebaseAuthProvider`, and `UtahIdLogin`) require `firebase` to be installed by the consuming application.
 
 ```bash
-npm install firebase@12
+npm install firebase@^12
 ```
 
 ## Header
