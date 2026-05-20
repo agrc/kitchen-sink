@@ -64,6 +64,7 @@
     "autoprefixer": "^10.5.0",
     "chokidar-cli": "^3.0.0",
     "eslint": "^9.39.2",
+    "firebase-tools": "^15.17.0",
     "happy-dom": "^20.9.0",
     "msw": "^2.13.4",
     "msw-storybook-addon": "^2.0.7",
