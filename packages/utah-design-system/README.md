@@ -17,6 +17,10 @@ When using spatial components that integrate with ArcGIS and Calcite web compone
 
 This ensures TypeScript recognizes the global types for ArcGIS and Calcite elements (e.g., `HTMLArcgisMapElement`, `HTMLCalciteCheckboxElement`) used by these components.
 
+## Firebase Providers
+
+Components and providers that integrate with Firebase (such as `FirebaseAppProvider`, `FirebaseAuthProvider`, and `UtahIdLogin`) require `firebase` to be installed by the consuming application.
+
 ## Header
 
 The Header component requires a custom font for the SVG text.
