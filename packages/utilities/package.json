@@ -46,7 +46,7 @@
   "scripts": {
     "build": "pnpm run check",
     "check": "tsc",
-    "test": "vitest --config ../../vite.config.js"
+    "test": "vitest --config ../../vite.config.ts"
   },
   "dependencies": {
     "@arcgis/core": "5.x",
