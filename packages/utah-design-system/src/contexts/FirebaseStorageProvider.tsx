@@ -1,10 +1,10 @@
-import { useFirebaseApp } from '@ugrc/utah-design-system';
 import {
   connectStorageEmulator,
   getStorage,
   type FirebaseStorage,
 } from 'firebase/storage';
 import { createContext, useContext, type ReactNode } from 'react';
+import { useFirebaseApp } from './FirebaseAppProvider';
 
 type StoreContextValue = {
   storage: FirebaseStorage;

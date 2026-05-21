@@ -15,7 +15,9 @@ describe('useLocalStorage', () => {
     };
     vi.stubGlobal('localStorage', localStorageMock);
 
-    const { result } = renderHook(() => useLocalStorage<{ a: number }>('key', { a: 1 }, true));
+    const { result } = renderHook(() =>
+      useLocalStorage<{ a: number }>('key', { a: 1 }, true),
+    );
 
     expect(localStorageMock.getItem).toHaveBeenCalledWith('key');
     expect(result.current[0]).toEqual({ a: 1 });
@@ -36,7 +38,9 @@ describe('useLocalStorage', () => {
 
     const initialValue = 'test value';
 
-    const { result } = renderHook(() => useLocalStorage<string>('key', initialValue));
+    const { result } = renderHook(() =>
+      useLocalStorage<string>('key', initialValue),
+    );
 
     expect(result.current[0]).toEqual(initialValue);
   });
@@ -51,7 +55,9 @@ describe('useLocalStorage', () => {
 
     const initialValue = 'test value';
 
-    const { result } = renderHook(() => useLocalStorage<string>('key', initialValue));
+    const { result } = renderHook(() =>
+      useLocalStorage<string>('key', initialValue),
+    );
 
     expect(result.current[0]).toEqual(localStorageValue);
   });
