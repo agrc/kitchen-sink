@@ -42,7 +42,7 @@
     "build": "echo 'No build necessary'",
     "check": "tsc",
     "prepublish": "cp ../../LICENSE /",
-    "test": "vitest --config ../../vite.config.js"
+    "test": "vitest --config ../../vite.config.ts"
   },
   "dependencies": {
     "@arcgis/core": "5.x",

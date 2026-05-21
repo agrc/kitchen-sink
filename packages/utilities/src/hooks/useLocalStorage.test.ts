@@ -1,17 +1,11 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { act, renderHook } from '@testing-library/react';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import useLocalStorage from './useLocalStorage';
 
 describe('useLocalStorage', () => {
-  beforeEach(() => {
-    vi.mock('react', () => {
-      return {
-        useState: (initialValue: () => unknown) => [initialValue(), () => {}],
-      };
-    });
-  });
-
   afterEach(() => {
     vi.restoreAllMocks();
+    vi.unstubAllGlobals();
   });
 
   it('can parse using JSON', () => {
@@ -21,16 +15,14 @@ describe('useLocalStorage', () => {
     };
     vi.stubGlobal('localStorage', localStorageMock);
 
-    const [value, setValue] = useLocalStorage<{ a: number }>(
-      'key',
-      { a: 1 },
-      true,
-    );
+    const { result } = renderHook(() => useLocalStorage<{ a: number }>('key', { a: 1 }, true));
 
     expect(localStorageMock.getItem).toHaveBeenCalledWith('key');
-    expect(value).toEqual({ a: 1 });
+    expect(result.current[0]).toEqual({ a: 1 });
 
-    setValue({ a: 2 });
+    act(() => {
+      result.current[1]({ a: 2 });
+    });
 
     expect(localStorageMock.setItem).toHaveBeenCalledWith('key', '{"a":2}');
   });
@@ -44,9 +36,9 @@ describe('useLocalStorage', () => {
 
     const initialValue = 'test value';
 
-    const [value] = useLocalStorage<string>('key', initialValue);
+    const { result } = renderHook(() => useLocalStorage<string>('key', initialValue));
 
-    expect(value).toEqual(initialValue);
+    expect(result.current[0]).toEqual(initialValue);
   });
 
   it('returns the value from storage if it exists', () => {
@@ -59,8 +51,8 @@ describe('useLocalStorage', () => {
 
     const initialValue = 'test value';
 
-    const [value] = useLocalStorage<string>('key', initialValue);
+    const { result } = renderHook(() => useLocalStorage<string>('key', initialValue));
 
-    expect(value).toEqual(localStorageValue);
+    expect(result.current[0]).toEqual(localStorageValue);
   });
 });
