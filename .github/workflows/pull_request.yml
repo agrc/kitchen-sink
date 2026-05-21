@@ -17,20 +17,25 @@ jobs:
         with:
           show-progress: false
 
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 11
+
       - name: ⎔ Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
-          cache: npm
+          cache: pnpm
 
       - name: 📥 Download dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: 🧼 Lint files
-        run: npm run lint
+        run: pnpm lint
 
       - name: ✔ Check Types and Formatting
-        run: npm run check
+        run: pnpm check
 
   test-unit:
     name: Unit tests
@@ -42,20 +47,25 @@ jobs:
         with:
           show-progress: false
 
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 11
+
       - name: ⎔ Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
-          cache: npm
+          cache: pnpm
 
       - name: 📥 Download dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: 🏗 Run build script
-        run: npm run build
+        run: pnpm build
 
       - name: 🧪 Run tests
-        run: npm test
+        run: pnpm test
 
   deploy-storybook:
     name: 📚 Deploy documentation
@@ -74,11 +84,16 @@ jobs:
         with:
           show-progress: false
 
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 11
+
       - name: ⎔ Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: lts/*
-          cache: npm
+          cache: pnpm
 
       - name: 🚀 Deploy
         uses: agrc/firebase-website-deploy-composite-action@v2
@@ -86,9 +101,9 @@ jobs:
           identity-provider: ${{ secrets.IDENTITY_PROVIDER }}
           service-account-email: ${{ secrets.SERVICE_ACCOUNT_EMAIL }}
           project-id: ${{ secrets.PROJECT_ID }}
-          preview: 'yes'
+          preview: "yes"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          prebuild-command: npm run build --workspace @ugrc/utilities && npm run build
-          build-command: npm run build:storybook
+          prebuild-command: pnpm --filter @ugrc/utilities build && pnpm build
+          build-command: pnpm build:storybook
         env:
           VITE_QUAD_WORD: ${{ secrets.DISCOVER_QUAD_WORD }}

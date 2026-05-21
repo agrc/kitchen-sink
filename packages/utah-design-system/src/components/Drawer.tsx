@@ -15,7 +15,7 @@ import { Button } from './Button';
 /*
 Getting Started
 
-`npm install react-aria react-stately`
+`pnpm add react-aria react-stately`
 
 const drawerState = useOverlayTriggerState({});
 const drawerTriggerProps = useOverlayTrigger(

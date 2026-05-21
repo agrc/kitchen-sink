@@ -26,4 +26,4 @@ initializeTheme();
 
 ## Development
 
-Run `npm start` and open `http://localhost:3000/tests` to test this package.
+Run `pnpm start` and open `http://localhost:3000/tests` to test this package.

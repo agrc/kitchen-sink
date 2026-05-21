@@ -6,7 +6,7 @@ This is UGRC's "kitchen-sink" monorepo containing shared React components, utili
 
 ## Architecture
 
-- **Monorepo structure**: Uses npm workspaces (`packages/*`). All packages share root-level dev dependencies, build config, and Storybook.
+- **Monorepo structure**: Uses pnpm workspaces (`packages/*`). All packages share root-level dev dependencies, build config, and Storybook.
 - **No build for utah-design-system**: Components ship as TypeScript source (`"main": "./src/index.ts"`). Consumers compile them.
 - **Package dependencies**: `utah-design-system` and `mouse-trap` depend on `utilities`. Other packages are standalone.
 - **TypeScript import style**: Prefer imports in TypeScript files without the `.js` extension.
@@ -44,11 +44,11 @@ const styles = tv({
 ## Commands
 
 ```bash
-npm run storybook     # Dev server + Firebase emulator for auth stories
-npm run build         # Build all packages
-npm run check         # TypeScript + Prettier check
-npm run lint:fix      # ESLint with auto-fix
-npm test -- --run     # Vitest (uses happy-dom)
+pnpm storybook        # Dev server + Firebase emulator for auth stories
+pnpm build            # Build all packages
+pnpm check            # TypeScript + Prettier check
+pnpm lint:fix         # ESLint with auto-fix
+pnpm test -- --run    # Vitest (uses happy-dom)
 ```
 
 ## Commit Conventions

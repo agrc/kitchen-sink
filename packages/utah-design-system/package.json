@@ -49,7 +49,7 @@
     "@esri/arcgis-rest-geocoding": "^4.10.2",
     "@esri/arcgis-rest-request": "^4.10.2",
     "@types/lodash-es": "^4.17.12",
-    "@ugrc/utilities": "4.0.0",
+    "@ugrc/utilities": "workspace:^",
     "ky": "^2.0.1",
     "lodash-es": "^4.18.1",
     "lucide-react": ">=1.8.0",

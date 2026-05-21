@@ -4,7 +4,7 @@ This Tailwind CSS v3 preset defines colors and font families used in UGRC produc
 
 ## Usage
 
-`npm install --save-dev @ugrc/tailwind-preset`
+`pnpm add -D @ugrc/tailwind-preset`
 
 ```js
 // tailwind.config.js
