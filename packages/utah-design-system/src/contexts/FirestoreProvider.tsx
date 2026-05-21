@@ -1,10 +1,10 @@
-import { useFirebaseApp } from '@ugrc/utah-design-system';
 import {
   connectFirestoreEmulator,
   Firestore,
   getFirestore,
 } from 'firebase/firestore';
 import { createContext, type ReactNode, useContext } from 'react';
+import { useFirebaseApp } from './FirebaseAppProvider';
 
 type StoreContextValue = {
   firestore: Firestore;

@@ -22,7 +22,7 @@ jobs:
         uses: MeilCli/regex-match@v2
         id: folder
         with:
-          regex_pattern: ".*(?=-v*)"
+          regex_pattern: '.*(?=-v*)'
           search_string: ${{ github.ref_name }}
 
       - name: 🛑 Fail if no package name found
@@ -45,7 +45,7 @@ jobs:
           node-version: lts/*
           check-latest: true
           cache: pnpm
-          registry-url: "https://registry.npmjs.org"
+          registry-url: 'https://registry.npmjs.org'
 
       - name: 📥 Download dependencies
         run: pnpm install --frozen-lockfile
