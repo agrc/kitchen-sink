@@ -13,13 +13,13 @@
     "build": "pnpm -r run build",
     "build:storybook": "storybook build --docs --output-dir ./dist --disable-telemetry",
     "check": "tsc -b && prettier . --check",
-    "firebase:save-state": "firebase emulators:start --import ./data/firebase --export-on-exit --only auth",
+    "firebase:save-state": "bash ./scripts/firebase-emulators.sh --import ./data/firebase --export-on-exit --only auth",
     "format": "prettier . --write",
     "lint": "eslint .",
     "lint:fix": "eslint . --quiet --fix",
     "storybook": "run-p storybook:*",
     "storybook:dev": "storybook dev --port 6006",
-    "storybook:firebase": "firebase emulators:start --import ./data/firebase --only auth",
+    "storybook:firebase": "bash ./scripts/firebase-emulators.sh --import ./data/firebase --only auth",
     "test": "vitest"
   },
   "prettier": {
