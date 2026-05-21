@@ -4,8 +4,8 @@
 
 This is a react component to display cursor coordinates while hovering over an arcgis map.
 
-Install with [npm](https://www.npmjs.com/)
+Install with [pnpm](https://pnpm.io/)
 
 ```bash
-npm install @ugrc/mouse-trap
+pnpm add @ugrc/mouse-trap
 ```

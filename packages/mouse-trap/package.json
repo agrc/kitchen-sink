@@ -47,11 +47,11 @@
   ],
   "scripts": {
     "build": "vite build --config ../../vite.config.js",
-    "build:watch": "chokidar \"src/**/*.(js|jsx|css)\" -c \"npm run build\"",
+    "build:watch": "chokidar \"src/**/*.(js|jsx|css)\" -c \"pnpm run build\"",
     "test": "vitest --config ../../vite.config.js"
   },
   "dependencies": {
-    "@ugrc/utilities": "^4.0.0",
+    "@ugrc/utilities": "workspace:^",
     "lodash-es": "^4.18.1"
   },
   "peerDependencies": {

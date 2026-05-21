@@ -44,7 +44,7 @@
     "src"
   ],
   "scripts": {
-    "build": "npm run check",
+    "build": "pnpm run check",
     "check": "tsc",
     "test": "vitest --config ../../vite.config.js"
   },

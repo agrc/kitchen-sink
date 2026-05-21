@@ -25,7 +25,7 @@ This monorepo contains the following packages:
 A collection of React components implementing the [Utah Design System](https://designsystem.utah.gov). Includes spatial components for maps, geocoding, and location services built with React Aria and ArcGIS.
 
 ```bash
-npm install @ugrc/utah-design-system
+pnpm add @ugrc/utah-design-system
 ```
 
 ### [@ugrc/mouse-trap](./packages/mouse-trap)
@@ -33,7 +33,7 @@ npm install @ugrc/utah-design-system
 A React component that displays cursor coordinates while hovering over an ArcGIS map. Supports multiple coordinate systems and projections.
 
 ```bash
-npm install @ugrc/mouse-trap
+pnpm add @ugrc/mouse-trap
 ```
 
 ### [@ugrc/utilities](./packages/utilities)
@@ -41,7 +41,7 @@ npm install @ugrc/mouse-trap
 Shared utility functions and React hooks for UGRC projects, including helpers for working with ArcGIS maps and spatial data.
 
 ```bash
-npm install @ugrc/utilities
+pnpm add @ugrc/utilities
 ```
 
 ### [@ugrc/esri-theme-toggle](./packages/esri-theme-toggle)
@@ -49,7 +49,7 @@ npm install @ugrc/utilities
 Automatically switches between Esri CSS themes based on the browser's preferred color scheme (light/dark mode).
 
 ```bash
-npm install @ugrc/esri-theme-toggle
+pnpm add @ugrc/esri-theme-toggle
 ```
 
 ### [@ugrc/eslint-config](./packages/eslint-config)
@@ -57,7 +57,7 @@ npm install @ugrc/esri-theme-toggle
 Shared ESLint configurations for UGRC projects with support for React, TypeScript, and Storybook.
 
 ```bash
-npm install --save-dev @ugrc/eslint-config
+pnpm add -D @ugrc/eslint-config
 ```
 
 ### [@ugrc/tailwind-preset](./packages/tailwind-preset)
@@ -65,7 +65,7 @@ npm install --save-dev @ugrc/eslint-config
 The default Tailwind CSS preset for UGRC projects with support for React Aria Components.
 
 ```bash
-npm install --save-dev @ugrc/tailwind-preset
+pnpm add -D @ugrc/tailwind-preset
 ```
 
 ### [@ugrc/tsconfigs](./packages/tsconfigs)
@@ -73,7 +73,7 @@ npm install --save-dev @ugrc/tailwind-preset
 Shared TypeScript configurations for UGRC projects, including browser and Vite-specific configurations.
 
 ```bash
-npm install --save-dev @ugrc/tsconfigs
+pnpm add -D @ugrc/tsconfigs
 ```
 
 ## Package Dependencies
@@ -102,9 +102,9 @@ The remaining packages (`eslint-config`, `esri-theme-toggle`, `tailwind-preset`,
 ## Development
 
 1. Build the packages
-   1. `npm run build`
+   1. `pnpm build`
 2. View the stories
-   1. `npm run storybook`
+   1. `pnpm storybook`
 
 ### Conventional Commits
 
@@ -129,11 +129,39 @@ or if general package updates use
 
 - `uds`
 
-### NPM Linking
+### Local Linking
 
-To test these packages in other local projects, first run `npm link -workspaces` from the root of this project. Then run `npm link @ugrc/utah-design-system` from the root of your test project. Please note that you need to run `npm link` for all of the packages at the same time or previous ones will be removed.
+To test these packages in other local projects, prefer `workspace:` dependencies inside this monorepo and use `pnpm link --global` only when you need to wire a package into a separate local project.
 
-Then run `npm run build:watch --workspace packages/sherlock` to automatically build the package any time a file is saved.
+Register the local packages from this repo:
+
+```bash
+cd /packages/utilities
+pnpm link --global
+
+cd /packages/utah-design-system
+pnpm link --global
+```
+
+Link them into a separate local project:
+
+```bash
+cd /my-app
+pnpm link --global @ugrc/utilities
+pnpm link --global @ugrc/utah-design-system
+pnpm install
+```
+
+Use `@ugrc/utilities` by itself when you only need the shared helpers. Link both packages when you need unpublished `utah-design-system` changes, because it depends on `@ugrc/utilities`.
+
+To remove the links later:
+
+```bash
+cd /my-app
+pnpm unlink --global @ugrc/utah-design-system
+pnpm unlink --global @ugrc/utilities
+pnpm install
+```
 
 ## Dependencies
 

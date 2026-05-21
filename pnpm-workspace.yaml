@@ -1,0 +1,14 @@
+packages:
+  - 'packages/*'
+allowBuilds:
+  '@firebase/util': false
+  '@vaadin/vaadin-usage-statistics': false
+  esbuild: true
+  msw: true
+  protobufjs: false
+  re2: true
+
+minimumReleaseAge: 10080
+minimumReleaseAgeExclude:
+  - '@ugrc/*'
+minimumReleaseAgeStrict: true

@@ -4,8 +4,8 @@
 
 These are shared utilities for various [UGRC React Components](https://github.com/agrc/kitchen-sink).
 
-Install with [npm](https://www.npmjs.com/)
+Install with [pnpm](https://pnpm.io/)
 
 ```bash
-npm install @ugrc/utilities
+pnpm add @ugrc/utilities
 ```
