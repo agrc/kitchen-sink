@@ -1,14 +1,16 @@
 import react from '@vitejs/plugin-react';
 import { basename, resolve } from 'path';
 import { readPackage } from 'read-pkg';
-import { type RollupOptions } from 'rollup';
+import { type UserConfig } from 'vite';
 import { defineConfig } from 'vitest/config';
 
 const directory = process.cwd();
 const packageName = basename(directory);
 const packageJson = await readPackage({ cwd: directory });
 
-const rollupOptions: RollupOptions = {
+const rolldownOptions: NonNullable<
+  NonNullable<UserConfig['build']>['rolldownOptions']
+> = {
   external: [
     ...Object.keys(packageJson?.dependencies ?? {}),
     ...Object.keys(packageJson?.peerDependencies ?? {}),
@@ -26,13 +28,13 @@ const rollupOptions: RollupOptions = {
 };
 
 if (packageName === 'utilities') {
-  rollupOptions.input = {
+  rolldownOptions.input = {
     main: resolve(directory, 'src/index.js'),
     hooks: resolve(directory, 'src/hooks/index.js'),
   };
 }
 
-const config = defineConfig({
+const config: UserConfig = {
   plugins: [react()],
   build: {
     lib: {
@@ -45,7 +47,7 @@ const config = defineConfig({
     },
     sourcemap: true,
     emptyOutDir: true,
-    rollupOptions,
+    rolldownOptions,
   },
   test: {
     environment: 'happy-dom',
@@ -56,6 +58,6 @@ const config = defineConfig({
       },
     },
   },
-});
+};
 
-export default config;
+export default defineConfig(config);
