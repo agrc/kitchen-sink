@@ -41,7 +41,8 @@
     "src"
   ],
   "scripts": {
-    "build": "echo 'No build necessary'"
+    "build": "echo 'No build necessary'",
+    "prepublish": "cp ../../LICENSE ./LICENSE"
   },
   "dependencies": {
     "tailwindcss-animate": "^1.0.7",

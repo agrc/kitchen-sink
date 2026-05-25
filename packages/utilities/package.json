@@ -46,6 +46,7 @@
   "scripts": {
     "build": "pnpm run check",
     "check": "tsc",
+    "prepublish": "cp ../../LICENSE ./LICENSE",
     "test": "vitest --config ../../vite.config.ts"
   },
   "dependencies": {

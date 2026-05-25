@@ -41,7 +41,7 @@
   "scripts": {
     "build": "echo 'No build necessary'",
     "check": "tsc",
-    "prepublish": "cp ../../LICENSE /",
+    "prepublish": "cp ../../LICENSE ./LICENSE",
     "test": "vitest --config ../../vite.config.ts"
   },
   "dependencies": {

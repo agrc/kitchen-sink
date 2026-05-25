@@ -64,7 +64,7 @@ jobs:
     environment:
       name: prod
     concurrency:
-      group: ${{ github.workflow }}
+      group: ${{ github.workflow }}-storybook
       cancel-in-progress: true
 
     steps:
