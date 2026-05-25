@@ -131,25 +131,11 @@ or if general package updates use
 
 ### Local Linking
 
-To test these packages in other local projects, prefer `workspace:` dependencies inside this monorepo and use `pnpm link --global` only when you need to wire a package into a separate local project.
-
-Register the local packages from this repo:
-
-```bash
-cd /packages/utilities
-pnpm link --global
-
-cd /packages/utah-design-system
-pnpm link --global
-```
-
-Link them into a separate local project:
+To test these packages in other local projects use the `pnpm link` command. For example:
 
 ```bash
 cd /my-app
-pnpm link --global @ugrc/utilities
-pnpm link --global @ugrc/utah-design-system
-pnpm install
+pnpm link ../kitchen-sink/packages/utah-design-system
 ```
 
 Use `@ugrc/utilities` by itself when you only need the shared helpers. Link both packages when you need unpublished `utah-design-system` changes, because it depends on `@ugrc/utilities`.
