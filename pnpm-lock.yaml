@@ -193,7 +193,7 @@ importers:
   packages/esri-theme-toggle:
     dependencies:
       '@arcgis/core':
-        specifier: '>=5.x'
+        specifier: 5.x
         version: 5.0.19
 
   packages/mouse-trap:
@@ -309,7 +309,7 @@ importers:
   packages/utilities:
     dependencies:
       '@arcgis/core':
-        specifier: '>=5.x'
+        specifier: 5.x
         version: 5.0.19
       ky:
         specifier: ^2.0.2

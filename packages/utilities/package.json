@@ -49,10 +49,10 @@
     "test": "vitest --config ../../vite.config.ts"
   },
   "dependencies": {
-    "@arcgis/core": ">=5.x",
     "ky": "^2.0.2"
   },
   "peerDependencies": {
+    "@arcgis/core": "5.x",
     "react": ">=16.8.0"
   }
 }
