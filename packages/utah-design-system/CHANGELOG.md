@@ -1,5 +1,16 @@
 # Changelog
 
+## [4.0.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v3.0.1...utah-design-system-v4.0.0) (2026-05-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* **design-system:** bump utah-design-system from tailwind v3 to v4
+
+### Features
+
+* **design-system:** bump utah-design-system from tailwind v3 to v4 ([2963396](https://github.com/agrc/kitchen-sink/commit/2963396eda9a1bdb9ee484de166d8920a14b3b99))
+
 ## [3.0.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v3.0.0...utah-design-system-v3.0.1) (2026-05-20)
 
 
