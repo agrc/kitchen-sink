@@ -219,6 +219,9 @@ importers:
 
   packages/tailwind-preset:
     dependencies:
+      tailwindcss:
+        specifier: ^4.0.0
+        version: 4.3.0
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@4.3.0)
