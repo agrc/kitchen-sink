@@ -1,10 +1,7 @@
 import { UploadIcon, XIcon } from 'lucide-react';
 import { useState } from 'react';
-import type {
-  DropEvent,
-  FileDropItem,
-  ValidationResult,
-} from 'react-aria-components';
+import type { DropEvent } from 'react-aria';
+import type { FileDropItem, ValidationResult } from 'react-aria-components';
 import { Button as AriaButton } from 'react-aria-components/Button';
 import { DropZone as AriaDropZone } from 'react-aria-components/DropZone';
 import {
