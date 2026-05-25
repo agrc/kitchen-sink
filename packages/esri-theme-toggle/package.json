@@ -41,7 +41,7 @@
     "start": "pnpm dlx serve",
     "test": "echo 'No test necessary'"
   },
-  "dependencies": {
-    "@arcgis/core": ">=5.x"
+  "peerDependencies": {
+    "@arcgis/core": "5.x"
   }
 }
