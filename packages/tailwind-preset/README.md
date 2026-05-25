@@ -1,6 +1,6 @@
 # UGRC Tailwind CSS Preset
 
-This Tailwind CSS v4 preset defines colors and font families used in UGRC products and required by the Utah Design System. These primary colors and fonts are used through out the [@ugrc/utah-design-system](https://www.npmjs.com/package/@ugrc/utah-design-system) components and atlas layout.
+This Tailwind CSS v4 preset defines colors and font families used in UGRC products and required by the Utah Design System. These primary colors and fonts are used throughout the [@ugrc/utah-design-system](https://www.npmjs.com/package/@ugrc/utah-design-system) components and atlas layout.
 
 ## Usage
 
