@@ -1,6 +1,13 @@
 @plugin 'tailwindcss-react-aria-components';
 @plugin 'tailwindcss-animate';
 
+@layer base {
+  /* override tailwind's preflight reset for arcgis calcite components on the map */
+  arcgis-map > * {
+    margin-bottom: var(--calcite-spacing-sm-plus);
+  }
+}
+
 @theme {
   --color-primary-50: #faf7fc;
   --color-primary-100: #f6edfa;
