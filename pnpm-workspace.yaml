@@ -11,4 +11,6 @@ allowBuilds:
 minimumReleaseAge: 10080
 minimumReleaseAgeExclude:
   - '@ugrc/*'
+  - uuid@11.1.1
+  - qs@6.15.2
 minimumReleaseAgeStrict: true
