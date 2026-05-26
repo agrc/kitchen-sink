@@ -1,6 +1,6 @@
 import { signInWithPopup } from 'firebase/auth';
 import { useCallback, useState } from 'react';
-import { useFirebaseAuth } from '../contexts';
+import { useFirebaseAuth } from '../contexts/FirebaseAuthProvider';
 import { Banner } from './Banner';
 import { Button, type ButtonProps } from './Button';
 

@@ -21,6 +21,17 @@ This ensures TypeScript recognizes the global types for ArcGIS and Calcite eleme
 
 Components and providers that integrate with Firebase (such as `FirebaseAppProvider`, `FirebaseAuthProvider`, and `UtahIdLogin`) require `firebase` to be installed by the consuming application.
 
+## Imports
+
+This package no longer exposes a root barrel file. Import components, providers, and shared types from explicit subpaths instead.
+
+```tsx
+import { Header } from '@ugrc/utah-design-system/components/Header';
+import { FirebaseAppProvider } from '@ugrc/utah-design-system/contexts/FirebaseAppProvider';
+import { FirebaseAuthProvider } from '@ugrc/utah-design-system/contexts/FirebaseAuthProvider';
+import type { ComponentSize } from '@ugrc/utah-design-system/types';
+```
+
 ## Header
 
 The Header component requires a custom font for the SVG text.
