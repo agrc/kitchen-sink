@@ -32,6 +32,34 @@ import { FirebaseAuthProvider } from '@ugrc/utah-design-system/contexts/Firebase
 import type { ComponentSize } from '@ugrc/utah-design-system/types';
 ```
 
+Secondary exports stay with their owning module. If you previously imported one of these symbols from `@ugrc/utah-design-system`, import it from the listed subpath instead.
+
+| Export                                                                                                                            | New import path                                               |
+| --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| `CheckboxGroup`, `CheckboxGroupProps`                                                                                             | `@ugrc/utah-design-system/components/Checkbox`                |
+| `DisclosureHeader`, `DisclosureHeaderProps`, `DisclosurePanel`, `DisclosurePanelProps`, `DisclosureGroup`, `DisclosureGroupProps` | `@ugrc/utah-design-system/components/Disclosure`              |
+| `DefaultDrawerTriggerProps`                                                                                                       | `@ugrc/utah-design-system/components/Drawer`                  |
+| `Label`, `Description`, `FieldError`, `FieldGroup`, `Input`, `TextAreaInput`, `fieldBorderStyles`, `fieldGroupStyles`             | `@ugrc/utah-design-system/components/Field`                   |
+| `FormError`                                                                                                                       | `@ugrc/utah-design-system/components/FormErrors`              |
+| `dnrStandardLinks`, `GovOpsAddress`, `NaturalResourcesAddress`, `OfficialUtahWebsite`                                             | `@ugrc/utah-design-system/components/Footer`                  |
+| `useGeocoding`                                                                                                                    | `@ugrc/utah-design-system/components/Geocode`                 |
+| `HeaderLink`, `HeaderProps`, `UgrcLogo`                                                                                           | `@ugrc/utah-design-system/components/Header`                  |
+| `ExternalLink`                                                                                                                    | `@ugrc/utah-design-system/components/Link`                    |
+| `ListBoxItem`, `DropdownItem`, `DropdownSection`, `DropdownSectionProps`, `itemStyles`, `dropdownItemStyles`                      | `@ugrc/utah-design-system/components/ListBox`                 |
+| `MenuItem`, `MenuSeparator`, `MenuSection`                                                                                        | `@ugrc/utah-design-system/components/Menu`                    |
+| `RadioGroup`, `RadioGroupProps`                                                                                                   | `@ugrc/utah-design-system/components/Radio`                   |
+| `SelectItem`, `SelectSection`, `SelectProps`                                                                                      | `@ugrc/utah-design-system/components/Select`                  |
+| `AsyncListItem`, `ugrcApiProvider`, `masqueradeProvider`, `featureServiceProvider`, `multiProvider`, `SherlockProps`              | `@ugrc/utah-design-system/components/Sherlock`                |
+| `BusyBar`                                                                                                                         | `@ugrc/utah-design-system/components/Spinner`                 |
+| `TabList`, `Tab`, `TabPanel`                                                                                                      | `@ugrc/utah-design-system/components/Tabs`                    |
+| `Tag`, `TagProps`, `TagGroupProps`                                                                                                | `@ugrc/utah-design-system/components/TagGroup`                |
+| `useFirebaseAnalytics`                                                                                                            | `@ugrc/utah-design-system/contexts/FirebaseAnalyticsProvider` |
+| `useFirebaseApp`                                                                                                                  | `@ugrc/utah-design-system/contexts/FirebaseAppProvider`       |
+| `useFirebaseAuth`                                                                                                                 | `@ugrc/utah-design-system/contexts/FirebaseAuthProvider`      |
+| `useFirebaseFunctions`                                                                                                            | `@ugrc/utah-design-system/contexts/FirebaseFunctionsProvider` |
+| `useFirebaseStorage`                                                                                                              | `@ugrc/utah-design-system/contexts/FirebaseStorageProvider`   |
+| `useFirestore`                                                                                                                    | `@ugrc/utah-design-system/contexts/FirestoreProvider`         |
+
 ## Header
 
 The Header component requires a custom font for the SVG text.
