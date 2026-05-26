@@ -33,7 +33,17 @@
     }
   ],
   "type": "module",
-  "main": "./src/index.ts",
+  "exports": {
+    "./components/*": {
+      "import": "./src/components/*.tsx"
+    },
+    "./contexts/*": {
+      "import": "./src/contexts/*.tsx"
+    },
+    "./types": {
+      "import": "./src/types.ts"
+    }
+  },
   "files": [
     "src",
     "LICENSE-Adobe"

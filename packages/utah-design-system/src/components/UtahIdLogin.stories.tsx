@@ -1,7 +1,8 @@
 import type { Meta } from '@storybook/react-vite';
 import { OAuthProvider } from 'firebase/auth';
 import { firebaseConfig } from '../../tests/firebase';
-import { FirebaseAppProvider, FirebaseAuthProvider } from '../contexts';
+import { FirebaseAppProvider } from '../contexts/FirebaseAppProvider';
+import { FirebaseAuthProvider } from '../contexts/FirebaseAuthProvider';
 import { UtahIdLogin as Component } from './UtahIdLogin';
 
 const provider = new OAuthProvider('oidc.utah-id');

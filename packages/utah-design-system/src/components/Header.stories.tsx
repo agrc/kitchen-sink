@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { OAuthProvider } from 'firebase/auth';
 import type { ReactNode } from 'react';
-import { firebaseConfig } from '../../tests/firebase.ts';
+import { firebaseConfig } from '../../tests/firebase';
+import { FirebaseAppProvider } from '../contexts/FirebaseAppProvider';
 import {
-  FirebaseAppProvider,
   FirebaseAuthProvider,
   useFirebaseAuth,
-} from '../contexts/index.ts';
-import { Header as Component, type HeaderProps } from './Header.tsx';
-import { UtahIdLogin } from './UtahIdLogin.tsx';
+} from '../contexts/FirebaseAuthProvider';
+import { Header as Component, type HeaderProps } from './Header';
+import { UtahIdLogin } from './UtahIdLogin';
 
 const provider = new OAuthProvider('oidc.utahid');
 
