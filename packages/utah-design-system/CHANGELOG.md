@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v4.0.0...utah-design-system-v4.0.1) (2026-05-26)
+
+
+### Bug Fixes
+
+* remove barrel files ([77de9c7](https://github.com/agrc/kitchen-sink/commit/77de9c7d74ddef7624a3bdefbed44514f12163cd)), closes [#596](https://github.com/agrc/kitchen-sink/issues/596)
+
 ## [4.0.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v3.0.1...utah-design-system-v4.0.0) (2026-05-25)
 
 
