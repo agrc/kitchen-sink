@@ -247,9 +247,6 @@ importers:
 
   packages/utah-design-system:
     dependencies:
-      '@arcgis/core':
-        specifier: ~5.0.19
-        version: 5.0.19
       '@arcgis/map-components':
         specifier: '>=5.0.0'
         version: 5.0.19(@arcgis/core@5.0.19)(@esri/calcite-components@5.0.2)
@@ -262,9 +259,6 @@ importers:
       '@esri/calcite-components':
         specifier: '>=5.0.2'
         version: 5.0.2
-      '@react-types/shared':
-        specifier: ^3.34.0
-        version: 3.34.0(react@19.2.6)
       '@types/lodash-es':
         specifier: ^4.17.12
         version: 4.17.12
@@ -289,8 +283,11 @@ importers:
       react-aria-components:
         specifier: ^1.17.0
         version: 1.17.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      react-dom:
+        specifier: '>=19.0.0'
+        version: 19.2.6(react@19.2.6)
       react-stately:
-        specifier: 3.46.0
+        specifier: ^3.46.0
         version: 3.46.0(react@19.2.6)
       tailwind-merge:
         specifier: 3.6.0
@@ -302,6 +299,9 @@ importers:
         specifier: ^2.0.1
         version: 2.0.1
     devDependencies:
+      '@arcgis/core':
+        specifier: ~5.0.19
+        version: 5.0.19
       firebase:
         specifier: ^12.13.0
         version: 12.13.0
