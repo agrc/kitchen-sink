@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v4.0.1...utah-design-system-v4.0.2) (2026-05-28)
+
+
+### Bug Fixes
+
+* **design-system:** better defined peer dependencies ([bec970d](https://github.com/agrc/kitchen-sink/commit/bec970d1679d715a4e7c47b816bdea66ac3d2812))
+
 ## [4.0.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v4.0.0...utah-design-system-v4.0.1) (2026-05-26)
 
 
