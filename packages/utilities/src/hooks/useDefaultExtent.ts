@@ -11,10 +11,10 @@ export const utahMercatorExtent = new Extent({
   spatialReference: { wkid: 3857 },
 });
 
-export const useDefaultExtent = (
+export default function useDefaultExtent(
   view: MapView | null,
   initialExtent: Extent = utahMercatorExtent,
-) => {
+) {
   const [defaultExtent] = useState(initialExtent);
 
   const goHome = (extent: Extent = defaultExtent) => {
@@ -30,4 +30,4 @@ export const useDefaultExtent = (
   };
 
   return goHome;
-};
+}

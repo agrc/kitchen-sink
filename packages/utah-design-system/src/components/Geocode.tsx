@@ -2,7 +2,7 @@ import type { PointProperties } from '@arcgis/core/geometry/Point';
 import type { GraphicProperties } from '@arcgis/core/Graphic';
 import type { PopupTemplateProperties } from '@arcgis/core/PopupTemplate';
 import type { SymbolProperties } from '@arcgis/core/symbols/Symbol';
-import { toQueryString } from '@ugrc/utilities';
+import { toQueryString } from '@ugrc/utilities/url';
 import { TriangleAlertIcon } from 'lucide-react';
 import type { KeyboardEvent } from 'react';
 import { useCallback, useState } from 'react';

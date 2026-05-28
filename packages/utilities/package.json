@@ -32,14 +32,16 @@
   ],
   "type": "module",
   "exports": {
-    ".": {
-      "import": "./src/index.ts"
+    "./api": {
+      "import": "./src/api.ts"
     },
-    "./hooks": {
-      "import": "./src/hooks/index.ts"
+    "./hooks/*": {
+      "import": "./src/hooks/*.ts"
+    },
+    "./url": {
+      "import": "./src/url.ts"
     }
   },
-  "main": "./src/index.ts",
   "files": [
     "src"
   ],

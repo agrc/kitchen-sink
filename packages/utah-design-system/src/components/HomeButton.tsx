@@ -1,7 +1,8 @@
 import type Extent from '@arcgis/core/geometry/Extent';
 import type MapView from '@arcgis/core/views/MapView';
 import type { UIPosition } from '@arcgis/core/views/ui/types';
-import { useDefaultExtent, useViewUiPosition } from '@ugrc/utilities/hooks';
+import useDefaultExtent from '@ugrc/utilities/hooks/useDefaultExtent';
+import useViewUiPosition from '@ugrc/utilities/hooks/useViewUiPosition';
 import { HomeIcon } from 'lucide-react';
 import { Button } from './Button';
 

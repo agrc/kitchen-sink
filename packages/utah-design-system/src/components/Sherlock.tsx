@@ -12,7 +12,7 @@ import {
   search,
   type ApiErrorResponse,
   type SearchResponse,
-} from '@ugrc/utilities';
+} from '@ugrc/utilities/api';
 import ky, { type Input as KyInput, type Options as KyOptions } from 'ky';
 import { escapeRegExp } from 'lodash-es';
 import { CheckIcon, ChevronsUpDownIcon, SearchIcon } from 'lucide-react';
