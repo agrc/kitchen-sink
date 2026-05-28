@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.0](https://github.com/agrc/kitchen-sink/compare/utilities-v4.0.0...utilities-v5.0.0) (2026-05-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* **utilities:** get rid of barrel file imports
+
+### Bug Fixes
+
+* **utilities:** get rid of barrel file imports ([c361026](https://github.com/agrc/kitchen-sink/commit/c361026162f2939d7132d07f762ae0f09b480b66))
+
 ## [4.0.0](https://github.com/agrc/kitchen-sink/compare/utilities-v3.1.1...utilities-v4.0.0) (2026-04-29)
 
 

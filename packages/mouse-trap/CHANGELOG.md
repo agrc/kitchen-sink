@@ -1,25 +1,13 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+## [3.0.1](https://github.com/agrc/kitchen-sink/compare/mouse-trap-v3.0.0...mouse-trap-v3.0.1) (2026-05-28)
+
 
 ### Dependencies
 
 * The following workspace dependencies were updated
   * dependencies
-    * @ugrc/utilities bumped from ^2.1.0 to ^2.1.1
-
-### Dependencies
-
-* The following workspace dependencies were updated
-  * dependencies
-    * @ugrc/utilities bumped from ^2.1.3 to ^2.2.0
-
-### Dependencies
-
-* The following workspace dependencies were updated
-  * dependencies
-    * @ugrc/utilities bumped from ^2.2.0 to ^2.2.1
+    * @ugrc/utilities bumped to 5.0.0
 
 ## [3.0.0](https://github.com/agrc/kitchen-sink/compare/mouse-trap-v2.1.4...mouse-trap-v3.0.0) (2026-04-29)
 
