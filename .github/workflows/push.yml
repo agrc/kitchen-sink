@@ -23,6 +23,6 @@ jobs:
           private-key: ${{ secrets.UGRC_RELEASE_BOT_APP_KEY }}
 
       - name: 🛠️ Create releases
-        uses: googleapis/release-please-action@v4
+        uses: googleapis/release-please-action@v5
         with:
           token: ${{ steps.generate-token.outputs.token }}
