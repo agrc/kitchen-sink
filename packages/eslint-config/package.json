@@ -41,15 +41,15 @@
   },
   "dependencies": {
     "@eslint/js": "^10.0.1",
-    "@tanstack/eslint-plugin-query": "^5.100.11",
+    "@tanstack/eslint-plugin-query": "^5.101.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-storybook": "^10.4.0",
+    "eslint-plugin-storybook": "^10.4.6",
     "globals": "^17.6.0",
-    "typescript-eslint": "^8.59.4"
+    "typescript-eslint": "^8.61.1"
   },
   "peerDependencies": {
     "eslint": ">=9"
