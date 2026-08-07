@@ -148,14 +148,3 @@ pnpm unlink --global @ugrc/utah-design-system
 pnpm unlink --global @ugrc/utilities
 pnpm install
 ```
-
-## Dependencies
-
-To continue with tailwind version 3 support
-
-- tailwind-merge is pinned at version `2.6.*`
-- tailwind-variants is pinned at version `0.3.*`
-
-## Attribution
-
-This project was developed with the assistance of [GitHub Copilot](https://github.com/features/copilot).
