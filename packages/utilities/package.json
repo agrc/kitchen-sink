@@ -46,7 +46,7 @@
     "src"
   ],
   "scripts": {
-    "build": "pnpm run check",
+    "build": "echo 'No build necessary'",
     "check": "tsc",
     "prepublish": "cp ../../LICENSE ./LICENSE",
     "test": "vitest --config ../../vite.config.ts"
@@ -54,8 +54,12 @@
   "dependencies": {
     "ky": "^2.0.2"
   },
+  "devDependencies": {
+    "@arcgis/core": "catalog:",
+    "react": "catalog:"
+  },
   "peerDependencies": {
-    "@arcgis/core": "5.1.15",
+    "@arcgis/core": "^5.0.0",
     "react": ">=16.8.0"
   }
 }

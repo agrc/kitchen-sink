@@ -13,6 +13,7 @@
     "build": "pnpm -r run build",
     "build:storybook": "storybook build --docs --output-dir ./dist --disable-telemetry",
     "check": "tsc -b && prettier . --check",
+    "check:dependencies": "node ./scripts/check-runtime-dependency-versions.mjs",
     "firebase:save-state": "bash ./scripts/firebase-emulators.sh --import ./data/firebase --export-on-exit --only auth",
     "format": "prettier . --write",
     "lint": "eslint .",
@@ -38,18 +39,18 @@
     ]
   },
   "dependencies": {
-    "@arcgis/core": "5.1.15",
-    "@arcgis/map-components": "5.1.15",
+    "@arcgis/core": "catalog:",
+    "@arcgis/map-components": "catalog:",
     "lucide-react": "^1.28.0",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8",
+    "react": "catalog:",
+    "react-dom": "catalog:",
     "react-hook-form": "^7.83.0",
     "react-lorem-ipsum": "^1.4.10",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^5.2.1",
-    "@esri/calcite-components": "5.1.2",
+    "@esri/calcite-components": "catalog:",
     "@mdx-js/react": "^3.1.1",
     "@storybook/addon-docs": "10.5.5",
     "@storybook/addon-links": "10.5.5",
