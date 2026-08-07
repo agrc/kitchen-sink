@@ -67,20 +67,20 @@
     "ts-md5": "^2.0.1"
   },
   "devDependencies": {
-    "@arcgis/core": "5.1.15",
-    "@arcgis/map-components": "5.1.15",
-    "@esri/calcite-components": "5.1.2",
+    "@arcgis/core": "catalog:",
+    "@arcgis/map-components": "catalog:",
+    "@esri/calcite-components": "catalog:",
     "firebase": "^12.17.0",
-    "react": "19.2.8",
+    "react": "catalog:",
     "react-aria": "3.48.0",
     "react-aria-components": "1.17.0",
-    "react-dom": "19.2.8",
+    "react-dom": "catalog:",
     "react-stately": "3.46.0"
   },
   "peerDependencies": {
-    "@arcgis/core": "5.1.15",
-    "@arcgis/map-components": "5.1.15",
-    "@esri/calcite-components": "5.1.2",
+    "@arcgis/core": "^5.0.0",
+    "@arcgis/map-components": "^5.0.0",
+    "@esri/calcite-components": "^5.0.0",
     "firebase": ">=12.0.0",
     "react": ">=19.0.0",
     "react-aria": "^3.48.0",

@@ -47,9 +47,17 @@ const styles = tv({
 pnpm storybook        # Dev server + Firebase emulator for auth stories
 pnpm build            # Build all packages
 pnpm check            # TypeScript + Prettier check
+pnpm check:dependencies # Verify one React and ArcGIS runtime version
 pnpm lint:fix         # ESLint with auto-fix
 pnpm test -- --run    # Vitest (uses happy-dom)
 ```
+
+Dependency policy: published packages keep consumer-facing peer dependency ranges
+separate from the versions used to develop this workspace. Shared development
+versions are defined in `pnpm-workspace.yaml` with pnpm catalogs and referenced
+as `catalog:` in package manifests. Catalog-backed overrides force the same
+versions through transitive dependencies and auto-installed peers. Update the
+catalog and lockfile together, then run `pnpm check:dependencies`.
 
 ## Commit Conventions
 

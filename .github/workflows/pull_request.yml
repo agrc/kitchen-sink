@@ -31,6 +31,9 @@ jobs:
       - name: 📥 Download dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: 🔎 Check runtime dependency versions
+        run: pnpm check:dependencies
+
       - name: 🧼 Lint files
         run: pnpm lint
 
