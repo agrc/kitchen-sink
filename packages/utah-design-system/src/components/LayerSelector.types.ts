@@ -22,8 +22,7 @@ export type BasemapConfigOrToken = BasemapConfig | BasemapToken;
 
 export type LayerConfigOrToken = LayerConfig | LayerToken;
 export type BaseLayerConfigOrToken =
-  | Omit<LayerConfig, 'defaultSelected'>
-  | LayerToken;
+  Omit<LayerConfig, 'defaultSelected'> | LayerToken;
 
 export const basemapTokens = {
   imagery: 'Imagery',
