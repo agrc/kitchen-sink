@@ -77,8 +77,7 @@ const getApiErrorResponse = (error: unknown): ApiErrorResponse => {
   }
 
   const httpError = error.data as
-    | { error?: string; message?: string }
-    | undefined;
+    { error?: string; message?: string } | undefined;
 
   return {
     status: error.response.status,

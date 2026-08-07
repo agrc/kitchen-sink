@@ -21,6 +21,10 @@ This ensures TypeScript recognizes the global types for ArcGIS and Calcite eleme
 
 Components and providers that integrate with Firebase (such as `FirebaseAppProvider`, `FirebaseAuthProvider`, and `UtahIdLogin`) require `firebase` to be installed by the consuming application.
 
+## Development Dependencies
+
+The exact `react`, `react-dom`, `react-aria`, `react-aria-components`, and `react-stately` versions in `devDependencies` pin this package's test runtime to the versions used by the workspace. Without them, pnpm can resolve a separate React runtime for React Aria, which causes invalid-hook errors in component tests. These pins are only for local development and testing; the published peer dependency ranges remain flexible for consumers.
+
 ## Imports
 
 This package no longer exposes a root barrel file. Import components, providers, and shared types from explicit subpaths instead.

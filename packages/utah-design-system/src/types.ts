@@ -1,6 +1,2 @@
 export type ComponentSize =
-  | 'extraSmall'
-  | 'small'
-  | 'medium'
-  | 'large'
-  | 'extraLarge';
+  'extraSmall' | 'small' | 'medium' | 'large' | 'extraLarge';

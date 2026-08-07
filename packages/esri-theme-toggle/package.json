@@ -42,6 +42,6 @@
     "test": "echo 'No test necessary'"
   },
   "peerDependencies": {
-    "@arcgis/core": "5.x"
+    "@arcgis/core": "5.1.15"
   }
 }
