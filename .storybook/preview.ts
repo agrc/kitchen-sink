@@ -1,10 +1,9 @@
 /// <reference types="vite/client" />
 import { withThemeByClassName } from '@storybook/addon-themes';
-import type { Preview } from '@storybook/react';
-import { initialize, mswLoader } from 'msw-storybook-addon';
+import type { Preview } from '@storybook/react-vite';
+import { mswLoader } from 'msw-storybook-addon/csf3';
+import { setupWorker } from 'msw/browser';
 import './tailwind.css';
-
-initialize({ onUnhandledRequest: 'bypass' });
 
 const preview: Preview = {
   decorators: [
@@ -16,7 +15,13 @@ const preview: Preview = {
       defaultTheme: 'light',
     }),
   ],
-  loaders: [mswLoader],
+  loaders: [
+    mswLoader(async () => {
+      const worker = setupWorker();
+      await worker.start({ onUnhandledRequest: 'bypass' });
+      return worker;
+    }),
+  ],
   parameters: {
     controls: {
       matchers: {
