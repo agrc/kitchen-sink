@@ -11,8 +11,8 @@ const controlledDependencies = [
 
 const dependencyTree = JSON.parse(
   execFileSync(
-    process.env.SHELL ?? 'sh',
-    ['-lc', 'pnpm list --recursive --json --depth Infinity'],
+    'pnpm',
+    ['list', '--recursive', '--json', '--depth', 'Infinity'],
     { encoding: 'utf8', maxBuffer: 100 * 1024 * 1024 },
   ),
 );
