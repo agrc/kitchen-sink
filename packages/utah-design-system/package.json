@@ -63,7 +63,7 @@
     "lodash-es": "^4.18.1",
     "lucide-react": "^1.28.0",
     "tailwind-merge": "3.6.0",
-    "tailwind-variants": "3.3.0",
+    "tailwind-variants": "3.3.1",
     "ts-md5": "^2.0.1"
   },
   "devDependencies": {
@@ -72,10 +72,10 @@
     "@esri/calcite-components": "catalog:",
     "firebase": "^12.17.0",
     "react": "catalog:",
-    "react-aria": "3.48.0",
-    "react-aria-components": "1.17.0",
+    "react-aria": "3.50.0",
+    "react-aria-components": "1.19.0",
     "react-dom": "catalog:",
-    "react-stately": "3.46.0"
+    "react-stately": "3.48.0"
   },
   "peerDependencies": {
     "@arcgis/core": "^5.0.0",
