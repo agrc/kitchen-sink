@@ -10,5 +10,6 @@
     "packages/utah-design-system": {},
     "packages/utilities": {}
   },
+  "changelog-sections": ["feat", "fix", "deps", "docs", "style"],
   "include-component-in-tag": true
 }
