@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.1](https://github.com/agrc/kitchen-sink/compare/esri-theme-toggle-v2.0.0...esri-theme-toggle-v2.0.1) (2026-08-11)
+
+
+### Dependencies
+
+* bump NPM dependencies 🌲 ([2e8ed21](https://github.com/agrc/kitchen-sink/commit/2e8ed21b40f92ce574fc678bc3b184058f8de45c))
+* bump NPM dependencies 🌲 ([f95302c](https://github.com/agrc/kitchen-sink/commit/f95302c9245820a1079b8ca03cc6a3c9e760de05))
+
 ## [2.0.0](https://github.com/agrc/kitchen-sink/compare/esri-theme-toggle-v1.1.2...esri-theme-toggle-v2.0.0) (2026-04-29)
 
 

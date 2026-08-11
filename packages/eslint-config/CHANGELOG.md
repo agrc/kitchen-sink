@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.3.1](https://github.com/agrc/kitchen-sink/compare/eslint-config-v1.3.0...eslint-config-v1.3.1) (2026-08-11)
+
+
+### Dependencies
+
+* bump NPM dependencies 🌲 ([2e8ed21](https://github.com/agrc/kitchen-sink/commit/2e8ed21b40f92ce574fc678bc3b184058f8de45c))
+* bump NPM dependencies 🌲 ([f95302c](https://github.com/agrc/kitchen-sink/commit/f95302c9245820a1079b8ca03cc6a3c9e760de05))
+* bump the safe-dependencies group across 1 directory with 11 updates ([0b570a2](https://github.com/agrc/kitchen-sink/commit/0b570a296e373eecb3cfe71deddfd6276bfc25e9))
+
 ## [1.3.0](https://github.com/agrc/kitchen-sink/compare/eslint-config-v1.2.3...eslint-config-v1.3.0) (2026-04-29)
 
 

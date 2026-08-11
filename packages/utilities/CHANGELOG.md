@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.1](https://github.com/agrc/kitchen-sink/compare/utilities-v5.0.0...utilities-v5.0.1) (2026-08-11)
+
+
+### Dependencies
+
+* bump NPM dependencies 🌲 ([2e8ed21](https://github.com/agrc/kitchen-sink/commit/2e8ed21b40f92ce574fc678bc3b184058f8de45c))
+
 ## [5.0.0](https://github.com/agrc/kitchen-sink/compare/utilities-v4.0.0...utilities-v5.0.0) (2026-05-28)
 
 

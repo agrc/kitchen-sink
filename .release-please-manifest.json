@@ -1,9 +1,9 @@
 {
-  "packages/eslint-config": "1.3.0",
-  "packages/esri-theme-toggle": "2.0.0",
-  "packages/mouse-trap": "3.0.1",
-  "packages/tailwind-preset": "2.0.0",
-  "packages/tsconfigs": "1.0.3",
-  "packages/utah-design-system": "4.0.3",
-  "packages/utilities": "5.0.0"
+  "packages/eslint-config": "1.3.1",
+  "packages/esri-theme-toggle": "2.0.1",
+  "packages/mouse-trap": "3.0.2",
+  "packages/tailwind-preset": "2.0.1",
+  "packages/tsconfigs": "1.0.4",
+  "packages/utah-design-system": "4.0.4",
+  "packages/utilities": "5.0.1"
 }
