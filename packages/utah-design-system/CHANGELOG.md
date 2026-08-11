@@ -1,5 +1,16 @@
 # Changelog
 
+## [4.0.4](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v4.0.3...utah-design-system-v4.0.4) (2026-08-11)
+
+
+### Dependencies
+
+* bump NPM dependencies 🌲 ([2e8ed21](https://github.com/agrc/kitchen-sink/commit/2e8ed21b40f92ce574fc678bc3b184058f8de45c))
+* bump the safe-dependencies group across 1 directory with 11 updates ([0b570a2](https://github.com/agrc/kitchen-sink/commit/0b570a296e373eecb3cfe71deddfd6276bfc25e9))
+* The following workspace dependencies were updated
+  * dependencies
+    * @ugrc/utilities bumped to 5.0.1
+
 ## [4.0.3](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v4.0.2...utah-design-system-v4.0.3) (2026-05-28)
 
 

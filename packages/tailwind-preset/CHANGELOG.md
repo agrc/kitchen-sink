@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/agrc/kitchen-sink/compare/tailwind-preset-v2.0.0...tailwind-preset-v2.0.1) (2026-08-11)
+
+
+### Dependencies
+
+* bump NPM dependencies 🌲 ([2e8ed21](https://github.com/agrc/kitchen-sink/commit/2e8ed21b40f92ce574fc678bc3b184058f8de45c))
+
 ## [2.0.0](https://github.com/agrc/kitchen-sink/compare/tailwind-preset-v1.2.0...tailwind-preset-v2.0.0) (2026-05-25)
 
 

@@ -1,5 +1,15 @@
 # Change Log
 
+## [3.0.2](https://github.com/agrc/kitchen-sink/compare/mouse-trap-v3.0.1...mouse-trap-v3.0.2) (2026-08-11)
+
+
+### Dependencies
+
+* bump NPM dependencies 🌲 ([2e8ed21](https://github.com/agrc/kitchen-sink/commit/2e8ed21b40f92ce574fc678bc3b184058f8de45c))
+* The following workspace dependencies were updated
+  * dependencies
+    * @ugrc/utilities bumped to 5.0.1
+
 ## [3.0.1](https://github.com/agrc/kitchen-sink/compare/mouse-trap-v3.0.0...mouse-trap-v3.0.1) (2026-05-28)
 
 
