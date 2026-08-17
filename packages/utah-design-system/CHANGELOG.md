@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.1.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v4.0.4...utah-design-system-v4.1.0) (2026-08-17)
+
+
+### Features
+
+* **design-system:** add option to bypass the firebase auth emulator ([1c568fb](https://github.com/agrc/kitchen-sink/commit/1c568fbbe0a88db7901b612bf68c2e3832fbfcfb))
+
 ## [4.0.4](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v4.0.3...utah-design-system-v4.0.4) (2026-08-11)
 
 
