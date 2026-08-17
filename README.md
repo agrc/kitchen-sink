@@ -144,7 +144,7 @@ To remove the links later:
 
 ```bash
 cd /my-app
-pnpm unlink --global @ugrc/utah-design-system
-pnpm unlink --global @ugrc/utilities
+pnpm unlink @ugrc/utah-design-system
+pnpm unlink @ugrc/utilities
 pnpm install
 ```

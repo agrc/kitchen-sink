@@ -30,6 +30,7 @@ type AuthContextValue = {
 type FirebaseAuthProviderProps = {
   provider: OAuthProvider;
   children: ReactNode;
+  bypassEmulator?: boolean; // useful for testing against real cloud auth endpoints
 };
 
 const FirebaseAuthContext = createContext<AuthContextValue | null>(null);
@@ -63,7 +64,7 @@ export const FirebaseAuthProvider = (props: FirebaseAuthProviderProps) => {
   const logout = () => signOut(sdk);
 
   useEffect(() => {
-    if (app && import.meta.env.DEV) {
+    if (app && import.meta.env.DEV && !props.bypassEmulator) {
       const auth = getAuth(app);
       if (!auth.emulatorConfig) {
         console.log('Connecting to Firebase Authentication emulator');
@@ -72,7 +73,7 @@ export const FirebaseAuthProvider = (props: FirebaseAuthProviderProps) => {
         });
       }
     }
-  }, [app]);
+  }, [app, props.bypassEmulator]);
 
   return (
     <FirebaseAuthContext.Provider
