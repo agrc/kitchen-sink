@@ -149,6 +149,13 @@ export function getHappyPathBasemapProperties(
         },
       };
     }
+    case 'Outdoors': {
+      return {
+        portalItem: {
+          id: 'a4ec5f4477f54854b3d831bc0cf14358',
+        },
+      };
+    }
     default: {
       throw new Error(
         `layer-selector::The basemap token '${token}' was not found. Please use one of the supported tokens (${Object.values(basemapTokens).join(', ')}) or pass in a Basemap object.`,

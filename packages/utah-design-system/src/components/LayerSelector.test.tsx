@@ -11,6 +11,7 @@ import type {
   BasemapConfigOrToken,
   LayerConfigOrToken,
 } from './LayerSelector.types';
+import { getHappyPathBasemapProperties } from './LayerSelector.utilities';
 
 // Mock the MapView class
 vi.mock('@arcgis/core/views/MapView', () => {
@@ -73,6 +74,14 @@ describe('LayerSelector utility functions', () => {
       this: Basemap,
     ) {
       return Promise.resolve(this);
+    });
+  });
+
+  it('resolves the Outdoors basemap token to its portal item', () => {
+    expect(getHappyPathBasemapProperties('Outdoors')).toEqual({
+      portalItem: {
+        id: 'a4ec5f4477f54854b3d831bc0cf14358',
+      },
     });
   });
 
