@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.2.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v4.1.0...utah-design-system-v4.2.0) (2026-10-08)
+
+
+### Features
+
+* **design-system:** Add Outdoors basemap to LayerSelector ([#657](https://github.com/agrc/kitchen-sink/issues/657)) ([cb968ad](https://github.com/agrc/kitchen-sink/commit/cb968ad71b410f9f5f398fdc3ce678fe9758048b))
+
 ## [4.1.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v4.0.4...utah-design-system-v4.1.0) (2026-08-17)
 
 
