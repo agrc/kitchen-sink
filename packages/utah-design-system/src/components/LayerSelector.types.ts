@@ -32,6 +32,7 @@ export const basemapTokens = {
   colorIR: 'Color IR',
   hybrid: 'Hybrid',
   highContrast: 'High Contrast',
+  outdoors: 'Outdoors',
 } as const;
 
 export type BasemapToken = (typeof basemapTokens)[keyof typeof basemapTokens];
