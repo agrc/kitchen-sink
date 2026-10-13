@@ -450,7 +450,7 @@ describe('LayerSelector utility functions', () => {
       mockView.background = originalBackground;
 
       const { container, unmount } = render(
-        <LayerSelector basemaps={['Dark']} quadWord="testQuadWord" />,
+        <LayerSelector basemaps={['Dark']} />,
       );
       const expand = container.querySelector(
         'arcgis-expand',
