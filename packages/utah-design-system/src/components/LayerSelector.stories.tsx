@@ -81,6 +81,7 @@ export function Default() {
     'Lite',
     'High Contrast',
     'Outdoors',
+    'Dark',
   ];
 
   const baseLayers: BaseLayerConfigOrToken[] = [

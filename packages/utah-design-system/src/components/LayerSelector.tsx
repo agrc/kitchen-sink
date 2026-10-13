@@ -179,6 +179,10 @@ export function LayerSelector({
 }: LayerSelectorProps) {
   const [view, setView] = useState<MapView | SceneView | null>(null);
   const managedLayers = useRef<Record<string, Layer | Basemap>>({});
+  const previousMapBackground = useRef<{
+    view: MapView;
+    background: MapView['background'];
+  } | null>(null);
 
   const id = useId();
 
@@ -226,6 +230,9 @@ export function LayerSelector({
   const [selectedRadioBtnLabel, setSelectedRadioBtnLabel] = useState<string>(
     getLabel(basemaps.length ? basemaps[0]! : baseLayers[0]!),
   );
+  const [isDarkBasemapSelected, setIsDarkBasemapSelected] = useState(
+    basemaps[0] === 'Dark',
+  );
 
   const referenceAndOperationalConfigsOrTokens = [
     ...operationalLayers,
@@ -243,6 +250,33 @@ export function LayerSelector({
   );
 
   const basemapId = 'layer-selector';
+
+  useEffect(() => {
+    const mapView = view?.type === '2d' ? (view as MapView) : null;
+    const previousBackground = previousMapBackground.current;
+
+    if (previousBackground && previousBackground.view !== mapView) {
+      previousBackground.view.background = previousBackground.background;
+      previousMapBackground.current = null;
+    }
+
+    if (!mapView) {
+      return;
+    }
+
+    if (isDarkBasemapSelected) {
+      if (!previousMapBackground.current) {
+        previousMapBackground.current = {
+          view: mapView,
+          background: mapView.background,
+        };
+      }
+      mapView.background = { color: '#000000' };
+    } else if (previousMapBackground.current) {
+      mapView.background = previousMapBackground.current.background;
+      previousMapBackground.current = null;
+    }
+  }, [isDarkBasemapSelected, view]);
 
   // toggle layer visibility
   useEffect(() => {
@@ -378,6 +412,12 @@ export function LayerSelector({
   // cleanup on unmount
   useEffect(() => {
     return () => {
+      const previousBackground = previousMapBackground.current;
+      if (previousBackground) {
+        previousBackground.view.background = previousBackground.background;
+        previousMapBackground.current = null;
+      }
+
       const layers = managedLayers.current;
       for (const layer of Object.values(layers)) {
         if (
@@ -420,6 +460,9 @@ export function LayerSelector({
             if (selectedItem) {
               const label = selectedItem.value ?? '';
               setSelectedRadioBtnLabel(label);
+              setIsDarkBasemapSelected(
+                selectedItem.dataset.basemapToken === 'Dark',
+              );
               onBasemapChange(label);
             }
           }}
@@ -432,6 +475,9 @@ export function LayerSelector({
                 <calcite-radio-button
                   value={value}
                   checked={value === selectedRadioBtnLabel}
+                  data-basemap-token={
+                    configOrToken === 'Dark' ? configOrToken : undefined
+                  }
                 />
                 {value}
               </calcite-label>
