@@ -13,7 +13,9 @@ import {
   layerTokens,
   type BaseLayerConfigOrToken,
   type BasemapConfigOrToken,
+  type BasemapToken,
   type LayerConfigOrToken,
+  type LayerToken,
 } from './LayerSelector.types';
 import {
   getHappyPathBasemapProperties,
@@ -29,6 +31,25 @@ type UIPosition =
   | 'top-trailing'
   | 'bottom-leading'
   | 'bottom-trailing';
+
+const basemapTokensRequiringQuadWord: BasemapToken[] = [
+  'Imagery',
+  'Topo',
+  'Terrain',
+  'Color IR',
+  'Hybrid',
+];
+
+const layerTokensRequiringQuadWord: LayerToken[] = [
+  'Imagery',
+  'Topo',
+  'Terrain',
+  'Lite',
+  'Color IR',
+  'Hybrid',
+  'Overlay',
+  'Address Points',
+];
 
 export type LayerSelectorProps = {
   /**
@@ -194,16 +215,25 @@ export function LayerSelector({
       );
     }
 
-    const hasBasemapToken = basemaps.some(
-      (configOrToken) => typeof configOrToken === 'string',
+    const hasBasemapTokenRequiringQuadWord = basemaps.some(
+      (configOrToken) =>
+        typeof configOrToken === 'string' &&
+        basemapTokensRequiringQuadWord.includes(configOrToken),
     );
-    const hasLayerToken = [
+    const hasLayerTokenRequiringQuadWord = [
       ...baseLayers,
       ...referenceLayers,
       ...operationalLayers,
-    ].some((configOrToken) => typeof configOrToken === 'string');
+    ].some(
+      (configOrToken) =>
+        typeof configOrToken === 'string' &&
+        layerTokensRequiringQuadWord.includes(configOrToken),
+    );
 
-    if ((hasBasemapToken || hasLayerToken) && !quadWord) {
+    if (
+      (hasBasemapTokenRequiringQuadWord || hasLayerTokenRequiringQuadWord) &&
+      !quadWord
+    ) {
       throw new Error(
         "layer-selector::You chose to use a token without setting your 'quadWord' from Discover. The requests for tiles will fail to authenticate. Pass 'quadWord' prop.",
       );
