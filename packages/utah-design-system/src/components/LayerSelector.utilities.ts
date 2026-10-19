@@ -47,7 +47,7 @@ export const happyPathConfigs: Record<
     copyright: 'UGRC',
   },
   'Color IR': {
-    urlPattern: `https://discover.agrc.utah.gov/login/path/${quadWordToken}/tiles/naip_2021_nrg/{level}/{col}/{row}`,
+    urlPattern: `https://discover.agrc.utah.gov/login/path/${quadWordToken}/tiles/naip_2024_nrg/{level}/{col}/{row}`,
     copyright: 'UGRC',
   },
   Hybrid: {
