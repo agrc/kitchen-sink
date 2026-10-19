@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.3.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v4.3.0...utah-design-system-v4.3.1) (2026-10-19)
+
+
+### Bug Fixes
+
+* Update URL pattern for 'Color IR' layer to 2024 ([6b2f417](https://github.com/agrc/kitchen-sink/commit/6b2f4173bc50b90c8b04859c9602a1e85825c9ea))
+
 ## [4.3.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v4.2.0...utah-design-system-v4.3.0) (2026-10-14)
 
 
