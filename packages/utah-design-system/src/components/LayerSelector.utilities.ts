@@ -47,7 +47,7 @@ export const happyPathConfigs: Record<
     copyright: 'UGRC',
   },
   'Color IR': {
-    urlPattern: `https://discover.agrc.utah.gov/login/path/${quadWordToken}/tiles/naip_2021_nrg/{level}/{col}/{row}`,
+    urlPattern: `https://discover.agrc.utah.gov/login/path/${quadWordToken}/tiles/naip_2024_nrg/{level}/{col}/{row}`,
     copyright: 'UGRC',
   },
   Hybrid: {
@@ -146,6 +146,20 @@ export function getHappyPathBasemapProperties(
       return {
         portalItem: {
           id: '2ce710cbb88f4981bb517c255f638ff4',
+        },
+      };
+    }
+    case 'Outdoors': {
+      return {
+        portalItem: {
+          id: 'a4ec5f4477f54854b3d831bc0cf14358',
+        },
+      };
+    }
+    case 'Dark': {
+      return {
+        portalItem: {
+          id: '00be227f54bf4795953af5d7e9a26cf9',
         },
       };
     }

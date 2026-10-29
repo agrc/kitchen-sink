@@ -5,8 +5,9 @@ import VectorTileLayer from '@arcgis/core/layers/VectorTileLayer';
 import WebTileLayer from '@arcgis/core/layers/WebTileLayer';
 import Map from '@arcgis/core/Map';
 import MapView from '@arcgis/core/views/MapView';
+import { act, render } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { toggleBasemap, toggleLayer } from './LayerSelector';
+import { LayerSelector, toggleBasemap, toggleLayer } from './LayerSelector';
 import type {
   BasemapConfigOrToken,
   LayerConfigOrToken,
@@ -17,6 +18,8 @@ vi.mock('@arcgis/core/views/MapView', () => {
   class MockMapView {
     map: Map | null;
     container: HTMLElement | string | null;
+    type = '2d';
+    background: { color: string } | null = { color: '#ffffff' };
     ready = true;
     destroyed = false;
     extent = null;
@@ -438,6 +441,57 @@ describe('LayerSelector utility functions', () => {
 
       // Should still only have one layer (no duplicates)
       expect(mockView.map?.basemap?.baseLayers.length).toBe(1);
+    });
+  });
+
+  describe('Dark basemap background', () => {
+    it('sets a 2D map view background to black for the Dark token and restores it on unmount', () => {
+      const originalBackground = { color: '#123456' };
+      mockView.background = originalBackground;
+
+      const { container, unmount } = render(
+        <LayerSelector basemaps={['Dark']} />,
+      );
+      const expand = container.querySelector(
+        'arcgis-expand',
+      ) as HTMLArcgisExpandElement;
+      expand.view = mockView;
+
+      act(() => {
+        expand.dispatchEvent(new CustomEvent('arcgisReady', { bubbles: true }));
+      });
+
+      expect(mockView.background).toMatchObject({ color: '#000000' });
+
+      unmount();
+
+      expect(mockView.background).toBe(originalBackground);
+    });
+
+    it('does not change the background for a custom basemap labeled Dark', () => {
+      const originalBackground = { color: '#123456' };
+      mockView.background = originalBackground;
+
+      const { container } = render(
+        <LayerSelector
+          basemaps={[
+            {
+              label: 'Dark',
+              function: () => new Basemap(),
+            },
+          ]}
+        />,
+      );
+      const expand = container.querySelector(
+        'arcgis-expand',
+      ) as HTMLArcgisExpandElement;
+      expand.view = mockView;
+
+      act(() => {
+        expand.dispatchEvent(new CustomEvent('arcgisReady', { bubbles: true }));
+      });
+
+      expect(mockView.background).toBe(originalBackground);
     });
   });
 });

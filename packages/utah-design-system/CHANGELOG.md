@@ -1,5 +1,31 @@
 # Changelog
 
+## [4.3.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v4.3.0...utah-design-system-v4.3.1) (2026-10-19)
+
+
+### Bug Fixes
+
+* Update URL pattern for 'Color IR' layer to 2024 ([6b2f417](https://github.com/agrc/kitchen-sink/commit/6b2f4173bc50b90c8b04859c9602a1e85825c9ea))
+
+## [4.3.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v4.2.0...utah-design-system-v4.3.0) (2026-10-14)
+
+
+### Features
+
+* **design-system:** add Dark basemap token to layer selector ([5681212](https://github.com/agrc/kitchen-sink/commit/568121215a7cb7beb53998d7a25f31216c771e4c))
+
+
+### Bug Fixes
+
+* **design-system:** only require quad words for tokens that actually need them ([08fcdb5](https://github.com/agrc/kitchen-sink/commit/08fcdb55b4125ef19700282f5468d9b6c0d55a9d))
+
+## [4.2.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v4.1.0...utah-design-system-v4.2.0) (2026-10-08)
+
+
+### Features
+
+* **design-system:** Add Outdoors basemap to LayerSelector ([#657](https://github.com/agrc/kitchen-sink/issues/657)) ([cb968ad](https://github.com/agrc/kitchen-sink/commit/cb968ad71b410f9f5f398fdc3ce678fe9758048b))
+
 ## [4.1.0](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v4.0.4...utah-design-system-v4.1.0) (2026-08-17)
 
 
