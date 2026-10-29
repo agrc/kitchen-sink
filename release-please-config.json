@@ -8,7 +8,8 @@
     "packages/tailwind-preset": {},
     "packages/tsconfigs": {},
     "packages/utah-design-system": {},
-    "packages/utilities": {}
+    "packages/utilities": {},
+    "packages/vite-plugin-google-secrets": {}
   },
   "changelog-sections": [
     { "type": "feat", "section": "Features", "hidden": false },
