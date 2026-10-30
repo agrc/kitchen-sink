@@ -27,3 +27,5 @@ The `secrets` option maps environment variable names to Secret Manager secret ID
 | `version`   | `string`                                              | `'latest'`    | Secret version to read.                                                                                                     |
 
 The plugin requires Google application default credentials or an active `gcloud` project when `projectId` and `GOOGLE_CLOUD_PROJECT` are not set.
+
+Requires Node.js 22 or newer.
