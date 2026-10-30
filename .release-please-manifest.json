@@ -6,5 +6,5 @@
   "packages/tsconfigs": "1.0.4",
   "packages/utah-design-system": "4.3.2",
   "packages/utilities": "5.0.1",
-  "packages/vite-plugin-google-secrets": "1.1.0"
+  "packages/vite-plugin-google-secrets": "1.1.1"
 }
