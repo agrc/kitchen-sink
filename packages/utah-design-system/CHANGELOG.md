@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.3.2](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v4.3.1...utah-design-system-v4.3.2) (2026-10-30)
+
+
+### Bug Fixes
+
+* **layer-selector:** migrate land ownership vector tile service ([#679](https://github.com/agrc/kitchen-sink/issues/679)) ([e90e4e9](https://github.com/agrc/kitchen-sink/commit/e90e4e939c5a6cc43b65954492ff75102a87cc3d))
+
 ## [4.3.1](https://github.com/agrc/kitchen-sink/compare/utah-design-system-v4.3.0...utah-design-system-v4.3.1) (2026-10-19)
 
 

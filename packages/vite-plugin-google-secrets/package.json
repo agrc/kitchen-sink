@@ -1,6 +1,6 @@
 {
   "name": "@ugrc/vite-plugin-google-secrets",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": false,
   "description": "Load Google Cloud Secret Manager values into the environment during Vite config.",
   "keywords": [
