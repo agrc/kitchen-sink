@@ -63,7 +63,7 @@ export const happyPathConfigs: Record<
     // no attribution for overlay layers since it just duplicates the base map attribution
   },
   'Land Ownership': {
-    url: 'https://gis.trustlands.utah.gov/hosting/rest/services/Hosted/Land_Ownership_WM_VectorTile/VectorTileServer',
+    url: 'https://gis.trustlands.utah.gov/hosting/rest/services/Hosted/Land_Ownership_Agency_Web_Mercator_Vector_T/VectorTileServer',
     opacity: 0.5,
   },
 };

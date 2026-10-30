@@ -111,6 +111,8 @@ Layers defined in `baseLayers` or `basemaps` are represented as radio buttons in
 
 This component will not work with base `@arcgis/core/views/MapView` API since it is built on top of the `arcgis-expand` component.
 
+The `Land Ownership` layer token uses SITLA's [Land Ownership Agency vector tile service](https://gis.trustlands.utah.gov/hosting/rest/services/Hosted/Land_Ownership_Agency_Web_Mercator_Vector_T/VectorTileServer) with the service's default symbology and 50% opacity. It does not require a Discover `quadWord`. The token is unchanged by the 2026 SITLA schema migration, but the new service's symbology differs from the previous service, including a fill for private land. Consumers using this token need to upgrade this package to receive the new service; the previous service stops receiving updates after November 20, 2026.
+
 ### Example
 
 ```tsx
