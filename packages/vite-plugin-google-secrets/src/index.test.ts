@@ -31,7 +31,7 @@ describe('googleSecrets', () => {
 
   beforeEach(() => {
     vi.resetAllMocks();
-    vi.stubEnv('VITEST', undefined);
+delete process.env.VITEST;
     vi.stubEnv('VITE_API_KEY', undefined);
     vi.stubEnv('VITE_SECOND_API_KEY', undefined);
     vi.stubEnv('VITE_PREVIEW_API_KEY', undefined);
