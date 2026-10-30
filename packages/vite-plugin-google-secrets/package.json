@@ -33,15 +33,15 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./src/index.ts",
-      "import": "./src/index.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
     }
   },
   "files": [
-    "src/index.ts"
+    "dist"
   ],
   "scripts": {
-    "build": "echo 'No build necessary'",
+    "build": "tsc --project tsconfig.build.json",
     "check": "tsc --ignoreConfig --noEmit --target ES2022 --module ESNext --moduleResolution Bundler --strict --skipLibCheck src/index.ts src/index.test.ts",
     "prepublish": "cp ../../LICENSE ./LICENSE",
     "test": "vitest --config ../../vite.config.ts"
