@@ -61,13 +61,14 @@ export default function googleSecrets({
                 );
               });
             const data = secretVersion.payload?.data;
-            const value = data ? Buffer.from(data).toString('utf8') : undefined;
 
-            if (!value) {
+            if (data === undefined || data === null) {
               throw new Error(
                 `[google-secrets] Secret "${secretId}" in project "${project}" has no payload.`,
               );
             }
+
+            const value = Buffer.from(data).toString('utf8');
 
             return [variable, value] as const;
           }),

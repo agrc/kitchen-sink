@@ -113,6 +113,34 @@ describe('googleSecrets', () => {
     });
   });
 
+  it('accepts an empty secret payload as an empty environment value', async () => {
+    vi.stubEnv('VITE_API_KEY', 'existing-value');
+    accessSecretVersion.mockResolvedValue([
+      { payload: { data: Buffer.alloc(0) } },
+    ]);
+    const plugin = googleSecrets({
+      projectId: 'configured-project',
+      secrets: { VITE_API_KEY: 'api-key' },
+    });
+
+    await runConfig(plugin);
+
+    expect(process.env.VITE_API_KEY).toBe('');
+  });
+
+  it('rejects a secret response without payload data', async () => {
+    accessSecretVersion.mockResolvedValue([{ payload: {} }]);
+    const plugin = googleSecrets({
+      projectId: 'configured-project',
+      secrets: { VITE_API_KEY: 'api-key' },
+    });
+
+    await expect(runConfig(plugin)).rejects.toThrow(
+      'Secret "api-key" in project "configured-project" has no payload.',
+    );
+    expect(close).toHaveBeenCalledOnce();
+  });
+
   it('fetches secrets in test and preview environments even when VITEST is set', async () => {
     vi.stubEnv('VITEST', 'true');
     const plugin = googleSecrets({

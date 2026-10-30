@@ -18,7 +18,7 @@ export default defineConfig({
 });
 ```
 
-The `secrets` option maps environment variable names to Secret Manager secret IDs. Every configured secret is fetched each time the plugin runs, and the result overwrites any existing environment value. This also applies to test, preview, and production builds; Secret Manager access failures fail the build.
+The `secrets` option maps environment variable names to Secret Manager secret IDs. Every configured secret is fetched each time the plugin runs, and the result overwrites any existing environment value. Empty payloads set an empty environment value, while missing payload data is an error. This also applies to test, preview, and production builds; Secret Manager access failures fail the build.
 
 | Option      | Type                                                  | Default       | Description                                                                                                                 |
 | ----------- | ----------------------------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------- |
