@@ -1,6 +1,6 @@
 import { SecretManagerServiceClient } from '@google-cloud/secret-manager';
 import type { ConfigEnv, Plugin } from 'vite';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import googleSecrets from './index';
 
 vi.mock('@google-cloud/secret-manager', () => ({
@@ -30,13 +30,13 @@ describe('googleSecrets', () => {
   const close = vi.fn();
 
   beforeEach(() => {
-    vi.clearAllMocks();
-    vi.unstubAllEnvs();
-    delete process.env.VITE_API_KEY;
-    delete process.env.VITE_SECOND_API_KEY;
-    delete process.env.VITE_PREVIEW_API_KEY;
-    delete process.env.VITE_TEST_API_KEY;
-    delete process.env.GOOGLE_CLOUD_PROJECT;
+    vi.resetAllMocks();
+    delete process.env.VITEST;
+    vi.stubEnv('VITE_API_KEY', undefined);
+    vi.stubEnv('VITE_SECOND_API_KEY', undefined);
+    vi.stubEnv('VITE_PREVIEW_API_KEY', undefined);
+    vi.stubEnv('VITE_TEST_API_KEY', undefined);
+    vi.stubEnv('GOOGLE_CLOUD_PROJECT', undefined);
     vi.mocked(SecretManagerServiceClient).mockImplementation(function () {
       return {
         getProjectId,
@@ -48,6 +48,10 @@ describe('googleSecrets', () => {
     accessSecretVersion.mockResolvedValue([
       { payload: { data: Buffer.from('secret-value') } },
     ]);
+  });
+
+  afterEach(() => {
+    vi.unstubAllEnvs();
   });
 
   it('fetches all configured secrets and overwrites existing environment values', async () => {
@@ -141,8 +145,29 @@ describe('googleSecrets', () => {
     expect(close).toHaveBeenCalledOnce();
   });
 
-  it('fetches secrets in test and preview environments even when VITEST is set', async () => {
-    vi.stubEnv('VITEST', 'true');
+  it.each(['test', 'development', 'production'])(
+    'does not contact Secret Manager under Vitest in %s mode',
+    async (mode) => {
+      vi.stubEnv('VITEST', 'true');
+      vi.stubEnv('VITE_API_KEY', 'existing-value');
+      const projectId = vi.fn();
+      const plugin = googleSecrets({
+        projectId,
+        secrets: { VITE_API_KEY: 'api-key' },
+      });
+
+      await runConfig(plugin, { ...configEnv, mode });
+
+      expect(SecretManagerServiceClient).not.toHaveBeenCalled();
+      expect(projectId).not.toHaveBeenCalled();
+      expect(getProjectId).not.toHaveBeenCalled();
+      expect(accessSecretVersion).not.toHaveBeenCalled();
+      expect(close).not.toHaveBeenCalled();
+      expect(process.env.VITE_API_KEY).toBe('existing-value');
+    },
+  );
+
+  it('fetches secrets in test mode and previews when not running Vitest', async () => {
     const plugin = googleSecrets({
       projectId: 'configured-project',
       secrets: {

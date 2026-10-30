@@ -18,7 +18,9 @@ export default defineConfig({
 });
 ```
 
-The `secrets` option maps environment variable names to Secret Manager secret IDs. Every configured secret is fetched each time the plugin runs, and the result overwrites any existing environment value. Empty payloads set an empty environment value, while missing payload data is an error. This also applies to test, preview, and production builds; Secret Manager access failures fail the build.
+The `secrets` option maps environment variable names to Secret Manager secret IDs. Outside Vitest, every configured secret is fetched each time the plugin runs, and the result overwrites any existing environment value. Empty payloads set an empty environment value, while missing payload data is an error. This also applies to preview and production builds; Secret Manager access failures fail the build.
+
+The plugin automatically skips Secret Manager access when Vitest sets `process.env.VITEST`, including when running tests with a custom mode. No conditional plugin configuration or Google credentials are needed for unit tests. Existing environment values are left unchanged during tests; provide any values your tests need through test fixtures or mocks. A normal Vite build with `--mode test` still fetches secrets when it is not running under Vitest.
 
 | Option      | Type                                                  | Default       | Description                                                                                                                 |
 | ----------- | ----------------------------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------- |
