@@ -80,6 +80,41 @@ describe('LayerSelector utility functions', () => {
   });
 
   describe('toggleLayer', () => {
+    it('uses the agency land ownership service and reuses the overlay when toggled without a quad word', async () => {
+      const token = 'Land Ownership';
+      const toggle = (visible: boolean) =>
+        toggleLayer(
+          token,
+          token,
+          visible,
+          mockCollection,
+          mockManagedObjects,
+          '',
+        );
+
+      await toggle(true);
+
+      const layer = mockManagedObjects[token];
+      expect(layer).toBeInstanceOf(VectorTileLayer);
+      expect(layer).toMatchObject({
+        id: token,
+        url: 'https://gis.trustlands.utah.gov/hosting/rest/services/Hosted/Land_Ownership_Agency_Web_Mercator_Vector_T/VectorTileServer',
+        opacity: 0.5,
+      });
+      expect(mockCollection.toArray()).toEqual([layer]);
+
+      await toggle(true);
+      expect(mockCollection.toArray()).toEqual([layer]);
+
+      await toggle(false);
+      expect(mockCollection.length).toBe(0);
+      expect(mockManagedObjects[token]).toBe(layer);
+
+      await toggle(true);
+      expect(mockCollection.toArray()).toEqual([layer]);
+      expect(mockManagedObjects[token]).toBe(layer);
+    });
+
     it('should add a layer when visible is true and layer does not exist (string token)', async () => {
       const label = 'Test Layer';
       const token = 'Imagery' as const;
