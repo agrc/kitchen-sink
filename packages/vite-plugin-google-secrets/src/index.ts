@@ -22,6 +22,10 @@ export default function googleSecrets({
     name: 'ugrc:google-secrets',
     enforce: 'pre',
     async config(_, env) {
+      if (process.env.VITEST) {
+        return;
+      }
+
       const entries = Object.entries(secrets);
 
       if (entries.length === 0) {
